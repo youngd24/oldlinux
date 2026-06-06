@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink version="3.0" xmlns="http://www.metalinker.org/"
+  origin="https://mirrors.slackware.com/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz.metalink"
+  generator="MirrorBrain 2.19.0 (see http://mirrorbrain.org/)"
+  type="dynamic"  pubdate="Mon, 01 Jun 2026 17:23:55 GMT"  refreshdate="Mon, 01 Jun 2026 17:23:55 GMT">
+
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <files>
+  <file name="v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz">
+    <size>1483479</size>
+
+    <!-- <mtime>774839993</mtime> -->
+
+    <!-- internal id: 1611042 -->
+      <verification>
+        <hash type="md5">6dba51fc2213d16485d32d6a3b38d201</hash>
+        <hash type="sha1">30cd6c139881fcd5c46ca780cde6b0c08eaa6f81</hash>
+        <hash type="sha256">6d9326468599eb2d5b3993c9d2fab98bd2394b0650af172bc06941d093f9a976</hash>
+        <pieces length="262144" type="sha1">
+          <hash piece="0">f34c33e16ea49cea8a6ab8e4db92d43ed334eb9f</hash>
+          <hash piece="1">3cda763d1fea499c28f18218be028b8ee96ed9ba</hash>
+          <hash piece="2">0c909a3d21269995299e42b84a3272066fb07cca</hash>
+          <hash piece="3">53615a1ae853e27ac5774ee21948a5c6150f6800</hash>
+          <hash piece="4">00106a11b008bfd9179d734dc8ff77344ef220aa</hash>
+          <hash piece="5">575331c6a3548bdaa38be0355595a1d5f40a0c8b</hash>
+        </pieces>
+      </verification>
+    <resources>
+
+
+
+    <!-- Found 27 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 26 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url type="https" location="us" preference="100">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url type="https" location="ec" preference="99">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="br" preference="98">https://ftp.slackware-brasil.com.br/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="br" preference="97">https://mirrors.slackware.beco.cc/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="br" preference="96">https://linorg.usp.br/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="http" location="gb" preference="95">http://slackware.uk/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="gb" preference="94">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="http" location="nl" preference="93">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="nl" preference="92">https://mirror.koddos.net/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="nl" preference="91">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="de" preference="90">https://linux.rz.rub.de/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="http" location="ro" preference="89">http://mirrors.nav.ro/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="de" preference="88">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="dk" preference="87">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="http" location="hr" preference="86">http://mirror.slackware.hr/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="it" preference="85">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="se" preference="84">https://mirror.bahnhof.net/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="rs" preference="83">https://mirror1.sox.rs/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="pl" preference="82">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="ro" preference="81">https://mirrors.nxthost.com/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="http" location="ua" preference="80">http://slackware.ip-connect.info/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="ua" preference="79">https://ifconfig.com.ua/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="http" location="ru" preference="78">http://mirror.mephi.ru/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="ru" preference="77">https://mirror.yandex.ru/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="http" location="za" preference="76">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="sa" preference="75">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url type="https" location="hk" preference="74">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    </resources>
+    </file>
+  </files>
+</metalink>

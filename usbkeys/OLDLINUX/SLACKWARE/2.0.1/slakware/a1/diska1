@@ -1,0 +1,89 @@
+CONTENTS: base devs etc idekern lilo scsikern sysvinit hdsetup 
+base:     Sets up the basic directory structure and adds a few important
+base:     binaries such as GNU mtools 2.0.7 and fdisk.
+base:
+base:
+base:
+base:
+base:
+base:
+base:
+base:
+base:
+devs:     This package creates special files in the /dev directory that 
+devs:     represent your system's hardware.
+devs:
+devs:
+devs:
+devs:
+devs:
+devs:
+devs:
+devs:
+devs:
+etc:      System configuration files that go into the /etc directory.
+etc:
+etc:      The /etc directory is traditionally the location where configuration
+etc:      files and administration binaries are found. Under Linux, the binaries
+etc:      have been moved out of the /etc directory and into the /sbin 
+etc:      directory; the /etc directory is now reserved for configuration files
+etc:      only. 
+etc:
+etc:
+etc:
+etc:
+idekern:  Linux kernel version 1.0.9, without SCSI support.
+idekern:  
+idekern:  A Linux kernel for computers that do not need SCSI support. You MUST
+idekern:  install a kernel image in order for your system to boot. This kernel
+idekern:  also contains UMSDOS and PPP.  See the file 'idekern.log' for an exact
+idekern:  list of included drivers.
+idekern:
+idekern:
+idekern:
+idekern:
+idekern:
+lilo:     Lilo 0.14
+lilo:
+lilo:     The Linux Loader: boots Linux from your hard drive.
+lilo:
+lilo:
+lilo:
+lilo:
+lilo:
+lilo:
+lilo:
+lilo:
+scsikern: Linux kernel version 1.0.9, with SCSI + IDE support. 
+scsikern:
+scsikern: This is a Linux kernel with full support for SCSI devices such as hard
+scsikern: drives, tape drives, and CD-ROM drives. This kernel also contains
+scsikern: UMSDOS and PPP.  See the file 'scsikern.log' for an exact list of 
+scsikern: included drivers.
+scsikern:
+scsikern:
+scsikern:
+scsikern:
+scsikern:
+sysvinit: SysV style init v. 2.4
+sysvinit:
+sysvinit: System V style init programs by Miquel van Smoorenburg that control
+sysvinit: the booting and shutdown of your system. These support a number of
+sysvinit: system runlevels, each with a specific set of utilities spawned. For
+sysvinit: example, the normal system runlevel is 5, which starts getty on 
+sysvinit: virtual consoles tty1 - tty6. Runlevel 6 starts xdm. Runlevel 0 shuts
+sysvinit: the system down. See the documentation in /usr/doc/SysVinit-2.4 and
+sysvinit: the scripts in /etc/rc.d for more information.
+sysvinit:
+sysvinit:
+hdsetup:  The Slackware setup/package maintenance system v. 2.0.0
+hdsetup:
+hdsetup:  The full screen and tty versions of setup and pkgtool, two utilities
+hdsetup:  included with Slackware that allow you to easily install software 
+hdsetup:  packages, remove software packages, and review the installed software
+hdsetup:  packages.
+hdsetup:
+hdsetup:  Also contains the command line utilities 'installpkg', 'removepkg',
+hdsetup:  'makepkg', and 'explodepkg' that install, remove, build, and examine
+hdsetup:  software packages. Man pages are included for all of these utilities.
+hdsetup:

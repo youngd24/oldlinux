@@ -1,0 +1,270 @@
+--- Makefile
++++ Makefile	1994/02/19 19:51:50
+@@ -0,0 +1,15 @@
++CFLAGS = -O2 -fomit-frame-pointer -m486 \
++		-Ddelete=new_delete \
++		-include /usr/include/bsd/bsd.h -I/usr/include/bsd
++LDLIBS = -lbsd
++LDFLAGS = -s -v
++
++arp: arp.o
++
++install: arp
++	install arp /usr/sbin
++	install -m644 arp.8 /usr/man/man8
++
++clean:
++	rm -f *.o arp
++
+--- arp.8
++++ arp.8	1994/02/19 19:51:01
+@@ -43,8 +43,6 @@
+ .Ar hostname
+ .Nm arp
+ .Fl a
+-.Op Ar vmunix
+-.Op Ar kmem
+ .Nm arp
+ .Fl d Ar hostname
+ .Nm arp
+@@ -70,15 +68,9 @@
+ Available options:
+ .Bl -tag -width Ds
+ .It Fl a
+-The program displays all of the current
++The program displays all current
+ .Tn ARP
+-entries by reading the table
+-from the file
+-.Ar kmem
+-(default /dev/kmem) based on the kernel file 
+-.Ar vmunix
+-(default
+-.Pa /vmunix ) .
++entries.
+ .It Fl d
+ A super-user may delete an entry for the host called
+ .Ar hostname
+--- arp.c
++++ arp.c	1994/02/19 19:49:35
+@@ -57,12 +57,9 @@
+ #include <netdb.h>
+ #include <netinet/in.h>
+ #include <net/if.h>
+-#include <netinet/if_ether.h>
+-#include <arpa/inet.h>
++#include <linux/if_ether.h>
+ 
+ #include <errno.h>
+-#include <nlist.h>
+-#include <kvm.h>
+ #include <stdio.h>
+ #include <paths.h>
+ 
+@@ -79,12 +76,9 @@
+ 		case 'a': {
+ 			char *mem = 0;
+ 
+-			if (argc > 4)
++			if (argc > 2)
+ 				usage();
+-			if (argc == 4) {
+-				mem = argv[3];
+-			}
+-			dump((argc >= 3) ? argv[2] : _PATH_UNIX, mem);
++			dump();
+ 			exit(0);
+ 		}
+ 		case 'd':
+@@ -120,12 +114,10 @@
+ 	int i, retval;
+ 	char line[100], arg[5][50], *args[5];
+ 
+-	setregid(getegid(), getgid());
+ 	if ((fp = fopen(name, "r")) == NULL) {
+ 		fprintf(stderr, "arp: cannot open %s\n", name);
+ 		exit(1);
+ 	}
+-	setregid(getegid(), getgid());
+ 	args[0] = &arg[0][0];
+ 	args[1] = &arg[1][0];
+ 	args[2] = &arg[2][0];
+@@ -179,7 +171,7 @@
+ 	ea = (u_char *)ar.arp_ha.sa_data;
+ 	if (ether_aton(eaddr, ea))
+ 		return (1);
+-	ar.arp_flags = ATF_PERM;
++	ar.arp_flags = ATF_PERM|ATF_COM;
+ 	while (argc-- > 0) {
+ 		if (strncmp(argv[0], "temp", 4) == 0)
+ 			ar.arp_flags &= ~ATF_PERM;
+@@ -212,7 +204,7 @@
+ 	struct arpreq ar;
+ 	struct hostent *hp;
+ 	struct sockaddr_in *sin;
+-	u_char *ea;
++	unsigned char *ea;
+ 	int s;
+ 
+ 	bzero((caddr_t)&ar, sizeof ar);
+@@ -220,7 +212,7 @@
+ 	sin = (struct sockaddr_in *)&ar.arp_pa;
+ 	sin->sin_family = AF_INET;
+ 	sin->sin_addr.s_addr = inet_addr(host);
+-	if (sin->sin_addr.s_addr == -1) {
++	if ((long)sin->sin_addr.s_addr == -1) {
+ 		if (!(hp = gethostbyname(host))) {
+ 			fprintf(stderr, "arp: %s: ", host);
+ 			herror((char *)NULL);
+@@ -245,10 +237,10 @@
+ 	close(s);
+ 	ea = (u_char *)ar.arp_ha.sa_data;
+ 	printf("%s (%s) at ", host, inet_ntoa(sin->sin_addr));
+-	if (ar.arp_flags & ATF_COM)
++	/* if (ar.arp_flags & ATF_COM)*/
+ 		ether_print(ea);
+-	else
+-		printf("(incomplete)");
++	/* else
++		printf("(incomplete)"); */
+ 	if (ar.arp_flags & ATF_PERM)
+ 		printf(" permanent");
+ 	if (ar.arp_flags & ATF_PUBL)
+@@ -274,7 +266,7 @@
+ 	sin = (struct sockaddr_in *)&ar.arp_pa;
+ 	sin->sin_family = AF_INET;
+ 	sin->sin_addr.s_addr = inet_addr(host);
+-	if (sin->sin_addr.s_addr == -1) {
++	if ((long)sin->sin_addr.s_addr == -1) {
+ 		if (!(hp = gethostbyname(host))) {
+ 			fprintf(stderr, "arp: %s: ", host);
+ 			herror((char *)NULL);
+@@ -300,57 +292,54 @@
+ 	printf("%s (%s) deleted\n", host, inet_ntoa(sin->sin_addr));
+ }
+ 
+-struct nlist nl[] = {
+-#define	X_ARPTAB	0
+-	{ "_arptab" },
+-#define	X_ARPTAB_SIZE	1
+-	{ "_arptab_size" },
+-	{ "" },
+-};
+ 
+ /*
+  * Dump the entire arp table
+  */
+-dump(kernel, mem)
+-	char *kernel, *mem;
++
++static unsigned long getipaddr(struct arpreq *at)
++{
++	return (* (long *)(at->arp_pa.sa_data));
++}
++
++dump()
+ {
+ 	extern int h_errno;
+-	struct arptab *at;
++	struct arpreq *at;
+ 	struct hostent *hp;
+ 	int bynumber, mf, arptab_size, sz;
+-	char *host, *malloc();
+-	off_t lseek();
++	int fd;
++	const char *host;
+ 
+-	if (kvm_openfiles(kernel, mem, NULL) == -1) {
+-		fprintf(stderr, "arp: kvm_openfiles: %s\n", kvm_geterr());
+-		exit(1);
+-	}
+-	if (kvm_nlist(nl) < 0 || nl[X_ARPTAB_SIZE].n_type == 0) {
+-		fprintf(stderr, "arp: %s: bad namelist\n", kernel);
+-		exit(1);
+-	}
+-	if (kvm_read((void *)(nl[X_ARPTAB_SIZE].n_value),
+-		     &arptab_size, sizeof arptab_size) == -1 ||
+-	    arptab_size <= 0 || arptab_size > 1000) {
+-		fprintf(stderr, "arp: %s: namelist wrong\n", kernel);
+-		exit(1);
+-	}
+-	sz = arptab_size * sizeof (struct arptab);
+-	at = (struct arptab *)malloc((u_int)sz);
++	sz = 65536;
++	at = (struct arpreq *)malloc((u_int)sz);
+ 	if (at == NULL) {
+ 		fputs("arp: can't get memory for arptab.\n", stderr);
+ 		exit(1);
+ 	}
+-	if (kvm_read((void *)(nl[X_ARPTAB].n_value), (char *)at, sz) == -1) {
++
++	fd=open("/proc/net/arp",O_RDONLY,0);
++	if(fd==-1)
++	{
++		perror("arp: error opening arptab");
++		exit(1);
++	}
++	if((sz=read(fd,at,65536))<0)
++	{
+ 		perror("arp: error reading arptab");
+ 		exit(1);
+ 	}
++	arptab_size=sz/sizeof(struct arpreq);
++	close(fd);
+ 	for (bynumber = 0; arptab_size-- > 0; at++) {
+-		if (at->at_iaddr.s_addr == 0 || at->at_flags == 0)
+-			continue;
++		unsigned long h_ip = getipaddr(at);
+ 		if (bynumber == 0)
+-			hp = gethostbyaddr((caddr_t)&at->at_iaddr,
+-			    sizeof at->at_iaddr, AF_INET);
++		{
++			struct in_addr ia;
++			ia.s_addr = h_ip;
++			hp = gethostbyaddr((const char *)&ia,
++			    sizeof(ia), AF_INET);
++		}
+ 		else
+ 			hp = 0;
+ 		if (hp)
+@@ -360,16 +349,16 @@
+ 			if (h_errno == TRY_AGAIN)
+ 				bynumber = 1;
+ 		}
+-		printf("%s (%s) at ", host, inet_ntoa(at->at_iaddr));
+-		if (at->at_flags & ATF_COM)
+-			ether_print(at->at_enaddr);
++		printf("%s (%s) at ", host, inet_ntoa(h_ip));
++		if (at->arp_flags & ATF_COM)
++			ether_print(at->arp_ha.sa_data);
+ 		else
+ 			printf("(incomplete)");
+-		if (at->at_flags & ATF_PERM)
++		if (at->arp_flags & ATF_PERM)
+ 			printf(" permanent");
+-		if (at->at_flags & ATF_PUBL)
++		if (at->arp_flags & ATF_PUBL)
+ 			printf(" published");
+-		if (at->at_flags & ATF_USETRAILERS)
++		if (at->arp_flags & ATF_USETRAILERS)
+ 			printf(" trailers");
+ 		printf("\n");
+ 	}
+@@ -378,7 +367,7 @@
+ ether_print(cp)
+ 	u_char *cp;
+ {
+-	printf("%x:%x:%x:%x:%x:%x", cp[0], cp[1], cp[2], cp[3], cp[4], cp[5]);
++	printf("%02x:%02x:%02x:%02x:%02x:%02x", cp[0], cp[1], cp[2], cp[3], cp[4], cp[5]);
+ }
+ 
+ ether_aton(a, n)
+@@ -401,7 +390,7 @@
+ usage()
+ {
+ 	printf("usage: arp hostname\n");
+-	printf("       arp -a [kernel] [kernel_memory]\n");
++	printf("       arp -a\n");
+ 	printf("       arp -d hostname\n");
+ 	printf("       arp -s hostname ether_addr [temp] [pub] [trail]\n");
+ 	printf("       arp -f filename\n");

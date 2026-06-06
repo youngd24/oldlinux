@@ -1,0 +1,4 @@
+( cd usr/bin ; rm -rf rn )
+( cd usr/bin ; ln -sf  trn rn )
+( cd usr/bin ; rm -rf inews )
+( cd usr/bin ; ln -sf inews-nntp inews )

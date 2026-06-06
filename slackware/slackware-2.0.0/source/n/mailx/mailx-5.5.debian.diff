@@ -1,0 +1,297 @@
+diff -cr mailx-5.5.orig/Makefile mailx-5.5/Makefile
+*** mailx-5.5.orig/Makefile	Mon Mar 21 17:17:40 1994
+--- mailx-5.5/Makefile	Mon Mar 21 17:44:37 1994
+***************
+*** 2,21 ****
+  #	$Id: Makefile,v 1.3 1993/08/27 20:31:07 jtc Exp $
+  
+  PROG=	mail
+! CFLAGS+=-R -DUSE_OLD_TTY
+  SRCS=	version.c aux.c cmd1.c cmd2.c cmd3.c cmdtab.c collect.c edit.c fio.c \
+  	getname.c head.c v7.local.c lex.c list.c main.c names.c popen.c \
+  	quit.c send.c strings.c temp.c tty.c vars.c
+  SFILES=	mail.help mail.tildehelp
+  EFILES=	mail.rc
+! LINKS=	${BINDIR}/mail ${BINDIR}/Mail ${BINDIR}/mail ${BINDIR}/mailx
+! MLINKS=	mail.1 Mail.1 mail.1 mailx.1
+  
+  
+  beforeinstall:
+! 	cd ${.CURDIR}/misc; install -c -o ${BINOWN} -g ${BINGRP} \
+! 	    -m 444 ${SFILES} ${DESTDIR}/usr/share/misc
+! 	cd ${.CURDIR}/misc; install -c -o ${BINOWN} -g ${BINGRP} \
+  	    -m 444 ${EFILES} ${DESTDIR}/etc
+  
+! .include <bsd.prog.mk>
+--- 2,49 ----
+  #	$Id: Makefile,v 1.3 1993/08/27 20:31:07 jtc Exp $
+  
+  PROG=	mail
+! MAN=	mail.1
+! CC=	gcc
+! CFLAGS=	-O2 -fomit-frame-pointer -D_BSD_SOURCE -I/usr/include/bsd
+! # CFLAGS+= -R -DUSE_OLD_TTY
+! LDFLAGS=-s
+! 
+  SRCS=	version.c aux.c cmd1.c cmd2.c cmd3.c cmdtab.c collect.c edit.c fio.c \
+  	getname.c head.c v7.local.c lex.c list.c main.c names.c popen.c \
+  	quit.c send.c strings.c temp.c tty.c vars.c
++ OBJS=	version.o aux.o cmd1.o cmd2.o cmd3.o cmdtab.o collect.o edit.o fio.o \
++ 	getname.o head.o v7.local.o lex.o list.o main.o names.o popen.o \
++ 	quit.o send.o strings.o temp.o tty.o vars.o
++ 
++ LIBS=	-lbsd
+  SFILES=	mail.help mail.tildehelp
+  EFILES=	mail.rc
+! # LINKS=  ${BINDIR}/mail ${BINDIR}/Mail ${BINDIR}/mail ${BINDIR}/mailx
+! # MLINKS= mail.1 Mail.1 mail.1 mailx.1
+! 
+! all: $(PROG)
+  
++ $(PROG): $(OBJS)
++ 	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
++ 
++ .c.o:
++ 	$(CC) $(CFLAGS) -c $*.c
+  
+  beforeinstall:
+! 	cd misc; install -c -o root -g root \
+! 	    -m 444 ${SFILES} ${DESTDIR}/usr/lib
+! 	cd misc; install -c -o root -g root \
+  	    -m 444 ${EFILES} ${DESTDIR}/etc
+  
+! install: all beforeinstall
+! 	install -c -o root -g bin -m 755 $(PROG) $(DESTDIR)/usr/bin
+! 	ln -sf mail $(DESTDIR)/usr/bin/Mail
+! 	-chown root.bin $(DESTDIR)/usr/bin/Mail
+! 	install -c -o root -g man -m 444 $(MAN) $(DESTDIR)/usr/man/man1
+! 	ln -sf mail.1 $(DESTDIR)/usr/man/man1/Mail.1
+! 	-chown root.man $(DESTDIR)/usr/man/man1/Mail.1
+! 
+! clean:
+! 	rm -f $(PROG) *.o *~
+! 
+! # .include <bsd.prog.mk>
+diff -cr mailx-5.5.orig/README mailx-5.5/README
+*** mailx-5.5.orig/README	Mon Mar 21 17:17:40 1994
+--- mailx-5.5/README	Mon Mar 21 17:17:35 1994
+***************
+*** 0 ****
+--- 1,23 ----
++ 
++ These sources are from Mailx "5.5 6/1/90" in the NetBSD-current
++ release.  NetBSD-current is also the release that all of the Debian
++ network utilities are taken from, and is widely regarded as the best
++ of the millions of BSD distributions out there.  (By "widely
++ regarded", I mean that it's my favorite.  :-)
++ 
++ If you had the mailx package from Debian 0.91 (or previous version)
++ installed, you should de-install it before installing this version.
++ Why?  Because NetBSD has renamed the files "Mail.help",
++ "Mail.tildehelp", and "Mail.rc" to use small "m"s.  To be consistent,
++ this package also looks for small "m"s.  Therefore, you'll want to
++ erase the files with the capital "M"s.
++ 
++ There is an old version of mailx which has been modified to retrieve
++ mail using POP.  These sources are in /afs/gza.com/misc/popmail.  I am
++ integrating the POP support code into these sources.  However, I don't
++ want to distribute the POP patch until the current (small) patch has
++ been more tested.
++ 
++ Have a nice day.
++ -Sal Valente. <svalente@athena.mit.edu>
++ 
+diff -cr mailx-5.5.orig/collect.c mailx-5.5/collect.c
+*** mailx-5.5.orig/collect.c	Mon Mar 21 17:17:39 1994
+--- mailx-5.5/collect.c	Mon Mar 21 17:17:34 1994
+***************
+*** 69,74 ****
+--- 69,76 ----
+  static	int	colljmp_p;		/* whether to long jump */
+  static	jmp_buf	collabort;		/* To end collection with error */
+  
++ static	char linebuf[LINESIZE];		/* To read a line of the message */
++ 
+  FILE *
+  collect(hp, printheaders)
+  	struct header *hp;
+***************
+*** 76,82 ****
+  	FILE *fbuf;
+  	int lc, cc, escape, eofcount;
+  	register int c, t;
+! 	char linebuf[LINESIZE], *cp;
+  	extern char tempMail[];
+  	char getsub;
+  	int omask;
+--- 78,84 ----
+  	FILE *fbuf;
+  	int lc, cc, escape, eofcount;
+  	register int c, t;
+! 	char *cp;
+  	extern char tempMail[];
+  	char getsub;
+  	int omask;
+***************
+*** 553,558 ****
+--- 555,568 ----
+  	sigblock(sigmask(s));
+  	signal(s, old_action);
+  	if (colljmp_p) {
++ #ifdef __linux__
++ /*  the signal was received in fgets().  Since the signal handler never
++  *  returns to let fgets() finish, stdin gets mildly confused, and the
++  *  next fgets call will return immediately with bad data.
++  *  we get that call out of the way here.
++  */
++ 		readline(stdin, linebuf, LINESIZE);
++ #endif /* __linux__*/
+  		colljmp_p = 0;
+  		hadintr = 0;
+  		longjmp(colljmp, 1);
+***************
+*** 577,582 ****
+--- 587,596 ----
+  			clearerr(stdin);
+  			return;
+  		}
++ #ifdef __linux__
++ 		/* see comment in collstop() */
++ 		readline(stdin, linebuf, LINESIZE);
++ #endif /* __linux__*/
+  		hadintr = 1;
+  		longjmp(colljmp, 1);
+  	}
+diff -cr mailx-5.5.orig/def.h mailx-5.5/def.h
+*** mailx-5.5.orig/def.h	Mon Mar 21 17:17:38 1994
+--- mailx-5.5/def.h	Mon Mar 21 17:17:34 1994
+***************
+*** 35,41 ****
+   */
+  
+  #include <sys/param.h>		/* includes <sys/types.h> */
+! #include <sys/signal.h>
+  #include <stdio.h>
+  #include <sgtty.h>
+  #include <ctype.h>
+--- 35,41 ----
+   */
+  
+  #include <sys/param.h>		/* includes <sys/types.h> */
+! #include <signal.h>
+  #include <stdio.h>
+  #include <sgtty.h>
+  #include <ctype.h>
+diff -cr mailx-5.5.orig/mail.1 mailx-5.5/mail.1
+*** mailx-5.5.orig/mail.1	Mon Mar 21 17:17:36 1994
+--- mailx-5.5/mail.1	Mon Mar 21 18:01:13 1994
+***************
+*** 987,993 ****
+  environment variables.
+  .Sh FILES
+  .Bl -tag -width /usr/share/misc/mail.*help -compact
+! .It Pa /var/mail/*
+  Post office.
+  .It ~/mbox
+  User's old mail.
+--- 987,993 ----
+  environment variables.
+  .Sh FILES
+  .Bl -tag -width /usr/share/misc/mail.*help -compact
+! .It Pa /var/spool/mail/*
+  Post office.
+  .It ~/mbox
+  User's old mail.
+***************
+*** 995,1001 ****
+  File giving initial mail commands.
+  .It Pa /tmp/R*
+  Temporary files.
+! .It Pa /usr/share/misc/mail.*help
+  Help files.
+  .It Pa /etc/mail.rc
+  System initialization file.
+--- 995,1001 ----
+  File giving initial mail commands.
+  .It Pa /tmp/R*
+  Temporary files.
+! .It Pa /usr/lib/mail.*help
+  Help files.
+  .It Pa /etc/mail.rc
+  System initialization file.
+diff -cr mailx-5.5.orig/pathnames.h mailx-5.5/pathnames.h
+*** mailx-5.5.orig/pathnames.h	Mon Mar 21 17:17:36 1994
+--- mailx-5.5/pathnames.h	Mon Mar 21 18:06:09 1994
+***************
+*** 36,44 ****
+  
+  #include <paths.h>
+  
+! #define	_PATH_EX	"/usr/bin/ex"
+! #define	_PATH_HELP	"/usr/share/misc/mail.help"
+! #define	_PATH_TILDE	"/usr/share/misc/mail.tildehelp"
+! #define	_PATH_MAIL_LOG	"/var/log/maillog"
+! #define	_PATH_MASTER_RC	"/etc/mail.rc"
+! #define	_PATH_MORE	"/usr/bin/more"
+--- 36,72 ----
+  
+  #include <paths.h>
+  
+! /* mail installed files */
+! #define _PATH_HELP	"/usr/lib/mail.help"
+! #define _PATH_TILDE	"/usr/lib/mail.tildehelp"
+! #define _PATH_MASTER_RC	"/etc/mail.rc"
+! 
+! /* mail runtime files */
+! #ifndef _PATH_MAIL_LOG
+! #define _PATH_MAIL_LOG	"/var/adm/maillog"
+! #endif
+! #ifndef _PATH_MAILDIR
+! #define _PATH_MAILDIR	"/var/spool/mail"
+! #endif
+! 
+! /* executables */
+! #ifndef _PATH_CSHELL
+! #define _PATH_CSHELL	"/bin/csh"
+! #endif
+! #ifndef _PATH_MORE
+! #define _PATH_MORE	"/bin/more"
+! #endif
+! #ifndef _PATH_EX
+! #define _PATH_EX	"/usr/bin/ex"
+! #endif
+! #ifndef _PATH_VI
+! #define _PATH_VI	"/usr/bin/vi"
+! #endif
+! #ifndef _PATH_SENDMAIL
+! #define _PATH_SENDMAIL	"/usr/lib/sendmail"
+! #endif
+! 
+! /* directories */
+! #ifndef _PATH_TMP
+! #define _PATH_TMP	"/tmp/"
+! #endif
+diff -cr mailx-5.5.orig/rcv.h mailx-5.5/rcv.h
+*** mailx-5.5.orig/rcv.h	Mon Mar 21 17:17:36 1994
+--- mailx-5.5/rcv.h	Mon Mar 21 17:17:34 1994
+***************
+*** 43,45 ****
+--- 43,60 ----
+  
+  #include "def.h"
+  #include "glob.h"
++ 
++ #if defined(__GNUC__) && defined(__GNU_LIBRARY__)
++ #undef  NULL
++ #define NULL 0
++ #endif /* gnu */
++ 
++ #ifdef __linux__
++ /*  new versions of libc do this automatically when you compile with
++  *  -D_BSD_SOURCE.  sadly, pre-4.5 versions screwed it up.
++  */
++ #undef  setjmp
++ #define setjmp(env)		sigsetjmp ((env), 1)
++ #undef  longjmp
++ #define longjmp(env, val)	siglongjmp ((env), (val))
++ #endif /* __linux__ */

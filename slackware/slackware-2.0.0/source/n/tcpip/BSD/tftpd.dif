@@ -1,0 +1,18 @@
+--- Makefile
++++ Makefile	1994/02/22 15:00:05
+@@ -0,0 +1,15 @@
++OBJS = tftpd.o ../tftp/tftpsubs.o
++CFLAGS = -O2 -m486 -fomit-frame-pointer \
++	-include /usr/include/bsd/bsd.h -I/usr/include/bsd -Dsin=x_sin
++LDFLAGS = -s -v
++LDLIBS = -lbsd
++
++tftpd: tftpd.o ../tftp/tftpsubs.o
++
++install: tftpd
++	install tftpd /usr/sbin/in.tftpd
++	install -m644 tftpd.8 /usr/man/man8
++
++clean:
++	rm -f *.o tftpd
++

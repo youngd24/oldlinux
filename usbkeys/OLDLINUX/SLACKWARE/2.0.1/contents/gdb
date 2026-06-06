@@ -1,0 +1,33 @@
+PACKAGE NAME:     gdb
+PACKAGE SIZE:     521 K
+PACKAGE LOCATION: diskd3
+PACKAGE DESCRIPTION:
+gdb:      The GNU debugger. (v. 4.13)
+gdb:
+gdb:      You can use GDB to debug programs written in C, C++, and Modula-2. 
+gdb:      Fortran support will be added when a GNU Fortran compiler is ready.
+gdb:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/gdb
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/gdb.1.gz
+usr/info/
+usr/info/gdb.info.gz
+usr/info/gdb.info-1.gz
+usr/info/gdb.info-2.gz
+usr/info/gdb.info-3.gz
+usr/info/gdb.info-4.gz
+usr/info/gdb.info-5.gz
+usr/info/gdb.info-6.gz
+usr/info/gdb.info-7.gz
+usr/info/gdb.info-8.gz
+usr/doc/
+usr/doc/gdb/
+usr/doc/gdb/NEWS
+usr/doc/gdb/Projects
+usr/doc/gdb/README

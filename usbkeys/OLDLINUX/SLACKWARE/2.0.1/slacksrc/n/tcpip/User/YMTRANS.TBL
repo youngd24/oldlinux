@@ -1,0 +1,10 @@
+F INDEX.;1                          	INDEX
+D OBSOLETE                          	Obsolete
+D POPCLIEN                          	popclient
+D RUPTIME                           	ruptime
+D RWHO                              	rwho
+D SKEY                              	skey
+D TN3270                            	tn3270
+D YTALK                             	ytalk
+D _CAP                              	.cap
+F _I2CRC.;1                         	.i2crc

@@ -1,0 +1,51 @@
+***************
+*** 41,47 ****
+  #include <stdio.h>
+  #include <sys/param.h>
+  #include <sys/file.h>
+- #include <dirent.h>
+  #include <sys/stat.h>
+  #include <sys/socket.h>
+  #include <sys/un.h>
+--- 41,47 ----
+  #include <stdio.h>
+  #include <sys/param.h>
+  #include <sys/file.h>
++ #include <sys/dir.h>
+  #include <sys/stat.h>
+  #include <sys/socket.h>
+  #include <sys/un.h>
+***************
+*** 79,86 ****
+  extern char	*CF;		/* name of cifplot filter (per job) */
+  extern char	*FF;		/* form feed string */
+  extern char	*TR;		/* trailer string to be output when Q empties */
+- extern short	SC;		/* suppress multiple copies */
+- extern short	SF;		/* suppress FF on each print job */
+  extern short	SH;		/* suppress header page */
+  extern short	SB;		/* short banner instead of normal header */
+  extern short	HL;		/* print header last */
+--- 79,84 ----
+  extern char	*CF;		/* name of cifplot filter (per job) */
+  extern char	*FF;		/* form feed string */
+  extern char	*TR;		/* trailer string to be output when Q empties */
+  extern short	SH;		/* suppress header page */
+  extern short	SB;		/* short banner instead of normal header */
+  extern short	HL;		/* print header last */
+***************
+*** 92,99 ****
+  extern short	BR;		/* baud rate if lp is a tty */
+  extern int	FC;		/* flags to clear if lp is a tty */
+  extern int	FS;		/* flags to set if lp is a tty */
+- extern int	XC;		/* flags to clear for local mode */
+- extern int	XS;		/* flags to set for local mode */
+  extern short	RS;		/* restricted to those with local accounts */
+  
+  extern char	line[BUFSIZ];
+--- 90,95 ----
+  extern short	BR;		/* baud rate if lp is a tty */
+  extern int	FC;		/* flags to clear if lp is a tty */
+  extern int	FS;		/* flags to set if lp is a tty */
+  extern short	RS;		/* restricted to those with local accounts */
+  
+  extern char	line[BUFSIZ];

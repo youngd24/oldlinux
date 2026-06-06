@@ -1,0 +1,34 @@
+CONTENTS: ghostscr gsfonts1 joe
+ghostscr: GNU Ghostscript version 2.6.1 - (with fixes 01-04 applied).
+ghostscr: Preview, print and process postscript documents on both
+ghostscr: Postscript and non-Postscript devices.
+ghostscr: This version supports all SVGAlib video modes for output directly
+ghostscr: to the screen. See the man page for "gs" for more information.
+ghostscr: [NOTE]: The /usr/bin/gs binary included with this package does not 
+ghostscr: support X11; support was left out so that Slackware users without X
+ghostscr: windows could use SVGAlib output and not need to install the X shared
+ghostscr: libraries. If you need X11 support, you should also install the 
+ghostscr: package "gs_x11" found on the XAP series. It contains a /usr/bin/gs 
+ghostscr: with support for X11 (as well as full SVGAlib support).
+gsfonts1: Fonts for the Postscript interpreter.                     
+gsfonts1:
+gsfonts1:
+gsfonts1:
+gsfonts1:
+gsfonts1:
+gsfonts1:
+gsfonts1:
+gsfonts1:
+gsfonts1:
+gsfonts1:
+joe:      Joe text editor, version 1.0.8.                         
+joe:
+joe:      Joseph H. Allen's easy to use text editor, similar to WordStar[tm].
+joe:
+joe:
+joe:
+joe:
+joe:
+joe:
+joe:
+joe:

@@ -1,0 +1,23 @@
+PACKAGE NAME:     pine
+PACKAGE SIZE:     376 K
+PACKAGE LOCATION: diskn2
+PACKAGE DESCRIPTION:
+pine:     Pine version 3.89
+pine:
+pine:     A menu driven user mail program. Originally based on Elm (Pine Is
+pine:     No-longer Elm), but with many additional features that make it
+pine:     easier to use.
+pine:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/pine
+usr/bin/pico
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/pico.1.gz
+usr/man/preformat/cat1/pine.1.gz
+usr/sbin/
+usr/sbin/in.imapd

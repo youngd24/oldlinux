@@ -1,0 +1,26 @@
+PACKAGE NAME:     ntm-pict
+PACKAGE SIZE:     87 K
+PACKAGE LOCATION: diskt9
+PACKAGE DESCRIPTION:
+ntm-pict: ntm-pict 1.0
+ntm-pict:
+ntm-pict: This package contains the PicTeX macros.
+ntm-pict:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/pictex/
+usr/lib/texmf/tex/pictex/cornerrules.dvi
+usr/lib/texmf/tex/pictex/latexpicobjs.tex
+usr/lib/texmf/tex/pictex/piccorr.sty
+usr/lib/texmf/tex/pictex/picmore.tex
+usr/lib/texmf/tex/pictex/pictex.sty
+usr/lib/texmf/tex/pictex/pictex.tex
+usr/lib/texmf/tex/pictex/pictexwd.sty
+usr/lib/texmf/tex/pictex/pictexwd.tex
+usr/lib/texmf/tex/pictex/pictexzusatz.txt
+usr/lib/texmf/tex/pictex/postpictex.tex
+usr/lib/texmf/tex/pictex/prepictex.tex

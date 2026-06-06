@@ -1,0 +1,28 @@
+PACKAGE NAME:     select
+PACKAGE SIZE:     8 K
+PACKAGE LOCATION: diska3
+PACKAGE DESCRIPTION:
+select:   Selection 1.5
+select:
+select:   This adds two programs to /usr/bin - selection and test-mouse. Start
+select:   selection as a background process and the mouse may be used to cut 
+select:   and paste text from the screen. 
+select:  
+select:   NOTE: This program may cause problems when you start X on systems 
+select:   that do not use a serial mouse. If you get an 'unable to open mouse 
+select:   device' error from X, this program should be your prime suspect.
+select:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/selection
+usr/bin/test-mouse
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/selection.1.gz
+var/
+var/adm/
+var/adm/setup/
+var/adm/setup/setup.selection

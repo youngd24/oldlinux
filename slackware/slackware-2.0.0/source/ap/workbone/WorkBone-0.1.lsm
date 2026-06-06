@@ -1,0 +1,47 @@
+Begin2	       
+Title        =	WorkBone text-mode audio CD rom player and control panel
+Version      =	version 0.1
+Desc1        =	WorkBone is a simple text-mode interactive control interface
+Desc2        =	for playing audio CDs under Linux. It makes use of the numeric
+Desc3        =	keypad as a control-panel for playing, stopping, pausing, and
+Desc4        =	moving track to track. Pressing the 'del' key on the keypad
+Desc5        =	will display a help screen. Run times are also displayed. 
+Author       =	Thomas McWilliams
+AuthorEmail  =	thomas.mcwilliams@f615.n109.z1.fidonet.org
+Maintainer   =	see above
+MaintEmail   =	see above
+Site1        =	sunsite.unc.edu
+Path1        =	/pub/Linux/apps/sound
+File1        =	WorkBone-0.1.tar.gz
+FileSize1    =	26784 bytes
+Site2        =	tsx-11.mit.edu
+Path2        =	/pub/linux/???
+File2        =	WorkBone-0.1.tar.gz
+FileSize2    =	26784 octets
+Site3        =
+Path3        =
+File3        =
+FileSize3    =
+Site4        =
+Path4        =
+File4        =
+FileSize4    =
+Required1    =	CD Rom drive and driver
+Required2    =
+Required3    =
+Required4    =
+CopyPolicy1  =	GNU General Public License version 2.
+CopyPolicy2  =
+Keywords     =	cd cdrom audio music workbone sound
+Comment1     =	parts of this package were derived from the more elaborate
+Comment2     =	X11 application WorkMan. The mount checking routine was
+Comment3     =	borrowed from Mark Buckaway's CDplayer-0.1.tar.z. 
+Comment4     =	
+RelFiles1    =
+RelFiles2    =	
+RelFiles3    =
+Entered      =	04DEC93
+EnteredBy    =	Thomas McWilliams
+CheckedEmail =	thomas.mcwilliams@f615.n109.z1.fidonet.org
+End
+	

@@ -1,0 +1,30 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+rm -f /tmp/SeTnewtag # empty the return file
+dialog --title "SELECTING PACKAGES FOR SERIES XD (SERVER DEVELOPMENT)" \
+       --checklist "Please select the packages you wish to install \
+from series XD. Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the packages you wish to install. \
+Press ENTER when you are \
+done." 16 70 6 \
+"xf_kit" "XFree86 2.1.1 Linkkit (server builder)" "off" \
+"xf_kit2" "XFree86 2.1.1 Linkkit, part 2 (driver libs)" "off" \
+"xman3" "Man pages for the X11 programming libraries" "off" \
+"xf_pex" "XFree86 2.1.1 PEX distribution" "off" \
+"pex5inc" "Include files for the PEX distribution" "off" \
+"xstatic" "Static versions of the X libs" "off" \
+2> /tmp/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f /tmp/SeTpkgs
+ exit
+fi
+cat /dev/null > /tmp/SeTnewtag
+for PACKAGE in xf_kit xf_kit2 xman3 xf_pex pex5inc xstatic ; do
+ if fgrep \"$PACKAGE\" /tmp/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> /tmp/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> /tmp/SeTnewtag
+ fi
+done
+rm -f /tmp/SeTpkgs

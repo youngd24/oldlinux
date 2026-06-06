@@ -1,0 +1,9 @@
+00index.txt         234  
+diskd1              568  
+gcc.tgz          566872  
+gxx.tgz          608120  
+maketag            2172  
+tagfile            1904  
+tagfile.org        1904  
+tagfile.pat         268  
+tools.tgz        144640  

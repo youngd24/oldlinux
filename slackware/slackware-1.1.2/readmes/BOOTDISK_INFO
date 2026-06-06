@@ -1,0 +1,60 @@
+There are a number of new options for boot disks under Slackware 1.1.1.
+Here's how the new system works:
+
+-- 5.25" (1.2M) users:
+
+   You must use a two disk boot system like before, only now both disks will
+   use 1.2M format. Use RAWRITE.EXE under DOS, or dd under linux to copy the
+   rootdisk (root12m) onto a blank formatted floppy disk. Then, choose a boot
+   kernel from among those provided. You only need to use one - some support
+   different devices, like QIC tape (although installation from tape is not
+   yet supported), or Mitsumi and Sony non-SCSI CD ROM drives. 
+   Copy the boot kernel onto a blank formatted floppy disk just like you did
+   with the rootdisk. Don't worry about the size being less than 1.2M.
+
+   When you boot the disk containing the boot kernel, you will be prompted to
+   insert the rootdisk and continue with the installation. Only the A series
+   is going to fit onto 5.25" disks, but once you've loaded the base system  
+   you will be able to install the rest of it from your hard drive. Either 
+   bring in the rest of the disk using a multi-volume tar, or use a comm
+   program included on the A series to download the rest of the disks you need.
+
+-- 3.5" (1.44M) users:
+
+   You may either use a boot/root system like described above, or the 'uniboot'
+   disk, a self loading rootdisk. If you're running a PS/1, Valuepoint, or any
+   machine that requires you to pass options to LILO, you should use the 
+   'uniboot' disk. Other users will prefer the boot/root system if they want
+   an editor on their bootdisk. The extra space gained by removing the kernel
+   from the rootdisk allowed the addition of 'elvis'.
+
+All users:
+
+   You may modify the rootdisks to suit your local network configuration, etc,
+   if you wish. It is suggested that you back up the original disk first.
+
+   The procedure involves booting the rootdisk using the "editroot" boot
+   kernel instead of a standard one that would load the rootdisk into RAM 
+   making any changes temporary. 
+
+   Just copy the "editroot" kernel to a floppy using RAWRITE or dd, boot it,
+   and use it to mount your rootdisk. Once you've made your changes, type 
+   "umount -a ; sync" and remove the disk when drive activity ceases.
+
+-----
+
+   A new "install from a mounted directory" option has been added to the
+   'setup' install script. If you use it, don't try to mount your source under
+   /mnt or any other location that 'setup' might need. Instead, just make a new
+   directory for your mount point.
+
+   Because of changes that were made to the install script to allow this option,
+   some users may experience difficulty if they abort an installation and then
+   try to run 'setup' again without rebooting. If this happens to you, just type
+   "umount -a" before re-running 'setup'.
+
+---
+Good luck!
+
+Patrick Volkerding
+volkerdi@ftp.cdrom.com

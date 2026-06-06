@@ -1,0 +1,8 @@
+00index.txt         208  
+diff.tgz         102740  
+diskap2            2269  
+ghostscr.tgz     478920  
+gsfonts1.tgz     497301  
+jed.tgz          206624  
+joe.tgz           85284  
+sudo.tgz          14406  

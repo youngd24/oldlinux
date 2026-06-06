@@ -1,0 +1,4 @@
+This is version 1.8.3 of Elvis the vi/ex clone.
+No porting to Linux needed. Copy Makefile.mix
+to Makefile, edit it by uncommenting its Linux
+section, then build.

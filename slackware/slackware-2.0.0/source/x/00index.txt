@@ -1,0 +1,42 @@
+00index.txt         933  
+README.ConfigXF86   280  
+XF86-2.1.1-doc.tar.gz
+                 130029  
+XFree86-2.1.diff.gz
+                 336920  
+XFree86-2.1.tar.gz
+                1118728  
+rxvt-1.92-source-patched.tar.gz
+                  51081  
+rxvt-1.92-source.tar.gz
+                  61064  
+rxvt.README         744  
+rxvt.lsm            874  
+xlock/                -  
+xman/                 -  
+xmandiff.tar.gz    6972  
+xpm32g/               -  
+xterm-color-pob.README
+                    816  
+xterm-color-pob.tar.gz
+                 263875  
+
+xlock:
+00index.txt          79  
+xlock+slack-patches.tar.gz
+                  46706  
+
+xman:
+00index.txt          72  
+xf86-man-2.0.tar.gz
+                 419262  
+
+xpm32g:
+00index.txt         205  
+xpm-3-paper.ps.Z  63627  
+xpm-3.2g.tar.Z   141919  
+xpm-contrib-1.2.tar.gz
+                 181602  
+xpm1icons.tar.Z   25131  
+xpm2icons.tar.Z   24783  
+xpm3icons.tar.Z   26574  

@@ -1,0 +1,22 @@
+PACKAGE NAME:     vgaset
+PACKAGE SIZE:     14 K
+PACKAGE LOCATION: diskxap1
+PACKAGE DESCRIPTION:
+vgaset:   Utility to help you configure your monitor for X more easily. 
+vgaset:
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/vgaset.1.gz
+usr/src/
+usr/src/vgaset/
+usr/src/vgaset/README
+usr/src/vgaset/svga.h
+usr/src/vgaset/vgaset.c.z
+usr/src/vgaset/Makefile
+usr/X11/
+usr/X11/bin/
+usr/X11/bin/vgaset

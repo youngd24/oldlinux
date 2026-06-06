@@ -1,0 +1,3 @@
+disku2              329  
+install.end          16  
+kernel.tgz      1297282  

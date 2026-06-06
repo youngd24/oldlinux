@@ -1,0 +1,10 @@
+00index.txt         260  
+diskq2             2411  
+ftape18.tgz       53174  
+i1_1_18.tgz      158597  
+idekern.log        3846  
+idekern.tgz      336673  
+mitsumi.log        4791  
+mitsumi.tgz      419291  
+scsikern.log       4763  
+scsikern.tgz     413795  

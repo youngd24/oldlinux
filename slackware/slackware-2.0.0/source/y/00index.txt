@@ -1,0 +1,20 @@
+00index.txt         487  
+Adventure550.tar.gz
+                  69984  
+bsd-games.src-1.3.tar.gz
+                 979493  
+bsd-games.src.lsm  1055  
+cal.lsm             631  
+cal.tar.gz         9762  
+dungeonsrc.tar.gz
+                 160019  
+nethack312-linux.tar.gz
+                 851098  
+sasteroids1.3-announce
+                   1436  
+sasteroids1.3-src.lsm
+                   1163  
+sasteroids1.3-src.tar.gz
+                 109191  
+tetris-src.tar.gz
+                  22158  

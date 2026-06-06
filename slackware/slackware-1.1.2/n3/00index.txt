@@ -1,0 +1,8 @@
+00index.txt         182  
+cnews.tgz        146335  
+diskn3              945  
+install.end          40  
+nn.tgz           325427  
+ppp.tgz          114372  
+tin.tgz          118583  
+trn.tgz          164139  

@@ -1,0 +1,9 @@
+D BSD_SEND                          	BSD-sendmail
+D CPM_80_E                          	CPM-80-emulator
+D DOS_EMUL                          	DOS-emulator
+D GATED_RO                          	gated-routed
+D GNU                               	GNU
+D GNU_FING                          	gnu-finger-1.37
+D IBCS2_EM                          	iBCS2-emulator
+F INDEX.;1                          	INDEX
+D MMDF                              	mmdf

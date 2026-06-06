@@ -1,0 +1,22 @@
+PACKAGE NAME:     tar
+PACKAGE SIZE:     58 K
+PACKAGE LOCATION: diska3
+PACKAGE DESCRIPTION:
+tar:      GNU tar 1.11.2
+tar:
+tar:      Tape ARchiver - adds and extracts files and directories to/from tape
+tar:      or archive files. This version of tar also supports archive 
+tar:      compression using GNU zip.
+tar:
+FILE LIST:
+./
+sbin/
+sbin/rmt
+usr/
+usr/sbin/
+usr/sbin/dump-remind
+usr/sbin/level-0
+usr/sbin/level-1
+usr/sbin/testpad
+bin/
+bin/tar

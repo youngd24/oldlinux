@@ -1,0 +1,9 @@
+00index.txt         230  
+umsdos_progs-0.3.tar.gz
+                  27962  
+umsdos_progs.0.2.tar.gz
+                 464030  
+umstools.lsm       1040  
+umstools.tar.gz    3580  
+umstools.zip      71776  
+umstools.zip.lsm   1252  

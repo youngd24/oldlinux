@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz.meta4</origin>
+  <published>2026-06-01T17:28:30Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="libgr-1.3-src.tar.gz">
+    <size>595266</size>
+
+    <!-- <mtime>774841709</mtime> -->
+
+    <!-- internal id: 1611915 -->
+    <hash type="md5">7d84d63550e4cd98b60c44218ba278dc</hash>
+    <hash type="sha-1">6552c17b688a061f921395a1873101dc512931a1</hash>
+    <hash type="sha-256">37342a749858cc553ea1d97ad87a5d17190e448fcb9d150dba6915e9732f5b43</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>5a075a851fb3f7ccaa06907ac21984698c7eb325</hash>
+      <hash>06d7d1cff38a6afe2d3c2ee95546a205643b2b94</hash>
+      <hash>b8cbc6ebb6a69f3759fcaf00602a301fd1675abe</hash>
+    </pieces>
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="ec" priority="2">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="br" priority="3">https://ftp.slackware-brasil.com.br/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="br" priority="4">https://mirrors.slackware.beco.cc/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="br" priority="5">https://linorg.usp.br/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="gb" priority="6">http://slackware.uk/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="gb" priority="7">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="nl" priority="8">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="fr" priority="9">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="nl" priority="10">https://mirror.koddos.net/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="nl" priority="11">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="de" priority="12">https://linux.rz.rub.de/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="ro" priority="13">http://mirrors.nav.ro/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="de" priority="14">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="dk" priority="15">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="hr" priority="16">http://mirror.slackware.hr/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="it" priority="17">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="se" priority="18">https://mirror.bahnhof.net/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="rs" priority="19">https://mirror1.sox.rs/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="pl" priority="20">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="ro" priority="21">https://mirrors.nxthost.com/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="ua" priority="22">http://slackware.ip-connect.info/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="ua" priority="23">https://ifconfig.com.ua/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="ru" priority="24">http://mirror.mephi.ru/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="ru" priority="25">https://mirror.yandex.ru/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="za" priority="26">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="sa" priority="27">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+    <url location="hk" priority="28">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/source/xap/libgr/libgr-1.3-src.tar.gz</url>
+  </file>
+</metalink>

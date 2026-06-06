@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz.meta4</origin>
+  <published>2026-06-02T04:03:06Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="lemacs-19.10.tar.gz">
+    <size>9286960</size>
+
+    <!-- <mtime>1077721218</mtime> -->
+
+    <!-- internal id: 205301 -->
+    <hash type="md5">c3aa892c5a61585f6be7432169db5342</hash>
+    <hash type="sha-1">3478bbf95049a2c38ae6ea3d31b6ead0cbbd8755</hash>
+    <hash type="sha-256">aee760c1ba2cb13897f3261d0483607c6b602c3f76a0cc121af7a12d8ce3d16d</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>45871a6b37aeb86052994b44256d7564adcfbd85</hash>
+      <hash>63427350da2e88e6453b2160017c7694ddd3011e</hash>
+      <hash>3252b6b3246cc2e965fef3b94bd9a18d41416822</hash>
+      <hash>2f6ec561cac87115579492cbaa2dd23e64e6c69a</hash>
+      <hash>dc55481f4e5cda09f5aa74e09e3bf0da5f6de2f6</hash>
+      <hash>91996d1b3d2f003640723a4970c626646688378d</hash>
+      <hash>d855de684e3a2af9fffd0b5236f08df3403cb66e</hash>
+      <hash>9c221ccc831e81dda34b0680bed5d9a7f785e4b0</hash>
+      <hash>426ecab1c14cd4288786353d1e950b0393dc4de7</hash>
+      <hash>a7ba3b40cc16b0105e93c28f548c9205302be6b1</hash>
+      <hash>0eea9575a13e231d104fb1419b0e011b4c69dd5c</hash>
+      <hash>16f3b900047095812f6d2d16dcfc3ec21645ba0b</hash>
+      <hash>2f1d4b0d1a27985929a8a28ddc2f7825b5cb410d</hash>
+      <hash>91f57f43fdd5091510b6a20b4c1b15eca0c4a14a</hash>
+      <hash>d51663decbb75e4cf961376ced722d34e1ecc96f</hash>
+      <hash>b46806656f8b800a5a70e255d84a0052546eeb2b</hash>
+      <hash>b728264b00c73e8fc9bb97e51fcb63cd92cb1b2c</hash>
+      <hash>5d2d6ef80b8237208bca8a9557ea7c33ec182809</hash>
+      <hash>d1ced0fa60274fd10e3810461fadb14cf50c5d7c</hash>
+      <hash>8188884ca82ba730ec2baf1bb1d51fee686b4199</hash>
+      <hash>4049fb7180285c595c8687f3d24656b74c60539e</hash>
+      <hash>e7e759c95f3da21a8f0561a8b1334c346d5aac3c</hash>
+      <hash>67ed2ac828bc723c8b4a7cc5a6596a2a2515c65c</hash>
+      <hash>4a1bd2027be38b95af460ffc1406e3732195c755</hash>
+      <hash>da8a251d55c71530e9e79ce26719661e86f5a74b</hash>
+      <hash>274721a51774d4907998d6d82e49adb4018b6a2d</hash>
+      <hash>37024396819517bc48ec097a94ee0f601ac42d52</hash>
+      <hash>0c8e76e0de6e0475b918787b725c0301d511b797</hash>
+      <hash>456db48311877d09baffe30872597b53f93ef45b</hash>
+      <hash>091bd0189142fee4e5e9840a05e063b25aa4c300</hash>
+      <hash>c32694238d1f6fb8fd6009dce6f1d00c70ce9c4a</hash>
+      <hash>0a7a0a49970d8acd00184a1e742c247757da75fa</hash>
+      <hash>83d382750d95e0555fe6adcd8fa7b11d0ad21e20</hash>
+      <hash>22ef7ed58affa21c2a9d0c4da40efd7f1655bf6d</hash>
+      <hash>9c2ccb1cace06194adea2f69a7f349062e3668fe</hash>
+      <hash>59dbaffaaae0f2f98c828a1ffafd684c4318e1d1</hash>
+    </pieces>
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="ec" priority="2">https://mirror.cedia.org.ec/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="br" priority="3">https://ftp.slackware-brasil.com.br/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="br" priority="4">https://mirrors.slackware.beco.cc/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="br" priority="5">https://linorg.usp.br/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="gb" priority="6">http://slackware.uk/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="gb" priority="7">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="nl" priority="8">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="fr" priority="9">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="nl" priority="10">https://mirror.koddos.net/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="nl" priority="11">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="de" priority="12">https://linux.rz.rub.de/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="ro" priority="13">http://mirrors.nav.ro/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="de" priority="14">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="dk" priority="15">https://mirrors.dotsrc.org/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="hr" priority="16">http://mirror.slackware.hr/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="it" priority="17">https://slackware.mirror.garr.it/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="se" priority="18">https://mirror.bahnhof.net/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="rs" priority="19">https://mirror1.sox.rs/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="pl" priority="20">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="ro" priority="21">https://mirrors.nxthost.com/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="ua" priority="22">http://slackware.ip-connect.info/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="ua" priority="23">https://ifconfig.com.ua/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="ru" priority="24">http://mirror.mephi.ru/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="ru" priority="25">https://mirror.yandex.ru/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="za" priority="26">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="sa" priority="27">https://mirror.lyrahosting.com/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+    <url location="hk" priority="28">https://mirror-hk.koddos.net/slackware/slackware-2.0.1/slacksrc/e/lemacs-19.10.tar.gz</url>
+  </file>
+</metalink>

@@ -1,0 +1,52 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+rm -f /tmp/SeTnewtag # empty the return file
+dialog --title "SELECTING PACKAGES FOR SERIES D (PROGRAM DEVELOPMENT)" \
+       --checklist "Please select the packages you wish to install \
+from series D. Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the packages you wish to install. Recommended packages have \
+already been selected for you, but you may unselect them if you wish. \
+Press ENTER when you are \
+done." 22 70 11 \
+"gcc" "GNU C compiler+support files v. 2.5.8" "on" \
+"gxx" "GNU C++ compiler+support files v. 2.5.8" "on" \
+"libgxx" "GNU C++ library" "on" \
+"byacc" "Berkeley Yacc" "off" \
+"flex" "Fast lexical analyzer generator version 2.3.8" "on" \
+"include" "Include files for C programs, v. 4.5.19" "on" \
+"gmake" "GNU Make version 3.69" "on" \
+"man2" "Man pages for Linux system calls" "off" \
+"objc" "GNU Objective-C compiler ,v. 2.5.8" "off" \
+"p2c" "A Pascal to C translator. (v. 1.19)" "off" \
+"pmake" "BSD 4.4 make" "on" \
+"extralib" "Extra profile/debug libs (v. 4.5.19)" "off" \
+"gdb" "The GNU debugger. (v. 4.11)" "off" \
+"bison" "GNU bison parser generator v1.22" "on" \
+"kernel" "Linux kernel source (0.99pl15)" "on" \
+"clisp" "A Common Lisp interpreter" "off" \
+"f2c" "A Fortran-77 to C translator" "off" \
+"libc" "Development libs v. 4.5.19 for the C compiler" "on" \
+"ncurses" "A curses-compatible library" "off" \
+"svgalib" "Svgalib Super-VGA Graphics Library" "off" \
+"perl" "Larry Wall's interpreted systems language" "off" \
+"rcs" "GNU revision control system" "off" \
+"binutils" "GNU C compiler utilities" "on" \
+"m4" "GNU m4 1.1" "on" \
+"man3" "Man pages for C library functions" "off" \
+2> /tmp/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f /tmp/SeTpkgs
+ exit
+fi
+cat /dev/null > /tmp/SeTnewtag
+for PACKAGE in gcc gxx libgxx include gmake man2 objc p2c pmake flex byacc \
+extralib gdb bison clisp f2c libc ncurses svgalib kernel \
+perl rcs binutils m4 man3 ; do
+ if fgrep \"$PACKAGE\" /tmp/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> /tmp/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> /tmp/SeTnewtag
+ fi
+done
+rm -f /tmp/SeTpkgs

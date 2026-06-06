@@ -1,0 +1,28 @@
+PACKAGE NAME:     ntb-utl2
+PACKAGE SIZE:     289 K
+PACKAGE LOCATION: diskt3
+PACKAGE DESCRIPTION:
+ntb-utl2: ntb-utl2 1.1 
+ntb-utl2:
+ntb-utl2: This package contains the binaries for the utilities gftodvi, gftopk,
+ntb-utl2: gftype, mft, pktogf, and pktype.
+ntb-utl2:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/gftodvi
+usr/bin/gftopk
+usr/bin/gftype
+usr/bin/mft
+usr/bin/pktogf
+usr/bin/pktype
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/gftopk.1.gz
+usr/man/preformat/cat1/mft.1.gz
+usr/man/preformat/cat1/pktogf.1.gz
+usr/man/preformat/cat1/pktype.1.gz
+usr/man/preformat/cat1/gftodvi.1.gz
+usr/man/preformat/cat1/gftype.1.gz

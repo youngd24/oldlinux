@@ -1,0 +1,12 @@
+00index.txt         312  
+diskf1              583  
+install.end          36  
+install.txt        7045  
+makeflop           2977  
+maketag             291  
+manyfaqs.tgz    1220076  
+read5_25.txt       1426  
+slakware.faq       9567  
+tagfile            1676  
+tagfile.org        1676  
+tagfile.pat        1676  

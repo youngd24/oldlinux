@@ -1,0 +1,23 @@
+CONTENTS: ifs v1_1_10 
+v1_1_10:  Linux kernel source version 1.1.10
+v1_1_10:
+v1_1_10:  Source code for Linus Torvalds' Linux kernel.
+v1_1_10:
+v1_1_10:  The include files in this package are needed to compile C programs,
+v1_1_10:  so install this if you plan to use C even if you don't plan to
+v1_1_10:  recompile the Linux kernel.
+v1_1_10:
+v1_1_10:  This kernel has been prepatched to contain these extra features:
+v1_1_10:  PPP (v. 0.1.5), IFS (Inheriting FS 5.1), UMSDOS (Unix-like MSDOS fs)
+v1_1_10:
+ifs:      IFS (Inheriting File System) 5.1 utilities and kernel patch.
+ifs:
+ifs:      These are patches for Werner Almesberger's Inheriting File System 
+ifs:      upgraded to work with Linux 1.1.8+. This experimental file system
+ifs:      lets you do things like this:
+ifs:      smount -t ifs /tmp/diffs,/cdrom /read-write-cd
+ifs:      where /tmp/diffs and /read-write-cd are directories on your hard 
+ifs:      drive, and /cdrom is where your CD is mounted. At the mount point
+ifs:      /read-write-cd, you'll find your CD-ROM mounted "read-write"!
+ifs:      This code has known bugs, but is fun to play with. Use at own risk.
+ifs:

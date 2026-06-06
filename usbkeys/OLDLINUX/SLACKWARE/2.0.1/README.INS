@@ -1,0 +1,79 @@
+Installation notes for Slackware Linux 2.0.0.
+
+A more detailed description of the installation process may be found in the
+"Installation-HOWTO", by Matt Welsh. 
+
+Note: If you are installing from a 5.25" boot drive, you might want to read the
+file "INS_1_2.MEG" as well as this one.
+
+INSTALLATION DISKS:
+
+You will need installation disks: a "bootkernel" disk and a "root/install" disk.
+
+To make your bootkernel/rootdisk combination, you'll have to get a boot kernel
+and root disk. Bootkernels are in the bootdsks.12 (for 1.2 meg drives) and 
+bootdsks.144 (for 1.44 meg drives). Rootdisks are in rootdsks.12 (for 1.2
+meg drives) and rootdsks.144 (for 1.44 meg drives).  Use 'dd' or RAWRITE.EXE
+to write them to floppies.
+
+  NOTE: When using dd to create the boot kernel disk or root disk on Suns and 
+  possibly some other Unix workstations you must provide an appropriate block
+  size. This probably wouldn't hurt on other systems, either. Here's an 
+  example: 
+
+  dd if=scsinet of=/dev/(rdf0, rdf0c, fd0, or whatever) obs=18k
+
+DISK SETS
+
+Once you've made your boot and install disks, you'll need to make the disk sets
+you wish to install on MS-DOS formatted floppies. The A disks will fit on 1.2 MB
+or 1.44 MB disks, but all other disk sets require 1.44 MB disks (if you're
+installing from floppy, of course).
+
+These are the disk sets that are available to install:
+
+      A   - Base Linux system
+      AP  - Various applications that do not need X
+      D   - Program Development (C, C++, Kernel source, Lisp, Perl, etc.)
+      E   - GNU Emacs (19.24, with and without X11 support. Your choice.)
+      F   - FAQ lists (last updated: May, 1994)
+      I   - Info pages.
+      IV  - Interviews: libraries, include files, Doc and Idraw apps for X
+      N   - Networking (TCP/IP, UUCP, Mail)
+      OOP - Object Oriented Programming (GNU Smalltalk 1.1.1)
+            Also includes the Smalltalk Interface to X11.
+      Q   - All kinds of extra kernels (based on 1.1.18)
+      T   - TeX
+      TCL - Tcl/Tk/TclX, Tcl language, and Tk toolkit for developing X apps
+            More development packages to work with Tcl have also been added,
+            as well as David Engel's Linux port with shared libraries.
+      X   - XFree-86 2.1.1 Base X Window System
+      XAP - Applications for X
+      XD  - XFree-86 2.1.1 X server development system, PEX extensions, and man
+	    pages for X programming.
+      XV  - XView 3.2 release 5. (OpenLook [virtual] Window Manager, apps)
+      Y   - Games (that do not require X)
+
+For each disk, make an MS-DOS format disk and copy the proper files to it.
+The "00index.txt" files are added by the FTP server. You don't need those.
+If you're using NFS or hard drive installation, just set up a directory with
+the disk subdirectories for the disk sets you want. You'll only have to make
+the boot and root floppies in that case.
+
+Make sure you have a blank, formatted floppy ready to make your Linux boot 
+disk at the end of the installation. 
+
+[NOTE]: You may install most software packages by typing "setup" on a
+running system. If you reinstall the A series, or the Q series (which
+replaces your kernel), be sure to run LILO or make a new boot disk using the
+rescue disk. Also, if you reinstall some of the base packages you might need 
+to reconfigure files in /etc or other places.
+
+Your packages are listed in /var/adm/packages. Any of these packages may be
+removed or reinstalled using "pkgtool".
+
+Enjoy!
+
+Patrick Volkerding
+volkerdi@ftp.cdrom.com
+volkerdi@mhd1.moorhead.msus.edu

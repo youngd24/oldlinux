@@ -1,0 +1,66 @@
+PACKAGE NAME:     ntb-bibt
+PACKAGE SIZE:     511 K
+PACKAGE LOCATION: diskt4
+PACKAGE DESCRIPTION:
+ntb-bibt: ntb-bibt 1.1
+ntb-bibt:
+ntb-bibt: This package contains the binaries for BiBTeX, a program to maintain
+ntb-bibt: bibliographies under tex and use them in your TeX and LaTeX documents.
+ntb-bibt: It also contains some example databases for bibtex.
+ntb-bibt:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/bibtex
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/bibtex.1.gz
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/bibtex/
+usr/lib/texmf/bibtex/bib/
+usr/lib/texmf/bibtex/bib/README
+usr/lib/texmf/bibtex/bib/asi.bib
+usr/lib/texmf/bibtex/bib/btxdoc.bib
+usr/lib/texmf/bibtex/bib/byrnes.bib
+usr/lib/texmf/bibtex/bib/ep.bib
+usr/lib/texmf/bibtex/bib/epodd.bib
+usr/lib/texmf/bibtex/bib/institut.bib
+usr/lib/texmf/bibtex/bib/internet.bib
+usr/lib/texmf/bibtex/bib/journal.bib
+usr/lib/texmf/bibtex/bib/kbmath.bib
+usr/lib/texmf/bibtex/bib/litprog.bib
+usr/lib/texmf/bibtex/bib/master.bib
+usr/lib/texmf/bibtex/bib/mrabbrev.bib
+usr/lib/texmf/bibtex/bib/postscri.bib
+usr/lib/texmf/bibtex/bib/publish.bib
+usr/lib/texmf/bibtex/bib/reading.bib
+usr/lib/texmf/bibtex/bib/standard.bib
+usr/lib/texmf/bibtex/bib/texbook1.bib
+usr/lib/texmf/bibtex/bib/texbook2.bib
+usr/lib/texmf/bibtex/bib/texgraph.bib
+usr/lib/texmf/bibtex/bib/texjourn.bib
+usr/lib/texmf/bibtex/bib/texnique.bib
+usr/lib/texmf/bibtex/bib/tugboat.bib
+usr/lib/texmf/bibtex/bib/type.bib
+usr/lib/texmf/bibtex/bib/unix.bib
+usr/lib/texmf/bibtex/bib/xampl.bib
+usr/lib/texmf/bibtex/bst/
+usr/lib/texmf/bibtex/bst/abbrv.bst
+usr/lib/texmf/bibtex/bst/acm.bst
+usr/lib/texmf/bibtex/bst/alpha.bst
+usr/lib/texmf/bibtex/bst/apalike.bst
+usr/lib/texmf/bibtex/bst/ieeetr.bst
+usr/lib/texmf/bibtex/bst/plain.bst
+usr/lib/texmf/bibtex/bst/siam.bst
+usr/lib/texmf/bibtex/bst/unsrt.bst
+usr/lib/texmf/bibtex/doc/
+usr/lib/texmf/bibtex/doc/bibshare
+usr/lib/texmf/bibtex/doc/btxbst.doc
+usr/lib/texmf/bibtex/doc/btxdoc.bbl
+usr/lib/texmf/bibtex/doc/btxdoc.bib
+usr/lib/texmf/bibtex/doc/btxdoc.tex
+usr/lib/texmf/bibtex/doc/btxdoc.xua
+usr/lib/texmf/bibtex/doc/btxhak.tex

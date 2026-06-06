@@ -1,0 +1,9 @@
+F 00INDEX.TXT;1                     	00index.txt
+D 1_2MEG                            	1_2meg
+D 1_44MEG                           	1_44meg
+F BOOTDISK.FAQ;1                    	BOOTDISK.FAQ
+F GZIP.EXE;1                        	GZIP.EXE
+D OLD_SCRI                          	old_scripts
+F READ_ME.DOC;1                     	READ.ME.DOC
+D SCRIPTS                           	scripts
+D UMSDOS                            	umsdos

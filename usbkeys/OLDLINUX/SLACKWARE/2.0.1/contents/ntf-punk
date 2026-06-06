@@ -1,0 +1,38 @@
+PACKAGE NAME:     ntf-punk
+PACKAGE SIZE:     6 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-punk: ntf-punk 1.1
+ntf-punk:
+ntf-punk: The Punk font.
+ntf-punk:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/misc/
+usr/lib/texmf/fonts/misc/punk/
+usr/lib/texmf/fonts/misc/punk/create.sh
+usr/lib/texmf/fonts/misc/punk/src/
+usr/lib/texmf/fonts/misc/punk/src/punk.mf
+usr/lib/texmf/fonts/misc/punk/src/punk10.mf
+usr/lib/texmf/fonts/misc/punk/src/punk12.mf
+usr/lib/texmf/fonts/misc/punk/src/punk20.mf
+usr/lib/texmf/fonts/misc/punk/src/punka.mf
+usr/lib/texmf/fonts/misc/punk/src/punkae.mf
+usr/lib/texmf/fonts/misc/punk/src/punkbx20.mf
+usr/lib/texmf/fonts/misc/punk/src/punkd.mf
+usr/lib/texmf/fonts/misc/punk/src/punkg.mf
+usr/lib/texmf/fonts/misc/punk/src/punkl.mf
+usr/lib/texmf/fonts/misc/punk/src/punkp.mf
+usr/lib/texmf/fonts/misc/punk/src/punksl.mf
+usr/lib/texmf/fonts/misc/punk/src/punksl20.mf
+usr/lib/texmf/fonts/misc/punk/tfm/
+usr/lib/texmf/fonts/misc/punk/tfm/punk10.tfm
+usr/lib/texmf/fonts/misc/punk/tfm/punk12.tfm
+usr/lib/texmf/fonts/misc/punk/tfm/punk20.tfm
+usr/lib/texmf/fonts/misc/punk/tfm/punkbx20.tfm
+usr/lib/texmf/fonts/misc/punk/tfm/punksl20.tfm
+usr/lib/texmf/fonts/misc/punk/pk/

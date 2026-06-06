@@ -1,0 +1,5 @@
+
+Use this source if you plan to recompile telnetd or rlogind. There were some
+serious security holes in the last versions. These are the new versions. You'll
+still need the libtelnet source in the BSD directory, though.
+

@@ -1,0 +1,61 @@
+PACKAGE NAME:     ntf-ocm
+PACKAGE SIZE:     18 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-ocm:  ntf-ocm 1.1
+ntf-ocm:
+ntf-ocm:  The Computer Modern Outlined fonts.
+ntf-ocm:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/cm/
+usr/lib/texmf/fonts/cm/ocm/
+usr/lib/texmf/fonts/cm/ocm/create.sh
+usr/lib/texmf/fonts/cm/ocm/src/
+usr/lib/texmf/fonts/cm/ocm/src/ocmbx12.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocminch.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmr10.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmr12.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmr17.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmr5.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmr6.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmr7.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmr8.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmr9.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmsdc10.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmsl12.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmss10.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmss12.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmss17.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmss8.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmti12.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmtt10.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmtt12.mf
+usr/lib/texmf/fonts/cm/ocm/src/ocmtt9.mf
+usr/lib/texmf/fonts/cm/ocm/src/outlines.mf
+usr/lib/texmf/fonts/cm/ocm/tfm/
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmbx12.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocminch.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmr10.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmr12.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmr17.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmr5.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmr6.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmr7.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmr8.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmr9.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmsdc10.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmsl12.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmss10.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmss12.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmss17.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmss8.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmti12.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmtt10.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmtt12.tfm
+usr/lib/texmf/fonts/cm/ocm/tfm/ocmtt9.tfm
+usr/lib/texmf/fonts/cm/ocm/pk/

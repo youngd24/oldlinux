@@ -1,0 +1,4 @@
+00index.txt         104  
+bare             252420  
+bare.log           2584  
+zSystem.map       58432  

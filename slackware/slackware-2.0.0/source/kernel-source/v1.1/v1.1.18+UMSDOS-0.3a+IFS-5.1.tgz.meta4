@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz.meta4</origin>
+  <published>2026-06-01T17:23:54Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz">
+    <size>1483479</size>
+
+    <!-- <mtime>774839993</mtime> -->
+
+    <!-- internal id: 1611042 -->
+    <hash type="md5">6dba51fc2213d16485d32d6a3b38d201</hash>
+    <hash type="sha-1">30cd6c139881fcd5c46ca780cde6b0c08eaa6f81</hash>
+    <hash type="sha-256">6d9326468599eb2d5b3993c9d2fab98bd2394b0650af172bc06941d093f9a976</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>f34c33e16ea49cea8a6ab8e4db92d43ed334eb9f</hash>
+      <hash>3cda763d1fea499c28f18218be028b8ee96ed9ba</hash>
+      <hash>0c909a3d21269995299e42b84a3272066fb07cca</hash>
+      <hash>53615a1ae853e27ac5774ee21948a5c6150f6800</hash>
+      <hash>00106a11b008bfd9179d734dc8ff77344ef220aa</hash>
+      <hash>575331c6a3548bdaa38be0355595a1d5f40a0c8b</hash>
+    </pieces>
+
+
+    <!-- Found 27 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 26 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="ec" priority="2">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="br" priority="3">https://ftp.slackware-brasil.com.br/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="br" priority="4">https://mirrors.slackware.beco.cc/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="br" priority="5">https://linorg.usp.br/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="gb" priority="6">http://slackware.uk/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="gb" priority="7">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="nl" priority="8">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="nl" priority="9">https://mirror.koddos.net/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="nl" priority="10">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="de" priority="11">https://linux.rz.rub.de/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="ro" priority="12">http://mirrors.nav.ro/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="de" priority="13">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="dk" priority="14">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="hr" priority="15">http://mirror.slackware.hr/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="it" priority="16">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="se" priority="17">https://mirror.bahnhof.net/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="rs" priority="18">https://mirror1.sox.rs/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="pl" priority="19">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="ro" priority="20">https://mirrors.nxthost.com/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="ua" priority="21">http://slackware.ip-connect.info/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="ua" priority="22">https://ifconfig.com.ua/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="ru" priority="23">http://mirror.mephi.ru/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="ru" priority="24">https://mirror.yandex.ru/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="za" priority="25">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="sa" priority="26">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+    <url location="hk" priority="27">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/source/kernel-source/v1.1/v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz</url>
+  </file>
+</metalink>

@@ -1,0 +1,9 @@
+00index.txt         234  
+CONTRIB            5883  
+dvgt.tar.gz      160850  
+makeindx.tar.gz  304510  
+mfinputs.tar.gz  897539  
+misctex.tar.gz    21335  
+tfmfiles.tar.gz  170435  
+web2c1.tar.gz   1271894  
+web2c2.tar.gz   1077311  

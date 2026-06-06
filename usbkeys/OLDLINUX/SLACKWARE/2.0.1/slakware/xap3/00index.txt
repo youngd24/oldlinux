@@ -1,0 +1,6 @@
+00index.txt         156  
+diskxap3           1387  
+install.end          33  
+xfig.tgz         412135  
+xfract.tgz       407029  
+xpaint.tgz       125213  

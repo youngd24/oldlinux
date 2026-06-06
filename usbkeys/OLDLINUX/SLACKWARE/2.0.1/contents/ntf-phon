@@ -1,0 +1,53 @@
+PACKAGE NAME:     ntf-phon
+PACKAGE SIZE:     36 K
+PACKAGE LOCATION: diskt6
+PACKAGE DESCRIPTION:
+ntf-phon: ntf-phon 1.1
+ntf-phon:
+ntf-phon: A font containing a set of phonetic symbols.
+ntf-phon:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/symbol/
+usr/lib/texmf/fonts/symbol/phonetic/
+usr/lib/texmf/fonts/symbol/phonetic/create.sh
+usr/lib/texmf/fonts/symbol/phonetic/src/
+usr/lib/texmf/fonts/symbol/phonetic/src/cmph10.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/cmph5.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/cmph6.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/cmph7.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/cmph8.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/cmph9.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/cmphb10.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/cmphi10.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/cmphi7.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/cmphi8.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/cmphi9.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/local.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/makefile
+usr/lib/texmf/fonts/symbol/phonetic/src/phochar.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/phoital.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/phoitchar.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/phosym.mf
+usr/lib/texmf/fonts/symbol/phonetic/src/symchar.mf
+usr/lib/texmf/fonts/symbol/phonetic/tfm/
+usr/lib/texmf/fonts/symbol/phonetic/tfm/cmph10.tfm
+usr/lib/texmf/fonts/symbol/phonetic/tfm/cmph5.tfm
+usr/lib/texmf/fonts/symbol/phonetic/tfm/cmph6.tfm
+usr/lib/texmf/fonts/symbol/phonetic/tfm/cmph7.tfm
+usr/lib/texmf/fonts/symbol/phonetic/tfm/cmph8.tfm
+usr/lib/texmf/fonts/symbol/phonetic/tfm/cmph9.tfm
+usr/lib/texmf/fonts/symbol/phonetic/tfm/cmphb10.tfm
+usr/lib/texmf/fonts/symbol/phonetic/tfm/cmphi10.tfm
+usr/lib/texmf/fonts/symbol/phonetic/tfm/cmphi7.tfm
+usr/lib/texmf/fonts/symbol/phonetic/tfm/cmphi8.tfm
+usr/lib/texmf/fonts/symbol/phonetic/tfm/cmphi9.tfm
+usr/lib/texmf/fonts/symbol/phonetic/pk/
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/symbol/
+usr/lib/texmf/tex/symbol/phonetic-table.tex
+usr/lib/texmf/tex/symbol/phonetic.sty

@@ -1,0 +1,21 @@
+35:PkgName1   = gnat-1.82-bin.tar.gz
+35:PkgName2   = gnat-1.82-lib.tar.gz
+35:Title      = GNAT
+25:Version    = 1.82
+65:Desc1      = GNU Ada compiler
+65:Desc2      = (or GNu Ada Translator = GNAT), an Ada83 and Ada9X front end
+65:Desc3      = to gcc.
+65:Author     = The GNAT project at the New York University
+65:MaintBy    = gnat-request@cs.nyu.edu
+65:MaintAt1   = cs.nyu.edu
+65:PathFile1  = /pub/gnat/
+65:Required1  = linux kernel 1.x.x
+65:Required2  = gcc 2.5.8
+65:Required3  = libc-4.5.26 or higher
+65:CopyPolicy = GNU copyleft
+65:Keywords   = gcc, Ada, gnat
+15:ApproxSize = < 5MB
+65:Comment1   = Ada system, some standard packages provided.
+65:Comment2   = can parse full Ada9X as it has entered ISO process in July 93.
+65:Comment3   = implements most of its features.
+30:CheckedBy  = Johannes Waldmann (joe@inuo30.mathematik.uni-jena.de)

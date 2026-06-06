@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink version="3.0" xmlns="http://www.metalinker.org/"
+  origin="https://mirrors.slackware.com/slackware/slackware-2.0.1/slakware/ap3/diskap3.metalink"
+  generator="MirrorBrain 2.19.0 (see http://mirrorbrain.org/)"
+  type="dynamic"  pubdate="Tue, 02 Jun 2026 04:08:43 GMT"  refreshdate="Tue, 02 Jun 2026 04:08:43 GMT">
+
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <files>
+  <file name="diskap3">
+    <size>734</size>
+
+    <!-- <mtime>1077724481</mtime> -->
+
+    <!-- internal id: 204167 -->
+      <verification>
+        <hash type="md5">88fa743bbb91898c790b53b880bacefc</hash>
+        <hash type="sha1">cca3324ec145424394e8fd0bc5169e67081053a0</hash>
+        <hash type="sha256">f6997f83ef539c3a5332e1eb3da4b1ba853034038e1ee36b37fb42c49f6b2d57</hash>
+        <pieces length="262144" type="sha1">
+          <hash piece="0">cca3324ec145424394e8fd0bc5169e67081053a0</hash>
+        </pieces>
+      </verification>
+    <resources>
+
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url type="https" location="us" preference="100">https://mirror.slackbuilds.org/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url type="https" location="ec" preference="99">https://mirror.cedia.org.ec/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="br" preference="98">https://ftp.slackware-brasil.com.br/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="br" preference="97">https://mirrors.slackware.beco.cc/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="br" preference="96">https://linorg.usp.br/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="http" location="gb" preference="95">http://slackware.uk/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="gb" preference="94">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="http" location="nl" preference="93">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="http" location="fr" preference="92">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="nl" preference="91">https://mirror.koddos.net/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="nl" preference="90">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="de" preference="89">https://linux.rz.rub.de/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="http" location="ro" preference="88">http://mirrors.nav.ro/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="de" preference="87">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="dk" preference="86">https://mirrors.dotsrc.org/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="http" location="hr" preference="85">http://mirror.slackware.hr/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="it" preference="84">https://slackware.mirror.garr.it/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="se" preference="83">https://mirror.bahnhof.net/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="rs" preference="82">https://mirror1.sox.rs/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="pl" preference="81">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="ro" preference="80">https://mirrors.nxthost.com/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="http" location="ua" preference="79">http://slackware.ip-connect.info/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="ua" preference="78">https://ifconfig.com.ua/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="http" location="ru" preference="77">http://mirror.mephi.ru/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="ru" preference="76">https://mirror.yandex.ru/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="http" location="za" preference="75">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="sa" preference="74">https://mirror.lyrahosting.com/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    <url type="https" location="hk" preference="73">https://mirror-hk.koddos.net/slackware/slackware-2.0.1/slakware/ap3/diskap3</url>
+    </resources>
+    </file>
+  </files>
+</metalink>

@@ -1,0 +1,33 @@
+
+This is the patch for Linux 1.0.x's ramdisk.c that allows you to switch in
+a different floppy before loading the ramdisk.
+
+*** ramdisk.c.orig	Mon Nov 29 19:09:22 1993
+--- ramdisk.c	Sat Dec  4 04:08:49 1993
+***************
+*** 27,32 ****
+--- 27,34 ----
+  int	rd_length = 0;
+  static int rd_blocksizes[2] = {0, 0};
+  
++ extern void wait_for_keypress(void);
++ 
+  static void do_rd_request(void)
+  {
+  	int	len;
+***************
+*** 110,115 ****
+--- 112,124 ----
+  
+  	/* If no RAM disk specified, give up early. */
+  	if (!rd_length) return;
++ 
++         /* Pat's ugly hack */
++ 	printk("\nPlease remove the boot kernel disk from your floppy drive,\n");
++         printk("insert a disk to be loaded into the ramdisk, and press\n");
++         printk("[enter] to continue.\n\n");
++ 	wait_for_keypress();
++ 
+  	printk("RAMDISK: %d bytes, starting at 0x%x\n",
+  					rd_length, (int) rd_start);
+  

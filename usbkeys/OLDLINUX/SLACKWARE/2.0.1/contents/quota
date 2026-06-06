@@ -1,0 +1,55 @@
+PACKAGE NAME:     quota
+PACKAGE SIZE:     62 K
+PACKAGE LOCATION: diskap4
+PACKAGE DESCRIPTION:
+quota:    quota-1.33.
+quota:
+quota:    Disk quota system, written by Marco van Wieringen, Edvard Tuinder, and
+quota:    Linus Torvalds. Also includes process accounting diffs and utilities.
+quota:    You will have to apply the included patch, recompile your kernel, and
+quota:    reinstall LILO in order to use this package. These patches work with
+quota:    Linux 1.1.21+ and possibly other 1.1.12+ kernels.
+quota:
+FILE LIST:
+./
+usr/
+usr/src/
+usr/src/quota-1.33/
+usr/src/quota-1.33/REGISTRATION
+usr/src/quota-1.33/Makefile.owld
+usr/src/quota-1.33/Makefile
+usr/src/quota-1.33/README
+usr/src/quota-1.33/mntent.c
+usr/src/quota-1.33/Changelog
+usr/src/quota-1.33/edquota.8
+usr/src/quota-1.33/edquota.c
+usr/src/quota-1.33/hasquota.c
+usr/src/quota-1.33/mntent.h
+usr/src/quota-1.33/pathnames.h
+usr/src/quota-1.33/quota.1
+usr/src/quota-1.33/quota.c
+usr/src/quota-1.33/quotacheck.8
+usr/src/quota-1.33/quotacheck.c
+usr/src/quota-1.33/quotactl.2
+usr/src/quota-1.33/quotactl.c
+usr/src/quota-1.33/quotaon.8
+usr/src/quota-1.33/quotaon.c
+usr/src/quota-1.33/repquota.8
+usr/src/quota-1.33/repquota.c
+usr/src/quota-1.33/rquota.3
+usr/src/quota-1.33/rquota.x
+usr/src/quota-1.33/rquota_server.c
+usr/src/quota-1.33/rquota_svc.c
+usr/src/quota-1.33/rquotad.8
+usr/src/quota-1.33/warnquota.c
+usr/src/quota-1.33/Makefile.std
+usr/src/quota-1.33/kdiffs_1.1.21
+usr/src/quota-1.33/acct-utils/
+usr/src/quota-1.33/acct-utils/Makefile
+usr/src/quota-1.33/acct-utils/accton.8
+usr/src/quota-1.33/acct-utils/accton.c
+usr/src/quota-1.33/acct-utils/accttrim.8
+usr/src/quota-1.33/acct-utils/accttrim.c
+usr/src/quota-1.33/acct-utils/lastcomm.1
+usr/src/quota-1.33/acct-utils/lastcomm.c
+usr/src/quota-1.33/acct-utils/pathnames.h

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej.meta4</origin>
+  <published>2026-06-02T04:42:27Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="cmds.c.rej">
+    <size>1759</size>
+
+    <!-- <mtime>1077722014</mtime> -->
+
+    <!-- internal id: 204780 -->
+    <hash type="md5">917af8d25f4241e7fc2ee5d46e7c809a</hash>
+    <hash type="sha-1">4f4b51268ed65222a020a41cbf5c29c30daf4353</hash>
+    <hash type="sha-256">b33bdbe77c8b022b68141c71d1639b4e15f6c454bd344252f667c95ba02a3fe1</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>4f4b51268ed65222a020a41cbf5c29c30daf4353</hash>
+    </pieces>
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="rs" priority="2">https://mirror1.sox.rs/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="hr" priority="3">http://mirror.slackware.hr/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="pl" priority="4">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="ro" priority="5">https://mirrors.nxthost.com/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="it" priority="6">https://slackware.mirror.garr.it/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="ua" priority="7">http://slackware.ip-connect.info/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="de" priority="8">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="ro" priority="9">http://mirrors.nav.ro/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="dk" priority="10">https://mirrors.dotsrc.org/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="ua" priority="11">https://ifconfig.com.ua/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="se" priority="12">https://mirror.bahnhof.net/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="de" priority="13">https://linux.rz.rub.de/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="nl" priority="14">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="nl" priority="15">https://mirror.koddos.net/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="nl" priority="16">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="fr" priority="17">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="gb" priority="18">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="gb" priority="19">http://slackware.uk/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="ru" priority="20">http://mirror.mephi.ru/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="ru" priority="21">https://mirror.yandex.ru/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="sa" priority="22">https://mirror.lyrahosting.com/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="za" priority="23">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="br" priority="24">https://mirrors.slackware.beco.cc/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="br" priority="25">https://ftp.slackware-brasil.com.br/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="br" priority="26">https://linorg.usp.br/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="hk" priority="27">https://mirror-hk.koddos.net/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+    <url location="ec" priority="28">https://mirror.cedia.org.ec/slackware/slackware-2.0.1/slacksrc/n/tcpip/BSD/lpr/lpc/cmds.c.rej</url>
+  </file>
+</metalink>

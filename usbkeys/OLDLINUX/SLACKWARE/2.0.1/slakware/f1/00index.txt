@@ -1,0 +1,8 @@
+00index.txt         208  
+diskf1              574  
+install.end          36  
+maketag             691  
+manyfaqs.tgz    1334645  
+tagfile            1676  
+tagfile.org        1676  
+tagfile.pat        1676  

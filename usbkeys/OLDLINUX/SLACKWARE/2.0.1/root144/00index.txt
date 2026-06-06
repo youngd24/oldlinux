@@ -1,0 +1,8 @@
+00index.txt         208  
+README             1446  
+README.UMS         1250  
+README_T.APE       1809  
+color144.gz      545355  
+tape144.gz       582913  
+tty144.gz        549077  
+umsds144.gz      522925  

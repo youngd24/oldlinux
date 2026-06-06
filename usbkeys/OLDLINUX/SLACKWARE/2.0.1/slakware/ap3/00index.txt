@@ -1,0 +1,4 @@
+00index.txt         104  
+diskap3             734  
+gsfonts2.tgz    1195317  
+zsh.tgz          216328  

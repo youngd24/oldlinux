@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz.meta4</origin>
+  <published>2026-06-01T17:12:58Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="xview3.2.tar.gz">
+    <size>3279360</size>
+
+    <!-- <mtime>774842508</mtime> -->
+
+    <!-- internal id: 1610749 -->
+    <hash type="md5">6c32d58f7b710b7d33d90844a0610b52</hash>
+    <hash type="sha-1">ba8a4e673e88eafbdebbd39cc23a378f9a7b251b</hash>
+    <hash type="sha-256">2d0f685d5599052cf6e4c77ae3e38c09b6b19401bf7a31af2546c46df901b519</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>8920d41dc93a0ee39ee564143662b6917d856ce0</hash>
+      <hash>f6f2080cb2d4e39015758f405941336ae0dd686b</hash>
+      <hash>55473fa812ca599736044d35530d612257674bf6</hash>
+      <hash>b2464ecc44e70e40fb343b3d78a97c733c27f25f</hash>
+      <hash>81653eeb396969c52e2c50a188c7c26c8d055284</hash>
+      <hash>eb0478f49761d8003b179a8c8770edbef64f913e</hash>
+      <hash>982dd044e6cc2712891c22da6af3f3553389b3de</hash>
+      <hash>d2206f62a825bb63f1a6e2371378b23ab0d42089</hash>
+      <hash>3cff8b9cc479e5097dfa47ab7fbe538eba407fca</hash>
+      <hash>14c6755b737e733e40845ac42c6fb86f04c49b3e</hash>
+      <hash>51de4bd752204ddaf56e0eeb5a429f862861706b</hash>
+      <hash>f35ae724168fc8afb3da9d67d31ef2d1b7b27e6a</hash>
+      <hash>72433e92c9546dced37571ae28bf37492753037e</hash>
+    </pieces>
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="ec" priority="2">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="br" priority="3">https://ftp.slackware-brasil.com.br/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="br" priority="4">https://mirrors.slackware.beco.cc/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="br" priority="5">https://linorg.usp.br/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="gb" priority="6">http://slackware.uk/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="gb" priority="7">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="nl" priority="8">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="fr" priority="9">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="nl" priority="10">https://mirror.koddos.net/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="nl" priority="11">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="de" priority="12">https://linux.rz.rub.de/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="ro" priority="13">http://mirrors.nav.ro/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="de" priority="14">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="dk" priority="15">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="hr" priority="16">http://mirror.slackware.hr/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="it" priority="17">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="se" priority="18">https://mirror.bahnhof.net/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="rs" priority="19">https://mirror1.sox.rs/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="pl" priority="20">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="ro" priority="21">https://mirrors.nxthost.com/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="ua" priority="22">http://slackware.ip-connect.info/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="ua" priority="23">https://ifconfig.com.ua/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="ru" priority="24">http://mirror.mephi.ru/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="ru" priority="25">https://mirror.yandex.ru/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="za" priority="26">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="sa" priority="27">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+    <url location="hk" priority="28">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/source/xv/xview3.2.tar.gz</url>
+  </file>
+</metalink>

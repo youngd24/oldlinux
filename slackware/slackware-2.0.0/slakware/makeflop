@@ -1,0 +1,456 @@
+#!/bin/sh
+# Copyright (C) 1993 David Niemi
+# The author places no restrictions on the use of this script.
+ 
+# this script requires mtools. If you don't have it, get it
+# from prep.ai.mit.edu: /pub/gnu or other GNU repositories.
+ 
+# modified by Patrick Volkerding (volkerdi@mhd1.moorhead.msus.edu)
+# and IBM RS6000 compatibility by Torben N. Rasmussen (tnr@csd.cri.dk)
+ 
+# Extensive cleanup/functionality additions by John Plocher (plocher@sun.com)
+# Provides interactive prompts to make disk mastering easier
+# Run this script in the directory containing the directories "a" "ap" ...
+ 
+# Edit this as needed
+ 
+MTOOLS=/usr
+ 
+# Global defaults
+ 
+export PATH LD_LIBRARY_PATH
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/ucblib:$MTOOLS/lib
+PATH=$PATH:$MTOOLS/bin
+ 
+format=$MTOOLS/bin/mformat
+copy=$MTOOLS/bin/mcopy
+erase=$MTOOLS/bin/mdel
+eject=eject
+ 
+dollar='$'
+ 
+set -e  # Exit on error
+ 
+# Number of disks in each set
+ 
+a=3
+ap=4
+d=6
+e=5
+f=1
+i=2
+iv=2
+n=3
+oop=1
+q=3
+t=5
+tcl=2
+u=1
+x=8
+xap=3
+xd=3
+xv=2
+y=1
+ 
+# Descriptions of the packages
+ 
+at="Base Linux"
+apt="Text based applications"
+dt="Program Development/GCC c|c++|obj-C kernel source and more"
+et="Emacs"
+ft="FAQs"
+it="Info Pages"
+ivt="InterViews"
+nt="Networking/UUCP/Mail/News"
+oopt="OOP: Smalltalk"
+qt="Extra Kernel Images/Source"
+tt="TeX"
+tclt="Tcl Script Language/Tk Toolkit"
+ut="Special disks needed only for when you use UMSDOS for your / partition"
+xt="XFree86 X Window System"
+xapt="X Applications"
+xdt="X11 Server Development"
+xvt="XView (OpenLook Window Manager)"
+yt="Games"
+ 
+PACKAGES="a ap d e f i iv n oop q t tcl u x xap xd xv y"
+ 
+##########################################################################
+# These routines are only used on an aix host
+#
+aixdosformat () {
+  Echo "Formatting..."
+  dosformat > /dev/null << EOI
+ 
+n
+EOI
+  echo "done"
+  return 0
+}
+ 
+aixdoswrite() {
+  for file in $*; do
+    if [ "$file" != "a:" ]; then
+      echo Copying $file ...
+      doswrite $file `basename $file` > /dev/null
+    fi
+  done
+  return 0
+}
+ 
+aixeject(){
+  echo "Please eject floppy disk now"
+}
+# 
+#       (End of AIX specific routines)
+##########################################################################
+
+# Linux specific formatting routines:
+ 
+Linuxaformat() {
+	fdformat /dev/fd0H1440
+        if [ $? = 0 ]; then
+         mformat a:
+        else
+         return 1;
+        fi
+        return $?
+}
+
+Linuxbformat() {
+	fdformat /dev/fd1H1440
+        if [ $? = 0 ]; then
+         mformat b:
+        else
+         return 1;
+        fi
+        return $?
+}
+ 
+##########################################################################
+#                       Common routines
+##########################################################################
+ 
+Echo() {
+        echo -n $*' '
+}
+ 
+##########################################################################
+ 
+Prompt() { # => diskno alldone duplicate eraseit
+        my_IMAGE="$1"
+        my_default="$2"
+        my_disk="$3"
+        my_diskno="$4"
+        my_maxdisk="$5"
+        my_series="$6"
+        my_descrip="$7"
+ 
+        valid_answer="no"
+        my_need_help="yes"
+        imagename=$my_diskno
+ 
+        while [ "$valid_answer" = "no" ]; do
+                if [ "$my_need_help" = "yes" ]; then
+                    my_need_help="no"
+                    echo "__"
+                  if [ -z "$my_IMAGE" ]; then
+                    echo "[$my_disk] disk $my_diskno of $my_maxdisk (${my_descrip})"
+                  else
+                    echo "[$my_disk] ${my_descrip}"
+                  fi
+                    echo "  Please insert a blank floppy and press"
+                    echo "    [q]  to Quit this program"
+                    echo "    [h]  to show this Help message"
+                    echo "    [f]  to Format floppy and duplicate disk image"
+                    echo "    [d]  to Duplicate disk image"
+                  if [ -z "$my_IMAGE" ]; then
+                    echo "    [l]  to List the contents of disk \"$my_series$my_diskno\""
+                    echo "    [sd] to Skip this Disk \"$my_series$my_diskno\""
+                    echo "    [ss] to Skip the entire \"$my_series\" Series"
+                  else
+                    echo "    [l]  to List the possible disk images"
+                    echo "    [c]  to Choose a disk image"
+                    echo "    [s]  to Skip this disk image"
+                    echo "    Current image: $my_diskno"
+                  fi
+                fi
+ 
+                Echo "__Choice: [$my_default]: "
+                answer="invalid"
+                read answer junk
+                if [ -z "$answer" ]; then
+                        answer="$my_default"
+                fi
+ 
+                case $answer in
+                q*) echo "Quitting"; exit 0 ;;
+                h*) my_need_help=yes;;
+                c*)
+                    if [ -n "$my_IMAGE" ]; then
+                        Echo "$disk image: [$my_diskno]: "
+                        read imagename junk
+                        if [ -z "$imagename" ]; then
+                            imagename="$default_image"
+                        fi
+                        if [ ! -r "$imagename" ]; then
+                           echo "ERROR: \"$imagename\" is not readable."
+                        else
+                           my_diskno=$imagename
+                        fi
+                    fi;
+                    ;;
+                l*)
+                    if [ -z "$my_IMAGE" ]; then
+                        ls -Fl $my_series$my_diskno/.??* $my_series$my_diskno/* | cut -c30-41,54-
+                    else
+                        ls -Fl $my_IMAGE | cut -c30-41,54-
+                    fi
+                    duplicate=no
+                    alldone=no
+                    eraseit=no
+                    ;;
+                sd)
+                    if [ -z "$my_IMAGE" ]; then
+                        alldone=yes
+                        valid_answer=yes
+                    else
+                        echo "ERROR: Invalid entry.  Try again"
+                    fi
+                    ;;
+                ss)
+                    if [ -z "$my_IMAGE" ]; then
+                        diskno=$my_maxdisk;
+                        alldone=yes
+                        valid_answer=yes
+                    else
+                        echo "ERROR: Invalid entry.  Try again"
+                    fi
+                    ;;
+                s*)
+                    if [ -z "$my_IMAGE" ]; then
+                        Echo "Skip what? [d]=disk [s]=series: [d]: "
+                        answer="invalid"
+                        read answer junk
+                        if [ -z "$answer" ]; then
+                                answer="d"
+                        fi
+                        case $answer in
+                                d) alldone=yes;
+                                   valid_answer=yes;;
+                                s) diskno=$maxdisk;
+                                   alldone=yes;
+                                   valid_answer=yes;;
+                                *) echo "invalid entry - try again";;
+                        esac
+                    else
+                        alldone=yes
+                        valid_answer=yes
+                    fi
+                    ;;
+                d*) duplicate=yes
+                    eraseit=yes
+                    default="d"
+                    valid_answer=yes
+                    ;;
+                f*) default="f"
+                    if $format; then
+                          duplicate=yes
+                          eraseit=no
+                          valid_answer=yes
+                          break
+                    else
+                          echo "Error: format failed!"
+                          $eject
+                    fi
+                   ;;
+                *)
+                   echo "ERROR: Invalid entry.  Try again"
+                   ;;
+                esac
+        done;
+}
+ 
+##########################################################################
+ 
+CopyImage()
+{
+    alldone=no
+ 
+    echo
+    echo "=== $descrip ==="
+ 
+    while [ "$alldone" = "no" ]; do
+            Prompt "$images" "f" "$disk" "$default_image" "" "" "${descrip}"
+            if [ "$alldone" != "no" ]; then break; fi
+ 
+            if [ "$duplicate" = "yes" ]; then
+                if [ -r $imagename -o -r $imagename.gz ]; then
+                    if [ "`basename $imagename .gz`" != "$imagename" ]; then # compressed
+                        gzip -cd $imagename | dd of=$device obs=18k 
+                        $eject
+                        alldone=yes
+                    else # uncompressed
+                        dd of=$device obs=18k if=$imagename 
+                        $eject
+                        alldone=yes
+                    fi
+                    break;
+                else
+                    echo
+                    echo "ERROR: \"$imagename\" does not exist."
+                fi
+            fi
+ 
+    done
+}
+ 
+##########################################################################
+ 
+CopyDisk()
+{
+    while [ "$alldone" = "no" ]; do
+        Prompt "" "$default" "$disk" "$diskno" "$maxdisk" "$series" "${descrip}"
+        if [ "$alldone" != "no" ]; then break; fi
+        if [ "$duplicate" = "yes" ]; then
+            if [ ! -d "$disk" ]; then
+                    echo "ERROR: Disk Image Directory \"$disk\" does not exist!"
+            else
+                    set +e
+                    if [ "X$eraseit" = "Xyes" ]; then
+                            if $erase $FD/\* 2>&1 > /dev/null; then
+                                :       # All OK
+                            else
+                                :
+                                # echo "ERROR: $erase $FD/\* failed!"
+                                # set -e
+                                # continue
+                            fi
+                    fi
+                    if $copy $disk/* $FD; then
+                            alldone=yes
+                            $eject
+                    else
+                            echo "ERROR: $copy $disk/\* $FD failed!"
+                            $eject
+                            set -e
+                            continue
+                    fi
+                    set -e
+            fi
+        fi
+    done
+}
+ 
+########################################################################
+ 
+ 
+ 
+ 
+echo "########################################################################"
+echo "            Linux Slackware 2.0.0 disk mastering utility"
+echo "########################################################################"
+echo
+echo "This program should be run in the directory containing the"
+echo "Linux Slackware directories: $PACKAGES"
+echo
+echo "Which of the following is your target device:"
+echo
+echo "    1 - Sun floppy drive"
+echo "    2 - Volmgr sun floppy drive (UNTESTED)"
+echo "    3 - A: 3.5\" linux drive (/dev/fd0H1440)"
+echo "    4 - B: 3.5\" linux drive (/dev/fd1H1440)"
+echo "    5 - AIX RS6000 floppy drive"
+echo "    6 - Quit"
+echo
+echo -n "Enter your choice: [Q]: "
+ 
+#read device junk
+read device;
+if [ -z "$device" ]; then
+        device="Q"
+fi
+ 
+case "$device" in
+        1*|[sS]* )
+          FD="a:"
+          format="fdformat -d -f"
+          device=/dev/diskette
+          eject="eject floppy"
+        ;;
+        2*|[vV]* )
+          FD="a:"
+          format="fdformat -d -f"
+          device=/vol/dev/fd0
+          eject="eject floppy"
+        ;;
+        3*|[aA]:* )
+          FD="a:"
+          format=Linuxaformat
+          device=/dev/fd0H1440
+          eject=:
+        ;;
+        4*|[bB]:* )
+          FD="b:"
+          format=Linuxbformat
+          device=/dev/fd1H1440
+          eject=:
+        ;;
+        5*|[Aa][Ii][Xx]* )
+          FD="a:"
+          device=/dev/rfd0
+          format=aixdosformat
+          copy=aixdoswrite
+          eject=aixeject
+        ;;
+        [6qQ]* )
+          echo "Quitting"
+          exit 0
+          ;;
+        * )
+          echo "ERROR: invalid entry"
+          echo "Quitting"
+          exit 0;
+        ;;
+esac
+ 
+echo "Using $FD ($device) to create floppies."
+echo
+ 
+descrip="Slackware bootkernel disk"
+images="../bootdsks.*/*.gz"
+default_image=../bootdsks.144/modern.gz
+disk="Boot"
+ 
+CopyImage
+ 
+descrip="Slackware root/install disk"
+images="../rootdsks.*/*.gz"
+disk="Filesystem"
+default_image=../rootdsks.144/color144.gz
+ 
+CopyImage
+ 
+default="f"
+ 
+for series in $PACKAGES; do
+        diskno=1
+        maxdisk=`eval echo "$dollar$series"`
+        descrip=`eval echo "$dollar${series}t"`
+ 
+        echo
+        echo "=== ${descrip} ==="
+        echo "Making $maxdisk floppies for series \"$series\" (${descrip})"
+        while [ "$diskno" -le $maxdisk ]; do
+                disk=$series$diskno
+                alldone=no
+                duplicate=no
+                if [ ! -d "$disk" ]; then
+                        echo "ERROR: Disk Image Directory \"$disk\" does not exist!"
+                        alldone="yes"
+                fi
+                CopyDisk
+        diskno=`expr $diskno + 1`
+        done
+done
+

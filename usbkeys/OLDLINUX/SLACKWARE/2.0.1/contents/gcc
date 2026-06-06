@@ -1,0 +1,49 @@
+PACKAGE NAME:     gcc
+PACKAGE SIZE:     551 K
+PACKAGE LOCATION: diskd1
+PACKAGE DESCRIPTION:
+gcc:      The GNU C compiler and support files (v. 2.5.8)       
+gcc:
+gcc:      Compiled with 486 optimizations, but works fine with 386.
+gcc:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/gcc-lib/
+usr/lib/gcc-lib/i486-linux/
+usr/lib/gcc-lib/i486-linux/2.5.8/
+usr/lib/gcc-lib/i486-linux/2.5.8/cc1
+usr/lib/gcc-lib/i486-linux/2.5.8/cpp
+usr/lib/gcc-lib/i486-linux/2.5.8/libgcc.a
+usr/lib/gcc-lib/i486-linux/2.5.8/include/
+usr/lib/gcc-lib/i486-linux/2.5.8/include/README
+usr/lib/gcc-lib/i486-linux/2.5.8/include/float.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/limits.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/proto.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/stdarg.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/stddef.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/syslimits.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/va-alpha.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/va-clipper.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/va-h8300.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/va-i860.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/va-i960.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/va-m88k.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/va-mips.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/va-pa.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/va-pyr.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/va-sparc.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/va-spur.h
+usr/lib/gcc-lib/i486-linux/2.5.8/include/varargs.h
+usr/lib/gcc-lib/i486-linux/2.5.8/specs
+usr/lib/gcc-lib/i486-linux/2.5.8/SYSCALLS.c.X
+usr/bin/
+usr/bin/gcc
+usr/bin/protoize
+usr/bin/unprotoize
+usr/include/
+usr/include/assert.h
+install/
+install/doinst.sh
+lib/

@@ -1,0 +1,26 @@
+Begin2
+Title        = seejpeg - another JPEG (+GIF+PPM+TARGA) viewer
+Version      = 1.4.3
+Desc1        = A JPEG image viewer which uses svgalib to display images.  It
+Desc2        = works out the best video mode to use based on the video card,
+Desc3        = image size and user options.  This can be overridden.  It
+Desc4        = contains GIF, PPM and TARGA viewing support, and can show images
+Desc5        = in a slideshow.
+Author       = Evan Harris
+AuthorEmail  = evan@cs.mu.oz.au
+Maintainer   = Evan Harris
+MaintEmail   = evan@cs.mu.oz.au
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/apps/graphics/viewers
+File1        = seejpeg-1.4.3.tgz
+FileSize1    = 76263
+Required1    = svgalib 0.91 (or greater)
+CopyPolicy1  = Freely redistributable.
+Keywords     = graphics JPEG GIF PPM TARGA picture image viewer svgalib slideshow
+Comment1     = This version trys to work around an svgalib bug present up to
+Comment2     = (at least) svgalib 1.06.  It also fixes the makefile to compile
+Comment3     = correctly with libgr-1.3 straight out of the box.
+Entered      = 15APR94
+EnteredBy    = Evan Harris
+CheckedEmail = evan@cs.mu.oz.au
+End

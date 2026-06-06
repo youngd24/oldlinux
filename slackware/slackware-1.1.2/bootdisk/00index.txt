@@ -1,0 +1,68 @@
+00index.txt        1320  
+1_2meg/               =  
+1_44meg/              =  
+BOOTDISK.FAQ       2680  
+GZIP.EXE          39910  
+README.DOC         2310  
+old_scripts/          -  
+scripts/              -  
+umsdos/               -  
+
+1_2meg:
+00index.txt         449  
+README              890  
+bareboot.gz      248343  
+bareboot.log       2429  
+cd_boot.gz       551447  
+cd_boot.log        3311  
+color12.README      495  
+edit/                 -  
+net_boot.gz      513597  
+net_boot.log       3141  
+onlyscsi.gz      492767  
+onlyscsi.log       3308  
+scsiboot.gz      551839  
+scsiboot.log       3841  
+tty12.gz         408269  
+
+1_2meg/edit:
+00index.txt          52  
+editroot         313860  
+
+1_44meg:
+00index.txt         449  
+README              978  
+bareboot.gz      248581  
+bareboot.log       2429  
+cd_boot.gz       554060  
+cd_boot.log        3311  
+color144.gz      547133  
+edit/                 -  
+net_boot.gz      515248  
+net_boot.log       3141  
+onlyscsi.gz      492984  
+onlyscsi.log       3308  
+scsiboot.gz      552381  
+scsiboot.log       3841  
+tty144.gz        755333  
+
+1_44meg/edit:
+00index.txt          52  
+editroot         313860  
+
+old_scripts:
+00index.txt         130  
+README               58  
+README_DD           258  
+getslack           7861  
+makeflop           5053  
+
+scripts:
+00index.txt          52  
+getslack           2047  
+
+umsdos:
+README.UMS         1649  
+boot12.gz        541472  
+boot144.gz       542624  
+root144.gz       542529  

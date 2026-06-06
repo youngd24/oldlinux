@@ -1,0 +1,4 @@
+00index.txt         100  
+mailx-5.5.debian.diff
+                   8612  
+mailx-5.5.tar.gz  61981  

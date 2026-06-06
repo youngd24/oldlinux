@@ -1,0 +1,1424 @@
+diff -u --recursive --new-file linux-1.1.12/drivers/block/Makefile linux/drivers/block/Makefile
+--- linux-1.1.12/drivers/block/Makefile	Sun Mar  6 14:08:21 1994
++++ linux/drivers/block/Makefile	Sun May  8 23:47:05 1994
+@@ -21,8 +21,8 @@
+ # In the future, some of these should be built conditionally.
+ #
+ 
+-OBJS := ll_rw_blk.o floppy.o ramdisk.o genhd.o 
+-SRCS := ll_rw_blk.c floppy.c ramdisk.c genhd.c 
++OBJS := ll_rw_blk.o floppy.o inflate.o zfs.o ramdisk.o genhd.o 
++SRCS := ll_rw_blk.c floppy.c inflate.c zfs.c ramdisk.c genhd.c 
+ 
+ ifdef CONFIG_CDU31A
+ OBJS := $(OBJS) cdu31a.o
+diff -u --recursive --new-file linux-1.1.12/drivers/block/README.zfs linux/drivers/block/README.zfs
+--- linux-1.1.12/drivers/block/README.zfs	Thu Jan  1 01:00:00 1970
++++ linux/drivers/block/README.zfs	Tue May 10 13:16:00 1994
+@@ -0,0 +1,68 @@
++	ZFS - compressed filesystem image support for Linux
++	===================================================
++			version 0.10
++
++
++ZFS is a new consept to load compressed filesystem image into ramdisk at boot.
++It is NOT a compressed filesystem like Doublespace or Stacker !
++The greatest advantage is that one disk can now hold a kernel and a filesystem
++up to 3Mb - no more separate root and boot disks.
++This could be used to make installation disks, rescue disks etc.
++
++
++This version supports the following features:
++
++(1) Original style rootdisk images (minix fs) starting at block 0,256,384,512
++(2) Support for ext2 images (why anyone wants to use this on boot disk?)
++(3) Support for compressed (gzipped) images starting at block 0,256,384,512
++    - compressed image can be any filesystem recognized by the kernel
++    - filesystems up to 3Mb  (the compressed image should fit into one disk)
++    - uncompression during loading (FAST !)
++    - no configurations
++    - code derived from gzip 1.2.4
++
++This patch should work with Linux 1.1.11 kernel or newer.
++
++
++
++
++	HOW TO MAKE A COMPRESSED IMAGE
++	==============================
++
++  First of all, you can use already existing image, like 
++Slackware root.gz, and just write it into your disk with the 
++new kernel. To write it starting at block 256 you should do
++something like 
++
++	dd if=root.gz of=/dev/fd0 bs=1k seek=256
++
++Just make sure you don't overwrite your kernel image.
++
++You can also make your own image:
++	- you need a device (a hd-partition or a disk) where to make
++	  the filesystem
++	- clear the device from trashes:
++		dd if=/dev/zero of=<my device> bs=1k 
++	  this is important because we don't want that any needless data
++	  eats up disk space
++	- make a minix filesystem 
++	- copy all the files you want (after mounting the device, of course)
++	- compress the image:
++		dd if=<my device> bs=1k | gzip -9 > filesystem.gz
++	- write it into your bootdisk 
++		dd if=filesystem.gz of=<bootdisk-device> bs=1k seek=<block>
++	  where <block> is 0,256,384 or 512, just the first free one 
++	- don't blame me zeroing your hard disk :-)
++
++
++If you don't know how to make a bootable filesystem, please don't bother me.. 
++
++If someting goes wrong, check everything first and after
++that email me your bug reports or suggestions.
++
++
++Happy hacking,
++
++Petri Mattila
++ptjmatti@kruuna.helsinki.fi
++
+diff -u --recursive --new-file linux-1.1.12/drivers/block/inflate.c linux/drivers/block/inflate.c
+--- linux-1.1.12/drivers/block/inflate.c	Thu Jan  1 01:00:00 1970
++++ linux/drivers/block/inflate.c	Tue May 10 13:16:00 1994
+@@ -0,0 +1,687 @@
++/* inflate.c -- Not copyrighted 1992 by Mark Adler
++   version c10p1, 10 January 1993 
++ */
++
++/* Heavily modified by Petri Mattila for use with zfs - 05/05/94 */
++
++
++#include <linux/config.h>
++#include <linux/kernel.h>
++#include <linux/string.h>
++#include <linux/mm.h>
++#include "zfs.h"
++
++
++#define MEMALLOC(size)  kmalloc((size), GFP_KERNEL)
++#define MEMFREE(p) kfree_s((p), 0);
++
++
++struct huft {
++  uch e;                /* number of extra bits or operation */
++  uch b;                /* number of bits in this code or subcode */
++  union {
++    ush n;              /* literal, length base, or distance base */
++    struct huft *t;     /* pointer to next level of table */
++  } v;
++};
++
++
++/* Function prototypes */
++int huft_build OF((unsigned *, unsigned, unsigned, ush *, ush *,
++                   struct huft **, int *));
++int huft_free OF((struct huft *));
++int inflate_codes OF((struct huft *, struct huft *, int, int));
++int inflate_stored OF((void));
++int inflate_fixed OF((void));
++int inflate_dynamic OF((void));
++int inflate_block OF((int *));
++int inflate OF((void));
++
++
++/* Tables for deflate from PKZIP's appnote.txt. */
++static unsigned border[] = {    /* Order of the bit length code lengths */
++        16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15};
++static ush cplens[] = {         /* Copy lengths for literal codes 257..285 */
++        3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31,
++        35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195, 227, 258, 0, 0};
++        /* note: see note #13 above about the 258 in this list. */
++static ush cplext[] = {         /* Extra bits for literal codes 257..285 */
++        0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2,
++        3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0, 99, 99}; /* 99==invalid */
++static ush cpdist[] = {         /* Copy offsets for distance codes 0..29 */
++        1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193,
++        257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145,
++        8193, 12289, 16385, 24577};
++static ush cpdext[] = {         /* Extra bits for distance codes */
++        0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6,
++        7, 7, 8, 8, 9, 9, 10, 10, 11, 11,
++        12, 12, 13, 13};
++
++
++
++ulg bb;                         /* bit buffer */
++unsigned bk;                    /* bits in bit buffer */
++
++ush mask_bits[] = {
++    0x0000,
++    0x0001, 0x0003, 0x0007, 0x000f, 0x001f, 0x003f, 0x007f, 0x00ff,
++    0x01ff, 0x03ff, 0x07ff, 0x0fff, 0x1fff, 0x3fff, 0x7fff, 0xffff
++};
++
++#define NEXTBYTE()  (uch)get_byte()
++#define NEEDBITS(n) {while(k<(n)){b|=((ulg)NEXTBYTE())<<k;k+=8;}}
++#define DUMPBITS(n) {b>>=(n);k-=(n);}
++
++int lbits = 9;          /* bits in base literal/length lookup table */
++int dbits = 6;          /* bits in base distance lookup table */
++
++
++/* If BMAX needs to be larger than 16, then h and x[] should be ulg. */
++#define BMAX 16         /* maximum bit length of any code (16 for explode) */
++#define N_MAX 288       /* maximum number of codes in any set */
++
++
++unsigned hufts;         /* track memory usage */
++
++
++int huft_build(b, n, s, d, e, t, m)
++unsigned *b;            /* code lengths in bits (all assumed <= BMAX) */
++unsigned n;             /* number of codes (assumed <= N_MAX) */
++unsigned s;             /* number of simple-valued codes (0..s-1) */
++ush *d;                 /* list of base values for non-simple codes */
++ush *e;                 /* list of extra bits for non-simple codes */
++struct huft **t;        /* result: starting table */
++int *m;                 /* maximum lookup bits, returns actual */
++{
++  unsigned a;                   /* counter for codes of length k */
++  unsigned c[BMAX+1];           /* bit length count table */
++  unsigned f;                   /* i repeats in table every f entries */
++  int g;                        /* maximum code length */
++  int h;                        /* table level */
++  register unsigned i;          /* counter, current code */
++  register unsigned j;          /* counter */
++  register int k;               /* number of bits in current code */
++  int l;                        /* bits per table (returned in m) */
++  register unsigned *p;         /* pointer into c[], b[], or v[] */
++  register struct huft *q;      /* points to current table */
++  struct huft r;                /* table entry for structure assignment */
++  struct huft *u[BMAX];         /* table stack */
++  unsigned v[N_MAX];            /* values in order of bit length */
++  register int w;               /* bits before this table == (l * h) */
++  unsigned x[BMAX+1];           /* bit offsets, then code stack */
++  unsigned *xp;                 /* pointer into x */
++  int y;                        /* number of dummy codes added */
++  unsigned z;                   /* number of entries in current table */
++
++  /* Generate counts for each bit length */
++  memzero(c, sizeof(c));
++  p = b;
++  i = n;
++  do {
++    c[*p]++;                    /* assume all entries <= BMAX */
++    p++;                 /* Can't combine with above line (Solaris bug) */
++  } while (--i);
++  if (c[0] == n)                /* null input--all zero length codes */
++  {
++    *t = (struct huft *)NULL;
++    *m = 0;
++    return 0;
++  }
++
++
++  /* Find minimum and maximum length, bound *m by those */
++  l = *m;
++  for (j = 1; j <= BMAX; j++)
++    if (c[j])
++      break;
++  k = j;                        /* minimum code length */
++  if ((unsigned)l < j)
++    l = j;
++  for (i = BMAX; i; i--)
++    if (c[i])
++      break;
++  g = i;                        /* maximum code length */
++  if ((unsigned)l > i)
++    l = i;
++  *m = l;
++
++
++  /* Adjust last length count to fill out codes, if needed */
++  for (y = 1 << j; j < i; j++, y <<= 1)
++    if ((y -= c[j]) < 0)
++      return 2;                 /* bad input: more codes than bits */
++  if ((y -= c[i]) < 0)
++    return 2;
++  c[i] += y;
++
++
++  /* Generate starting offsets into the value table for each length */
++  x[1] = j = 0;
++  p = c + 1;  xp = x + 2;
++  while (--i) {                 /* note that i == g from above */
++    *xp++ = (j += *p++);
++  }
++
++
++  /* Make a table of values in order of bit lengths */
++  p = b;  i = 0;
++  do {
++    if ((j = *p++) != 0)
++      v[x[j]++] = i;
++  } while (++i < n);
++
++
++  /* Generate the Huffman codes and for each, make the table entries */
++  x[0] = i = 0;                 /* first Huffman code is zero */
++  p = v;                        /* grab values in bit order */
++  h = -1;                       /* no tables yet--level -1 */
++  w = -l;                       /* bits decoded == (l * h) */
++  u[0] = (struct huft *)NULL;   /* just to keep compilers happy */
++  q = (struct huft *)NULL;      /* ditto */
++  z = 0;                        /* ditto */
++
++  /* go through the bit lengths (k already is bits in shortest code) */
++  for (; k <= g; k++)
++  {
++    a = c[k];
++    while (a--)
++    {
++      /* here i is the Huffman code of length k bits for value *p */
++      /* make tables up to required level */
++      while (k > w + l)
++      {
++        h++;
++        w += l;                 /* previous table always l bits */
++
++        /* compute minimum size table less than or equal to l bits */
++        z = (z = g - w) > (unsigned)l ? l : z;  /* upper limit on table size */
++        if ((f = 1 << (j = k - w)) > a + 1)     /* try a k-w bit table */
++        {                       /* too few codes for k-w bit table */
++          f -= a + 1;           /* deduct codes from patterns left */
++          xp = c + k;
++          while (++j < z)       /* try smaller tables up to z bits */
++          {
++            if ((f <<= 1) <= *++xp)
++              break;            /* enough codes to use up j bits */
++            f -= *xp;           /* else deduct codes from patterns */
++          }
++        }
++        z = 1 << j;             /* table entries for j-bit table */
++
++        /* allocate and link in new table */
++        if ( (q = (struct huft *)MEMALLOC( (z + 1)*sizeof(struct huft) )
++             ) == (struct huft *)NULL ) {
++          if (h)
++            huft_free(u[0]);
++          return 3;             /* not enough memory */
++        }
++        hufts += z + 1;         /* track memory usage */
++        *t = q + 1;             /* link to list for huft_free() */
++        *(t = &(q->v.t)) = (struct huft *)NULL;
++        u[h] = ++q;             /* table starts after link */
++
++        /* connect to last table, if there is one */
++        if (h)
++        {
++          x[h] = i;             /* save pattern for backing up */
++          r.b = (uch)l;         /* bits to dump before this table */
++          r.e = (uch)(16 + j);  /* bits in this table */
++          r.v.t = q;            /* pointer to this table */
++          j = i >> (w - l);     /* (get around Turbo C bug) */
++          u[h-1][j] = r;        /* connect to last table */
++        }
++      }
++
++      /* set up table entry in r */
++      r.b = (uch)(k - w);
++      if (p >= v + n)
++        r.e = 99;               /* out of values--invalid code */
++      else if (*p < s)
++      {
++        r.e = (uch)(*p < 256 ? 16 : 15);    /* 256 is end-of-block code */
++        r.v.n = (ush)(*p);             /* simple code is just the value */
++	p++;                           /* one compiler does not like *p++ */
++      }
++      else
++      {
++        r.e = (uch)e[*p - s];   /* non-simple--look up in lists */
++        r.v.n = d[*p++ - s];
++      }
++
++      /* fill code-like entries with r */
++      f = 1 << (k - w);
++      for (j = i >> w; j < z; j += f)
++        q[j] = r;
++
++      /* backwards increment the k-bit code i */
++      for (j = 1 << (k - 1); i & j; j >>= 1)
++        i ^= j;
++      i ^= j;
++
++      /* backup over finished tables */
++      while ((i & ((1 << w) - 1)) != x[h])
++      {
++        h--;                    /* don't need to update q */
++        w -= l;
++      }
++    }
++  }
++
++  /* Return true (1) if we were given an incomplete table */
++  return y != 0 && g != 1;
++}
++
++
++
++int huft_free(t)
++struct huft *t;         /* table to free */
++/* Free the malloc'ed tables built by huft_build(), which makes a linked
++   list of the tables it made, with the links in a dummy first entry of
++   each table. */
++{
++  register struct huft *p, *q;
++
++  /* Go through linked list, freeing from the malloced (t[-1]) address. */
++  p = t;
++  while (p != (struct huft *)NULL)
++  {
++    q = (--p)->v.t;
++    MEMFREE((char*)p);
++    p = q;
++  } 
++  return 0;
++}
++
++
++int inflate_codes(tl, td, bl, bd)
++struct huft *tl, *td;   /* literal/length and distance decoder tables */
++int bl, bd;             /* number of bits decoded by tl[] and td[] */
++/* inflate (decompress) the codes in a deflated (compressed) block.
++   Return an error code or zero if it all goes ok. */
++{
++  register unsigned e;  /* table entry flag/number of extra bits */
++  unsigned n, d;        /* length and index for copy */
++  unsigned w;           /* current window position */
++  struct huft *t;       /* pointer to table entry */
++  unsigned ml, md;      /* masks for bl and bd bits */
++  register ulg b;       /* bit buffer */
++  register unsigned k;  /* number of bits in bit buffer */
++
++  /* make local copies of globals */
++  b = bb;                       /* initialize bit buffer */
++  k = bk;
++  w = outcnt;                       /* initialize window position */
++
++  /* inflate the coded data */
++  ml = mask_bits[bl];           /* precompute masks for speed */
++  md = mask_bits[bd];
++  for (;;)                      /* do until end of block */
++  {
++    NEEDBITS((unsigned)bl)
++    if ((e = (t = tl + ((unsigned)b & ml))->e) > 16)
++      do {
++        if (e == 99)
++          return 1;
++        DUMPBITS(t->b)
++        e -= 16;
++        NEEDBITS(e)
++      } while ((e = (t = t->v.t + ((unsigned)b & mask_bits[e]))->e) > 16);
++    DUMPBITS(t->b)
++    if (e == 16)                /* then it's a literal */
++    {
++      outbuf[w++] = (uch)t->v.n;
++    }
++    else                        /* it's an EOB or a length */
++    {
++      /* exit if end of block */
++      if (e == 15)
++        break;
++
++      /* get length of block to copy */
++      NEEDBITS(e)
++      n = t->v.n + ((unsigned)b & mask_bits[e]);
++      DUMPBITS(e);
++
++      /* decode distance of block to copy */
++      NEEDBITS((unsigned)bd)
++      if ((e = (t = td + ((unsigned)b & md))->e) > 16)
++        do {
++          if (e == 99)
++            return 1;
++          DUMPBITS(t->b)
++          e -= 16;
++          NEEDBITS(e)
++        } while ((e = (t = t->v.t + ((unsigned)b & mask_bits[e]))->e) > 16);
++      DUMPBITS(t->b)
++      NEEDBITS(e)
++      d = w - t->v.n - ((unsigned)b & mask_bits[e]);
++      DUMPBITS(e)
++
++      if ( (d > w) || (d+n > outbufsize) || (w+n > outbufsize) ) {
++	 printk("ZFS: Internal error #1, corrupted data !");
++	 panic("Don't know yet how to handle this error");
++      } 
++
++      /* do the copy */
++      if ( w - d >= n ) {	
++          memcpy(outbuf+w, outbuf+d, n);
++	  w += n;
++      } else while (n--)  /* overlap */
++	  outbuf[w++] = outbuf[d++];     
++    }
++  }
++
++  /* restore the globals from the locals */
++  outcnt = w;                   /* restore global window pointer */
++  bb = b;                       /* restore global bit buffer */
++  bk = k;
++
++  /* done */
++  return 0;
++}
++
++
++int inflate_stored()
++/* "decompress" an inflated type 0 (stored) block. */
++{
++  unsigned n;           /* number of bytes in block */
++  unsigned w;           /* current window position */
++  register ulg b;       /* bit buffer */
++  register unsigned k;  /* number of bits in bit buffer */
++
++  /* make local copies of globals */
++  b = bb;                       /* initialize bit buffer */
++  k = bk;
++  w = outcnt;                   /* initialize window position */
++
++  /* go to byte boundary */
++  n = k & 7;
++  DUMPBITS(n);
++
++  /* get the length and its complement */
++  NEEDBITS(16)
++  n = ((unsigned)b & 0xffff);
++  DUMPBITS(16)
++  NEEDBITS(16)
++  if (n != (unsigned)((~b) & 0xffff))
++    return 1;                   /* error in compressed data */
++  DUMPBITS(16)
++
++  /* read and output the compressed data */
++  while (n--)
++  {
++    NEEDBITS(8)
++    outbuf[w++] = (uch)b;
++    DUMPBITS(8)
++  }
++
++  /* restore the globals from the locals */
++  outcnt = w;                       /* restore global window pointer */
++  bb = b;                       /* restore global bit buffer */
++  bk = k;
++  return 0;
++}
++
++
++
++int inflate_fixed()
++/* decompress an inflated type 1 (fixed Huffman codes) block.  We should
++   either replace this with a custom decoder, or at least precompute the
++   Huffman tables. */
++{
++  int i;                /* temporary variable */
++  struct huft *tl;      /* literal/length code table */
++  struct huft *td;      /* distance code table */
++  int bl;               /* lookup bits for tl */
++  int bd;               /* lookup bits for td */
++  unsigned l[288];      /* length list for huft_build */
++
++
++  /* set up literal table */
++  for (i = 0; i < 144; i++)
++    l[i] = 8;
++  for (; i < 256; i++)
++    l[i] = 9;
++  for (; i < 280; i++)
++    l[i] = 7;
++  for (; i < 288; i++)          /* make a complete, but wrong code set */
++    l[i] = 8;
++  bl = 7;
++  if ((i = huft_build(l, 288, 257, cplens, cplext, &tl, &bl)) != 0)
++    return i;
++
++
++  /* set up distance table */
++  for (i = 0; i < 30; i++)      /* make an incomplete code set */
++    l[i] = 5;
++  bd = 5;
++  if ((i = huft_build(l, 30, 0, cpdist, cpdext, &td, &bd)) > 1)
++  {
++    huft_free(tl);
++    return i;
++  }
++
++
++  /* decompress until an end-of-block code */
++  if (inflate_codes(tl, td, bl, bd))
++    return 1;
++
++
++  /* free the decoding tables, return */
++  huft_free(tl);
++  huft_free(td);
++  return 0;
++}
++
++
++
++int inflate_dynamic()
++/* decompress an inflated type 2 (dynamic Huffman codes) block. */
++{
++  int i;                /* temporary variables */
++  unsigned j;
++  unsigned l;           /* last length */
++  unsigned m;           /* mask for bit lengths table */
++  unsigned n;           /* number of lengths to get */
++  struct huft *tl;      /* literal/length code table */
++  struct huft *td;      /* distance code table */
++  int bl;               /* lookup bits for tl */
++  int bd;               /* lookup bits for td */
++  unsigned nb;          /* number of bit length codes */
++  unsigned nl;          /* number of literal/length codes */
++  unsigned nd;          /* number of distance codes */
++  unsigned ll[286+30];  /* literal/length and distance code lengths */
++  register ulg b;       /* bit buffer */
++  register unsigned k;  /* number of bits in bit buffer */
++
++
++  /* make local bit buffer */
++  b = bb;
++  k = bk;
++
++
++  /* read in table lengths */
++  NEEDBITS(5)
++  nl = 257 + ((unsigned)b & 0x1f);      /* number of literal/length codes */
++  DUMPBITS(5)
++  NEEDBITS(5)
++  nd = 1 + ((unsigned)b & 0x1f);        /* number of distance codes */
++  DUMPBITS(5)
++  NEEDBITS(4)
++  nb = 4 + ((unsigned)b & 0xf);         /* number of bit length codes */
++  DUMPBITS(4)
++  if (nl > 286 || nd > 30)
++     return 1;                   /* bad lengths */
++
++
++  /* read in bit-length-code lengths */
++  for (j = 0; j < nb; j++)
++  {
++    NEEDBITS(3)
++    ll[border[j]] = (unsigned)b & 7;
++    DUMPBITS(3)
++  }
++  for (; j < 19; j++)
++    ll[border[j]] = 0;
++
++
++  /* build decoding table for trees--single level, 7 bit lookup */
++  bl = 7;
++  if ((i = huft_build(ll, 19, 19, NULL, NULL, &tl, &bl)) != 0)
++  {
++    if (i == 1)
++      huft_free(tl);
++    return i;                   /* incomplete code set */
++  }
++
++
++  /* read in literal and distance code lengths */
++  n = nl + nd;
++  m = mask_bits[bl];
++  i = l = 0;
++  while ((unsigned)i < n)
++  {
++    NEEDBITS((unsigned)bl)
++    j = (td = tl + ((unsigned)b & m))->b;
++    DUMPBITS(j)
++    j = td->v.n;
++    if (j < 16)                 /* length of code in bits (0..15) */
++      ll[i++] = l = j;          /* save last length in l */
++    else if (j == 16)           /* repeat last length 3 to 6 times */
++    {
++      NEEDBITS(2)
++      j = 3 + ((unsigned)b & 3);
++      DUMPBITS(2)
++      if ((unsigned)i + j > n)
++        return 1;
++      while (j--)
++        ll[i++] = l;
++    }
++    else if (j == 17)           /* 3 to 10 zero length codes */
++    {
++      NEEDBITS(3)
++      j = 3 + ((unsigned)b & 7);
++      DUMPBITS(3)
++      if ((unsigned)i + j > n)
++        return 1;
++      while (j--)
++        ll[i++] = 0;
++      l = 0;
++    }
++    else                        /* j == 18: 11 to 138 zero length codes */
++    {
++      NEEDBITS(7)
++      j = 11 + ((unsigned)b & 0x7f);
++      DUMPBITS(7)
++      if ((unsigned)i + j > n)
++        return 1;
++      while (j--)
++        ll[i++] = 0;
++      l = 0;
++    }
++  }
++
++
++  /* free decoding table for trees */
++  huft_free(tl);
++
++
++  /* restore the global bit buffer */
++  bb = b;
++  bk = k;
++
++
++  /* build the decoding tables for literal/length and distance codes */
++  bl = lbits;
++  if ((i = huft_build(ll, nl, 257, cplens, cplext, &tl, &bl)) != 0)
++  {
++    if (i == 1) {
++      printk("ZFS: incomplete literal tree\n");
++      huft_free(tl);
++    }
++    return i;                   /* incomplete code set */
++  }
++  bd = dbits;
++  if ((i = huft_build(ll + nl, nd, 0, cpdist, cpdext, &td, &bd)) != 0)
++  {
++    if (i == 1) {
++      printk("ZFS: Incomplete distance tree\n");
++      huft_free(td);
++    }
++    huft_free(tl);
++    return i;                   /* incomplete code set */
++  }
++
++
++  /* decompress until an end-of-block code */
++  if (inflate_codes(tl, td, bl, bd))
++    return 1;
++
++
++  /* free the decoding tables, return */
++  huft_free(tl);
++  huft_free(td);
++  return 0;
++}
++
++
++
++int inflate_block(e)
++int *e;                 /* last block flag */
++/* decompress an inflated block */
++{
++  unsigned t;           /* block type */
++  register ulg b;       /* bit buffer */
++  register unsigned k;  /* number of bits in bit buffer */
++
++  /* make local bit buffer */
++  b = bb;
++  k = bk;
++
++  /* read in last block bit */
++  NEEDBITS(1)
++  *e = (int)b & 1;
++  DUMPBITS(1)
++
++  /* read in block type */
++  NEEDBITS(2)
++  t = (unsigned)b & 3;
++  DUMPBITS(2)
++
++  /* restore the global bit buffer */
++  bb = b;
++  bk = k;
++
++  if (t == 2) return inflate_dynamic();
++  if (t == 1) return inflate_fixed();
++  if (t == 0) return inflate_stored();
++  return 2;
++}
++
++
++
++int inflate()
++/* decompress an inflated entry */
++{
++  int e;                /* last block flag */
++  int r;                /* result code */
++  unsigned h;           /* maximum struct huft's malloc'ed */
++
++  /* initialize window, bit buffer */
++  outcnt = 0;
++  bk = 0;
++  bb = 0;
++
++  /* decompress until the last block */
++  h = 0;
++  do {
++    hufts = 0;
++    if ((r = inflate_block(&e)) != 0)
++      return r;
++    if (hufts > h)
++      h = hufts;
++  } while (!e);
++
++  /* return success */
++  return 0;
++}
+diff -u --recursive --new-file linux-1.1.12/drivers/block/ramdisk.c linux/drivers/block/ramdisk.c
+--- linux-1.1.12/drivers/block/ramdisk.c	Sun May  8 23:30:20 1994
++++ linux/drivers/block/ramdisk.c	Tue May 10 13:16:00 1994
+@@ -5,12 +5,15 @@
+  *
+  * Modifications by Fred N. van Kempen to allow for bootable root
+  * disks (which are used in LINUX/Pro).  Also some cleanups.  03/03/93
++ *
++ * Modifications by Petri Mattila  05/05/94
++ * Added support for ext2 and compressed images, some cleanups
+  */
+ 
+-
+ #include <linux/config.h>
+ #include <linux/sched.h>
+ #include <linux/minix_fs.h>
++#include <linux/ext2_fs.h>
+ #include <linux/fs.h>
+ #include <linux/kernel.h>
+ #include <linux/string.h>
+@@ -19,6 +22,7 @@
+ 
+ #define MAJOR_NR  MEM_MAJOR
+ #include "blk.h"
++#include "zfs.h"
+ 
+ #define RAMDISK_MINOR	1
+ 
+@@ -74,9 +78,6 @@
+  */
+ long rd_init(long mem_start, int length)
+ {
+-	int	i;
+-	char	*cp;
+-
+ 	if (register_blkdev(MEM_MAJOR,"rd",&rd_fops)) {
+ 		printk("RAMDISK: Unable to get major %d.\n", MEM_MAJOR);
+ 		return 0;
+@@ -84,14 +85,80 @@
+ 	blk_dev[MEM_MAJOR].request_fn = DEVICE_REQUEST;
+ 	rd_start = (char *) mem_start;
+ 	rd_length = length;
+-	cp = rd_start;
+-	for (i=0; i < length; i++)
+-		*cp++ = '\0';
+-
+-	for(i=0;i<2;i++) rd_blocksizes[i] = 1024;
++	memset(rd_start, 0, rd_length);
++	rd_blocksizes[0] = 1024;
++	rd_blocksizes[1] = 1024;
+ 	blksize_size[MAJOR_NR] = rd_blocksizes;
+ 
+-	return(length);
++	return length;
++}
++
++/**************************************************************************** 
++ * Load compressed ramdisk image and uncompress it
++ */
++int load_Z_rd (int block)
++{
++  int status = OK;
++
++  zfs_block = block;
++  outbuf = rd_start;          /* actually outbuf is ramdisk */
++  outbufsize = rd_length;
++  outcnt = insize = inptr = 0;
++ 
++  inbuf = (char *) __get_free_pages(GFP_KERNEL, 3);  /* 32k */
++  if (! inbuf) {
++     printk("ZFS: Not enough memory to uncompress filesystem !\n");
++     return ERROR;
++  }
++/* this is evil: we use only 18k of inbuf as input buffer, so we can use
++   the rest of it as crc-table   */
++  crc_32_tab = (ulg *)(inbuf + 24*1024);   
++  make_crc();
++  if ( check_zip() != OK || unzip() != OK ) {   
++     printk("ZFS: Could not uncompress filesystem !");
++     status = ERROR;
++  }
++  free_pages((unsigned long)inbuf, 3);
++  return status;
++}
++
++
++/*****************************************************************************
++ * Load traditional ramdisk
++ */  
++int load_trad_rd (int block, int count)
++{
++     struct buffer_head *bh;
++     char *cp;
++
++     if (count > (rd_length >> BLOCK_SIZE_BITS)) {
++         printk("RAMDISK: image too big! (%d/%d blocks)\n",
++	         count, rd_length >> BLOCK_SIZE_BITS);
++         return ERROR;
++     }
++     	
++     printk("RAMDISK: Loading %d blocks into RAM disk\n", count);
++
++     /* We found an image file system.  Load it into core! */
++     cp = rd_start;
++     while (count) {
++         if ( (count % 18) == 0 ) {
++	      printk(".");
++              bh = breada(ROOT_DEV, block, BLOCK_SIZE, 0, 18*BLOCK_SIZE); 
++         } else  
++	      bh = bread(ROOT_DEV, block, BLOCK_SIZE);
++	 if (!bh) {
++	      printk("RAMDISK: I/O error on block %d, aborting!\n", block);
++	      return ERROR;
++	 }
++	 memcpy(cp, bh->b_data, BLOCK_SIZE);
++	 brelse(bh);
++         cp += BLOCK_SIZE;
++	 block++;
++	 count--;
++     }
++     printk("\ndone\n");
++     return OK;
+ }
+ 
+ /*
+@@ -102,77 +169,96 @@
+ void rd_load(void)
+ {
+ 	struct buffer_head *bh;
+-	struct minix_super_block s;
+-	int		block, tries;
+-	int		i = 1;
+-	int		nblocks;
+-	char		*cp;
++	struct minix_super_block *minixsb;
++	struct ext2_super_block  *ext2sb;
++        char   *gzip_magic;        
++
++	int     block,nblocks,status; 
+ 
+ 	/* If no RAM disk specified, give up early. */
+ 	if (!rd_length) return;
++
+ 	printk("RAMDISK: %d bytes, starting at 0x%x\n",
+-					rd_length, (int) rd_start);
++		rd_length, (int) rd_start);
+ 
+ 	/* If we are doing a diskette boot, we might have to pre-load it. */
+ 	if (MAJOR(ROOT_DEV) != FLOPPY_MAJOR) return;
+ 
++#ifdef ASK_FOR_ROOTDISK
++	printk("Please insert rootdisk and press RETURN\n");
++	wait_for_keypress();
++#endif
++
+ 	/*
+-	 * Check for a super block on the diskette.
+-	 * The old-style boot/root diskettes had their RAM image
+-	 * starting at block 512 of the boot diskette.  LINUX/Pro
+-	 * uses the enire diskette as a file system, so in that
+-	 * case, we have to look at block 0.  Be intelligent about
+-	 * this, and check both... - FvK
++	 * Check for a super block and a gzip magic header.
++	 * Now the filesystem could start at block 0,256,384 or 512,
++	 * and the gzipped image could start at block 1,257,385 or 513.
++	 * Actually, if the filesystem starts at block 0, then the super
++	 * block is found at block 1. We only check these points, so
++	 * the gzipped should be on block ahead. --ptjm
+ 	 */
+-	for (tries = 0; tries < 1000; tries += 512) {
+-		block = tries;
+-		bh = breada(ROOT_DEV,block+1,BLOCK_SIZE, 0,  PAGE_SIZE);
++
++	status = -1;
++	block = nblocks = 0;
++	while ( block < 513 ) {
++		bh = breada(ROOT_DEV, block, BLOCK_SIZE, 0, 2*BLOCK_SIZE );
+ 		if (!bh) {
+-			printk("RAMDISK: I/O error while looking for super block!\n");
++			printk("RAMDISK: I/O error !\n");
+ 			return;
+ 		}
+ 
+-		/* This is silly- why do we require it to be a MINIX FS? */
+-		*((struct minix_super_block *) &s) =
+-			*((struct minix_super_block *) bh->b_data);
+-		brelse(bh);
+-		nblocks = s.s_nzones << s.s_log_zone_size;
+-		if (s.s_magic != MINIX_SUPER_MAGIC &&
+-		    s.s_magic != MINIX_SUPER_MAGIC2) {
+-			printk("RAMDISK: trying old-style RAM image.\n");
+-			continue;
++		/* check for gzip magic header */
++		gzip_magic = (char *)bh->b_data;
++		if ( memcmp(gzip_magic,GZIP_MAGIC,2) == 0 ||
++		     memcmp(gzip_magic,OLD_GZIP_MAGIC,2) == 0 ) {
++		    printk("ZFS: Compressed filesystem found at block %d\n"
++			   ,block);
++		    brelse(bh);
++		    status = load_Z_rd(block);		    
++		    break;
+ 		}
++	
++		brelse(bh);
++		bh = bread(ROOT_DEV, block+1, BLOCK_SIZE);
+ 
+-		if (nblocks > (rd_length >> BLOCK_SIZE_BITS)) {
+-			printk("RAMDISK: image too big! (%d/%d blocks)\n",
+-					nblocks, rd_length >> BLOCK_SIZE_BITS);
+-			return;
++		/* check for minix super block */
++		minixsb = (struct minix_super_block *)bh->b_data;
++	      	if ( minixsb->s_magic == MINIX_SUPER_MAGIC ||
++		     minixsb->s_magic == MINIX_SUPER_MAGIC2) {
++              	   printk("RAMDISK: Minix filesystem found at block %d\n",
++			  block);
++		   brelse(bh);
++		   nblocks = minixsb->s_nzones << minixsb->s_log_zone_size;
++		   status = load_trad_rd(block,nblocks);
++		   break;
+ 		}
+-		printk("RAMDISK: Loading %d blocks into RAM disk", nblocks);
+-
+-		/* We found an image file system.  Load it into core! */
+-		cp = rd_start;
+-		while (nblocks) {
+-			if (nblocks > 2) 
+-			        bh = breada(ROOT_DEV, block, BLOCK_SIZE, 0,  PAGE_SIZE);
+-			else
+-				bh = bread(ROOT_DEV, block, BLOCK_SIZE);
+-			if (!bh) {
+-				printk("RAMDISK: I/O error on block %d, aborting!\n", 
+-				block);
+-				return;
+-			}
+-			(void) memcpy(cp, bh->b_data, BLOCK_SIZE);
+-			brelse(bh);
+-			if (!(nblocks-- & 15)) printk(".");
+-			cp += BLOCK_SIZE;
+-			block++;
+-			i++;
++		
++		/* then check for ext2 super block */
++		ext2sb = (struct ext2_super_block *)bh->b_data;
++		if ( ext2sb->s_magic == EXT2_PRE_02B_MAGIC ||
++		     ext2sb->s_magic == EXT2_SUPER_MAGIC ) {
++		   printk("RAMDISK: Ext2 filesystem found at block %d\n",
++			  block);
++		   brelse(bh);
++		   nblocks = ext2sb->s_blocks_count;
++		   status = load_trad_rd(block,nblocks);
++		   break;
+ 		}
+-		printk("\ndone\n");
+ 
+-		/* We loaded the file system image.  Prepare for mounting it. */
+-		ROOT_DEV = ((MEM_MAJOR << 8) | RAMDISK_MINOR);
+-		return;
++		brelse(bh);
++	
++		if ( block == 0 ) 
++		  block = 256;
++		else 
++		  block += 128;
++	}
++	
++	if ( status != OK ) {
++	   printk("RAMDISK: Could not load filesystem into ramdisk !\n");
++	   return;
+ 	}
++	
++	/* We loaded the file system image.  Prepare for mounting it. */
++	ROOT_DEV = ((MEM_MAJOR << 8) | RAMDISK_MINOR);
++	return;
+ }
+diff -u --recursive --new-file linux-1.1.12/drivers/block/zfs.c linux/drivers/block/zfs.c
+--- linux-1.1.12/drivers/block/zfs.c	Thu Jan  1 01:00:00 1970
++++ linux/drivers/block/zfs.c	Tue May 10 13:16:00 1994
+@@ -0,0 +1,257 @@
++/* zfs.c -- compressed filesystems support
++ * Copyright (C) 1994 Petri Mattila
++ * This is free software; you can redistribute it and/or modify it under the
++ * terms of the GNU General Public License, see the file COPYING.
++ *
++ * Derived from 
++ *   gzip.c -- utility functions for gzip support
++ *   Copyright (C) 1992-1993 Jean-loup Gailly
++ */
++
++#include "zfs.h"
++
++/* Globals */
++
++unsigned outcnt;   /* bytes in output buffer */
++unsigned insize;   /* bytes in input buffer */
++unsigned inptr;    /* index to input buffer */
++
++int outbufsize;
++int zfs_block;
++int method;
++
++char *inbuf;      /* buffer for input blocks */
++char *outbuf;     /* same as rd_start */
++
++ulg *crc_32_tab;
++
++
++/* ========================================================================
++ * Check the input and skip trailing fields 
++ * 
++ */
++int check_zip(void)
++{
++    uch flags;
++    char magic[2]; /* magic header */    
++
++    magic[0] = (char)fill_inbuf();  /* read first 18k */
++    magic[1] = (char)get_byte();
++
++    method = -1;                 /* unknown yet */
++    
++    if (memcmp(magic, GZIP_MAGIC, 2) == 0 ||
++        memcmp(magic, OLD_GZIP_MAGIC, 2) == 0) {
++
++	method = (int)get_byte();
++	flags  = (uch)get_byte();
++	if ( flags & ENCRYPTED ) {
++	    printk("\nZFS: Input is encrypted !\n");
++	    return ERROR;
++	}
++	if ( flags & CONTINUATION ) {
++            printk("\nZFS: Multipart input !\n");
++	    return ERROR;
++	}
++	if ( flags & RESERVED ) {
++	    printk("\nZFS: Input has invalid flags !\n");
++	    return ERROR;
++	}
++
++	inptr += 6;     /* Skip timestamp, extra flags and OS */
++
++	/* skip extra fields */
++	if ( flags & EXTRA_FIELD ) {    
++	    unsigned lenf = (unsigned)get_byte() | ((unsigned)get_byte() << 8);
++	    while (lenf--) get_byte();
++	}
++
++	/* Get original file name if it was truncated */
++	if ( flags & ORIG_NAME ) 
++  	   while get_byte();
++	
++	/* Discard file comment if any */
++	if ( flags & COMMENT ) 
++	   while get_byte();
++	
++	/* encryption header can't be here because we already check it */
++
++    } else {
++        printk("\nZFS: Format not supported !\n");
++	return ERROR;
++    }
++
++    if (method == -1) {
++	printk("\nZFS: Corrupted input !\n");
++	return ERROR;
++    }
++    return OK;
++}
++
++
++/* ===========================================================================
++ * Unzip inbuf to outbuf. 
++ *
++ * IN assertions: the buffer inbuf contains already the beginning of
++ *   the compressed data, from offsets inptr to insize-1 included.
++ *   The magic header has already been checked. The output buffer is cleared.
++ */
++int unzip()
++{
++    ulg orig_crc = 0;       /* original crc */
++    ulg orig_len = 0;       /* original uncompressed length */
++    ulg crc = 0;            /* calculated crc */
++    int n;
++    uch buf[EXTHDR];        /* extended local header */
++
++    updcrc(NULL, 0);           /* initialize crc */
++
++    /* Decompress */
++    if (method == DEFLATED)  {
++        switch ( inflate() ) {
++            case 3:  
++	       printk("\nZFS: Out of memory !\n");
++	       return ERROR;
++            case 0:  
++	       break;
++	    default: 
++               printk("\nZFS: Invalid compressed data - format violated\n");
++               return ERROR;
++	}
++
++    } else if (method == STORED) {
++	register ulg n = LG(inbuf + LOCLEN);
++
++	if (n != LG(inbuf + LOCSIZ) ) {
++	    printk("\nZFS: Invalid compressed data - length mismatch\n");
++	    return ERROR;
++	}
++	if (n > outbufsize ) {
++	    printk("\nZFS: Filesystem too BIG !\n");
++	    return ERROR;
++	}
++	while (n--) {
++	    outbuf[outcnt++]= (uch)get_byte();
++	}
++
++    } else {
++      /* this should never happen */
++	printk("\nZFS: Internal error #2, invalid method"); 
++        return ERROR;
++    }
++
++    printk("\nDone.\n");
++    
++    /* Get the crc and original length */
++    for (n = 0; n < 8; n++) {
++	buf[n] = (uch)get_byte(); 
++    }
++    orig_crc = (ulg)LG(buf);
++    orig_len = (ulg)LG(buf+4);
++
++    if (orig_len != (ulg)outcnt) {
++	printk("\nZFS: Invalid compressed data - length error\n");
++        return ERROR; 
++    }
++ 
++    /* Validate decompression */
++    crc = (ulg)updcrc(outbuf, outcnt);
++    if (orig_crc != crc) { 
++	printk("\nZFS: Invalid compressed data - crc error\n");
++        return ERROR;
++    }
++    
++   return OK;
++}
++
++
++/* ===========================================================================
++ * Fill the input buffer. This is called only at startup and 
++ * when the buffer is empty.
++ */
++int fill_inbuf()
++{
++    int i;
++    char *cp;
++    struct buffer_head *bh;
++
++    /* Read as much as possible */
++    insize = 0;
++    cp = (char *)inbuf;
++    for ( i=0; i<18; i++ ) {  /* 18 blocks = 18k */
++      if (i == 0)
++	bh = breada( ROOT_DEV, zfs_block, BLOCK_SIZE, 0, 18432 );
++      else
++	bh = bread( ROOT_DEV, zfs_block, BLOCK_SIZE);      
++      if (!bh) {
++	 printk("ZFS: I/O error on block %d, aborting !\n",zfs_block);
++	 panic("Can't load root filesystem !");
++      }
++      memcpy(cp,bh->b_data,BLOCK_SIZE);
++      brelse(bh);
++      cp += BLOCK_SIZE;
++      insize += BLOCK_SIZE;
++      zfs_block++;
++    }
++    printk(".");
++
++    inptr = 1;
++    return inbuf[0];
++}
++
++
++/* ===========================================================================
++ * Run a set of bytes through the crc shift register.  If s is a NULL
++ * pointer, then initialize the crc shift register contents instead.
++ * Return the current crc in either case.
++ */
++ulg updcrc(s, n)
++    uch *s;                 /* pointer to bytes to pump through */
++    unsigned n;             /* number of bytes in s[] */
++{
++    register ulg c;         /* temporary variable */
++
++    static ulg crc = (ulg)0xffffffffL;   /* shift register contents */
++
++    if (s == NULL) {
++	c = (ulg)0xffffffffL;
++    } else {
++	c = crc;
++        while (n--) {
++            c = crc_32_tab[((int)c ^ (*s++)) & 0xff] ^ (c >> 8);
++        } 
++    }
++    crc = c;
++    return c ^ 0xffffffffL;
++}
++
++
++/* ===========================================================================
++ * Calculate CRC table
++ */
++void make_crc(void)
++{
++  unsigned long c;      /* crc shift register */
++  unsigned long e;      /* polynomial exclusive-or pattern */
++  int i;                /* counter for all possible eight bit values */
++  int k;                /* byte being shifted into crc apparatus */
++
++  /* terms of polynomial defining this crc (except x^32): */
++  static int p[] = {0,1,2,4,5,7,8,10,11,12,16,22,23,26};
++
++  /* Make exclusive-or pattern from polynomial (0xedb88320) */
++  e = 0;
++  for (i = 0; i < sizeof(p)/sizeof(int); i++)
++    e |= 1L << (31 - p[i]);
++
++  crc_32_tab[0] = 0;
++
++  for (i = 1; i < 256; i++)
++  {
++    c = i;
++    for (k = 8; k; k--)
++      c = c & 1 ? (c >> 1) ^ e : c >> 1;
++    crc_32_tab[i] = c;
++  }
++}
++
+diff -u --recursive --new-file linux-1.1.12/drivers/block/zfs.h linux/drivers/block/zfs.h
+--- linux-1.1.12/drivers/block/zfs.h	Thu Jan  1 01:00:00 1970
++++ linux/drivers/block/zfs.h	Tue May 10 13:16:00 1994
+@@ -0,0 +1,107 @@
++/* zfs.h -- compressed filesystems support
++ * Copyright (C) 1994 Petri Mattila
++ * This is free software; you can redistribute it and/or modify it under the
++ * terms of the GNU General Public License, see the file COPYING.
++ *
++ * Derived from 
++ *   gzip.h -- utility functions for gzip support
++ *   Copyright (C) 1992-1993 Jean-loup Gailly
++ */
++
++#include <linux/config.h>
++#include <linux/kernel.h>
++#include <linux/mm.h>
++#include <linux/malloc.h>
++#include <linux/fs.h>
++#include <linux/string.h>
++
++
++/* ZIP header definitions */
++#define LOCSIG 0x04034b50L      /* four-byte lead-in (lsb first) */
++#define LOCFLG 6                /* offset of bit flag */
++#define LOCHOW 8                /* offset of compression method */
++#define LOCTIM 10               /* file mod time (for decryption) */
++#define LOCCRC 14               /* offset of crc */
++#define LOCSIZ 18               /* offset of compressed size */
++#define LOCLEN 22               /* offset of uncompressed length */
++#define LOCFIL 26               /* offset of file name field length */
++#define LOCEXT 28               /* offset of extra field length */
++#define LOCHDR 30               /* size of local header, including sig */
++
++#define EXTHDR 16               /* size of extended local header, inc sig */
++#define CRPFLG 1                /*  bit for encrypted entry */
++#define EXTFLG 8                /*  bit for extended local header */
++
++typedef unsigned char  uch;
++typedef unsigned short ush;
++typedef unsigned long  ulg;
++
++
++#define OF(args)  args
++
++/* Return codes from gzip */
++#define OK      0
++#define ERROR   1
++#define WARNING 2
++
++/* Compression methods (see algorithm.doc) */
++#define STORED      0
++#define COMPRESSED  1
++#define PACKED      2
++#define LZHED       3
++/* methods 4 to 7 reserved */
++#define DEFLATED    8
++#define MAX_METHODS 9
++
++
++extern ulg *crc_32_tab;
++extern unsigned insize;   /* valid bytes in inbuf */
++extern unsigned inptr;    /* index of next byte to be processed in inbuf */
++extern unsigned outcnt;   /* bytes in output buffer */
++extern int outbufsize;    /* size of the ramdisk */
++extern int zfs_block;     /* block to be read */
++extern int method;
++
++extern char *inbuf;
++extern char *outbuf;
++
++#define	PACK_MAGIC     "\037\036" /* Magic header for packed files */
++#define	GZIP_MAGIC     "\037\213" /* Magic header for gzip files, 1F 8B */
++#define	OLD_GZIP_MAGIC "\037\236" /* Magic header for gzip 0.5 = freeze 1.x */
++#define	LZH_MAGIC      "\037\240" /* Magic header for SCO LZH Compress files*/
++#define PKZIP_MAGIC    "\120\113\003\004" /* Magic header for pkzip files */
++#define LZW_MAGIC      "\037\235" /* Magic header for LZW */
++
++/* gzip flag byte */
++#define ASCII_FLAG   0x01 /* bit 0 set: file probably ascii text */
++#define CONTINUATION 0x02 /* bit 1 set: continuation of multi-part gzip file */
++#define EXTRA_FIELD  0x04 /* bit 2 set: extra field present */
++#define ORIG_NAME    0x08 /* bit 3 set: original file name present */
++#define COMMENT      0x10 /* bit 4 set: file comment present */
++#define ENCRYPTED    0x20 /* bit 5 set: file is encrypted */
++#define RESERVED     0xC0 /* bit 6,7:   reserved */
++
++/* internal file attribute */
++#define UNKNOWN 0xffff
++#define BINARY  0
++#define ASCII   1
++
++#define memzero(c,s) memset((c), 0,(s))
++#define get_byte()  (inptr < insize ? inbuf[inptr++] : fill_inbuf() )
++
++/* Macros for getting two-byte and four-byte header values */
++#define SH(p) ((ush)(uch)((p)[0]) | ((ush)(uch)((p)[1]) << 8))
++#define LG(p) ((ulg)(SH(p)) | ((ulg)(SH((p)+2)) << 16))
++
++/* in zfs.c */
++extern int unzip          OF((void));
++extern int check_zip      OF((void));
++extern int  fill_inbuf    OF((void));
++extern ulg  updcrc        OF((uch *s, unsigned n));
++extern void make_crc      OF((void));
++
++/* in inflate.c */
++extern int inflate OF((void));
++
++/* somewhere :-) */
++extern void wait_for_keypress(void);

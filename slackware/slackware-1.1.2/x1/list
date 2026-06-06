@@ -1,0 +1,88 @@
+CONTENTS: x_8514 x_mach32 x_mach8 xf_doc
+x_8514:   An accelerated server for cards using IBM8514 chips.
+x_8514: 
+x_8514:   This is X server number 1 of 7. In most cases you should only install
+x_8514:   the X server designed to work with your video hardware. 
+x_8514:
+x_8514:   Installing this package will create a link in /usr/X386/bin from
+x_8514:   XF86_8514 to X, setting this server as the default.
+x_mach32: An accelerated server for cards using Mach32 chips.
+x_mach32:
+x_mach32: This is X server number 2 of 7. In most cases you should only install
+x_mach32: the X server designed to work with your video hardware. 
+x_mach32:
+x_mach32: Installing this package will create a link in /usr/X386/bin from
+x_mach32: XF86_Mach32 to X, setting this server as the default.
+x_mach8:  An accelerated server for cards using Mach8 chips.
+x_mach8:
+x_mach8:  This is X server number 3 of 7. In most cases you should only install
+x_mach8:  the X server designed to work with your video hardware. 
+x_mach8:
+x_mach8:  Installing this package will create a link in /usr/X386/bin from
+x_mach8:  XF86_Mach8 to X, setting this server as the default.
+xf_doc:   Documentation and release notes for XFree86 2.0.
+CONTENTS: x_mono x_s3 x_svga xpm xf_cfg
+x_mono:   A Monochrome server.
+x_mono:
+x_mono:   This is X server number 4 of 7. In most cases you should only install
+x_mono:   the X server designed to work with your video hardware. 
+x_mono:
+x_mono:   Installing this package will create a link in /usr/X386/bin from
+x_mono:   XF86_Mono to X, setting this server as the default.
+x_s3:     An accelerated server for cards using S3 chips.
+x_s3:
+x_s3:     This is X server number 5 of 7. In most cases you should only install
+x_s3:     the X server designed to work with your video hardware. 
+x_s3:
+x_s3:     Installing this package will create a link in /usr/X386/bin from
+x_s3:     XF86_S3 to X, setting this server as the default.
+x_svga:   A SuperVGA server.
+x_svga:
+x_svga:   This is X server number 6 of 7. In most cases you should only install
+x_svga:   the X server designed to work with your video hardware. 
+x_svga:
+x_svga:   Installing this package will create a link in /usr/X386/bin from
+x_svga:   XF86_SVGA to X, setting this server as the default.
+xpm:      The Xpm shared and static libraries, v. 3.3
+xpm:      These libraries provide a means for X programs to store and retrieve
+xpm:      bitmaps. The shared libraries are needed to run programs compiled
+xpm:      with Xpm, such as xfilemanager and fvwm.
+xf_cfg:   XDM configuration, chooser, and FVWM 1.20.
+CONTENTS: x_vga16 xf_lib xman1
+x_vga16:  A server for 16 colour graphics modes. (Last one!)
+x_vga16:
+x_vga16:  This is the last in a long list of servers for XFree86 2.0. In most 
+x_vga16:  cases you should only install the X server designed to work with your
+x_vga16:  video hardware. 
+x_vga16:
+x_vga16:  Installing this package will create a link in /usr/X386/bin from
+x_vga16:  XF86_VGA16 to X, setting this server as the default.
+xf_lib:   Dynamic libraries, bitmaps and minimal fonts for XFree86 2.0.
+xman1:    Man pages for programs that come with XFree86 2.0.
+xman1:    These have been preprocessed and compressed.
+CONTENTS: xf_bin xfonts1
+xf_bin:   Basic client binaries required for XFree86 2.0.
+xfonts1:  More fonts for X windows. (part one)
+xfonts1: 
+xfonts1:  The XFree86 2.0 release comes with minimal fonts already preinstalled.
+xfonts1:  If you want all the 75dpi fonts that are released with X11 Release 5
+xfonts1:  (excluding PEX), then you must install this package and xfonts2.tgz.
+xfonts1: 
+xfonts1:  These fonts are now compressed, and take much less drive space.
+CONTENTS: xfonts2 xlock fvwmicns
+xfonts2:  More fonts for X windows. (part two)
+xfonts2: 
+xfonts2:  The XFree86 2.0 release comes with minimal fonts already preinstalled.
+xfonts2:  If you want all the 75dpi fonts that are released with X11 Release 5
+xfonts2:  (excluding PEX), then you must install this package and xfonts1.tgz.
+xfonts2: 
+xfonts2:  These fonts are now compressed, and take much less drive space.
+xlock:    A screensaver/locker for X. Includes the man page.
+fvwmicns: Color icons from xpm3icons.tar.Z, found in the /pub/X11/contrib
+fvwmicns: directory of sunsite.unc.edu. These icons work great with fvwm.
+fvwmicns:
+fvwmicns: They are placed in /usr/lib/xfilemanager/icons, since there are other
+fvwmicns: icons put in there for xfilemanager that also work with fvwm.
+fvwmicns:
+fvwmicns: See the man page for fvwm for more information on how to use these
+fvwmicns: icons.

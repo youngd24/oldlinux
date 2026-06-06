@@ -1,0 +1,30 @@
+PACKAGE NAME:     jove
+PACKAGE SIZE:     123 K
+PACKAGE LOCATION: diskap1
+PACKAGE DESCRIPTION:
+jove:     Jonathan's Own Version of Emacs (4.14.7)                
+jove:
+jove:     A mostly Emacs compatible text editor, with man pages and the 
+jove:     'teachjove' tutorial program. If you'd rather have the real thing, 
+jove:     the actual Emacs editor/environment is available as disk series 'E'.
+jove:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/jove/
+usr/lib/jove/cmds.doc
+usr/lib/jove/jove.rc
+usr/lib/jove/portsrv
+usr/lib/jove/recover
+usr/lib/jove/teach-jove
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/jove.1.gz
+usr/man/preformat/cat1/teachjove.1.gz
+usr/bin/
+usr/bin/teachjove
+usr/bin/xjove
+install/
+install/doinst.sh

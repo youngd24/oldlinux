@@ -1,0 +1,10 @@
+00index.txt         260  
+Makefile            252  
+Makefile.orig       126  
+lpr               10056  
+lpr.1              7448  
+lpr.c             16386  
+lpr.c.orig        16341  
+lpr.c.rej          3259  
+lpr.o             11824  
+lpr.termios       31948  

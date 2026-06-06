@@ -1,0 +1,16 @@
+00index.txt         397  
+minicom-1.5b.lsm   1211  
+minicom-1.5b.tar.gz
+                  85106  
+minicom-1.60.lsm   1017  
+minicom-1.60.tar.gz
+                  88689  
+rzsz.README        1059  
+rzsz9202.README     310  
+rzsz9202.dff       6249  
+rzsz9202.iafa       664  
+rzsz9202.patch.gz   823  
+rzsz9202.tar-z    81407  
+rzsz9305.patch.gz  1833  
+rzsz9305.patch.lsm
+                   1117  

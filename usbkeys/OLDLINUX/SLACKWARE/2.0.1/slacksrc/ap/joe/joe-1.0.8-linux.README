@@ -1,0 +1,20 @@
+Hi, joe compiled nicely for Linux (you can FTP the source from
+world.std.com, in /src/editors/joe1.0.8.tar.Z..) and they have
+a Makefile for Linux.. (linux.mak)
+
+I made the following change.. if you don't like it, recompile it
+yourself.. ;) 
+
+Linux's VCs are on (by default anyways) 9600 baud.. joe has some really
+annoying delays in scrolling and whatever at any speeds below 38400,
+so I just changed that to 9600. 
+
+The joerc file is also by default in /usr/local/lib/joerc.. you can create
+your own .joerc in your home directory.
+
+I didn't write this (I'm way too impatient!) - the author is Joseph H. Allen
+(jhallen@world.std.com). Joe's under GNU's General Public License.
+
+Enjoy ;)
+
+Hui-Hui (hdesiato@wam.umd.edu)

@@ -1,0 +1,17 @@
+D BETA_TES                          	Beta-Test
+D BINARIES                          	Binaries
+D BSD                               	BSD
+F DIG_2_0_.GZ;1                     	dig-2.0.tar.gz
+F DIP337A_.GZ;1                     	dip337a-uri.tar.gz
+F FWHOIS_1.GZ;1                     	fwhois-1.00.tar.gz
+F INDEX.;1                          	INDEX
+D PATCHES                           	Patches
+F RSTATD_P.GZ;1                     	rstatd_patched.tar.gz
+F RSTATD_P.LSM;1                    	rstatd_patched.lsm
+F SECURITY.GZ;1                     	security.tar.gz
+F SECURITY.GZ_;1                    	security.tar.gz-README
+D SYSTEM                            	System
+D USER                              	User
+F YP_CLIEN.GZ;1                     	yp-clients.tar.gz
+F YP_CLIEN.LSM;1                    	yp-clients.lsm
+F YP_CLIEN.REA;1                    	yp-clients.README

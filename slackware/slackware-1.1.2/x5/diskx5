@@ -1,0 +1,45 @@
+CONTENTS: xfonts2 xlock fvwmicns xconfig
+xfonts2:  More fonts for X windows. (part two)
+xfonts2: 
+xfonts2:  The XFree86 2.0 release comes with minimal fonts already preinstalled.
+xfonts2:  If you want all the 75dpi fonts that are released with X11 Release 5
+xfonts2:  (excluding PEX), then you must install this package and xfonts1.tgz.
+xfonts2: 
+xfonts2:  These fonts are now compressed, and take much less drive space.
+xfonts2: 
+xfonts2: 
+xfonts2: 
+xfonts2: 
+xlock:    A screensaver/locker for X. Includes the man page.
+xlock:
+xlock:
+xlock:
+xlock:
+xlock:
+xlock:
+xlock:
+xlock:
+xlock:
+xlock:
+xconfig:  A collection of 24 sample Xconfig files, some for tricky to configure
+xconfig:  video boards. Most of these were designed for XFree86 1.2 or 1.3, but
+xconfig:  should still contain useful information.
+xconfig:
+xconfig:
+xconfig:
+xconfig:
+xconfig:
+xconfig:
+xconfig:
+xconfig:
+fvwmicns: Color icons from xpm3icons.tar.Z, found in the /pub/X11/contrib
+fvwmicns: directory of sunsite.unc.edu. These icons work great with fvwm.
+fvwmicns:
+fvwmicns: They are placed in /usr/lib/xfilemanager/icons, since there are other
+fvwmicns: icons put in there for xfilemanager that also work with fvwm.
+fvwmicns:
+fvwmicns: See the man page for fvwm for more information on how to use these
+fvwmicns: icons.
+fvwmicns:
+fvwmicns:
+fvwmicns:

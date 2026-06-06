@@ -1,0 +1,57 @@
+PACKAGE NAME:     ntm-etex
+PACKAGE SIZE:     342 K
+PACKAGE LOCATION: diskt5
+PACKAGE DESCRIPTION:
+ntm-etex: ntm-etex 1.0
+ntm-etex:
+ntm-etex: This package contains an extended version of the standard plain TeX
+ntm-etex: format called ETeX.
+ntm-etex:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/etex.1.gz
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/ini/
+usr/lib/texmf/ini/etex.fmt
+usr/lib/texmf/ini/etex.log
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/etex/
+usr/lib/texmf/tex/etex/add-date
+usr/lib/texmf/tex/etex/add-version
+usr/lib/texmf/tex/etex/arrow.tex
+usr/lib/texmf/tex/etex/btxmac.tex
+usr/lib/texmf/tex/etex/doc/
+usr/lib/texmf/tex/etex/doc/Makefile
+usr/lib/texmf/tex/etex/doc/README
+usr/lib/texmf/tex/etex/doc/arrow.texi
+usr/lib/texmf/tex/etex/doc/btxdoc.tex
+usr/lib/texmf/tex/etex/doc/copying.texi
+usr/lib/texmf/tex/etex/doc/csindex.texi
+usr/lib/texmf/tex/etex/doc/eplain.cps
+usr/lib/texmf/tex/etex/doc/eplain.fns
+usr/lib/texmf/tex/etex/doc/eplain.info
+usr/lib/texmf/tex/etex/doc/eplain.info-1
+usr/lib/texmf/tex/etex/doc/eplain.info-2
+usr/lib/texmf/tex/etex/doc/eplain.info-3
+usr/lib/texmf/tex/etex/doc/eplain.info-4
+usr/lib/texmf/tex/etex/doc/eplain.texi
+usr/lib/texmf/tex/etex/doc/freedom.texi
+usr/lib/texmf/tex/etex/doc/index.texi
+usr/lib/texmf/tex/etex/doc/install.texi
+usr/lib/texmf/tex/etex/doc/intro.texi
+usr/lib/texmf/tex/etex/doc/invoke.texi
+usr/lib/texmf/tex/etex/doc/progdef.texi
+usr/lib/texmf/tex/etex/doc/userdef.texi
+usr/lib/texmf/tex/etex/eplain.tex
+usr/lib/texmf/tex/etex/merge
+usr/lib/texmf/tex/etex/path.sty
+usr/lib/texmf/tex/etex/texnames.sty
+usr/lib/texmf/tex/etex/xeplain.tex
+install/
+install/doinst.sh

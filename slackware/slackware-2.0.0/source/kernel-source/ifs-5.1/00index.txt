@@ -1,0 +1,16 @@
+00index.txt         369  
+README             7186  
+README_IFS_1.1.8    705  
+ifs-5.1-1.1.8.diffs
+                   4170  
+ifs-5.1.tar       71680  
+ifsprogs/             -  
+
+ifsprogs:
+00index.txt         182  
+CHANGES             524  
+Makefile            199  
+README             7186  
+smount.c           3007  
+test.pl           24171  
+unwo.c              671  

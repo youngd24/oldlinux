@@ -1,0 +1,42 @@
+00index.txt        1019  
+cdu31a/               -  
+patch1.gz         13156  
+patch10.gz        57649  
+patch11.gz        21366  
+patch12.gz        47687  
+patch13.gz       166528  
+patch14.gz        16062  
+patch15.gz        38988  
+patch16.gz        23485  
+patch17.gz         6780  
+patch18.gz        47414  
+patch19.gz         7158  
+patch2.gz         29971  
+patch20.gz        95773  
+patch21.gz        25523  
+patch22.gz        39132  
+patch3.gz         29198  
+patch4.gz        129857  
+patch5.gz          8000  
+patch6.gz         17383  
+patch7.gz          1180  
+patch8.gz          9177  
+patch9.gz          8212  
+ramdisk/              -  
+v1.1.0.tar.gz   1256165  
+v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz
+                1483479  
+v1.1.19+UMSDOS-0.3a+IFS-5.1.tgz
+                1485065  
+
+cdu31a:
+00index.txt         137  
+cdu31a-v1.patch1.diff
+                  11833  
+linux--fast-sony-cdu31a-driver.patch
+                  26828  
+
+ramdisk:
+00index.txt          71  
+ramdisk.c.bootdisk
+                   4835  

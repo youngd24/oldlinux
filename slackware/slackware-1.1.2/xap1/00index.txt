@@ -1,0 +1,13 @@
+00index.txt         338  
+diskxap1           1815  
+gs_x11.tgz       198541  
+libgr13.tgz      352129  
+maketag            1655  
+seyon.tgz        133529  
+tagfile            1056  
+tagfile.org        1056  
+tagfile.pat        1053  
+vgaset.tgz        14891  
+workman.tgz       53520  
+xfileman.tgz      64101  
+xv300.tgz        208577  

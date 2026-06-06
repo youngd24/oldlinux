@@ -1,0 +1,105 @@
+00index.txt        2108  
+README.NOW         2510  
+VERSIONS            174  
+bare/                 -  
+cdu31a/               -  
+lilo.conf.1200      297  
+lilo.conf.1440      297  
+lodlin14.txt       1650  
+lodlin14.zip      92502  
+makedisk           1880  
+master/               -  
+mitsumi/              -  
+modern/               -  
+ncr/                  -  
+net/                  -  
+old-docs/             -  
+ramdisk.c.patch     891  
+sbpcd/                -  
+scsi/                 -  
+scsinet/              -  
+sony535/              -  
+xt/                   -  
+zfs/                  -  
+
+bare:
+00index.txt         104  
+bare             252420  
+bare.log           2584  
+zSystem.map       58432  
+
+cdu31a:
+00index.txt         104  
+cdu31a           322052  
+cdu31a.log         3457  
+zSystem.map       72744  
+
+master:
+00index.txt          78  
+README              205  
+master.tar.gz    644563  
+
+mitsumi:
+00index.txt         104  
+mitsumi          317956  
+mitsumi.log        3459  
+zSystem.map       72295  
+
+modern:
+00index.txt         123  
+modern           387588  
+modern.log         4751  
+zSystem.map.modern
+                  85982  
+
+ncr:
+00index.txt         104  
+ncr              375300  
+ncr.log            4740  
+zSystem.map       80791  
+
+net:
+00index.txt         104  
+net              289284  
+net.log            3141  
+zSystem.map       64855  
+
+old-docs:
+00index.txt          52  
+BOOTDISK.FAQ       2680  
+
+sbpcd:
+00index.txt         104  
+sbpcd            326148  
+sbpcd.log          3439  
+zSystem.map       73712  
+
+scsi:
+00index.txt         104  
+scsi             317956  
+scsi.log           3438  
+zSystem.map       71254  
+
+scsinet:
+00index.txt         104  
+scsinet          354820  
+scsinet.log        4031  
+zSystem.map       77677  
+
+sony535:
+00index.txt         104  
+sony535          322052  
+sony535.log        3501  
+zSystem.map       72492  
+
+xt:
+00index.txt         104  
+xt               252420  
+xt.log             2580  
+zSystem.map       58695  
+
+zfs:
+00index.txt         104  
+zSystem.map.zfs   93450  
+zfs              428548  
+zfs.log            4682  

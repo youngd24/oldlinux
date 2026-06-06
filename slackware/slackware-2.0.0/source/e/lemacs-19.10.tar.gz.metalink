@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink version="3.0" xmlns="http://www.metalinker.org/"
+  origin="https://mirrors.slackware.com/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz.metalink"
+  generator="MirrorBrain 2.19.0 (see http://mirrorbrain.org/)"
+  type="dynamic"  pubdate="Mon, 01 Jun 2026 17:07:15 GMT"  refreshdate="Mon, 01 Jun 2026 17:07:15 GMT">
+
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <files>
+  <file name="lemacs-19.10.tar.gz">
+    <size>9286960</size>
+
+    <!-- <mtime>774841697</mtime> -->
+
+    <!-- internal id: 1610529 -->
+      <verification>
+        <hash type="md5">c3aa892c5a61585f6be7432169db5342</hash>
+        <hash type="sha1">3478bbf95049a2c38ae6ea3d31b6ead0cbbd8755</hash>
+        <hash type="sha256">aee760c1ba2cb13897f3261d0483607c6b602c3f76a0cc121af7a12d8ce3d16d</hash>
+        <pieces length="262144" type="sha1">
+          <hash piece="0">45871a6b37aeb86052994b44256d7564adcfbd85</hash>
+          <hash piece="1">63427350da2e88e6453b2160017c7694ddd3011e</hash>
+          <hash piece="2">3252b6b3246cc2e965fef3b94bd9a18d41416822</hash>
+          <hash piece="3">2f6ec561cac87115579492cbaa2dd23e64e6c69a</hash>
+          <hash piece="4">dc55481f4e5cda09f5aa74e09e3bf0da5f6de2f6</hash>
+          <hash piece="5">91996d1b3d2f003640723a4970c626646688378d</hash>
+          <hash piece="6">d855de684e3a2af9fffd0b5236f08df3403cb66e</hash>
+          <hash piece="7">9c221ccc831e81dda34b0680bed5d9a7f785e4b0</hash>
+          <hash piece="8">426ecab1c14cd4288786353d1e950b0393dc4de7</hash>
+          <hash piece="9">a7ba3b40cc16b0105e93c28f548c9205302be6b1</hash>
+          <hash piece="10">0eea9575a13e231d104fb1419b0e011b4c69dd5c</hash>
+          <hash piece="11">16f3b900047095812f6d2d16dcfc3ec21645ba0b</hash>
+          <hash piece="12">2f1d4b0d1a27985929a8a28ddc2f7825b5cb410d</hash>
+          <hash piece="13">91f57f43fdd5091510b6a20b4c1b15eca0c4a14a</hash>
+          <hash piece="14">d51663decbb75e4cf961376ced722d34e1ecc96f</hash>
+          <hash piece="15">b46806656f8b800a5a70e255d84a0052546eeb2b</hash>
+          <hash piece="16">b728264b00c73e8fc9bb97e51fcb63cd92cb1b2c</hash>
+          <hash piece="17">5d2d6ef80b8237208bca8a9557ea7c33ec182809</hash>
+          <hash piece="18">d1ced0fa60274fd10e3810461fadb14cf50c5d7c</hash>
+          <hash piece="19">8188884ca82ba730ec2baf1bb1d51fee686b4199</hash>
+          <hash piece="20">4049fb7180285c595c8687f3d24656b74c60539e</hash>
+          <hash piece="21">e7e759c95f3da21a8f0561a8b1334c346d5aac3c</hash>
+          <hash piece="22">67ed2ac828bc723c8b4a7cc5a6596a2a2515c65c</hash>
+          <hash piece="23">4a1bd2027be38b95af460ffc1406e3732195c755</hash>
+          <hash piece="24">da8a251d55c71530e9e79ce26719661e86f5a74b</hash>
+          <hash piece="25">274721a51774d4907998d6d82e49adb4018b6a2d</hash>
+          <hash piece="26">37024396819517bc48ec097a94ee0f601ac42d52</hash>
+          <hash piece="27">0c8e76e0de6e0475b918787b725c0301d511b797</hash>
+          <hash piece="28">456db48311877d09baffe30872597b53f93ef45b</hash>
+          <hash piece="29">091bd0189142fee4e5e9840a05e063b25aa4c300</hash>
+          <hash piece="30">c32694238d1f6fb8fd6009dce6f1d00c70ce9c4a</hash>
+          <hash piece="31">0a7a0a49970d8acd00184a1e742c247757da75fa</hash>
+          <hash piece="32">83d382750d95e0555fe6adcd8fa7b11d0ad21e20</hash>
+          <hash piece="33">22ef7ed58affa21c2a9d0c4da40efd7f1655bf6d</hash>
+          <hash piece="34">9c2ccb1cace06194adea2f69a7f349062e3668fe</hash>
+          <hash piece="35">59dbaffaaae0f2f98c828a1ffafd684c4318e1d1</hash>
+        </pieces>
+      </verification>
+    <resources>
+
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url type="https" location="us" preference="100">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url type="https" location="ec" preference="99">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="br" preference="98">https://ftp.slackware-brasil.com.br/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="br" preference="97">https://mirrors.slackware.beco.cc/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="br" preference="96">https://linorg.usp.br/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="http" location="gb" preference="95">http://slackware.uk/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="gb" preference="94">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="http" location="nl" preference="93">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="http" location="fr" preference="92">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="nl" preference="91">https://mirror.koddos.net/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="nl" preference="90">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="de" preference="89">https://linux.rz.rub.de/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="http" location="ro" preference="88">http://mirrors.nav.ro/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="de" preference="87">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="dk" preference="86">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="http" location="hr" preference="85">http://mirror.slackware.hr/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="it" preference="84">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="se" preference="83">https://mirror.bahnhof.net/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="rs" preference="82">https://mirror1.sox.rs/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="pl" preference="81">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="ro" preference="80">https://mirrors.nxthost.com/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="http" location="ua" preference="79">http://slackware.ip-connect.info/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="ua" preference="78">https://ifconfig.com.ua/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="http" location="ru" preference="77">http://mirror.mephi.ru/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="ru" preference="76">https://mirror.yandex.ru/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="http" location="za" preference="75">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="sa" preference="74">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    <url type="https" location="hk" preference="73">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/source/e/lemacs-19.10.tar.gz</url>
+    </resources>
+    </file>
+  </files>
+</metalink>

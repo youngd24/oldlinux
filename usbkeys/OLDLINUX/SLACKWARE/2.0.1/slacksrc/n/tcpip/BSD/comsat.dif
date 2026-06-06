@@ -1,0 +1,17 @@
+--- Makefile
++++ Makefile	1994/02/21 17:15:18
+@@ -0,0 +1,14 @@
++CFLAGS = -O2 -m486 -fomit-frame-pointer \
++	-include /usr/include/bsd/bsd.h -I/usr/include/bsd
++LDLIBS = -lbsd
++LDFLAGS = -s -v
++
++comsat: comsat.o
++
++install: comsat
++	install comsat /usr/sbin
++	install -m644 comsat.8 /usr/man/man8
++
++clean:
++	rm -f *.o comsat
++

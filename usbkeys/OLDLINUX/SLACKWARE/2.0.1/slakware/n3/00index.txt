@@ -1,0 +1,9 @@
+00index.txt         234  
+cnews.tgz        151350  
+diskn3             1503  
+inn_pkg.tgz      559311  
+install.end          40  
+nn.tgz           335669  
+ppp.tgz           94711  
+tin.tgz          123286  
+trn.tgz          163866  

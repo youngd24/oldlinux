@@ -1,0 +1,74 @@
+This is a list of sites known to mirror the Slackware Linux release.
+----------
+Australian users:
+The Slackware distribution is mirrored (except the zooed_disks) at:
+monu1.cc.monash.edu.au in directory /pub/linux/distributions/slackware
+This occurs daily at 8am local time [GMT+10] (which is 3pm at ftp.cdrom.com).
+This site is primarily for access by Australian sites.
+----------
+Chile:
+ftp.dcc.uchile.cl:/linux/slackware
+This site is primarily for access by Chilean sites
+----------
+Switzerland:
+nic.switch.ch: /mirror/linux/slackware
+----------
+UK/European Users:
+The Slackware distribution is mirrored nightly at:
+src.doc.ic.ac.uk in directory /packages/linux/slackware-mirror
+----------
+France:
+ftp.ibp.fr in directory /pub/linux/distributions/slackware
+-----------
+Czech Republic:
+vcdec.cvut.cz: /pub/linux/local
+-----------
+Germany: 
+ftp.gwdg.de in /pub/linux/install-mount/slack102 
+This site will also allow local hosts (134.76.xx.xx) to mount this 
+directory for installation across NFS.
++++++
+ftp.informatik.uni-bonn.de in Bonn/Germany mirrors
+/pub/linux/slackware in /pub/unix/linux/slackware.
+The update runs once a week.
++++++
+ftp.informatik.rwth-aachen.de: /pub/Linux/local/slackware.
+Allows NFS mounts from (137.226.xx.xx) and (134.130.xx.xx).
++++++
+ftp.rz.uni-sb.de: /pub/Linux/distributions/slackware.
+-----------
+Brazil:
+farofa.ime.usp.br: /pub/linux/slackware
+-----------
+Japan:
+ftp.cs.titech.ac.jp: /pub/os/linux/slackware
+-----------
+Finland:
+ftp.funet.fi: /pub/OS/Linux/images/Slackware
+-----------
+This site should be used by those served by NLnet:
+ftp.nl.net: /pub/os/Linux/distr/Slackware
++++++
+ftp.twi.tudelft.nl:/pub/Linux/slackware
+Our mirror software runs daily at about 6:00am out time (or 5:00am GMT).
+-----------
+Stellenbosch, South Africa
+Archives-R-Us: ftp.sun.ac.za: /pub/linux/distributions/Slackware
+This mirror is updated daily at 0:00 GMT.
+-----------
+Hong Kong:
+ftp.cs.cuhk.hk: /pub/linux/slackware
+-----------
+USA:
+ftp.cdrom.com: /pub/linux/slackware is the home site. Also:
+sunsite.unc.edu: /pub/Linux/distributions/slackware. Mirrored nightly.
+ftp.halcyon.com mirrors the distribution at 400 PST daily.
+Also, ftp.cs.columbia.edu: /archives/linux/Slackware mirrors the distribution
+daily (in the early morning).
+-----------
+
+If you run another mirror site, and would like it mentioned on this list,
+send mail to volkerdi@ftp.cdrom.com.
+
+- Pat
+

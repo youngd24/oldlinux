@@ -1,0 +1,27 @@
+Begin2
+Title        = VI Improved.
+Version      = 2.0
+Desc1        = A Vi clone with many additional features. Contains: multi-level
+Desc2        = undo/redo; column-wise & highlighted cut & paste; compile from
+Desc3        = within editor, trapping error messages to allow interactive 
+Desc4        = development; configurable word wrap & paragraph formatting; on-
+Desc5        = line help; horiz. scroll; cmdline completion; auto line-end mode
+Author       = Bram Moolenaar
+AuthorEmail  = mool@oce.nl
+Maintainer   = Bram Moolenaar
+MaintEmail   = mool@oce.nl
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/apps/editors
+File1        = vim-2.0.tar.gz
+FileSize1    = 436K
+Required1    = Unix (most any, including Linux), MSDOS, Amiga
+CopyPolicy1  = CharityWare (see included document uganda.txt). Public domain
+CopyPolicy2  = with request that if desired, user make charitable contribution.
+Keywords     = Vi, Vim, Editor
+Comment1     = Automatic sensing of line-endings adjusts for different modes
+Comment2     = (e.g. Unix, DOS). This can be enabled/disabled.
+RelFiles1    = Dos executable included for compatibility (ansi.sys NOT required)
+Entered      = 28DEC93
+EnteredBy    = Darren Hiebert
+CheckedEmail = darren@rastek.com
+End

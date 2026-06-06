@@ -1,0 +1,26 @@
+D ASH                               	ash
+D BC                                	bc
+D DIFF                              	diff
+D ENGLISH                           	english
+D FTAPE                             	ftape
+D GHOSTSCR                          	ghostscr
+D GONZO                             	gonzo
+D GROFF                             	groff
+D GSFONTS1                          	gsfonts1
+L GSFONTS2.;1                       	gsfonts2	gsfonts1
+D ISPELL                            	ispell
+D JED                               	jed
+D JOE                               	joe
+D JOVE                              	jove
+D MANPGS                            	manpgs
+D MT_ST                             	mt_st
+D QUOTA                             	quota
+D SC                                	sc
+D SUDO                              	sudo
+D TERMBIN                           	termbin
+D TERMNET                           	termnet
+D TERMSRC                           	termsrc
+D TEXINFO                           	texinfo
+D VIM                               	vim
+D WORKBONE                          	workbone
+D ZSH                               	zsh

@@ -1,0 +1,116 @@
+00index.txt        2613  
+Historic/             -  
+ToshibaPCD-1.1.tar.gz
+                   5874  
+ifs-5.1/              =  
+sony535-0.5/          -  
+umsdos/               -  
+v1.0/                 -  
+v1.1/                 =  
+
+Historic:
+00index.txt          70  
+linux-0.01.tar.gz
+                  73458  
+
+ifs-5.1:
+00index.txt         369  
+README             7186  
+README_IFS_1.1.8    705  
+ifs-5.1-1.1.8.diffs
+                   4170  
+ifs-5.1.tar       71680  
+ifsprogs/             -  
+
+ifs-5.1/ifsprogs:
+00index.txt         182  
+CHANGES             524  
+Makefile            199  
+README             7186  
+smount.c           3007  
+test.pl           24171  
+unwo.c              671  
+
+sony535-0.5:
+00index.txt         148  
+CHANGES            1550  
+README.sony535     5906  
+sony535-0.5.lsm     789  
+sony535-0.5.patch
+                  60522  
+
+umsdos:
+00index.txt         342  
+umsdos-0.2.bug-fix
+                   2541  
+umsdos-0.2.diff  157783  
+umsdos-0.2.rename_f.bug_fix
+                   3129  
+umsdos-0.3.diff.gz
+                  41277  
+umsdos-0.3.doc.gz
+                  16833  
+umsdos-0.3.lsm     1118  
+umsdos-0.3a.tar  471040  
+umsdos_progs-0.3.tar.gz
+                  27962  
+
+v1.0:
+00index.txt         359  
+linux-1.0.tar.gz
+                1259161  
+patch1.gz          5085  
+patch2.gz          3672  
+patch3.gz          8309  
+patch4.gz          1189  
+patch5.gz          7175  
+patch6.gz          3708  
+patch7.gz          1420  
+patch8.gz          6408  
+patch9.gz          1153  
+umsdos-0.3a-for-1.0.9.diff.gz
+                  63799  
+
+v1.1:
+00index.txt        1019  
+cdu31a/               -  
+patch1.gz         13156  
+patch10.gz        57649  
+patch11.gz        21366  
+patch12.gz        47687  
+patch13.gz       166528  
+patch14.gz        16062  
+patch15.gz        38988  
+patch16.gz        23485  
+patch17.gz         6780  
+patch18.gz        47414  
+patch19.gz         7158  
+patch2.gz         29971  
+patch20.gz        95773  
+patch21.gz        25523  
+patch22.gz        39132  
+patch3.gz         29198  
+patch4.gz        129857  
+patch5.gz          8000  
+patch6.gz         17383  
+patch7.gz          1180  
+patch8.gz          9177  
+patch9.gz          8212  
+ramdisk/              -  
+v1.1.0.tar.gz   1256165  
+v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz
+                1483479  
+v1.1.19+UMSDOS-0.3a+IFS-5.1.tgz
+                1485065  
+
+v1.1/cdu31a:
+00index.txt         137  
+cdu31a-v1.patch1.diff
+                  11833  
+linux--fast-sony-cdu31a-driver.patch
+                  26828  
+
+v1.1/ramdisk:
+00index.txt          71  
+ramdisk.c.bootdisk
+                   4835  

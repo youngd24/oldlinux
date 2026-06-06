@@ -1,0 +1,6 @@
+00index.txt         156  
+aletter.txt        7398  
+copying            1886  
+diskoi3              81  
+install.end           0  
+oistat.tgz      1375208  

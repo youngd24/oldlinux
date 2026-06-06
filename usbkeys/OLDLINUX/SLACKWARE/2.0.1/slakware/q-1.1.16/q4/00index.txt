@@ -1,0 +1,5 @@
+00index.txt         130  
+diskq4              555  
+install.end          24  
+mitsumi2.log       4717  
+mitsumi2.tgz     409575  

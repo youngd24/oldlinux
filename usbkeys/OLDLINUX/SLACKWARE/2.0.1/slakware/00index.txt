@@ -1,0 +1,747 @@
+00index.txt       16386  
+CHECKSUMS         19852  
+FILE_LIST         38416  
+MANIFEST        1936750  
+a1/                   -  
+a2/                   -  
+a3/                   -  
+ap1/                  -  
+ap2/                  -  
+ap3/                  -  
+ap4/                  -  
+ap5/                  -  
+d1/                   -  
+d2/                   -  
+d3/                   -  
+d4/                   -  
+d5/                   -  
+d6/                   -  
+d7/                   -  
+e1/                   -  
+e2/                   -  
+e3/                   -  
+e4/                   -  
+e5/                   -  
+f1/                   -  
+i1/                   -  
+i2/                   -  
+iv1/                  -  
+iv2/                  -  
+lib-4.4.4/            =  
+makeflop          14584  
+n1/                   -  
+n2/                   -  
+n3/                   -  
+n4/                   -  
+ncr1/                 -  
+ncr2/                 -  
+oop1/                 -  
+q1/                   -  
+q2/                   -  
+q3/                   -  
+t1/                   -  
+t10/                  -  
+t2/                   -  
+t3/                   -  
+t4/                   -  
+t5/                   -  
+t6/                   -  
+t7/                   -  
+t8/                   -  
+t9/                   -  
+tcl1/                 -  
+tcl2/                 -  
+u1/                   -  
+x1/                   -  
+x2/                   -  
+x3/                   -  
+x4/                   -  
+x5/                   -  
+x6/                   -  
+x7/                   -  
+x8/                   -  
+x9/                   -  
+xap1/                 -  
+xap2/                 -  
+xap3/                 -  
+xd1/                  -  
+xd2/                  -  
+xd3/                  -  
+xv1/                  -  
+xv2/                  -  
+y1/                   -  
+
+a1:
+00index.txt         416  
+base.tgz         103577  
+devs.tgz          10642  
+diska1             3831  
+etc.tgz           60458  
+hdsetup.tgz      113401  
+idekern.cfg        4716  
+idekern.tgz      322762  
+lilo.tgz          55148  
+maketag            2681  
+scsikern.cfg       4716  
+scsikern.tgz     390406  
+sysvinit.tgz      26346  
+tagfile            1991  
+tagfile.org        1991  
+tagfile.pat         343  
+
+a2:
+00index.txt         234  
+bin.tgz          445553  
+diska2             3264  
+getty.tgz         51798  
+gzip.tgz          38976  
+ldso.tgz          51549  
+ps.tgz            50723  
+shlibs.tgz       133527  
+util.tgz         329269  
+
+a3:
+00index.txt         494  
+bash.tgz         137941  
+comms.tgz         80952  
+cpio.tgz          28432  
+diska3             6863  
+e2fsbn.tgz        54989  
+find.tgz          43743  
+grep.tgz          31169  
+install.end         154  
+keytbls.tgz      137597  
+less.tgz          48214  
+lpr.tgz           53750  
+select.tgz         8855  
+shellutl.tgz      82157  
+syslogd.tgz       23629  
+tar.tgz           59471  
+tcsh.tgz         180029  
+textutl.tgz      129592  
+zoneinfo.tgz      29432  
+
+ap1:
+00index.txt         286  
+diskap1            1776  
+jove.tgz         125981  
+maketag            2425  
+man.tgz          403851  
+tagfile            1948  
+tagfile.org        1948  
+tagfile.pat         392  
+termbin.tgz      177320  
+termnet.tgz       88239  
+termsrc.tgz      183420  
+
+ap2:
+00index.txt         208  
+diff.tgz         102536  
+diskap2            2245  
+ghostscr.tgz     476437  
+gsfonts1.tgz     495019  
+jed.tgz          205781  
+joe.tgz           83904  
+sudo.tgz          14341  
+
+ap3:
+00index.txt         104  
+diskap3             734  
+gsfonts2.tgz    1192529  
+zsh.tgz          215684  
+
+ap4:
+00index.txt         364  
+ash.tgz           51634  
+bc.tgz            35690  
+diskap4            5613  
+ftape.tgz         84623  
+gp9600.tgz         2907  
+groff.tgz        674766  
+manpgs.tgz        59653  
+mt_st.tgz         11643  
+quota.tgz         63972  
+sc.tgz            87319  
+texinfo.tgz       96674  
+vim.tgz          194427  
+workbone.tgz       6971  
+
+ap5:
+00index.txt         156  
+diskap5            1531  
+install.end          17  
+ispell.tgz       661560  
+jpeg.tgz          83650  
+shlbsvga.tgz      49897  
+
+d1:
+00index.txt         234  
+diskd1              568  
+gcc.tgz          564628  
+gxx.tgz          606995  
+maketag            2180  
+tagfile            1904  
+tagfile.org        1904  
+tagfile.pat         268  
+tools.tgz        145086  
+
+d2:
+00index.txt         234  
+byacc.tgz         26261  
+diskd2             1691  
+flex.tgz         126607  
+include.tgz      146862  
+man2.tgz         136004  
+objc.tgz         576206  
+p2c.tgz          282590  
+pmake.tgz         53131  
+
+d3:
+00index.txt         130  
+bison.tgz        102075  
+diskd3              744  
+extralib.tgz     668257  
+gdb.tgz          534448  
+
+d4:
+00index.txt          78  
+diskd4              508  
+kernel.tgz      1319631  
+
+d5:
+00index.txt         156  
+diskd5             1083  
+f2c.tgz          146076  
+libc.tgz         264375  
+ncurses.tgz      367583  
+svgalib.tgz      266790  
+
+d6:
+00index.txt         156  
+diskd6              914  
+libgxx.tgz       296028  
+man3.tgz         155806  
+perl.tgz         509165  
+rcs.tgz          166303  
+
+d7:
+00index.txt         156  
+binutils.tgz     235967  
+clisp.tgz        556312  
+diskd7             1338  
+install.end          35  
+m4.tgz            71140  
+
+e1:
+00index.txt         182  
+diske1              510  
+emacsbin.tgz    1371393  
+maketag            1424  
+tagfile             111  
+tagfile.org         111  
+tagfile.pat         111  
+
+e2:
+00index.txt          78  
+diske2              167  
+emacmisc.tgz     850284  
+
+e3:
+00index.txt          78  
+diske3              280  
+elispc.tgz      1422001  
+
+e4:
+00index.txt          78  
+diske4              159  
+elisp1.tgz      1434459  
+
+e5:
+00index.txt         130  
+diske5              791  
+elisp2.tgz       823569  
+emac_nox.tgz     551677  
+install.end          43  
+
+f1:
+00index.txt         208  
+diskf1              487  
+install.end          36  
+maketag             691  
+manyfaqs.tgz    1340098  
+tagfile            1676  
+tagfile.org        1676  
+tagfile.pat        1676  
+
+i1:
+00index.txt         156  
+diski1              704  
+info1.tgz       1160641  
+maketag             844  
+tagfile              22  
+tagfile.org          22  
+
+i2:
+00index.txt         104  
+diski2              188  
+info2.tgz       1191696  
+install.end          13  
+
+iv1:
+00index.txt         208  
+diskiv1             612  
+iv_bin.tgz       554953  
+libiv_so.tgz     420947  
+maketag             996  
+tagfile              53  
+tagfile.org          53  
+tagfile.pat          53  
+
+iv2:
+00index.txt         130  
+diskiv2             553  
+install.end          16  
+iv_docs.tgz      381670  
+libiv_sa.tgz     443079  
+
+lib-4.4.4:
+00index.txt         697  
+README-4.4.4       1944  
+zdn1/                 -  
+zdn2/                 -  
+zzx1/                 -  
+
+lib-4.4.4/zdn1:
+00index.txt         156  
+a_remove.tgz       1687  
+diskzdn1            559  
+gcc.tgz          533650  
+gxx.tgz          787367  
+tagfile             102  
+
+lib-4.4.4/zdn2:
+00index.txt         234  
+binutils.tgz     138037  
+diskzdn2           1318  
+gmake.tgz         45066  
+include.tgz      134119  
+install.end           0  
+ldso.tgz           5833  
+libc.tgz         368206  
+shlibs.tgz       136632  
+
+lib-4.4.4/zzx1:
+00index.txt         156  
+diskzzx1            300  
+extralib.tgz     785342  
+install.end           4  
+objc.tgz         513683  
+tagfile              24  
+
+n1:
+00index.txt         234  
+diskn1             1274  
+elm.tgz          238527  
+maketag            1876  
+netcfg.tgz         5948  
+tagfile            1842  
+tagfile.org        1842  
+tagfile.pat         211  
+tcpip.tgz        981934  
+
+n2:
+00index.txt         260  
+deliver.tgz       37494  
+dip.tgz           30660  
+diskn2             3250  
+mailx.tgz         41062  
+pine.tgz         386051  
+ppp.tgz           94412  
+sendmail.tgz     258341  
+smailcfg.tgz      56548  
+uucp.tgz         409106  
+
+n3:
+00index.txt         182  
+cnews.tgz        259756  
+diskn3             1829  
+inn.tgz          557581  
+tin.tgz          138657  
+trn-nntp.tgz     157344  
+trn.tgz          153889  
+
+n4:
+00index.txt         130  
+diskn4              782  
+install.end          40  
+nn-nntp.tgz      423471  
+nn-spool.tgz     438440  
+
+ncr1:
+00index.txt         130  
+diskncr1            314  
+maketag            1001  
+ncr_krn3.tgz    1355565  
+tagfile              42  
+
+ncr2:
+00index.txt         156  
+diskncr2            623  
+install.end          17  
+ncr_inc3.tgz     152994  
+ncrkern3.log       4740  
+ncrkern3.tgz     392698  
+
+oop1:
+00index.txt         234  
+diskoop1            395  
+install.end          33  
+maketag             859  
+smaltalk.tgz     251323  
+stix.tgz         112367  
+tagfile             120  
+tagfile.org          96  
+tagfile.pat         120  
+
+q1:
+00index.txt         182  
+diskq1             1142  
+ifs.tgz           25536  
+maketag            1699  
+tagfile             124  
+tagfile.pat         124  
+v1_1_18.tgz     1301865  
+
+q2:
+00index.txt         260  
+diskq2             2411  
+ftape18.tgz       53102  
+i1_1_18.tgz      156345  
+idekern.cfg        5662  
+idekern.tgz      320859  
+mitsumi.cfg        5662  
+mitsumi.tgz      403101  
+scsikern.cfg       5662  
+scsikern.tgz     402871  
+
+q3:
+00index.txt         234  
+cdu31a.cfg         5662  
+cdu31a.tgz       394742  
+diskq3             1668  
+install.end          24  
+sbpcd.cfg          5662  
+sbpcd.tgz        412165  
+sony535.cfg        5662  
+sony535.tgz      403067  
+
+t1:
+diskt1             1199  
+maketag            7605  
+ntb-mf.tgz       460239  
+ntb-tex.tgz      208975  
+ntex.lsm           1593  
+ntf-cms.tgz      405659  
+readme             1819  
+tagfile            1258  
+
+t10:
+00index.txt        1300  
+diskt10            8963  
+install.end         167  
+ntb-b2d.tgz        4208  
+ntf-astr.tgz      11610  
+ntf-bard.tgz       3784  
+ntf-call.tgz      65411  
+ntf-cher.tgz       4668  
+ntf-cmas.tgz       9594  
+ntf-cmb.tgz        5002  
+ntf-cmoe.tgz       9353  
+ntf-cmpc.tgz       6771  
+ntf-cmts.tgz       3840  
+ntf-conc.tgz      23341  
+ntf-cypr.tgz       2782  
+ntf-ding.tgz       9705  
+ntf-duer.tgz      17480  
+ntf-elvi.tgz      14505  
+ntf-engw.tgz       6448  
+ntf-futh.tgz       4270  
+ntf-geor.tgz      14709  
+ntf-go.tgz        18693  
+ntf-goth.tgz     214056  
+ntf-hand.tgz       2490  
+ntf-hge.tgz        8528  
+ntf-kart.tgz      38089  
+ntf-klin.tgz      21263  
+ntf-la.tgz        21638  
+ntf-logi.tgz       2131  
+ntf-logo.tgz       3318  
+ntf-ocm.tgz       18536  
+ntf-ocra.tgz      15687  
+ntf-ogha.tgz       1600  
+ntf-okud.tgz       7853  
+ntf-osma.tgz       1849  
+ntf-punk.tgz       6498  
+ntf-recy.tgz       2834  
+ntf-rsfs.tgz      10746  
+ntf-rune.tgz       5538  
+ntf-stma.tgz      24279  
+ntf-teng.tgz       9460  
+ntf-thai.tgz      26574  
+ntf-twca.tgz      29228  
+ntf-ugar.tgz       1869  
+ntf-wasy.tgz      32335  
+ntf-wsui.tgz      71822  
+ntm-deva.tgz      51672  
+ntm-germ.tgz      17627  
+ntm-plft.tgz     184760  
+ntm-tami.tgz      32929  
+ntm-viet.tgz      46906  
+
+t2:
+diskt2             1163  
+gentle.tgz        59983  
+ntb-gsfp.tgz      37063  
+ntf-cml.tgz       12957  
+ntm-ltx1.tgz     980170  
+ntm-tex.tgz      253326  
+
+t3:
+diskt3             1945  
+ntb-dps.tgz      232346  
+ntb-indx.tgz     101171  
+ntb-utl1.tgz      80409  
+ntb-utl2.tgz      75424  
+ntb-xdvi.tgz      53820  
+
+t4:
+diskt4             1132  
+ntb-bibt.tgz     487678  
+ntb-dlj.tgz      582558  
+ntb-utl3.tgz      75543  
+ntf-cmu.tgz       39397  
+
+t5:
+diskt5             1225  
+ntf-pand.tgz      64372  
+ntm-amst.tgz     318337  
+ntm-etex.tgz     334169  
+ntm-ltx3.tgz     397538  
+ntm-ltx4.tgz     149514  
+
+t6:
+diskt6             2377  
+ntb-djc.tgz       13793  
+ntb-traf.tgz      64002  
+ntb-xfig.tgz     250716  
+ntf-ams.tgz      367353  
+ntf-bl.tgz        24039  
+ntf-dc.tgz       278965  
+ntf-phon.tgz      37749  
+ntf-xcmr.tgz       1849  
+
+t7:
+diskt7              662  
+ntb-html.tgz     142838  
+ntf-ps.tgz      1261409  
+
+t8:
+diskt8              697  
+ntm-hier.tgz     561426  
+ntm-ltx2.tgz     536752  
+ntm-turk.tgz     165561  
+
+t9:
+diskt9             1964  
+ntb-kpat.tgz     100875  
+ntf-bbm.tgz       46365  
+ntf-cmca.tgz      32977  
+ntf-cmcy.tgz      34226  
+ntf-fc.tgz       169653  
+ntm-arab.tgz     124739  
+ntm-gree.tgz     178816  
+ntm-hebr.tgz     366345  
+ntm-pict.tgz      89107  
+
+tcl1:
+00index.txt         208  
+disktcl1            548  
+maketag            1072  
+tagfile            1868  
+tagfile.org        1868  
+tagfile.pat        1868  
+tcl.tgz          372606  
+tk.tgz           730119  
+
+tcl2:
+00index.txt         156  
+blt.tgz          470980  
+disktcl2           1418  
+install.end          13  
+itcl.tgz         127222  
+tclx.tgz         481171  
+
+u1:
+00index.txt         208  
+disku1              914  
+install.end          16  
+loadlin.tgz      117009  
+maketag            1077  
+tagfile              39  
+umsfix.tgz         3674  
+umsprogs.tgz      34835  
+
+x1:
+00index.txt         260  
+diskx1             1388  
+maketag            2328  
+tagfile            2811  
+tagfile.org        2811  
+tagfile.pat        1852  
+x_8514.tgz       381058  
+x_mach32.tgz     396207  
+x_mach8.tgz      386021  
+xf_doc.tgz       148321  
+
+x2:
+00index.txt         130  
+diskx2             1128  
+x_mono.tgz       426410  
+x_s3.tgz         423552  
+x_svga.tgz       412958  
+
+x3:
+00index.txt         156  
+config86.tgz     158318  
+diskx3             1176  
+x_vga16.tgz      360053  
+xf_lib.tgz       533532  
+xman1.tgz        278794  
+
+x4:
+00index.txt         104  
+diskx4              383  
+xf_bin.tgz       843284  
+xfnt.tgz         487684  
+
+x5:
+00index.txt          78  
+diskx5              253  
+xfnt75.tgz      1372091  
+
+x6:
+00index.txt         156  
+diskx6             1253  
+fnt100_1.tgz    1226605  
+fvwmicns.tgz      12684  
+xconfig.tgz       25871  
+xlock.tgz         55432  
+
+x7:
+00index.txt         130  
+diskx7              527  
+fnt100_2.tgz     447040  
+fntbig1.tgz      580645  
+speedo.tgz       366630  
+
+x8:
+00index.txt         104  
+diskx8              361  
+fntbig2.tgz     1183879  
+xinclude.tgz     175153  
+
+x9:
+00index.txt         130  
+diskx9              473  
+install.end          27  
+xf_cfg.tgz       188283  
+xpm.tgz          118865  
+
+xap1:
+00index.txt         364  
+diskxap1           2569  
+gnuplot.tgz      256227  
+gs_x11.tgz       187552  
+libgr.tgz        375955  
+maketag            1841  
+seyon.tgz        120974  
+tagfile             292  
+tagfile.org         292  
+tagfile.pat         213  
+vgaset.tgz        14826  
+workman.tgz       53628  
+xfileman.tgz      62911  
+xv.tgz           213423  
+
+xap2:
+00index.txt         260  
+diskxap2           2905  
+gchess.tgz       521533  
+ghstview.tgz      55530  
+x3270.tgz        109141  
+xfm.tgz           70165  
+xgames.tgz       156302  
+xgrabsc.tgz       35592  
+xspread.tgz      205958  
+xxgdb.tgz         36799  
+
+xap3:
+00index.txt         130  
+diskxap3           1428  
+install.end          33  
+xfract.tgz       407038  
+xpaint.tgz       131625  
+
+xd1:
+00index.txt         208  
+diskxd1             825  
+maketag            1149  
+pex5inc.tgz       64994  
+tagfile              74  
+tagfile.org          74  
+xf_kit.tgz       854690  
+xman3.tgz        381537  
+
+xd2:
+00index.txt         104  
+diskxd2             524  
+xf_pex.tgz       942361  
+xstatic.tgz      461956  
+
+xd3:
+00index.txt         104  
+diskxd3             558  
+install.end          10  
+xf_kit2.tgz      745260  
+
+xv1:
+00index.txt         234  
+diskxv1             556  
+maketag            1285  
+tagfile             586  
+tagfile.org         586  
+tagfile.pat          90  
+xv32_sa.tgz      125719  
+xv32_so.tgz      854448  
+xvol32.tgz       451220  
+
+xv2:
+00index.txt         182  
+diskxv2             861  
+install.end           9  
+xv32_a.tgz       840285  
+xv32exmp.tgz     228700  
+xvinc32.tgz      341538  
+xvmenus.tgz        5522  
+
+y1:
+00index.txt         260  
+bsdgames.tgz    1106042  
+disky1             1257  
+install.end          23  
+maketag             918  
+sastroid.tgz      93385  
+tagfile            1708  
+tagfile.org        1708  
+tagfile.pat        1708  
+tetris.tgz         8790  

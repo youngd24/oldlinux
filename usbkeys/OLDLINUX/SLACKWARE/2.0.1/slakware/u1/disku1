@@ -1,0 +1,34 @@
+CONTENTS: umsfix umsprogs loadlin 
+umsfix:    Fixes for some of the problems introduced by using UMSDOS as the
+umsfix:    root filesystem. Makes the root partition mount read-write.
+umsfix:
+umsfix:    DO NOT INSTALL THIS unless you are using UMSDOS for your root
+umsfix:    partition!
+umsfix:
+umsfix:
+umsfix:
+umsfix:
+umsfix:
+umsfix:
+umsprogs: umsdos_progs 0.3a
+umsprogs: 
+umsprogs: Various utilities needed by Jacques Gelinas' UMSDOS filesystem.
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+loadlin:  LOADLIN v1.4
+loadlin:
+loadlin:  LOADLIN.EXE, a loader (running under DOS) for LINUX kernel images
+loadlin:  fully supporting the kernel's command line feature.  LOADLIN or
+loadlin:  BOOTLIN is the safest way to boot Linux (>0.99.14) from your hard
+loadlin:  disk. LOADLIN is (C) 1994 Hans Lermen (lermen@elserv.ffm.fgan.de) 
+loadlin:
+loadlin:
+loadlin:
+loadlin:
+loadlin:

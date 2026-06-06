@@ -1,0 +1,7 @@
+00index.txt         162  
+ftape-0.9.10.tar.gz
+                  59663  
+ftape-0.9.9d.tar.gz
+                  56312  
+ftape-1.12.tar.gz
+                  65806  

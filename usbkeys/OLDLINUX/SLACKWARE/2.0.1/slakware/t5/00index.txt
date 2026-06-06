@@ -1,0 +1,5 @@
+00index.txt         130  
+diskt5              238  
+install.end           4  
+texams.tgz       397715  
+texfont.tgz      795579  

@@ -1,0 +1,36 @@
+--- Makefile
++++ Makefile	1994/02/22 14:48:11
+@@ -0,0 +1,15 @@
++CFLAGS = -O2 -fomit-frame-pointer -m486 \
++		-include /usr/include/bsd/bsd.h -I/usr/include/bsd \
++		-Dosockaddr=sockaddr
++LDFLAGS = -s -v
++LDLIBS = -lbsd
++
++talkd: talkd.o announce.o process.o table.o print.o
++
++install: talkd
++	install -m744 talkd /usr/sbin/in.talkd
++	install -m644 talkd.8 /usr/man/man8
++
++clean:
++	rm -f *.o talkd
++
+--- table.c
++++ table.c	1994/02/22 14:45:54
+@@ -74,6 +74,7 @@
+ TABLE_ENTRY *table = NIL;
+ CTL_MSG *find_request();
+ CTL_MSG *find_match();
++static void delete();
+ 
+ /*
+  * Look in the table for an invitation that matches the current
+@@ -218,6 +219,7 @@
+ /*
+  * Classic delete from a double-linked list
+  */
++static void
+ delete(ptr)
+ 	register TABLE_ENTRY *ptr;
+ {

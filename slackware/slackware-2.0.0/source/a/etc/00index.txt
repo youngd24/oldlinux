@@ -1,0 +1,8 @@
+00index.txt         161  
+adduser_slackware.tar.gz
+                   5548  
+old/                  -  
+
+old:
+00index.txt          52  
+passwd.tar.gz    174288  

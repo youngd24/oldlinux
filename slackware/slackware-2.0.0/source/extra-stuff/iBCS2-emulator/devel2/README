@@ -1,0 +1,62 @@
+To: linux-activists@Niksula.hut.fi
+X-Mn-Key: IBSC2
+
+Repository: tsx-11.mit.edu:/pub/linux/ALPHA/ibcs2/private/.devel
+File:       coff-XXXXXX.tar.gz
+
+$Id: README,v 1.8 1994/02/10 05:22:57 drew Exp $
+$Source: /g/linux/ibcs/src/RCS/README,v $
+
+-- Drew Sullivan <drew@lethe.north.net>
+===========================================================================
+# Thr Feb 10, 1994 -- Drew Sullivan <Drew@lethe.north.net> (R1.8)
+Make Jagdis does to error code, as he did to system calls.
+(see ibcs/Doc/errors.notes)
+
+===========================================================================
+# Tue Feb 8, 1994 -- Drew Sullivan <Drew@lethe.north.net> (R1.7)
+More Wyse code including ioctls
+
+===========================================================================
+# Tue Feb 8, 1994 -- Drew Sullivan <Drew@lethe.north.net> (R1.6)
+
+Hugh change for support of the Wyse version of unix and
+mulitple elf/coff personalities.
+**** IF this version works, I want to send the kernel patches to Linus ***
+Code to do single function tracing has been added to emulate.c
+But no support for it in trace.c is there yet.
+Mmap support
+Bug fixes as usual.
+===========================================================================
+# Tue Feb 5, 1994 -- Drew Sullivan <Drew@lethe.north.net> (R1.5)
+
+New document HOWTO -- you should read this
+Replacement for fs/binfmt_coff.c
+Patches for fs/binfmt_elf.c
+(Both can be applied via a new script Tools/apply-patches to
+a new kernel)
+Added sysi86, sysfs, xstat, the start of splitting SCO vs
+ SysVr4 code (See ibcs.h)
+Bug fixes for signal handling
+When built against .99pl15, the perl test set fail with seg faults.
+Some tests work ok, but others are seg faulting.
+===========================================================================
+# Tue Feb 1, 1994 -- Drew Sullivan <Drew@lethe.north.net> (R1.4)
+
+Fixed merging where I lost iABI_errors (needed by new signal.c)
+Fixed merging where I lost ibcs_kill (Now uses new signal mapping)
+Added Al's 2nd little patch to the loader
+Minor fixes to the attribution list in ToDo
+
+*** Ted (tytso@tsx-11.mit.edu) Has given me access to the development
+directory so that files I upload will be available immediately
+===========================================================================
+# Mon Jan 31, 1994 -- Drew Sullivan <Drew@lethe.north.net> (R1.3)
+
+Merged Eric Yongdales sysVr4 systems calls.
+Merged Al Longyear's signal handling.
+===========================================================================
+# Sun Jan 30, 1994 -- Drew Sullivan <Drew@lethe.north.net> (R1.2)
+
+Merged Joe Portman's code with mine.
+Placed everything under revision control.

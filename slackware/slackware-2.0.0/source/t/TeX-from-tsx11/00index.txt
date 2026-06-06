@@ -1,0 +1,25 @@
+00index.txt         638  
+Components-of-TeX.dvi
+                  33636  
+GETTING.BUILDING-TeX
+                   8669  
+MakeTeXPK          1573  
+TeX-files-at-pip.shsu.edu.gz
+                 243494  
+Xdvisrc.taz      160970  
+auctex-7_3t.tz   255396  
+cm-mfsrc.tz      122355  
+cweb.tz          123328  
+diagramf.tz       25881  
+dot.emacs          7893  
+dvi2xx.051a8.tar.gz
+                  94221  
+dvidjp.tar.gz     58717  
+fig2mf.tz         22905  
+layout.tar.gz      3933  
+llogo.gif         12260  
+mfpic02.t.gz      29448  
+modes.mf.gz       16029  
+pstfm.t.gz        47165  
+texicons.tz        4460  
+texindex.c.gz     11769  

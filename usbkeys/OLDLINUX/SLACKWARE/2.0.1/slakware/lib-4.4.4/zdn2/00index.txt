@@ -1,0 +1,9 @@
+00index.txt         234  
+binutils.tgz     138037  
+diskzdn2           1318  
+gmake.tgz         45066  
+include.tgz      134119  
+install.end           0  
+ldso.tgz           5833  
+libc.tgz         368206  
+shlibs.tgz       136632  

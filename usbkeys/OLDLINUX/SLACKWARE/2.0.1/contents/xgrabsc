@@ -1,0 +1,31 @@
+PACKAGE NAME:     xgrabsc
+PACKAGE SIZE:     34 K
+PACKAGE LOCATION: diskxap2
+PACKAGE DESCRIPTION:
+xgrabsc:  Xgrabsc and Xgrab 2.3
+xgrabsc:
+xgrabsc:  Bruce Schuchardt's screen grabber programs for X. Allow you to 
+xgrabsc:  capture X images to a variety of image formats (x-bitmap, x-pixmap,
+xgrabsc:  xwd, puzzle, "simple", and several Postscript formats).
+xgrabsc:
+xgrabsc:  Xgrabsc uses a command-line interface. An interactive X11 interface to
+xgrabsc:  xgrabsc, called xgrab, is also included.
+xgrabsc:
+FILE LIST:
+./
+usr/
+usr/X11/
+usr/X11/bin/
+usr/X11/bin/xgrab
+usr/X11/bin/xgrabsc
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/xgrab.1.gz
+usr/man/preformat/cat1/xgrabsc.1.gz
+var/
+var/X11/
+var/X11/lib/
+var/X11/lib/X11/
+var/X11/lib/X11/app-defaults/
+var/X11/lib/X11/app-defaults/XGrab

@@ -1,0 +1,17 @@
+#!/bin/sh
+( cd usr/X11/lib ; rm -rf scores )
+( cd usr/X11/lib ; ln -sf /var/X11/lib/scores scores )
+( cd var/X11/lib/scores ; rm -rf xbombscores )
+( cd var/X11/lib/scores ; ln -sf xbombs/xbombscores xbombscores )
+cd usr/X11/lib/fonts/misc
+if [ -r /usr/X11/bin/mkfontdir ]; then
+#  echo "Running mkfontdir..."
+  /usr/X11/bin/mkfontdir
+elif [ -r /mnt/usr/X11/bin/mkfontdir ]; then
+#  echo "Running mkfontdir..."
+  /mnt/usr/X11/bin/mkfontdir
+else
+  dialog --title "WARNING" --infobox "mkfontdir could not be found at \
+this time. You'll have to run it yourself in /usr/X11/lib/fonts/misc \
+for the xhextris and xmahjongg fonts to be properly recognized." 5 63
+fi

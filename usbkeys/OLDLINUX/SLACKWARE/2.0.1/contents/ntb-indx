@@ -1,0 +1,54 @@
+PACKAGE NAME:     ntb-indx
+PACKAGE SIZE:     153 K
+PACKAGE LOCATION: diskt3
+PACKAGE DESCRIPTION:
+ntb-indx: ntb-indx 1.1
+ntb-indx:
+ntb-indx: This package contains the binaries for the programs makeindex, glotex
+ntb-indx: and idxtex to create indexes in TeX/LaTeX files and some macros for
+ntb-indx: using these programs.
+ntb-indx:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/glotex
+usr/bin/idxtex
+usr/bin/makeindex
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/makeindex.1.gz
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/makeindex/
+usr/lib/texmf/makeindex/gglo.ist
+usr/lib/texmf/makeindex/gind.ist
+usr/lib/texmf/makeindex/paper/
+usr/lib/texmf/makeindex/paper/Makefile
+usr/lib/texmf/makeindex/paper/README
+usr/lib/texmf/makeindex/paper/fig1.ps
+usr/lib/texmf/makeindex/paper/fig1.tex
+usr/lib/texmf/makeindex/paper/ind.bbl
+usr/lib/texmf/makeindex/paper/ind.tex
+usr/lib/texmf/makeindex/paper/indminus.tex
+usr/lib/texmf/makeindex/paper/indplus.tex
+usr/lib/texmf/makeindex/paper/logo.tex
+usr/lib/texmf/makeindex/paper/regmar.sty
+usr/lib/texmf/makeindex/paper/undhead.sty
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/indexing/
+usr/lib/texmf/tex/indexing/crlext.sty
+usr/lib/texmf/tex/indexing/glo+idx.tex
+usr/lib/texmf/tex/indexing/glo_idx.sty
+usr/lib/texmf/tex/indexing/glotex.glo
+usr/lib/texmf/tex/indexing/glotex.idx
+usr/lib/texmf/tex/indexing/glotex.tex
+usr/lib/texmf/tex/indexing/idxmac-amstex.tex
+usr/lib/texmf/tex/indexing/idxmac.tex
+usr/lib/texmf/tex/indexing/idxtex.tex
+usr/lib/texmf/tex/indexing/makeidx.doc
+usr/lib/texmf/tex/indexing/makeidx.sty
+usr/lib/texmf/tex/indexing/pam11.sty
+usr/lib/texmf/tex/indexing/pamphlet.sty
+usr/lib/texmf/tex/indexing/showidx.sty

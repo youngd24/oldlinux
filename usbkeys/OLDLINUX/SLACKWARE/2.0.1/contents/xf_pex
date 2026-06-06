@@ -1,0 +1,50 @@
+PACKAGE NAME:     xf_pex
+PACKAGE SIZE:     920 K
+PACKAGE LOCATION: diskxd2
+PACKAGE DESCRIPTION:
+xf_pex:   XFree86 2.1.1 PEX distribution
+xf_pex:
+xf_pex:   If you would like to use and build PEX programs you will need this
+xf_pex:   package in addition to a server that supports PEX.  The distributed
+xf_pex:   servers do *not* include PEX support by default - you will have to 
+xf_pex:   build one using the link kit.
+xf_pex:
+FILE LIST:
+./
+usr/
+usr/X11/
+usr/X11/bin/
+usr/X11/bin/auto_box
+usr/X11/bin/beach_ball
+usr/X11/bin/plbpex
+usr/X11/include/
+usr/X11/include/X11/
+usr/X11/include/X11/extensions/
+usr/X11/include/X11/extensions/PEX.h
+usr/X11/include/X11/extensions/PEXproto.h
+usr/X11/include/X11/extensions/PEXErr.h
+usr/X11/include/X11/extensions/PEXprotost.h
+usr/X11/lib/
+usr/X11/lib/libphigs.a
+usr/X11/lib/libPEX5.a
+usr/X11/lib/libPEX5.sa
+usr/X11/lib/libPEX5.so.1.1.0
+usr/X11/lib/fonts/
+usr/X11/lib/fonts/PEX/
+usr/X11/lib/fonts/PEX/Roman.phont
+usr/X11/lib/fonts/PEX/Roman_M.phont
+usr/X11/man/
+usr/X11/man/man1/
+usr/X11/man/man1/auto_box.1x
+usr/X11/man/man1/beach_ball.1x
+usr/X11/man/man1/plbpex.1x
+install/
+install/doinst.sh
+var/
+var/X11/
+var/X11/lib/
+var/X11/lib/X11/
+var/X11/lib/X11/PEX/
+var/X11/lib/X11/PEX/phigsmon
+var/X11/lib/X11/PEX/PHIGSerr.txt
+var/X11/lib/X11/PEX/PHIGSfnc.txt

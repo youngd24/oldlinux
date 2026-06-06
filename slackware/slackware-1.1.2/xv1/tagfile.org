@@ -1,0 +1,15 @@
+# tagfile for XView (OpenLook) series
+xvol32:   Xview 3.2. Configuration files, programs, and docs for OPENLOOK
+xvol32:   ADD
+xv32_so:  Shared libraries for Xview 3.2. 
+xv32_so:  ADD
+xv32_sa:  Libraries for developing Xview applications which use the shared
+xv32_sa:  OPT
+xv32_a:   Static libraries for developing Xview applications. (v. 3.2)
+xv32_a:   OPT
+xv32exmp: Sample programs for Xview which demonstrate the Slingshot and UIT
+xv32exmp: OPT
+xvinc32:  Include files for Xview programming.
+xvinc32:  OPT
+xvmenus:  Menus and help files for the OpenLook Window Manager.
+xvmenus:  ADD

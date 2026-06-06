@@ -1,0 +1,27 @@
+PACKAGE NAME:     ntb-traf
+PACKAGE SIZE:     123 K
+PACKAGE LOCATION: diskt6
+PACKAGE DESCRIPTION:
+ntb-traf: ntb-traf 1.1
+ntb-traf:
+ntb-traf: This package contains the binaries to transform .fig files (created by
+ntb-traf: xfig) to some other formats like epsf and LaTeX. If you have installed
+ntb-traf: xfig you should also install this package if you want to use xfig to
+ntb-traf: create other files than .fig files, which can then be included in your
+ntb-traf: LaTeX documents.
+ntb-traf:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/fig2dev
+usr/bin/fig2ps2tex
+usr/bin/transfig
+usr/bin/pic2tpic
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/pic2tpic.1.gz
+usr/man/preformat/cat1/fig2dev.1.gz
+usr/man/preformat/cat1/fig2ps2tex.1.gz
+usr/man/preformat/cat1/transfig.1.gz

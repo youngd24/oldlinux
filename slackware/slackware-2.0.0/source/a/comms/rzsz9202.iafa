@@ -1,0 +1,12 @@
+Package-Name:   rzsz9202.tar-z + rzsz9202.dff.Z
+Title:          XYZmodem package
+Version:        3.18
+Description:    XYZmodem sources for Linux
+                You have to patch rzsz9202.tar-z with rzsz9202.dff.Z
+                Ready to compile with gcc 2.2.2, tested under Linux v0.97-pl1 
+Author:         Chuck Forsberg, Omen Technology INC
+Maintained-by:  Everyone :)  (this version: F.Mueller (fabi@imp.ch)
+Maintained-at:  tsx-11.mit.edu, reggae.oit.unc.edu (Linux)
+Platforms:      Un*x (Linux), DOS, OS/2, VMS, ..?
+Copying-policy: Copyright 1991 Omen Technology INC All Rights Reserved
+Keywords:       xmodem ymodem zmodem minicom modem file-transfer linux

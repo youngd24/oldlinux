@@ -1,0 +1,70 @@
+00index.txt        1314  
+INDEX               289  
+Obsolete/             =  
+popclient/            -  
+ruptime/              -  
+rwho/                 -  
+skey/                 -  
+tn3270/               -  
+ytalk/                -  
+
+Obsolete:
+00index.txt         506  
+finger.obsolete/      -  
+ftp.obsolete/         -  
+rlogin.obsolete/      -  
+rsh.obsolete/         -  
+talk.obsolete/        -  
+telnet.obsolete/      -  
+tftp.obsolete/        -  
+
+Obsolete/finger.obsolete:
+00index.txt          26  
+
+Obsolete/ftp.obsolete:
+00index.txt          26  
+
+Obsolete/rlogin.obsolete:
+00index.txt          26  
+
+Obsolete/rsh.obsolete:
+00index.txt          26  
+
+Obsolete/talk.obsolete:
+00index.txt          26  
+
+Obsolete/telnet.obsolete:
+00index.txt          26  
+
+Obsolete/tftp.obsolete:
+00index.txt          26  
+
+popclient:
+00index.txt          75  
+pop3-miniclient.tar.gz
+                   4602  
+
+ruptime:
+00index.txt          97  
+ruptime-570.tar.gz
+                   4064  
+ruptime-patch.tar  8192  
+
+rwho:
+00index.txt          52  
+rwho-550.tar.gz    3735  
+
+skey:
+00index.txt         101  
+diffs              2493  
+skey-linux-1.1b.tar.gz
+                  75054  
+
+tn3270:
+00index.txt          70  
+tn3270-500.tar.gz
+                 116474  
+
+ytalk:
+00index.txt          52  
+ytalk.tar.gz     177400  

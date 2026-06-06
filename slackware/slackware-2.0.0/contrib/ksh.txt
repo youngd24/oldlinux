@@ -1,0 +1,2 @@
+ksh:      pdksh 4.8
+ksh:      A public domain version of the Korn Shell with man-pages.

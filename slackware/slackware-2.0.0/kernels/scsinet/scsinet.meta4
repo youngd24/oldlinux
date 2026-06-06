@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.0/kernels/scsinet/scsinet.meta4</origin>
+  <published>2026-06-01T16:53:39Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="scsinet">
+    <size>354820</size>
+
+    <!-- <mtime>774834323</mtime> -->
+
+    <!-- internal id: 1610492 -->
+    <hash type="md5">34f15537c2b7e440c9157ea05e65caba</hash>
+    <hash type="sha-1">bdac57d8db06e51d373b30c336e1d5121ff21fac</hash>
+    <hash type="sha-256">91aeeb677e550c6d31e6654bed422da2cc6c107ff4ccf444b1ed5c1dff6faa97</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>5a34f83c3c8b1ad27b0c9d1a73a33e33df9d59d0</hash>
+      <hash>cb5ee869f7e9ff3ce3074683567a6609313240dc</hash>
+    </pieces>
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="ec" priority="2">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="br" priority="3">https://ftp.slackware-brasil.com.br/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="br" priority="4">https://mirrors.slackware.beco.cc/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="br" priority="5">https://linorg.usp.br/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="gb" priority="6">http://slackware.uk/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="gb" priority="7">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="nl" priority="8">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="fr" priority="9">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="nl" priority="10">https://mirror.koddos.net/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="nl" priority="11">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="de" priority="12">https://linux.rz.rub.de/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="ro" priority="13">http://mirrors.nav.ro/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="de" priority="14">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="dk" priority="15">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="hr" priority="16">http://mirror.slackware.hr/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="it" priority="17">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="se" priority="18">https://mirror.bahnhof.net/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="rs" priority="19">https://mirror1.sox.rs/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="pl" priority="20">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="ro" priority="21">https://mirrors.nxthost.com/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="ua" priority="22">http://slackware.ip-connect.info/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="ua" priority="23">https://ifconfig.com.ua/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="ru" priority="24">http://mirror.mephi.ru/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="ru" priority="25">https://mirror.yandex.ru/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="za" priority="26">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="sa" priority="27">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+    <url location="hk" priority="28">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/kernels/scsinet/scsinet</url>
+  </file>
+</metalink>

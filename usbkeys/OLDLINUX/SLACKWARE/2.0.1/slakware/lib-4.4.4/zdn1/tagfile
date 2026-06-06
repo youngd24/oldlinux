@@ -1,0 +1,9 @@
+a_remove: ADD
+gcc: ADD
+gxx: ADD
+binutils: ADD
+gmake: ADD
+libc: ADD
+include: ADD
+ldso: ADD
+shlibs: ADD

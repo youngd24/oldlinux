@@ -1,0 +1,24 @@
+PACKAGE NAME:     x_vga16
+PACKAGE SIZE:     351 K
+PACKAGE LOCATION: diskx3
+PACKAGE DESCRIPTION:
+x_vga16:  A server for 16 colour EGA/VGA graphics modes.
+x_vga16:
+x_vga16:  This is the last in a long list of servers for XFree86 2.1.1. In most 
+x_vga16:  cases you should only install the X server designed to work with your
+x_vga16:  video hardware. 
+x_vga16:
+x_vga16:  Installing this package will create a link in /usr/X11/bin from
+x_vga16:  XF86_VGA16 to X, setting this server as the default.
+x_vga16:
+FILE LIST:
+./
+usr/
+usr/X11/
+usr/X11/bin/
+usr/X11/bin/XF86_VGA16
+install/
+install/doinst.sh
+var/
+var/X11/
+var/X11/bin/

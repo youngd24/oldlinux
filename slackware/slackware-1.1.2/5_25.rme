@@ -1,0 +1,33 @@
+Instructions for installing Slackware on machines with a 5.25" boot drive
+and a 3.5" second floppy drive.
+---------------
+
+5.25" boot drives have been well supported since version 1.1.1.  It is possible
+to install on a machine that has only a 5.25" drive. Note however, that this
+doesn't mean it will be as easy as installing from 3.5", but if you install off
+of your hard drive it may actually be easier.
+
+The first 3 disks of Slackware Linux, the A disks, should all fit within
+1.2M. To install them, you'll need a boot kernel, and a rootdisk. These can
+be found under bootdisk/1_2meg. Read the README file in the bootdisk 
+directory, it gives more information about the new bootdisks.
+
+To make the boot kernel disk, copy the boot kernel of your choice to a floppy
+using dd or RAWWRITE.EXE.
+
+To make the root disk, write color12 or tty12 to a floppy in the same way.
+
+Use the boot kernel disk to boot the rootdisk (color12 or tty12), and install
+from there. This will load the ramdisk. Once you have the "darkstar:" prompt
+you may remove the disk from your machine and continue with the installation.
+
+Once you've got the base system installed, you can install the rest of the
+disks by downloaded them on to your harddrive and installing them from there.
+Disk series other than A won't wit onto 1.2M disks.
+
+I sincerely hope this helps!
+
+---
+Patrick Volkerding
+volkerdi@ftp.cdrom.com
+volkerdi@mhd1.moorhead.msus.edu

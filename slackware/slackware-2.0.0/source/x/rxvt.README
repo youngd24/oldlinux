@@ -1,0 +1,23 @@
+Rxvt release 1.92 has been uploaded to sunsite.unc.edu, file 
+/pub/Linux/Incoming/rxvt-1.92-source.tar.z 
+
+Rxvt is an xterm replacement which uses a little less memory, and is 
+suitable for use on machines with small memories. Tek4010 support
+is removed.
+
+Rclock is also included. This is a simple clock/appointment reminder/
+mail checker.
+
+Modifications were made by Rob Nation (nation@rocket.sanders.lockheed.com) 
+to make it a little more compact, and to add and remove certain features.
+
+Here's what's new since the last release (1.90):
+	1. Assorted minor patches.
+	2. Support for greek-keyboards is included.
+	   Greek-keyboard support requires the extra package
+	   greek-xfont-pack.tgz
+
+Rob Nation
+(nation@rocket.sanders.lockheed.com)
+
+

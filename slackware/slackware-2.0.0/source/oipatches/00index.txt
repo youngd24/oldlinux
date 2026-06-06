@@ -1,0 +1,38 @@
+00index.txt         848  
+OI-4.0-gcc-2.5.patches.tar.gz
+                   2049  
+OI-4.0.diff         762  
+README.OI-4.0.patch
+                    552  
+__old_shared.o     2633  
+__old_static.o     2429  
+cpp-2.5.8.tar.gz  33263  
+oi1/                  -  
+oi2/                  -  
+oi3/                  -  
+
+oi1:
+00index.txt         182  
+aletter.txt        7398  
+copying            1886  
+diskoi1             243  
+oiinc.tgz        227200  
+oilib.tgz       1029906  
+oimisc.tgz        29598  
+
+oi2:
+00index.txt         182  
+copying            1886  
+diskoi2             324  
+oidemos.tgz      135917  
+oidoc.tgz        207904  
+oiman.tgz        167162  
+uib.tgz          320916  
+
+oi3:
+00index.txt         156  
+aletter.txt        7398  
+copying            1886  
+diskoi3              81  
+install.end           0  
+oistat.tgz      1375208  

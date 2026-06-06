@@ -1,0 +1,27 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+rm -f /tmp/SeTnewtag # empty the return file
+dialog --title "SELECTING PACKAGES FOR SERIES U (UMSDOS UTILS)" \
+       --checklist "UMSDOS is a system that allows Linux to be installed on \
+an MS-DOS partition. If you are using UMSDOS for your root partition, you \
+must install umsfix, otherwise you must not. The umsprogs package may be \
+installed on any Linux system whether you use currently use UMSDOS or not. \
+Press ENTER when you are \
+done editing your choices." 15 70 3 \
+"umsfix" "Script changes **REQUIRED** for UMSDOS" "on" \
+"umsprogs" "Extra utils **REQUIRED** for UMSDOS" "on" \
+"loadlin" "Boots Linux from the MS-DOS command line" "on" \
+2> /tmp/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f /tmp/SeTpkgs
+ exit
+fi
+cat /dev/null > /tmp/SeTnewtag
+for PACKAGE in umsfix umsprogs loadlin ; do
+ if fgrep \"$PACKAGE\" /tmp/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> /tmp/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> /tmp/SeTnewtag
+ fi
+done
+rm -f /tmp/SeTpkgs

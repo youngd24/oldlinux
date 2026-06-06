@@ -1,0 +1,14 @@
+#! /bin/sh
+
+if [ $# = 0 ]; then
+	echo "usage: ./Extract [pkgname]"
+	echo "       You should have a file 'pkgname.tar.gz' and the"
+	echo "       corresponding context diffs 'pkgname.dif' in your"
+	echo "       current directory."
+	exit 1
+fi
+tar xzf $1.tar.gz
+cd $1
+patch -s -p0 < ../$1.dif
+cd ..
+exit 0

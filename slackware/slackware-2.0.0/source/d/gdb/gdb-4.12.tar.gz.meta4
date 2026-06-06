@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz.meta4</origin>
+  <published>2026-06-01T17:20:48Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="gdb-4.12.tar.gz">
+    <size>3682855</size>
+
+    <!-- <mtime>774835631</mtime> -->
+
+    <!-- internal id: 1610874 -->
+    <hash type="md5">5ef9cc7a9e266d0febfacdc7e88896ca</hash>
+    <hash type="sha-1">b389fc09af1b0fc39cfb339533bf728fe15a9089</hash>
+    <hash type="sha-256">a36699d1ea0dc977a3bd73cb4939e3c275dc15f186ee0dacb65a8e0c24f3225b</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>145d279629243baa28a6b22417aec5ed42d4c51d</hash>
+      <hash>4863adb1034581c2fc9c4400e0ebc5221ffb17a9</hash>
+      <hash>1c630aec9ea9215e85fe98d36151bfe78a84933c</hash>
+      <hash>433f4df428a2a9d516a1bc6481538ab8d1e06e14</hash>
+      <hash>ec15ec4789c1481cac57124c98aa1f52f8b5260d</hash>
+      <hash>52d6758377840ef2f6ee5eab96431f6fb7c927a3</hash>
+      <hash>cec8119416be747b1fb400cf4baaa6a466532804</hash>
+      <hash>2b5cb3493db7d7a863054dab9faeca5d30bc3cdd</hash>
+      <hash>beee4c1c99be49b930b870efa9924a4702eeb6f8</hash>
+      <hash>3c3c9c8b5dd3358bf799c7cf38128e7a8ada4647</hash>
+      <hash>14df3d63ea73a159bf3fffedca664ea9e9e67276</hash>
+      <hash>d2ca4dfa73564678fedd8eb67ad77f1d5a5ff926</hash>
+      <hash>c0daf72d341fbd6a1d26fa29514107010b581485</hash>
+      <hash>897e67a02c8d2367c521376c5445879a7cf710d0</hash>
+      <hash>88a44fe8bbaf6cc5c652c65fd91f9842801c90c1</hash>
+    </pieces>
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="ec" priority="2">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="br" priority="3">https://ftp.slackware-brasil.com.br/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="br" priority="4">https://mirrors.slackware.beco.cc/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="br" priority="5">https://linorg.usp.br/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="gb" priority="6">http://slackware.uk/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="gb" priority="7">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="nl" priority="8">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="fr" priority="9">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="nl" priority="10">https://mirror.koddos.net/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="nl" priority="11">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="de" priority="12">https://linux.rz.rub.de/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="ro" priority="13">http://mirrors.nav.ro/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="de" priority="14">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="dk" priority="15">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="hr" priority="16">http://mirror.slackware.hr/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="it" priority="17">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="se" priority="18">https://mirror.bahnhof.net/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="rs" priority="19">https://mirror1.sox.rs/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="pl" priority="20">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="ro" priority="21">https://mirrors.nxthost.com/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="ua" priority="22">http://slackware.ip-connect.info/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="ua" priority="23">https://ifconfig.com.ua/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="ru" priority="24">http://mirror.mephi.ru/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="ru" priority="25">https://mirror.yandex.ru/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="za" priority="26">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="sa" priority="27">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+    <url location="hk" priority="28">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/source/d/gdb/gdb-4.12.tar.gz</url>
+  </file>
+</metalink>

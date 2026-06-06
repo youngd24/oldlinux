@@ -1,0 +1,10 @@
+00index.txt         260  
+bin.tgz          496625  
+bootutls.tgz      19739  
+diska2             3125  
+getty.tgz         50900  
+gzip.tgz          39120  
+ldso.tgz          51671  
+ps.tgz            46446  
+shlibs.tgz       133809  
+util.tgz         349469  

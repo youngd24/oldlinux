@@ -1,0 +1,23 @@
+Hi,
+
+This is a standard xterm with a few important patches included.
+
+1) Color sequences patch.
+	This lets you use color ANSI sequences.
+
+2) Pop on bell patch.
+	This automatically maps/raizes the window (if iconified or lowered)
+	when a bell sequence (control-G) is generated to the xterm. So if
+	the window is iconified and someone tries to have a `talk' with you
+	then this window will be brought to the foreground automatically.
+	Use -pob +pob to switch on/off the feature. Also available on the
+	a control-middle-mouse-button menu within the xterm or as an
+	application default.
+
+3) Xaw3d patch.
+	The patch for the enhanced 3d scrollbar to display correctly when
+	(for example) Xaw3d-0.6B.3.1.1 is used.
+
+Shared binaries provided compiled with libc.so.4.5.19 and XFree88-2.1.
+
+Mitch <m.dsouza@mrc-apu.cam.ac.uk>

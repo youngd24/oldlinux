@@ -1,0 +1,23 @@
+CONTENTS: ifs v1_1_18 
+v1_1_18:  Linux kernel source version 1.1.18
+v1_1_18:
+v1_1_18:  Source code for Linus Torvalds' Linux kernel.
+v1_1_18:
+v1_1_18:  This package DOES NOT CONTAIN THE KERNEL INCLUDE FILES! Sorry, but
+v1_1_18:  we finally broke the 1.44 megabyte barrier with this kernel. The
+v1_1_18:  include files are in a package on the next disk. (i1_1_18.tgz)
+v1_1_18:
+v1_1_18:  This kernel also includes drivers for the Sony 535/531 CD-ROM drive,
+v1_1_18:  IFS 5.1, and UMSDOS 0.3a.
+v1_1_18:
+ifs:      IFS (Inheriting File System) 5.1 utilities and kernel patch.
+ifs:
+ifs:      These are patches for Werner Almesberger's Inheriting File System 
+ifs:      upgraded to work with Linux 1.1.8 - 1.1.11.  This experimental file
+ifs:      system lets you do things like this:
+ifs:      smount -t ifs /tmp/diffs,/cdrom /read-write-cd
+ifs:      where /tmp/diffs and /read-write-cd are directories on your hard 
+ifs:      drive, and /cdrom is where your CD is mounted. At the mount point
+ifs:      /read-write-cd, you'll find your CD-ROM mounted "read-write"!
+ifs:      This code has known bugs, but is fun to play with. Use at own risk.
+ifs:

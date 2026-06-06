@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink version="3.0" xmlns="http://www.metalinker.org/"
+  origin="https://mirrors.slackware.com/slackware/slackware-2.0.1/slakware/MANIFEST.metalink"
+  generator="MirrorBrain 2.19.0 (see http://mirrorbrain.org/)"
+  type="dynamic"  pubdate="Tue, 02 Jun 2026 03:49:16 GMT"  refreshdate="Tue, 02 Jun 2026 03:49:16 GMT">
+
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <files>
+  <file name="MANIFEST">
+    <size>1936750</size>
+
+    <!-- <mtime>1077724208</mtime> -->
+
+    <!-- internal id: 203530 -->
+      <verification>
+        <hash type="md5">f7aec3c8b83b297b033d8188e6d6c75f</hash>
+        <hash type="sha1">06a6cd53e0e5f55e9355cc919c54cfd620a516cd</hash>
+        <hash type="sha256">d8eae5ee21481d908c00a42647677fec29db073925e39fd77421dc17b1e44e1f</hash>
+        <pieces length="262144" type="sha1">
+          <hash piece="0">0bff4027fa2182924e1b9ed2cbb815d23414b165</hash>
+          <hash piece="1">40f0eaa9c097402131527ffbbe90093b41ac468d</hash>
+          <hash piece="2">131319e388dcfa4d60c1ce6650f7a6f5d5f93ee5</hash>
+          <hash piece="3">376a90f546a76eb7d54562c9953ec33c7603a4d0</hash>
+          <hash piece="4">3a8c2cdd9fea7136949e5d6c15a86af2ebace2aa</hash>
+          <hash piece="5">6ac15c33835bba57e01fc4ee1d7d87aa2c57d80f</hash>
+          <hash piece="6">f3bb4864a3a3523befd303fee0552eebafde2ec7</hash>
+          <hash piece="7">a03fc282c98c7b63147660f1133edc42c61c3d6f</hash>
+        </pieces>
+      </verification>
+    <resources>
+
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url type="https" location="us" preference="100">https://mirror.slackbuilds.org/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url type="https" location="ec" preference="99">https://mirror.cedia.org.ec/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="br" preference="98">https://ftp.slackware-brasil.com.br/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="br" preference="97">https://mirrors.slackware.beco.cc/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="br" preference="96">https://linorg.usp.br/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="http" location="gb" preference="95">http://slackware.uk/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="gb" preference="94">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="http" location="nl" preference="93">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="http" location="fr" preference="92">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="nl" preference="91">https://mirror.koddos.net/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="nl" preference="90">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="de" preference="89">https://linux.rz.rub.de/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="http" location="ro" preference="88">http://mirrors.nav.ro/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="de" preference="87">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="dk" preference="86">https://mirrors.dotsrc.org/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="http" location="hr" preference="85">http://mirror.slackware.hr/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="it" preference="84">https://slackware.mirror.garr.it/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="se" preference="83">https://mirror.bahnhof.net/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="rs" preference="82">https://mirror1.sox.rs/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="pl" preference="81">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="ro" preference="80">https://mirrors.nxthost.com/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="http" location="ua" preference="79">http://slackware.ip-connect.info/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="ua" preference="78">https://ifconfig.com.ua/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="http" location="ru" preference="77">http://mirror.mephi.ru/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="ru" preference="76">https://mirror.yandex.ru/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="http" location="za" preference="75">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="sa" preference="74">https://mirror.lyrahosting.com/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    <url type="https" location="hk" preference="73">https://mirror-hk.koddos.net/slackware/slackware-2.0.1/slakware/MANIFEST</url>
+    </resources>
+    </file>
+  </files>
+</metalink>

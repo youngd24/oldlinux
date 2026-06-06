@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz.meta4</origin>
+  <published>2026-06-02T04:12:03Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="ncr_krn3.tgz">
+    <size>1363391</size>
+
+    <!-- <mtime>1077725530</mtime> -->
+
+    <!-- internal id: 204237 -->
+    <hash type="md5">d98df12a874aeea0e16e32ac9cae4ffb</hash>
+    <hash type="sha-1">1338d2fe217493598068dcac81db1b9818400f07</hash>
+    <hash type="sha-256">5166e5a951c679566ce4ca3374f6174972568bc18326cc2ba5563884b0ed05ef</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>9296196759e2ae2a9a9fad1033122ef9c6b2fe0c</hash>
+      <hash>dd199ea1603e5e97e4e57ad2d1c7a2cf07122cc0</hash>
+      <hash>6883cfe3c73b005c836f746d46cc3f4ccc0fa5a4</hash>
+      <hash>4d29393c0d313e562b785ec2b87229a5e7c30828</hash>
+      <hash>fae8cb5779c9890d8e9de4cd8403b6eadc7d6a72</hash>
+      <hash>6ddc0d4101eef9895320f7e3e5eb57ccff587182</hash>
+    </pieces>
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="ec" priority="2">https://mirror.cedia.org.ec/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="br" priority="3">https://ftp.slackware-brasil.com.br/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="br" priority="4">https://mirrors.slackware.beco.cc/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="br" priority="5">https://linorg.usp.br/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="gb" priority="6">http://slackware.uk/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="gb" priority="7">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="nl" priority="8">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="fr" priority="9">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="nl" priority="10">https://mirror.koddos.net/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="nl" priority="11">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="de" priority="12">https://linux.rz.rub.de/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="ro" priority="13">http://mirrors.nav.ro/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="de" priority="14">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="dk" priority="15">https://mirrors.dotsrc.org/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="hr" priority="16">http://mirror.slackware.hr/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="it" priority="17">https://slackware.mirror.garr.it/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="se" priority="18">https://mirror.bahnhof.net/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="rs" priority="19">https://mirror1.sox.rs/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="pl" priority="20">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="ro" priority="21">https://mirrors.nxthost.com/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="ua" priority="22">http://slackware.ip-connect.info/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="ua" priority="23">https://ifconfig.com.ua/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="ru" priority="24">http://mirror.mephi.ru/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="ru" priority="25">https://mirror.yandex.ru/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="za" priority="26">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="sa" priority="27">https://mirror.lyrahosting.com/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+    <url location="hk" priority="28">https://mirror-hk.koddos.net/slackware/slackware-2.0.1/slakware/ncr1/ncr_krn3.tgz</url>
+  </file>
+</metalink>

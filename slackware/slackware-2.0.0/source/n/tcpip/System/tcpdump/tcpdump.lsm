@@ -1,0 +1,24 @@
+Begin2
+Title        =	tcpdump
+Version      =	2.2.1
+Desc1        =	A network traffic filter for ethernet systems running Sun/OS,
+Desc2        =	ULTRIX, and Linux pl14+
+Desc3        =
+Author       =	Steve McCann
+AuthorEmail  =	mccann@ee.lbl.gov
+Maintainer   =	None
+MaintEmail   =	N/A
+Site1        =	sunsite.unc.edu
+Required1    =	The Linux port of this package requires a kernel of patchlevel
+Required2    =	14 or greater.  BSD systems require the Berkeley Packet Filter.
+Required3    =
+Required4    =
+CopyPolicy1  =
+CopyPolicy2  =
+Keywords     =	ethernet tcpdump
+Comment1     =
+Entered      =	16APR94
+EnteredBy    =	Sam Lantinga
+CheckedEmail =	slouken@cs.ucdavis.edu
+End
+

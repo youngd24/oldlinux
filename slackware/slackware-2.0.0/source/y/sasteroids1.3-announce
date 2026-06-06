@@ -1,0 +1,41 @@
+Keywords: game, svgalib, asteroids, arcade
+
+Hello,
+
+This is to announce the release of Sasteroids v1.3, a svgalib (not X)
+asteroids-type game with joystick support. 
+
+This is a minor release with a few bug fixes, a new spacey-looking
+background during game play, speed enhancements, and small changes to the
+game play. (No sound yet -- its coming 8-)
+
+There are both binary and source releases.  You only need one, preferrably
+the source release because there are a few compile-time options to play
+with.  The binary release is for those of you without recent versions of
+gcc/g++ or svgalib installed.
+
+Note: you don't need large amounts of memory/swap space to compile this
+version, as compared to previous releases.
+
+I have uploaded it to:
+sunsite.unc.edu:/pub/Linux/Incoming/sasteroids1.3-src.tar.gz  (source)
+sunsite.unc.edu:/pub/Linux/Incoming/sasteroids1.3-bin.tar.gz  (binary)
+
+where it will probably be moved to:
+sunsite.unc.edu:/pub/Linux/games/video/sasteroids1.3-src.tar.gz
+sunsite.unc.edu:/pub/Linux/games/video/sasteroids1.3-bin.tar.gz
+
+
+and tsx-11.mit.edu where it will probably be moved into:
+/pub/linux/sources/usr.games/sasteroids1.3-src.tar.gz
+/pub/linux/binaries/usr.games/sasteroids1.3-bin.tar.gz
+
+
+***
+Note: You need gcc 2.5.8, c++ libraries, and svgalib 1.11 (or greater)
+to compile the source release. Svgalib is available at sunsite.unc.edu,
+tsx-11.mit.edu and other linux ftp site.
+***
+
+--brad
+pitzel@cs.sfu.ca

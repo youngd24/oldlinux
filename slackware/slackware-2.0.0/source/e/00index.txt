@@ -1,0 +1,11 @@
+00index.txt         294  
+emacs-19.25-patch  2966  
+emacs-19.25.tar.gz
+                7326186  
+emacs-manual-6.0.dvi.gz
+                 300114  
+lemacs-19.10         19  -> /cdrom/lemacs-19.10
+lemacs-19.10-slackware.txt
+                    160  
+lemacs-19.10.tar.gz
+                9286960  

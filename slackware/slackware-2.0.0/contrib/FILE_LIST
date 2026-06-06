@@ -1,0 +1,57 @@
+Fri Jul  1 20:51:30 PDT 1994
+
+Here is the file list for the directory /pub/linux/slackware on
+ftp.cdrom.com. If you are using a mirror site and find missing or 
+extra files in the disk subdirectories (other than the 00index.txt
+files, which are not required and should not be put on your install
+floppies), please have the archive administrator refresh the
+mirror.
+
+-rw-r--r--    1 root         1223 Jun 28 01:02 ./.desc.txt
+-rw-r--r--    1 root         1435 Jun 28 01:02 ./00index.txt
+-rw-rw-r--    1 volkerdi      313 Jul  1 20:51 ./CHECKSUMS
+-rw-rw-r--    1 volkerdi      366 Jul  1 20:51 ./FILE_LIST
+-rw-r--r--    1 volkerdi     3568 Jul  1 12:54 ./INDEX
+-rw-r--r--    1 volkerdi   548277 Jun 30 19:08 ./MANIFEST
+-rw-r--r--    1 volkerdi   169621 May 20 14:56 ./aps-23.tgz
+-rw-r--r--    1 volkerdi     1382 May 29 20:17 ./auis63L0-dev.lsm
+-rw-r--r--    1 volkerdi  3721226 May 30 15:56 ./auis63L0-dev.tgz
+-rw-r--r--    1 volkerdi     1368 May 29 20:17 ./auis63L0-doc.lsm
+-rw-r--r--    1 volkerdi  3232246 Jul  1 18:22 ./auis63L0-doc.tgz
+-rw-r--r--    1 volkerdi     1500 May 29 20:18 ./auis63L0-mail.lsm
+-rw-r--r--    1 volkerdi  1984858 Jun  9 10:28 ./auis63L0-mail.tgz
+-rw-r--r--    1 volkerdi     1367 May 29 20:18 ./auis63L0-src.lsm
+-rw-r--r--    1 volkerdi   736636 May 30 15:42 ./auis63L0-src.tgz
+-rw-r--r--    1 volkerdi     1264 May 29 20:18 ./auis63L0-wp.lsm
+-rw-r--r--    1 volkerdi  1454220 Jul  1 18:34 ./auis63L0-wp.tgz
+-rw-r--r--    1 volkerdi   708364 Jun 10 14:25 ./gcl.tgz
+-rw-r--r--    1 volkerdi  1565406 May 18 14:16 ./gnat-1.79.tgz
+-rw-r--r--    1 volkerdi      923 May 18 11:48 ./gnat.lsm
+-rw-r--r--    1 volkerdi   583094 May 13 23:48 ./gpc-2.5.7.tgz
+-rw-r--r--    1 root           78 Jun 28 01:02 ./install/.desc.txt
+-rw-r--r--    1 root           78 Jun 28 01:02 ./install/00index.txt
+-rwxr-xr-x    1 volkerdi     8553 May 30 21:34 ./install/installpkg
+-rwxr-xr-x    1 volkerdi     4270 May 30 21:34 ./install/removepkg
+-rw-r--r--    1 volkerdi    65876 May  6 12:12 ./ksh.tgz
+-rw-r--r--    1 volkerdi       88 May 15 16:05 ./ksh.txt
+-rw-r--r--    1 volkerdi  7356162 May 31 20:09 ./lemacs.tgz
+-rw-r--r--    1 volkerdi       58 Jun  2 10:15 ./lemacs.txt
+-rw-r--r--    1 volkerdi     1595 May 24 18:16 ./lodlin14.txt
+-rw-r--r--    1 volkerdi    92502 May 24 18:16 ./lodlin14.zip
+-rw-r--r--    1 volkerdi      943 May 15 22:55 ./lynx-2.3+term.lsm
+-rw-r--r--    1 volkerdi   114571 May 15 22:59 ./lynx-2.3+term.tgz
+-rw-r--r--    1 volkerdi  2725306 Jul  1 10:18 ./manpagesrc.tgz
+-rw-r--r--    1 volkerdi    62405 Jun  9 01:15 ./mc-0.6.tgz
+-rw-r--r--    1 volkerdi      512 Jun  9 01:17 ./mc-0.6.txt
+-rw-r--r--    1 volkerdi   193253 Jun  8 23:40 ./ncurses-181.tgz
+-rw-r--r--    1 volkerdi   290041 May 13 13:42 ./ncurses-185.tgz
+-rw-r--r--    1 volkerdi   289718 May 13 23:55 ./perl-5.00a.tgz
+-rw-r--r--    1 volkerdi  1330472 Jul  1 10:45 ./rescue-with-lilo.gz
+-rw-r--r--    1 volkerdi  1322397 Jul  1 10:41 ./rescue.gz
+-rw-r--r--    1 root          104 Jun 28 01:02 ./use-ncurses-1.8.1/.desc.txt
+-rw-r--r--    1 root          104 Jun 28 01:02 ./use-ncurses-1.8.1/00index.txt
+-rw-r--r--    1 volkerdi    95351 Jun  8 23:26 ./use-ncurses-1.8.1/hdsetup.tgz
+-rw-r--r--    1 volkerdi    57847 Jun  9 01:16 ./use-ncurses-1.8.1/mc-0.5.tgz
+-rw-r--r--    1 volkerdi      512 Jun  9 01:16 ./use-ncurses-1.8.1/mc-0.5.txt
+-rw-r--r--    1 volkerdi    67245 May  8 21:52 ./uucp-1.04-info.tgz
+-rw-r--r--    1 volkerdi   372795 Jul  1 10:42 ./uucp-1.04.tgz

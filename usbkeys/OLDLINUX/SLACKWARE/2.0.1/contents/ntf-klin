@@ -1,0 +1,25 @@
+PACKAGE NAME:     ntf-klin
+PACKAGE SIZE:     20 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-klin: ntf-klin 1.1
+ntf-klin:
+ntf-klin: The Klinz font, a font containing upper and lower Klingon symbols.
+ntf-klin:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/phantasy/
+usr/lib/texmf/fonts/phantasy/klinz/
+usr/lib/texmf/fonts/phantasy/klinz/create.sh
+usr/lib/texmf/fonts/phantasy/klinz/misc/
+usr/lib/texmf/fonts/phantasy/klinz/misc/README
+usr/lib/texmf/fonts/phantasy/klinz/src/
+usr/lib/texmf/fonts/phantasy/klinz/src/kligs.mf
+usr/lib/texmf/fonts/phantasy/klinz/src/klinz.mf
+usr/lib/texmf/fonts/phantasy/klinz/tfm/
+usr/lib/texmf/fonts/phantasy/klinz/tfm/klinz.tfm
+usr/lib/texmf/fonts/phantasy/klinz/pk/

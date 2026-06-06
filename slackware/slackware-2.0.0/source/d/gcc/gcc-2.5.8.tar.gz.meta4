@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz.meta4</origin>
+  <published>2026-06-01T17:20:44Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="gcc-2.5.8.tar.gz">
+    <size>5997896</size>
+
+    <!-- <mtime>774835604</mtime> -->
+
+    <!-- internal id: 1610856 -->
+    <hash type="md5">e2fb6ce176fa77a7b60f3f731b514e13</hash>
+    <hash type="sha-1">7b17cffffbc39f42d21b9ac2a3ed373ab26b1d29</hash>
+    <hash type="sha-256">22ec4fe2be2ae85931d69f0c7782156e0f0aa87d9e5dcce2a05da3555c220291</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>8e3f454ca0ff10f35db2669fd8a35b15e66f3e45</hash>
+      <hash>51a39a0a0c0c91e2e53fd8d476fd3dc9372ae957</hash>
+      <hash>bbda6af0eb872065d6a5e7fa880da40b56aabe62</hash>
+      <hash>9d400effb81a9a5387ae8fc5112318fe239b7b65</hash>
+      <hash>f71bfabc5ae52ba48d3d079e4bb7c7e3f4004a6d</hash>
+      <hash>bbcea96e90db5063101fde1410780111590e7e8a</hash>
+      <hash>1760a360d0de0ff88e3641e5b6adc5ced724b60b</hash>
+      <hash>834d9958bc98357589a07a39b48b4abbe2b2d9ce</hash>
+      <hash>d11a7fe27ea803464598e6d56147017893a56cf7</hash>
+      <hash>f1a0f0ee46a812567b4787e423a58d7c43c0d493</hash>
+      <hash>232c531029ef17a369b53a7ba6ee73daa5f81b1e</hash>
+      <hash>70578ab6e5f36d6690ba227b1790dbf5e7f71708</hash>
+      <hash>72987ab289388965e6431c86f43fe0575df9949e</hash>
+      <hash>b069dbe425d397fc273b551a57befba07d29d6ff</hash>
+      <hash>345e60d4424c6c76a41dac827b7b93745c558303</hash>
+      <hash>57e43ecce94c8067f306501f047832a162248601</hash>
+      <hash>0d9ff3203dcb8a494918785e96a2203ecc6c6668</hash>
+      <hash>1e5fb765519440f041cf7c293493af96b70125e1</hash>
+      <hash>9de0a9736398c3d964d91426c8b988723972be8a</hash>
+      <hash>e802ba9c3dbdf353c1678b8b3ae5689bb06340d9</hash>
+      <hash>fbf80d8e739c52b5f26f26306eb53b58eb6c1a2b</hash>
+      <hash>26075e5b5918f608cc594e7d0a7eb2d4b1a2ea3f</hash>
+      <hash>1163a0947039d054984281a40b47730b8123761a</hash>
+    </pieces>
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="ec" priority="2">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="br" priority="3">https://ftp.slackware-brasil.com.br/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="br" priority="4">https://mirrors.slackware.beco.cc/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="br" priority="5">https://linorg.usp.br/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="gb" priority="6">http://slackware.uk/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="gb" priority="7">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="nl" priority="8">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="fr" priority="9">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="nl" priority="10">https://mirror.koddos.net/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="nl" priority="11">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="de" priority="12">https://linux.rz.rub.de/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="ro" priority="13">http://mirrors.nav.ro/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="de" priority="14">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="dk" priority="15">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="hr" priority="16">http://mirror.slackware.hr/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="it" priority="17">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="se" priority="18">https://mirror.bahnhof.net/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="rs" priority="19">https://mirror1.sox.rs/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="pl" priority="20">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="ro" priority="21">https://mirrors.nxthost.com/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="ua" priority="22">http://slackware.ip-connect.info/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="ua" priority="23">https://ifconfig.com.ua/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="ru" priority="24">http://mirror.mephi.ru/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="ru" priority="25">https://mirror.yandex.ru/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="za" priority="26">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="sa" priority="27">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+    <url location="hk" priority="28">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/source/d/gcc/gcc-2.5.8.tar.gz</url>
+  </file>
+</metalink>

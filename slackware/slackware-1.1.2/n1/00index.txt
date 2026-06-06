@@ -1,0 +1,13 @@
+00index.txt         338  
+deliver.tgz       37618  
+dip.tgz           32003  
+diskn1             2464  
+mailx.tgz         44470  
+maketag            1637  
+netcfg.tgz         6347  
+tagfile            2558  
+tagfile.org        2558  
+tagfile.pat         156  
+tcpip.tgz        642279  
+tracrout.tgz      31848  
+uucp.tgz         323084  

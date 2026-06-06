@@ -1,0 +1,29 @@
+Begin2
+Title        =Build full featured Perl on Linux system
+Version      =0.9
+Desc1        =Perl-4.036 source patch kit for Linux.
+Desc2        =Fixes bug in Perl source, provides Linux hints that
+Desc3        =facilitates building Perl on a Linux system, plus
+Desc4        =essential Notes and Hints.
+Author       =Louis J. LaBash, Jr.
+AuthorEmail  =lou@minuet.siue.edu
+Maintainer   =Louis J. LaBash, Jr.
+MaintEmail   =lou@minuet.siue.edu
+Site1        =sunsite.unc.edu
+Path1        =/pub/Linux/utils/text/
+File1        =perl-4.036-linux-kit.tar.gz
+FileSize1    =3K
+Site2        =tsx-11.mit.edu
+Path2        =/pub/linux/packages/GCC/patches
+File2        =perl-4.036-linux-kit.tar.gz
+FileSize2    =3K
+Required1    =perl-4.036.tar.gz, awk, gcc, make, patch, sed
+CopyPolicy1  =Copyrighted; but Freed
+CopyPolicy2  =
+Keywords     =Perl language patch kit bug fix Linux
+Comment1     =See 'README.1st' in perl-4.036-linux-kit.tar.gz
+Comment2     =If you can compile your kernel: you'll be able to compile Perl.
+Entered      =01FEB94
+EnteredBy    =Louis J. LaBash, Jr.
+CheckedEmail =lou@minuet.siue.edu
+End

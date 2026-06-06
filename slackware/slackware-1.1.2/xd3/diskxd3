@@ -1,0 +1,23 @@
+CONTENTS: xkitlib2 xf_pex
+xkitlib2: Libraries needed by the XFree86 2.0 Linkkit. (part two)
+xkitlib2:  
+xkitlib2: These are required when using the Linkkit to make new X servers. 
+xkitlib2: If you aren't building new X servers, you won't need these.
+xkitlib2:  
+xkitlib2:  
+xkitlib2:  
+xkitlib2:  
+xkitlib2:  
+xkitlib2:  
+xkitlib2:  
+xf_pex:   XFree86 2.0 PEX libraries
+xf_pex:
+xf_pex:   If you would like to use and build PEX programs you will need this
+xf_pex:   package in addition to a server that supports PEX.  The distributed
+xf_pex:   servers do *not* include PEX support by default - you will have to 
+xf_pex:   build one using the link kit.
+xf_pex:
+xf_pex:
+xf_pex:
+xf_pex:
+xf_pex:

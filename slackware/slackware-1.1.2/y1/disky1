@@ -1,0 +1,23 @@
+CONTENTS: bsdgames tetris
+bsdgames: Curtis Olson and Andy Tefft's port of the BSD games collection. (1.3)
+bsdgames: 
+bsdgames: This package puts these games into /usr/games:
+bsdgames:   arithmetic atc backgammon battlestar bcd bog caesar canfield
+bsdgames:   cfscores cribbage factor fish fortune hangman hunt mille monop
+bsdgames:   morse number paranoia pom ppt primes rain robots sail snake
+bsdgames:   snscore teachgammon trek wargames worm worms wump
+bsdgames: Man pages for all these games are also added to 
+bsdgames: /usr/man/preformat/cat3, and "fortune" is added to /etc/profile
+bsdgames: and /etc/csh.login so that users get a fortune message when they
+bsdgames: log in. If it annoys you, that's where you go to remove it. :^)
+tetris:   Tetris for terminals.
+tetris:
+tetris:
+tetris:
+tetris:
+tetris:
+tetris:
+tetris:
+tetris:
+tetris:
+tetris:

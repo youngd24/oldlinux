@@ -1,0 +1,41 @@
+PACKAGE NAME:     ppp
+PACKAGE SIZE:     92 K
+PACKAGE LOCATION: diskn2
+PACKAGE DESCRIPTION:
+ppp:      PPP for Linux, version 2.1.2a
+ppp:
+ppp:      PPP for Linux -- Michael Callahan's ppp.c kernel driver and the pppd
+ppp:      daemon (ported by Al Longyear).  PPP support is included in most of
+ppp:      the precompiled kernels in Slackware.
+ppp:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/ppp/
+usr/lib/ppp/pppstats
+usr/lib/ppp/README
+usr/lib/ppp/chat
+usr/lib/ppp/README.Linux-pppstats
+usr/lib/ppp/fix-cua
+usr/lib/ppp/ppp-off
+usr/lib/ppp/ppp-on
+usr/lib/ppp/unlock
+usr/lib/ppp/pppd
+usr/lib/ppp/README.linux
+usr/lib/ppp/SETUP
+usr/lib/ppp/README-chat
+usr/lib/ppp/README.linux-chat
+usr/src/
+usr/src/ppp-2.1.2a/
+usr/src/ppp-2.1.2a/ppp.c
+usr/src/ppp-2.1.2a/ppp.h
+usr/src/ppp-2.1.2a/README
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat8/
+usr/man/preformat/cat8/chat.8.gz
+usr/man/preformat/cat8/pppd.8.gz
+etc/
+etc/ppp/
+etc/ppp/options

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz.meta4</origin>
+  <published>2026-06-01T17:07:12Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="emacs-19.25.tar.gz">
+    <size>7326186</size>
+
+    <!-- <mtime>774841678</mtime> -->
+
+    <!-- internal id: 1610527 -->
+    <hash type="md5">999c7b0a6440f42bcd6c6c324bfcc019</hash>
+    <hash type="sha-1">5e4c7caa16f1de897ff56d1acde016efdc1a3ebc</hash>
+    <hash type="sha-256">4b0dd6925871ee914e1f768600e64c89a66949bb9ba3661c3d2925a0f3659df9</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>5ae65aac5a2258f8bca5c1eb36ae2a269a2fd7c0</hash>
+      <hash>111801a6737bd995017b62368537313e8b384078</hash>
+      <hash>b49b6c08248d3c68709076b386e86a4ac610ddda</hash>
+      <hash>224b4d4bff8a07c2b915a339b4091e6f79ad231e</hash>
+      <hash>334116822762a285f13e5490b46984a30c4f1d6f</hash>
+      <hash>772be3f270bec93d3cff8139001e231bc2d43b3b</hash>
+      <hash>0d87102f77ee0c1bdc069355ea27e58a6b4412ae</hash>
+      <hash>88c036bb1ea3f830909a7e15a6874813df63733d</hash>
+      <hash>635c6e2d8c2e76c37a39a45f54eb5edcd4b49acb</hash>
+      <hash>58a33f26dd85be78985ae6b651b60c23163d479f</hash>
+      <hash>de75170164e37bd1b3c151f572f130746457e645</hash>
+      <hash>6b364e40f4103ef919783154a6f0501217bdf346</hash>
+      <hash>ad4dd64e1ac90e50bb982a56283d120f7c720ed8</hash>
+      <hash>53e7bf1e6ad914ab00c946c1d52591314f851b49</hash>
+      <hash>c6d6fdcd6ad90dd38e5308335b89e9c0f9380d1b</hash>
+      <hash>80fae49619d83805ef23777afbb8d1ca63d21bf9</hash>
+      <hash>b1942ccf5e6d2bc83d5c612df96c822e954f63b3</hash>
+      <hash>dbe550765174606727e6d90823c8fe42339e2c99</hash>
+      <hash>2e92ac2ab9ec5ecd9d31ce6b453ca426c1ccf31a</hash>
+      <hash>091dd70ae0dde21231533611068485807ed20076</hash>
+      <hash>c8eb755b64c7d500e4398c47b0c6049698db68c7</hash>
+      <hash>8c99c7db7fd918405e175d2505ffdc4405236e3a</hash>
+      <hash>0d6c9ccdab4045293d587d4b0ea90a1aeae792c1</hash>
+      <hash>b381a1e31461a31f074d1370d5825c2506771373</hash>
+      <hash>f422d1647d161a921c79cf3f16094ec62fd96012</hash>
+      <hash>d075690e9b28cef7ba20e114996fe2e846f13912</hash>
+      <hash>8970b080793725f6262784b1138de233544c9b28</hash>
+      <hash>40de391ff9801489a1170352a659ff4e58f65c53</hash>
+    </pieces>
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="ec" priority="2">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="br" priority="3">https://ftp.slackware-brasil.com.br/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="br" priority="4">https://mirrors.slackware.beco.cc/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="br" priority="5">https://linorg.usp.br/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="gb" priority="6">http://slackware.uk/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="gb" priority="7">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="nl" priority="8">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="fr" priority="9">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="nl" priority="10">https://mirror.koddos.net/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="nl" priority="11">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="de" priority="12">https://linux.rz.rub.de/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="ro" priority="13">http://mirrors.nav.ro/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="de" priority="14">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="dk" priority="15">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="hr" priority="16">http://mirror.slackware.hr/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="it" priority="17">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="se" priority="18">https://mirror.bahnhof.net/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="rs" priority="19">https://mirror1.sox.rs/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="pl" priority="20">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="ro" priority="21">https://mirrors.nxthost.com/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="ua" priority="22">http://slackware.ip-connect.info/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="ua" priority="23">https://ifconfig.com.ua/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="ru" priority="24">http://mirror.mephi.ru/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="ru" priority="25">https://mirror.yandex.ru/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="za" priority="26">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="sa" priority="27">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+    <url location="hk" priority="28">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/source/e/emacs-19.25.tar.gz</url>
+  </file>
+</metalink>

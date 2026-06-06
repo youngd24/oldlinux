@@ -1,0 +1,4 @@
+00index.txt         104  
+diski2              188  
+info2.tgz       1192281  
+install.end          13  

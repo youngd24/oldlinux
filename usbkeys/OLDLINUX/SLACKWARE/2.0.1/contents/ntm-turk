@@ -1,0 +1,53 @@
+PACKAGE NAME:     ntm-turk
+PACKAGE SIZE:     162 K
+PACKAGE LOCATION: diskt8
+PACKAGE DESCRIPTION:
+ntm-turk: ntm-turk 1.1
+ntm-turk:
+ntm-turk: This is a format file based on the plain format to typeset Turkish
+ntm-turk: texts.
+ntm-turk:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/ini/
+usr/lib/texmf/ini/turktex.fmt
+usr/lib/texmf/ini/turktex.log
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/language/
+usr/lib/texmf/tex/language/turkish/
+usr/lib/texmf/tex/language/turkish/sample.tex
+usr/lib/texmf/tex/language/turkish/tkccode.tex
+usr/lib/texmf/tex/language/turkish/tplain.tex
+usr/lib/texmf/tex/language/turkish/tugpap.tex
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/language/
+usr/lib/texmf/fonts/language/turkish/
+usr/lib/texmf/fonts/language/turkish/create.sh
+usr/lib/texmf/fonts/language/turkish/src/
+usr/lib/texmf/fonts/language/turkish/src/accsub.mf
+usr/lib/texmf/fonts/language/turkish/src/aynhmz.mf
+usr/lib/texmf/fonts/language/turkish/src/tkaccl.mf
+usr/lib/texmf/fonts/language/turkish/src/tkaccu.mf
+usr/lib/texmf/fonts/language/turkish/src/tkacil.mf
+usr/lib/texmf/fonts/language/turkish/src/tkdotl.mf
+usr/lib/texmf/fonts/language/turkish/src/tkdotu.mf
+usr/lib/texmf/fonts/language/turkish/src/tkdtil.mf
+usr/lib/texmf/fonts/language/turkish/src/tkital.mf
+usr/lib/texmf/fonts/language/turkish/src/tklig.mf
+usr/lib/texmf/fonts/language/turkish/src/tkpnct.mf
+usr/lib/texmf/fonts/language/turkish/src/tkroml.mf
+usr/lib/texmf/fonts/language/turkish/src/tksub.mf
+usr/lib/texmf/fonts/language/turkish/src/turkce.mf
+usr/lib/texmf/fonts/language/turkish/src/turkit.mf
+usr/lib/texmf/fonts/language/turkish/src/wtkr10.mf
+usr/lib/texmf/fonts/language/turkish/src/wtkti10.mf
+usr/lib/texmf/fonts/language/turkish/tfm/
+usr/lib/texmf/fonts/language/turkish/tfm/wtkr10.tfm
+usr/lib/texmf/fonts/language/turkish/tfm/wtkti10.tfm
+usr/lib/texmf/fonts/language/turkish/pk/
+install/
+install/doinst.sh

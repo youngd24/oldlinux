@@ -1,0 +1,36 @@
+PACKAGE NAME:     comms
+PACKAGE SIZE:     79 K
+PACKAGE LOCATION: diska3
+PACKAGE DESCRIPTION:
+comms:    Serial file-transfer and communication packages.
+comms:   
+comms:    Includes these programs:
+comms:    
+comms:    Minicom - a full featured menu-driven communications package similar
+comms:    to the DOS program "Telix".
+comms:
+comms:    sz/rz - utilities used to upload and download files using the Zmodem
+comms:    protocol.
+comms:
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/minicom.1.gz
+usr/man/preformat/cat1/lsz.1.gz
+usr/man/preformat/cat1/lrz.1.gz
+usr/bin/
+usr/bin/minicom
+usr/bin/runscript
+usr/bin/lrz
+usr/bin/lsz
+usr/lib/
+install/
+install/doinst.sh
+var/
+var/lib/
+var/lib/minicom/
+var/lib/minicom/minicom.users
+var/lib/minicom/minirc.dfl

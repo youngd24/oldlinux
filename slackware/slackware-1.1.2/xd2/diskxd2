@@ -1,0 +1,23 @@
+CONTENTS: xf_prog xkitlib1
+xf_prog:  XFree86 2.0 Program Development Kit
+xf_prog:
+xf_prog:  In order to build additional X11 software you will need this package
+xf_prog:  in addition to the minimal configuration. Contains static libs, 
+xf_prog:  dynamic stubs, configuration, and include files.
+xf_prog:
+xf_prog:
+xf_prog:
+xf_prog:
+xf_prog:
+xf_prog:
+xkitlib1: Libraries needed by the XFree86 2.0 Linkkit. (part one)
+xkitlib1:  
+xkitlib1: These are required when using the Linkkit to make new X servers. 
+xkitlib1: If you aren't building new X servers, you won't need these.
+xkitlib1:  
+xkitlib1:  
+xkitlib1:  
+xkitlib1:  
+xkitlib1:  
+xkitlib1:  
+xkitlib1:  

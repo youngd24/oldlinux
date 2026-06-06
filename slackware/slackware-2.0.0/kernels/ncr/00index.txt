@@ -1,0 +1,4 @@
+00index.txt         104  
+ncr              375300  
+ncr.log            4740  
+zSystem.map       80791  

@@ -1,0 +1,56 @@
+00index.txt        1388  
+at-2.7.lsm          900  
+at-2.7.tar.gz     28095  
+bban.c            20084  
+compress.tar.gz    6547  
+cron3.0pl1.README   191  
+cron3.0pl1.tar.gz
+                  57926  
+dcron22.lsm        1080  
+dcron22.tar.gz    22602  
+elvis-1.8pl3-README
+                    162  
+elvis-1.8pl3.tar.gz
+                 261715  
+file-3.9.tar.gz   49916  
+fileutils-3.9.tar.gz
+                 187278  
+gawk-2.15.3.tar.gz
+                 480195  
+gawk-2.15.5.tar.gz
+                 512404  
+jpegsrc.v4.tar.gz
+                 296416  
+less-177.tar.gz  100698  
+man-1.3.lsm         878  
+man-1.3.tar.gz    39536  
+man-2.0a2.tar.gz  65127  
+man-2.0a2.tgz-README
+                    868  
+man.tar.gz        37918  
+modutils-0.99.15.tar.gz
+                  12560  
+patch-2.1.tar.gz  71143  
+script.tar.gz      3947  
+sed-2.05.tar.gz  114600  
+shar.tar.gz       13427  
+slackware-color-ls.tar.gz
+                  15657  
+splitvt-1.5.2.tar.gz
+                  33838  
+splitvt-1.5.lsm    1036  
+splitvt-1.5.tar.gz
+                  29421  
+sysvbanner.c       6316  
+time-1.6.debian.diff.gz
+                    495  
+time-1.6.tar.gz   80297  
+tput-1.0.tar.gz   46771  
+unarj.README        261  
+unarj.patch        1761  
+unarj230.tar.gz   37846  
+unzip50p1A.taz    76461  
+which.shar.gz      1766  
+zip19p1A.Notes      840  
+zip19p1A.taz      97935  
+zoo-2.10.tar.gz  173421  

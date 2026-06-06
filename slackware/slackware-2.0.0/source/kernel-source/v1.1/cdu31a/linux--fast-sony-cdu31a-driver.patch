@@ -1,0 +1,1142 @@
+From Petteri.Stenius@cs.hut.fi Tue May 31 13:01:07 EDT 1994
+Article: 9980 of comp.os.linux.development
+Path: bigblue.oit.unc.edu!concert!gatech!swrinde!ihnp4.ucsd.edu!agate!doc.ic.ac.uk!warwick!uknet!EU.net!sunic!news.funet.fi!nntp.hut.fi!nntp!Petteri.Stenius
+From: Petteri.Stenius@cs.hut.fi (Petteri Stenius)
+Newsgroups: comp.os.linux.development
+Subject: Full-speed driver for Sony CDU33A drives!
+Date: 31 May 1994 06:44:21 GMT
+Organization: Helsinki University of Technology, Finland
+Lines: 1126
+Distribution: world
+Message-ID: <PETTERI.STENIUS.94May31094421@delta.hut.fi>
+NNTP-Posting-Host: delta.hut.fi
+Keywords: sony cdu33a cdu31a cdrom doublespeed modutils 300kB/s
+
+
+
+Here is a new driver for the Sony CDU33A CDROM drives. It is based on
+the CDU31A driver by Corey Minyard, but it is redesigned to be completely 
+interrupt driven. Currently the driver is capable of transfer rates 
+up to 300kB/s!! The driver is implemented as an installable module.
+
+Included in this message are the sources for the driver and some kernel
+patches.
+
+This version of the driver lacks still some important features like audio
+capabilities, but it should be functional enough to check out.
+
+Petteri Stenius
+
+
+
+##### cdu33a.c
+/*
+ * cdu33a.c
+ *
+ * Sony CDU-33A double speed CDROM interface device driver.
+ *
+ * This driver is based on the CDU-31A driver by Corey Minyard.
+ *
+ * This driver uses interrupts for almost every operation, to speed up 
+ * transfer and to decrease overall system load. On my 8MB 33MHz 486 this 
+ * driver is capable of up to 300kB/s transfer rates.
+ *
+ * Audio capabilities have not yet been implemented. It should not
+ * be too hard to implement, but the basic functionality of the driver
+ * should propably be carefully tested before that.
+ *
+ * Multisession PhotoCDs? No idea, I haven't got one to be able to test.
+ *
+ * CDU-31A drives? It should work, remove the dbl speed bit from
+ * the SONY_SD_MECH_CONTROL command in the init_module function.
+ *
+ * NOTE:
+ * This is still ALPHA version. There might be some naughty race conditions
+ * but this should be functional enough to be able to mount and check out.
+ * !!!! Use at your own risk !!!!
+ *
+ * INSTALLING:
+ * The driver is implemented as an installable module. Use 'insmod' 
+ * to install this driver and 'rmmod' to remove it from the kernel. 
+ * Before installing a few kernel patches to kernel/ksyms.c and 
+ * drivers/block/{ll_rw_block.c,cdu31a.c} has to be applied.
+ * After applying the patches compile the kernel with CDU-31A support.
+ * The driver uses the same major number as the cdu31a driver.
+ *
+ * Check TODO and NOTE comments in the code.
+ *
+ * 30-May-94 Petteri Stenius (Petteri.Stenius@cs.hut.fi)
+ *
+ */
+
+/*
+ *  Copyright (C) 1994  Petteri Stenius
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ */
+
+/*
+ * $Log: cdu33a.c $
+ * 30-May-94  Petteri Stenius (Petteri.Stenius@cs.hut.fi) 
+ *	Initial release, lots of unimplemented features. Works quite well
+ *	with transfer rates up to 300kB/s.
+ *
+ *
+ */
+
+#include <linux/module.h>
+#include <linux/string.h>
+
+#include <asm/io.h>
+#include <asm/irq.h>
+
+#include <linux/cdrom.h>
+#include <linux/cdu33a.h>	/* cdu33a.h is actually linked to cdu31a.h */
+
+/* TODO: make these definitions permanent in their respective locations */
+#define CDU33A_CDROM_MAJOR CDU31A_CDROM_MAJOR
+#define do_cdu33a_request do_cdu31a_request
+#define check_cdu33a_media_change_fn check_cdu31a_media_change_fn
+#define DEVICE_INTR	do_cdu33a
+
+#define MAJOR_NR CDU33A_CDROM_MAJOR
+#include "blk.h"
+
+#define T1		0x01	/* very verbose */
+#define T2		0x02	/* quite important */
+#define T3		0x04	/* errors and other important msgs */
+#define TRACELVL	(T3)
+
+#define TRACE(lvl,expr)							      \
+do {									      \
+  if(lvl & TRACELVL) {							      \
+    if(lvl & (T1 | T2)) {						      \
+      printk("cdu33a: " __FILE__ " %d - ", __LINE__);			      \
+    } else {								      \
+      printk("cdu33a: ");						      \
+    }									      \
+    printk expr;							      \
+  }									      \
+} while(0)
+
+#define DEFAULT_RETRIES		100000
+#define RESET_TIMEOUT		100
+#define RESULT_TIMEOUT		500
+
+/*****************/
+/* I/O registers */
+/*****************/
+
+#define CDU33A_BASE	0x340	/* NOTE: change this to match your setting */
+
+static int base_reg;
+
+/* write registers */
+#define CMD_REG		(base_reg + SONY_CMD_REG_OFFSET)
+#define PARAM_REG	(base_reg + SONY_PARAM_REG_OFFSET)
+#define WRITE_REG	(base_reg + SONY_WRITE_REG_OFFSET)
+#define CONTROL_REG	(base_reg + SONY_CONTROL_REG_OFFSET)
+
+/* read registers */
+#define STATUS_REG	(base_reg + SONY_STATUS_REG_OFFSET)
+#define RESULT_REG	(base_reg + SONY_RESULT_REG_OFFSET)
+#define READ_REG	(base_reg + SONY_READ_REG_OFFSET)
+#define FIFOST_REG	(base_reg + SONY_FIFOST_REG_OFFSET)
+
+static unsigned char current_control = 0;
+
+static inline void set_control(unsigned char cntrl)
+{
+  outb(current_control | cntrl, CONTROL_REG);
+  current_control |= cntrl & (SONY_ATTN_INT_EN_BIT |
+			      SONY_RES_RDY_INT_EN_BIT |
+			      SONY_DATA_RDY_INT_EN_BIT);
+}
+
+static inline void clr_control(unsigned char cntrl)
+{
+  outb(current_control &= ~cntrl, CONTROL_REG);
+}
+
+extern int (*check_cdu33a_media_change_fn)(int, int);
+
+/**********************/
+/* Internal variables */
+/**********************/
+
+static struct s_sony_drive_config sony_config;
+static struct s_sony_toc sony_toc;
+
+static struct wait_queue *module_busy_wait = NULL;
+
+static struct s_attentions {
+  int spinning;
+  int toc_read;
+  int toc_data_read;
+  int media_changed;
+} attn;
+
+static struct s_command {
+  int command;
+  char *param;
+  int param_len;
+  char *result;
+  int result_len;
+  int done;
+  struct wait_queue *done_wait;
+  int busy;
+  struct wait_queue *busy_wait;
+} cmd;
+
+/**********************/
+/* Internal functions */
+/**********************/
+
+static int write_cmd(int cmd, char *param_ptr, int param_len, 
+		     void (*intr_addr)(void));
+static int read_result(char *result_ptr, int *result_len, int dbg);
+static int do_polling_cmd(int cmd, char *param_ptr, int param_len,
+			  char *result_ptr, int *result_len);
+static int do_cmd(int cmd, char *param_ptr, int param_len, 
+		  char *result_ptr, int *result_len,
+		  void (*intr_addr)(void));
+static int do_spinup(void);
+
+/* convert from an integer 0-99 to BCD */
+static inline unsigned int int_to_bcd(unsigned int val)
+{
+  return(((val / 10) << 4) | (val % 10));
+}
+/* convert from BCD to an integer from 0-99 */
+static inline unsigned int bcd_to_int(unsigned int bcd)
+{
+   return((((bcd >> 4) & 0x0f) * 10) + (bcd & 0x0f));
+}
+/* convert a logical sector value to MSF format */
+static inline void log_to_msf(unsigned int log, unsigned char *msf)
+{
+   log = log + LOG_START_OFFSET;
+   msf[0] = int_to_bcd(log / 4500);
+   log = log % 4500;
+   msf[1] = int_to_bcd(log / 75);
+   msf[2] = int_to_bcd(log % 75);
+}
+/* convert MSF format to a logical sector */
+static inline unsigned int msf_to_log(unsigned char *msf)
+{
+   unsigned int log;
+
+   log = bcd_to_int(msf[2]);
+   log += bcd_to_int(msf[1]) * 75;
+   log += bcd_to_int(msf[0]) * 4500;
+   log = log - LOG_START_OFFSET;
+
+   return log;
+}
+
+/**********************/
+/* Interrupt routines */
+/**********************/
+
+#define CDU33A_IRQ	5	/* NOTE: change this to match your setting */
+
+static inline void enable_interrupts(void)
+{
+  set_control(SONY_ATTN_INT_EN_BIT |
+	      SONY_RES_RDY_INT_EN_BIT |
+	      SONY_DATA_RDY_INT_EN_BIT);
+}
+
+static inline void disable_interrupts(void)
+{
+  clr_control(SONY_ATTN_INT_EN_BIT |
+	      SONY_RES_RDY_INT_EN_BIT |
+	      SONY_DATA_RDY_INT_EN_BIT);
+}
+
+static void attn_intr(void)
+{
+  int attention;
+  if((inb(STATUS_REG) & SONY_ATTN_BIT) != 0) {
+
+    set_control(SONY_ATTN_CLR_BIT);
+
+    attention = inb(RESULT_REG);
+    TRACE(T2,("attention 0x%x\n", attention));
+
+    /* TODO: handle more attentions, and do more clever things */
+
+    switch(attention) {
+    case SONY_SPIN_UP_COMPLETE_ATTN:
+      attn.spinning = 1;
+      break;
+    case SONY_EJECT_COMPLETE_ATTN:
+      attn.spinning = 0;
+      attn.toc_read = 0;
+      attn.toc_data_read = 0;
+      break;
+    case SONY_TOC_READ_DONE_ATTN:
+      attn.toc_read = 1;
+      attn.media_changed = 1;
+      break;
+    }
+  }
+} /* attn_intr */
+
+static void cmd_intr(void)
+{
+  if((inb(STATUS_REG) & SONY_RES_RDY_BIT) != 0) {
+
+    if((cmd.done != 0) || (cmd.busy == 0) ||
+       (cmd.result == NULL) || (cmd.result_len < 2)) {
+      TRACE(T3,("unexpected interrupt\n"));
+      set_control(SONY_RES_RDY_CLR_BIT);
+      return;
+    }
+
+    read_result(cmd.result, &cmd.result_len, cmd.command);
+
+    cmd.done = 1;
+#if 0
+    wake_up_interruptible(&cmd.done_wait);
+#else
+    wake_up(&cmd.done_wait);
+#endif
+  }
+} /* cmd_intr */
+
+static int nread;
+
+static void read_intr(void)
+{
+  unsigned int nsect;
+  int retries, i;
+  int s;
+
+  if(!CURRENT || (MAJOR(CURRENT->dev) != MAJOR_NR)) {
+    TRACE(T3,("unexpected interrupt 0x%x\n", inb(STATUS_REG)));
+#if 0
+    SET_INTR(read_intr);	/* try again */
+#endif
+    return;
+  }
+
+  nsect = CURRENT->current_nr_sectors;
+
+  retries = DEFAULT_RETRIES;
+  while(1) {
+    s = inb(STATUS_REG);
+    if(((s & SONY_DATA_RDY_BIT) != 0) && ((s & SONY_BUSY_BIT) == 0))
+      break;
+    if(retries-- < 0) {
+      TRACE(T3,("read_intr - timeout\n"));
+#if 0
+      SET_INTR(read_intr);	/* try again */
+#endif
+      return;
+    }
+  }
+
+  i = (nread -= nsect);
+
+  TRACE(T1,("read_intr %d sectors, nread %d, status 0x%x\n", nsect, i, s));
+
+  set_control(SONY_DATA_RDY_CLR_BIT);
+
+  /* read one 2k block */
+
+  insb(READ_REG, CURRENT->buffer, nsect<<9);
+  CURRENT->sector += nsect;
+  CURRENT->buffer += nsect<<9;
+  CURRENT->errors = 0;
+  
+  if((CURRENT->current_nr_sectors -= nsect) <= 0) {
+    end_request(1);
+    TRACE(T1,("read_intr - request complete, 0x%x\n", (int)CURRENT));
+  }
+
+  if(i > 0) {
+    SET_INTR(read_intr);	/* more blocks to read */
+  }
+}
+
+static void cdu33a_interrupt(int unused)
+{
+  void (*handler)(void) = DEVICE_INTR;
+  DEVICE_INTR = NULL;
+
+  TRACE(T1,("cdu33a_interrupt 0x%x 0x%x\n", inb(STATUS_REG), (int)handler));
+
+  attn_intr();			/* handle attentions */
+  cmd_intr();			/* handle commands */
+
+  if(handler)
+    handler();
+
+  sti();
+}
+
+/*****************************/
+/* Device exported functions */
+/*****************************/
+
+static int cdu33a_open(struct inode *inode, struct file *filp)
+{
+  int r;
+
+  TRACE(T1,("cdu33a_open\n"));
+
+  if((r = do_spinup()) != 0)
+    return r;
+    
+  MOD_INC_USE_COUNT;
+
+  check_disk_change(inode->i_rdev);
+
+  return 0;
+}
+
+static void cdu33a_release(struct inode *inode,
+			struct file *filp)
+{
+  MOD_DEC_USE_COUNT;
+
+  TRACE(T1,("cdu33a_release\n"));
+
+  if(!MOD_IN_USE) {
+    wake_up(&module_busy_wait);
+  }
+}
+
+static int cdu33a_check_media_change(int full_dev, int flag)
+{
+  int r = attn.media_changed;
+  TRACE(T1,("cdu33a_media_change(%d) - %d\n", flag, r));
+  if(!flag)
+    attn.media_changed = 0;
+  return r;
+}
+
+static int cdu33a_ioctl(struct inode *inode,
+			struct file  *file,
+			unsigned int  cmd,
+			unsigned long arg)
+{
+  /* TODO: implement all kinds of stuff, like audio capabilities */
+  TRACE(T3,("no ioctl commands implemented\n"));
+  return -EIO;
+}
+
+static void do_cdu33a_request(void)
+{
+  unsigned int nr;
+  char params[6], result[2];
+  int result_len, retries;
+
+  TRACE(T1,("do_cdu33a_request\n"));
+
+  while(1) {
+    sti();
+
+    INIT_REQUEST;
+
+    if(CURRENT->cmd != READ) {
+      cli();
+      end_request(0);
+      sti();
+      continue;
+    }
+    
+    nread = CURRENT->nr_sectors;
+
+    if(((CURRENT->sector + nread) / 4) >= sony_toc.lead_out_start_lba) {
+      TRACE(T3,("request out of bounds\n"));
+      cli();
+      end_request(0);
+      sti();
+      continue;
+    }
+
+    TRACE(T1,("read command - block: %d sectors: %d (%d)\n", 
+	     (int)CURRENT->sector, nread, (int)CURRENT->nr_sectors));
+
+    log_to_msf(CURRENT->sector / 4, &params[0]);
+
+    if((nr = nread / 4) < 1) nr = 1;
+
+    params[3] = (nr & 0xff0000) >> 16;
+    params[4] = (nr & 0xff00) >> 8;
+    params[5] = (nr & 0xff);
+
+    retries = 1;
+  try_again:
+    result_len = sizeof(result);
+    if(do_cmd(SONY_READ_CMD, params, 6, result, &result_len,
+	      read_intr) != 0) {
+      TRACE(T3,("read command - failed\n"));
+      cli();
+      if(CURRENT) {
+	end_request(0);
+	sti();
+      } else {
+	sti();
+	return;
+      }
+    }
+
+    if((result[0] & 0x20) == 0x20) {
+      TRACE(T3,("read command - error 0x%x\n", result[1]));
+      if(retries-- < 0) {
+	cli();
+	end_request(0);
+	sti();
+      } else {
+	attn.spinning = 0;
+	do_spinup();
+	goto try_again;
+      }
+    }
+  }
+}
+
+/*********************/
+/* Probing functions */
+/*********************/
+
+static inline void handle_attn(void)
+{
+  int attention;
+  if((inb(STATUS_REG) & SONY_ATTN_BIT) != 0) {
+
+    set_control(SONY_ATTN_CLR_BIT);
+
+    attention = inb(RESULT_REG);
+    TRACE(T2,("attention 0x%x\n", attention));
+
+  }
+}
+
+static int cdu33a_probe(int reg, struct s_sony_drive_config *sony_config)
+{
+  int result_len, timeout, r;
+
+  base_reg = reg;
+
+  TRACE(T2,("writing reset to drive at 0x%x\n", base_reg));
+
+  set_control(SONY_DRIVE_RESET_BIT);
+
+  timeout = jiffies + RESET_TIMEOUT;
+  while(1) {
+    if(inb(STATUS_REG) & SONY_ATTN_BIT)
+      break;
+    if(timeout < jiffies) {
+      TRACE(T2,("no attention from drive\n"));
+      break;
+    }
+  }
+
+  handle_attn();
+
+  result_len = sizeof(*sony_config);
+
+  if((r = do_polling_cmd(SONY_REQ_DRIVE_CONFIG_CMD, NULL, 0,
+			 (char*)sony_config, &result_len)) != 0)
+    return r;
+
+  TRACE(T1,("read %d bytes of %d\n", result_len, sizeof(*sony_config)));
+
+  return 0;
+}
+
+/*****************************/
+/* Module exported functions */
+/*****************************/
+
+static int cdu33a_block_size;
+
+static struct sigaction cdu33a_sigaction = {
+	cdu33a_interrupt,
+	0,
+	0,
+	NULL
+};
+
+static struct file_operations cdu33a_fops = 
+{
+  NULL,				/* lseek */
+  block_read,			/* read - general block-dev read */
+  block_write,			/* write - general block-dev write */
+  NULL,				/* readdir */
+  NULL,				/* select */
+  cdu33a_ioctl,			/* ioctl */
+  NULL,				/* mmap */
+  cdu33a_open,			/* open */
+  cdu33a_release,		/* release */
+  NULL				/* fsync */
+};
+
+int init_module(void) 
+{
+  char params[2], res[2];
+  int len;
+
+  TRACE(T1,("init_module\n"));
+
+  attn.spinning = 0;
+  attn.toc_read = 0;
+  attn.toc_data_read = 0;
+  attn.media_changed = 1;
+
+  /* Probe for a drive */
+
+  /* TODO: select different I/O base addresses */
+
+  if(cdu33a_probe(CDU33A_BASE, &sony_config))
+    return -ENODEV;
+
+  TRACE(T3,("%8.8s %16.16s %8.8s %02x%02x\n",
+	    sony_config.vendor_id, sony_config.product_id,
+	    sony_config.product_rev_level, 
+	    sony_config.hw_config[0], sony_config.hw_config[1]));
+
+  /* Initialize the drive */
+
+  /* TODO: check for double speed capability */
+
+  params[0] = SONY_SD_MECH_CONTROL;
+  params[1] = 0x01 | 0x02 | 0x04; /* auto spin up, auto eject and dbl speed */
+				  /* NOTE: dbl speed is the 0x04 bit */
+  
+  TRACE(T3,("set auto spin up, auto eject and double speed\n"));
+
+  len = sizeof(res);
+  if(do_polling_cmd(SONY_SET_DRIVE_PARAM_CMD, params, 2,
+		    res, &len)) {
+    set_control(SONY_DRIVE_RESET_BIT);
+    return -EIO;
+  }
+
+  if (register_blkdev(MAJOR_NR,DEVICE_NAME,&cdu33a_fops)) {
+    TRACE(T3,("Unable to get major %d\n", MAJOR_NR));
+    set_control(SONY_DRIVE_RESET_BIT);
+    return -EBUSY;
+  }
+  
+  if (irqaction(CDU33A_IRQ,&cdu33a_sigaction)) {
+    TRACE(T3,("unable to get irq %d\n", CDU33A_IRQ));
+    unregister_blkdev(MAJOR_NR,DEVICE_NAME);
+    set_control(SONY_DRIVE_RESET_BIT);
+    return -EBUSY;
+  }
+
+  enable_interrupts();
+
+  check_cdu33a_media_change_fn = cdu33a_check_media_change;
+  blk_dev[MAJOR_NR].request_fn = DEVICE_REQUEST;
+  read_ahead[MAJOR_NR] = 32;
+  cdu33a_block_size = 2048;	/* use 2k block size to make things simpler */
+				/* must use 'mount -o block=2048 option' */
+  blksize_size[MAJOR_NR] = &cdu33a_block_size;
+
+  TRACE(T3,("Module installed\n"));
+
+  return 0;
+}
+
+void cleanup_module(void)
+{
+  TRACE(T1,("cleanup_module\n"));
+
+  if(MOD_IN_USE) {
+    TRACE(T3,("Module in use, task suspended\n"));
+    while(MOD_IN_USE)
+      sleep_on(&module_busy_wait);
+  }
+
+  disable_interrupts();
+  
+  free_irq(CDU33A_IRQ);
+
+  check_cdu33a_media_change_fn = NULL;
+  blk_dev[MAJOR_NR].request_fn = NULL;
+  unregister_blkdev(MAJOR_NR,DEVICE_NAME);
+  blksize_size[MAJOR_NR] = NULL;
+
+  set_control(SONY_DRIVE_RESET_BIT);
+
+  TRACE(T3,("Module removed\n"));
+}
+
+/**********************/
+/* Internal functions */
+/**********************/
+
+static int write_cmd(int command, char *param_ptr, int param_len, 
+		     void (*intr_addr)(void))
+{
+  int retries;
+
+  SET_INTR(intr_addr);
+
+  enable_interrupts();
+
+  /* write parameters */
+
+  set_control(SONY_RES_RDY_CLR_BIT | SONY_PARAM_CLR_BIT);
+
+  retries = DEFAULT_RETRIES;
+  while(param_len) {
+    if((inb(FIFOST_REG) & SONY_PARAM_WRITE_RDY_BIT) != 0) {
+      outb(*param_ptr, PARAM_REG);
+      param_ptr++; param_len--;
+      retries = DEFAULT_RETRIES;
+    } else {
+      if(retries-- < 0) {
+	TRACE(T3,("write_cmd(0x%x) timeout writing parameters\n", command));
+	return -EIO;
+      }
+    }
+  }
+
+  /* write command */
+
+  outb(command, CMD_REG);
+
+  TRACE(T1,("write_cmd(0x%x) ready\n", command));
+
+  return 0;
+}
+
+static int read_result(char *result_ptr, int *result_len, int dbg)
+{
+  int retries, len, s;
+
+  s = inb(STATUS_REG);
+
+  set_control(SONY_RES_RDY_CLR_BIT);
+
+  if((s & SONY_RES_RDY_BIT) == 0) {
+
+    TRACE(T3,("read_result(0x%x) drive not ready, status 0x%x\n", 
+	      dbg, s));
+
+    return -EIO;
+  }
+
+  /* read first two bytes */
+
+  len = 0;
+  result_ptr[len++] = inb(RESULT_REG);
+  result_ptr[len++] = inb(RESULT_REG);
+
+  if((result_ptr[0] & 0xf0) == 0x20) {
+
+    TRACE(T3,("read_result(0x%x) error 0x%x from drive\n", 
+	      dbg, result_ptr[1]));
+
+    *result_len = len;
+
+    return -EIO;
+  }
+
+  if(*result_len < result_ptr[1]) {
+
+    TRACE(T3,("read_result(0x%x) too small result buffer %d %d\n", 
+	      dbg, *result_len, result_ptr[1]));
+
+    len = 0;
+    result_ptr[len++] = 0x20;
+    result_ptr[len++] = 0xff;
+    *result_len = len;
+
+    return -EIO;
+  }
+
+  len = result_ptr[1]+2;
+  for(*result_len = 2; *result_len < len; (*result_len)++) {
+
+    /* check result_rdy_bit every 10 bytes */
+
+    if(*result_len % 10 == 0) {
+
+      retries = DEFAULT_RETRIES;
+
+      while(1) {
+
+	if((inb(STATUS_REG) & SONY_RES_RDY_BIT) != 0)
+	  break;
+
+	if(retries-- < 0) {
+
+	  TRACE(T3,("read_result(0x%x) timeout reding drive\n", dbg));
+
+	  len = 0;
+	  result_ptr[len++] = 0x20;
+	  result_ptr[len++] = 0xff;
+	  *result_len = len;
+
+	  return -EIO;
+	}
+      }
+      set_control(SONY_RES_RDY_CLR_BIT);
+    }
+
+    /* read result */
+
+    result_ptr[*result_len] = inb(RESULT_REG);
+  }
+
+  TRACE(T1,("read_result(0x%x) ready\n", dbg));
+
+  return 0;
+}
+
+static int do_polling_cmd(int command, char *param_ptr, int param_len,
+			  char *result_ptr, int *result_len)
+{
+  int timeout, retries, r, s;
+
+  retries = DEFAULT_RETRIES;
+  while(1) {
+    if((inb(STATUS_REG) & SONY_BUSY_BIT) == 0)
+      break;
+    if(retries-- < 0) {
+      TRACE(T3,("drive seems busy\n"));
+      return -ENODEV;
+    }
+  }
+
+  if((r = write_cmd(command, param_ptr, param_len, NULL)) != 0)
+    return r;
+
+  timeout = jiffies + RESULT_TIMEOUT;
+  while(1) {
+    s = inb(STATUS_REG);
+    if((s & SONY_RES_RDY_BIT) != 0)
+      break;
+    if(timeout < jiffies) {
+      TRACE(T3,("timeout reading result, status 0x%x\n", s));
+      return -EIO;
+    }
+  }
+
+  if((r = read_result(result_ptr, result_len, command)) != 0)
+    return r;
+
+  return 0;
+}
+
+static int do_cmd(int command, char *param_ptr, int param_len, 
+		  char *result_ptr, int *result_len,
+		  void (*intr_addr)(void))
+{
+  cli();
+  while(cmd.busy)
+  {
+    TRACE(T3,("do_cmd(0x%x) - busy, waiting\n", command));
+#if 0
+    interruptible_sleep_on(&cmd.busy_wait);
+    if (current->signal & ~current->blocked)
+      return -EINTR;
+#else
+    sleep_on(&cmd.busy_wait);
+#endif
+  }
+  cmd.busy = 1;			/* start of critical section */
+  cmd.done = 0;
+  cmd.command = command;
+  cmd.param = param_ptr;
+  cmd.param_len = param_len;
+  cmd.result = result_ptr;
+  cmd.result_len = *result_len;
+  sti();
+
+  if(write_cmd(command, param_ptr, param_len, intr_addr)) {
+    cmd.busy = 0;		/* end of critical section */
+#if 0
+    wake_up_interruptible(&cmd.busy_wait);
+#else
+    wake_up(&cmd.done_wait);
+#endif
+    return -EIO;
+  }
+
+#if 0
+  interruptible_sleep_on(&cmd.done_wait);
+  if (current->signal & ~current->blocked)
+  {
+    cmd.busy = 0;		/* end of critical section */
+    wake_up_interruptible(&cmd.busy_wait);
+    return -EINTR;
+  }
+#else
+  sleep_on(&cmd.done_wait);
+#endif
+
+  *result_len = cmd.result_len;
+  
+  cmd.busy = 0;			/* end of critical section */
+#if 0
+  wake_up_interruptible(&cmd.busy_wait);
+#else
+  wake_up(&cmd.done_wait);
+#endif
+
+  return 0;
+}
+
+static int do_spinup(void)
+{
+  char res[2];
+  int len, r;
+
+  if(!attn.spinning) {
+    len = sizeof(res);
+    if((r = do_cmd(SONY_SPIN_UP_CMD, NULL, 0, res, &len, NULL)) != 0)
+      return r;
+    if((len < 2) || ((res[0] & 0x20) == 0x20)) {
+      TRACE(T3,("unable to spin up drive\n"));
+      return -EIO;
+    }
+    attn.spinning = 1;
+    attn.toc_read = 0;
+    TRACE(T2,("spin_up: %d 0x%x 0x%x\n", len, res[0], res[1]));
+  }
+  if(!attn.toc_read) {
+    len = sizeof(res);
+    if((r = do_cmd(SONY_READ_TOC_CMD, NULL, 0, res, &len, NULL)) != 0)
+      return r;
+    if((len < 2) || ((res[0] & 0x20) == 0x20)) {
+      TRACE(T3,("unable to read toc\n"));
+      return -EIO;
+    }
+    attn.toc_read = 1;
+    attn.toc_data_read = 0;
+    TRACE(T2,("toc_read: %d 0x%x 0x%x\n", len, res[0], res[1]));
+  }
+  if(!attn.toc_data_read) {
+    len = sizeof(sony_toc);
+    if((r = do_cmd(SONY_REQ_TOC_DATA_CMD, NULL, 0, 
+		   (char*)&sony_toc, &len, NULL)) != 0)
+      return r;
+    if((len < 2) || ((sony_toc.exec_status[0] & 0x20) == 0x20)) {
+      TRACE(T3,("unable to request toc data\n"));
+      return -EIO;
+    }
+    attn.toc_data_read = 1;
+    TRACE(T2,("req_toc_data: %d 0x%x 0x%x\n", 
+	      len, sony_toc.exec_status[0], sony_toc.exec_status[1]));
+    sony_toc.lead_out_start_lba = msf_to_log(&sony_toc.lead_out_start_msf[0]);
+  }
+  
+  return 0;
+}
+
+##### Makefile
+CC=		gcc -D__KERNEL__
+CFLAGS=		-Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -pipe \
+		-m486 -DMODULE
+
+OBJS=		cdu33a.o version.o
+
+all:		cdu33am.o
+
+cdu33am.o:	$(OBJS)
+		ld -r -o cdu33am.o $(OBJS)
+
+version.c:	foo
+		@echo char kernel_version[] = \"`uname -r`\"\; > version.c
+
+foo:
+		@$(RM) version.c
+
+clean:
+		$(RM) *.o *~
+
+##### linux.1.1.15.diffs
+diff -rc linux-1.1.15/drivers/block/cdu31a.c linux/drivers/block/cdu31a.c
+*** linux-1.1.15/drivers/block/cdu31a.c	Mon Jan 10 17:57:05 1994
+--- linux/drivers/block/cdu31a.c	Mon May 30 00:51:11 1994
+***************
+*** 58,63 ****
+--- 58,82 ----
+   *
+   */
+  
++ #if 1
++ unsigned long
++ cdu31a_init(unsigned long mem_start, unsigned long mem_end)
++ {
++   return mem_start;
++ }
++ 
++ int (*check_cdu31a_media_change_fn)(int full_dev, int flag) = 0;
++ 
++ int
++ check_cdu31a_media_change(int full_dev, int flag)
++ {
++   if(check_cdu31a_media_change_fn)
++     return check_cdu31a_media_change_fn(full_dev, flag);
++   return 0;
++ }
++ 
++ #else
++ 
+  
+  
+  #include <linux/errno.h>
+***************
+*** 1850,1852 ****
+--- 1869,1872 ----
+     return mem_start;
+  }
+  
++ #endif /* */
+diff -rc linux-1.1.15/drivers/block/ll_rw_blk.c linux/drivers/block/ll_rw_blk.c
+*** linux-1.1.15/drivers/block/ll_rw_blk.c	Wed May 18 21:50:28 1994
+--- linux/drivers/block/ll_rw_blk.c	Mon May 30 00:52:20 1994
+***************
+*** 229,239 ****
+   * to add links to the top entry for scsi devices.
+   */
+  	if ((major == HD_MAJOR
+  	     || major == SCSI_DISK_MAJOR
+  	     || major == SCSI_CDROM_MAJOR)
+  	    && (req = blk_dev[major].current_request))
+  	{
+! 	        if (major == HD_MAJOR)
+  			req = req->next;
+  		while (req) {
+  			if (req->dev == bh->b_dev &&
+--- 229,241 ----
+   * to add links to the top entry for scsi devices.
+   */
+  	if ((major == HD_MAJOR
++ 	     || major == CDU31A_CDROM_MAJOR
+  	     || major == SCSI_DISK_MAJOR
+  	     || major == SCSI_CDROM_MAJOR)
+  	    && (req = blk_dev[major].current_request))
+  	{
+! 	        if (major == HD_MAJOR
+! 		    || major == CDU31A_CDROM_MAJOR)
+  			req = req->next;
+  		while (req) {
+  			if (req->dev == bh->b_dev &&
+diff -rc linux-1.1.15/kernel/ksyms.c linux/kernel/ksyms.c
+*** linux-1.1.15/kernel/ksyms.c	Tue May 24 09:15:07 1994
+--- linux/kernel/ksyms.c	Mon May 30 00:54:50 1994
+***************
+*** 19,24 ****
+--- 19,26 ----
+  #ifdef CONFIG_INET
+  #include <linux/netdevice.h>
+  #endif
++ 
++ #include <asm/irq.h>
+    
+  extern void *sys_call_table;
+  
+***************
+*** 39,44 ****
+--- 41,54 ----
+  
+  extern void (* iABI_hook)(struct pt_regs * regs);
+  
++ extern struct blk_dev_struct blk_dev[];
++ extern int * blksize_size[];
++ extern struct wait_queue * wait_for_request;
++ 
++ #ifdef CONFIG_CDU31A
++ extern int (*check_cdu31a_media_change_fn)(int, int);
++ #endif
++ 
+  #ifdef CONFIG_INET
+  extern int register_netdev(struct device *);
+  extern void unregister_netdev(struct device *);
+***************
+*** 82,87 ****
+--- 92,103 ----
+  	X(iput),
+  	X(namei),
+  	X(lnamei),
++ 	X(block_read),
++ 	X(block_write),
++ 	X(check_disk_change),
++ 	X(sync_dev),
++ 	X(fsync_dev),
++ 	
+  
+  	/* device registration */
+  	X(register_chrdev),
+***************
+*** 102,107 ****
+--- 118,126 ----
+  	X(free_irq),
+  	X(bh_active),
+  	X(bh_mask),
++ 	X(irqaction),
++ 	X(disable_irq),
++ 	X(enable_irq),
+  
+  	/* process management */
+  	X(wake_up),
+***************
+*** 110,115 ****
+--- 129,137 ----
+  	X(current),
+  	X(jiffies),
+  	X(xtime),
++ 	X(need_resched),
++ 	X(sleep_on),
++ 	X(interruptible_sleep_on),
+  
+  	/* misc */
+  	X(printk),
+***************
+*** 117,122 ****
+--- 139,145 ----
+  	X(vsprintf),
+  	X(system_utsname),
+  	X(sys_call_table),
++ 	X(panic),
+  
+  	/* Signal interfaces */
+  	X(do_signal),
+***************
+*** 133,138 ****
+--- 156,169 ----
+  
+  	/* Miscellaneous access points */
+  	X(si_meminfo),
++ 	X(blk_dev),
++ 	X(blksize_size),
++ 	X(wait_for_request),
++ 	X(read_ahead),
++ 
++ #ifdef CONFIG_CDU31A
++ 	X(check_cdu31a_media_change_fn),
++ #endif
+  
+  #ifdef CONFIG_FTAPE
+  	/* The next labels are needed for ftape driver.  */
+--
+Petteri Stenius                  I " My punctuality is well known, when
+Mail : Petteri.Stenius@cs.hut.fi I the revolution takes place, I'll be late
+Tel. : +358-0-492382             I and I'll be shot as a traitor "
+
+
+

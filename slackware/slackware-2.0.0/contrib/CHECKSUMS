@@ -1,0 +1,53 @@
+These are the CRCs and filesizes for the files in the Slackware Linux
+distribution. If you want to test your files, use 'cksum' and compare
+the values to the ones listed here. 'cksum' can be found in the GNU
+textutl package on prep.ai.mit.edu in /pub/gnu, or at any GNU mirror site.
+
+CRC        Size     Filename
+1141651956 1223 ./.desc.txt
+1225892560 1435 ./00index.txt
+1700316123 313 ./CHECKSUMS
+4135614573 3568 ./INDEX
+3298862860 548277 ./MANIFEST
+1410612812 169621 ./aps-23.tgz
+2652025364 1382 ./auis63L0-dev.lsm
+348714444 3721226 ./auis63L0-dev.tgz
+2561160261 1368 ./auis63L0-doc.lsm
+803086812 3232246 ./auis63L0-doc.tgz
+3913582469 1500 ./auis63L0-mail.lsm
+4064005550 1984858 ./auis63L0-mail.tgz
+361385940 1367 ./auis63L0-src.lsm
+980950909 736636 ./auis63L0-src.tgz
+591385313 1264 ./auis63L0-wp.lsm
+1213470711 1454220 ./auis63L0-wp.tgz
+841589111 708364 ./gcl.tgz
+2482684002 1565406 ./gnat-1.79.tgz
+3518640766 923 ./gnat.lsm
+3290901691 583094 ./gpc-2.5.7.tgz
+287496511 78 ./install/.desc.txt
+287496511 78 ./install/00index.txt
+783214465 8553 ./install/installpkg
+547115978 4270 ./install/removepkg
+2013432935 65876 ./ksh.tgz
+3894747124 88 ./ksh.txt
+1396660941 7356162 ./lemacs.tgz
+2637143518 58 ./lemacs.txt
+193078748 1595 ./lodlin14.txt
+1410602365 92502 ./lodlin14.zip
+2015964695 943 ./lynx-2.3+term.lsm
+347837272 114571 ./lynx-2.3+term.tgz
+48125039 2725306 ./manpagesrc.tgz
+3778460498 62405 ./mc-0.6.tgz
+2419797240 512 ./mc-0.6.txt
+3773963147 193253 ./ncurses-181.tgz
+805696007 290041 ./ncurses-185.tgz
+3791667951 289718 ./perl-5.00a.tgz
+3527511564 1330472 ./rescue-with-lilo.gz
+3627240252 1322397 ./rescue.gz
+620130937 104 ./use-ncurses-1.8.1/.desc.txt
+620130937 104 ./use-ncurses-1.8.1/00index.txt
+1202490459 95351 ./use-ncurses-1.8.1/hdsetup.tgz
+4082342935 57847 ./use-ncurses-1.8.1/mc-0.5.tgz
+357979139 512 ./use-ncurses-1.8.1/mc-0.5.txt
+620784652 67245 ./uucp-1.04-info.tgz
+3823076207 372795 ./uucp-1.04.tgz

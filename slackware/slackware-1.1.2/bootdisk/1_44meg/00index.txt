@@ -1,0 +1,19 @@
+00index.txt         449  
+README              978  
+bareboot.gz      248581  
+bareboot.log       2429  
+cd_boot.gz       554060  
+cd_boot.log        3311  
+color144.gz      547133  
+edit/                 -  
+net_boot.gz      515248  
+net_boot.log       3141  
+onlyscsi.gz      492984  
+onlyscsi.log       3308  
+scsiboot.gz      552381  
+scsiboot.log       3841  
+tty144.gz        755333  
+
+edit:
+00index.txt          52  
+editroot         313860  

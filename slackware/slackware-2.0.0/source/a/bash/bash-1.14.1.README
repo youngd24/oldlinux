@@ -1,0 +1,114 @@
+This file documents the bugs fixed between this release, bash-1.14.1,
+and the last bash release, 1.14.0.
+
+1.  Bugs fixed in Bash
+
+a.  Fixes to text files and manual pages:  corrections to the bug reporting
+    address, changes to the instructions for building bash with gcc, more
+    info about `bashbug' and using it to report bugs.
+
+b.  Changes to the makefiles:  using $(SHELL) instead of /bin/sh, removal
+    of obsolete targets, fixes to some of the recipes, more compliance
+    with the GNU coding standards.
+
+c.  Fixes to code that executes a string; used by builtins `eval', `.' and
+    `trap', to import function definitions from the environment, and
+    executing $PROMPT_COMMAND
+
+d.  Bash now uses strcasecmp/strncasecmp, if available, in favor of
+    stricmp/strnicmp
+
+e.  Background jobs now ignore SIGINT and SIGQUIT only if job control is
+    not active
+
+f.  Fixed a bug which could cause pipes to be closed at the wrong time
+
+g.  Fixed core dumps caused by redirections closing the file descripton
+    being used to read a script
+
+h.  Subshells no longer try to alter the terminal settings or change the
+    terminal's process group
+
+i.  Fixes to machine descriptions: NetBSD, BSD/386, FreeBSD, SunOS, Ardent
+    Titan, Motorola M88K, Cray
+
+j.  Fixes so that some asynchronous list constructs no longer dump core
+    when used with the subshell operators
+
+k.  Fixed a bug that caused the status of background jobs to be output
+    after the prompt was displayed when readline was not being used
+
+l.  Fixes so the shell will compile if varargs is not available
+
+m.  Fixed a bug that made -nolineediting not work at all
+
+n.  Fixed a bug that caused completion to fail when quoted strings
+    appeared in the command line.
+
+o.  Fixed a bug which caused unexpected behavior when histchars was set
+    to the empty string -- setting histchars to "" now works to disable
+    history substitution
+
+p.  Fixed a bug that caused the shell to occasionally dump core when
+    SIGINT was received while executing a SIGINT trap
+
+q.  Fixed a bug in `fc' so that commands executed from the history are
+    added back to the history according to the value of $HISTCONTROL
+
+r.  `fg' and `bg' now print error messages if invoked when job control is
+    not active, rather than failing silently
+
+s.  `help' no longer does case-insensitive string comparison
+
+t.  Systems which define RLIMIT_OFILE in <sys/resource.h> can now use
+    `ulimit -n' to set the max number of open file descriptors
+
+u.  Fixed a typo in the `umask' usage message
+
+v.  Fixed a bug caused by using sscanf(3) to try and decode a pid_t
+    argument to `wait'
+
+w.  `bashbug' now saves a report to $HOME/dead.bashbug if rmail(1) fails
+
+x.  Fixed some bugs in support/mksysdefs to better identify SunOS 5.x
+    and added support for $srcdir
+
+y.  `make tests' no longer relies on the error output from `cat'
+
+2.  Bugs fixed in Readline
+
+a.  Fixed the `public' header file chardefs.h to use <ctype.h> facilities
+    when available, remove the definition of `savestring' (which should
+    never have been there), improved handling of ISO-8859-1 character sets
+
+b.  Fixed a bug in completion of quoted filenames when the user supplied
+    the opening quote
+
+c.  Completion now quotes filenames beginning with `#'
+
+d.  Fixed to the readline display code to handle prompts containing
+    invisible characters better
+
+e.  Fixes to readline so that characters > 127 are fully erased when
+    being displayed as octal sequences
+
+f.  Fixed a bug which caused history files to not be truncated
+
+g.  Fixed history expansion to `-y' abbreviates `0-y'
+
+h.  Fixed incremental history searches so that the `previous line found'
+    is reset each time a new search is started
+
+i.  Fixes to the readline source files to allow them to be built `in place'
+    or using `installed' header files
+
+j.  Fixed readline.h so that it now declares all of the readline functions,
+    even those available via conditional compilation
+
+k.  If not compiled into the shell, readline retrieves and sets the
+    window size at startup.  This has the effect of stopping a process
+    started in the background before it reads (possibly invalid) terminal
+    settings
+
+l.  Readline now uses strcasecmp/strncasecmp, if available, in favor of
+    stricmp/strnicmp

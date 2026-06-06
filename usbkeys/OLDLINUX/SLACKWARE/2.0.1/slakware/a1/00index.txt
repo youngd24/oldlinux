@@ -1,0 +1,16 @@
+00index.txt         416  
+base.tgz         112475  
+devs.tgz           8693  
+diska1             2927  
+etc.tgz           60873  
+hdsetup.tgz      113347  
+idekern.log        3320  
+idekern.tgz      324573  
+lilo.tgz          55426  
+maketag            2739  
+scsikern.log       4186  
+scsikern.tgz     393341  
+sysvinit.tgz      26033  
+tagfile            2005  
+tagfile.org        2005  
+tagfile.pat         351  

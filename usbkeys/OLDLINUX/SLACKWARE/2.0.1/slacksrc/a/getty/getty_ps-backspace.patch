@@ -1,0 +1,29 @@
+
+If you still have trouble with invisible backspace during the login:
+prompt this should fix it. Works for me.
+
+-Frac
+txy3340@ultb.isc.rit.edu
+FRiC@#linux.irc.nolife
+
+
+diff --context --recursive getty_ps.old/funcs.c getty_ps/funcs.c
+*** getty_ps.old/funcs.c	Sun Apr 18 03:28:04 1993
+--- getty_ps/funcs.c	Thu Feb 10 01:37:01 1994
+***************
+*** 721,727 ****
+  		if (ch == Erase) {
+  			if (count) {
+  				if (!(lflag & ECHOE)) {
+! 					(void) fputs(" \b", stdout);
+  					(void) fflush(stdout);
+  				}
+  				--p;
+--- 721,727 ----
+  		if (ch == Erase) {
+  			if (count) {
+  				if (!(lflag & ECHOE)) {
+! 					(void) fputs("\b \b", stdout);
+  					(void) fflush(stdout);
+  				}
+  				--p;

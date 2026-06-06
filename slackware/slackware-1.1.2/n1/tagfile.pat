@@ -1,0 +1,15 @@
+deliver: SKP
+dip: SKP
+mailx: ADD
+tcpip: ADD
+tracrout: ADD
+uucp: SKP
+netcfg: ADD
+elm: ADD
+pine: ADD
+smail: ADD
+cnews: SKP
+nn: SKP
+tin: SKP
+trn: SKP
+ppp: ADD

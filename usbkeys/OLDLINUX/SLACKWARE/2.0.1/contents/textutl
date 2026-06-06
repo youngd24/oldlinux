@@ -1,0 +1,69 @@
+PACKAGE NAME:     textutl
+PACKAGE SIZE:     126 K
+PACKAGE LOCATION: diska3
+PACKAGE DESCRIPTION:
+textutl:  GNU textutil 1.9
+textutl:
+textutl:  These are the GNU text file (actually, file contents) processing
+textutl:  utilities.  Most of these programs have significant advantages over
+textutl:  their Unix counterparts, such as greater speed, additional options,
+textutl:  and fewer arbitrary limits.
+textutl:
+textutl:  The programs in this package are: cat, cksum, comm, csplit, cut, 
+textutl:  expand, fold, head, join, nl, od, paste, pr, sort, split,
+textutl:  sum, tac, tail, tr, unexpand, uniq, and wc.
+textutl:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/cksum
+usr/bin/comm
+usr/bin/csplit
+usr/bin/expand
+usr/bin/fold
+usr/bin/join
+usr/bin/nl
+usr/bin/od
+usr/bin/paste
+usr/bin/pr
+usr/bin/sort
+usr/bin/split
+usr/bin/sum
+usr/bin/tac
+usr/bin/tail
+usr/bin/tr
+usr/bin/unexpand
+usr/bin/uniq
+usr/bin/wc
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/cat.1.gz
+usr/man/preformat/cat1/cksum.1.gz
+usr/man/preformat/cat1/comm.1.gz
+usr/man/preformat/cat1/csplit.1.gz
+usr/man/preformat/cat1/cut.1.gz
+usr/man/preformat/cat1/expand.1.gz
+usr/man/preformat/cat1/fold.1.gz
+usr/man/preformat/cat1/head.1.gz
+usr/man/preformat/cat1/join.1.gz
+usr/man/preformat/cat1/nl.1.gz
+usr/man/preformat/cat1/od.1.gz
+usr/man/preformat/cat1/paste.1.gz
+usr/man/preformat/cat1/pr.1.gz
+usr/man/preformat/cat1/sort.1.gz
+usr/man/preformat/cat1/split.1.gz
+usr/man/preformat/cat1/sum.1.gz
+usr/man/preformat/cat1/tac.1.gz
+usr/man/preformat/cat1/tail.1.gz
+usr/man/preformat/cat1/tr.1.gz
+usr/man/preformat/cat1/unexpand.1.gz
+usr/man/preformat/cat1/uniq.1.gz
+usr/man/preformat/cat1/wc.1.gz
+bin/
+bin/head
+bin/cut
+bin/cat
+install/
+install/doinst.sh

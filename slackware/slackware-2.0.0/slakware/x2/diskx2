@@ -1,0 +1,56 @@
+CONTENTS: x_mono x_s3 x_svga xpm xf_cfg 
+x_mono:   A Monochrome server.
+x_mono:
+x_mono:   This is X server number 4 of 7. In most cases you should only install
+x_mono:   the X server designed to work with your video hardware. 
+x_mono:
+x_mono:   Installing this package will create a link in /usr/X11/bin from
+x_mono:   XF86_Mono to X, setting this server as the default.
+x_mono:
+x_mono:
+x_mono:
+x_mono:
+x_s3:     An accelerated server for cards using S3 chips.
+x_s3:
+x_s3:     This is X server number 5 of 7. In most cases you should only install
+x_s3:     the X server designed to work with your video hardware. 
+x_s3:
+x_s3:     Installing this package will create a link in /usr/X11/bin from
+x_s3:     XF86_S3 to X, setting this server as the default.
+x_s3:
+x_s3:
+x_s3:
+x_s3:
+x_svga:   A SuperVGA server.
+x_svga:
+x_svga:   This is X server number 6 of 7. In most cases you should only install
+x_svga:   the X server designed to work with your video hardware. 
+x_svga:
+x_svga:   Installing this package will create a link in /usr/X11/bin from
+x_svga:   XF86_SVGA to X, setting this server as the default.
+x_svga:
+x_svga:
+x_svga:
+x_svga:
+xpm:      The Xpm shared and static libraries, v. 3.3
+xpm:
+xpm:      These libraries provide a means for X programs to store and retrieve
+xpm:      bitmaps. The shared libraries are needed to run programs compiled
+xpm:      with Xpm, such as xfilemanager and fvwm.
+xpm:
+xpm:
+xpm:
+xpm:
+xpm:
+xpm:
+xf_cfg:   XDM configuration, chooser, and FVWM 1.21c.
+xf_cfg:
+xf_cfg:
+xf_cfg:
+xf_cfg:
+xf_cfg:
+xf_cfg:
+xf_cfg:
+xf_cfg:
+xf_cfg:
+xf_cfg:

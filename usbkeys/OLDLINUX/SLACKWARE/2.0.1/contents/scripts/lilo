@@ -1,0 +1,6 @@
+( cd etc/lilo ; rm -rf install )
+( cd etc/lilo ; ln -sf  /sbin/lilo install )
+( cd usr/doc/lilo ; rm -rf README )
+( cd usr/doc/lilo ; ln -sf  /usr/src/lilo/README README )
+( cd sbin ; rm -rf liloconfig-color )
+( cd sbin ; ln -sf  liloconfig liloconfig-color )

@@ -1,0 +1,7 @@
+00index.txt         171  
+announce.0.5       2127  
+e2fsprogs-0.5a.lsm
+                   1416  
+e2fsprogs-0.5a.tar.gz
+                 227574  
+ext2fs.FAQ         4101  

@@ -1,0 +1,186 @@
+--- Makefile
++++ Makefile	1994/04/15 20:16:33
+@@ -0,0 +1,9 @@
++
++compile:
++	make -C timed
++	make -C timedc
++
++install:
++	make -C timed install
++	make -C timedc install
++
+--- timed/Makefile
++++ timed/Makefile	1994/04/15 20:16:33
+@@ -0,0 +1,15 @@
++CFLAGS = -O2 -fomit-frame-pointer -m486 \
++	-include /usr/include/bsd/bsd.h -I/usr/include/bsd
++LDFLAGS = -v
++LDLIBS = -lbsd
++
++timed: timed.o acksend.o candidate.o correct.o master.o networkdelta.o \
++	readmsg.o slave.o byteorder.o measure.o cksum.o
++
++install: timed
++	install -s timed /usr/sbin/
++	install -m644 timed.8 /usr/man/man8
++
++clean:
++	rm -f *.o timed
++
+--- timed/globals.h
++++ timed/globals.h	1994/04/15 20:16:34
+@@ -183,4 +183,6 @@
+ 
+ # define max(a,b) 	(a<b ? b : a)
+ # define min(a,b) 	(a>b ? b : a)
++#if 0
+ # define abs(x)		(x>=0 ? x : -(x))
++#endif
+--- timed/measure.c
++++ timed/measure.c	1994/04/15 20:26:38
+@@ -40,7 +40,6 @@
+ #endif
+ 
+ #include "globals.h"
+-#include <netinet/in_systm.h>
+ #include <netinet/ip.h>
+ #include <netinet/ip_icmp.h>
+ 
+@@ -57,7 +56,7 @@
+ 
+ extern int in_cksum(u_short*, int);
+ 
+-static n_short seqno = 0;
++static u_short seqno = 0;
+ 
+ /*
+  * Measures the differences between machines' clocks using
+@@ -80,9 +79,11 @@
+ 	long min_idelta, min_odelta;
+ 	struct timeval tdone, tcur, ttrans, twait, tout;
+ 	u_char packet[PACKET_IN], opacket[64];
+-	register struct icmp *icp = (struct icmp *) packet;
+-	register struct icmp *oicp = (struct icmp *) opacket;
+-	struct ip *ip = (struct ip *) packet;
++	register struct icmphdr *icp = (struct icmphdr *) packet;
++	unsigned long *icp_time = (unsigned long *)(icp + 1);
++	register struct icmphdr *oicp = (struct icmphdr *) opacket;
++	unsigned long *oicp_time = (unsigned long *)(oicp + 1);
++	struct iphdr *ip = (struct iphdr *) packet;
+ 
+ 	min_idelta = min_odelta = 0x7fffffff;
+ 	measure_status = HOSTDOWN;
+@@ -122,12 +123,19 @@
+ 	 * directions. Use these two latter quantities to compute the delta
+ 	 * between the two clocks.
+ 	 */
++#define icmp_type	type
++#define icmp_code	code
++#define icmp_id		un.echo.id
++#define icmp_seq	un.echo.sequence
++#define icmp_cksum	checksum
++#define ICMP_TSTAMP	ICMP_TIMESTAMP
++#define ICMP_TSTAMPREPLY	ICMP_TIMESTAMPREPLY
+ 
+ 	oicp->icmp_type = ICMP_TSTAMP;
+ 	oicp->icmp_code = 0;
+ 	oicp->icmp_id = getpid();
+-	oicp->icmp_rtime = 0;
+-	oicp->icmp_ttime = 0;
++	oicp_time[1] = 0;
++	oicp_time[2] = 0;
+ 	oicp->icmp_seq = seqno;
+ 
+ 	FD_ZERO(&ready);
+@@ -152,7 +160,7 @@
+ 		 */
+ 		if (trials < TRIALS) {
+ 			trials++;
+-			oicp->icmp_otime = ((tcur.tv_sec % SECDAY) * 1000
++			oicp_time[0] = ((tcur.tv_sec % SECDAY) * 1000
+ 					    + tcur.tv_usec / 1000);
+ 			oicp->icmp_cksum = 0;
+ 			oicp->icmp_cksum = in_cksum((u_short*)oicp,
+@@ -195,7 +203,7 @@
+ 			/* 
+ 			 * got something.  See if it is ours
+ 			 */
+-			icp = (struct icmp *)(packet + (ip->ip_hl << 2));
++			icp = (struct icmphdr *)(packet + (ip->ihl << 2));
+ 			if (cc < sizeof(*ip)
+ 			    || icp->icmp_type != ICMP_TSTAMPREPLY
+ 			    || icp->icmp_id != oicp->icmp_id
+@@ -204,7 +212,7 @@
+ 				continue;
+ 
+ 
+-			sendtime = ntohl(icp->icmp_otime);
++			sendtime = ntohl(icp_time[0]);
+ 			recvtime = ((tcur.tv_sec % SECDAY) * 1000 +
+ 				    tcur.tv_usec / 1000);
+ 
+@@ -213,8 +221,8 @@
+ 				continue;
+ 
+ 			rcvcount++;
+-			histime1 = ntohl(icp->icmp_rtime);
+-			histime2 = ntohl(icp->icmp_ttime);
++			histime1 = ntohl(icp_time[1]);
++			histime2 = ntohl(icp_time[2]);
+ 			/*
+ 			 * a host using a time format different from
+ 			 * msec. since midnight UT (as per RFC792) should
+--- timed/timed.c
++++ timed/timed.c	1994/04/15 20:16:34
+@@ -314,6 +314,7 @@
+ 	port = srvp->s_port;
+ 	server.sin_port = srvp->s_port;
+ 	server.sin_family = AF_INET;
++	server.sin_addr.s_addr = INADDR_ANY;
+ 	sock = socket(AF_INET, SOCK_DGRAM, 0);
+ 	if (sock < 0) {
+ 		perror("socket");
+@@ -397,7 +398,7 @@
+ #endif
+ 	cplim = buf + ifc.ifc_len; /*skip over if's with big ifr_addr's */
+ 	for (cp = buf; cp < cplim;
+-			cp += sizeof (ifr->ifr_name) + size(ifr->ifr_addr)) {
++			cp += sizeof (ifr->ifr_name) + sizeof(ifr->ifr_addr)) {
+ 		ifr = (struct ifreq *)cp;
+ 		if (ifr->ifr_addr.sa_family != AF_INET)
+ 			continue;
+--- timedc/Makefile
++++ timedc/Makefile	1994/04/15 20:16:34
+@@ -0,0 +1,21 @@
++CFLAGS = -O2 -fomit-frame-pointer -m486 \
++	-include /usr/include/bsd/bsd.h -I/usr/include/bsd
++LDFLAGS = -v
++LDLIBS = -lbsd
++
++timedc: timedc.o cmds.o cmdtab.o byteorder.o measure.o cksum.o
++
++byteorder.o: ../timed/byteorder.c
++	$(CC) $(CFLAGS) -c ../timed/byteorder.c -o byteorder.o
++measure.o: ../timed/measure.c
++	$(CC) $(CFLAGS) -c ../timed/measure.c -o measure.o
++cksum.o: ../timed/cksum.c
++	$(CC) $(CFLAGS) -c ../timed/cksum.c -o cksum.o
++
++install: timedc
++	install -s -m4755 timedc /usr/sbin/
++	install -m644 timedc.8 /usr/man/man8
++
++clean:
++	rm -f *.o timedc
++
+--- timedc/cmds.c
++++ timedc/cmds.c	1994/04/15 20:16:34
+@@ -42,7 +42,6 @@
+ #include "timedc.h"
+ #include <sys/file.h>
+ 
+-#include <netinet/in_systm.h>
+ #include <netinet/ip.h>
+ #include <netinet/ip_icmp.h>
+ 

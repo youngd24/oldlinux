@@ -1,0 +1,113 @@
+Script started on Fri Apr 29 18:13:17 1994
+fuzzy:/usr/src/linux# make config
+/bin/sh Configure 
+*
+* General setup
+*
+Kernel math emulation (CONFIG_MATH_EMULATION) [y] 
+Normal harddisk support (CONFIG_BLK_DEV_HD) [y] 
+XT harddisk support (CONFIG_BLK_DEV_XD) [n] 
+TCP/IP networking (CONFIG_INET) [y] 
+Limit memory to low 16MB (CONFIG_MAX_16M) [n] 
+System V IPC (CONFIG_SYSVIPC) [y] 
+Use -m486 flag for 486-specific optimizations (CONFIG_M486) [y] 
+*
+* Program binary formats
+*
+Elf executables (CONFIG_BINFMT_ELF) [y] 
+COFF executables (CONFIG_BINFMT_COFF) [y] 
+*
+* SCSI support
+*
+SCSI support? (CONFIG_SCSI) [n] y
+*
+* SCSI support type (disk, tape, CDrom)
+*
+Scsi disk support (CONFIG_BLK_DEV_SD) [y] 
+Scsi tape support (CONFIG_CHR_DEV_ST) [n] y
+Scsi CDROM support (CONFIG_BLK_DEV_SR) [n] y
+Scsi generic support (CONFIG_CHR_DEV_SG) [n] y
+*
+* SCSI low-level drivers
+*
+Adaptec AHA152X support (CONFIG_SCSI_AHA152X) [n] y
+Adaptec AHA1542 support (CONFIG_SCSI_AHA1542) [y] y
+Adaptec AHA1740 support (CONFIG_SCSI_AHA1740) [n] y
+Future Domain 16xx SCSI support (CONFIG_SCSI_FUTURE_DOMAIN) [n] y
+Generic NCR5380 SCSI support (CONFIG_SCSI_GENERIC_NCR5380) [n] y
+PAS16 SCSI support (CONFIG_SCSI_PAS16) [n] y
+Seagate ST-02 and Future Domain TMC-8xx SCSI support (CONFIG_SCSI_SEAGATE) [n] y
+Trantor T128/T128F/T228 SCSI support (CONFIG_SCSI_T128) [n] y
+UltraStor SCSI support (CONFIG_SCSI_ULTRASTOR) [n] y
+7000FASST SCSI support (CONFIG_SCSI_7000FASST) [n] y
+*
+* Network device support
+*
+Network device support? (CONFIG_ETHERCARDS) [y] 
+SLIP (serial line) support (CONFIG_SLIP) [y] 
+ CSLIP compressed headers (SL_COMPRESSED) [y] 
+PPP (point-to-point) support (CONFIG_PPP) [y] 
+PLIP (parallel port) support (CONFIG_PLIP) [n] 
+NE2000/NE1000 support (CONFIG_NE2000) [y] 
+WD80*3 support (CONFIG_WD80x3) [y] 
+SMC Ultra support (CONFIG_ULTRA) [y] 
+3c501 support (CONFIG_EL1) [y] 
+3c503 support (CONFIG_EL2) [y] 
+3c509/3c579 support (CONFIG_EL3) [y] 
+HP PCLAN support (CONFIG_HPLAN) [y] 
+AT1500 and NE2100 (LANCE and PCnet-ISA) support (CONFIG_LANCE) [y] 
+AT1700 support (CONFIG_AT1700) [y] 
+DEPCA support (CONFIG_DEPCA) [y] 
+D-Link DE600 pocket adaptor support (CONFIG_DE600) [y] 
+AT-LAN-TEC/RealTek pocket adaptor support (CONFIG_ATP) [y] 
+*
+* CD-ROM drivers
+*
+Sony CDU31A CDROM driver support (CONFIG_CDU31A) [n] 
+Mitsumi CDROM driver support (CONFIG_MCD) [n] 
+Matsushita/Panasonic CDROM driver support (CONFIG_SBPCD) [n] 
+*
+* Filesystems
+*
+Standard (minix) fs support (CONFIG_MINIX_FS) [y] 
+Extended fs support (CONFIG_EXT_FS) [n] 
+Second extended fs support (CONFIG_EXT2_FS) [y] 
+xiafs filesystem support (CONFIG_XIA_FS) [y] 
+msdos fs support (CONFIG_MSDOS_FS) [y] 
+umsdos: Unix like fs on top of std MSDOS FAT fs (CONFIG_UMSDOS_FS) [y] 
+/proc filesystem support (CONFIG_PROC_FS) [y] 
+NFS filesystem support (CONFIG_NFS_FS) [y] 
+ISO9660 cdrom filesystem support (CONFIG_ISO9660_FS) [n] y
+OS/2 HPFS filesystem support (read only) (CONFIG_HPFS_FS) [y] 
+Inheriting filesystem (IFS) support (CONFIG_IFS_FS) [n] 
+System V and Coherent filesystem support (CONFIG_SYSV_FS) [n] 
+*
+* character devices
+*
+Parallel printer support (CONFIG_PRINTER) [y] 
+Logitech busmouse support (CONFIG_BUSMOUSE) [n] 
+PS/2 mouse (aka "auxiliary device") support (CONFIG_PSMOUSE) [y] 
+C&T 82C710 mouse port support (as on TI Travelmate) (CONFIG_82C710_MOUSE) [y] 
+Microsoft busmouse support (CONFIG_MS_BUSMOUSE) [n] 
+ATIXL busmouse support (CONFIG_ATIXL_BUSMOUSE) [n] 
+Selection (cut and paste for virtual consoles) (CONFIG_SELECTION) [y] 
+QIC-02 tape support (CONFIG_TAPE_QIC02) [n] 
+QIC-117 tape support (CONFIG_FTAPE) [y] 
+ number of ftape buffers (NR_FTAPE_BUFFERS) [3] 
+*
+* Sound
+*
+Sound card support (CONFIG_SOUND) [n] 
+*
+* Kernel hacking
+*
+Kernel profiling support (CONFIG_PROFILE) [n] 
+Verbose scsi error reporting (kernel size +=12K) (CONFIG_SCSI_CONSTANTS) [y] n
+
+The linux kernel is now hopefully configured for your setup.
+Check the top-level Makefile for additional configuration,
+and do a 'make dep ; make clean' if you want to be sure all
+the files are correctly re-made
+
+fuzzy:/usr/src/linux# exit
+Script done on Fri Apr 29 18:14:11 1994

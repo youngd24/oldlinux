@@ -1,0 +1,14 @@
+00index.txt         364  
+diskxap1           2569  
+gnuplot.tgz      258134  
+gs_x11.tgz       188220  
+libgr.tgz        378788  
+maketag            1904  
+seyon.tgz        121469  
+tagfile             306  
+tagfile.org         306  
+tagfile.pat         225  
+vgaset.tgz        14901  
+workman.tgz       53761  
+xfileman.tgz      63753  
+xv.tgz           213589  

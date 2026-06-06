@@ -1,0 +1,789 @@
+00index.txt       17222  
+README              127  
+cnews/                -  
+deliver/              -  
+dip/                  -  
+elm/                  -  
+inn_pkg/              -  
+lynx/                 -  
+mailx/                -  
+newspak-2.2.tar.gz
+                 152712  
+nn/                   -  
+pine/                 -  
+ppp/                  -  
+smail/                -  
+tcpip/                =  
+tin/                  -  
+trn/                  -  
+uucp/                 =  
+
+cnews:
+00index.txt          52  
+c-news.tar.gz    408499  
+
+deliver:
+00index.txt         129  
+deliver.README     2318  
+deliver.tar.gz    75004  
+deliver4slackware.tar.gz
+                  53143  
+
+dip:
+00index.txt          52  
+README               57  
+
+elm:
+00index.txt          52  
+elm2.4.tar.gz    632184  
+
+inn_pkg:
+00index.txt         156  
+faq-inn-1.gz      11183  
+faq-inn-2.gz       3457  
+faq-inn-3.gz      21222  
+faq-nov.gz         4279  
+inn1.4.tar.gz    483886  
+
+lynx:
+00index.txt          52  
+lynx2-2.tar.gz   628915  
+
+mailx:
+00index.txt         100  
+mailx-5.5.debian.diff
+                   8612  
+mailx-5.5.tar.gz  61981  
+
+nn:
+00index.txt          69  
+nn-6.4.18.tar.gz
+                 420920  
+
+pine:
+00index.txt          69  
+pine-3.89.tar.gz
+                1317917  
+
+ppp:
+00index.txt         118  
+ppp-2.1.2a.tar.gz
+                 328035  
+ppp-2.1.2a.tar.gz.lsm
+                   1303  
+
+smail:
+00index.txt          72  
+smail-3.1.28.tar.gz
+                 972252  
+
+tcpip:
+00index.txt       14960  
+BSD/                  =  
+Beta-Test/            =  
+Binaries/             =  
+INDEX               255  
+Patches/              =  
+System/               =  
+User/                 =  
+dig-2.0.tar.gz    61741  
+dip337a-uri.tar.gz
+                  37092  
+fwhois-1.00.tar.gz
+                   8596  
+rstatd_patched.lsm  838  
+rstatd_patched.tar.gz
+                   3801  
+security.tar.gz  262597  
+security.tar.gz-README
+                    221  
+yp-clients.README  2466  
+yp-clients.lsm     1283  
+yp-clients.tar.gz
+                  16473  
+
+tcpip/BSD:
+00index.txt        5687  
+Extract             302  
+INDEX                53  
+Install/              -  
+README             2272  
+arp.dif            6447  
+arp.tar.gz         4509  
+biff.dif            315  
+biff.tar.gz        2201  
+comsat.dif          328  
+comsat.tar.gz      4272  
+finger.dif         4198  
+finger.tar.gz     11170  
+fingerd.dif        1719  
+fingerd.tar.gz     3104  
+ftp.dif           12463  
+ftp.tar.gz        38472  
+ftpd.dif           4919  
+ftpd.tar.gz       22993  
+inetd.dif          1577  
+inetd.tar.gz      14962  
+libtelnet.dif      1577  
+libtelnet.tar.gz  22692  
+lpr/                  =  
+lpr.dif           12960  
+lpr.dif-new       12713  
+lpr.tar.gz        61412  
+named.tar.gz     280803  
+ping.dif          10111  
+ping.tar.gz       12593  
+portmap.dif        1358  
+portmap.tar.gz     6028  
+rarpd.tar.gz       8145  
+rcp.dif            1368  
+rcp.tar.gz         8599  
+rexecd.dif         4110  
+rexecd.tar.gz      4479  
+rlogin.dif        23887  
+rlogin.tar.gz      8746  
+rlogind.dif        1784  
+rlogind.tar.gz     8719  
+routed.tar.gz     29655  
+rpc.rstatd.Makefile
+                    203  
+rpc.rstatd.tar.gz  5303  
+rpc.rusersd.dif    1930  
+rpc.rusersd.tar.gz
+                   4609  
+rpc.rwalld.dif      604  
+rpc.rwalld.tar.gz  3118  
+rpcgen.new.tar.gz
+                  34411  
+rpcgen.tar.gz     15801  
+rpcinfo.dif        1006  
+rpcinfo.tar.gz     5628  
+rsh.dif            2381  
+rsh.tar.gz         5499  
+rshd.dif           1246  
+rshd.tar.gz        8441  
+rup.tar.gz         4393  
+rusers.dif         1156  
+rusers.tar.gz      3956  
+rwall.dif           328  
+rwall.tar.gz       3308  
+slattach.new.tar.gz
+                   3072  
+slattach.tar.gz    3109  
+sliplogin.dif      8710  
+sliplogin.tar.gz   6588  
+talk.FvK           1735  
+talk.dif           3630  
+talk.tar.gz       10725  
+talkd.dif           766  
+talkd.tar.gz       7358  
+telnet.dif         4174  
+telnet.tar.gz     70386  
+telnetd.dif        6637  
+telnetd.tar.gz    48418  
+tftp.dif            345  
+tftp.tar.gz       10780  
+tftpd.dif           397  
+tftpd.tar.gz       5720  
+timed.dif          4960  
+timed.tar.gz      54446  
+tn3270.README        17  
+tn3270.tar.gz     86947  
+
+tcpip/BSD/Install:
+00index.txt         260  
+inetd.conf         3012  
+protocols           595  
+rnusers.h          1408  
+rnusers.x          4674  
+rusers.h           2834  
+rusers.x           2640  
+rwall.h             737  
+rwall.x            1836  
+services           5565  
+
+tcpip/BSD/lpr:
+00index.txt        3166  
+Makefile            862  
+Makefile.orig       431  
+common_source/        -  
+etc.printcap       1497  
+filters/              -  
+lpc/                  -  
+lpd/                  -  
+lpq/                  -  
+lpr/                  -  
+lprm/                 -  
+lptest/               -  
+pac/                  -  
+
+tcpip/BSD/lpr/common_source:
+00index.txt         728  
+Makefile            324  
+Makefile.orig       162  
+common.c           8575  
+common.c.orig      8752  
+common.c.rej       1663  
+common.o           3573  
+displayq.c        10015  
+displayq.o         7811  
+libcommon.a       22814  
+lp.h               4750  
+lp.h.orig          4954  
+lp.h.rej           1840  
+lp.local.h         3263  
+lp.local.h.orig    3210  
+lp.local.h.rej      411  
+lpc.h              2136  
+pathnames.h        2501  
+pathnames.h.orig   2515  
+pathnames.h.rej    1064  
+printcap.c         9863  
+printcap.o         2914  
+rmjob.c            8315  
+rmjob.c.orig       8315  
+rmjob.c.rej         322  
+rmjob.o            5530  
+startdaemon.c      3204  
+startdaemon.o      1340  
+
+tcpip/BSD/lpr/filters:
+00index.txt         156  
+Makefile            170  
+Makefile.orig        85  
+lpf               11421  
+lpf.c              5407  
+lpf.o              3421  
+
+tcpip/BSD/lpr/lpc:
+00index.txt         390  
+Makefile            306  
+Makefile.orig       153  
+cmds.c            22054  
+cmds.c.orig       22051  
+cmds.c.rej         1759  
+cmds.o            15624  
+cmdtab.c           3592  
+cmdtab.c.orig      3590  
+cmdtab.c.rej       1070  
+cmdtab.o           1966  
+lpc               32312  
+lpc.8              5911  
+lpc.c              5865  
+lpc.o              3399  
+
+tcpip/BSD/lpr/lpd:
+00index.txt         494  
+Makefile            322  
+Makefile.orig       161  
+lpd               54011  
+lpd.8              7426  
+lpd.c             11495  
+lpd.c.orig        11461  
+lpd.c.rej           814  
+lpd.o              6971  
+lpdchar.c         16014  
+lpdchar.o          1052  
+printjob.c        29801  
+printjob.c.orig   30128  
+printjob.c.rej     3285  
+printjob.o        24187  
+recvjob.c          7255  
+recvjob.c.orig     7213  
+recvjob.c.rej       480  
+recvjob.o          4207  
+
+tcpip/BSD/lpr/lpq:
+00index.txt         182  
+Makefile            182  
+Makefile.orig        91  
+lpq               22435  
+lpq.1              4654  
+lpq.c              3510  
+lpq.o              1594  
+
+tcpip/BSD/lpr/lpr:
+00index.txt         260  
+Makefile            252  
+Makefile.orig       126  
+lpr               10056  
+lpr.1              7448  
+lpr.c             16386  
+lpr.c.orig        16341  
+lpr.c.rej          3259  
+lpr.o             11824  
+lpr.termios       31948  
+
+tcpip/BSD/lpr/lprm:
+00index.txt         182  
+Makefile            266  
+Makefile.orig       133  
+lprm              22181  
+lprm.1             4637  
+lprm.c             4021  
+lprm.o             1800  
+
+tcpip/BSD/lpr/lptest:
+00index.txt         182  
+Makefile            292  
+Makefile.orig       146  
+lptest             9275  
+lptest.1           2865  
+lptest.c           2714  
+lptest.o            876  
+
+tcpip/BSD/lpr/pac:
+00index.txt         182  
+Makefile            258  
+Makefile.orig       129  
+pac               16350  
+pac.8              3861  
+pac.c              9607  
+pac.o              5220  
+
+tcpip/Beta-Test:
+00index.txt         165  
+INDEX                42  
+sliplogin/            -  
+
+tcpip/Beta-Test/sliplogin:
+00index.txt          75  
+sliplogin-beta1.tar.gz
+                  10790  
+
+tcpip/Binaries:
+00index.txt         998  
+INDEX              1488  
+arp                9220  
+finger            17412  
+fingerd            9220  
+ftp               50180  
+ftpd              41988  
+inetd             17412  
+lpc               20132  
+lpd               38356  
+lpf                2744  
+lpq               10420  
+lpr               12024  
+lprm              10008  
+lptest             1352  
+pac                6716  
+ping               8700  
+portmap            4036  
+rlogin            13316  
+rlogind           13316  
+rpcinfo           13316  
+rshd              13316  
+rusers             9220  
+rusersd            9220  
+rwall              9220  
+rwalld             9220  
+sliplogin          9220  
+support/              -  
+talk              17412  
+talkd             13316  
+telnet            66564  
+telnetd           37892  
+tftp              17412  
+tftpd             13316  
+
+tcpip/Binaries/support:
+00index.txt         104  
+etc.printcap       1497  
+inetd.conf         2987  
+services           5565  
+
+tcpip/Patches:
+00index.txt         104  
+INDEX               170  
+alex.patches       3692  
+isode.patch.gz    44038  
+
+tcpip/System:
+00index.txt        5578  
+INDEX              1648  
+Obsolete/             =  
+amd/                  -  
+athena/               -  
+bind/                 -  
+bootpc/               -  
+bootpd/               -  
+bwnfsd/               -  
+dig/                  -  
+dip/                  -  
+fromto/               -  
+fsp/                  -  
+ftp-diku/             -  
+gobview/              -  
+host/                 -  
+intimed/              -  
+net032/               -  
+netdate/              -  
+netstat/              -  
+nfsd/                 -  
+nntpd/                -  
+pcnfsd/               =  
+pidentd/              -  
+pop2d/                -  
+pop3.older.d/         -  
+pop3d/                -  
+routed/               -  
+rpc/                  -  
+rstatd/               -  
+rwhod/                -  
+sendmail/             -  
+setup/                -  
+showmount/            -  
+smrsh/                -  
+tcpd/                 -  
+tcpdump/              -  
+tcpspray/             -  
+traceroute/           -  
+wdsetup/              -  
+yp/                   -  
+
+tcpip/System/Obsolete:
+00index.txt         882  
+arp.obsolete/         -  
+fingerd.obsolete/     -  
+ftpd.obsolete/        -  
+inetd.obsolete/       -  
+lpd.obsolete/         -  
+ping.obsolete/        -  
+rlogind.obsolete/     -  
+rshd.obsolete/        -  
+slattach.obsolete/    -  
+talkd.obsolete/       -  
+telnetd.obsolete/     -  
+tftpd.obsolete/       -  
+
+tcpip/System/Obsolete/arp.obsolete:
+00index.txt          26  
+
+tcpip/System/Obsolete/fingerd.obsolete:
+00index.txt          26  
+
+tcpip/System/Obsolete/ftpd.obsolete:
+00index.txt          26  
+
+tcpip/System/Obsolete/inetd.obsolete:
+00index.txt          26  
+
+tcpip/System/Obsolete/lpd.obsolete:
+00index.txt          26  
+
+tcpip/System/Obsolete/ping.obsolete:
+00index.txt          52  
+ping.README         279  
+
+tcpip/System/Obsolete/rlogind.obsolete:
+00index.txt          26  
+
+tcpip/System/Obsolete/rshd.obsolete:
+00index.txt          26  
+
+tcpip/System/Obsolete/slattach.obsolete:
+00index.txt          26  
+
+tcpip/System/Obsolete/talkd.obsolete:
+00index.txt          26  
+
+tcpip/System/Obsolete/telnetd.obsolete:
+00index.txt          26  
+
+tcpip/System/Obsolete/tftpd.obsolete:
+00index.txt          26  
+
+tcpip/System/amd:
+00index.txt          74  
+amd920824upl67.tar.gz
+                 496401  
+
+tcpip/System/athena:
+00index.txt         129  
+athena-inetd-5.30.tar.gz
+                  26795  
+athena-inetd.lsm    992  
+athena.tar.gz    503089  
+
+tcpip/System/bind:
+00index.txt          69  
+bind-483l.tar.gz
+                 298355  
+
+tcpip/System/bootpc:
+00index.txt          97  
+bootpc-cam.tar.gz  7552  
+bootpc-net3.tar.gz
+                   7572  
+
+tcpip/System/bootpd:
+00index.txt          71  
+bootpd-210a.tar.gz
+                  41563  
+
+tcpip/System/bwnfsd:
+00index.txt          52  
+bwnfsd.tar.gz     19135  
+
+tcpip/System/dig:
+00index.txt          78  
+dig-2.0.lsm       61741  
+dig-2.0.tar.gz    61741  
+
+tcpip/System/dip:
+00index.txt         164  
+dip337-oldroutepatch
+                   1276  
+dip337-uri.tar.gz
+                  23956  
+old-dip337uri.tar.gz
+                  23002  
+
+tcpip/System/fromto:
+00index.txt          52  
+fromto-101.tar.gz  1875  
+
+tcpip/System/fsp:
+00index.txt          52  
+fsp-2.71.tar.gz  115011  
+
+tcpip/System/ftp-diku:
+00index.txt          69  
+ftpd-diku.tar.gz
+                 131809  
+
+tcpip/System/gobview:
+00index.txt          71  
+gobview_1.0.tar.gz
+                  84591  
+
+tcpip/System/host:
+00index.txt          52  
+host-101.tar.gz   14373  
+
+tcpip/System/intimed:
+00index.txt          72  
+intimed-1.10.tar.gz
+                   1036  
+
+tcpip/System/net032:
+00index.txt         163  
+net-0.32.old.tar.gz
+                 124068  
+net-0.32b.tar.gz
+                 102175  
+net-0.32d-net3.tar.gz
+                 105725  
+
+tcpip/System/netdate:
+00index.txt          72  
+netdate-1.16.tar.gz
+                  15321  
+
+tcpip/System/netstat:
+00index.txt          52  
+netstat.tar.gz    12572  
+
+tcpip/System/nfsd:
+00index.txt          52  
+nfsd-150.tar.gz   45256  
+
+tcpip/System/nntpd:
+00index.txt          71  
+nntpd-1511A.tar.gz
+                 159799  
+
+tcpip/System/pcnfsd:
+00index.txt         151  
+INDEX               138  
+PCNFSD2.README     1151  
+linux_pcnfsd2.tar.gz
+                  39306  
+pcnsfd-140.tar.gz  6529  
+
+tcpip/System/pidentd:
+00index.txt          77  
+pidentd-2.2beta.4.tar.gz
+                  52080  
+
+tcpip/System/pop2d:
+00index.txt          72  
+pop2d-1.0.01.tar.gz
+                  34844  
+
+tcpip/System/pop3.older.d:
+00index.txt          96  
+README             1195  
+pop3d-1001.tar.gz
+                  17609  
+
+tcpip/System/pop3d:
+00index.txt          72  
+pop3d-1.00.4.tar.gz
+                  21572  
+
+tcpip/System/routed:
+00index.txt         121  
+routed-5.23-fixed.tar.gz
+                  45584  
+routed-523.tar.gz
+                  29514  
+
+tcpip/System/rpc:
+00index.txt         104  
+rpc-0.9.README    10341  
+rpc-0.9.tar.gz   342195  
+rpc-1.00.tar.gz  208878  
+
+tcpip/System/rstatd:
+00index.txt          76  
+rstatd-linux-15y.tar.gz
+                   5268  
+
+tcpip/System/rwhod:
+00index.txt          52  
+rwhod-519.tar.gz   8068  
+
+tcpip/System/sendmail:
+00index.txt          81  
+sendmail-5.67b+IDA1.5.tar.gz
+                1437278  
+
+tcpip/System/setup:
+00index.txt          52  
+setup.tar.gz       7171  
+
+tcpip/System/showmount:
+00index.txt          52  
+showmount.tar.gz   4083  
+
+tcpip/System/smrsh:
+00index.txt          52  
+smrsh.tar.gz       6569  
+
+tcpip/System/tcpd:
+00index.txt          52  
+tcpd-140.tar.gz   43858  
+
+tcpip/System/tcpdump:
+00index.txt         284  
+tcpdump            2727  
+tcpdump-net3-diffs
+                   2182  
+tcpdump.README      809  
+tcpdump.bin.tar.gz
+                 109209  
+tcpdump.lsm         671  
+tcpdump.old.tar.gz
+                 158009  
+tcpdump.src.tar.gz
+                 189175  
+
+tcpip/System/tcpspray:
+00index.txt          73  
+tcpspray.1.1a.tar.gz
+                   4166  
+
+tcpip/System/traceroute:
+00index.txt          73  
+traceroute0.99.15.gz
+                  22193  
+
+tcpip/System/wdsetup:
+00index.txt          72  
+wdsetup-0.6a.tar.gz
+                  19190  
+
+tcpip/System/yp:
+00index.txt          52  
+yp-linux.tar.gz   22458  
+
+tcpip/User:
+00index.txt        1314  
+INDEX               289  
+Obsolete/             =  
+popclient/            -  
+ruptime/              -  
+rwho/                 -  
+skey/                 -  
+tn3270/               -  
+ytalk/                -  
+
+tcpip/User/Obsolete:
+00index.txt         506  
+finger.obsolete/      -  
+ftp.obsolete/         -  
+rlogin.obsolete/      -  
+rsh.obsolete/         -  
+talk.obsolete/        -  
+telnet.obsolete/      -  
+tftp.obsolete/        -  
+
+tcpip/User/Obsolete/finger.obsolete:
+00index.txt          26  
+
+tcpip/User/Obsolete/ftp.obsolete:
+00index.txt          26  
+
+tcpip/User/Obsolete/rlogin.obsolete:
+00index.txt          26  
+
+tcpip/User/Obsolete/rsh.obsolete:
+00index.txt          26  
+
+tcpip/User/Obsolete/talk.obsolete:
+00index.txt          26  
+
+tcpip/User/Obsolete/telnet.obsolete:
+00index.txt          26  
+
+tcpip/User/Obsolete/tftp.obsolete:
+00index.txt          26  
+
+tcpip/User/popclient:
+00index.txt          75  
+pop3-miniclient.tar.gz
+                   4602  
+
+tcpip/User/ruptime:
+00index.txt          97  
+ruptime-570.tar.gz
+                   4064  
+ruptime-patch.tar  8192  
+
+tcpip/User/rwho:
+00index.txt          52  
+rwho-550.tar.gz    3735  
+
+tcpip/User/skey:
+00index.txt         101  
+diffs              2493  
+skey-linux-1.1b.tar.gz
+                  75054  
+
+tcpip/User/tn3270:
+00index.txt          70  
+tn3270-500.tar.gz
+                 116474  
+
+tcpip/User/ytalk:
+00index.txt          52  
+ytalk.tar.gz     177400  
+
+tin:
+00index.txt          52  
+tin-1.22.tar.gz  266381  
+
+trn:
+00index.txt          52  
+trn-3.4.tar.gz   303654  
+
+uucp:
+00index.txt         133  
+uucp-1.05/            -  
+
+uucp/uucp-1.05:
+00index.txt          69  
+uucp-1.05.tar.gz
+                 761308  

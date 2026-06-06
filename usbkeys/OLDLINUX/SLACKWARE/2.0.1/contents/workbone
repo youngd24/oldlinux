@@ -1,0 +1,17 @@
+PACKAGE NAME:     workbone
+PACKAGE SIZE:     6 K
+PACKAGE LOCATION: diskap4
+PACKAGE DESCRIPTION:
+workbone: Workbone 0.1 
+workbone:
+workbone: Text-based audio CD player.
+workbone:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/workbone
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/workbone.1.gz

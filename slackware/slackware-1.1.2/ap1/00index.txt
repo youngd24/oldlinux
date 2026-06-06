@@ -1,0 +1,13 @@
+00index.txt         338  
+diskap1            1820  
+english.tgz      375656  
+ispell.tgz       240238  
+jove.tgz         126716  
+maketag            1913  
+man.tgz          403715  
+manpgs.tgz        44369  
+tagfile            2773  
+tagfile.org        2773  
+tagfile.pat         208  
+termbin.tgz       41175  
+termsrc.tgz       96248  

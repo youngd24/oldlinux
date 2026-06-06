@@ -1,0 +1,34 @@
+PACKAGE NAME:     ntf-astr
+PACKAGE SIZE:     11 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-astr: ntf-astr 1.1
+ntf-astr:
+ntf-astr: This package contains fonts for astronomical and astrological symbols.
+ntf-astr: It also provides a style file to use the fonts.
+ntf-astr:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/symbol/
+usr/lib/texmf/fonts/symbol/astro/
+usr/lib/texmf/fonts/symbol/astro/create.sh
+usr/lib/texmf/fonts/symbol/astro/misc/
+usr/lib/texmf/fonts/symbol/astro/misc/astrosym.doc
+usr/lib/texmf/fonts/symbol/astro/misc/astrosym.tex
+usr/lib/texmf/fonts/symbol/astro/src/
+usr/lib/texmf/fonts/symbol/astro/src/astrosym.cal
+usr/lib/texmf/fonts/symbol/astro/src/astrosym.com
+usr/lib/texmf/fonts/symbol/astro/src/astrosym.mac
+usr/lib/texmf/fonts/symbol/astro/src/astrosym.mf
+usr/lib/texmf/fonts/symbol/astro/src/astrosym.uni
+usr/lib/texmf/fonts/symbol/astro/tfm/
+usr/lib/texmf/fonts/symbol/astro/tfm/astrosym.tfm
+usr/lib/texmf/fonts/symbol/astro/pk/
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/symbol/
+usr/lib/texmf/tex/symbol/astro.sty
+usr/lib/texmf/tex/symbol/astro.tex

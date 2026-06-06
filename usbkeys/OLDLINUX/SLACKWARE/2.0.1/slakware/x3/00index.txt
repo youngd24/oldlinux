@@ -1,0 +1,6 @@
+00index.txt         156  
+config86.tgz     158172  
+diskx3             1176  
+x_vga16.tgz      360867  
+xf_lib.tgz       537405  
+xman1.tgz        279292  

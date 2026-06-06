@@ -1,0 +1,21 @@
+PACKAGE NAME:     fntbig1
+PACKAGE SIZE:     567 K
+PACKAGE LOCATION: diskx7
+PACKAGE DESCRIPTION:
+fntbig1:  Large Kanji and other fonts (part one)
+fntbig1:
+fntbig1:  These fonts are compressed to reduce disk usage.
+fntbig1:
+FILE LIST:
+./
+usr/
+usr/X11/
+usr/X11/lib/
+usr/X11/lib/fonts/
+usr/X11/lib/fonts/misc/
+usr/X11/lib/fonts/misc/fonts.dir.big
+usr/X11/lib/fonts/misc/hanglg16.pcf.Z
+usr/X11/lib/fonts/misc/hanglm16.pcf.Z
+usr/X11/lib/fonts/misc/fonts.alias
+install/
+install/doinst.sh

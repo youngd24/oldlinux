@@ -1,0 +1,40 @@
+PACKAGE NAME:     ntb-tex
+PACKAGE SIZE:     354 K
+PACKAGE LOCATION: diskt1
+PACKAGE DESCRIPTION:
+ntb-tex:  ntb-tex 1.1
+ntb-tex:
+ntb-tex:  This package contains the binaries for the TeX program and the 
+ntb-tex:  MakeTeX* scripts. MakeTeXTFM tries to create a tfm file, MakeTeXMF
+ntb-tex:  tries to create a mf file and MakeTeXPK tries to create a pk file.
+ntb-tex:  Note that the MakeTeXPK script can also uncompress pk fonts that are
+ntb-tex:  compressed with gzip. However, the uncompressed fonts are not
+ntb-tex:  compressed again, but it can help to save disk space, especially if
+ntb-tex:  you have installed fonts that you do not need all the time. The 
+ntb-tex:  current version of TeX is 3.1415 (C version 6.1).
+ntb-tex:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/texfonts.map
+usr/lib/texmf/ini/
+usr/lib/texmf/ini/plain.base
+usr/lib/texmf/ini/plain.log
+usr/lib/texmf/ini/tex.pool
+usr/lib/texmf/ini/texfonts.map
+usr/bin/
+usr/bin/MakeTeXMF
+usr/bin/MakeTeXPK
+usr/bin/MakeTeXTFM
+usr/bin/initex
+usr/bin/patgen
+usr/bin/virtex
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/virtex.1.gz
+usr/man/preformat/cat1/initex.1.gz
+usr/man/preformat/cat1/patgen.1.gz

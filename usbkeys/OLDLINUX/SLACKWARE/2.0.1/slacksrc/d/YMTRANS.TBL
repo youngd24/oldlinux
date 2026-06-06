@@ -1,0 +1,25 @@
+D BINUTILS                          	binutils
+D BISON                             	bison
+D BYACC                             	byacc
+D CLISP                             	clisp
+L EXTRALIB.;1                       	extralib	libc
+D F2C                               	f2c
+D FLEX                              	flex
+D GCC                               	gcc
+D GDB                               	gdb
+L GXX.;1                            	gxx	gcc
+L INCLUDE.;1                        	include	libc
+D IPDMS2                            	ipdms2
+D LIBC                              	libc
+D LIBGXX                            	libgxx
+D M4                                	m4
+D MAN2                              	man2
+D MAN3                              	man3
+D NCURSES                           	ncurses
+L OBJC.;1                           	objc	gcc
+D P2C                               	p2c
+D PERL                              	perl
+D PMAKE                             	pmake
+D RCS                               	rcs
+D SVGALIB                           	svgalib
+D TOOLS                             	tools

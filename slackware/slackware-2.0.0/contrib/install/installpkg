@@ -1,0 +1,242 @@
+#!/bin/sh
+# Copyright 1994, Patrick Volkerding, Moorhead, Minnesota USA 
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+make_install_script() {
+ COUNT=1
+ LINE="`sed -n "$COUNT p" $1`"
+ while [ ! "$LINE" = "" ]; do
+  LINKGOESIN="`echo "$LINE" | cut -f 1 -d " "`" 
+  LINKGOESIN="`dirname $LINKGOESIN`" 
+  LINKNAMEIS="`echo "$LINE" | cut -f 1 -d ' '`"
+  LINKNAMEIS="`basename "$LINKNAMEIS"`"
+  LINKPOINTSTO="`echo "$LINE" | cut -f 3 -d ' '`"
+  echo "( cd $LINKGOESIN ; rm -rf $LINKNAMEIS )"
+  echo "( cd $LINKGOESIN ; ln -sf $LINKPOINTSTO $LINKNAMEIS )"
+  COUNT=`expr $COUNT + 1`
+  LINE="`sed -n "$COUNT p" $1`"
+ done
+}
+
+usage() {
+ cat << EOF
+Usage: installpkg package_name
+       installpkg -warn package_name
+       installpkg -r package_name
+       installpkg -m package_name
+
+Usually used to install a .tgz or .tar.gz package like this:
+   installpkg xf_bin.tgz
+
+-warn does not install, but tells you what would be deleted or overwritten.
+
+You can also install recursively from the current location, like this:
+   installpkg -r uucp
+
+It is also possible to make a "*.tgz" package with a command like this:
+   installpkg -m uucp
+   (When you use "-m", the package will not be installed.)
+
+In this case, everything from the current directory and all subdirectories
+will be copied onto / as a package. The appropriate files under
+/var/adm/packages and /var/adm/scripts will be created for a new package
+called "uucp", and you will be able to review/remove the package just as 
+easily as any other Slackware package. 
+
+EOF
+}
+
+# These tests, while by no means exhaustive, will give a usage message
+# and exit with a wide range of bad input.
+
+if [ "$1" = "-warn" -a -f "$2" ]; then # -warn
+ echo "Scanning the contents of $2..."
+ echo
+ mkdir -p /tmp/scan
+ ( cd /tmp/scan ; tar xzf - install/doinst.sh ) < $2 2> /dev/null 
+ if [ -r /tmp/scan/install/doinst.sh ]; then
+  if cat /tmp/scan/install/doinst.sh | fgrep 'rm -rf' 1>/dev/null 2>/dev/null ; then
+   cat /tmp/scan/install/doinst.sh | fgrep 'rm -rf' > /tmp/scan/install/delete
+   echo "The following locations will be completely WIPED OUT to allow symbolic"
+   echo "links to be made. (We're talking 'rm -rf') These locations may be files,"
+   echo "or entire directories."
+   echo
+   echo "Be sure you've backed up anything at these locations that you want to"
+   echo "save before you install this package:"
+   echo
+   cat /tmp/scan/install/delete | cut -f 3,7 -d ' ' | tr ' ' '/'
+  fi
+  if [ -d /tmp/scan ]; then
+   ( cd /tmp/scan ; rm -rf install ) 2> /dev/null
+   ( cd /tmp ; rmdir scan ) 2> /dev/null
+  fi
+ fi
+ echo
+ echo "The following files will be overwritten when installing this package."
+ echo "Be sure they aren't important before you install this package:"
+ echo
+ ( tar tzvvf - ) < $2 | fgrep -v 'drwx'
+ echo "You've been warned."
+ exit
+fi
+if [ $# = 2 -a ! "$1" = "-m" -a ! "$1" = "-r" -a ! -r "$1" ]; then
+ usage;
+ exit
+elif [ $# = 0 ]; then
+ usage;
+ exit
+fi
+if [ $# = 1 -a ! -r "$1" ]; then
+ echo "Package not found: $1"
+ echo
+ usage;
+ exit
+fi
+if [ "$1" = "-r" -o "$1" = "-m" ]; then
+ if [ -r "/var/adm/packages/$2" -a ! "$1" = "-m" ]; then
+  echo
+  echo "Hey - there's already a package named '$2'! You really should remove"
+  echo "that before attempting to install another package with that name,"
+  echo "since the old indexes for that package will be overwritten and you'll"
+  echo "have to remove any leftover files and links manually."
+  echo
+  echo -n "Do you want to exit ([y]es, [n]o)? "
+  read EXIT;
+  if [ "$EXIT" = "y" ]; then
+   exit
+  fi
+ fi
+ echo
+ echo "Do you want to convert the symbolic links in this package into an"
+ echo "installation script named ./install/doinst.sh? If you do, the symbolic"
+ echo "links will be removed. You can get them back easily, though, by typing"
+ echo 
+ echo "sh install/doinst.sh"
+ echo
+ echo "in the package's root directory."
+ echo
+ echo "It is recommended that you convert your links for best results."
+ echo
+ echo -n "Convert links to an install script ([y]es, [n]o)? "
+ read CONVERT_LINKS;
+ echo
+ if [ "$CONVERT_LINKS" = "y" ]; then
+  echo "Having a good look at your symbolic links..."
+  echo
+  find . -type l -exec ls -l {} \; | cut -b58- | tee /tmp/iNsT-a.$$
+  echo
+  if [ ! -d install ]; then
+   mkdir install
+  fi
+  if [ -r install/doinst.sh ]; then
+    cat << EOF
+You already have an installation script named install/doinst.sh.
+You have 3 choices:
+
+1 - append the script code to create these links (if any) to the end of the
+    existing installation script.
+2 - erase the existing installation script, and replace it with the
+    code to create these new links.
+3 - Abort! Exit this script.
+
+EOF
+   echo -n "Which choice would you like (1,2,3)? "
+   read DOINST;
+   if [ "$DOINST" = "1" ]; then
+    echo "Appending to existing script..."
+    echo
+    make_install_script /tmp/iNsT-a.$$ | tee --append install/doinst.sh
+   elif [ "$DOINST" = "2" ]; then
+    echo "Replacing existing script..."
+    echo
+    make_install_script /tmp/iNsT-a.$$ | tee install/doinst.sh
+   else
+    rm -f /tmp/iNsT-a.$$
+    exit
+   fi
+  else # no script exists:
+   echo "Making your install script..."
+   echo
+   make_install_script /tmp/iNsT-a.$$ | tee install/doinst.sh
+  fi # is there already a script?
+  rm -f /tmp/iNsT-a.$$
+  echo
+  echo "Removing the symbolic links:"
+  echo
+  find . -type l -print -exec rm {} \;
+  echo
+ fi # make install script?
+ # Install the package:
+ if [ "$1" = "-r" ]; then # install
+  if [ -r install/doinst.sh ]; then # hey, did we do anything?
+   # Put the backup of the script in place
+   cp install/doinst.sh /var/adm/scripts/$2
+   chmod 755 /var/adm/scripts/$2
+  fi
+  # Write the filelist out:
+  echo "PACKAGE NAME:     $2" > /var/adm/packages/$2
+  echo "FILE LIST:" >> /var/adm/packages/$2
+  echo "./" >> /var/adm/packages/$2
+  find . -type f -print | cut -b3- >> /var/adm/packages/$2
+  # Copy the stuff into place:
+  echo "Installing your new package onto /..."
+  cp -a . /
+  ( cd / ; sh install/doinst.sh ; rm install/doinst.sh ; rmdir install )
+ elif [ "$1" = "-m" ]; then
+  echo "Making $2.tgz..."
+  tar czf $2.tgz .
+ fi
+else # we're just going to try to install each argument as a package:
+ for package in $* ; do
+  echo -n "Installing package $package... "
+  # This stuff looks for symbolic links that also belong to other packages and
+  # leaves them in place. That way, if you have a couple package pointing to
+  # /usr/include on the cdrom and delete one, you'll still have include files.
+  shortname=`basename $package .tgz`
+  ADM_DIR="/var/adm" 
+  TMP=/tmp
+  if [ -r $ADM_DIR/scripts/$shortname ]; then
+   cat $ADM_DIR/scripts/$shortname | fgrep 'rm -rf' | sort -u > $TMP/del_link_list
+   if [ ! -d $ADM_DIR/removed_scripts ]; then
+    mkdir -p $ADM_DIR/removed_scripts
+   fi
+   mv $ADM_DIR/scripts/$shortname $ADM_DIR/removed_scripts 1> /dev/null 2>&1    
+   cat $ADM_DIR/scripts/* | fgrep 'rm -rf' | sort -u > $TMP/required_links
+   comm -23 $TMP/del_link_list $TMP/required_links > $TMP/delscript
+   ( cd / ; sh $TMP/delscript )
+   rm -f $TMP/del_link_list $TMP/required_links $TMP/delscript
+  fi
+  echo "FILE LIST:" > /var/adm/packages/$shortname
+  ( cd / ; tar -xzlpvf - ) < $package >> /var/adm/packages/$shortname
+  if [ -f /install/doinst.sh ]; then
+   echo -n "executing install script..."
+   ( cd / ; sh install/doinst.sh -install; )
+  fi 
+  # Clean up the mess...
+  if [ -d /install ]; then
+   cp /install/doinst.sh /var/adm/scripts/$shortname
+   chmod 755 /var/adm/scripts/$shortname
+   (cd /install ; rm -r -f doin* 1> /dev/null 2>&1 )
+   rmdir /install 1> /dev/null 2>&1
+  fi
+  echo
+ done
+fi
+echo

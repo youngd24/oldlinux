@@ -1,0 +1,20 @@
+PACKAGE NAME:     ntm-germ
+PACKAGE SIZE:     17 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntm-germ: ntm-germ 1.0
+ntm-germ:
+ntm-germ: This package contains some stylefiles for German typesetting.
+ntm-germ:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/language/
+usr/lib/texmf/tex/language/german/
+usr/lib/texmf/tex/language/german/a4g.sty
+usr/lib/texmf/tex/language/german/german.sty
+usr/lib/texmf/tex/language/german/german3.sty
+usr/lib/texmf/tex/language/german/germdoc.tex

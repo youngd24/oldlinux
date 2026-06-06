@@ -1,0 +1,10 @@
+00index.txt         260  
+bc.tgz            35757  
+diskap4            2368  
+gonzo.tgz          4180  
+gp9600.tgz         2706  
+groff.tgz        642618  
+install.end          17  
+quota.tgz        113763  
+sc.tgz            87569  
+workbone.tgz       7785  

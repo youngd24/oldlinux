@@ -1,0 +1,70 @@
+# This is a Slackware Installation Tagfile.
+#           
+# This one comes from disk: AP1 (Applications series)
+# and a backup copy called "tagfile.org" can be found on the same disk. You
+# should never edit the "tagfile.org" copy, only the one called "tagfile". Use
+# the "tagfile.org" only if you want to restore original installation defaults
+# by copying it over the top of "tagfile".
+# 
+# It is used to automate software installation. 
+# There are two labels that you can use: ADD and SKP.
+#
+# If the PROMPT option is used during installation, this file will be checked
+# to determine the installation default. First, all the lines beginning with
+# <package_name>: 
+# will be extracted. Then, the last line in the extracted segment will be 
+# checked for the flags ADD, REC, OPT and SKP.
+#
+# If ADD is found, then a priority of [required] will be displayed, and the
+# package will be automatically installed. 
+#
+# If SKP is found, then a priority of [skip] will be displayed, and
+# the package will be automatically skipped.
+#
+# All other packages will be prompted for. There are two optional flags you
+# can use to change the package priority level shown when the user is 
+# prompted: REC and OPT. If REC is found, the priority shown will be
+# [recommended], while if OPT is found, the user sees priority [optional].
+#
+# If no flags are found for a given package, the user is shown priority
+# [unknown], and is prompted for whether the package should be installed.
+#
+# If you mess this file up beyond recognition, just restore from "tagfile.org"
+# 
+#
+english:  The International version of ispell (3.009)
+english:  OPT
+ispell:   GNU ispell 4.0 (interactive spell checker)
+ispell:   OPT
+jove:     Jonathan's Own Version of Emacs (4.14.7)                
+jove:     OPT
+man:      On-line manual pages. 
+man:      REC
+manpgs:   Assorted man pages from manpages-1.0 that go in sections
+manpgs:   REC
+termbin:  The executable files and man pages for term 1.08, which
+termbin:  OPT
+termsrc:  The source code for term 1.08
+termsrc:  OPT
+ghostscr: GNU Ghostscript version 2.6.1 - (with fixes 01-04 applied).
+ghostscr: OPT
+gsfonts1: Fonts for the Postscript interpreter.                     
+gsfonts1: OPT
+joe:      joe text editor, version 1.0.8.                         
+joe:      OPT
+gsfonts2: More fonts for the Postscript interpreter.                 
+gsfonts2: OPT
+bc:       GNU bc (v. 1.02)
+bc:       OPT
+gonzo:    Sample users "gonzo", "snake", and "satan".               
+gonzo:    OPT
+gp9600:   Changes the default modem speed.
+gp9600:   OPT
+groff:    GNU troff 1.08 document formatting system.
+groff:    REC
+quota:    quota-1.3 and acct-1.3.
+quota:    OPT
+sc:       The 'sc' spreadsheet. (v. 6.19) 
+sc:       OPT
+workbone: Workbone 0.1 Audio CD player.
+workbone: OPT

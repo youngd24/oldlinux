@@ -1,0 +1,125 @@
+00index.txt        2755  
+BSD-sendmail/         -  
+CPM-80-emulator/      -  
+DOS-emulator/         -  
+GNU/                  -  
+INDEX              1812  
+gated-routed/         -  
+gnu-finger-1.37/      -  
+iBCS2-emulator/       =  
+mmdf/                 -  
+
+BSD-sendmail:
+00index.txt         279  
+sendmail.8.6.9.base.tar.Z
+                 500945  
+sendmail.8.6.9.cf.tar.Z
+                 199863  
+sendmail.8.6.9.misc.tar.Z
+                 106149  
+sendmail.8.6.9.patch
+                 130419  
+sendmail.8.6.9.xdoc.tar.Z
+                 306207  
+
+CPM-80-emulator:
+00index.txt         104  
+cpm-0.2.tar.gz   103376  
+cpm.lsm             985  
+cpm.tar.gz       122513  
+
+DOS-emulator:
+00index.txt         286  
+README             3279  
+SIG.tgz            5130  
+dosemu0.52.lsm     1050  
+dosemu0.52.tgz   556346  
+dosgde.tgz       253817  
+emumodule.tgz      4294  
+linpkt.com         2283  
+os2dos.gz        157888  
+pre51_24.tgz     497087  
+virt_dos.tgz      77527  
+
+GNU:
+00index.txt         376  
+autoconf-1.8.tar.gz
+                 232059  
+f2c-1993.04.28.tar.gz
+                 378126  
+fax-3.2.1.tar.gz  74074  
+indent-1.9.1.tar.gz
+                 160411  
+screen-3.5.2.tar.gz
+                 263836  
+termcap-1.2.tar.gz
+                 142720  
+uuencode-1.0.tar.gz
+                  27331  
+xinfo-1.01.01.tar.gz
+                  33848  
+
+gated-routed:
+00index.txt         192  
+gated.linux.bin.tar.gz
+                 294408  
+gated.linux.lsm    1284  
+gated.linux.man.tar.gz
+                  21049  
+gated.linux.tgz
+                1011986  
+
+gnu-finger-1.37:
+00index.txt         124  
+finger-1.37.debian.diff.gz
+                   5636  
+finger-1.37.tar.gz
+                 238117  
+
+iBCS2-emulator:
+00index.txt         880  
+INDEX               483  
+README             5072  
+coff-tools/           -  
+devel2/               =  
+ibcs-1.1.14.patches.tentative
+                   3968  
+ibcs-940609.tar.gz
+                 115373  
+libc_s-940330.tar.gz
+                 311183  
+svr4-libs-940330.tar.gz
+                  88690  
+
+iBCS2-emulator/coff-tools:
+00index.txt         148  
+as-coff.gz       107519  
+bintools-3.3.coff.tar.gz
+                 611561  
+gdb-931007.coff.gz
+                 379585  
+
+iBCS2-emulator/devel2:
+00index.txt         375  
+README             2626  
+old/                  -  
+sco-perl-test.tar.gz
+                 489180  
+shared-docs.tar.gz
+                   2828  
+
+iBCS2-emulator/devel2/old:
+00Index            1742  
+00index.txt         199  
+coff.c.announce    1212  
+coff.c.gz          6142  
+coffpl13.patch.gz
+                  21862  
+ibcs-ioctl-931015.tar.gz
+                   6540  
+
+mmdf:
+00index.txt          98  
+mmdf-IIb-4.3.lsm    931  
+mmdf-IIb-4.3.tar.gz
+                1064856  

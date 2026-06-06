@@ -1,0 +1,31 @@
+00index.txt         539  
+blt/                  -  
+itcl/                 -  
+tcl/                  -  
+tclx/                 -  
+tk/                   -  
+
+blt:
+00index.txt          70  
+blt1.6-src.tar.gz
+                 386946  
+
+itcl:
+00index.txt          71  
+itcl1.3-src.tar.gz
+                 137278  
+
+tcl:
+00index.txt          70  
+tcl7.3-src.tar.gz
+                 366358  
+
+tclx:
+00index.txt          72  
+tclX7.3a-src.tar.gz
+                 476802  
+
+tk:
+00index.txt          69  
+tk3.6-src.tar.gz
+                 734663  

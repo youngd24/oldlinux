@@ -1,0 +1,75 @@
+PACKAGE NAME:     ntf-cmu
+PACKAGE SIZE:     51 K
+PACKAGE LOCATION: diskt4
+PACKAGE DESCRIPTION:
+ntf-cmu:  ntf-cmu 1.1
+ntf-cmu:
+ntf-cmu:  Some additional Computer Modern fonts. Some were used in the MetaFont
+ntf-cmu:  Book and the TeX Book.
+ntf-cmu:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/cm/
+usr/lib/texmf/fonts/cm/utilityfonts/
+usr/lib/texmf/fonts/cm/utilityfonts/black/
+usr/lib/texmf/fonts/cm/utilityfonts/black/create.sh
+usr/lib/texmf/fonts/cm/utilityfonts/black/src/
+usr/lib/texmf/fonts/cm/utilityfonts/black/src/black.mf
+usr/lib/texmf/fonts/cm/utilityfonts/black/src/blackaps.mf
+usr/lib/texmf/fonts/cm/utilityfonts/black/src/blackdov.mf
+usr/lib/texmf/fonts/cm/utilityfonts/black/src/blackimagen.mf
+usr/lib/texmf/fonts/cm/utilityfonts/black/src/blacklino.mf
+usr/lib/texmf/fonts/cm/utilityfonts/black/tfm/
+usr/lib/texmf/fonts/cm/utilityfonts/black/pk/
+usr/lib/texmf/fonts/cm/utilityfonts/committee/
+usr/lib/texmf/fonts/cm/utilityfonts/committee/create.sh
+usr/lib/texmf/fonts/cm/utilityfonts/committee/src/
+usr/lib/texmf/fonts/cm/utilityfonts/committee/src/font1.mf
+usr/lib/texmf/fonts/cm/utilityfonts/committee/src/font1base.mf
+usr/lib/texmf/fonts/cm/utilityfonts/committee/tfm/
+usr/lib/texmf/fonts/cm/utilityfonts/committee/tfm/font1.tfm
+usr/lib/texmf/fonts/cm/utilityfonts/committee/pk/
+usr/lib/texmf/fonts/cm/utilityfonts/create.sh
+usr/lib/texmf/fonts/cm/utilityfonts/gray/
+usr/lib/texmf/fonts/cm/utilityfonts/gray/create.sh
+usr/lib/texmf/fonts/cm/utilityfonts/gray/src/
+usr/lib/texmf/fonts/cm/utilityfonts/gray/src/gray.mf
+usr/lib/texmf/fonts/cm/utilityfonts/gray/src/grayaps.mf
+usr/lib/texmf/fonts/cm/utilityfonts/gray/src/graydov.mf
+usr/lib/texmf/fonts/cm/utilityfonts/gray/src/graydov5.mf
+usr/lib/texmf/fonts/cm/utilityfonts/gray/src/grayf.mf
+usr/lib/texmf/fonts/cm/utilityfonts/gray/src/grayimagen.mf
+usr/lib/texmf/fonts/cm/utilityfonts/gray/src/grayimagen3.mf
+usr/lib/texmf/fonts/cm/utilityfonts/gray/src/grayqms.mf
+usr/lib/texmf/fonts/cm/utilityfonts/gray/src/lgrayimagen.mf
+usr/lib/texmf/fonts/cm/utilityfonts/half/
+usr/lib/texmf/fonts/cm/utilityfonts/half/create.sh
+usr/lib/texmf/fonts/cm/utilityfonts/half/src/
+usr/lib/texmf/fonts/cm/utilityfonts/half/src/aphalf.mf
+usr/lib/texmf/fonts/cm/utilityfonts/half/src/ddhalf.mf
+usr/lib/texmf/fonts/cm/utilityfonts/half/src/half.mf
+usr/lib/texmf/fonts/cm/utilityfonts/half/src/halftone.mf
+usr/lib/texmf/fonts/cm/utilityfonts/half/src/imhalf.mf
+usr/lib/texmf/fonts/cm/utilityfonts/half/tfm/
+usr/lib/texmf/fonts/cm/utilityfonts/half/pk/
+usr/lib/texmf/fonts/cm/utilityfonts/manualfonts/
+usr/lib/texmf/fonts/cm/utilityfonts/manualfonts/create.sh
+usr/lib/texmf/fonts/cm/utilityfonts/manualfonts/src/
+usr/lib/texmf/fonts/cm/utilityfonts/manualfonts/src/cmman.mf
+usr/lib/texmf/fonts/cm/utilityfonts/manualfonts/src/manfnt.mf
+usr/lib/texmf/fonts/cm/utilityfonts/manualfonts/src/mfman.mf
+usr/lib/texmf/fonts/cm/utilityfonts/manualfonts/src/random.mf
+usr/lib/texmf/fonts/cm/utilityfonts/manualfonts/tfm/
+usr/lib/texmf/fonts/cm/utilityfonts/manualfonts/tfm/cmman.tfm
+usr/lib/texmf/fonts/cm/utilityfonts/manualfonts/tfm/manfnt.tfm
+usr/lib/texmf/fonts/cm/utilityfonts/manualfonts/tfm/mfman.tfm
+usr/lib/texmf/fonts/cm/utilityfonts/manualfonts/tfm/random.tfm
+usr/lib/texmf/fonts/cm/utilityfonts/manualfonts/pk/
+usr/lib/texmf/fonts/cm/utilityfonts/mfbook/
+usr/lib/texmf/fonts/cm/utilityfonts/mfbook/src/
+usr/lib/texmf/fonts/cm/utilityfonts/mfbook/src/expr.mf
+usr/lib/texmf/fonts/cm/utilityfonts/mfbook/src/metafon.mf

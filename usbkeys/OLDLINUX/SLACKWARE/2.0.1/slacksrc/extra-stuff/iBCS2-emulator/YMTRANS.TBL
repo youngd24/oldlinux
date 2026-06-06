@@ -1,0 +1,8 @@
+D COFF_TOO                          	coff-tools
+D DEVEL2                            	devel2
+F IBCS_1_1.TEN;1                    	ibcs-1.1.14.patches.tentative
+F IBCS_940.GZ;1                     	ibcs-940609.tar.gz
+F INDEX.;1                          	INDEX
+F LIBC_S_9.GZ;1                     	libc_s-940330.tar.gz
+F README.;1                         	README
+F SVR4_LIB.GZ;1                     	svr4-libs-940330.tar.gz

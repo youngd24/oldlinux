@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink version="3.0" xmlns="http://www.metalinker.org/"
+  origin="https://mirrors.slackware.com/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz.metalink"
+  generator="MirrorBrain 2.19.0 (see http://mirrorbrain.org/)"
+  type="dynamic"  pubdate="Mon, 01 Jun 2026 16:42:45 GMT"  refreshdate="Mon, 01 Jun 2026 16:42:45 GMT">
+
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <files>
+  <file name="auis63L0-dev.tgz">
+    <size>3721226</size>
+
+    <!-- <mtime>774834229</mtime> -->
+
+    <!-- internal id: 1612544 -->
+      <verification>
+        <hash type="md5">9211c4ca805d8757395c5cb222a1713e</hash>
+        <hash type="sha1">be630d233c850c0e14baa301f253f557485f079c</hash>
+        <hash type="sha256">aa2ebf06c3750ce79dd52c62726852c9590de93e4a4e96fbd46b4ac39ff9faae</hash>
+        <pieces length="262144" type="sha1">
+          <hash piece="0">b59f04840a7d826f7580e874c2f4051b08a7b49a</hash>
+          <hash piece="1">fd27feb72f43511170f4ad9ff354edff772263ec</hash>
+          <hash piece="2">cb95c6d9aa879c4c15363c35cb83fd8c3616954f</hash>
+          <hash piece="3">fd96e0455672afdf3a068b3780684fac5a864207</hash>
+          <hash piece="4">7a50bddf910e74df0ceb6004554925093a200c36</hash>
+          <hash piece="5">9a7d029bc0a8d6bc2b5aa5c09f2001cacdbe8b31</hash>
+          <hash piece="6">2caf31266a0cb45cf2c1b659b58fea11266b3a17</hash>
+          <hash piece="7">d0422e1530dae3960b1cbe0e3f2619e46691734c</hash>
+          <hash piece="8">01c41f626f8a878c10082f38a6fd8a70a9982992</hash>
+          <hash piece="9">4c8097e4bc78fc93c0202c9fa6e22f497f835302</hash>
+          <hash piece="10">1ade0a98ec16fd53418a6c5265fb6fcd1d44d58c</hash>
+          <hash piece="11">afaf73b3ef5009c3e8ed0a67147e1e627444bdcd</hash>
+          <hash piece="12">d5783db366c987d52d1967087960311fe004abe1</hash>
+          <hash piece="13">07cda3ab082e90145f5de1c16428731657d2710a</hash>
+          <hash piece="14">594ad5ae0182619e63dcbeef17c7f2efe5909fe2</hash>
+        </pieces>
+      </verification>
+    <resources>
+
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url type="https" location="us" preference="100">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url type="https" location="ec" preference="99">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="br" preference="98">https://ftp.slackware-brasil.com.br/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="br" preference="97">https://mirrors.slackware.beco.cc/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="br" preference="96">https://linorg.usp.br/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="http" location="gb" preference="95">http://slackware.uk/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="gb" preference="94">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="http" location="nl" preference="93">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="http" location="fr" preference="92">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="nl" preference="91">https://mirror.koddos.net/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="nl" preference="90">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="de" preference="89">https://linux.rz.rub.de/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="http" location="ro" preference="88">http://mirrors.nav.ro/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="de" preference="87">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="dk" preference="86">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="http" location="hr" preference="85">http://mirror.slackware.hr/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="it" preference="84">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="se" preference="83">https://mirror.bahnhof.net/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="rs" preference="82">https://mirror1.sox.rs/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="pl" preference="81">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="ro" preference="80">https://mirrors.nxthost.com/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="http" location="ua" preference="79">http://slackware.ip-connect.info/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="ua" preference="78">https://ifconfig.com.ua/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="http" location="ru" preference="77">http://mirror.mephi.ru/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="ru" preference="76">https://mirror.yandex.ru/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="http" location="za" preference="75">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="sa" preference="74">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    <url type="https" location="hk" preference="73">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/contrib/auis63L0-dev.tgz</url>
+    </resources>
+    </file>
+  </files>
+</metalink>

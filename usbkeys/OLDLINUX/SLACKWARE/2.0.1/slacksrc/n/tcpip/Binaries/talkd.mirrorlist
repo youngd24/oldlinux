@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Mirror List</title>
+  <link type="text/css" rel="stylesheet" href="/css/mblist.css" />
+</head>
+
+<body>
+<div id="mirrorbrain-details">
+  <h2>Mirrors for <a href="/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">talkd</a></h2>
+<div id="mirrorbrain-fileinfo">
+<h3>File information</h3>
+<ul>
+  <li><span class="mirrorbrain-label">Filename:</span> talkd</li>
+  <li><span class="mirrorbrain-label">Path:</span> /slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</li>
+  <li><span class="mirrorbrain-label">Size:</span>  13K (13316 bytes)</li>
+  <li><span class="mirrorbrain-label">Last modified:</span> Wed, 25 Feb 2004 15:22:47 GMT (Unix time: 1077722567)</li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd.sha256">SHA-256 Hash</a>:</span> <tt>4680bf4155d21147f8d51eb65d84412e6bb1ce5e70d7f8b38367480c67cd1a9e</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd.sha1">SHA-1 Hash</a>:</span> <tt>2340f7eb68369cff26cf255103d15bd2ef3574e1</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd.md5">MD5 Hash</a>:</span> <tt>85971cdcd6e767378b268cecb2d71b4c</tt></li>
+</ul>
+<p><a href="/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd" class="mirrorbrain-btn">Download file from preferred mirror</a></p>
+</div>
+
+<div id="mirrorbrain-links">
+<h3>Reliable downloads</h3>
+<div class="mirrorbrain-links-grp">
+<h4>Metalink</h4>
+<ul>
+  <li><a href="/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd.meta4">/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd.meta4</a> (IETF Metalink)</li>
+  <li><a href="/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd.metalink">/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd.metalink</a> (old (v3) Metalink)</li>
+</ul>
+</div>
+</div>
+
+<div id="mirrorbrain-mirrors">
+<h3>Mirrors</h3>
+<p>List of best mirrors for IP address 172.59.189.70, located at 41.848301,-87.651703 in United States (US).</p>
+
+<p><a href="https://maps.google.com/maps/api/staticmap?size=640x512&amp;visual_refresh=true&amp;scale=2&amp;maptype=roadmap&amp;sensor=false&amp;markers=color:red|41.848301,-87.651703&amp;markers=color:yellow|label:1|28.538000,-81.378998&amp;markers=color:yellow|label:2|-2.883000,-78.983002&amp;markers=color:yellow|label:3|-16.701000,-49.266998&amp;markers=color:yellow|label:4|-8.144000,-34.978001&amp;markers=color:yellow|label:5|-23.473000,-46.666000&amp;markers=color:yellow|label:6|51.495998,-0.122000&amp;markers=color:yellow|label:7|51.266998,1.083000&amp;markers=color:yellow|label:8|48.858002,2.339000&amp;markers=color:yellow|label:9|48.858002,2.339000">Map showing the closest mirrors</a></p>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 1 mirror which handle this country (US)</h4>
+<ul>
+ <li><a href="https://mirror.slackbuilds.org/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://mirror.slackbuilds.org/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (us, prio 100)</li>
+</ul>
+</div>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 27 mirrors in other parts of the world</h4>
+<ul>
+  <li><a href="https://mirror.cedia.org.ec/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://mirror.cedia.org.ec/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (ec, prio 100)</li>
+  <li><a href="https://ftp.slackware-brasil.com.br/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://ftp.slackware-brasil.com.br/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (br, prio 100)</li>
+  <li><a href="https://mirrors.slackware.beco.cc/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://mirrors.slackware.beco.cc/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (br, prio 100)</li>
+  <li><a href="https://linorg.usp.br/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://linorg.usp.br/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (br, prio 100)</li>
+  <li><a href="http://slackware.uk/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">http://slackware.uk/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (gb, prio 100)</li>
+  <li><a href="https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (gb, prio 100)</li>
+  <li><a href="http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (nl, prio 100)</li>
+  <li><a href="http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (fr, prio 50)</li>
+  <li><a href="https://mirror.koddos.net/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://mirror.koddos.net/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (nl, prio 100)</li>
+  <li><a href="https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (nl, prio 100)</li>
+  <li><a href="https://linux.rz.rub.de/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://linux.rz.rub.de/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (de, prio 100)</li>
+  <li><a href="http://mirrors.nav.ro/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">http://mirrors.nav.ro/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (ro, prio 100)</li>
+  <li><a href="https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (de, prio 100)</li>
+  <li><a href="https://mirrors.dotsrc.org/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://mirrors.dotsrc.org/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (dk, prio 100)</li>
+  <li><a href="http://mirror.slackware.hr/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">http://mirror.slackware.hr/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (hr, prio 100)</li>
+  <li><a href="https://slackware.mirror.garr.it/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://slackware.mirror.garr.it/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (it, prio 100)</li>
+  <li><a href="https://mirror.bahnhof.net/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://mirror.bahnhof.net/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (se, prio 100)</li>
+  <li><a href="https://mirror1.sox.rs/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://mirror1.sox.rs/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (rs, prio 100)</li>
+  <li><a href="https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (pl, prio 100)</li>
+  <li><a href="https://mirrors.nxthost.com/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://mirrors.nxthost.com/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (ro, prio 100)</li>
+  <li><a href="http://slackware.ip-connect.info/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">http://slackware.ip-connect.info/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (ua, prio 100)</li>
+  <li><a href="https://ifconfig.com.ua/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://ifconfig.com.ua/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (ua, prio 100)</li>
+  <li><a href="http://mirror.mephi.ru/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">http://mirror.mephi.ru/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (ru, prio 100)</li>
+  <li><a href="https://mirror.yandex.ru/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://mirror.yandex.ru/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (ru, prio 100)</li>
+  <li><a href="http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (za, prio 100)</li>
+  <li><a href="https://mirror.lyrahosting.com/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://mirror.lyrahosting.com/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (sa, prio 100)</li>
+  <li><a href="https://mirror-hk.koddos.net/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd">https://mirror-hk.koddos.net/slackware/slackware-2.0.1/slacksrc/n/tcpip/Binaries/talkd</a> (hk, prio 100)</li>
+</ul>
+</div>
+
+</div>
+<address>Powered by <a href="http://mirrorbrain.org/">MirrorBrain</a></address>
+</div><!-- mirrorbrain-details -->
+<!--
+<html>
+<a href="http://mirrorbrain.org/">MirrorBrain</a>
+powered by <a href="http://slackware.com/">Slackware</a>!
+</html>
+-->

@@ -1,0 +1,64 @@
+
+Moooo... ( hi :) )
+This binary distribution for Linux is compiled using web2c V6.0 (which is 
+the most recent TeX distribution for UNIX(tm) system as of Feb 1994, I think).
+Gcc version 2.5.5 was used with "-O2 -fomit-frame-pointer -m486" option,
+on my 386/25 machine.
+
+LaTeX is the most recent version, which is LaTeX2e (for more informations,
+please read  "The LaTeX Companion" by Goosens/Mittlebach/Samarin - support 
+LaTeX3 project by purchasing the book. Half of the royalty goes to this 
+project).
+
+Dvips is version 5.526a.  Default font resolution is 300dpi.
+Edit the file, /usr/TeX/lib/texmf/dvips/config.ps properly if you
+want to use other resolutions (ex 600dpi).
+If proper PK fonts do not exist under /usr/TeX/lib/texmf/fonts directory,
+MakeTeXPK will generate PK fonts of the required resolution under 
+/usr/TeX/lib/texmf/fonts/tmp/pk.  Move those PK fonts to the appropriate place
+(some directory under /usr/TeX/lib/texmf/fonts), if you are going to use 
+them regularly.
+
+I also compiled some other utilities such as : 
+                      xdvi, dvi2tty, detex, tgrind, makeindex.
+I believe that they are also the most recent versions as of Feb 94.
+
+total 5529
+   7 texMANI.gz
+   3 texREAD.ME
+ 392 texams.taz
+ 936 texbin.taz
+ 163 texcm.taz
+ 681 texcmpk.taz
+ 781 texfont.taz
+ 434 texlibib.taz
+1041 texlibmc.taz
+ 511 texlibms.taz
+ 432 texnfss2.taz
+  80 texdoc.taz
+
+Please refer to texMANI.gz file to see what is in each archive.
+About 16M bytes of disk space is required to install.
+
+NOTE : Do *not* set the environment variables such as XDVIFONTS,
+       PKFONTS, and etc., unless they are *really* necessary.
+       If you have to set them - you understand what you are doing -
+       don't forget to add PK fonts directory of this this distribution
+       to your environment variables (most people won't need to do this).
+       Xdvi and dvips in this distribution work just fine without
+       setting any environment variables in your shell.
+       If xdvi still calls MakeTeXPK, check whether you are using the
+       xdvi in this distribution.
+
+Please send an e-mail to me (wjin@cs.uh.edu), if you find any problems
+with this binary distribution or if you have suggestions.
+
+Moooooo..... ( thank you  :) )
+
+____   ____  ____ ______________________________________ (__) _________________
+|  |   |  |  |  |  W. Woody Jin (wjin@cs.uh.edu)         (oo)      Moo...
+|  |   |  |__|  |  Bovinetic Algorithm Design     o=======\/  I'm  a Cow Lover.
+|  |   |        |  Dept. of Cowmooputer Science / |     ||   My wife  was born
+\  |---|  |--|  |  University of Houston       *  ||w---||   in Cow year.  Mooo
+ \____/|__|  |__| ________________________________^^    ^^_____________________
+% nohup cat *flames* >& /dev/bull &

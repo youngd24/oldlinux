@@ -1,0 +1,10 @@
+00index.txt         260  
+diskx1             1388  
+maketag            2333  
+tagfile            2811  
+tagfile.org        2811  
+tagfile.pat        1852  
+x_8514.tgz       381860  
+x_mach32.tgz     396923  
+x_mach8.tgz      387307  
+xf_doc.tgz       149424  

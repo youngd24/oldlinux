@@ -1,0 +1,7 @@
+00index.txt         312  
+BOOTDISK_INFO        18  -> ../bootdisk/README
+CHANGES              19  -> ../README_ChangeLog
+INSTALL              17  -> ../README_INSTALL
+MIRROR_SITES         21  -> ../README_MIRROR_LIST
+README.SLACKWARE     15  -> ../README.1.1.2
+README_5_25_install  22  -> ../README_5_25_install

@@ -1,0 +1,24 @@
+FILE LIST:
+./
+bin/
+bin/pdksh
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/ksh.1.gz
+usr/doc/
+usr/doc/pdksh/
+usr/doc/pdksh/BUG-REPORTS
+usr/doc/pdksh/Bugs
+usr/doc/pdksh/CONTRIBUTORS
+usr/doc/pdksh/ChangeLog
+usr/doc/pdksh/NEWS
+usr/doc/pdksh/NOTES
+usr/doc/pdksh/POSIX
+usr/doc/pdksh/PROJECTS
+usr/doc/pdksh/README
+install/
+install/doinst.sh
+etc/
+etc/ksh.kshrc

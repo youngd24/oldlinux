@@ -1,0 +1,7 @@
+disku1              557  
+readme.now          279  
+tagfile              51  
+umsfix.tgz         2928  
+umskern.log        5919  
+umskern.tgz      305617  
+umsprogs.tgz      81066  

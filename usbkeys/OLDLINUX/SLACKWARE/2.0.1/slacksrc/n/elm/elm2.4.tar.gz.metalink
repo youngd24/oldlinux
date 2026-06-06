@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink version="3.0" xmlns="http://www.metalinker.org/"
+  origin="https://mirrors.slackware.com/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz.metalink"
+  generator="MirrorBrain 2.19.0 (see http://mirrorbrain.org/)"
+  type="dynamic"  pubdate="Tue, 02 Jun 2026 04:23:40 GMT"  refreshdate="Tue, 02 Jun 2026 04:23:40 GMT">
+
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <files>
+  <file name="elm2.4.tar.gz">
+    <size>632184</size>
+
+    <!-- <mtime>1077721634</mtime> -->
+
+    <!-- internal id: 204559 -->
+      <verification>
+        <hash type="md5">a413483e171d6ff46b3e87e269e7dc30</hash>
+        <hash type="sha1">2504635f16a3f718581dce736c5d5f81fd147012</hash>
+        <hash type="sha256">e3ac8cba5f310761e5b90d73d8871b1e24e1736380ab4340e6910ddba18bcaec</hash>
+        <pieces length="262144" type="sha1">
+          <hash piece="0">26c4f40fb5a378ad671d0832e8bac9709eaf9dda</hash>
+          <hash piece="1">289ef060bee4ab981ced5d22fd564efdc346ebc0</hash>
+          <hash piece="2">0707f3c07f637cc2127b20674ee41f4be9b6bfa7</hash>
+        </pieces>
+      </verification>
+    <resources>
+
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url type="https" location="us" preference="100">https://mirror.slackbuilds.org/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url type="https" location="ec" preference="99">https://mirror.cedia.org.ec/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="br" preference="98">https://ftp.slackware-brasil.com.br/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="br" preference="97">https://mirrors.slackware.beco.cc/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="br" preference="96">https://linorg.usp.br/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="http" location="gb" preference="95">http://slackware.uk/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="gb" preference="94">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="http" location="nl" preference="93">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="http" location="fr" preference="92">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="nl" preference="91">https://mirror.koddos.net/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="nl" preference="90">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="de" preference="89">https://linux.rz.rub.de/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="http" location="ro" preference="88">http://mirrors.nav.ro/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="de" preference="87">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="dk" preference="86">https://mirrors.dotsrc.org/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="http" location="hr" preference="85">http://mirror.slackware.hr/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="it" preference="84">https://slackware.mirror.garr.it/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="se" preference="83">https://mirror.bahnhof.net/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="rs" preference="82">https://mirror1.sox.rs/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="pl" preference="81">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="ro" preference="80">https://mirrors.nxthost.com/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="http" location="ua" preference="79">http://slackware.ip-connect.info/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="ua" preference="78">https://ifconfig.com.ua/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="http" location="ru" preference="77">http://mirror.mephi.ru/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="ru" preference="76">https://mirror.yandex.ru/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="http" location="za" preference="75">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="sa" preference="74">https://mirror.lyrahosting.com/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    <url type="https" location="hk" preference="73">https://mirror-hk.koddos.net/slackware/slackware-2.0.1/slacksrc/n/elm/elm2.4.tar.gz</url>
+    </resources>
+    </file>
+  </files>
+</metalink>

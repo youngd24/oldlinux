@@ -1,0 +1,21 @@
+PACKAGE NAME:     sc
+PACKAGE SIZE:     85 K
+PACKAGE LOCATION: diskap4
+PACKAGE DESCRIPTION:
+sc:       The 'sc' spreadsheet. (v. 6.21)
+sc:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/sc
+usr/bin/scqref
+usr/bin/psc
+usr/lib/
+usr/lib/sc/
+usr/lib/sc/tutorial.sc
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/sc.1.gz
+usr/man/preformat/cat1/psc.1.gz

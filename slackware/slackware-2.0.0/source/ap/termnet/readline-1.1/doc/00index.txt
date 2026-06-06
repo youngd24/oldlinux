@@ -1,0 +1,11 @@
+00index.txt         286  
+Makefile            770  
+hist.texinfo       3440  
+history.dvi       23964  
+hstech.texinfo    10512  
+hsuser.texinfo     4753  
+readline.dvi      71888  
+rlman.texinfo      3412  
+rltech.texinfo    32518  
+rluser.texinfo    17067  
+texinfo.tex       88035  

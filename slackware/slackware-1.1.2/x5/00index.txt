@@ -1,0 +1,7 @@
+00index.txt         182  
+diskx5             1319  
+fvwmicns.tgz      12672  
+install.end          27  
+xconfig.tgz       25971  
+xfonts2.tgz     1178932  
+xlock.tgz         28140  

@@ -1,0 +1,6 @@
+00index.txt         156  
+blt.tgz          232585  
+disktcl2           1418  
+install.end          13  
+itcl.tgz         137365  
+tclx.tgz         408597  

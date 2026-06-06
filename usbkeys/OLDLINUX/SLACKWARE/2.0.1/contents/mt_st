@@ -1,0 +1,32 @@
+PACKAGE NAME:     mt_st
+PACKAGE SIZE:     11 K
+PACKAGE LOCATION: diskap4
+PACKAGE DESCRIPTION:
+mt_st:    mt-st-0.1 - controls magnetic tape drive operation
+mt_st:
+mt_st:    This mt originates from BSD NET-2. Some Linux SCSI tape-specific
+mt_st:    ioctls have been added to the original source and the man page has
+mt_st:    been updated. Although this mt program is tailored for SCSI tape, it
+mt_st:    can also be used with the QIC-02 driver and hopefully with other Linux
+mt_st:    tape drivers using the same ioctls (some of the commands may not work
+mt_st:    with all drivers).
+mt_st:
+FILE LIST:
+./
+bin/
+bin/mt-st
+usr/
+usr/doc/
+usr/doc/mt-st/
+usr/doc/mt-st/README
+usr/doc/mt-st/st_info.txt
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/mt.1.gz
+usr/src/
+usr/src/mt-st/
+usr/src/mt-st/Makefile
+usr/src/mt-st/mt.c
+install/
+install/doinst.sh

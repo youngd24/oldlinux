@@ -1,0 +1,23 @@
+CONTENTS: elisp2 emac_nox
+elisp2:    Part two of the Lisp source files for Emacs 19.22.
+elisp2:
+elisp2:
+elisp2:
+elisp2:
+elisp2:
+elisp2:
+elisp2:
+elisp2:
+elisp2:
+elisp2:
+emac_nox:  A replacement /usr/bin/emacs-19.22 binary that is not compiled with
+emac_nox:  X11 menu support. This version of emacs is about 400K smaller than
+emac_nox:  the full version of emacs, and is the same in every respect except
+emac_nox:  for X11 menus. It can still run in an xterm or rxvt if you wish to
+emac_nox:  run it under X, but it is mainly included for those folks who don't
+emac_nox:  have X11 (or the X11 shared lib) installed on their machines.
+emac_nox:
+emac_nox:
+emac_nox:
+emac_nox:
+emac_nox:

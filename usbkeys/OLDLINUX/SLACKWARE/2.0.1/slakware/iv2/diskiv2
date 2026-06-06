@@ -1,0 +1,23 @@
+CONTENTS: iv_docs libiv_sa 
+iv_docs:  Documentation files for InterViews 3.1.
+iv_docs:  
+iv_docs:  Adds the file refman.PS to /usr/doc/interviews, and adds man pages for
+iv_docs:  the programs in InterViews 3.1 in /usr/man/preformat/catn.
+iv_docs:
+iv_docs:
+iv_docs:
+iv_docs:
+iv_docs:
+iv_docs:
+iv_docs:
+libiv_sa: Shared library stubs and include files for InterViews 3.1.
+libiv_sa:
+libiv_sa: These files are needed to compile programs using the InterViews
+libiv_sa: shared libraries.
+libiv_sa:
+libiv_sa:
+libiv_sa:
+libiv_sa:
+libiv_sa:
+libiv_sa:
+libiv_sa:

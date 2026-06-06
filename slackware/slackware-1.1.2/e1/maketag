@@ -1,0 +1,33 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+rm -f /tmp/SeTnewtag # empty the return file
+dialog --title "SELECTING PACKAGES FOR SERIES E (GNU EMACS)" \
+       --checklist "Please select the packages you wish to install \
+from series E. Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the packages you wish to install. Recommended packages have \
+already been selected for you, but you may unselect them if you wish. \
+Please note that there are two Emacs binaries available, if you want the \
+one that does not require the X11 libraries, check the 'emac_nox' box. \
+Press ENTER when you are \
+done." 21 70 6 \
+"emacsbin" "The base binaries for the GNU Emacs" "on" \
+"emacmisc" "Miscellaneous files for emacs 19.22" "on" \
+"elispc" "Compiled lisp files for GNU Emacs 19.22" "on" \
+"elisp1" "Part one of the Lisp source files for Emacs 19.22" "off" \
+"elisp2" "Part two of the Lisp source files for Emacs 19.22" "off" \
+"emac_nox" "REMOVES X11 SUPPORT (&need for libX11) FROM EMACS" "off" \
+2> /tmp/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f /tmp/SeTpkgs
+ exit
+fi
+cat /dev/null > /tmp/SeTnewtag
+for PACKAGE in elisp2 emac_nox elisp1 elispc emacmisc emacsbin ; do
+ if fgrep \"$PACKAGE\" /tmp/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> /tmp/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> /tmp/SeTnewtag
+ fi
+done
+rm -f /tmp/SeTpkgs

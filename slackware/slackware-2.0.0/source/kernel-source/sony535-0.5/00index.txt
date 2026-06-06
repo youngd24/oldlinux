@@ -1,0 +1,6 @@
+00index.txt         148  
+CHANGES            1550  
+README.sony535     5906  
+sony535-0.5.lsm     789  
+sony535-0.5.patch
+                  60522  

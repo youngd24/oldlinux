@@ -1,0 +1,2 @@
+( cd usr/bin ; rm -rf latex )
+( cd usr/bin ; ln -sf virtex latex )

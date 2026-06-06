@@ -1,0 +1,11 @@
+00index.txt         286  
+README             3279  
+SIG.tgz            5130  
+dosemu0.52.lsm     1050  
+dosemu0.52.tgz   556346  
+dosgde.tgz       253817  
+emumodule.tgz      4294  
+linpkt.com         2283  
+os2dos.gz        157888  
+pre51_24.tgz     497087  
+virt_dos.tgz      77527  

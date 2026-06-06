@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.1/slakware/t5/texfont.tgz.meta4</origin>
+  <published>2026-06-02T04:13:51Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="texfont.tgz">
+    <size>795579</size>
+
+    <!-- <mtime>1077726120</mtime> -->
+
+    <!-- internal id: 203790 -->
+    <hash type="md5">fb406dfd6d8100fe07169944c83486cd</hash>
+    <hash type="sha-1">945b92f8b5dfad1712577e8ea1d52d253e7dbbb3</hash>
+    <hash type="sha-256">be49a82ed353d00d7923c2d4fa739b83a7645f78d776e7d9e36a0b4537f451f4</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>e808c9ef1f1c5372ef4d8663ba3e62de339c6e1d</hash>
+      <hash>2e8f65b9bdafc86fc5872d94025e72dcd75136a8</hash>
+      <hash>2aae632c84da23f08d4c78b3306833de7a6df977</hash>
+      <hash>b2046678781019ac491b0b5b4e65e4dc2f62f4c9</hash>
+    </pieces>
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="ec" priority="2">https://mirror.cedia.org.ec/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="br" priority="3">https://ftp.slackware-brasil.com.br/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="br" priority="4">https://mirrors.slackware.beco.cc/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="br" priority="5">https://linorg.usp.br/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="gb" priority="6">http://slackware.uk/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="gb" priority="7">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="nl" priority="8">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="fr" priority="9">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="nl" priority="10">https://mirror.koddos.net/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="nl" priority="11">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="de" priority="12">https://linux.rz.rub.de/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="ro" priority="13">http://mirrors.nav.ro/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="de" priority="14">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="dk" priority="15">https://mirrors.dotsrc.org/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="hr" priority="16">http://mirror.slackware.hr/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="it" priority="17">https://slackware.mirror.garr.it/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="se" priority="18">https://mirror.bahnhof.net/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="rs" priority="19">https://mirror1.sox.rs/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="pl" priority="20">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="ro" priority="21">https://mirrors.nxthost.com/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="ua" priority="22">http://slackware.ip-connect.info/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="ua" priority="23">https://ifconfig.com.ua/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="ru" priority="24">http://mirror.mephi.ru/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="ru" priority="25">https://mirror.yandex.ru/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="za" priority="26">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="sa" priority="27">https://mirror.lyrahosting.com/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+    <url location="hk" priority="28">https://mirror-hk.koddos.net/slackware/slackware-2.0.1/slakware/t5/texfont.tgz</url>
+  </file>
+</metalink>

@@ -1,0 +1,67 @@
+CONTENTS: ghostscr gsfonts1 joe sudo diff jed 
+sudo:     sudo 1.2
+sudo:
+sudo:     'sudo' is a command that allows users to execute some commands as 
+sudo:     root. The /etc/sudoers file (edited with 'visudo') specifies which
+sudo:     users have access to sudo and which commands they can run. 'sudo' logs
+sudo:     all its activities to /var/adm/sudo, so the system administrator can
+sudo:     can keep an eye on things.
+sudo:
+sudo:
+sudo:
+sudo:
+ghostscr: GNU Ghostscript version 2.6.1 - (with fixes 01-04 applied).
+ghostscr: Preview, print and process PostScript documents on both PostScript and
+ghostscr: non-PostScript devices. This version supports all SVGAlib video modes
+ghostscr: for output directly to the screen. See the man page for "gs" for more
+ghostscr: information. [NOTE]: The /usr/bin/gs binary included with this package
+ghostscr: does not support X11; support was left out so that Slackware users 
+ghostscr: without X could use SVGAlib output and not need to install the X 
+ghostscr: shared libraries. If you need X11 support, you should also install the
+ghostscr: package "gs_x11" found on the XAP series. It contains a /usr/bin/gs
+ghostscr: with support for X11 (as well as full SVGAlib support).
+ghostscr:
+jed:      John E. Davis's JED 0.96 editor.
+jed:
+jed:      JED is an extremely powerful but small emacs programmer's editor that
+jed:      is extensible in a C-like macro language and is able to perform color
+jed:      syntax highlighting. Among the many features:
+jed:      Emacs, wordstar, EDT emulation;
+jed:      C, fortran, TeX, text editing modes;  Full undo;
+jed:      GNU Emacs compatible info reader, and lots more.
+jed:
+jed:      8 bit clean, so you can even edit binary files!  
+jed:
+gsfonts1: Fonts for the Ghostscript interpreter/previewer.
+gsfonts1:
+gsfonts1:
+gsfonts1:
+gsfonts1:
+gsfonts1:
+gsfonts1:
+gsfonts1:
+gsfonts1:
+gsfonts1:
+gsfonts1:
+joe:      Joe text editor, version 1.0.8.                         
+joe:
+joe:      Joseph H. Allen's easy to use text editor, similar to WordStar[tm].
+joe:
+joe:
+joe:
+joe:
+joe:
+joe:
+joe:
+joe:
+diff:     GNU diffutils-2.6
+diff:
+diff:     The GNU diff utilities - finds differences between files. (to make
+diff:     source code patches, for instance)
+diff:
+diff:
+diff:
+diff:
+diff:
+diff:
+diff:

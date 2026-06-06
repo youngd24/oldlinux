@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Mirror List</title>
+  <link type="text/css" rel="stylesheet" href="/css/mblist.css" />
+</head>
+
+<body>
+<div id="mirrorbrain-details">
+  <h2>Mirrors for <a href="/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">cdu31a</a></h2>
+<div id="mirrorbrain-fileinfo">
+<h3>File information</h3>
+<ul>
+  <li><span class="mirrorbrain-label">Filename:</span> cdu31a</li>
+  <li><span class="mirrorbrain-label">Path:</span> /slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</li>
+  <li><span class="mirrorbrain-label">Size:</span> 315K (322052 bytes)</li>
+  <li><span class="mirrorbrain-label">Last modified:</span> Thu, 21 Jul 1994 23:45:30 GMT (Unix time: 774834330)</li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a.sha256">SHA-256 Hash</a>:</span> <tt>87bd5f538172a534b1f4641c903b2e36bc37367e9650adc97ddde465e63cde2a</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a.sha1">SHA-1 Hash</a>:</span> <tt>8c8d738863d98a22c83253cb1260f2d4b49721d5</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a.md5">MD5 Hash</a>:</span> <tt>b535a186a76d695aca6c7a042e36135c</tt></li>
+</ul>
+<p><a href="/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a" class="mirrorbrain-btn">Download file from preferred mirror</a></p>
+</div>
+
+<div id="mirrorbrain-links">
+<h3>Reliable downloads</h3>
+<div class="mirrorbrain-links-grp">
+<h4>Metalink</h4>
+<ul>
+  <li><a href="/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a.meta4">/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a.meta4</a> (IETF Metalink)</li>
+  <li><a href="/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a.metalink">/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a.metalink</a> (old (v3) Metalink)</li>
+</ul>
+</div>
+</div>
+
+<div id="mirrorbrain-mirrors">
+<h3>Mirrors</h3>
+<p>List of best mirrors for IP address 172.59.189.70, located at 41.848301,-87.651703 in United States (US).</p>
+
+<p><a href="https://maps.google.com/maps/api/staticmap?size=640x512&amp;visual_refresh=true&amp;scale=2&amp;maptype=roadmap&amp;sensor=false&amp;markers=color:red|41.848301,-87.651703&amp;markers=color:yellow|label:1|28.538000,-81.378998&amp;markers=color:yellow|label:2|-2.883000,-78.983002&amp;markers=color:yellow|label:3|-16.701000,-49.266998&amp;markers=color:yellow|label:4|-8.144000,-34.978001&amp;markers=color:yellow|label:5|-23.473000,-46.666000&amp;markers=color:yellow|label:6|51.495998,-0.122000&amp;markers=color:yellow|label:7|51.266998,1.083000&amp;markers=color:yellow|label:8|48.858002,2.339000&amp;markers=color:yellow|label:9|48.858002,2.339000">Map showing the closest mirrors</a></p>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 1 mirror which handle this country (US)</h4>
+<ul>
+ <li><a href="https://mirror.slackbuilds.org/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (us, prio 100)</li>
+</ul>
+</div>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 27 mirrors in other parts of the world</h4>
+<ul>
+  <li><a href="https://mirror.cedia.org.ec/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (ec, prio 100)</li>
+  <li><a href="https://ftp.slackware-brasil.com.br/slackware-2.0.0/kernels/cdu31a/cdu31a">https://ftp.slackware-brasil.com.br/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (br, prio 100)</li>
+  <li><a href="https://mirrors.slackware.beco.cc/slackware-2.0.0/kernels/cdu31a/cdu31a">https://mirrors.slackware.beco.cc/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (br, prio 100)</li>
+  <li><a href="https://linorg.usp.br/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://linorg.usp.br/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (br, prio 100)</li>
+  <li><a href="http://slackware.uk/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">http://slackware.uk/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (gb, prio 100)</li>
+  <li><a href="https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (gb, prio 100)</li>
+  <li><a href="http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (nl, prio 100)</li>
+  <li><a href="http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/kernels/cdu31a/cdu31a">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (fr, prio 50)</li>
+  <li><a href="https://mirror.koddos.net/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://mirror.koddos.net/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (nl, prio 100)</li>
+  <li><a href="https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (nl, prio 100)</li>
+  <li><a href="https://linux.rz.rub.de/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://linux.rz.rub.de/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (de, prio 100)</li>
+  <li><a href="http://mirrors.nav.ro/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">http://mirrors.nav.ro/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (ro, prio 100)</li>
+  <li><a href="https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (de, prio 100)</li>
+  <li><a href="https://mirrors.dotsrc.org/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (dk, prio 100)</li>
+  <li><a href="http://mirror.slackware.hr/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">http://mirror.slackware.hr/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (hr, prio 100)</li>
+  <li><a href="https://slackware.mirror.garr.it/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (it, prio 100)</li>
+  <li><a href="https://mirror.bahnhof.net/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://mirror.bahnhof.net/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (se, prio 100)</li>
+  <li><a href="https://mirror1.sox.rs/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://mirror1.sox.rs/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (rs, prio 100)</li>
+  <li><a href="https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (pl, prio 100)</li>
+  <li><a href="https://mirrors.nxthost.com/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://mirrors.nxthost.com/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (ro, prio 100)</li>
+  <li><a href="http://slackware.ip-connect.info/slackware-2.0.0/kernels/cdu31a/cdu31a">http://slackware.ip-connect.info/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (ua, prio 100)</li>
+  <li><a href="https://ifconfig.com.ua/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://ifconfig.com.ua/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (ua, prio 100)</li>
+  <li><a href="http://mirror.mephi.ru/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">http://mirror.mephi.ru/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (ru, prio 100)</li>
+  <li><a href="https://mirror.yandex.ru/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://mirror.yandex.ru/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (ru, prio 100)</li>
+  <li><a href="http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/kernels/cdu31a/cdu31a">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (za, prio 100)</li>
+  <li><a href="https://mirror.lyrahosting.com/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (sa, prio 100)</li>
+  <li><a href="https://mirror-hk.koddos.net/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/kernels/cdu31a/cdu31a</a> (hk, prio 100)</li>
+</ul>
+</div>
+
+</div>
+<address>Powered by <a href="http://mirrorbrain.org/">MirrorBrain</a></address>
+</div><!-- mirrorbrain-details -->
+<!--
+<html>
+<a href="http://mirrorbrain.org/">MirrorBrain</a>
+powered by <a href="http://slackware.com/">Slackware</a>!
+</html>
+-->

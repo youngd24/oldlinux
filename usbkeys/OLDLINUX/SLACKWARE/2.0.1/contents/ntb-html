@@ -1,0 +1,54 @@
+PACKAGE NAME:     ntb-html
+PACKAGE SIZE:     159 K
+PACKAGE LOCATION: diskt7
+PACKAGE DESCRIPTION:
+ntb-html: ntb-html 1.1
+ntb-html:
+ntb-html: This package contains html2latex, a program which can translate HTML
+ntb-html: files (mainly used in the WorldWideWeb) to LaTeX files. Some
+ntb-html: documentation files for HTML are also included in this package (see
+ntb-html: /usr/lib/texmf/html).
+ntb-html:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/html2latex
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/html/
+usr/lib/texmf/html/Docs/
+usr/lib/texmf/html/Docs/buglist.html
+usr/lib/texmf/html/Docs/command-line-flags.html
+usr/lib/texmf/html/Docs/copyright.html
+usr/lib/texmf/html/Docs/document-page-explanation.html
+usr/lib/texmf/html/Docs/document-search.html
+usr/lib/texmf/html/Docs/faq-asked.html
+usr/lib/texmf/html/Docs/faq-broken.html
+usr/lib/texmf/html/Docs/faq-dataxfer.html
+usr/lib/texmf/html/Docs/faq-general.html
+usr/lib/texmf/html/Docs/faq-interface.html
+usr/lib/texmf/html/Docs/faq-later.html
+usr/lib/texmf/html/Docs/faq-machines.html
+usr/lib/texmf/html/Docs/features.html
+usr/lib/texmf/html/Docs/group-annotations.html
+usr/lib/texmf/html/Docs/infosources-disclaimer.html
+usr/lib/texmf/html/Docs/inlined-images.html
+usr/lib/texmf/html/Docs/mac-status.html
+usr/lib/texmf/html/Docs/mosaic-docs.html
+usr/lib/texmf/html/Docs/mosaic-faq.html
+usr/lib/texmf/html/Docs/mosaic-project.html
+usr/lib/texmf/html/Docs/multimedia.html
+usr/lib/texmf/html/Docs/remote-control.html
+usr/lib/texmf/html/Docs/resources.html
+usr/lib/texmf/html/Docs/specifying-home.html
+usr/lib/texmf/html/Docs/users.html
+usr/lib/texmf/html/Docs/versions.html
+usr/lib/texmf/html/Docs/whats-new.html
+usr/lib/texmf/html/beginners.html
+usr/lib/texmf/html/beginners.tex
+usr/lib/texmf/html/getting-started.ps.gz
+usr/lib/texmf/html/html-primer-080693.html
+usr/lib/texmf/html/html-primer.ps.gz
+usr/lib/texmf/html/url-primer-080693.html
+usr/lib/texmf/html/url-primer.ps.gz

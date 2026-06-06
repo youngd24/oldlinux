@@ -1,0 +1,4 @@
+( cd usr/bin ; rm -rf as )
+( cd usr/bin ; ln -sf  as.2.2l as )
+( cd usr/bin ; rm -rf ld )
+( cd usr/bin ; ln -sf  ld.1.9l.4 ld )

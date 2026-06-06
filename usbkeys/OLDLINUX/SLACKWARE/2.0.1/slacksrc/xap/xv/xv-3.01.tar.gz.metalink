@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink version="3.0" xmlns="http://www.metalinker.org/"
+  origin="https://mirrors.slackware.com/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz.metalink"
+  generator="MirrorBrain 2.19.0 (see http://mirrorbrain.org/)"
+  type="dynamic"  pubdate="Tue, 02 Jun 2026 04:28:16 GMT"  refreshdate="Tue, 02 Jun 2026 04:28:16 GMT">
+
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <files>
+  <file name="xv-3.01.tar.gz">
+    <size>1730736</size>
+
+    <!-- <mtime>1077724111</mtime> -->
+
+    <!-- internal id: 204413 -->
+      <verification>
+        <hash type="md5">801adfc43e83131610aa8cc0ee9ec6c3</hash>
+        <hash type="sha1">4bcdbb0857cfed795d9c7d859343bcf2ddc66ce0</hash>
+        <hash type="sha256">1fd4be6821b3cd6eab4e00dcd09c523d3a2ad108c7983bcc0291a0071d6e9809</hash>
+        <pieces length="262144" type="sha1">
+          <hash piece="0">e0cb06f11068d37a795fefed7abdf40f5a04c8eb</hash>
+          <hash piece="1">067baede279d8a16adee563b40abc7845aca5b12</hash>
+          <hash piece="2">7a45fa4a6dba79bbb1d77992465da2ab439b2860</hash>
+          <hash piece="3">fafa44fe4ed86ad247820f6f56ea070dc457f0ab</hash>
+          <hash piece="4">3e2b5f9f77a3ca0a77be22563267f7cb291be903</hash>
+          <hash piece="5">1ea8dcd70fa98b0deffa7ea1efde788fec043014</hash>
+          <hash piece="6">db190353c3b9b9cbf97ad7d507d152541ca24bbc</hash>
+        </pieces>
+      </verification>
+    <resources>
+
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url type="https" location="us" preference="100">https://mirror.slackbuilds.org/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url type="https" location="ec" preference="99">https://mirror.cedia.org.ec/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="br" preference="98">https://ftp.slackware-brasil.com.br/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="br" preference="97">https://mirrors.slackware.beco.cc/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="br" preference="96">https://linorg.usp.br/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="http" location="gb" preference="95">http://slackware.uk/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="gb" preference="94">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="http" location="nl" preference="93">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="http" location="fr" preference="92">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="nl" preference="91">https://mirror.koddos.net/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="nl" preference="90">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="de" preference="89">https://linux.rz.rub.de/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="http" location="ro" preference="88">http://mirrors.nav.ro/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="de" preference="87">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="dk" preference="86">https://mirrors.dotsrc.org/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="http" location="hr" preference="85">http://mirror.slackware.hr/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="it" preference="84">https://slackware.mirror.garr.it/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="se" preference="83">https://mirror.bahnhof.net/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="rs" preference="82">https://mirror1.sox.rs/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="pl" preference="81">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="ro" preference="80">https://mirrors.nxthost.com/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="http" location="ua" preference="79">http://slackware.ip-connect.info/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="ua" preference="78">https://ifconfig.com.ua/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="http" location="ru" preference="77">http://mirror.mephi.ru/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="ru" preference="76">https://mirror.yandex.ru/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="http" location="za" preference="75">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="sa" preference="74">https://mirror.lyrahosting.com/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    <url type="https" location="hk" preference="73">https://mirror-hk.koddos.net/slackware/slackware-2.0.1/slacksrc/xap/xv/xv-3.01.tar.gz</url>
+    </resources>
+    </file>
+  </files>
+</metalink>

@@ -1,0 +1,241 @@
+00index.txt        4976  
+ash/                  -  
+bc/                   -  
+diff/                 -  
+english/              -  
+ftape/                -  
+ghostscr/             -  
+gonzo/                -  
+groff/                -  
+gsfonts1/             -  
+gsfonts2              8  -> gsfonts1
+ispell/               -  
+jed/                  -  
+joe/                  -  
+jove/                 -  
+manpgs/               -  
+mt_st/                -  
+quota/                -  
+sc/                   -  
+sudo/                 -  
+termbin/              -  
+termnet/              =  
+termsrc/              -  
+texinfo/              -  
+vim/                  -  
+workbone/             -  
+zsh/                  -  
+
+ash:
+00index.txt          73  
+ash-linux-0.2.tar.gz
+                 104686  
+
+bc:
+00index.txt          52  
+bc-1.02.tar.gz    81299  
+
+diff:
+00index.txt          73  
+diffutils-2.6.tar.gz
+                 293627  
+
+english:
+00index.txt          73  
+ispell-3.0.09.tar.gz
+                 467745  
+
+ftape:
+00index.txt         162  
+ftape-0.9.10.tar.gz
+                  59663  
+ftape-0.9.9d.tar.gz
+                  56312  
+ftape-1.12.tar.gz
+                  65806  
+
+ghostscr:
+00index.txt         366  
+ghostscript-2.6.1.fix-01.gz
+                  10782  
+ghostscript-2.6.1.fix-02.gz
+                   1151  
+ghostscript-2.6.1.fix-03.gz
+                  20186  
+ghostscript-2.6.1.fix-04.gz
+                   2959  
+ghostscript-2.6.1.tar.gz
+                 983017  
+gs261-svgalib.tar.gz
+                  24900  
+gs261-svgalib.txt   157  
+
+gonzo:
+00index.txt          52  
+rumors           208373  
+
+groff:
+00index.txt          70  
+groff-1.09.tar.gz
+                 843088  
+
+gsfonts1:
+00index.txt          83  
+ghostscript-fonts-2.6.1.tar.gz
+                1706030  
+
+ispell:
+00index.txt          70  
+ispell-4.0.tar.gz
+                 187403  
+
+jed:
+00index.txt          52  
+jed096-1.tar.gz  418792  
+
+joe:
+00index.txt         124  
+joe-1.0.8-linux.README
+                    720  
+joe-1.0.8-linux.tar.gz
+                  89533  
+
+jove:
+00index.txt          70  
+jove4.14.7.tar.gz
+                 301299  
+
+manpgs:
+00index.txt         148  
+man-pages-1.2.Announce
+                   2180  
+man-pages-1.2.lsm   804  
+man-pages-1.2.tar.gz
+                 175024  
+
+mt_st:
+00index.txt          52  
+mt-st-0.1.tar.gz  12633  
+
+quota:
+00index.txt          52  
+README               73  
+
+sc:
+00index.txt          71  
+sc621.linux.tar.gz
+                 117687  
+
+sudo:
+00index.txt          52  
+sudo-1.2.tar.gz   25713  
+
+termbin:
+00index.txt          52  
+README              121  
+
+termnet:
+00index.txt        1860  
+README+ttelnet+tfinger
+                    318  
+ncftp173/             -  
+readline-1.1/         =  
+
+termnet/ncftp173:
+00index.txt         832  
+Blurb              2134  
+Makefile           7549  
+Makefile.orig      7486  
+README            16274  
+README-Slackware    781  
+cmds.c            45921  
+cmds.h             3501  
+cmdtab.c          11134  
+copyright.h        1048  
+defaults.h         2811  
+ftp.c             42369  
+ftp.h              1714  
+ftprc.c           13066  
+ftprc.h             931  
+getpass.c          2940  
+getpass.h           370  
+glob.c            10224  
+glob.h              375  
+main.c            25463  
+main.h              980  
+ncftp.1           33765  
+open.c            17735  
+open.h             1263  
+patchlevel.h       4409  
+set.c              7930  
+set.h              1029  
+sys.h             11398  
+tips.c             5436  
+util.c            18719  
+util.h             2448  
+v2_Note            1902  
+
+termnet/readline-1.1:
+00index.txt         849  
+COPYING           12929  
+ChangeLog          4304  
+Makefile           3881  
+chardefs.h         1434  
+doc/                  -  
+emacs_keymap.c    18513  
+examples/             -  
+funmap.c           6551  
+history.c         38870  
+history.h          4793  
+keymaps.c          4008  
+keymaps.h          1546  
+readline.c       141176  
+readline.h         7281  
+vi_keymap.c       17701  
+vi_mode.c         17964  
+
+termnet/readline-1.1/doc:
+00index.txt         286  
+Makefile            770  
+hist.texinfo       3440  
+history.dvi       23964  
+hstech.texinfo    10512  
+hsuser.texinfo     4753  
+readline.dvi      71888  
+rlman.texinfo      3412  
+rltech.texinfo    32518  
+rluser.texinfo    17067  
+texinfo.tex       88035  
+
+termnet/readline-1.1/examples:
+00index.txt         104  
+Makefile            248  
+fileman.c          9023  
+manexamp.c         2465  
+
+termsrc:
+00index.txt         104  
+README              517  
+term116.tar.gz   129197  
+term117d.tar.gz  130840  
+
+texinfo:
+00index.txt          71  
+texinfo-3.1.tar.gz
+                 693012  
+
+vim:
+00index.txt          78  
+vim-2.0.lsm        1241  
+vim-2.0.tar.gz   434712  
+
+workbone:
+00index.txt          98  
+WorkBone-0.1.lsm   1604  
+WorkBone-0.1.tar.gz
+                  26784  
+
+zsh:
+00index.txt          71  
+zsh-2.4.306.tar.gz
+                 403642  

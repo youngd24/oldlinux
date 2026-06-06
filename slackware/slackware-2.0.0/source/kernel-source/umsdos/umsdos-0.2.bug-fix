@@ -1,0 +1,65 @@
+From jack@solucorp.qc.ca Mon Mar 14 11:46:10 EST 1994
+Article: 6694 of comp.os.linux.development
+Newsgroups: comp.os.linux.development
+Path: bigblue.oit.unc.edu!concert!news-feed-1.peachnet.edu!emory!europa.eng.gtefsd.com!howland.reston.ans.net!agate!library.ucla.edu!news.mic.ucla.edu!unixg.ubc.ca!nntp.cs.ubc.ca!utcsri!newsflash.concordia.ca!sifon!clouso.crim.ca!comback!solucor!jack
+From: jack@solucorp.qc.ca (Jacques Gelinas)
+Subject: Small patch for Umsdos, please give it a try
+Message-ID: <1994Mar14.051649.3892@solucorp.qc.ca>
+Keywords: Umsdos 0.2 bug dir ..
+Organization: solucorp
+Date: Mon, 14 Mar 94 05:16:49 GMT
+Lines: 51
+
+umsdos 0.2 is now used by many. I have received few bug reports
+difficult to replicate. All those were related to the inability
+to locate a file even if it is there (a ls just after the failure
+shows it). I have located and fixed at least one bug. A small diff
+follow.
+
+Those who have that kind of odd behavior, could you try it. If possible
+could you email again even if this is fixing it or not. I have
+received a number of mail reporting mostly "false alarm" bug. To
+make things more complicated, my email system went a little crazy
+and I am pretty sure I have lost some messages (since 3 weeks ago).
+I have updated to the latest sendmail and now all look fine.
+
+
+This patch must be applied in /usr/src/linux/fs/umsdos
+
+--------------------------------------------------------------------
+*** dir.bak	Sat Feb  5 15:36:10 1994
+--- dir.c	Sun Mar 13 23:45:30 1994
+***************
+*** 329,334 ****
+--- 329,337 ----
+  					memcpy (entry->name,dirent.d_name,dirent.d_reclen);
+  					entry->name[dirent.d_reclen] = '\0';
+  					entry->name_len = dirent.d_reclen;
++ 					inode->u.umsdos_i.i_dir_owner = dir->i_ino;
++ 					inode->u.umsdos_i.i_emd_owner = 0;
++ 					umsdos_setup_dir_inode(inode);
+  					break;
+  				}
+  			}
+------------------------------------------------------
+
+Thanks in advance!
+
+PS: For those who asked, here is the status of umsdos.
+
+1-Make sure all known bug are solved (pretty close I guess).
+2-Promote integration in the standard kernel right after 1.0 is out.
+3-Enhance performance.
+
+In parallel I intend to produce LADR (Linux Advanced Desktop Release).
+I am currently exploring the Andrew Multimedia system
+to produce the help and administration system. Anyone with good
+experience with it ? Some pointers would be welcome :-)
+
+-- 
+
+--------------------------------------------------------
+Jacques Gelinas (jacques@solucorp.qc.ca)
+Maintainer of US4BINR jacques@us4binr.login.qc.ca
+
+

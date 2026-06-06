@@ -1,0 +1,5 @@
+00index.txt         130  
+diskt3              372  
+texcmpk.tgz      692601  
+texdoc.tgz        80611  
+texnfss2.tgz     432212  

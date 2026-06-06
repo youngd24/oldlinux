@@ -1,0 +1,25 @@
+PACKAGE NAME:     emac_nox
+PACKAGE SIZE:     538 K
+PACKAGE LOCATION: diske5
+PACKAGE DESCRIPTION:
+emac_nox:  A replacement /usr/bin/emacs-19.26 binary that is not compiled with
+emac_nox:  X11 menu support. This version of emacs is about 400K smaller than
+emac_nox:  the full version of emacs, and is the same in every respect except
+emac_nox:  for X11 extensions. It can still run in an xterm or rxvt if you wish
+emac_nox:  to run it under X, but it is mainly included for those folks who
+emac_nox:  don't have X11 (or the X11, Xaw, and Xt shared libs) installed on
+emac_nox:  their machines. You might want to remove the version that requires X
+emac_nox:  if you install and use this one.
+emac_nox:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/emacs-19.26-no-x11
+usr/lib/
+usr/lib/emacs/
+usr/lib/emacs/19.26/
+usr/lib/emacs/19.26/etc/
+usr/lib/emacs/19.26/etc/DOC-19.26.1
+install/
+install/doinst.sh

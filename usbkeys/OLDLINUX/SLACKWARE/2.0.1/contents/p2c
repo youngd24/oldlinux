@@ -1,0 +1,40 @@
+PACKAGE NAME:     p2c
+PACKAGE SIZE:     275 K
+PACKAGE LOCATION: diskd2
+PACKAGE DESCRIPTION:
+p2c:      A Pascal to C translator. (v. 1.19)
+p2c:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/p2c
+usr/bin/basic
+usr/lib/
+usr/lib/libp2c.a
+usr/lib/p2c/
+usr/lib/p2c/p2crc
+usr/lib/p2c/loc.p2crc
+usr/lib/p2c/system.imp
+usr/lib/p2c/system.m2
+usr/lib/p2c/turbo.imp
+usr/lib/p2c/string.pas
+usr/lib/p2c/NOTES
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/p2c.1.z
+usr/include/
+usr/include/p2c/
+usr/include/p2c/p2c.h
+usr/doc/
+usr/doc/p2c/
+usr/doc/p2c/Makefile
+usr/doc/p2c/README
+usr/doc/p2c/basic.doc
+usr/doc/p2c/basic.p
+usr/doc/p2c/cref.p
+usr/doc/p2c/e.p
+usr/doc/p2c/fact.p
+usr/doc/p2c/p2crc
+usr/doc/p2c/self.p

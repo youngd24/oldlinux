@@ -1,0 +1,29 @@
+00index.txt         506  
+finger.obsolete/      -  
+ftp.obsolete/         -  
+rlogin.obsolete/      -  
+rsh.obsolete/         -  
+talk.obsolete/        -  
+telnet.obsolete/      -  
+tftp.obsolete/        -  
+
+finger.obsolete:
+00index.txt          26  
+
+ftp.obsolete:
+00index.txt          26  
+
+rlogin.obsolete:
+00index.txt          26  
+
+rsh.obsolete:
+00index.txt          26  
+
+talk.obsolete:
+00index.txt          26  
+
+telnet.obsolete:
+00index.txt          26  
+
+tftp.obsolete:
+00index.txt          26  

@@ -1,0 +1,7 @@
+00index.txt         182  
+aletter.txt        7398  
+copying            1886  
+diskoi1             243  
+oiinc.tgz        227200  
+oilib.tgz       1029906  
+oimisc.tgz        29598  

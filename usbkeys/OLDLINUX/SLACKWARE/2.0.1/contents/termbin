@@ -1,0 +1,60 @@
+PACKAGE NAME:     termbin
+PACKAGE SIZE:     159 K
+PACKAGE LOCATION: diskap1
+PACKAGE DESCRIPTION:
+termbin:  Term 2.0.6
+termbin:
+termbin:  The executable files and man pages for term, which allows
+termbin:  multiple shells and pseudo-TCP/IP over modem lines.
+termbin:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/linecheck
+usr/bin/term
+usr/bin/tmon
+usr/bin/trdate
+usr/bin/trdated
+usr/bin/tredir
+usr/bin/trsh
+usr/bin/tshutdown
+usr/bin/tupload
+usr/bin/tudpredir
+usr/bin/txconn
+usr/lib/
+usr/lib/libtermnet.a
+usr/lib/libtermnet.sa
+usr/lib/libtermnet.so.2.00.06
+usr/include/
+usr/include/termnet.h
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/term.1.gz
+usr/man/preformat/cat1/term_clients.1.gz
+usr/man/preformat/cat1/term_setup.1.gz
+usr/doc/
+usr/doc/term/
+usr/doc/term/CHANGES
+usr/doc/term/COPYING
+usr/doc/term/CREDITS
+usr/doc/term/FAQ
+usr/doc/term/INSTALL
+usr/doc/term/README
+usr/doc/term/README.porting
+usr/doc/term/README.security
+usr/doc/term/SCO.CHANGES
+usr/doc/term/TERMRC
+usr/doc/term/TODO
+usr/doc/term/Term.HOWTO
+usr/doc/term/samples/
+usr/doc/term/samples/termrc-14.4k-1
+usr/doc/term/samples/termrc-14.4k-2
+usr/doc/term/samples/termrc-2400-1
+usr/doc/term/samples/termrc-2400-2
+var/
+var/lib/
+var/lib/term/
+install/
+install/doinst.sh

@@ -1,0 +1,24 @@
+Begin2
+Title        =pdksh
+Version      =4.9 for linux
+Desc1        =This is a set of diffs that applied to the public domain
+Desc2        =Korn shell, version 4.9, as posted to comp.sources.misc,
+Desc3        =make it run well under Linux. It includes some mods done by
+Desc4        =somebody for 4.8; plus a couple of new ones, including a
+Desc5        =performance bug fix.
+Author       =Eric Gisin and many others
+Maintainer   =Simon J. Gerraty
+MaintEmail   =sjg@zen.void.oz.au
+Site1        =comp.sources.misc
+Path1        =volume25
+Required1    =patches 1-9
+CopyPolicy1  =public domain/artistic
+Keywords     =korn shell
+Comment1     =It is one third the size of the bash-1.13 and twice as fast.
+Comment2     =It runs all the scripts I could throw to it, with only
+Comment3     =one minor bug. I use instead of the bash on my system.
+Entered      =93DEC06
+EnteredBy    =Piercarlo Grandi
+CheckedEmail =pcg@aber.ac.uk
+End
+

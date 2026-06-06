@@ -1,0 +1,4 @@
+( cd usr/bin ; rm -rf flex++ )
+( cd usr/bin ; ln -sf flex flex++ )
+( cd usr/bin ; rm -rf lex )
+( cd usr/bin ; ln -sf flex lex )

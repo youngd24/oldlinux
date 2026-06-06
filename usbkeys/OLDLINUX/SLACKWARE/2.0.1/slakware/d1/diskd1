@@ -1,0 +1,34 @@
+CONTENTS: gcc gxx tools 
+tools:    tools 2.11
+tools:
+tools:    Eric Youngdale's collection of tools that are used to generate DLL
+tools:    jumptable libraries.
+tools:
+tools:    
+tools:
+tools:
+tools:
+tools:
+tools:
+gcc:      The GNU C compiler and support files (v. 2.5.8)       
+gcc:
+gcc:      Compiled with 486 optimizations, but works fine with 386.
+gcc:
+gcc:
+gcc:
+gcc:
+gcc:
+gcc:
+gcc:
+gcc:
+gxx:      The GNU C++ compiler and support files (v. 2.5.8)   
+gxx:
+gxx:      Compiled with 486 optimizations, but works fine with 386.
+gxx:
+gxx:
+gxx:
+gxx:
+gxx:
+gxx:
+gxx:
+gxx:

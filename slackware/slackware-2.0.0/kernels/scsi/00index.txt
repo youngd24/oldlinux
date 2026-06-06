@@ -1,0 +1,4 @@
+00index.txt         104  
+scsi             317956  
+scsi.log           3438  
+zSystem.map       71254  

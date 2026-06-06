@@ -1,0 +1,16 @@
+crunch() {
+	LIBDIR=$1
+	LIBPREFIX=$2
+	for f in $LIBDIR/$LIBPREFIX.so.?.*
+	do
+		bname=`basename $f`
+#		echo "   - compacting $bname."
+		cp $f $LIBDIR/t$bname || exit 1
+		rm -f $f
+		mv $LIBDIR/t$bname $f
+	done
+}
+( cd usr/X11/lib ; ln -sf  libXpm.so.4.* libXpm.so.4 )
+#echo "Compacting shared libraries to decrease disk space utilization..."
+crunch usr/X11/lib libXpm;
+#echo "Shared libraries compacted."

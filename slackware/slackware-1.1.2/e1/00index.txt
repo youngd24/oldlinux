@@ -1,0 +1,7 @@
+00index.txt         182  
+diske1              363  
+emacsbin.tgz    1137170  
+maketag            1424  
+tagfile             498  
+tagfile.org         498  
+tagfile.pat         498  

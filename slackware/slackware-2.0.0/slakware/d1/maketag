@@ -1,0 +1,52 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+rm -f /tmp/SeTnewtag # empty the return file
+dialog --title "SELECTING PACKAGES FOR SERIES D (PROGRAM DEVELOPMENT)" \
+       --checklist "Please select the packages you wish to install \
+from series D. Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the packages you wish to install. Recommended packages have \
+already been selected for you, but you may unselect them if you wish. \
+Press ENTER when you are \
+done." 22 70 11 \
+"gcc" "GNU C compiler+support files 2.5.8" "on" \
+"gxx" "GNU C++ compiler+support files 2.5.8" "on" \
+"tools" "tools for compiling shared libraries" "off" \
+"libgxx" "GNU C++ library" "on" \
+"byacc" "Berkeley Yacc" "off" \
+"flex" "Fast lexical analyzer generator 2.4.6" "on" \
+"include" "4.5.26 include files for C programs" "on" \
+"man2" "Man pages for Linux system calls" "off" \
+"objc" "GNU Objective-C compiler 2.5.8" "off" \
+"p2c" "A Pascal to C translator 1.19" "off" \
+"pmake" "BSD 4.4 make" "on" \
+"extralib" "Extra profile/debug libs 4.5.26" "off" \
+"gdb" "The GNU debugger 4.12" "off" \
+"bison" "GNU bison parser generator 1.22" "on" \
+"kernel" "Linux kernel source 1.0.9" "on" \
+"clisp" "A Common Lisp interpreter" "off" \
+"f2c" "A Fortran-77 to C translator" "off" \
+"libc" "Development libs 4.5.26 for the C compiler" "on" \
+"ncurses" "A curses-compatible library" "off" \
+"svgalib" "Svgalib Super-VGA Graphics Library" "off" \
+"perl" "Larry Wall's interpreted systems language" "off" \
+"rcs" "GNU revision control system" "off" \
+"binutils" "GNU C compiler utilities" "on" \
+"m4" "GNU m4 1.1" "on" \
+"man3" "Man pages for C library functions" "off" \
+2> /tmp/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f /tmp/SeTpkgs
+ exit
+fi
+cat /dev/null > /tmp/SeTnewtag
+for PACKAGE in gcc gxx libgxx include man2 objc p2c pmake flex byacc \
+extralib gdb bison clisp f2c libc ncurses svgalib kernel \
+perl rcs binutils m4 man3 tools ; do
+ if fgrep \"$PACKAGE\" /tmp/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> /tmp/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> /tmp/SeTnewtag
+ fi
+done
+rm -f /tmp/SeTpkgs

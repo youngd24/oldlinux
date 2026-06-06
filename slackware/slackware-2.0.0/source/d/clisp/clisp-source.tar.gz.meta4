@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz.meta4</origin>
+  <published>2026-06-01T17:20:28Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="clisp-source.tar.gz">
+    <size>2605598</size>
+
+    <!-- <mtime>774835566</mtime> -->
+
+    <!-- internal id: 1610885 -->
+    <hash type="md5">36008dda0d84271ffa706232cef87f2f</hash>
+    <hash type="sha-1">702cad61547e0f88bf4e56d5bc0ecb4c4b113259</hash>
+    <hash type="sha-256">375c374033070deaebd0d25d6ecf69ac09cb50aaecc679b5e1c657bba27d526e</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>e0f0bb2b9be79efcecc65e953b75f0534b5c049d</hash>
+      <hash>adfc7d2809fc6751f6c1fa5a62536ce920e1809c</hash>
+      <hash>5e77aa2b3b959e5b9b1ca9e6bdae06c6056280e4</hash>
+      <hash>eec8559acb0213339e395a3bfecb2606a12e3eda</hash>
+      <hash>fbcdfd4cb864ad83e3ed515ccab7358add2c156c</hash>
+      <hash>a4082100e6c0973727f976705c23e5748b81e980</hash>
+      <hash>cd274009e01852487a7e65b601502aab22d8c268</hash>
+      <hash>f3c3b9b2a1fdfbc015de3e58a9db9724b4d775e7</hash>
+      <hash>acc8a8bb7919898379c23f1ddfdc1ac1ebeb7d20</hash>
+      <hash>fe0617922aaa66319c26fc20d1cef7fee1b2907f</hash>
+    </pieces>
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="ec" priority="2">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="br" priority="3">https://ftp.slackware-brasil.com.br/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="br" priority="4">https://mirrors.slackware.beco.cc/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="br" priority="5">https://linorg.usp.br/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="gb" priority="6">http://slackware.uk/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="gb" priority="7">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="nl" priority="8">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="fr" priority="9">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="nl" priority="10">https://mirror.koddos.net/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="nl" priority="11">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="de" priority="12">https://linux.rz.rub.de/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="ro" priority="13">http://mirrors.nav.ro/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="de" priority="14">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="dk" priority="15">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="hr" priority="16">http://mirror.slackware.hr/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="it" priority="17">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="se" priority="18">https://mirror.bahnhof.net/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="rs" priority="19">https://mirror1.sox.rs/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="pl" priority="20">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="ro" priority="21">https://mirrors.nxthost.com/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="ua" priority="22">http://slackware.ip-connect.info/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="ua" priority="23">https://ifconfig.com.ua/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="ru" priority="24">http://mirror.mephi.ru/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="ru" priority="25">https://mirror.yandex.ru/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="za" priority="26">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="sa" priority="27">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+    <url location="hk" priority="28">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/source/d/clisp/clisp-source.tar.gz</url>
+  </file>
+</metalink>

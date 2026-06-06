@@ -1,0 +1,22 @@
+PACKAGE NAME:     ntf-osma
+PACKAGE SIZE:     1 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-osma: ntf-osma 1.1
+ntf-osma:
+ntf-osma: An osmanian font.
+ntf-osma:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/language/
+usr/lib/texmf/fonts/language/osmanian/
+usr/lib/texmf/fonts/language/osmanian/create.sh
+usr/lib/texmf/fonts/language/osmanian/src/
+usr/lib/texmf/fonts/language/osmanian/src/osmanian.mf
+usr/lib/texmf/fonts/language/osmanian/tfm/
+usr/lib/texmf/fonts/language/osmanian/tfm/osmanian.tfm
+usr/lib/texmf/fonts/language/osmanian/pk/

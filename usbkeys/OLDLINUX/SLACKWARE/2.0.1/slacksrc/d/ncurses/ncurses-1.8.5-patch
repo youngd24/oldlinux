@@ -1,0 +1,65 @@
+Linux - POSIX On A PC For FREE
+==============================================================================
+Patch for NCurses 1.8.5
+==============================================================================
+
+== Introduction ==============================================================
+
+	This patch file is for ncurses 1.8.5.
+	
+== What You Need =============================================================
+
+	* ncurses 1.8.5
+		Can be found at ftp.netcom.com, in /pub/zmbenhal/ncurses, as
+		1.8.5.tar.gz.
+	 
+== What It Does ==============================================================
+
+	* werase()
+		werase() no longer honours the current attribute for the
+		window, which means that applications that set the screen
+		colour by wattrset(win, attr); wclear(win); no longer work.
+		
+		This patch corrects the problem.
+
+== How To Do It ==============================================================
+
+	Unpack the ncurses 1.8.5 source code.
+	
+	cd <wherever you put ncurses>/ncurses-1.8.5
+	patch -p1 < <wherever you put the patch>/ncurses-1.8.5-patch
+	
+	Then recompile and install ncurses.  As ncurses is not a shared
+	library, you will need to recompile any applications (such as dialog)
+	which rely on ncurses.
+	
+==============================================================================
+Stuart Herbert - S.Herbert@Sheffield.ac.uk
+
+---- this is the patch ----
+
+--- ncurses-1.8.5/src/lib_erase.c	Mon Jan 31 23:04:09 1994
++++ ncurses-1.8.5/src/lib_erase.c	Tue Jun  7 16:10:41 1994
+@@ -13,12 +13,11 @@
+ #include "curses.priv.h"
+ #include "terminfo.h"
+ 
+-#define BLANK ' '
+-
+ int  werase(WINDOW	*win)
+ {
+ int	y;
+ chtype	*sp, *end, *start, *maxx = NULL;
++chtype  blank = ' ' | win->_attrs;
+ int	minx;
+ 
+ 	T(("werase(%x) called", win));
+@@ -33,7 +32,7 @@
+ 		    	maxx = sp;
+ 		    	if (minx == _NOCHANGE)
+ 					minx = sp - start;
+-		    	*sp = BLANK;
++		    	*sp = blank;
+ 	    	}
+ 
+ 	    	if (minx != _NOCHANGE) {

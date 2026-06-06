@@ -1,0 +1,45 @@
+CONTENTS: xv32_a xv32exmp xvinc32 xvmenus
+xv32_a:   Static libraries for developing Xview applications. (v. 3.2)
+xv32_a:   Only needed if you are planning on doing Xview debugging, or 
+xv32_a:   compiling Xview apps with the -g or -static flags.
+xv32_a:
+xv32_a:
+xv32_a:
+xv32_a:
+xv32_a:
+xv32_a:
+xv32_a:
+xv32_a:
+xv32exmp: Sample programs for Xview which demonstrate the Slingshot and UIT
+xv32exmp: extensions, libraries which greatly simplify programming a user
+xv32exmp: interface under X.
+xv32exmp:
+xv32exmp:
+xv32exmp:
+xv32exmp:
+xv32exmp:
+xv32exmp:
+xv32exmp:
+xv32exmp:
+xvinc32:  Include files for Xview programming.
+xvinc32:
+xvinc32:
+xvinc32:
+xvinc32:
+xvinc32:
+xvinc32:
+xvinc32:
+xvinc32:
+xvinc32:
+xvinc32:
+xvmenus:  Menus and help files for the OpenLook Window Manager.
+xvmenus:
+xvmenus:
+xvmenus:
+xvmenus:
+xvmenus:
+xvmenus:
+xvmenus:
+xvmenus:
+xvmenus:
+xvmenus:

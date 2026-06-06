@@ -1,0 +1,237 @@
+00index.txt        5687  
+Extract             302  
+INDEX                53  
+Install/              -  
+README             2272  
+arp.dif            6447  
+arp.tar.gz         4509  
+biff.dif            315  
+biff.tar.gz        2201  
+comsat.dif          328  
+comsat.tar.gz      4272  
+finger.dif         4198  
+finger.tar.gz     11170  
+fingerd.dif        1719  
+fingerd.tar.gz     3104  
+ftp.dif           12463  
+ftp.tar.gz        38472  
+ftpd.dif           4919  
+ftpd.tar.gz       22993  
+inetd.dif          1577  
+inetd.tar.gz      14962  
+libtelnet.dif      1577  
+libtelnet.tar.gz  22692  
+lpr/                  =  
+lpr.dif           12960  
+lpr.dif-new       12713  
+lpr.tar.gz        61412  
+named.tar.gz     280803  
+ping.dif          10111  
+ping.tar.gz       12593  
+portmap.dif        1358  
+portmap.tar.gz     6028  
+rarpd.tar.gz       8145  
+rcp.dif            1368  
+rcp.tar.gz         8599  
+rexecd.dif         4110  
+rexecd.tar.gz      4479  
+rlogin.dif        23887  
+rlogin.tar.gz      8746  
+rlogind.dif        1784  
+rlogind.tar.gz     8719  
+routed.tar.gz     29655  
+rpc.rstatd.Makefile
+                    203  
+rpc.rstatd.tar.gz  5303  
+rpc.rusersd.dif    1930  
+rpc.rusersd.tar.gz
+                   4609  
+rpc.rwalld.dif      604  
+rpc.rwalld.tar.gz  3118  
+rpcgen.new.tar.gz
+                  34411  
+rpcgen.tar.gz     15801  
+rpcinfo.dif        1006  
+rpcinfo.tar.gz     5628  
+rsh.dif            2381  
+rsh.tar.gz         5499  
+rshd.dif           1246  
+rshd.tar.gz        8441  
+rup.tar.gz         4393  
+rusers.dif         1156  
+rusers.tar.gz      3956  
+rwall.dif           328  
+rwall.tar.gz       3308  
+slattach.new.tar.gz
+                   3072  
+slattach.tar.gz    3109  
+sliplogin.dif      8710  
+sliplogin.tar.gz   6588  
+talk.FvK           1735  
+talk.dif           3630  
+talk.tar.gz       10725  
+talkd.dif           766  
+talkd.tar.gz       7358  
+telnet.dif         4174  
+telnet.tar.gz     70386  
+telnetd.dif        6637  
+telnetd.tar.gz    48418  
+tftp.dif            345  
+tftp.tar.gz       10780  
+tftpd.dif           397  
+tftpd.tar.gz       5720  
+timed.dif          4960  
+timed.tar.gz      54446  
+tn3270.README        17  
+tn3270.tar.gz     86947  
+
+Install:
+00index.txt         260  
+inetd.conf         3012  
+protocols           595  
+rnusers.h          1408  
+rnusers.x          4674  
+rusers.h           2834  
+rusers.x           2640  
+rwall.h             737  
+rwall.x            1836  
+services           5565  
+
+lpr:
+00index.txt        3166  
+Makefile            862  
+Makefile.orig       431  
+common_source/        -  
+etc.printcap       1497  
+filters/              -  
+lpc/                  -  
+lpd/                  -  
+lpq/                  -  
+lpr/                  -  
+lprm/                 -  
+lptest/               -  
+pac/                  -  
+
+lpr/common_source:
+00index.txt         728  
+Makefile            324  
+Makefile.orig       162  
+common.c           8575  
+common.c.orig      8752  
+common.c.rej       1663  
+common.o           3573  
+displayq.c        10015  
+displayq.o         7811  
+libcommon.a       22814  
+lp.h               4750  
+lp.h.orig          4954  
+lp.h.rej           1840  
+lp.local.h         3263  
+lp.local.h.orig    3210  
+lp.local.h.rej      411  
+lpc.h              2136  
+pathnames.h        2501  
+pathnames.h.orig   2515  
+pathnames.h.rej    1064  
+printcap.c         9863  
+printcap.o         2914  
+rmjob.c            8315  
+rmjob.c.orig       8315  
+rmjob.c.rej         322  
+rmjob.o            5530  
+startdaemon.c      3204  
+startdaemon.o      1340  
+
+lpr/filters:
+00index.txt         156  
+Makefile            170  
+Makefile.orig        85  
+lpf               11421  
+lpf.c              5407  
+lpf.o              3421  
+
+lpr/lpc:
+00index.txt         390  
+Makefile            306  
+Makefile.orig       153  
+cmds.c            22054  
+cmds.c.orig       22051  
+cmds.c.rej         1759  
+cmds.o            15624  
+cmdtab.c           3592  
+cmdtab.c.orig      3590  
+cmdtab.c.rej       1070  
+cmdtab.o           1966  
+lpc               32312  
+lpc.8              5911  
+lpc.c              5865  
+lpc.o              3399  
+
+lpr/lpd:
+00index.txt         494  
+Makefile            322  
+Makefile.orig       161  
+lpd               54011  
+lpd.8              7426  
+lpd.c             11495  
+lpd.c.orig        11461  
+lpd.c.rej           814  
+lpd.o              6971  
+lpdchar.c         16014  
+lpdchar.o          1052  
+printjob.c        29801  
+printjob.c.orig   30128  
+printjob.c.rej     3285  
+printjob.o        24187  
+recvjob.c          7255  
+recvjob.c.orig     7213  
+recvjob.c.rej       480  
+recvjob.o          4207  
+
+lpr/lpq:
+00index.txt         182  
+Makefile            182  
+Makefile.orig        91  
+lpq               22435  
+lpq.1              4654  
+lpq.c              3510  
+lpq.o              1594  
+
+lpr/lpr:
+00index.txt         260  
+Makefile            252  
+Makefile.orig       126  
+lpr               10056  
+lpr.1              7448  
+lpr.c             16386  
+lpr.c.orig        16341  
+lpr.c.rej          3259  
+lpr.o             11824  
+lpr.termios       31948  
+
+lpr/lprm:
+00index.txt         182  
+Makefile            266  
+Makefile.orig       133  
+lprm              22181  
+lprm.1             4637  
+lprm.c             4021  
+lprm.o             1800  
+
+lpr/lptest:
+00index.txt         182  
+Makefile            292  
+Makefile.orig       146  
+lptest             9275  
+lptest.1           2865  
+lptest.c           2714  
+lptest.o            876  
+
+lpr/pac:
+00index.txt         182  
+Makefile            258  
+Makefile.orig       129  
+pac               16350  
+pac.8              3861  
+pac.c              9607  
+pac.o              5220  

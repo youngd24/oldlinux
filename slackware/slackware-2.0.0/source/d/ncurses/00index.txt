@@ -1,0 +1,5 @@
+00index.txt         124  
+1-8-5.tar.gz     259978  
+ncurses.dif        2825  
+ncurses1.8.1.tar.gz
+                 158112  

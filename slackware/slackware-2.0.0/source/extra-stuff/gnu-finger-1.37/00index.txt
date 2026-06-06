@@ -1,0 +1,5 @@
+00index.txt         124  
+finger-1.37.debian.diff.gz
+                   5636  
+finger-1.37.tar.gz
+                 238117  

@@ -1,0 +1,84 @@
+PACKAGE NAME:     svgalib
+PACKAGE SIZE:     260 K
+PACKAGE LOCATION: diskd5
+PACKAGE DESCRIPTION:
+svgalib:  Svgalib Super-VGA Graphics Library (v1.12)
+svgalib: 
+svgalib:  A video hardware graphics library, based on VGAlib 1.2. Supports most
+svgalib:  standard and non-standard VGA modes, and Super-VGA modes for Tseng
+svgalib:  ET4000, Cirrus 542x (including 15/16/24 bit modes), Mach32, Trident
+svgalib:  8900c/9000, and other cards. (see the docs in /usr/doc/svgalib)
+svgalib:
+FILE LIST:
+./
+usr/
+usr/include/
+usr/include/vga.h
+usr/include/vgagl.h
+usr/include/vgamouse.h
+usr/include/vgakeyboard.h
+usr/include/libvga.h
+usr/lib/
+usr/lib/libvga.sa
+usr/lib/libvgagl.sa
+usr/lib/svgalib/
+usr/lib/svgalib/fun
+usr/lib/svgalib/linuxlogo.bmp
+usr/lib/svgalib/mousetest
+usr/lib/svgalib/scrolltest
+usr/lib/svgalib/speedtest
+usr/lib/svgalib/testgl
+usr/lib/svgalib/testlinear
+usr/lib/svgalib/vgatest
+usr/lib/svgalib/3d
+usr/lib/svgalib/keytest
+usr/lib/libvgagl.a
+usr/lib/libvga.a
+usr/local/
+usr/local/lib/
+usr/local/lib/libvga.config
+usr/local/lib/libvga.et4000
+usr/bin/
+usr/bin/convfont
+usr/bin/dumpreg
+usr/bin/fix132x43
+usr/bin/restorefont
+usr/bin/restorepalette
+usr/bin/restoretextmode
+usr/bin/runx
+usr/bin/savetextmode
+usr/bin/setmclk
+usr/bin/textmode
+usr/doc/
+usr/doc/svgalib/
+usr/doc/svgalib/README
+usr/doc/svgalib/README.vgalib
+usr/doc/svgalib/README.utils
+usr/doc/svgalib/README.gl
+usr/doc/svgalib/cirrus.regs
+usr/doc/svgalib/et4000.regs
+usr/doc/svgalib/tvga8900.regs
+usr/doc/svgalib/oak.regs
+usr/doc/svgalib/et3000.regs
+usr/doc/svgalib/.depend
+usr/doc/svgalib/et4000/
+usr/doc/svgalib/et4000/README.1st
+usr/doc/svgalib/et4000/et4000.default
+usr/doc/svgalib/et4000/cardex.w32
+usr/doc/svgalib/et4000/speedstar+
+usr/doc/svgalib/et4000/orchid.pdII
+usr/doc/svgalib/et4000/tseng3.c
+usr/doc/svgalib/et4000/tseng3.exe
+usr/doc/svgalib/libvga.config
+usr/doc/svgalib/mach32/
+usr/doc/svgalib/mach32/README.mach32
+usr/doc/svgalib/mach32/mach32info.c
+usr/doc/svgalib/mach32/mach32.std-modes
+usr/doc/svgalib/mach32/Makefile
+usr/doc/svgalib/README.config
+usr/doc/svgalib/README.et4000
+usr/doc/svgalib/README.mach32
+lib/
+lib/libvga.so.1.1.8
+install/
+install/doinst.sh

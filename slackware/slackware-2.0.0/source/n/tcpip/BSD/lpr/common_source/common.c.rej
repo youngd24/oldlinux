@@ -1,0 +1,51 @@
+***************
+*** 65,72 ****
+  char	*PF;		/* name of vrast filter (per job) */
+  char	*FF;		/* form feed string */
+  char	*TR;		/* trailer string to be output when Q empties */
+- short	SC;		/* suppress multiple copies */
+- short	SF;		/* suppress FF on each print job */
+  short	SH;		/* suppress header page */
+  short	SB;		/* short banner instead of normal header */
+  short	HL;		/* print header last */
+--- 65,70 ----
+  char	*PF;		/* name of vrast filter (per job) */
+  char	*FF;		/* form feed string */
+  char	*TR;		/* trailer string to be output when Q empties */
+  short	SH;		/* suppress header page */
+  short	SB;		/* short banner instead of normal header */
+  short	HL;		/* print header last */
+***************
+*** 78,85 ****
+  short	BR;		/* baud rate if lp is a tty */
+  int	FC;		/* flags to clear if lp is a tty */
+  int	FS;		/* flags to set if lp is a tty */
+- int	XC;		/* flags to clear for local mode */
+- int	XS;		/* flags to set for local mode */
+  short	RS;		/* restricted to those with local accounts */
+  
+  char	line[BUFSIZ];
+--- 76,81 ----
+  short	BR;		/* baud rate if lp is a tty */
+  int	FC;		/* flags to clear if lp is a tty */
+  int	FS;		/* flags to set if lp is a tty */
+  short	RS;		/* restricted to those with local accounts */
+  
+  char	line[BUFSIZ];
+***************
+*** 182,188 ****
+  getq(namelist)
+  	struct queue *(*namelist[]);
+  {
+- 	register struct dirent *d;
+  	register struct queue *q, **queue;
+  	register int nitems;
+  	struct stat stbuf;
+--- 178,184 ----
+  getq(namelist)
+  	struct queue *(*namelist[]);
+  {
++ 	register struct direct *d;
+  	register struct queue *q, **queue;
+  	register int nitems;
+  	struct stat stbuf;

@@ -1,0 +1,34 @@
+PACKAGE NAME:     vim
+PACKAGE SIZE:     189 K
+PACKAGE LOCATION: diskap4
+PACKAGE DESCRIPTION:
+vim:      Version 3.0 of Vim: Vi IMproved
+vim:
+vim:      Vim is an almost compatible version of the UNIX editor vi. Only the
+vim:      'Q' command is missing (you don't need it). Many new features have
+vim:      been added: multi level undo, command line history, filename 
+vim:      completion, block operations, etc.
+vim:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/vim
+usr/lib/
+usr/lib/vim.hlp
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/vim.1.gz
+usr/doc/
+usr/doc/vim/
+usr/doc/vim/README
+usr/doc/vim/difference.doc
+usr/doc/vim/digraph.doc
+usr/doc/vim/index
+usr/doc/vim/reference.doc
+usr/doc/vim/uganda.txt
+usr/doc/vim/unix.doc
+usr/doc/vim/vim132
+usr/doc/vim/archie.doc
+usr/doc/vim/windows.doc

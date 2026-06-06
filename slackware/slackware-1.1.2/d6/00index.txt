@@ -1,0 +1,9 @@
+00index.txt         234  
+binutils.tgz     226792  
+diskd6             1346  
+install.end          35  
+libgxx.tgz       296193  
+m4.tgz            53922  
+man3.tgz         151740  
+perl.tgz         493748  
+rcs.tgz          166573  

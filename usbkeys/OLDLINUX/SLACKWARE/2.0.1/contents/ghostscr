@@ -1,0 +1,102 @@
+PACKAGE NAME:     ghostscr
+PACKAGE SIZE:     465 K
+PACKAGE LOCATION: diskap2
+PACKAGE DESCRIPTION:
+ghostscr: GNU Ghostscript version 2.6.1 - (with fixes 01-04 applied).
+ghostscr: Preview, print and process PostScript documents on both PostScript and
+ghostscr: non-PostScript devices. This version supports all SVGAlib video modes
+ghostscr: for output directly to the screen. See the man page for "gs" for more
+ghostscr: information. [NOTE]: The /usr/bin/gs binary included with this package
+ghostscr: does not support X11; support was left out so that Slackware users 
+ghostscr: without X could use SVGAlib output and not need to install the X 
+ghostscr: shared libraries. If you need X11 support, you should also install the
+ghostscr: package "gs_x11" found on the XAP series. It contains a /usr/bin/gs
+ghostscr: with support for X11 (as well as full SVGAlib support).
+ghostscr:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/gs
+usr/bin/bdftops
+usr/bin/font2c
+usr/bin/gsbj
+usr/bin/gsdj
+usr/bin/gslj
+usr/bin/gslp
+usr/bin/gsnd
+usr/bin/ps2ascii
+usr/bin/ps2epsi
+usr/src/
+usr/src/ghostscript-2.6.1/
+usr/src/ghostscript-2.6.1/Makefile
+usr/src/ghostscript-2.6.1/gs.c.diff
+usr/src/ghostscript-2.6.1/gdevlinux.c
+usr/src/ghostscript-2.6.1/gs.1.diff
+usr/src/ghostscript-2.6.1/README
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/gs.1.gz
+usr/lib/
+usr/lib/ghostscript/
+usr/lib/ghostscript/Fontmap
+usr/lib/ghostscript/README
+usr/lib/ghostscript/bdftops.ps
+usr/lib/ghostscript/decrypt.ps
+usr/lib/ghostscript/doc/
+usr/lib/ghostscript/doc/NEWS
+usr/lib/ghostscript/doc/ansi2knr.1
+usr/lib/ghostscript/doc/devices.doc
+usr/lib/ghostscript/doc/drivers.doc
+usr/lib/ghostscript/doc/fonts.doc
+usr/lib/ghostscript/doc/gs.1
+usr/lib/ghostscript/doc/hershey.doc
+usr/lib/ghostscript/doc/history.doc
+usr/lib/ghostscript/doc/humor.doc
+usr/lib/ghostscript/doc/language.doc
+usr/lib/ghostscript/doc/lib.doc
+usr/lib/ghostscript/doc/make.doc
+usr/lib/ghostscript/doc/ps2epsi.doc
+usr/lib/ghostscript/doc/psfiles.doc
+usr/lib/ghostscript/doc/readme.doc
+usr/lib/ghostscript/doc/use.doc
+usr/lib/ghostscript/doc/xfonts.doc
+usr/lib/ghostscript/examples/
+usr/lib/ghostscript/examples/chess.ps
+usr/lib/ghostscript/examples/cheq.ps
+usr/lib/ghostscript/examples/colorcir.ps
+usr/lib/ghostscript/examples/golfer.ps
+usr/lib/ghostscript/examples/escher.ps
+usr/lib/ghostscript/examples/snowflak.ps
+usr/lib/ghostscript/examples/tiger.ps
+usr/lib/ghostscript/font2c.ps
+usr/lib/ghostscript/gs_dbt_e.ps
+usr/lib/ghostscript/gs_dps1.ps
+usr/lib/ghostscript/gs_fonts.ps
+usr/lib/ghostscript/gs_init.ps
+usr/lib/ghostscript/gs_lev2.ps
+usr/lib/ghostscript/gs_statd.ps
+usr/lib/ghostscript/gs_sym_e.ps
+usr/lib/ghostscript/gs_type0.ps
+usr/lib/ghostscript/gslp.ps
+usr/lib/ghostscript/impath.ps
+usr/lib/ghostscript/landscap.ps
+usr/lib/ghostscript/level1.ps
+usr/lib/ghostscript/prfont.ps
+usr/lib/ghostscript/ps2ascii.ps
+usr/lib/ghostscript/ps2epsi.ps
+usr/lib/ghostscript/ps2image.ps
+usr/lib/ghostscript/pstoppm.ps
+usr/lib/ghostscript/quit.ps
+usr/lib/ghostscript/showpage.ps
+usr/lib/ghostscript/type1ops.ps
+usr/lib/ghostscript/uglyr.gsf
+usr/lib/ghostscript/wrfont.ps
+usr/lib/ghostscript/gs.1
+var/
+var/X11/
+var/X11/lib/
+var/X11/lib/X11/
+var/X11/lib/X11/app-defaults/
+var/X11/lib/X11/app-defaults/Ghostview

@@ -1,0 +1,41 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+rm -f /tmp/SeTnewtag # empty the return file
+dialog --title "SELECTING PACKAGES FOR SERIES N (NETWORK/NEWS/MAIL/UUCP)" \
+       --checklist "Please select the packages you wish to install \
+from series N. Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the packages you wish to install. Recommended packages have \
+already been selected for you, but you may unselect them if you wish. \
+Press ENTER when you are \
+done." 22 70 11 \
+"netcfg" "A script to help configure TCP/IP" "on" \
+"deliver" "Local mail delivery utility" "off" \
+"ppp" "Point-to-point protocol" "off" \
+"mailx" "The mailx mailer" "on" \
+"tcpip" "TCP/IP networking programs" "on" \
+"uucp" "Taylor UUCP 1.05 with HDB && Taylor configs" "off" \
+"lynx" "Lynx: text-based World Wide Web reader" "off" \
+"elm" "Menu-driven user mail program" "off" \
+"pine" "Pine menu-driven mail program" "off" \
+"smail" "Ian Kluft's Linux port of Smail 3.1.28" "off" \
+"cnews" "Spools and transmits Usenet news" "off" \
+"inn_pkg" "InterNetNews news transport system" "off" \
+"nn" "The 'nn' news reader" "off" \
+"tin" "The 'tin' news reader" "off" \
+"trn" "A threaded news reader" "off" \
+2> /tmp/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f /tmp/SeTpkgs
+ exit
+fi
+cat /dev/null > /tmp/SeTnewtag
+for PACKAGE in deliver ppp mailx tcpip uucp netcfg \
+inn_pkg lynx elm pine smail cnews nn tin trn ; do
+ if fgrep \"$PACKAGE\" /tmp/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> /tmp/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> /tmp/SeTnewtag
+ fi
+done
+rm -f /tmp/SeTpkgs

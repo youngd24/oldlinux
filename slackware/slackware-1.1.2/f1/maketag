@@ -1,0 +1,6 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+rm -f /tmp/SeTnewtag # empty the return file
+dialog --title "SELECTING PACKAGES FOR SERIES F (FAQS/DOCS)" \
+       --msgbox "There is only one package on this disk. It will be \
+selected by default." 6 55 

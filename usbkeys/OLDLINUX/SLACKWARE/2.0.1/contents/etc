@@ -1,0 +1,75 @@
+PACKAGE NAME:     etc
+PACKAGE SIZE:     59 K
+PACKAGE LOCATION: diska1
+PACKAGE DESCRIPTION:
+etc:      System configuration files that go into the /etc directory.
+etc:
+etc:      The /etc directory is traditionally the location where configuration
+etc:      files and administration binaries are found. Under Linux, the binaries
+etc:      have been moved out of the /etc directory and into the /sbin 
+etc:      directory; the /etc directory is now reserved for configuration files
+etc:      only. 
+etc:
+FILE LIST:
+./
+etc/
+etc/ttys
+etc/fdprm
+etc/npasswd
+etc/issue
+etc/motd
+etc/mtools
+etc/profile
+etc/securetty
+etc/shells
+etc/termcap
+etc/skel/
+etc/skel/.kermrc
+etc/skel/.less
+etc/skel/.lessrc
+etc/skel/.term/
+etc/skel/.term/termrc
+etc/skel/.emacs
+etc/csh.cshrc
+etc/csh.login
+etc/lilo/
+etc/ngroup
+etc/default/
+etc/services
+etc/HOSTNAME
+etc/magic
+usr/
+usr/bin/
+usr/bin/filesize
+usr/bin/sysvbanner
+usr/bin/bban
+usr/sbin/
+usr/sbin/useradd
+usr/sbin/userdel
+usr/sbin/usermod
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/useradd.1.gz
+usr/man/preformat/cat1/userdel.1.gz
+usr/man/preformat/cat1/usermod.1.gz
+usr/etc/
+root/
+root/.emacs
+root/.less
+root/.kermrc
+root/.lessrc
+root/.term/
+root/.term/termrc
+tmp/
+tmp/.X11-unix/
+install/
+install/doinst.sh
+sbin/
+sbin/hostname_notcp
+sbin/adduser
+var/
+var/adm/
+var/adm/lastlog
+var/adm/wtmp
+var/adm/utmp

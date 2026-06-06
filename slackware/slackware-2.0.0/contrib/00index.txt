@@ -1,0 +1,62 @@
+00index.txt        1476  
+CHECKSUMS          1919  
+ChangeLog            65  
+FILE_LIST          3469  
+INDEX              3508  
+MANIFEST         732774  
+XF86_S3_864.tar.gz.good.linux
+                 472179  
+aps-23.tgz       169621  
+auis63L0-dev.lsm   1382  
+auis63L0-dev.tgz
+                3721226  
+auis63L0-doc.lsm   1368  
+auis63L0-doc.tgz
+                3232246  
+auis63L0-mail.lsm  1500  
+auis63L0-mail.tgz
+                1984858  
+auis63L0-src.lsm   1367  
+auis63L0-src.tgz
+                 736636  
+auis63L0-wp.lsm    1264  
+auis63L0-wp.tgz
+                1454220  
+gcl.tgz          708364  
+gnat-1.79.tgz   1565406  
+gnat.lsm            923  
+gpc-2.5.7.tgz    583094  
+install/              -  
+ksh.tgz           65876  
+ksh.txt              88  
+lemacs.tgz      7356162  
+lemacs.txt           58  
+lodlin14.txt       1595  
+lodlin14.zip      92502  
+lynx-2.3+term.lsm   943  
+lynx-2.3+term.tgz
+                 114571  
+manpagesrc.tgz  2725306  
+mc-0.8.tgz        60185  
+mc-0.8.txt          512  
+ncurses-181.tgz  193253  
+ncurses-185.tgz  290041  
+perl-5.00a.tgz   289718  
+rescue-with-lilo.gz
+                1330472  
+rescue.gz       1322397  
+use-ncurses-1.8.1/    -  
+uucp-1.04-info.tgz
+                  67245  
+uucp-1.04.tgz    372795  
+
+install:
+00index.txt          78  
+installpkg         8553  
+removepkg          4270  
+
+use-ncurses-1.8.1:
+00index.txt         104  
+hdsetup.tgz       95351  
+mc-0.5.tgz        57847  
+mc-0.5.txt          512  

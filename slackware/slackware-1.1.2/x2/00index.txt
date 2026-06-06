@@ -1,0 +1,7 @@
+00index.txt         182  
+diskx2             1568  
+x_mono.tgz       338132  
+x_s3.tgz         417544  
+x_svga.tgz       405847  
+xf_cfg.tgz        87044  
+xpm.tgz           76705  

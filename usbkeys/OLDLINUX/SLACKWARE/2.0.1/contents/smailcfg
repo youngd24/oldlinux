@@ -1,0 +1,142 @@
+PACKAGE NAME:     smailcfg
+PACKAGE SIZE:     55 K
+PACKAGE LOCATION: diskn2
+PACKAGE DESCRIPTION:
+smailcfg: Configuration files for sendmail.
+smailcfg:
+smailcfg: These files are used to create sendmail.cf configuration files. The
+smailcfg: m4 macro processor (on the D series of disks) is also required in
+smailcfg: order to make use of these files. 
+smailcfg:
+smailcfg: These files and the documentation in /usr/src/sendmail should make it
+smailcfg: possible to support virtually any mail configuration. NOTE: you
+smailcfg: probably won't need this package if you're planning to use one of the
+smailcfg: sendmail.cf samples included in the sendmail package.
+smailcfg:
+FILE LIST:
+./
+usr/
+usr/src/
+usr/src/sendmail/
+usr/src/sendmail/README
+usr/src/sendmail/cf/
+usr/src/sendmail/cf/Makefile
+usr/src/sendmail/cf/Makefile.dist
+usr/src/sendmail/cf/alpha.mc
+usr/src/sendmail/cf/auspex.mc
+usr/src/sendmail/cf/chez.mc
+usr/src/sendmail/cf/clientproto.mc
+usr/src/sendmail/cf/cogsci.mc
+usr/src/sendmail/cf/cs-exposed.mc
+usr/src/sendmail/cf/cs-hidden.mc
+usr/src/sendmail/cf/hpux-cs-exposed.mc
+usr/src/sendmail/cf/hpux-cs-hidden.mc
+usr/src/sendmail/cf/knecht.mc
+usr/src/sendmail/cf/mail.cs.mc
+usr/src/sendmail/cf/mail.eecs.mc
+usr/src/sendmail/cf/osf1-cs-exposed.mc
+usr/src/sendmail/cf/osf1-cs-hidden.mc
+usr/src/sendmail/cf/python.mc
+usr/src/sendmail/cf/riscos-cs-exposed.mc
+usr/src/sendmail/cf/s2k.mc
+usr/src/sendmail/cf/sunos3.5-cs-exposed.mc
+usr/src/sendmail/cf/sunos3.5-cs-hidden.mc
+usr/src/sendmail/cf/sunos4.1-cs-exposed.mc
+usr/src/sendmail/cf/sunos4.1-cs-hidden.mc
+usr/src/sendmail/cf/tcpproto.mc
+usr/src/sendmail/cf/ucbarpa.mc
+usr/src/sendmail/cf/ucbvax.mc
+usr/src/sendmail/cf/udb.mc
+usr/src/sendmail/cf/ultrix4.1-cs-exposed.mc
+usr/src/sendmail/cf/ultrix4.1-cs-hidden.mc
+usr/src/sendmail/cf/uucpproto.mc
+usr/src/sendmail/cf/vangogh.mc
+usr/src/sendmail/cf/obj/
+usr/src/sendmail/cf/obj/alpha.cf
+usr/src/sendmail/cf/obj/auspex.cf
+usr/src/sendmail/cf/obj/chez.cf
+usr/src/sendmail/cf/obj/cogsci.cf
+usr/src/sendmail/cf/obj/cs-exposed.cf
+usr/src/sendmail/cf/obj/cs-hidden.cf
+usr/src/sendmail/cf/obj/knecht.cf
+usr/src/sendmail/cf/obj/mail.cs.cf
+usr/src/sendmail/cf/obj/mail.eecs.cf
+usr/src/sendmail/cf/obj/python.cf
+usr/src/sendmail/cf/obj/s2k.cf
+usr/src/sendmail/cf/obj/sunos3.5-cs-exposed.cf
+usr/src/sendmail/cf/obj/sunos3.5-cs-hidden.cf
+usr/src/sendmail/cf/obj/sunos4.1-cs-exposed.cf
+usr/src/sendmail/cf/obj/sunos4.1-cs-hidden.cf
+usr/src/sendmail/cf/obj/tcpproto.cf
+usr/src/sendmail/cf/obj/ucbvax.cf
+usr/src/sendmail/cf/obj/ultrix4.1-cs-exposed.cf
+usr/src/sendmail/cf/obj/ultrix4.1-cs-hidden.cf
+usr/src/sendmail/cf/obj/uucpproto.cf
+usr/src/sendmail/cf/obj/vangogh.cf
+usr/src/sendmail/cf/linux.smtp.mc
+usr/src/sendmail/cf/linux.uucp.mc
+usr/src/sendmail/cf/linux.nodns-smtp.mc
+usr/src/sendmail/cf/test.mc
+usr/src/sendmail/domain/
+usr/src/sendmail/domain/Berkeley.m4
+usr/src/sendmail/domain/cs.exposed.m4
+usr/src/sendmail/domain/cs.hidden.m4
+usr/src/sendmail/domain/eecs.hidden.m4
+usr/src/sendmail/domain/s2k.m4
+usr/src/sendmail/feature/
+usr/src/sendmail/feature/allmasquerade.m4
+usr/src/sendmail/feature/always_add_domain.m4
+usr/src/sendmail/feature/bitdomain.m4
+usr/src/sendmail/feature/domaintable.m4
+usr/src/sendmail/feature/mailertable.m4
+usr/src/sendmail/feature/nocanonify.m4
+usr/src/sendmail/feature/nodns.m4
+usr/src/sendmail/feature/notsticky.m4
+usr/src/sendmail/feature/nouucp.m4
+usr/src/sendmail/feature/nullclient.m4
+usr/src/sendmail/feature/redirect.m4
+usr/src/sendmail/feature/use_cw_file.m4
+usr/src/sendmail/feature/uucpdomain.m4
+usr/src/sendmail/hack/
+usr/src/sendmail/hack/cssubdomain.m4
+usr/src/sendmail/m4/
+usr/src/sendmail/m4/cf.m4
+usr/src/sendmail/m4/nullrelay.m4
+usr/src/sendmail/m4/proto.m4
+usr/src/sendmail/m4/version.m4
+usr/src/sendmail/mailer/
+usr/src/sendmail/mailer/fax.m4
+usr/src/sendmail/mailer/local.m4
+usr/src/sendmail/mailer/pop.m4
+usr/src/sendmail/mailer/smtp.m4
+usr/src/sendmail/mailer/usenet.m4
+usr/src/sendmail/mailer/uucp.m4
+usr/src/sendmail/ostype/
+usr/src/sendmail/ostype/aix3.m4
+usr/src/sendmail/ostype/aux.m4
+usr/src/sendmail/ostype/bsd4.3.m4
+usr/src/sendmail/ostype/bsd4.4.m4
+usr/src/sendmail/ostype/bsdi1.0.m4
+usr/src/sendmail/ostype/dgux.m4
+usr/src/sendmail/ostype/domainos.m4
+usr/src/sendmail/ostype/dynix3.2.m4
+usr/src/sendmail/ostype/hpux.m4
+usr/src/sendmail/ostype/irix.m4
+usr/src/sendmail/ostype/linux.m4
+usr/src/sendmail/ostype/nextstep.m4
+usr/src/sendmail/ostype/osf1.m4
+usr/src/sendmail/ostype/riscos4.5.m4
+usr/src/sendmail/ostype/sco3.2.m4
+usr/src/sendmail/ostype/solaris2.m4
+usr/src/sendmail/ostype/sunos3.5.m4
+usr/src/sendmail/ostype/sunos4.1.m4
+usr/src/sendmail/ostype/svr4.m4
+usr/src/sendmail/ostype/ultrix4.1.m4
+usr/src/sendmail/ostype/linux.m4.orig
+usr/src/sendmail/sh/
+usr/src/sendmail/sh/makeinfo.sh
+usr/src/sendmail/siteconfig/
+usr/src/sendmail/siteconfig/uucp.cogsci.m4
+usr/src/sendmail/siteconfig/uucp.old.arpa.m4
+usr/src/sendmail/siteconfig/uucp.ucbarpa.m4
+usr/src/sendmail/siteconfig/uucp.ucbvax.m4

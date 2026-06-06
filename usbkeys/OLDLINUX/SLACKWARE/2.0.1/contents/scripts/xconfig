@@ -1,0 +1,2 @@
+( cd var/X11/lib/X11 ; rm -rf Sample-Xconfig-files )
+( cd var/X11/lib/X11 ; ln -sf  /usr/X11/lib/Sample-Xconfig-files Sample-Xconfig-files )

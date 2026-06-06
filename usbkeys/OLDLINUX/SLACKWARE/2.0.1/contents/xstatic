@@ -1,0 +1,18 @@
+PACKAGE NAME:     xstatic
+PACKAGE SIZE:     451 K
+PACKAGE LOCATION: diskxd2
+PACKAGE DESCRIPTION:
+xstatic:  Static versions of the X libraries.
+xstatic:
+FILE LIST:
+./
+usr/
+usr/X11/
+usr/X11/lib/
+usr/X11/lib/libX11.a
+usr/X11/lib/libXt.a
+usr/X11/lib/libXmu.a
+usr/X11/lib/libXaw.a
+usr/X11/lib/libXext.a
+usr/X11/lib/libXi.a
+usr/X11/lib/libXtst.a

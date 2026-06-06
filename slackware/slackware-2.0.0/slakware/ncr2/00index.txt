@@ -1,0 +1,6 @@
+00index.txt         156  
+diskncr2            623  
+install.end          17  
+ncr_inc3.tgz     153835  
+ncrkern3.log       4740  
+ncrkern3.tgz     392746  

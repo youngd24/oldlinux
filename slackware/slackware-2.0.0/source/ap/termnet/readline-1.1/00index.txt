@@ -1,0 +1,36 @@
+00index.txt         849  
+COPYING           12929  
+ChangeLog          4304  
+Makefile           3881  
+chardefs.h         1434  
+doc/                  -  
+emacs_keymap.c    18513  
+examples/             -  
+funmap.c           6551  
+history.c         38870  
+history.h          4793  
+keymaps.c          4008  
+keymaps.h          1546  
+readline.c       141176  
+readline.h         7281  
+vi_keymap.c       17701  
+vi_mode.c         17964  
+
+doc:
+00index.txt         286  
+Makefile            770  
+hist.texinfo       3440  
+history.dvi       23964  
+hstech.texinfo    10512  
+hsuser.texinfo     4753  
+readline.dvi      71888  
+rlman.texinfo      3412  
+rltech.texinfo    32518  
+rluser.texinfo    17067  
+texinfo.tex       88035  
+
+examples:
+00index.txt         104  
+Makefile            248  
+fileman.c          9023  
+manexamp.c         2465  

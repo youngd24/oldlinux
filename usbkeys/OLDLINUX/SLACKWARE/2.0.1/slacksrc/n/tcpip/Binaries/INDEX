@@ -1,0 +1,38 @@
+For manual pages and source to these please see the Programs/BSD directory.
+
+arp			arp (see also net-0.32b package for better arp)
+finger			finger (see who someone is)
+fingerd			fingerd (answer finger requests from remote sites)
+ftp			file transfer program (this one has the latest
+			greatest extra options - like 'tick').
+ftpd			A file transfer daemon. For anonymous ftp sites look
+			at ftp-diku (in Programs/System) or the wu-ftpd
+			available from wuarchive.wustl.edu.
+inetd			Internet superserver, run programs as needed
+lpc			Line printer control
+lpd			Line printer daemon
+lpf			Line printer filter
+lpq			Show line printer queue and status
+lpr			Print a file locally or remotely
+lprm			Remove a print job
+lptest
+pac
+ping			Check another host is alive
+portmap			Control program for Sun RPC (needed for NFS)
+rlogin			Login to a remote machine
+rlogind			Accept remote logins
+rpcinfo			List Sun RPC services on a machine
+rshd			Remote shell server
+rusers			See who is logged into a remote host
+rusersd			Answer remote login queries
+rwall			Send a message to all users of a remote host
+rwalld			Answer 'rwall' requests.
+sliplogin		BSD sliplogin (login and use SLIP)
+support			Support files for these programs (needed)
+talk			Talk to a remote user
+talkd			Handle talk requests
+telnet			Internet network terminal
+telnetd			Guess what, yes the server for telnet
+tftp			Trivial file transfer program
+tftpd			Trivial file transfer server. Normally only used
+			for network booting machines.

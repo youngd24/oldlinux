@@ -1,0 +1,14 @@
+00index.txt         366  
+ghostscript-2.6.1.fix-01.gz
+                  10782  
+ghostscript-2.6.1.fix-02.gz
+                   1151  
+ghostscript-2.6.1.fix-03.gz
+                  20186  
+ghostscript-2.6.1.fix-04.gz
+                   2959  
+ghostscript-2.6.1.tar.gz
+                 983017  
+gs261-svgalib.tar.gz
+                  24900  
+gs261-svgalib.txt   157  

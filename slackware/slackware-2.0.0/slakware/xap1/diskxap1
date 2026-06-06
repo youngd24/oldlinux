@@ -1,0 +1,89 @@
+CONTENTS: gs_x11 libgr seyon vgaset workman xfileman xv gnuplot 
+gnuplot:  gnuplot 3.5
+gnuplot:
+gnuplot:  Gnuplot is a command-line driven interactive function plotting utility
+gnuplot:  for UNIX, MSDOS, and VMS platforms.  The software is copyrighted but
+gnuplot:  freely distributed (i.e., you don't have to pay for it).  It was
+gnuplot:  originally intended as graphical program which would allow scientists
+gnuplot:  and students to visualize mathematical functions and data.  Gnuplot
+gnuplot:  supports many different types of terminals, plotters, and printers
+gnuplot:  (including many color devices, and pseudo-devices like LaTeX) and is
+gnuplot:  easily extensible to include new devices.
+gnuplot:
+gs_x11:   Replacement /usr/bin/gs with X11 options compiled in.
+gs_x11:
+gs_x11:   This should be installed on top of the "ghostscr" package from the
+gs_x11:   A series to provide X11 support for ghostview. If you plan to preview
+gs_x11:   Postscript documents under X, you need to install this. Also, if 
+gs_x11:   you've installed ghostscript already it is highly recommended that you
+gs_x11:   install this package just in case. Since it replaces another binary
+gs_x11:   it really only uses about 25K.
+gs_x11:
+gs_x11:
+gs_x11:
+libgr:    libgr-1.3
+libgr:
+libgr:    Shared graphics libraries with GIF, TIFF, JPEG support.  These 
+libgr:    libraries are needed to run the XV image viewer, and InterViews 3.1.
+libgr:
+libgr:
+libgr:
+libgr:
+libgr:
+libgr:
+libgr:
+seyon:    Seyon 2.14c. 
+seyon:
+seyon:    A complete, full-featured telecommunications package for X.
+seyon:
+seyon:
+seyon:
+seyon:
+seyon:
+seyon:
+seyon:
+seyon:
+vgaset:   Utility to help you configure your monitor for X more easily. 
+vgaset:
+vgaset:
+vgaset:
+vgaset:
+vgaset:
+vgaset:
+vgaset:
+vgaset:
+vgaset:
+vgaset:
+workman:  WorkMan-1.2.2a
+workman:
+workman:  An audio CD player. Requires the XV libraries, but would have
+workman:  necessitated an extra XV floppy if I'd put it there. :^)
+workman:
+workman:
+workman:
+workman:
+workman:
+workman:
+workman:
+xfileman: xfilemanager 0.5
+xfileman:
+xfileman: Ove Kalkan's xfilemanager - one of two file managers for X included
+xfileman: with the Slackware release. xfilemanager is an X11 based Unix
+xfileman: file manager with Drag'n Drop abilities, full color displays, and a
+xfileman: slackful logo.
+xfileman:
+xfileman:
+xfileman:
+xfileman:
+xfileman:
+xv:       John Bradley's XV 3.01 GIF/TIFF/JPEG/PostScript image viewer.
+xv:
+xv:       NOTICE: This program is unregistered shareware. Please read the 
+xv:       license information included.
+xv:
+xv:
+xv:
+xv:
+xv:
+xv:
+xv:

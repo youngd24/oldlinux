@@ -1,0 +1,15 @@
+00index.txt         382  
+dialog-0.4-slackware.tar.gz
+                  64148  
+dialog-0.4.tar.gz
+                  54701  
+dialog-slack-0.3.tar.gz
+                  37629  
+explodepkg.8       1198  
+installpkg.8       2224  
+makepkg.8          3455  
+mkpkg-1.0.lsm      1155  
+mkpkg-1.0.tar.gz   2124  
+pkgtool.8          2653  
+removepkg.8        2009  
+setup.8            4003  

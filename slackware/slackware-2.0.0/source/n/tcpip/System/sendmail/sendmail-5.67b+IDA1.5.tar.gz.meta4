@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz.meta4</origin>
+  <published>2026-06-01T17:42:21Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="sendmail-5.67b+IDA1.5.tar.gz">
+    <size>1437278</size>
+
+    <!-- <mtime>774835421</mtime> -->
+
+    <!-- internal id: 1611474 -->
+    <hash type="md5">32ffd4b813a6d59ee94e912192a437b9</hash>
+    <hash type="sha-1">626855cbb6bdd88013461045ca700663581cf5a6</hash>
+    <hash type="sha-256">43cd19ffe9f8564591c22305f2b6a42564f53721e0d130645c7f0c6bdc08564d</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>d0f7515d689b4962446775ba9852c7826de8a262</hash>
+      <hash>98a66d7eae4b7063577b24002246b4cb92b9711e</hash>
+      <hash>88366d3dffd8164a791dfe6842da0a715a79364c</hash>
+      <hash>b6a0749384fc304d9c7d317039c9806db4d32719</hash>
+      <hash>8035298b402258635b7be373eecf1e873b146ee3</hash>
+      <hash>d7553c4bff5416ba0c27ee000533318ec4c1ca12</hash>
+    </pieces>
+
+
+    <!-- Found 27 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 26 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="ec" priority="2">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="br" priority="3">https://ftp.slackware-brasil.com.br/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="br" priority="4">https://mirrors.slackware.beco.cc/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="br" priority="5">https://linorg.usp.br/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="gb" priority="6">http://slackware.uk/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="gb" priority="7">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="nl" priority="8">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="nl" priority="9">https://mirror.koddos.net/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="nl" priority="10">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="de" priority="11">https://linux.rz.rub.de/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="ro" priority="12">http://mirrors.nav.ro/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="de" priority="13">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="dk" priority="14">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="hr" priority="15">http://mirror.slackware.hr/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="it" priority="16">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="se" priority="17">https://mirror.bahnhof.net/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="rs" priority="18">https://mirror1.sox.rs/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="pl" priority="19">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="ro" priority="20">https://mirrors.nxthost.com/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="ua" priority="21">http://slackware.ip-connect.info/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="ua" priority="22">https://ifconfig.com.ua/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="ru" priority="23">http://mirror.mephi.ru/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="ru" priority="24">https://mirror.yandex.ru/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="za" priority="25">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="sa" priority="26">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+    <url location="hk" priority="27">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/source/n/tcpip/System/sendmail/sendmail-5.67b+IDA1.5.tar.gz</url>
+  </file>
+</metalink>

@@ -1,0 +1,218 @@
+*** ../rzsz9202.orig/Makefile	Sun Dec 15 15:35:56 1991
+--- Makefile	Wed Jul 29 21:49:12 1992
+***************
+*** 13,18 ****
+--- 13,25 ----
+  	@echo "make any necessary hacks for oddball or merged SYSV/BSD systems,"
+  	@echo "then type 'make SYSTEM' where SYSTEM is one of:"
+  	@echo
++ 	@echo "	--- for Linux: --------------------------------------"
++ 	@echo "	linux	build rb rc rx rz sb sx sz zcommand zcommandi"
++ 	@echo "	linux2	build crc minirb"
++ 	@echo "	install	install programs and man-pages"
++ 	@echo "	clean	clean working directory"
++ 	@echo "	linux!	all of the above"
++ 	@echo "	-----------------------------------------------------"
+  	@echo "	sysvr4	SYSTEM 5.4 Unix"
+  	@echo "	sysvr3	SYSTEM 5.3 Unix with mkdir(2)"
+  	@echo "	sysv	SYSTEM 3/5 Unix"
+***************
+*** 87,92 ****
+--- 94,163 ----
+  	ctags sz.c rz.c zm.c zmr.c rbsb.c
+  
+  .PRECIOUS:rz sz
++ 
++ linux!:
++ 	$(MAKE) linux
++ 	$(MAKE) linux2
++ 	$(MAKE) install
++ 	$(MAKE) clean
++ 	@echo "done.\a"
++ 
++ linux:
++ 	$(MAKE) linux_ CC=gcc LDFLAGS2="-s -o" OFLAG="-O6"\
++ 	CFLAGS="-static -DLINUX"
++ #	CFLAGS="-DLINUX"
++ 
++ linux2:
++ 	$(MAKE) linux2_ CC=gcc LDFLAGS2="-s -o" OFLAG="-O6"\
++ 	CFLAGS="-static -DLINUX"
++ #	CFLAGS="-DLINUX"
++ 
++ PRGS=rb rc rx rz sb sx sz zcommand zcommandi crc minirb
++ HLPS=crc.doc rz.doc sz.doc
++ BINDIR=/usr/local/bin
++ LIBDIR=/usr/local/lib
++ MANDIR=/usr/man/cat1
++ 
++ install:
++ 	for i in $(PRGS); do chown -f bin.bin $$i ; chmod -f 755 $$i ;\
++ 	mv -f $$i $(BINDIR) ; done
++ 	cp -f gz $(BINDIR) ; chown -f bin.bin $(BINDIR)/gz
++ 	chmod -f 755 $(BINDIR)/gz
++ 	cp -f zupl.t $(LIBDIR) ; chown -f bin.bin $(LIBDIR)/zupl.t
++ 	chmod -f 644 $(LIBDIR)/zupl.t
++ 	for i in $(HLPS) ; do compress < $$i > `basename $$i .doc`.1.Z ;\
++ 	chown -f bin.bin `basename $$i .doc`.1.Z ;\
++ 	chmod 644 `basename $$i .doc`.1.Z ;\
++ 	mv -f `basename $$i .doc`.1.Z $(MANDIR) ; done
++ 	echo "rx, rc, rb, rz (1)   - Receive Files and Commands with"\
++ 	"X/Y/ZMODEM\nsx, sb, sz (1)       - Send Files with ZMODEM, YMODEM,"\
++ 	"or XMODEM\nzcommand, zcommandi (1) - Send COmmands with"\
++ 	"ZMODEM\ncrc (1)              - checksum files"\
++ 	>whatis.add ; cat /usr/man/whatis >> whatis.add
++ 	mv -f /usr/man/whatis /usr/man/whatis.old
++ 	cat whatis.add | sort | uniq > /usr/man/whatis 
++ 	chown -f bin.bin /usr/man/whatis ; chmod 644 /usr/man/whatis
++ 	rm -f whatis.add
++ 
++ clean:
++ 	for i in $(PRGS) ; do rm -f $$i ; done 
++ 
++ linux_:
++ 	$(CC) $(CFLAGS) $(OFLAG) -DMD=2 rz.c $(LDFLAGS2) rz
++ 	size rz
++ 	-ln rz rb
++ 	-ln rz rx
++ 	-ln rz rc
++ 	$(CC) $(CFLAGS) $(OFLAG) -DSV -DTXBSIZE=32768 sz.c $(LDFLAGS2) sz
++ 	size sz
++ 	-ln sz sb
++ 	-ln sz sx
++ 	-ln sz zcommand
++ 	-ln sz zcommandi
++ 
++ linux2_:
++ 	$(CC) $(CFLAGS) $(OFLAG) crc.c $(LDFLAGS2) crc
++ 	$(CC) $(CFLAGS) $(OFLAG) minirb.c $(LDFLAGS2) minirb
+  
+  xenix:
+  	$(CC) $(CFLAGS) $(OFLAG) -M0 -K -i -DTXBSIZE=16384 -DNFGVMIN -DREADCHECK sz.c -lx -o sz
+*** ../rzsz9202.orig/minirb.c	Mon May 25 05:32:06 1987
+--- minirb.c	Wed Jul 29 18:32:49 1992
+***************
+*** 15,20 ****
+--- 15,24 ----
+  #include <signal.h>
+  #include <setjmp.h>
+  
++ #ifdef LINUX
++ #define signal(s,f) signal(s, (__sighandler_t) f)
++ #endif
++ 
+  #define OK 0
+  #define FALSE 0
+  #define TRUE 1
+*** ../rzsz9202.orig/rbsb.c	Wed Oct 30 19:59:16 1991
+--- rbsb.c	Wed Jul 29 19:33:39 1992
+***************
+*** 53,58 ****
+--- 53,63 ----
+  Howmany must be 255 or less
+  #endif
+  
++ #ifdef LINUX
++ #include <stdlib.h>
++ #define signal(s,f) signal(s, (__sighandler_t) f)
++ #endif
++ 
+   /*
+   *  Some systems (Venix, Coherent, Regulus) may not support tty raw mode
+   *  read(2) the same way as Unix. ONEREAD must be defined to force one
+***************
+*** 336,345 ****
+--- 341,362 ----
+  /* Initialize tty device for serial file xfer */
+  inittty()
+  {
++ #ifdef LINUX
++ 	char *tty = (char *) getenv("RZSZLINE");
++ 	if (!tty) {
++ 		fprintf(stderr, "Warning: Missing environment variable "
++ 				"'RZSZLINE' (Linux)\n");
++ 	}
++ 	Tty = open(tty ? tty : "/dev/tty", 2);
++ 	if (Tty < 0) {
++ 		perror(tty ? tty : "/dev/tty");  exit(2);
++         }
++ #else
+  	Tty = open("/dev/tty", 2);
+  	if (Tty < 0) {
+  		perror("/dev/tty");  exit(2);
+  	}
++ #endif
+  	Ttystream = fdopen(Tty, "w");
+  	setbuf(Ttystream, xXbuf);		
+  }
+*** ../rzsz9202.orig/rz.c	Wed Oct 30 19:57:48 1991
+--- rz.c	Wed Jul 29 18:24:54 1992
+***************
+*** 70,75 ****
+--- 70,78 ----
+  extern int errno;
+  FILE *popen();
+  
++ #ifdef LINUX
++ #define signal(s,f) signal(s, (__sighandler_t) f)
++ #endif
+  #define OK 0
+  #define FALSE 0
+  #define TRUE 1
+*** ../rzsz9202.orig/sz.c	Sun Dec  8 02:25:08 1991
+--- sz.c	Wed Jul 29 19:36:27 1992
+***************
+*** 79,84 ****
+--- 79,87 ----
+  extern int errno;
+  #define STATIC
+  
++ #ifdef LINUX
++ #define signal(s,f) signal(s, (__sighandler_t) f)
++ #endif
+  #define PATHLEN 256
+  #define OK 0
+  #define FALSE 0
+***************
+*** 442,448 ****
+--- 445,455 ----
+  
+  	if ( !Modem2) {
+  		if (!Nozmodem) {
++ #ifdef LINUX
++ 			fprintf(Ttystream,"rz\r");  fflush(Ttystream);
++ #else
+  			printf("rz\r");  fflush(stdout);
++ #endif
+  		}
+  		countem(npats, patts);
+  		if (!Nozmodem) {
+*** ../rzsz9202.orig/README.linux	Wed Jul 29 21:49:39 1992
+--- README.linux	Wed Jul 29 21:19:43 1992
+***************
+*** 0 ****
+--- 1,24 ----
++ WED Jul 29 20:02:06 MET 1992
++ 
++ 			Zmodem v3.18 for Linux
++ 			~~~~~~~~~~~~~~~~~~~~~~
++          Package info: 'rzsz9202.tar-z' patched with ''rzsz9202.dff.Z'
++          (available on banjo.concert.net /pub/Linux/Incoming)
++                                    * * *
++ Enter 'make' for a list of available targets ('make linux!' for a complete
++ installation). Please login as 'root' and ensure that the the directories
++ /usr/local/bin , /usr/local/lib and /usr/man/man1 exist.
++ The patched sources are ready to compile with GCC 2.2.2. All executables have
++ been successfully tested under Linux v0.96c-pl2 .
++ 
++ Note: I've added an environment variable called 'RZSZLINE' that points to your
++ serial port device. It's a good idea to define it when you login, so put the
++ following statements in your ~/.profile :
++ 		RZSZLINE=/dev/ttys0 # or whatever
++ 		export RZSZLINE
++  
++ I'd like to thank Nathan Laredo and Werner Almesberger for their hints and
++ suggestions.
++ 
++ Have fun with it.
++ --Fabian Mueller, fabi@imp.ch

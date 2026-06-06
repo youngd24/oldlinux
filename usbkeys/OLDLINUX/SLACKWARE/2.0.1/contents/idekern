@@ -1,0 +1,21 @@
+PACKAGE NAME:     idekern
+PACKAGE SIZE:     313 K
+PACKAGE LOCATION: diskq2
+PACKAGE DESCRIPTION:
+idekern:  Linux kernel version 1.1.18, without SCSI support.
+idekern:  
+idekern:  A Linux kernel for computers that do not need SCSI support. If you 
+idekern:  don't have SCSI, the advantage of using the idekern kernel is that 
+idekern:  your machine will boot faster with a leaner kernel. See the file
+idekern:  'idekern.log' for an exact list of included drivers. A short list:
+idekern:  
+idekern:  This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,
+idekern:  Ftape, and the PS/2 style mouse (but not other busmouse types).
+idekern:
+FILE LIST:
+./
+install/
+install/doinst.sh
+vmlinuz
+boot/
+boot/zSystem.map

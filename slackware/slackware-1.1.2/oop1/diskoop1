@@ -1,0 +1,5 @@
+smaltalk: GNU Smalltalk 1.1.1
+smaltalk: Interpreter for the Smalltalk object-oriented language.
+smaltalk: Also includes STIX, an interface to X11, a Smalltalk
+smaltalk: tutorial, and many examples.
+stix:     A Smalltalk interface to X11.

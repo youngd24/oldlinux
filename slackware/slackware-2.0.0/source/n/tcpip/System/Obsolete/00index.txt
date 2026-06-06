@@ -1,0 +1,50 @@
+00index.txt         882  
+arp.obsolete/         -  
+fingerd.obsolete/     -  
+ftpd.obsolete/        -  
+inetd.obsolete/       -  
+lpd.obsolete/         -  
+ping.obsolete/        -  
+rlogind.obsolete/     -  
+rshd.obsolete/        -  
+slattach.obsolete/    -  
+talkd.obsolete/       -  
+telnetd.obsolete/     -  
+tftpd.obsolete/       -  
+
+arp.obsolete:
+00index.txt          26  
+
+fingerd.obsolete:
+00index.txt          26  
+
+ftpd.obsolete:
+00index.txt          26  
+
+inetd.obsolete:
+00index.txt          26  
+
+lpd.obsolete:
+00index.txt          26  
+
+ping.obsolete:
+00index.txt          52  
+ping.README         279  
+
+rlogind.obsolete:
+00index.txt          26  
+
+rshd.obsolete:
+00index.txt          26  
+
+slattach.obsolete:
+00index.txt          26  
+
+talkd.obsolete:
+00index.txt          26  
+
+telnetd.obsolete:
+00index.txt          26  
+
+tftpd.obsolete:
+00index.txt          26  

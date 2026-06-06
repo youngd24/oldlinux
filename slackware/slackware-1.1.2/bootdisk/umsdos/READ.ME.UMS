@@ -1,0 +1,35 @@
+
+This is an EXPERIMENTAL version of the Slackware Linux distribution made to
+be installed onto existing DOS partitions without the need for repartitioning
+or reformatting. The system will be installed into a \linux directory on one
+of your DOS partitions, and will be bootable through the use of a boot disk.
+
+You will need 8 megabytes minimum to avoid having to create a swap partition.
+
+You also need a 1.44 meg floppy drive. It can be either your first or second
+floppy drive. If you have a 1.44MB boot drive, you'll need to use the 
+boot144 disk to boot the root144 disk. If you have a 1.2MB boot drive,
+then get the boot12 disk and use it to boot the root144 disk in your
+second floppy drive. These disks must be ungzipped and written to formatted
+floppies with RAWRITE.EXE, dd, or cat. GZIP.EXE can be found up one directory
+level, and RAWRITE.EXE can be found up two levels.
+
+You MUST also make the U1 and U2 disks, and install them along with at least
+the normal Slackware A series. These are in the /u1 and /u2 directories two
+levels above this one. Like with the other package disks, just copy the files
+onto MS-DOS formatted disks.
+
+I tried installing the A series and U series (but not kernel source) and found
+it took slightly less than 12 megabytes. So, to give Linux a test drive, that's
+the smallest space you can squeeze a minimal system into.
+
+I'll take any bug reports or comments you have on this. I get *tons* of mail,
+so if I don't answer yours, don't take it personally. :^) I wish I could
+answer it all.
+
+Good luck, and have fun trying this out!
+
+---
+Patrick Volkerding
+volkerdi@mhd1.moorhead.msus.edu
+volkerdi@ftp.cdrom.com

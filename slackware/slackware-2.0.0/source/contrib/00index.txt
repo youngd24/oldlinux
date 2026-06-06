@@ -1,0 +1,73 @@
+00index.txt        1446  
+Free-Widgets/         -  
+GNU-common-lisp/      -  
+GNU-gnat/             -  
+GNU-gpc/              -  
+ircII/                -  
+mbase/                -  
+mc/                   -  
+samba/                -  
+uucp-1.04/            -  
+wu-ftpd-2.4/          -  
+
+Free-Widgets:
+00index.txt          97  
+README               56  
+wbuild-1.17.tar.gz
+                  84949  
+
+GNU-common-lisp:
+00index.txt         130  
+COPYING.LIB-2.0   25265  
+ChangeLog         51801  
+README            10105  
+gcl-1.0.tgz     1190754  
+
+GNU-gnat:
+00index.txt          73  
+gnat-1.79-src.tar.gz
+                1307864  
+
+GNU-gpc:
+00index.txt         101  
+GPC.GUIDE         54001  
+gpc-2.5.7-jan20.tar.gz
+                 627744  
+
+ircII:
+00index.txt         125  
+ircII2.3.17+tv1.1.lsm
+                   1083  
+ircII2.3.17+tv1.1.tar.gz
+                 444038  
+
+mbase:
+00index.txt          78  
+mbase50.tar.gz   105095  
+mbase51.tar.gz   349578  
+
+mc:
+00index.txt          78  
+mc-0.8.lsm         1379  
+mc-0.8.tar.gz     66652  
+
+samba:
+00index.txt          72  
+samba-1.7.00.tar.gz
+                 191063  
+
+uucp-1.04:
+00index.txt         173  
+uucp-1.04.slack_diffs.tar.gz
+                  26717  
+uucp-1.04.tar.gz
+                 634624  
+uucp-doc-1.04.1.tar.gz
+                 383413  
+
+wu-ftpd-2.4:
+00index.txt         124  
+wu-ftpd-2.4.linux.tar.gz
+                 112548  
+wu-ftpd-2.4.patch.gz
+                   4738  

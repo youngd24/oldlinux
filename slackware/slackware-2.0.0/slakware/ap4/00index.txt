@@ -1,0 +1,16 @@
+00index.txt         416  
+ash.tgz           51757  
+bc.tgz            35757  
+diskap4            5170  
+ftape.tgz         84771  
+gonzo.tgz          4194  
+gp9600.tgz         2937  
+groff.tgz        674749  
+install.end          17  
+manpgs.tgz        44398  
+mt_st.tgz         11709  
+quota.tgz         64484  
+sc.tgz            87569  
+texinfo.tgz       96975  
+vim.tgz          154441  
+workbone.tgz       7003  

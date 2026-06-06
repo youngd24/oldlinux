@@ -1,0 +1,29 @@
+# tagfile for the X applications series
+gs_x11:   Replacement /usr/bin/gs with X11 options compiled in.
+gs_x11:   REC
+libgr13:  Shared graphics libraries with GIF, TIFF, JPEG support.
+libgr13:  REC
+seyon:    A complete, full-featured telecommunications package for X.
+seyon:    OPT
+vgaset:   Lets you configure your monitor for X more easily.          
+vgaset:   REC
+workman:  Workman CD music player. Requires the XV series, but would have
+workman:  OPT
+xfileman: One of two file managers for X included with the Slackware
+xfileman: OPT
+xv300:    XV 3.00 GIF/TIFF/JPEG/PostScript Image Viewer.
+xv300:    OPT
+gchess:   GNU chess (v. 4.00 patch level 62)  
+gchess:   OPT
+xfm12:    xfm 1.2, an X windows filemanager.
+xfm12:    OPT
+ghstview: The ghostview program provides an X11 user interface for GS
+ghstview: OPT
+x3270:    x3270 3.0.1.3 - IBM host access tool.
+x3270:    OPT
+xgames:   A collection of X windows games (and a couple utilities):
+xgames:   OPT
+xspread:  An X windows spreadsheet, version 2.1.
+xspread:  OPT
+xxgdb:    xxgdb-1.06.
+xxgdb:    OPT

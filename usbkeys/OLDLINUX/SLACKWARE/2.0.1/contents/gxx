@@ -1,0 +1,12 @@
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/gcc-lib/
+usr/lib/gcc-lib/i486-linux/
+usr/lib/gcc-lib/i486-linux/2.5.8/
+usr/lib/gcc-lib/i486-linux/2.5.8/cc1plus
+usr/bin/
+usr/bin/g++
+install/
+install/doinst.sh

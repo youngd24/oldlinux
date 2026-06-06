@@ -1,0 +1,28 @@
+PACKAGE NAME:     ntf-cmpc
+PACKAGE SIZE:     6 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-cmpc: ntf-cmpc 1.1
+ntf-cmpc:
+ntf-cmpc: A Computer Modern Pica font.
+ntf-cmpc:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/cm/
+usr/lib/texmf/fonts/cm/cmpica/
+usr/lib/texmf/fonts/cm/cmpica/create.sh
+usr/lib/texmf/fonts/cm/cmpica/src/
+usr/lib/texmf/fonts/cm/cmpica/src/cmpica.mf
+usr/lib/texmf/fonts/cm/cmpica/src/cmpicab.mf
+usr/lib/texmf/fonts/cm/cmpica/src/cmpicati.mf
+usr/lib/texmf/fonts/cm/cmpica/src/pcpunct.mf
+usr/lib/texmf/fonts/cm/cmpica/src/pica.mf
+usr/lib/texmf/fonts/cm/cmpica/tfm/
+usr/lib/texmf/fonts/cm/cmpica/tfm/cmpica.tfm
+usr/lib/texmf/fonts/cm/cmpica/tfm/cmpicab.tfm
+usr/lib/texmf/fonts/cm/cmpica/tfm/cmpicati.tfm
+usr/lib/texmf/fonts/cm/cmpica/pk/

@@ -1,0 +1,30 @@
+--- Makefile
++++ Makefile	1994/02/09 16:25:42
+@@ -0,0 +1,14 @@
++CFLAGS = -O2 -fomit-frame-pointer -m486 \
++		-include /usr/include/bsd/bsd.h -I/usr/include/bsd
++LDLIBS = -lbsd
++LDFLAGS = -s -v
++
++rwalld: rwalld.o
++
++install: rwalld
++	install -m744 rwalld /usr/sbin/rpc.rwalld
++	install -m644 rpc.rwalld.8 /usr/man/man8
++
++clean:
++	rm -f *.o rusersd
++
+--- rwalld.c
++++ rwalld.c	1994/02/09 16:25:10
+@@ -147,8 +147,9 @@
+ 		;
+ }
+ 
+-void *wallproc_wall_1(s)
++void *wallproc_wall_1(s, tmp1)
+ 	char **s;
++	CLIENT *tmp1;
+ {
+ 	/* fork, popen wall with special option, and send the message */
+ 	if (fork() == 0) {

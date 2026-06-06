@@ -1,0 +1,14 @@
+00index.txt         342  
+umsdos-0.2.bug-fix
+                   2541  
+umsdos-0.2.diff  157783  
+umsdos-0.2.rename_f.bug_fix
+                   3129  
+umsdos-0.3.diff.gz
+                  41277  
+umsdos-0.3.doc.gz
+                  16833  
+umsdos-0.3.lsm     1118  
+umsdos-0.3a.tar  471040  
+umsdos_progs-0.3.tar.gz
+                  27962  

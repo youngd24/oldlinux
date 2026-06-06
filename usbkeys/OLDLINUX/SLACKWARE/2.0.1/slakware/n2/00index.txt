@@ -1,0 +1,6 @@
+00index.txt         156  
+diskn2             1003  
+elm.tgz          239281  
+lynx.tgz         114245  
+pine.tgz         386749  
+smail.tgz        424741  

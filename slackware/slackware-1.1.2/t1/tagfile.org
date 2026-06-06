@@ -1,0 +1,10 @@
+texbin: ADD
+texlibmc: ADD
+texcmpk: ADD
+texdoc: ADD
+texnfss2: ADD
+texcm: ADD
+texlibib: ADD
+texlibms: ADD
+texams: ADD
+texfont: ADD

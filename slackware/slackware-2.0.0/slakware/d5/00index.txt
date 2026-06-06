@@ -1,0 +1,7 @@
+00index.txt         182  
+clisp.tgz        471799  
+diskd5             1593  
+f2c.tgz          146643  
+libc.tgz         268140  
+ncurses.tgz      369366  
+svgalib.tgz      190078  

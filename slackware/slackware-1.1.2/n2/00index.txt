@@ -1,0 +1,5 @@
+00index.txt         130  
+diskn2              682  
+elm.tgz          235391  
+pine.tgz         422542  
+smail.tgz        413406  

@@ -1,0 +1,5 @@
+00index.txt         130  
+COPYING.LIB-2.0   25265  
+ChangeLog         51801  
+README            10105  
+gcl-1.0.tgz     1190754  

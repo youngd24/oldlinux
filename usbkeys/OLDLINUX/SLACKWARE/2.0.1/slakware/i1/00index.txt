@@ -1,0 +1,6 @@
+00index.txt         156  
+diski1              704  
+info1.tgz       1145991  
+maketag             844  
+tagfile              22  
+tagfile.org          22  

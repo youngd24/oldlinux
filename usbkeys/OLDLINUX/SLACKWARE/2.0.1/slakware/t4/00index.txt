@@ -1,0 +1,5 @@
+00index.txt         130  
+diskt4              396  
+texcm.tgz        165314  
+texlibib.tgz     441104  
+texlibms.tgz     519891  

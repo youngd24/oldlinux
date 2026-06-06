@@ -1,0 +1,56 @@
+CONTENTS: cnews nn tin trn ppp
+cnews:    Controls the spooling and transmission of Usenet news. 
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:
+nn:       The 'nn' news reader. (v. 6.4.18)
+nn:
+nn:
+nn:
+nn:
+nn:
+nn:
+nn:
+nn:
+nn:
+nn:
+tin:      The 'tin' news reader. (1.2pl2)
+tin:
+tin:
+tin:
+tin:
+tin:
+tin:
+tin:
+tin:
+tin:
+tin:
+trn:      A threaded news reader. (v. 2.5)
+trn:
+trn:
+trn:
+trn:
+trn:
+trn:
+trn:
+trn:
+trn:
+trn:
+ppp:      ALPHA PPP for Linux, version 0.1.4/0.1.5
+ppp:
+ppp:      linux-ppp-0.1.5, the source code for the kernel PPP driver.
+ppp:      pppd-0.1.4, the PPP daemon, source+binary.
+ppp:      chat v. 1.0, a chat program for PPP connections.
+ppp: 
+ppp:      Michael Callahan's version of PPP for Linux - provides IP connections
+ppp:      over a serial line, similar to SLIP. Includes Karl Fox's chat program
+ppp:      which negotiates the PPP connection like DIP does when using the SLIP
+ppp:      protocol.
+ppp:

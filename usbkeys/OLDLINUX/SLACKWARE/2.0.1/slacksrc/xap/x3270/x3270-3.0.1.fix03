@@ -1,0 +1,1710 @@
+x3270 v3.0.1 Patch Set #3, 29. November 1993
+
+  This file is in 'patch' format.  To apply, run 'patch <x3270-3.0.1.fix03'.
+  If you don't have 'patch', it is readily available on the net.
+
+  New patches and releases are available by anonymous ftp from ftp.x.org.
+
+Fix typo which most compilers let pass.
+
+*** globals.h.orig	Thu Nov  4 12:50:16 1993
+--- globals.h	Thu Nov  4 12:50:17 1993
+***************
+*** 111,117 ****
+  #define toggled(ix)		(appres.toggle[ix].value)
+  #define toggle_toggle(t)	((t)->value = !(t)->value)
+  
+! extern enum placement { Center, Bottom, Right };
+  extern enum kp_placement { kp_right, kp_bottom, kp_integral } kp_placement;
+  
+  extern struct trans_list {
+--- 111,117 ----
+  #define toggled(ix)		(appres.toggle[ix].value)
+  #define toggle_toggle(t)	((t)->value = !(t)->value)
+  
+! enum placement { Center, Bottom, Right };
+  extern enum kp_placement { kp_right, kp_bottom, kp_integral } kp_placement;
+  
+  extern struct trans_list {
+
+Fix can't-ever-happen which apparently did.
+
+*** telnet.c.orig	Thu Nov  4 12:50:22 1993
+--- telnet.c	Thu Nov  4 12:50:23 1993
+***************
+*** 288,293 ****
+--- 288,295 ----
+  
+  	nr = read(sock, (char *) netrbuf, BUFSZ);
+  	if (nr < 0) {
++ 		if (errno == EWOULDBLOCK)
++ 			return;
+  		if (HALF_CONNECTED && errno == EAGAIN) {
+  			if (non_blocking(False) < 0) {
+  				x_disconnect();
+
+Fix for error in the response to the READ BUFFER command, which wasn't
+properly encoding attribute bytes.
+
+*** ctlr.c.orig	Mon Nov 15 11:35:56 1993
+--- ctlr.c	Mon Nov 15 11:35:57 1993
+***************
+*** 62,68 ****
+  static void	do_erase_all_unprotected();
+  static void	do_write();
+  
+! /* code_table is used to translate buffer addresses to the 3270
+   * datastream representation
+   */
+  static unsigned char	code_table[64] = {
+--- 62,68 ----
+  static void	do_erase_all_unprotected();
+  static void	do_write();
+  
+! /* code_table is used to translate buffer addresses and attributes to the 3270
+   * datastream representation
+   */
+  static unsigned char	code_table[64] = {
+***************
+*** 595,601 ****
+  			if (FA_IS_MODIFIED(screen_buf[baddr]))
+  				fa |= 0x01;
+  			fa |= ((screen_buf[baddr] & FA_INTENSITY) << 2);
+! 			*obptr++ = fa;
+  			if (toggled(TRACE3270)) {
+  				if (!last_fa)
+  					(void) printf("'");
+--- 595,601 ----
+  			if (FA_IS_MODIFIED(screen_buf[baddr]))
+  				fa |= 0x01;
+  			fa |= ((screen_buf[baddr] & FA_INTENSITY) << 2);
+! 			*obptr++ = code_table[fa];
+  			if (toggled(TRACE3270)) {
+  				if (!last_fa)
+  					(void) printf("'");
+
+Fix OpenWindows font targets in Makefile.aux.
+
+*** Makefile.aux.orig	Wed Nov 17 13:49:46 1993
+--- Makefile.aux	Wed Nov 17 13:49:47 1993
+***************
+*** 62,68 ****
+  
+  OWFONTOBJS = $(FONTS:%.bdf=%.fb)
+  .bdf.fb:
+! 	convertfont -d. $<
+  .SUFFIXES: .bdf .fb $(SUFFIXES)
+  
+  LIBS = -lXaw -lXmu -lX11 -lXt -lXext -lX11 -lm
+--- 62,68 ----
+  
+  OWFONTOBJS = $(FONTS:%.bdf=%.fb)
+  .bdf.fb:
+! 	$(OPENWINHOME)/bin/convertfont -d. -o `basename $@ .fb` $<
+  .SUFFIXES: .bdf .fb $(SUFFIXES)
+  
+  LIBS = -lXaw -lXmu -lX11 -lXt -lXext -lX11 -lm
+***************
+*** 90,96 ****
+  	@$(RM) version.c
+  
+  # Make x3270 for OpenWindows 3
+! ow3: x3270
+  
+  # Install x3270 under OpenWindows 3: assumes you want to put everything in
+  # $OPENWINHOME.
+--- 90,96 ----
+  	@$(RM) version.c
+  
+  # Make x3270 for OpenWindows 3
+! ow3: x3270 $(OWFONTOBJS)
+  
+  # Install x3270 under OpenWindows 3: assumes you want to put everything in
+  # $OPENWINHOME.
+***************
+*** 97,103 ****
+  ow3.install: ow3
+  	install -m 755 x3270 $(OPENWINHOME)/bin
+  	cp $(OWFONTOBJS) $(OPENWINHOME)/lib/fonts
+! 	mkfontdir $(OPENWINHOME)/lib/fonts
+  	cp X3270.ad $(OPENWINHOME)/lib/app-defaults/X3270
+  	cp x3270.man $(OPENWINHOME)/man/man1/x3270.1
+  	cp ibm_hosts.man $(OPENWINHOME)/man/man5/ibm_hosts.5
+--- 97,103 ----
+  ow3.install: ow3
+  	install -m 755 x3270 $(OPENWINHOME)/bin
+  	cp $(OWFONTOBJS) $(OPENWINHOME)/lib/fonts
+! 	$(OPENWINHOME)/bin/mkfontdir $(OPENWINHOME)/lib/fonts
+  	cp X3270.ad $(OPENWINHOME)/lib/app-defaults/X3270
+  	cp x3270.man $(OPENWINHOME)/man/man1/x3270.1
+  	cp ibm_hosts.man $(OPENWINHOME)/man/man5/ibm_hosts.5
+
+Fix a typo in X3270.ad.
+
+*** X3270.ad.orig	Wed Nov 17 13:51:25 1993
+--- X3270.ad	Wed Nov 17 13:51:25 1993
+***************
+*** 9,15 ****
+  ! easily uncomment and change them.
+  !
+  !   Fonts
+! ! x3270.eumlatorFont:		3270
+  !
+  !   Colors
+  ! x3270.colorBackground:	black
+--- 9,15 ----
+  ! easily uncomment and change them.
+  !
+  !   Fonts
+! ! x3270.emulatorFont:		3270
+  !
+  !   Colors
+  ! x3270.colorBackground:	black
+
+Fix a spelling error in x3270.man.
+
+*** x3270.man.orig	Wed Nov 17 13:53:41 1993
+--- x3270.man	Wed Nov 17 13:53:42 1993
+***************
+*** 669,675 ****
+  .B Note:
+  The default keymap defines the "Multi_key" keysym as the "Compose" key.
+  If your keyboard lacks such a key, you may set up your own "Compose" key with
+! a keymap that maps smoe other keysym onto the "Compose" action.
+  .SH "APL SUPPORT"
+  .B x3270
+  supports an
+--- 669,675 ----
+  .B Note:
+  The default keymap defines the "Multi_key" keysym as the "Compose" key.
+  If your keyboard lacks such a key, you may set up your own "Compose" key with
+! a keymap that maps some other keysym onto the "Compose" action.
+  .SH "APL SUPPORT"
+  .B x3270
+  supports an
+
+Proper fix for the problem with the nulling-out behavior of PT orders.
+Versions 1.2 through 3.0.1.1 did it too often; v3.0.1.2 didn't do it at all.
+[Identified by a number of people; primary help from Ilia Levi.]
+
+*** 3270.h.orig	Wed Nov 17 14:04:44 1993
+--- 3270.h	Wed Nov 17 14:04:45 1993
+***************
+*** 45,50 ****
+--- 45,60 ----
+  #define ORDER_GE	0x08	/* graphic escape */
+  #define ORDER_YALE	0x2B	/* Yale sub command */
+  
++ #define FCORDER_NULL	0x00	/* format control: null */
++ #define FCORDER_SUB	0x3F	/*		   substitute */
++ #define FCORDER_DUP	0x1C	/*		   duplicate */
++ #define FCORDER_FM	0x1E	/*		   field mark */
++ #define FCORDER_FF	0x0C	/*		   form feed */
++ #define FCORDER_CR	0x0D	/*		   carriage return */
++ #define FCORDER_NL	0x15	/*		   new line */
++ #define FCORDER_EM	0x19	/*		   end of medium */
++ #define FCORDER_EO	0xFF	/*		   eight ones */
++ 
+  #define fCHAR_WIDTH(f)	((f)->max_bounds.width)
+  #define CHAR_WIDTH	fCHAR_WIDTH(*efontinfo)
+  #define fCHAR_HEIGHT(f)	((f)->ascent + (f)->descent)
+*** kybd.c.orig	Wed Nov 17 14:04:50 1993
+--- kybd.c	Wed Nov 17 14:04:52 1993
+***************
+*** 85,114 ****
+  
+  
+  /*
+-  * Find the next unprotected field.  Returns the address following the
+-  * unprotected attribute byte, or 0 if no nonzero-width unprotected field
+-  * can be found.
+-  */
+- static int
+- next_unprotected(baddr0)
+- int baddr0;
+- {
+- 	register int baddr, nbaddr;
+- 
+- 	nbaddr = baddr0;
+- 	do {
+- 		baddr = nbaddr;
+- 		INC_BA(nbaddr);
+- 		if (IS_FA(screen_buf[baddr]) &&
+- 		    !FA_IS_PROTECTED(screen_buf[baddr]) &&
+- 		    !IS_FA(screen_buf[nbaddr]))
+- 			return nbaddr;
+- 	} while (nbaddr != baddr0);
+- 	return 0;
+- }
+- 
+- 
+- /*
+   * Handle an AID (Attention IDentifier) key.  This is the common stuff that
+   * gets executed for all AID keys (PFs, PAs, Clear and etc).
+   */
+--- 85,90 ----
+*** globals.h.orig	Wed Nov 17 14:04:56 1993
+--- globals.h	Wed Nov 17 14:04:57 1993
+***************
+*** 181,186 ****
+--- 181,187 ----
+  extern unsigned char *get_field_attribute();
+  extern void mdt_clear();
+  extern void mdt_set();
++ extern int next_unprotected();
+  extern int process_ds();
+  extern void ps_process();
+  extern void ps_set();
+*** ctlr.c.orig	Wed Nov 17 14:05:02 1993
+--- ctlr.c	Wed Nov 17 14:05:03 1993
+***************
+*** 166,171 ****
+--- 166,191 ----
+  {
+  	static char buf[8];
+  
++ 	switch (ch) {
++ 	    case FCORDER_NULL:
++ 		return "NULL";
++ 	    case FCORDER_SUB:
++ 		return "SUB";
++ 	    case FCORDER_DUP:
++ 		return "DUP";
++ 	    case FCORDER_FM:
++ 		return "FM";
++ 	    case FCORDER_FF:
++ 		return "FF";
++ 	    case FCORDER_CR:
++ 		return "CR";
++ 	    case FCORDER_NL:
++ 		return "NL";
++ 	    case FCORDER_EM:
++ 		return "EM";
++ 	    case FCORDER_EO:
++ 		return "EO";
++ 	}
+  	if (ebc2asc[ch])
+  		(void) sprintf(buf, "%c", ebc2asc[ch]);
+  	else
+***************
+*** 230,235 ****
+--- 250,278 ----
+  }
+  
+  /*
++  * Find the next unprotected field.  Returns the address following the
++  * unprotected attribute byte, or 0 if no nonzero-width unprotected field
++  * can be found.
++  */
++ int
++ next_unprotected(baddr0)
++ int baddr0;
++ {
++ 	register int baddr, nbaddr;
++ 
++ 	nbaddr = baddr0;
++ 	do {
++ 		baddr = nbaddr;
++ 		INC_BA(nbaddr);
++ 		if (IS_FA(screen_buf[baddr]) &&
++ 		    !FA_IS_PROTECTED(screen_buf[baddr]) &&
++ 		    !IS_FA(screen_buf[nbaddr]))
++ 			return nbaddr;
++ 	} while (nbaddr != baddr0);
++ 	return 0;
++ }
++ 
++ /*
+   * Perform an erase command, which may include changing the (virtual) screen
+   * size.
+   */
+***************
+*** 337,343 ****
+  {
+  	switch (code) {
+  	case AID_NO: 
+! 		return "None?";
+  	case AID_ENTER: 
+  		return "Enter";
+  	case AID_PF1: 
+--- 380,386 ----
+  {
+  	switch (code) {
+  	case AID_NO: 
+! 		return "NoAID";
+  	case AID_ENTER: 
+  		return "Enter";
+  	case AID_PF1: 
+***************
+*** 601,618 ****
+  					(void) printf("'");
+  				(void) printf(" SF%s%s", rcba(baddr),
+  				    see_attr(fa));
+  			}
+! 			last_fa = False;
+! 		}
+! 		else {
+  			*obptr++ = cg2ebc[screen_buf[baddr]];
+  			if (toggled(TRACE3270)) {
+! 				if (last_fa)
+! 					(void) printf(" '");
+  			}
+- 			if (toggled(TRACE3270))
+- 				(void) printf("%s", see_ebc(cg2ebc[screen_buf[baddr]]));
+- 			last_fa = False;
+  		}
+  		INC_BA(baddr);
+  	} while (baddr != 0);
+--- 644,670 ----
+  					(void) printf("'");
+  				(void) printf(" SF%s%s", rcba(baddr),
+  				    see_attr(fa));
++ 				last_fa = True;
+  			}
+! 		} else {
+  			*obptr++ = cg2ebc[screen_buf[baddr]];
+  			if (toggled(TRACE3270)) {
+! 				if (cg2ebc[screen_buf[baddr]] <= 0x3f ||
+! 				    cg2ebc[screen_buf[baddr]] == 0xff) {
+! 					if (!last_fa)
+! 						(void) printf("'");
+! 
+! 					(void) printf(" %s",
+! 					    see_ebc(cg2ebc[screen_buf[baddr]]));
+! 					last_fa = True;
+! 				} else {
+! 					if (last_fa)
+! 						(void) printf(" '");
+! 					(void) printf("%s",
+! 					    see_ebc(cg2ebc[screen_buf[baddr]]));
+! 					last_fa = False;
+! 				}
+  			}
+  		}
+  		INC_BA(baddr);
+  	} while (baddr != 0);
+***************
+*** 692,697 ****
+--- 744,750 ----
+  	unsigned char	*current_fa;
+  	unsigned char	new_attr;
+  	Boolean		last_cmd;
++ 	Boolean		last_zpt;
+  	Boolean		wcc_keyboard_restore, wcc_sound_alarm;
+  	unsigned char	temp_aid2;
+  	char		paren = '(';
+***************
+*** 731,744 ****
+  		(void) printf(")");
+  
+  	last_cmd = True;
+  	current_fa = get_field_attribute(buffer_addr);
+  	for (cp = &buf[2]; cp < (buf + buflen); cp++) {
+  		switch (*cp) {
+- 		case ORDER_GE:	/* graphic escape - ignore */
+- 			if (toggled(TRACE3270))
+- 				END_TEXT("GE");
+- 			last_cmd = True;
+- 			break;
+  		case ORDER_SF:	/* start field */
+  			if (toggled(TRACE3270)) {
+  				END_TEXT("SF");
+--- 784,793 ----
+  		(void) printf(")");
+  
+  	last_cmd = True;
++ 	last_zpt = False;
+  	current_fa = get_field_attribute(buffer_addr);
+  	for (cp = &buf[2]; cp < (buf + buflen); cp++) {
+  		switch (*cp) {
+  		case ORDER_SF:	/* start field */
+  			if (toggled(TRACE3270)) {
+  				END_TEXT("SF");
+***************
+*** 760,765 ****
+--- 809,815 ----
+  			formatted = True;
+  			INC_BA(buffer_addr);
+  			last_cmd = True;
++ 			last_zpt = False;
+  			break;
+  		case ORDER_SBA:	/* set buffer address */
+  			cp += 2;	/* skip buffer address */
+***************
+*** 774,779 ****
+--- 824,830 ----
+  			}
+  			current_fa = get_field_attribute(buffer_addr);
+  			last_cmd = True;
++ 			last_zpt = False;
+  			break;
+  		case ORDER_IC:	/* insert cursor */
+  			if (toggled(TRACE3270))
+***************
+*** 780,820 ****
+  				END_TEXT("IC");
+  			cursor_move(buffer_addr);
+  			last_cmd = True;
+  			break;
+  		case ORDER_PT:	/* program tab */
+  			if (toggled(TRACE3270))
+  				END_TEXT("PT");
+! 			baddr = buffer_addr;
+! 			while (True) {
+! 				if (IS_FA(screen_buf[baddr])
+! 				    &&  (!FA_IS_PROTECTED(screen_buf[baddr]))) {
+! 					current_fa = &screen_buf[baddr];
+! 					INC_BA(baddr);
+! 					buffer_addr = baddr;
+! #ifdef notdef
+! 					/*
+! 					 * Under certain conditions, PT is
+! 					 * supposed to null out the field,
+! 					 * but these ain't them.
+! 					 */
+! 					if (!last_cmd) {
+! 						while (!IS_FA(screen_buf[baddr])) {
+! 							ctlr_add(baddr, CG_NULLBLANK);
+! 							INC_BA(baddr);
+! 						}
+! 					}
+! #endif
+! 					break;
+  				}
+! 				else {
+! 					INC_BA(baddr);
+! 					if (baddr == 0) {
+! 						buffer_addr = baddr;
+! 						current_fa = get_field_attribute(baddr);
+! 						break;
+! 					}
+! 				}
+! 			}
+  			last_cmd = True;
+  			break;
+  		case ORDER_RA:	/* repeat to address */
+--- 831,863 ----
+  				END_TEXT("IC");
+  			cursor_move(buffer_addr);
+  			last_cmd = True;
++ 			last_zpt = False;
+  			break;
+  		case ORDER_PT:	/* program tab */
+  			if (toggled(TRACE3270))
+  				END_TEXT("PT");
+! 			baddr = next_unprotected(buffer_addr);
+! 			if (baddr < buffer_addr)
+! 				baddr = 0;
+! 			/*
+! 			 * Null out the remainder of the current field -- even
+! 			 * if protected -- if the PT doesn't follow a command
+! 			 * or order, or (honestly) if the last order we saw was
+! 			 * a null-filling PT that left the buffer address at 0.
+! 			 */
+! 			if (!last_cmd || last_zpt) {
+! 				if (toggled(TRACE3270))
+! 					(void) printf("(nulling)");
+! 				while ((buffer_addr != baddr) &&
+! 				       (!IS_FA(screen_buf[buffer_addr]))) {
+! 					ctlr_add(buffer_addr, CG_NULLBLANK);
+! 					INC_BA(buffer_addr);
+  				}
+! 				if (baddr == 0)
+! 					last_zpt = True;
+! 			} else
+! 				last_zpt = False;
+! 			buffer_addr = baddr;
+  			last_cmd = True;
+  			break;
+  		case ORDER_RA:	/* repeat to address */
+***************
+*** 842,847 ****
+--- 885,891 ----
+  			}
+  			current_fa = get_field_attribute(buffer_addr);
+  			last_cmd = True;
++ 			last_zpt = False;
+  			break;
+  		case ORDER_EUA:	/* erase unprotected to address */
+  			cp += 2;	/* skip buffer address */
+***************
+*** 864,886 ****
+  			} while (buffer_addr != baddr);
+  			current_fa = get_field_attribute(buffer_addr);
+  			last_cmd = True;
+  			break;
+  		case ORDER_MF:	/* modify field */
+  			if (toggled(TRACE3270))
+! 				(void) printf(" MF");
+! 			/* unsupported 3270 order */
+  			break;
+  		case ORDER_SFE:	/* start field extended */
+  			if (toggled(TRACE3270))
+! 				(void) printf(" SFE");
+! 			/* unsupported 3270 order */
+  			break;
+  		case ORDER_SA:	/* set attribute */
+  			if (toggled(TRACE3270))
+! 				(void) printf(" SA");
+! 			/* unsupported 3270 order */
+  			break;
+  		default:	/* enter character */
+  			if (toggled(TRACE3270)) {
+  				START_TEXT;
+  				(void) printf("%s", see_ebc(*cp));
+--- 908,969 ----
+  			} while (buffer_addr != baddr);
+  			current_fa = get_field_attribute(buffer_addr);
+  			last_cmd = True;
++ 			last_zpt = False;
+  			break;
++ 		case ORDER_GE:	/* graphic escape */
++ 			if (toggled(TRACE3270))
++ 				END_TEXT("GE[unsupported]");
++ 			cp++;
++ 			last_cmd = True;
++ 			last_zpt = False;
++ 			break;
+  		case ORDER_MF:	/* modify field */
+  			if (toggled(TRACE3270))
+! 				END_TEXT("MF[unsupported]");
+! 			cp += *(cp + 1) * 2;
+! 			last_cmd = True;
+! 			last_zpt = False;
+  			break;
+  		case ORDER_SFE:	/* start field extended */
+  			if (toggled(TRACE3270))
+! 				END_TEXT("SFE[unsupported]");
+! 			cp += *(cp + 1) * 2;
+! 			last_cmd = True;
+! 			last_zpt = False;
+  			break;
+  		case ORDER_SA:	/* set attribute */
+  			if (toggled(TRACE3270))
+! 				END_TEXT("SA[unsupported]");
+! 			cp += 2;
+! 			last_cmd = True;
+! 			last_zpt = False;
+  			break;
++ 		case FCORDER_NULL:	/* format control orders */
++ 		case FCORDER_SUB:
++ 		case FCORDER_DUP:
++ 		case FCORDER_FM:
++ 		case FCORDER_FF:
++ 		case FCORDER_CR:
++ 		case FCORDER_NL:
++ 		case FCORDER_EM:
++ 		case FCORDER_EO:
++ 			if (toggled(TRACE3270))
++ 				END_TEXT(see_ebc(*cp));
++ 			ctlr_add(buffer_addr, ebc2cg[*cp]);
++ 			INC_BA(buffer_addr);
++ 			last_cmd = True;
++ 			last_zpt = False;
++ 			break;
+  		default:	/* enter character */
++ 			if (*cp <= 0x3F) {
++ 				if (toggled(TRACE3270)) {
++ 					END_TEXT("ILLEGAL_ORDER");
++ 					(void) printf("%s", see_ebc(*cp));
++ 				}
++ 				last_cmd = True;
++ 				last_zpt = False;
++ 				break;
++ 			}
+  			if (toggled(TRACE3270)) {
+  				START_TEXT;
+  				(void) printf("%s", see_ebc(*cp));
+***************
+*** 888,893 ****
+--- 971,977 ----
+  			ctlr_add(buffer_addr, ebc2cg[*cp]);
+  			INC_BA(buffer_addr);
+  			last_cmd = False;
++ 			last_zpt = False;
+  			break;
+  		}
+  	}
+
+Filter the output of the "Trace 3270 DS" option so it doesn't generate huge
+lines.
+
+*** ctlr.c.orig	Wed Nov 17 14:10:20 1993
+--- ctlr.c	Wed Nov 17 14:10:21 1993
+***************
+*** 61,66 ****
+--- 61,67 ----
+  static void	do_read_buffer();
+  static void	do_erase_all_unprotected();
+  static void	do_write();
++ static void	trace_ds();
+  
+  /* code_table is used to translate buffer addresses and attributes to the 3270
+   * datastream representation
+***************
+*** 313,363 ****
+  unsigned char	*buf;
+  int	buflen;
+  {
+! 	if (toggled(TRACE3270))
+! 		(void) printf("< ");
+  
+  	switch (buf[0]) {	/* 3270 command */
+  	case CMD_EAU:	/* erase all unprotected */
+  	case SNA_CMD_EAU:
+! 		if (toggled(TRACE3270))
+! 			(void) printf("EAU\n");
+  		do_erase_all_unprotected();
+  		break;
+  	case CMD_EWA:	/* erase/write alternate */
+  	case SNA_CMD_EWA:
+! 		if (toggled(TRACE3270))
+! 			(void) printf("EWA");
+  		ctlr_erase(True);
+  		do_write(buf, buflen);
+  		break;
+  	case CMD_EW:	/* erase/write */
+  	case SNA_CMD_EW:
+! 		if (toggled(TRACE3270))
+! 			(void) printf("EW");
+  		ctlr_erase(False);
+  		do_write(buf, buflen);
+  		break;
+  	case CMD_W:	/* write */
+  	case SNA_CMD_W:
+! 		if (toggled(TRACE3270))
+! 			(void) printf("W");
+  		do_write(buf, buflen);
+  		break;
+  	case CMD_RB:	/* read buffer */
+  	case SNA_CMD_RB:
+! 		if (toggled(TRACE3270))
+! 			(void) printf("RB\n");
+  		do_read_buffer();
+  		break;
+  	case CMD_RM:	/* read modifed */
+  	case SNA_CMD_RM:
+! 		if (toggled(TRACE3270))
+! 			(void) printf("RM\n");
+  		ctlr_read_modified();
+  		break;
+  	case CMD_NOP:	/* no-op */
+! 		if (toggled(TRACE3270))
+! 			(void) printf("NOP\n");
+  		break;
+  	default: {
+  		/* unknown 3270 command */
+--- 314,356 ----
+  unsigned char	*buf;
+  int	buflen;
+  {
+! 	trace_ds("< ");
+  
+  	switch (buf[0]) {	/* 3270 command */
+  	case CMD_EAU:	/* erase all unprotected */
+  	case SNA_CMD_EAU:
+! 		trace_ds("EAU\n");
+  		do_erase_all_unprotected();
+  		break;
+  	case CMD_EWA:	/* erase/write alternate */
+  	case SNA_CMD_EWA:
+! 		trace_ds("EWA");
+  		ctlr_erase(True);
+  		do_write(buf, buflen);
+  		break;
+  	case CMD_EW:	/* erase/write */
+  	case SNA_CMD_EW:
+! 		trace_ds("EW");
+  		ctlr_erase(False);
+  		do_write(buf, buflen);
+  		break;
+  	case CMD_W:	/* write */
+  	case SNA_CMD_W:
+! 		trace_ds("W");
+  		do_write(buf, buflen);
+  		break;
+  	case CMD_RB:	/* read buffer */
+  	case SNA_CMD_RB:
+! 		trace_ds("RB\n");
+  		do_read_buffer();
+  		break;
+  	case CMD_RM:	/* read modifed */
+  	case SNA_CMD_RM:
+! 		trace_ds("RM\n");
+  		ctlr_read_modified();
+  		break;
+  	case CMD_NOP:	/* no-op */
+! 		trace_ds("NOP\n");
+  		break;
+  	default: {
+  		/* unknown 3270 command */
+***************
+*** 461,468 ****
+  {
+  	register int	baddr, sbaddr;
+  
+! 	if (toggled(TRACE3270))
+! 		(void) printf("> ");
+  	obptr = &obuf[0];
+  	if (aid != AID_PA1 && aid != AID_PA2
+  	    &&  aid != AID_PA3 && aid != AID_CLEAR) {
+--- 454,460 ----
+  {
+  	register int	baddr, sbaddr;
+  
+! 	trace_ds("> ");
+  	obptr = &obuf[0];
+  	if (aid != AID_PA1 && aid != AID_PA2
+  	    &&  aid != AID_PA3 && aid != AID_CLEAR) {
+***************
+*** 471,486 ****
+  			*obptr++ = 0x5B;	/*  %  */
+  			*obptr++ = 0x61;	/*  /  */
+  			*obptr++ = 0x02;	/* stx */
+! 			if (toggled(TRACE3270))
+! 				(void) printf("SYSREQ");
+  		}
+  		else {
+  			*obptr++ = aid;
+  			*obptr++ = code_table[(cursor_addr >> 6) & 0x3F];
+  			*obptr++ = code_table[cursor_addr & 0x3F];
+! 			if (toggled(TRACE3270))
+! 				(void) printf("%s%s", see_aid(aid),
+! 				    rcba(cursor_addr));
+  		}
+  		baddr = 0;
+  		if (formatted) {
+--- 463,476 ----
+  			*obptr++ = 0x5B;	/*  %  */
+  			*obptr++ = 0x61;	/*  /  */
+  			*obptr++ = 0x02;	/* stx */
+! 			trace_ds("SYSREQ");
+  		}
+  		else {
+  			*obptr++ = aid;
+  			*obptr++ = code_table[(cursor_addr >> 6) & 0x3F];
+  			*obptr++ = code_table[cursor_addr & 0x3F];
+! 			trace_ds(see_aid(aid));
+! 			trace_ds(rcba(cursor_addr));
+  		}
+  		baddr = 0;
+  		if (formatted) {
+***************
+*** 499,521 ****
+  					*obptr++ = ORDER_SBA;
+  					*obptr++ = code_table[(baddr >> 6) & 0x3F];
+  					*obptr++ = code_table[baddr & 0x3F];
+! 					if (toggled(TRACE3270))
+! 						(void) printf(" SBA%s",
+! 						    rcba(baddr));
+  					do {
+  						if (screen_buf[baddr]) {
+  							*obptr++ = cg2ebc[screen_buf[baddr]];
+! 							if (toggled(TRACE3270)) {
+! 								if (!any)
+! 									(void) printf(" '");
+! 								(void) printf("%s", see_ebc(cg2ebc[screen_buf[baddr]]));
+! 							}
+  							any = True;
+  						}
+  						INC_BA(baddr);
+  					} while (!IS_FA(screen_buf[baddr]));
+! 					if (toggled(TRACE3270) && any)
+! 						(void) printf("'");
+  				}
+  				else {	/* not modified - skip */
+  					do {
+--- 489,508 ----
+  					*obptr++ = ORDER_SBA;
+  					*obptr++ = code_table[(baddr >> 6) & 0x3F];
+  					*obptr++ = code_table[baddr & 0x3F];
+! 					trace_ds(" SBA");
+! 					trace_ds(rcba(baddr));
+  					do {
+  						if (screen_buf[baddr]) {
+  							*obptr++ = cg2ebc[screen_buf[baddr]];
+! 							if (!any)
+! 								trace_ds(" '");
+! 							trace_ds(see_ebc(cg2ebc[screen_buf[baddr]]));
+  							any = True;
+  						}
+  						INC_BA(baddr);
+  					} while (!IS_FA(screen_buf[baddr]));
+! 					if (any)
+! 						trace_ds("'");
+  				}
+  				else {	/* not modified - skip */
+  					do {
+***************
+*** 530,555 ****
+  			do {
+  				if (screen_buf[baddr]) {
+  					*obptr++ = cg2ebc[screen_buf[baddr]];
+! 					if (toggled(TRACE3270)) {
+! 						if (!any)
+! 							(void) printf("'");
+! 						(void) printf("%s", see_ebc(cg2ebc[screen_buf[baddr]]));
+! 					}
+  					any = True;
+  				}
+  				INC_BA(baddr);
+  			} while (baddr != 0);
+! 			if (toggled(TRACE3270) && any)
+! 				(void) printf("'");
+  		}
+  	}
+  	else {
+  		*obptr++ = aid;
+! 		if (toggled(TRACE3270))
+! 			(void) printf("%s", see_aid(aid));
+  	}
+! 	if (toggled(TRACE3270))
+! 		(void) printf("\n");
+  	net_output(obuf, obptr - obuf);
+  }
+  
+--- 517,538 ----
+  			do {
+  				if (screen_buf[baddr]) {
+  					*obptr++ = cg2ebc[screen_buf[baddr]];
+! 					if (!any)
+! 						trace_ds("'");
+! 					trace_ds(see_ebc(cg2ebc[screen_buf[baddr]]));
+  					any = True;
+  				}
+  				INC_BA(baddr);
+  			} while (baddr != 0);
+! 			if (any)
+! 				trace_ds("'");
+  		}
+  	}
+  	else {
+  		*obptr++ = aid;
+! 		trace_ds(see_aid(aid));
+  	}
+! 	trace_ds("\n");
+  	net_output(obuf, obptr - obuf);
+  }
+  
+***************
+*** 618,631 ****
+  	unsigned char	fa;
+  	Boolean		last_fa = True;
+  
+! 	if (toggled(TRACE3270))
+! 		(void) printf("> ");
+  	obptr = &obuf[0];
+  	*obptr++ = aid;
+  	*obptr++ = code_table[(cursor_addr >> 6) & 0x3F];
+  	*obptr++ = code_table[cursor_addr & 0x3F];
+! 	if (toggled(TRACE3270))
+! 		(void) printf("%s%s", see_aid(aid), rcba(cursor_addr));
+  	baddr = 0;
+  	do {
+  		if (IS_FA(screen_buf[baddr])) {
+--- 601,613 ----
+  	unsigned char	fa;
+  	Boolean		last_fa = True;
+  
+! 	trace_ds("> ");
+  	obptr = &obuf[0];
+  	*obptr++ = aid;
+  	*obptr++ = code_table[(cursor_addr >> 6) & 0x3F];
+  	*obptr++ = code_table[cursor_addr & 0x3F];
+! 	trace_ds(see_aid(aid));
+! 	trace_ds(rcba(cursor_addr));
+  	baddr = 0;
+  	do {
+  		if (IS_FA(screen_buf[baddr])) {
+***************
+*** 639,678 ****
+  				fa |= 0x01;
+  			fa |= ((screen_buf[baddr] & FA_INTENSITY) << 2);
+  			*obptr++ = code_table[fa];
+! 			if (toggled(TRACE3270)) {
+! 				if (!last_fa)
+! 					(void) printf("'");
+! 				(void) printf(" SF%s%s", rcba(baddr),
+! 				    see_attr(fa));
+! 				last_fa = True;
+! 			}
+  		} else {
+  			*obptr++ = cg2ebc[screen_buf[baddr]];
+! 			if (toggled(TRACE3270)) {
+! 				if (cg2ebc[screen_buf[baddr]] <= 0x3f ||
+! 				    cg2ebc[screen_buf[baddr]] == 0xff) {
+! 					if (!last_fa)
+! 						(void) printf("'");
+  
+! 					(void) printf(" %s",
+! 					    see_ebc(cg2ebc[screen_buf[baddr]]));
+! 					last_fa = True;
+! 				} else {
+! 					if (last_fa)
+! 						(void) printf(" '");
+! 					(void) printf("%s",
+! 					    see_ebc(cg2ebc[screen_buf[baddr]]));
+! 					last_fa = False;
+! 				}
+  			}
+  		}
+  		INC_BA(baddr);
+  	} while (baddr != 0);
+! 	if (toggled(TRACE3270)) {
+! 		if (!last_fa)
+! 			(void) printf("'");
+! 		(void) printf("\n");
+! 	}
+  	net_output(obuf, obptr - obuf);
+  }
+  
+--- 621,654 ----
+  				fa |= 0x01;
+  			fa |= ((screen_buf[baddr] & FA_INTENSITY) << 2);
+  			*obptr++ = code_table[fa];
+! 			if (!last_fa)
+! 				trace_ds("'");
+! 			trace_ds(" SF");
+! 			trace_ds(rcba(baddr));
+! 			trace_ds(see_attr(fa));
+! 			last_fa = True;
+  		} else {
+  			*obptr++ = cg2ebc[screen_buf[baddr]];
+! 			if (cg2ebc[screen_buf[baddr]] <= 0x3f ||
+! 			    cg2ebc[screen_buf[baddr]] == 0xff) {
+! 				if (!last_fa)
+! 					trace_ds("'");
+  
+! 				trace_ds(" ");
+! 				trace_ds(see_ebc(cg2ebc[screen_buf[baddr]]));
+! 				last_fa = True;
+! 			} else {
+! 				if (last_fa)
+! 					trace_ds(" '");
+! 				trace_ds(see_ebc(cg2ebc[screen_buf[baddr]]));
+! 				last_fa = False;
+  			}
+  		}
+  		INC_BA(baddr);
+  	} while (baddr != 0);
+! 	if (!last_fa)
+! 		trace_ds("'");
+! 	trace_ds("\n");
+  	net_output(obuf, obptr - obuf);
+  }
+  
+***************
+*** 747,776 ****
+  	Boolean		last_zpt;
+  	Boolean		wcc_keyboard_restore, wcc_sound_alarm;
+  	unsigned char	temp_aid2;
+! 	char		paren = '(';
+  
+! #define START_TEXT	{ if (last_cmd) (void) printf(" '"); }
+! #define END_TEXT(cmd)	{ if (!last_cmd) (void) printf("'"); if (cmd) (void) printf(" %s", cmd); }
+  
+  	buffer_addr = cursor_addr;
+  	wcc_sound_alarm = WCC_SOUND_ALARM(buf[1]);
+! 	if (toggled(TRACE3270) && wcc_sound_alarm) {
+! 		(void) printf("%calarm", paren);
+! 		paren = ',';
+  	}
+  	wcc_keyboard_restore = WCC_KEYBOARD_RESTORE(buf[1]);
+  	if (wcc_keyboard_restore)
+  		ticking_stop();
+! 	if (toggled(TRACE3270) && wcc_keyboard_restore) {
+! 		(void) printf("%crestore", paren);
+! 		paren = ',';
+  	}
+  
+  	if (WCC_RESET_MDT(buf[1])) {
+! 		if (toggled(TRACE3270)) {
+! 			(void) printf("%cresetMDT", paren);
+! 			paren = ',';
+! 		}
+  		baddr = 0;
+  		screen_changed = True;
+  		do {
+--- 723,754 ----
+  	Boolean		last_zpt;
+  	Boolean		wcc_keyboard_restore, wcc_sound_alarm;
+  	unsigned char	temp_aid2;
+! 	char		*paren = "(";
+  
+! #define START_TEXT	{ if (last_cmd) trace_ds(" '"); }
+! #define END_TEXT(cmd)	{ if (!last_cmd) trace_ds("'"); \
+! 			  if (cmd) { trace_ds(" "); trace_ds(cmd); } }
+  
+  	buffer_addr = cursor_addr;
+  	wcc_sound_alarm = WCC_SOUND_ALARM(buf[1]);
+! 	if (wcc_sound_alarm) {
+! 		trace_ds(paren);
+! 		trace_ds("alarm");
+! 		paren = ",";
+  	}
+  	wcc_keyboard_restore = WCC_KEYBOARD_RESTORE(buf[1]);
+  	if (wcc_keyboard_restore)
+  		ticking_stop();
+! 	if (wcc_keyboard_restore) {
+! 		trace_ds(paren);
+! 		trace_ds("restore");
+! 		paren = ",";
+  	}
+  
+  	if (WCC_RESET_MDT(buf[1])) {
+! 		trace_ds(paren);
+! 		trace_ds("resetMDT");
+! 		paren = ",";
+  		baddr = 0;
+  		screen_changed = True;
+  		do {
+***************
+*** 780,787 ****
+  			INC_BA(baddr);
+  		} while (baddr != 0);
+  	}
+! 	if (toggled(TRACE3270) && paren != '(')
+! 		(void) printf(")");
+  
+  	last_cmd = True;
+  	last_zpt = False;
+--- 758,765 ----
+  			INC_BA(baddr);
+  		} while (baddr != 0);
+  	}
+! 	if (strcmp(paren, "("))
+! 		trace_ds(")");
+  
+  	last_cmd = True;
+  	last_zpt = False;
+***************
+*** 789,798 ****
+  	for (cp = &buf[2]; cp < (buf + buflen); cp++) {
+  		switch (*cp) {
+  		case ORDER_SF:	/* start field */
+! 			if (toggled(TRACE3270)) {
+! 				END_TEXT("SF");
+! 				(void) printf("%s", rcba(buffer_addr));
+! 			}
+  			cp++;		/* skip field attribute */
+  			new_attr = FA_BASE;
+  			if (*cp & 0x20)
+--- 767,774 ----
+  	for (cp = &buf[2]; cp < (buf + buflen); cp++) {
+  		switch (*cp) {
+  		case ORDER_SF:	/* start field */
+! 			END_TEXT("SF");
+! 			trace_ds(rcba(buffer_addr));
+  			cp++;		/* skip field attribute */
+  			new_attr = FA_BASE;
+  			if (*cp & 0x20)
+***************
+*** 804,811 ****
+  			new_attr |= (*cp >> 2) & FA_INTENSITY;
+  			current_fa = &(screen_buf[buffer_addr]);
+  			ctlr_add(buffer_addr, new_attr);
+! 			if (toggled(TRACE3270))
+! 				(void) printf("%s", see_attr(new_attr));
+  			formatted = True;
+  			INC_BA(buffer_addr);
+  			last_cmd = True;
+--- 780,786 ----
+  			new_attr |= (*cp >> 2) & FA_INTENSITY;
+  			current_fa = &(screen_buf[buffer_addr]);
+  			ctlr_add(buffer_addr, new_attr);
+! 			trace_ds(see_attr(new_attr));
+  			formatted = True;
+  			INC_BA(buffer_addr);
+  			last_cmd = True;
+***************
+*** 818,841 ****
+  			else	/* 12-bit coded */
+  				buffer_addr = ((*(cp-1) & 0x3F) << 6) | (*cp & 0x3F);
+  			buffer_addr %= (COLS * ROWS);
+! 			if (toggled(TRACE3270)) {
+! 				END_TEXT("SBA");
+! 				(void) printf("%s", rcba(buffer_addr));
+! 			}
+  			current_fa = get_field_attribute(buffer_addr);
+  			last_cmd = True;
+  			last_zpt = False;
+  			break;
+  		case ORDER_IC:	/* insert cursor */
+! 			if (toggled(TRACE3270))
+! 				END_TEXT("IC");
+  			cursor_move(buffer_addr);
+  			last_cmd = True;
+  			last_zpt = False;
+  			break;
+  		case ORDER_PT:	/* program tab */
+! 			if (toggled(TRACE3270))
+! 				END_TEXT("PT");
+  			baddr = next_unprotected(buffer_addr);
+  			if (baddr < buffer_addr)
+  				baddr = 0;
+--- 793,812 ----
+  			else	/* 12-bit coded */
+  				buffer_addr = ((*(cp-1) & 0x3F) << 6) | (*cp & 0x3F);
+  			buffer_addr %= (COLS * ROWS);
+! 			END_TEXT("SBA");
+! 			trace_ds(rcba(buffer_addr));
+  			current_fa = get_field_attribute(buffer_addr);
+  			last_cmd = True;
+  			last_zpt = False;
+  			break;
+  		case ORDER_IC:	/* insert cursor */
+! 			END_TEXT("IC");
+  			cursor_move(buffer_addr);
+  			last_cmd = True;
+  			last_zpt = False;
+  			break;
+  		case ORDER_PT:	/* program tab */
+! 			END_TEXT("PT");
+  			baddr = next_unprotected(buffer_addr);
+  			if (baddr < buffer_addr)
+  				baddr = 0;
+***************
+*** 846,853 ****
+  			 * a null-filling PT that left the buffer address at 0.
+  			 */
+  			if (!last_cmd || last_zpt) {
+! 				if (toggled(TRACE3270))
+! 					(void) printf("(nulling)");
+  				while ((buffer_addr != baddr) &&
+  				       (!IS_FA(screen_buf[buffer_addr]))) {
+  					ctlr_add(buffer_addr, CG_NULLBLANK);
+--- 817,823 ----
+  			 * a null-filling PT that left the buffer address at 0.
+  			 */
+  			if (!last_cmd || last_zpt) {
+! 				trace_ds("(nulling)");
+  				while ((buffer_addr != baddr) &&
+  				       (!IS_FA(screen_buf[buffer_addr]))) {
+  					ctlr_add(buffer_addr, CG_NULLBLANK);
+***************
+*** 870,880 ****
+  			cp++;		/* skip char to repeat */
+  			if (*cp == ORDER_GE)
+  				cp++;
+! 			if (toggled(TRACE3270)) {
+! 				END_TEXT("RA");
+! 				(void) printf("%s'%s'", rcba(baddr),
+! 				    see_ebc(*cp));
+! 			}
+  			if (buffer_addr == baddr) {
+  				ctlr_add(buffer_addr, ebc2cg[*cp]);
+  				INC_BA(buffer_addr);
+--- 840,850 ----
+  			cp++;		/* skip char to repeat */
+  			if (*cp == ORDER_GE)
+  				cp++;
+! 			END_TEXT("RA");
+! 			trace_ds(rcba(baddr));
+! 			trace_ds("'");
+! 			trace_ds(see_ebc(*cp));
+! 			trace_ds("'");
+  			if (buffer_addr == baddr) {
+  				ctlr_add(buffer_addr, ebc2cg[*cp]);
+  				INC_BA(buffer_addr);
+***************
+*** 894,903 ****
+  			else	/* 12-bit coded */
+  				baddr = ((*(cp-1) & 0x3F) << 6) | (*cp & 0x3F);
+  			baddr %= (COLS * ROWS);
+! 			if (toggled(TRACE3270)) {
+! 				END_TEXT("EUA");
+! 				(void) printf("%s", rcba(baddr));
+! 			}
+  			do {
+  				if (IS_FA(screen_buf[buffer_addr]))
+  					current_fa = &(screen_buf[buffer_addr]);
+--- 864,871 ----
+  			else	/* 12-bit coded */
+  				baddr = ((*(cp-1) & 0x3F) << 6) | (*cp & 0x3F);
+  			baddr %= (COLS * ROWS);
+! 			END_TEXT("EUA");
+! 			trace_ds(rcba(baddr));
+  			do {
+  				if (IS_FA(screen_buf[buffer_addr]))
+  					current_fa = &(screen_buf[buffer_addr]);
+***************
+*** 911,939 ****
+  			last_zpt = False;
+  			break;
+  		case ORDER_GE:	/* graphic escape */
+! 			if (toggled(TRACE3270))
+! 				END_TEXT("GE[unsupported]");
+  			cp++;
+  			last_cmd = True;
+  			last_zpt = False;
+  			break;
+  		case ORDER_MF:	/* modify field */
+! 			if (toggled(TRACE3270))
+! 				END_TEXT("MF[unsupported]");
+  			cp += *(cp + 1) * 2;
+  			last_cmd = True;
+  			last_zpt = False;
+  			break;
+  		case ORDER_SFE:	/* start field extended */
+! 			if (toggled(TRACE3270))
+! 				END_TEXT("SFE[unsupported]");
+  			cp += *(cp + 1) * 2;
+  			last_cmd = True;
+  			last_zpt = False;
+  			break;
+  		case ORDER_SA:	/* set attribute */
+! 			if (toggled(TRACE3270))
+! 				END_TEXT("SA[unsupported]");
+  			cp += 2;
+  			last_cmd = True;
+  			last_zpt = False;
+--- 879,903 ----
+  			last_zpt = False;
+  			break;
+  		case ORDER_GE:	/* graphic escape */
+! 			END_TEXT("GE[unsupported]");
+  			cp++;
+  			last_cmd = True;
+  			last_zpt = False;
+  			break;
+  		case ORDER_MF:	/* modify field */
+! 			END_TEXT("MF[unsupported]");
+  			cp += *(cp + 1) * 2;
+  			last_cmd = True;
+  			last_zpt = False;
+  			break;
+  		case ORDER_SFE:	/* start field extended */
+! 			END_TEXT("SFE[unsupported]");
+  			cp += *(cp + 1) * 2;
+  			last_cmd = True;
+  			last_zpt = False;
+  			break;
+  		case ORDER_SA:	/* set attribute */
+! 			END_TEXT("SA[unsupported]");
+  			cp += 2;
+  			last_cmd = True;
+  			last_zpt = False;
+***************
+*** 947,954 ****
+  		case FCORDER_NL:
+  		case FCORDER_EM:
+  		case FCORDER_EO:
+! 			if (toggled(TRACE3270))
+! 				END_TEXT(see_ebc(*cp));
+  			ctlr_add(buffer_addr, ebc2cg[*cp]);
+  			INC_BA(buffer_addr);
+  			last_cmd = True;
+--- 911,917 ----
+  		case FCORDER_NL:
+  		case FCORDER_EM:
+  		case FCORDER_EO:
+! 			END_TEXT(see_ebc(*cp));
+  			ctlr_add(buffer_addr, ebc2cg[*cp]);
+  			INC_BA(buffer_addr);
+  			last_cmd = True;
+***************
+*** 956,973 ****
+  			break;
+  		default:	/* enter character */
+  			if (*cp <= 0x3F) {
+! 				if (toggled(TRACE3270)) {
+! 					END_TEXT("ILLEGAL_ORDER");
+! 					(void) printf("%s", see_ebc(*cp));
+! 				}
+  				last_cmd = True;
+  				last_zpt = False;
+  				break;
+  			}
+! 			if (toggled(TRACE3270)) {
+! 				START_TEXT;
+! 				(void) printf("%s", see_ebc(*cp));
+! 			}
+  			ctlr_add(buffer_addr, ebc2cg[*cp]);
+  			INC_BA(buffer_addr);
+  			last_cmd = False;
+--- 919,932 ----
+  			break;
+  		default:	/* enter character */
+  			if (*cp <= 0x3F) {
+! 				END_TEXT("ILLEGAL_ORDER");
+! 				trace_ds(see_ebc(*cp));
+  				last_cmd = True;
+  				last_zpt = False;
+  				break;
+  			}
+! 			START_TEXT;
+! 			trace_ds(see_ebc(*cp));
+  			ctlr_add(buffer_addr, ebc2cg[*cp]);
+  			INC_BA(buffer_addr);
+  			last_cmd = False;
+***************
+*** 976,985 ****
+  		}
+  	}
+  	set_formatted();
+! 	if (toggled(TRACE3270)) {
+! 		END_TEXT((char *)0);
+! 		(void) printf("\n");
+! 	}
+  	if (wcc_keyboard_restore) {
+  		aid = AID_NO;
+  		if (oia_locked) {
+--- 935,942 ----
+  		}
+  	}
+  	set_formatted();
+! 	END_TEXT((char *)0);
+! 	trace_ds("\n");
+  	if (wcc_keyboard_restore) {
+  		aid = AID_NO;
+  		if (oia_locked) {
+***************
+*** 1285,1288 ****
+--- 1242,1283 ----
+  void
+  toggle_nop()
+  {
++ }
++ 
++ 
++ /*
++  * 3270 Data Stream Tracing
++  */
++ static int dscnt = 0;
++ 
++ static void
++ trace_ds(s)
++ char *s;
++ {
++ 	int len = strlen(s);
++ 	Boolean nl = False;
++ 
++ 	if (!toggled(TRACE3270))
++ 		return;
++ 
++ 	if (s && s[len-1] == '\n') {
++ 		len--;
++ 		nl = True;
++ 	}
++ 	while (dscnt + len >= 72) {
++ 		int plen = 72-dscnt;
++ 
++ 		(void) printf("%.*s ...\n... ", plen, s);
++ 		dscnt = 4;
++ 		s += plen;
++ 		len -= plen;
++ 	}
++ 	if (len) {
++ 		(void) printf("%.*s", len, s);
++ 		dscnt += len;
++ 	}
++ 	if (nl) {
++ 		(void) printf("\n");
++ 		dscnt = 0;
++ 	}
+  }
+
+Up the program version number to 3.0.1.3, but no need to change the
+app-defaults version.
+
+*** x3270.c.orig	Wed Nov 17 14:35:56 1993
+--- x3270.c	Wed Nov 17 14:35:57 1993
+***************
+*** 27,33 ****
+  
+  /* Externals */
+  extern int	n_read;
+! extern char	*version;
+  
+  /* Globals */
+  Display		*display;
+--- 27,33 ----
+  
+  /* Externals */
+  extern int	n_read;
+! extern char	*app_defaults_version;
+  
+  /* Globals */
+  Display		*display;
+***************
+*** 243,251 ****
+  		XtError("Outdated app-defaults file");
+  	else if (!strcmp(appres.ad_version, "fallback"))
+  		XtError("No app-defaults file");
+! 	else if (strcmp(appres.ad_version, version)) {
+  		char *msg = xs_buffer2("app-defaults version mismatch: want %s, got %s",
+! 		    version, appres.ad_version);
+  
+  		XtError(msg);
+  	}
+--- 243,251 ----
+  		XtError("Outdated app-defaults file");
+  	else if (!strcmp(appres.ad_version, "fallback"))
+  		XtError("No app-defaults file");
+! 	else if (strcmp(appres.ad_version, app_defaults_version)) {
+  		char *msg = xs_buffer2("app-defaults version mismatch: want %s, got %s",
+! 		    app_defaults_version, appres.ad_version);
+  
+  		XtError(msg);
+  	}
+*** version.txt.orig	Wed Nov 17 14:36:02 1993
+--- version.txt	Wed Nov 17 14:36:02 1993
+***************
+*** 1 ****
+! 3.0.1.2
+--- 1,2 ----
+! char *version = "3.0.1.3";
+! char *app_defaults_version = "3.0.1.2";
+*** popups.c.orig	Wed Nov 17 14:36:06 1993
+--- popups.c	Wed Nov 17 14:36:07 1993
+***************
+*** 476,481 ****
+--- 476,482 ----
+  extern int ns_bsent;
+  extern int ns_rsent;
+  extern int linemode;
++ extern char *version;
+  extern char *build;
+  extern char ttype_val[];
+  extern Pixmap icon;
+***************
+*** 616,625 ****
+  
+  	/* Miscellany */
+  
+  	(void) XtVaCreateManagedWidget(
+  	    "build", labelWidgetClass, options_form,
+  	    XtNborderWidth, 0,
+! 	    XtNlabel, build,
+  	    XtNfromHoriz, w,
+  	    XtNleft, XtChainLeft,
+  	    NULL);
+--- 617,627 ----
+  
+  	/* Miscellany */
+  
++ 	sprintf(fbuf, "x3270 v%s, %s", version, build);
+  	(void) XtVaCreateManagedWidget(
+  	    "build", labelWidgetClass, options_form,
+  	    XtNborderWidth, 0,
+! 	    XtNlabel, fbuf,
+  	    XtNfromHoriz, w,
+  	    XtNleft, XtChainLeft,
+  	    NULL);
+*** Imakefile.orig	Wed Nov 17 14:36:10 1993
+--- Imakefile	Wed Nov 17 14:36:11 1993
+***************
+*** 26,32 ****
+  FontTarget(3270ab)
+  
+  version.o: $(VOBJS) version.txt
+! 	@echo "char *build = \"x3270 v`cat version.txt`, `date`\"; char *version = \"`cat version.txt`\";" >version.c
+  	@$(CC) -c version.c
+  	@$(RM) version.c
+  
+--- 26,32 ----
+  FontTarget(3270ab)
+  
+  version.o: $(VOBJS) version.txt
+! 	@(cat version.txt; echo "char *build = \"`date`\";") >version.c
+  	@$(CC) -c version.c
+  	@$(RM) version.c
+  
+*** Makefile.aux.orig	Wed Nov 17 14:36:14 1993
+--- Makefile.aux	Wed Nov 17 14:36:15 1993
+***************
+*** 85,91 ****
+  	@$(RM) version.o
+  
+  version.o: $(OBJECTS) version.txt
+! 	@echo "char *build = \"x3270 v`cat version.txt`, `date`\"; char *version = \"`cat version.txt`\";" >version.c
+  	@$(CC) -c version.c
+  	@$(RM) version.c
+  
+--- 85,91 ----
+  	@$(RM) version.o
+  
+  version.o: $(OBJECTS) version.txt
+! 	@(cat version.txt; echo "char *build = \"`date`\";") >version.c
+  	@$(CC) -c version.c
+  	@$(RM) version.c
+  
+
+Correct the handling of illegal buffer addresses.
+
+*** ctlr.c.orig	Mon Nov 29 16:15:07 1993
+--- ctlr.c	Mon Nov 29 16:15:08 1993
+***************
+*** 792,800 ****
+  				buffer_addr = ((*(cp-1) & 0x3F) << 8) | *cp;
+  			else	/* 12-bit coded */
+  				buffer_addr = ((*(cp-1) & 0x3F) << 6) | (*cp & 0x3F);
+- 			buffer_addr %= (COLS * ROWS);
+  			END_TEXT("SBA");
+  			trace_ds(rcba(buffer_addr));
+  			current_fa = get_field_attribute(buffer_addr);
+  			last_cmd = True;
+  			last_zpt = False;
+--- 792,803 ----
+  				buffer_addr = ((*(cp-1) & 0x3F) << 8) | *cp;
+  			else	/* 12-bit coded */
+  				buffer_addr = ((*(cp-1) & 0x3F) << 6) | (*cp & 0x3F);
+  			END_TEXT("SBA");
+  			trace_ds(rcba(buffer_addr));
++ 			if (buffer_addr >= COLS * ROWS) {
++ 				trace_ds(" [invalid address, write command terminated]\n");
++ 				return;
++ 			}
+  			current_fa = get_field_attribute(buffer_addr);
+  			last_cmd = True;
+  			last_zpt = False;
+***************
+*** 836,842 ****
+  				baddr = ((*(cp-1) & 0x3F) << 8) | *cp;
+  			else	/* 12-bit coded */
+  				baddr = ((*(cp-1) & 0x3F) << 6) | (*cp & 0x3F);
+- 			baddr %= (COLS * ROWS);
+  			cp++;		/* skip char to repeat */
+  			if (*cp == ORDER_GE)
+  				cp++;
+--- 839,844 ----
+***************
+*** 845,858 ****
+  			trace_ds("'");
+  			trace_ds(see_ebc(*cp));
+  			trace_ds("'");
+! 			if (buffer_addr == baddr) {
+! 				ctlr_add(buffer_addr, ebc2cg[*cp]);
+! 				INC_BA(buffer_addr);
+  			}
+! 			while (buffer_addr != baddr) {
+  				ctlr_add(buffer_addr, ebc2cg[*cp]);
+  				INC_BA(buffer_addr);
+! 			}
+  			current_fa = get_field_attribute(buffer_addr);
+  			last_cmd = True;
+  			last_zpt = False;
+--- 847,860 ----
+  			trace_ds("'");
+  			trace_ds(see_ebc(*cp));
+  			trace_ds("'");
+! 			if (baddr >= COLS * ROWS) {
+! 				trace_ds(" [invalid address, write command terminated]\n");
+! 				return;
+  			}
+! 			do {
+  				ctlr_add(buffer_addr, ebc2cg[*cp]);
+  				INC_BA(buffer_addr);
+! 			} while (buffer_addr != baddr);
+  			current_fa = get_field_attribute(buffer_addr);
+  			last_cmd = True;
+  			last_zpt = False;
+***************
+*** 863,871 ****
+  				baddr = ((*(cp-1) & 0x3F) << 8) | *cp;
+  			else	/* 12-bit coded */
+  				baddr = ((*(cp-1) & 0x3F) << 6) | (*cp & 0x3F);
+- 			baddr %= (COLS * ROWS);
+  			END_TEXT("EUA");
+  			trace_ds(rcba(baddr));
+  			do {
+  				if (IS_FA(screen_buf[buffer_addr]))
+  					current_fa = &(screen_buf[buffer_addr]);
+--- 865,876 ----
+  				baddr = ((*(cp-1) & 0x3F) << 8) | *cp;
+  			else	/* 12-bit coded */
+  				baddr = ((*(cp-1) & 0x3F) << 6) | (*cp & 0x3F);
+  			END_TEXT("EUA");
+  			trace_ds(rcba(baddr));
++ 			if (baddr >= COLS * ROWS) {
++ 				trace_ds(" [invalid address, write command terminated]\n");
++ 				return;
++ 			}
+  			do {
+  				if (IS_FA(screen_buf[buffer_addr]))
+  					current_fa = &(screen_buf[buffer_addr]);
+
+README changes.
+
+*** README.3.0.orig	Mon Nov 29 16:27:09 1993
+--- README.3.0	Mon Nov 29 16:27:10 1993
+***************
+*** 1,4 ****
+! x3270 3.0.1.2 -- (Version 3.0, Update 1, Patch Set 2)
+  ===============================================================================
+  
+  0. Introduction
+--- 1,4 ----
+! x3270 3.0.1.3 -- (Version 3.0, Update 1, Patch Set 3)
+  ===============================================================================
+  
+  0. Introduction
+***************
+*** 20,38 ****
+  x3270 (cut and paste, hollowing cursor, etc.) and a number of significant
+  changes and improvements.
+  
+! Thanks to --
+!     Robert Viduya, for the original SunView 3270tool;
+!     Jeff Sparkes, for the original X port and for inspiring so many of us to
+!      improve on it;
+!     Peter Johnston, for insisting that each new function he wanted was just an
+!      itty bitty change, honest;
+!     Thomas Vogler, for requesting the original ASCII functionality and helping
+!      debug it;
+!     Pekka Nikander, for helpful advice in internationalization and X trivia,
+!      and yet more porting and debug help;
+!     Distinguished bug hunters: David Summers, Ian Daniel, Kevin Murphy, George
+!      Pallas;
+!     and everyone else who has put up with my naive stumblings through X.
+  
+  1. Enhancements from Release 1.2
+  
+--- 20,29 ----
+  x3270 (cut and paste, hollowing cursor, etc.) and a number of significant
+  changes and improvements.
+  
+! Despite its name, x3270 3.0 is a separate line of development from other
+! versions of x3270, most notably v1.2-cutpaste-iso8859-1, and v2.65.  Patches
+! for those versions will not apply to x3270 3.0, and some of the features found
+! in those versions may not yet be in v3.0.
+  
+  1. Enhancements from Release 1.2
+  
+***************
+*** 436,441 ****
+--- 427,460 ----
+  		xmkmf (or without one that works).
+  
+      ow3.install	Install x3270 in /usr/openwin.
++ 
++ 5.9 Bug Fixes in Patch Set 3 (v3.0.1.3)
++ 
++ Fixed typo which most compilers let pass.  [Reported by Marc Morin.]
++ 
++ Fixed EWOULDBLOCK can't-ever-happen which apparently did.  [Reported by Marc
++ Morin.]
++ 
++ Fixed an error in the response to the READ BUFFER command, which wasn't
++ properly encoding attribute bytes.  [Reported by Eric M. Boehm.]
++ 
++ Fixed OpenWindows font targets in Makefile.aux.  [Fixed by Raymond A. Wiker.]
++ 
++ Fixed a typo in X3270.ad.  [Found by Eric M. Boehm.]
++ 
++ Fixed a spelling error in x3270.man.
++ 
++ Properly fixed the problem with the nulling-out behavior of PT orders.
++ Versions 1.2 through 3.0.1.1 did it too often; v3.0.1.2 didn't do it at all.
++ [Identified by a number of people; primary help from Ilia Levi.]
++ 
++ Corrected the handling of illegal buffer addresses.  [Reported by Soren B.
++ Poulsen.]
++ 
++ 5.10 Enhancements in Patch Set 3 (v3.0.1.3)
++ 
++ Filter the output of the "Trace 3270 DS" option so it doesn't generate huge
++ lines.
+  
+  =====
+  

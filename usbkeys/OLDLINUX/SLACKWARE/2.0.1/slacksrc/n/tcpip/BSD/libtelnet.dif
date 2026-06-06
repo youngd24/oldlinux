@@ -1,0 +1,66 @@
+--- Makefile
++++ Makefile	1994/02/22 14:06:54
+@@ -0,0 +1,18 @@
++CFLAGS = -O2 -fomit-frame-pointer -m486 '-DISSUE_FILE="/etc/issue.net"' \
++	-include /usr/include/bsd/bsd.h -I /usr/include/bsd \
++	-DTERMCAP -DUSE_TERMIO -DKLUDGELINEMODE -DDIAGNOSTICS \
++	-DAUTHENTICATE
++
++OBJS =	auth.o enc_des.o encrypt.o genget.o getent.o \
++	kerberos.o kerberos5.o misc.o
++
++libtelnet.a: $(OBJS)
++	ar rcv libtelnet.a $(OBJS)
++	ranlib libtelnet.a
++
++install: libtelnet.a
++	echo "Nothing to install for libtelnet, just a libary."
++
++clean:
++	rm -f *.o libtelnet.a
++
+--- enc-proto.h
++++ enc-proto.h	1994/02/22 13:56:38
+@@ -89,6 +89,15 @@
+ void encrypt_display P((void));
+ #endif
+ 
++void krbdes_encrypt P((unsigned char *, int));
++int krbdes_decrypt P((int));
++int krbdes_is P((unsigned char *, int));
++int krbdes_reply P((unsigned char *, int));
++void krbdes_init P((int));
++int krbdes_start P((int, int));
++void krbdes_session P((Session_Key *, int));
++void krbdes_printsub P((unsigned char *, int, unsigned char *, int));
++
+ void cfb64_encrypt P((unsigned char *, int));
+ int cfb64_decrypt P((int));
+ void cfb64_init P((int));
+--- enc_des.c
++++ enc_des.c	1994/02/22 13:56:38
+@@ -718,4 +718,14 @@
+ 
+ 	return(data ^ stp->str_feed[index]);
+ }
++
++int  des_new_random_key(Block b)
++{
++  return 0;
++}
++
++void des_set_random_generator_seed(Block b)
++{
++}
++
+ #endif
+--- kerberos5.c
++++ kerberos5.c	1994/02/22 13:56:38
+@@ -308,6 +308,7 @@
+ 	struct hostent *hp;
+ 	char *p1, *p2;
+ 	static char *realm = NULL;
++	Block datablock;
+ 	krb5_data *server[4];
+ 	krb5_data srvdata[3];
+         Session_Key skey;

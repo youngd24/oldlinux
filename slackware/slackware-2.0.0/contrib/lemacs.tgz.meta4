@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.0/contrib/lemacs.tgz.meta4</origin>
+  <published>2026-06-01T16:42:57Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="lemacs.tgz">
+    <size>7356162</size>
+
+    <!-- <mtime>774834283</mtime> -->
+
+    <!-- internal id: 1612538 -->
+    <hash type="md5">6c3e2d9d8e53fb2308331690551f1122</hash>
+    <hash type="sha-1">082d20d972144019075f0fe521137e5f5890d031</hash>
+    <hash type="sha-256">6ed7c45cf2814ac580f09dd1f4f6b927aab445300036f4d2aa3019b41bf6bf6e</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>e3a3b018bacc381714a5ff4039f08230077137f5</hash>
+      <hash>bf360b7d3262f237776e2c33c6964c931235f5ff</hash>
+      <hash>972011e435652400f863b6c4f580dcb5cc08478b</hash>
+      <hash>c769766816d56455e03fffa047d191bfa65d0a56</hash>
+      <hash>d667a38df10f773edc33d16538b4714826dc922c</hash>
+      <hash>9f1218ddcccf0cfbd031c23f00011d267abc79da</hash>
+      <hash>954399e5728935ee41b0e0b425527ef0f084ef78</hash>
+      <hash>c8791baffcd3ed036ab3f7ee078ecf4829d85cfe</hash>
+      <hash>fdae756e8402a3305026029e59e242faac6a099b</hash>
+      <hash>ff7ea0e69e46fd611e734eba6b70ae521e18bfce</hash>
+      <hash>9c9d0a6deaefc7d02ba942cdf66ba86cb5a1b93b</hash>
+      <hash>e95e1e5db62758c22ca119a4ac97c89e3fa7c465</hash>
+      <hash>4b2f89f5f4c9ed9dced279727468dd6a2a0ee48a</hash>
+      <hash>e4591615ef5a81e9395d14cc303a6782e5171f4b</hash>
+      <hash>e21b5ebe3298313c7d507a742b8a6d1a457abc35</hash>
+      <hash>31afb5c15043826e72fb0599b886179f23eafc2d</hash>
+      <hash>3b9586ed49cf9b30a8e486bf00fe71b7a30decf7</hash>
+      <hash>041390e49331bbb4d84fb9c41be42b53543d1f45</hash>
+      <hash>851c4e89e9b43d0bbaaf38f2a69575027ca62275</hash>
+      <hash>0edba13917a5ddff6d0dc8c7d06e15c5dc2eca25</hash>
+      <hash>ca45c0849469af9e09dc31879e04e3af1bcb5ddf</hash>
+      <hash>3980320d81f202ea5d4294203be9f2b0fa8e73b3</hash>
+      <hash>37dda035a938b10dc167e5cbc8100b502ae990bb</hash>
+      <hash>4c984026f0fd10a4b679b01f7e10a55a681c672f</hash>
+      <hash>f2881399d13e83d0e79fe9b52628a47bed3158c6</hash>
+      <hash>b1724b6f254b35854260fd24bcd3b4340d7b906e</hash>
+      <hash>1174619733db37e081b72fa9bf6e6ec2c265dda4</hash>
+      <hash>3038cd802b4901a86d3ea0742947e4add1f312ed</hash>
+      <hash>7229ac1945a531e6368bbe7d6d379f9d9206a0a9</hash>
+    </pieces>
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="ec" priority="2">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="br" priority="3">https://ftp.slackware-brasil.com.br/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="br" priority="4">https://mirrors.slackware.beco.cc/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="br" priority="5">https://linorg.usp.br/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="gb" priority="6">http://slackware.uk/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="gb" priority="7">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="nl" priority="8">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="fr" priority="9">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="nl" priority="10">https://mirror.koddos.net/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="nl" priority="11">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="de" priority="12">https://linux.rz.rub.de/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="ro" priority="13">http://mirrors.nav.ro/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="de" priority="14">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="dk" priority="15">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="hr" priority="16">http://mirror.slackware.hr/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="it" priority="17">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="se" priority="18">https://mirror.bahnhof.net/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="rs" priority="19">https://mirror1.sox.rs/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="pl" priority="20">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="ro" priority="21">https://mirrors.nxthost.com/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="ua" priority="22">http://slackware.ip-connect.info/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="ua" priority="23">https://ifconfig.com.ua/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="ru" priority="24">http://mirror.mephi.ru/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="ru" priority="25">https://mirror.yandex.ru/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="za" priority="26">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="sa" priority="27">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+    <url location="hk" priority="28">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/contrib/lemacs.tgz</url>
+  </file>
+</metalink>

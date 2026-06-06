@@ -1,0 +1,34 @@
+CONTENTS: extralib gdb bison 
+extralib: Extra static libraries used for profiling and debugging. (v. 4.5.26)
+extralib: (libc_p.a, libgmon.a, gcrt0.o, libg.a, libmcheck.a)
+extralib:
+extralib:
+extralib:
+extralib:
+extralib:
+extralib:
+extralib:
+extralib:
+extralib:
+gdb:      The GNU debugger. (v. 4.12)
+gdb:
+gdb:      You can use GDB to debug programs written in C, C++, and Modula-2. 
+gdb:      Fortran support will be added when a GNU Fortran compiler is ready.
+gdb:
+gdb:
+gdb:
+gdb:
+gdb:
+gdb:
+gdb:
+bison:    GNU bison parser generator version 1.22.
+bison:
+bison:    Bison is a parser generator in the style of yacc(1). It should be
+bison:    upwardly compatible with input files designed for yacc.
+bison:
+bison:
+bison:
+bison:
+bison:
+bison:
+bison:

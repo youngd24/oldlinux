@@ -1,0 +1,34 @@
+CONTENTS: elm pine smail
+elm:      Menu-driven user mail program. (v. 2.4pl23)
+elm:
+elm:
+elm:
+elm:
+elm:
+elm:
+elm:
+elm:
+elm:
+elm:
+pine:     Pine version 3.89
+pine:
+pine:     A menu driven user mail program. Originally based on Elm (Pine Is
+pine:     No-longer Elm), but with many additional features that make it
+pine:     easier to use.
+pine:
+pine:
+pine:
+pine:
+pine:
+pine:
+smail:    Ian Kluft's Linux port of Smail 3.1.28.
+smail:
+smail:    Smail is a powerful mail-handling system. It comes with many 
+smail:    documentation and sample files. Look in /usr/lib/smail/tools.linux
+smail:    for the HOWTO file that will help you get started.
+smail:
+smail:
+smail:
+smail:
+smail:
+smail:

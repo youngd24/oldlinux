@@ -1,0 +1,9 @@
+00index.txt         234  
+bsdgames.tgz     972542  
+disky1              850  
+install.end          23  
+maketag             852  
+tagfile            1673  
+tagfile.org        1673  
+tagfile.pat        1673  
+tetris.tgz         8829  

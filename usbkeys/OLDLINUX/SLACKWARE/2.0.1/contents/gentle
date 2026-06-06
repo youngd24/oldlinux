@@ -1,0 +1,16 @@
+PACKAGE NAME:     gentle
+PACKAGE SIZE:     58 K
+PACKAGE LOCATION: diskt2
+PACKAGE DESCRIPTION:
+gentle:   A Gentle Introduction to TeX
+gentle:
+gentle:   This is a manual for TeX, written by Michael Doob.
+gentle:
+gentle:   Look for it in /usr/doc/TeX.
+gentle:
+FILE LIST:
+./
+usr/
+usr/doc/
+usr/doc/TeX/
+usr/doc/TeX/Gentle.tex

@@ -1,0 +1,141 @@
+***************
+*** 57,62 ****
+  #include <signal.h>
+  #include <ctype.h>
+  #include <syslog.h>
+  #include "lp.local.h"
+  #include "pathnames.h"
+  
+--- 57,65 ----
+  #include <signal.h>
+  #include <ctype.h>
+  #include <syslog.h>
++ #include <unistd.h>
++ #include <stdlib.h>
++ #include <string.h>
+  #include "lp.local.h"
+  #include "pathnames.h"
+  
+***************
+*** 94,100 ****
+  char	*SD;			/* spool directory */
+  char	*LO;			/* lock file name */
+  char	*RG;			/* restrict group */
+- short	SC;			/* suppress multiple copies */
+  
+  char	*getenv();
+  char	*rindex();
+--- 97,103 ----
+  char	*SD;			/* spool directory */
+  char	*LO;			/* lock file name */
+  char	*RG;			/* restrict group */
++ static short	SC;			/* suppress multiple copies */
+  
+  char	*getenv();
+  char	*rindex();
+***************
+*** 568,573 ****
+  		printf("%s: cannot open %s\n", name, file);
+  		return(-1);
+  	}
+  	if (read(fd, &execb, sizeof(execb)) == sizeof(execb)) {
+  		if(!N_BADMAG(execb) || 
+  #ifdef SARMAG
+--- 571,577 ----
+  		printf("%s: cannot open %s\n", name, file);
+  		return(-1);
+  	}
++ #ifndef	__linux__
+  	if (read(fd, &execb, sizeof(execb)) == sizeof(execb)) {
+  		if(!N_BADMAG(execb) || 
+  #ifdef SARMAG
+***************
+*** 596,601 ****
+  		}
+  #endif
+  	}
+  	(void) close(fd);
+  	if (rflag) {
+  		if ((cp = rindex(file, '/')) == NULL) {
+--- 600,606 ----
+  		}
+  #endif
+  	}
++ #endif
+  	(void) close(fd);
+  	if (rflag) {
+  		if ((cp = rindex(file, '/')) == NULL) {
+***************
+*** 673,679 ****
+  	register int c, len, fd, n;
+  	register char *cp;
+  	char buf[BUFSIZ];
+- 	char *lmktemp();
+  
+  	(void) sprintf(buf, "%s/.seq", SD);
+  	if ((fd = open(buf, O_RDWR|O_CREAT, 0661)) < 0) {
+--- 678,683 ----
+  	register int c, len, fd, n;
+  	register char *cp;
+  	char buf[BUFSIZ];
+  
+  	(void) sprintf(buf, "%s/.seq", SD);
+  	if ((fd = open(buf, O_RDWR|O_CREAT, 0661)) < 0) {
+***************
+*** 692,724 ****
+  			n = n * 10 + (*cp++ - '0');
+  		}
+  	}
+- 	len = strlen(SD) + strlen(host) + 8;
+- 	tfname = lmktemp("tf", n, len);
+- 	cfname = lmktemp("cf", n, len);
+- 	dfname = lmktemp("df", n, len);
+  	inchar = strlen(SD) + 3;
+  	n = (n + 1) % 1000;
+  	(void) lseek(fd, 0L, 0);
+  	sprintf(buf, "%03d\n", n);
+  	(void) write(fd, buf, strlen(buf));
+  	(void) close(fd);	/* unlocks as well */
+- }
+- 
+- /*
+-  * Make a temp file name.
+-  */
+- char *
+- lmktemp(id, num, len)
+- 	char	*id;
+- 	int	num, len;
+- {
+- 	register char *s;
+- 	extern char *malloc();
+- 
+- 	if ((s = malloc(len)) == NULL)
+- 		fatal("out of memory");
+- 	(void) sprintf(s, "%s/%sA%03d%s", SD, id, num, host);
+- 	return(s);
+  }
+  
+  /*VARARGS1*/
+--- 696,717 ----
+  			n = n * 10 + (*cp++ - '0');
+  		}
+  	}
++ 	len = strlen(SD) + 15;
++ 	if ((cfname = malloc(len)) == NULL)
++ 		fatal("out of memory");
++ 	(void) sprintf(cfname, "%s/cfA%03dAXXXXXX", SD, n);
++ 	if (mktemp(cfname) == NULL)
++ 		fatal("couldn't create unique control file");
++ 	if ((tfname = strdup(cfname)) == NULL || (dfname = strdup(cfname)) == NULL)
++ 		fatal("out of memory");
+  	inchar = strlen(SD) + 3;
++ 	tfname[inchar-2] = 't';
++ 	dfname[inchar-2] = 'd';
+  	n = (n + 1) % 1000;
+  	(void) lseek(fd, 0L, 0);
+  	sprintf(buf, "%03d\n", n);
+  	(void) write(fd, buf, strlen(buf));
+  	(void) close(fd);	/* unlocks as well */
+  }
+  
+  /*VARARGS1*/

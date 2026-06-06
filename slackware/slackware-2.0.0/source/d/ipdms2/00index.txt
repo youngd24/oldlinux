@@ -1,0 +1,7 @@
+00index.txt         180  
+ipdm2s-install     5796  
+ipdm2s.9401.LINX.tar.gz
+                 278124  
+ipdm2s.doc.tar   271872  
+ipdm2s.manual     32327  
+ipdm2s.readme      1593  

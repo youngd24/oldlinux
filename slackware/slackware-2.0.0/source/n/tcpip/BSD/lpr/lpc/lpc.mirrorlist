@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Mirror List</title>
+  <link type="text/css" rel="stylesheet" href="/css/mblist.css" />
+</head>
+
+<body>
+<div id="mirrorbrain-details">
+  <h2>Mirrors for <a href="/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">lpc</a></h2>
+<div id="mirrorbrain-fileinfo">
+<h3>File information</h3>
+<ul>
+  <li><span class="mirrorbrain-label">Filename:</span> lpc</li>
+  <li><span class="mirrorbrain-label">Path:</span> /slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</li>
+  <li><span class="mirrorbrain-label">Size:</span>  32K (32312 bytes)</li>
+  <li><span class="mirrorbrain-label">Last modified:</span> Fri, 22 Jul 1994 00:03:22 GMT (Unix time: 774835402)</li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc.sha256">SHA-256 Hash</a>:</span> <tt>bfcd4cc9f8d0b3748a08524cc6985085e04c19a251306c54cd67e31b732fa292</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc.sha1">SHA-1 Hash</a>:</span> <tt>fcf8f75e38fa9bd44a414489173126ba854c29de</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc.md5">MD5 Hash</a>:</span> <tt>7cc3543a23b419d996d84c73027f653d</tt></li>
+</ul>
+<p><a href="/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc" class="mirrorbrain-btn">Download file from preferred mirror</a></p>
+</div>
+
+<div id="mirrorbrain-links">
+<h3>Reliable downloads</h3>
+<div class="mirrorbrain-links-grp">
+<h4>Metalink</h4>
+<ul>
+  <li><a href="/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc.meta4">/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc.meta4</a> (IETF Metalink)</li>
+  <li><a href="/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc.metalink">/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc.metalink</a> (old (v3) Metalink)</li>
+</ul>
+</div>
+</div>
+
+<div id="mirrorbrain-mirrors">
+<h3>Mirrors</h3>
+<p>List of best mirrors for IP address 172.59.189.70, located at 41.848301,-87.651703 in United States (US).</p>
+
+<p><a href="https://maps.google.com/maps/api/staticmap?size=640x512&amp;visual_refresh=true&amp;scale=2&amp;maptype=roadmap&amp;sensor=false&amp;markers=color:red|41.848301,-87.651703&amp;markers=color:yellow|label:1|28.538000,-81.378998&amp;markers=color:yellow|label:2|-2.883000,-78.983002&amp;markers=color:yellow|label:3|-16.701000,-49.266998&amp;markers=color:yellow|label:4|-8.144000,-34.978001&amp;markers=color:yellow|label:5|-23.473000,-46.666000&amp;markers=color:yellow|label:6|51.495998,-0.122000&amp;markers=color:yellow|label:7|51.266998,1.083000&amp;markers=color:yellow|label:8|48.858002,2.339000&amp;markers=color:yellow|label:9|48.858002,2.339000">Map showing the closest mirrors</a></p>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 1 mirror which handle this country (US)</h4>
+<ul>
+ <li><a href="https://mirror.slackbuilds.org/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (us, prio 100)</li>
+</ul>
+</div>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 27 mirrors in other parts of the world</h4>
+<ul>
+  <li><a href="https://mirror.cedia.org.ec/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (ec, prio 100)</li>
+  <li><a href="https://ftp.slackware-brasil.com.br/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://ftp.slackware-brasil.com.br/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (br, prio 100)</li>
+  <li><a href="https://mirrors.slackware.beco.cc/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://mirrors.slackware.beco.cc/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (br, prio 100)</li>
+  <li><a href="https://linorg.usp.br/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://linorg.usp.br/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (br, prio 100)</li>
+  <li><a href="http://slackware.uk/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">http://slackware.uk/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (gb, prio 100)</li>
+  <li><a href="https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (gb, prio 100)</li>
+  <li><a href="http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (nl, prio 100)</li>
+  <li><a href="http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (fr, prio 50)</li>
+  <li><a href="https://mirror.koddos.net/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://mirror.koddos.net/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (nl, prio 100)</li>
+  <li><a href="https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (nl, prio 100)</li>
+  <li><a href="https://linux.rz.rub.de/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://linux.rz.rub.de/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (de, prio 100)</li>
+  <li><a href="http://mirrors.nav.ro/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">http://mirrors.nav.ro/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (ro, prio 100)</li>
+  <li><a href="https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (de, prio 100)</li>
+  <li><a href="https://mirrors.dotsrc.org/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (dk, prio 100)</li>
+  <li><a href="http://mirror.slackware.hr/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">http://mirror.slackware.hr/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (hr, prio 100)</li>
+  <li><a href="https://slackware.mirror.garr.it/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (it, prio 100)</li>
+  <li><a href="https://mirror.bahnhof.net/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://mirror.bahnhof.net/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (se, prio 100)</li>
+  <li><a href="https://mirror1.sox.rs/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://mirror1.sox.rs/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (rs, prio 100)</li>
+  <li><a href="https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (pl, prio 100)</li>
+  <li><a href="https://mirrors.nxthost.com/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://mirrors.nxthost.com/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (ro, prio 100)</li>
+  <li><a href="http://slackware.ip-connect.info/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">http://slackware.ip-connect.info/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (ua, prio 100)</li>
+  <li><a href="https://ifconfig.com.ua/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://ifconfig.com.ua/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (ua, prio 100)</li>
+  <li><a href="http://mirror.mephi.ru/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">http://mirror.mephi.ru/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (ru, prio 100)</li>
+  <li><a href="https://mirror.yandex.ru/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://mirror.yandex.ru/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (ru, prio 100)</li>
+  <li><a href="http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (za, prio 100)</li>
+  <li><a href="https://mirror.lyrahosting.com/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (sa, prio 100)</li>
+  <li><a href="https://mirror-hk.koddos.net/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/source/n/tcpip/BSD/lpr/lpc/lpc</a> (hk, prio 100)</li>
+</ul>
+</div>
+
+</div>
+<address>Powered by <a href="http://mirrorbrain.org/">MirrorBrain</a></address>
+</div><!-- mirrorbrain-details -->
+<!--
+<html>
+<a href="http://mirrorbrain.org/">MirrorBrain</a>
+powered by <a href="http://slackware.com/">Slackware</a>!
+</html>
+-->

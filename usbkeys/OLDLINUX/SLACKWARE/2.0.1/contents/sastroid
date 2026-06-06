@@ -1,0 +1,30 @@
+PACKAGE NAME:     sastroid
+PACKAGE SIZE:     91 K
+PACKAGE LOCATION: disky1
+PACKAGE DESCRIPTION:
+sastroid: Sasteroids 1.3
+sastroid:
+sastroid: Sasteroids is an asteroids-like game, the whole point to shoot
+sastroid: asteroids and an occasional enemy space ship.  Ok, so its not DOOM,
+sastroid: but it can be amusing, and does use a few DOOM-like brown colors.
+sastroid: This started out as a direct port of xasteroids to run under svgalib
+sastroid: (a wonderful super-vga graphics library by Harm Hanemaayer)
+sastroid:
+sastroid: Sasteroids was derived from Phil Goetz's Xasteroids by Brad Pitzel.
+sastroid:
+FILE LIST:
+./
+usr/
+usr/games/
+usr/games/sasteroids
+usr/games/sast.cf
+usr/doc/
+usr/doc/sasteroids/
+usr/doc/sasteroids/1-CHANGELOG
+usr/doc/sasteroids/1-INSTALL
+usr/doc/sasteroids/1-PROBLEMS
+usr/doc/sasteroids/1-README
+usr/doc/sasteroids/1-README.xast
+var/
+var/games/
+var/games/sasteroids/

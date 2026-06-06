@@ -1,0 +1,56 @@
+CONTENTS: clisp f2c libc ncurses svgalib 
+clisp:    A Common Lisp interpreter.
+clisp:
+clisp:    Common Lisp is a high-level, all-purpose programming language. CLISP
+clisp:    is an implementation of Common Lisp, largely compliant to the book
+clisp:    "Guy L. Steele Jr.: Common Lisp - The Language." It includes an
+clisp:    interactive programming environment with interpreter, compiler and
+clisp:    debugger. CLISP was implemented by Bruno Haible of Karlsruhe
+clisp:    University and Michael Stoll of Munich University.
+clisp:
+clisp:
+clisp:
+f2c:      A Fortran-77 to C translator. 
+f2c:
+f2c:      Contains libf2c.so.0.9.2, ported by Rob Hooft. This package uses
+f2c:      an 'f77' script that hides the C translation process from the user.
+f2c:
+f2c:
+f2c:
+f2c:
+f2c:
+f2c:
+f2c:
+libc:     Development libraries for the C compiler. (v. 4.5.26)
+libc:
+libc:     These libraries are needed to compile C code.    
+libc:
+libc:
+libc:
+libc:
+libc:
+libc:
+libc:
+libc:
+ncurses:  A curses-compatible screen management library with color. (v. 1.8.5)
+ncurses:
+ncurses:  Documentation and sample programs are included.
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+svgalib:  Svgalib Super-VGA Graphics Library (v1.11)
+svgalib: 
+svgalib:  A video hardware graphics library, based on VGAlib 1.2. Supports most
+svgalib:  standard and non-standard VGA modes, and Super-VGA modes for Tseng
+svgalib:  ET4000, Cirrus 542x (including 15/16/24 bit modes), Mach32, Trident
+svgalib:  8900c/9000, and other cards. (see the docs in /usr/doc/svgalib)
+svgalib:
+svgalib:
+svgalib:
+svgalib:
+svgalib:

@@ -1,0 +1,25 @@
+PACKAGE NAME:     ntf-cypr
+PACKAGE SIZE:     2 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-cypr: ntf-cypr 1.1
+ntf-cypr:
+ntf-cypr: The Cypriote fonts with a LaTeX style file to use them.
+ntf-cypr:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/misc/
+usr/lib/texmf/fonts/misc/cypriote/
+usr/lib/texmf/fonts/misc/cypriote/create.sh
+usr/lib/texmf/fonts/misc/cypriote/src/
+usr/lib/texmf/fonts/misc/cypriote/src/cypriote.mf
+usr/lib/texmf/fonts/misc/cypriote/tfm/
+usr/lib/texmf/fonts/misc/cypriote/tfm/cypriote.tfm
+usr/lib/texmf/fonts/misc/cypriote/pk/
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/misc/
+usr/lib/texmf/tex/misc/cypriote.sty

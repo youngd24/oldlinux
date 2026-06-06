@@ -1,0 +1,64 @@
+# This is a Slackware Installation Tagfile.
+#           
+# This one comes from disk: N1 (Network/UUCP/Mail/News series)           
+# and a backup copy called "tagfile.org" can be found on the same disk. You
+# should never edit the "tagfile.org" copy, only the one called "tagfile". Use
+# the "tagfile.org" only if you want to restore original installation defaults
+# by copying it over the top of "tagfile".
+# 
+# It is used to automate software installation. 
+# There are two labels that you can use: ADD and SKP.
+#
+# If the PROMPT option is used during installation, this file will be checked
+# to determine the installation default. First, all the lines beginning with
+# <package_name>: 
+# will be extracted. Then, the last line in the extracted segment will be 
+# checked for the flags ADD, REC, OPT and SKP.
+#
+# If ADD is found, then a priority of [required] will be displayed, and the
+# package will be automatically installed. 
+#
+# If SKP is found, then a priority of [skip] will be displayed, and
+# the package will be automatically skipped.
+#
+# All other packages will be prompted for. There are two optional flags you
+# can use to change the package priority level shown when the user is 
+# prompted: REC and OPT. If REC is found, the priority shown will be
+# [recommended], while if OPT is found, the user sees priority [optional].
+#
+# If no flags are found for a given package, the user is shown priority
+# [unknown], and is prompted for whether the package should be installed.
+#
+# If you mess this file up beyond recognition, just restore from "tagfile.org"
+# 
+#
+netcfg:   A scipt to configure your mail and TCP/IP
+netcfg:   REC
+deliver:  A small and simple program that delivers e-mail to local    
+deliver:  OPT
+dip:      Source code for dip v.3.3.4a
+dip:      OPT
+mailx:    The mailx mailer.                                       
+mailx:    REC
+tcpip:    TCP/IP networking programs and support files. (Net-2)
+tcpip:    REC
+tracrout: Source and executable of "traceroute", a utility that    
+tracrout: OPT
+uucp:     Taylor UUCP 1.04 (configured for HoneyDanBer mode)
+uucp:     OPT
+elm:      Menu-driven user mail program. (v. 2.4pl23)
+elm:      OPT
+pine:     Pine version 3.87
+pine:     OPT
+smail:    Ian Kluft's Linux port of Smail 3.1.28.
+smail:    REC
+cnews:    Controls the spooling and transmission of Usenet news. 
+cnews:    OPT
+nn:       The 'nn' news reader. (v. 6.4.18)
+nn:       OPT
+tin:      The 'tin' news reader. (1.2pl2)
+tin:      OPT
+trn:      A threaded news reader. (v. 2.5)
+trn:      OPT
+ppp:      PPP protocol
+ppp:      OPT

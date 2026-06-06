@@ -1,0 +1,2278 @@
+00index.txt       48828  
+CHECKSUMS         67239  
+FILE_LIST        112887  
+MANIFEST        4104170  
+README              739  
+a/                    =  
+ap/                   =  
+contrib/              =  
+d/                    =  
+e/                    -  
+extra-stuff/          =  
+iv/                   -  
+kernel-source/        =  
+kernel_source/        =  
+n/                    =  
+oipatches/            =  
+oop/                  -  
+rescue/               -  
+t/                    =  
+tcl/                  =  
+u/                    -  
+x/                    =  
+xap/                  =  
+xv/                   -  
+y/                    -  
+
+a:
+00index.txt        6547  
+base/                 -  
+bash/                 -  
+bin/                  -  
+bootutls/             -  
+comms/                -  
+cpio/                 -  
+devs/                 -  
+e2fsbn/               -  
+etc/                  =  
+find/                 -  
+getty/                -  
+grep/                 -  
+gzip/                 -  
+hdsetup/              -  
+keytbls/              -  
+ksh/                  -  
+ldso/                 -  
+lilo/                 -  
+lpr/                  -  
+ps/                   -  
+select/               -  
+shellutl/             -  
+shlbsvga/             -  
+sysklogd/             -  
+sysvinit/             -  
+tar/                  -  
+tcsh/                 -  
+textutl/              -  
+util/                 -  
+zoneinfo/             -  
+
+a/base:
+00index.txt         320  
+file-1.25.tar.gz  51062  
+magic-filter-0.4.tar.gz
+                   5645  
+magic-filter.lsm.gz
+                    593  
+mtools.tar.gz     36485  
+seejpeg-1.4.3.lsm  1148  
+seejpeg-1.4.3.tar.gz
+                  76620  
+usermount-0.4.tar.gz
+                   8494  
+usermount.lsm       866  
+
+a/bash:
+00index.txt         159  
+bash-1.14.1.README
+                   4289  
+bash-1.14.1.tar.gz
+                1339941  
+bash-1.14.tar.gz
+                1360884  
+
+a/bin:
+00index.txt        1388  
+at-2.7.lsm          900  
+at-2.7.tar.gz     28095  
+bban.c            20084  
+compress.tar.gz    6547  
+cron3.0pl1.README   191  
+cron3.0pl1.tar.gz
+                  57926  
+dcron22.lsm        1080  
+dcron22.tar.gz    22602  
+elvis-1.8pl3-README
+                    162  
+elvis-1.8pl3.tar.gz
+                 261715  
+file-3.9.tar.gz   49916  
+fileutils-3.9.tar.gz
+                 187278  
+gawk-2.15.3.tar.gz
+                 480195  
+gawk-2.15.5.tar.gz
+                 512404  
+jpegsrc.v4.tar.gz
+                 296416  
+less-177.tar.gz  100698  
+man-1.3.lsm         878  
+man-1.3.tar.gz    39536  
+man-2.0a2.tar.gz  65127  
+man-2.0a2.tgz-README
+                    868  
+man.tar.gz        37918  
+modutils-0.99.15.tar.gz
+                  12560  
+patch-2.1.tar.gz  71143  
+script.tar.gz      3947  
+sed-2.05.tar.gz  114600  
+shar.tar.gz       13427  
+slackware-color-ls.tar.gz
+                  15657  
+splitvt-1.5.2.tar.gz
+                  33838  
+splitvt-1.5.lsm    1036  
+splitvt-1.5.tar.gz
+                  29421  
+sysvbanner.c       6316  
+time-1.6.debian.diff.gz
+                    495  
+time-1.6.tar.gz   80297  
+tput-1.0.tar.gz   46771  
+unarj.README        261  
+unarj.patch        1761  
+unarj230.tar.gz   37846  
+unzip50p1A.taz    76461  
+which.shar.gz      1766  
+zip19p1A.Notes      840  
+zip19p1A.taz      97935  
+zoo-2.10.tar.gz  173421  
+
+a/bootutls:
+00index.txt         121  
+bootutils-0.1.tar.gz
+                  43195  
+xiafspgm-0.8.1.tar.gz
+                  24279  
+
+a/comms:
+00index.txt         397  
+minicom-1.5b.lsm   1211  
+minicom-1.5b.tar.gz
+                  85106  
+minicom-1.60.lsm   1017  
+minicom-1.60.tar.gz
+                  88689  
+rzsz.README        1059  
+rzsz9202.README     310  
+rzsz9202.dff       6249  
+rzsz9202.iafa       664  
+rzsz9202.patch.gz   823  
+rzsz9202.tar-z    81407  
+rzsz9305.patch.gz  1833  
+rzsz9305.patch.lsm
+                   1117  
+
+a/cpio:
+00index.txt          52  
+cpio-2.3.tar.gz  113823  
+
+a/devs:
+00index.txt          52  
+MAKEDEV            9342  
+
+a/e2fsbn:
+00index.txt         171  
+announce.0.5       2127  
+e2fsprogs-0.5a.lsm
+                   1416  
+e2fsprogs-0.5a.tar.gz
+                 227574  
+ext2fs.FAQ         4101  
+
+a/etc:
+00index.txt         161  
+adduser_slackware.tar.gz
+                   5548  
+old/                  -  
+
+a/etc/old:
+00index.txt          52  
+passwd.tar.gz    174288  
+
+a/find:
+00index.txt          52  
+find-3.8.tar.gz  154737  
+
+a/getty:
+00index.txt         170  
+getty_ps-2.0.7d.lsm
+                    721  
+getty_ps-2.0.7d.tar.gz
+                  86834  
+getty_ps-2.0.7e.tar.gz
+                  85398  
+
+a/grep:
+00index.txt          52  
+grep-2.0.tar.gz  127553  
+
+a/gzip:
+00index.txt          70  
+gzip-1.2.4.tar.gz
+                 221634  
+
+a/hdsetup:
+00index.txt         382  
+dialog-0.4-slackware.tar.gz
+                  64148  
+dialog-0.4.tar.gz
+                  54701  
+dialog-slack-0.3.tar.gz
+                  37629  
+explodepkg.8       1198  
+installpkg.8       2224  
+makepkg.8          3455  
+mkpkg-1.0.lsm      1155  
+mkpkg-1.0.tar.gz   2124  
+pkgtool.8          2653  
+removepkg.8        2009  
+setup.8            4003  
+
+a/keytbls:
+00index.txt          52  
+kbd-0.87.tar.gz  110798  
+
+a/ksh:
+00index.txt          95  
+pdksh-4.9.lsm       925  
+pdksh-4.9.tar.gz
+                 160211  
+
+a/ldso:
+00index.txt         116  
+ld.so-1.4.3.tar.gz
+                  78101  
+ld.so-1.4.4.tar.gz
+                  71692  
+
+a/lilo:
+00index.txt         130  
+lilo.13.iafa        620  
+lilo.13.tar.gz    92981  
+lilo.14.tar.gz    95655  
+lilo.u.14.ps.gz   64440  
+
+a/lpr:
+00index.txt          78  
+lpr.dif           12713  
+lpr.tar.gz        61412  
+
+a/ps:
+00index.txt         190  
+fixed_w.tar.gz     8857  
+kmem-ps-1.1.18.lsm
+                   1091  
+kmem-ps-1.1.18.tar.gz
+                  51132  
+procps-0.95.tar.gz
+                 107657  
+
+a/select:
+00index.txt         123  
+selection-1.5.patch-ps2
+                   3002  
+selection-1.5.tar.gz
+                  13222  
+
+a/shellutl:
+00index.txt          76  
+shellutils-1.9.4.tar.gz
+                 200813  
+
+a/shlbsvga:
+00index.txt          52  
+README               50  
+
+a/sysklogd:
+00index.txt          97  
+sysklogd1.2.lsm    1570  
+sysklogd1.2.tar.gz
+                  27330  
+
+a/sysvinit:
+00index.txt         192  
+SysVinit-2.4.tar.gz
+                  38813  
+SysVinit-2.50.lsm   914  
+SysVinit-2.50.patch1
+                   1543  
+SysVinit-2.50.tar.gz
+                  49157  
+
+a/tar:
+00index.txt          70  
+tar-1.11.2.tar.gz
+                 211658  
+
+a/tcsh:
+00index.txt         138  
+tcsh-6.04.tar.gz
+                 425904  
+tcsh-6.05.tar.gz
+                 472589  
+tcsh.man         176383  
+
+a/textutl:
+00index.txt          73  
+textutils-1.9.tar.gz
+                 249480  
+
+a/util:
+00index.txt         414  
+bdflush-1.3.tar.gz
+                   3527  
+bdflush-1.4.tar.gz
+                   7909  
+setserial-2.10.tar.gz
+                  10962  
+util-linux-1.6-slackware.diff
+                   2250  
+util-linux-1.6.Announce
+                   2609  
+util-linux-1.6.bin.Notes
+                  19303  
+util-linux-1.6.lsm
+                   1359  
+util-linux-1.6.tar.gz
+                 550139  
+
+a/zoneinfo:
+00index.txt          52  
+README               88  
+
+ap:
+00index.txt        4976  
+ash/                  -  
+bc/                   -  
+diff/                 -  
+english/              -  
+ftape/                -  
+ghostscr/             -  
+gonzo/                -  
+groff/                -  
+gsfonts1/             -  
+gsfonts2              8  -> gsfonts1
+ispell/               -  
+jed/                  -  
+joe/                  -  
+jove/                 -  
+manpgs/               -  
+mt_st/                -  
+quota/                -  
+sc/                   -  
+sudo/                 -  
+termbin/              -  
+termnet/              =  
+termsrc/              -  
+texinfo/              -  
+vim/                  -  
+workbone/             -  
+zsh/                  -  
+
+ap/ash:
+00index.txt          73  
+ash-linux-0.2.tar.gz
+                 104686  
+
+ap/bc:
+00index.txt          52  
+bc-1.02.tar.gz    81299  
+
+ap/diff:
+00index.txt          73  
+diffutils-2.6.tar.gz
+                 293627  
+
+ap/english:
+00index.txt          73  
+ispell-3.0.09.tar.gz
+                 467745  
+
+ap/ftape:
+00index.txt         162  
+ftape-0.9.10.tar.gz
+                  59663  
+ftape-0.9.9d.tar.gz
+                  56312  
+ftape-1.12.tar.gz
+                  65806  
+
+ap/ghostscr:
+00index.txt         366  
+ghostscript-2.6.1.fix-01.gz
+                  10782  
+ghostscript-2.6.1.fix-02.gz
+                   1151  
+ghostscript-2.6.1.fix-03.gz
+                  20186  
+ghostscript-2.6.1.fix-04.gz
+                   2959  
+ghostscript-2.6.1.tar.gz
+                 983017  
+gs261-svgalib.tar.gz
+                  24900  
+gs261-svgalib.txt   157  
+
+ap/gonzo:
+00index.txt          52  
+rumors           208373  
+
+ap/groff:
+00index.txt          70  
+groff-1.09.tar.gz
+                 843088  
+
+ap/gsfonts1:
+00index.txt          83  
+ghostscript-fonts-2.6.1.tar.gz
+                1706030  
+
+ap/ispell:
+00index.txt          70  
+ispell-4.0.tar.gz
+                 187403  
+
+ap/jed:
+00index.txt          52  
+jed096-1.tar.gz  418792  
+
+ap/joe:
+00index.txt         124  
+joe-1.0.8-linux.README
+                    720  
+joe-1.0.8-linux.tar.gz
+                  89533  
+
+ap/jove:
+00index.txt          70  
+jove4.14.7.tar.gz
+                 301299  
+
+ap/manpgs:
+00index.txt         148  
+man-pages-1.2.Announce
+                   2180  
+man-pages-1.2.lsm   804  
+man-pages-1.2.tar.gz
+                 175024  
+
+ap/mt_st:
+00index.txt          52  
+mt-st-0.1.tar.gz  12633  
+
+ap/quota:
+00index.txt          52  
+README               73  
+
+ap/sc:
+00index.txt          71  
+sc621.linux.tar.gz
+                 117687  
+
+ap/sudo:
+00index.txt          52  
+sudo-1.2.tar.gz   25713  
+
+ap/termbin:
+00index.txt          52  
+README              121  
+
+ap/termnet:
+00index.txt        1860  
+README+ttelnet+tfinger
+                    318  
+ncftp173/             -  
+readline-1.1/         =  
+
+ap/termnet/ncftp173:
+00index.txt         832  
+Blurb              2134  
+Makefile           7549  
+Makefile.orig      7486  
+README            16274  
+README-Slackware    781  
+cmds.c            45921  
+cmds.h             3501  
+cmdtab.c          11134  
+copyright.h        1048  
+defaults.h         2811  
+ftp.c             42369  
+ftp.h              1714  
+ftprc.c           13066  
+ftprc.h             931  
+getpass.c          2940  
+getpass.h           370  
+glob.c            10224  
+glob.h              375  
+main.c            25463  
+main.h              980  
+ncftp.1           33765  
+open.c            17735  
+open.h             1263  
+patchlevel.h       4409  
+set.c              7930  
+set.h              1029  
+sys.h             11398  
+tips.c             5436  
+util.c            18719  
+util.h             2448  
+v2_Note            1902  
+
+ap/termnet/readline-1.1:
+00index.txt         849  
+COPYING           12929  
+ChangeLog          4304  
+Makefile           3881  
+chardefs.h         1434  
+doc/                  -  
+emacs_keymap.c    18513  
+examples/             -  
+funmap.c           6551  
+history.c         38870  
+history.h          4793  
+keymaps.c          4008  
+keymaps.h          1546  
+readline.c       141176  
+readline.h         7281  
+vi_keymap.c       17701  
+vi_mode.c         17964  
+
+ap/termnet/readline-1.1/doc:
+00index.txt         286  
+Makefile            770  
+hist.texinfo       3440  
+history.dvi       23964  
+hstech.texinfo    10512  
+hsuser.texinfo     4753  
+readline.dvi      71888  
+rlman.texinfo      3412  
+rltech.texinfo    32518  
+rluser.texinfo    17067  
+texinfo.tex       88035  
+
+ap/termnet/readline-1.1/examples:
+00index.txt         104  
+Makefile            248  
+fileman.c          9023  
+manexamp.c         2465  
+
+ap/termsrc:
+00index.txt         104  
+README              517  
+term116.tar.gz   129197  
+term117d.tar.gz  130840  
+
+ap/texinfo:
+00index.txt          71  
+texinfo-3.1.tar.gz
+                 693012  
+
+ap/vim:
+00index.txt          78  
+vim-2.0.lsm        1241  
+vim-2.0.tar.gz   434712  
+
+ap/workbone:
+00index.txt          98  
+WorkBone-0.1.lsm   1604  
+WorkBone-0.1.tar.gz
+                  26784  
+
+ap/zsh:
+00index.txt          71  
+zsh-2.4.306.tar.gz
+                 403642  
+
+contrib:
+00index.txt        1446  
+Free-Widgets/         -  
+GNU-common-lisp/      -  
+GNU-gnat/             -  
+GNU-gpc/              -  
+ircII/                -  
+mbase/                -  
+mc/                   -  
+samba/                -  
+uucp-1.04/            -  
+wu-ftpd-2.4/          -  
+
+contrib/Free-Widgets:
+00index.txt          97  
+README               56  
+wbuild-1.17.tar.gz
+                  84949  
+
+contrib/GNU-common-lisp:
+00index.txt         130  
+COPYING.LIB-2.0   25265  
+ChangeLog         51801  
+README            10105  
+gcl-1.0.tgz     1190754  
+
+contrib/GNU-gnat:
+00index.txt          73  
+gnat-1.79-src.tar.gz
+                1307864  
+
+contrib/GNU-gpc:
+00index.txt         101  
+GPC.GUIDE         54001  
+gpc-2.5.7-jan20.tar.gz
+                 627744  
+
+contrib/ircII:
+00index.txt         125  
+ircII2.3.17+tv1.1.lsm
+                   1083  
+ircII2.3.17+tv1.1.tar.gz
+                 444038  
+
+contrib/mbase:
+00index.txt          78  
+mbase50.tar.gz   105095  
+mbase51.tar.gz   349578  
+
+contrib/mc:
+00index.txt          78  
+mc-0.8.lsm         1379  
+mc-0.8.tar.gz     66652  
+
+contrib/samba:
+00index.txt          72  
+samba-1.7.00.tar.gz
+                 191063  
+
+contrib/uucp-1.04:
+00index.txt         173  
+uucp-1.04.slack_diffs.tar.gz
+                  26717  
+uucp-1.04.tar.gz
+                 634624  
+uucp-doc-1.04.1.tar.gz
+                 383413  
+
+contrib/wu-ftpd-2.4:
+00index.txt         124  
+wu-ftpd-2.4.linux.tar.gz
+                 112548  
+wu-ftpd-2.4.patch.gz
+                   4738  
+
+d:
+00index.txt        3294  
+binutils/             -  
+bison/                -  
+byacc/                -  
+clisp/                -  
+extralib              4  -> libc
+f2c/                  -  
+flex/                 -  
+gcc/                  -  
+gdb/                  -  
+gxx                   3  -> gcc
+include               4  -> libc
+ipdms2/               -  
+libc/                 -  
+libgxx/               -  
+m4/                   -  
+man2/                 -  
+man3/                 -  
+ncurses/              -  
+objc                  3  -> gcc
+p2c/                  -  
+perl/                 -  
+pmake/                -  
+rcs/                  -  
+svgalib/              -  
+tools/                -  
+
+d/binutils:
+00index.txt         420  
+bin86-0.1.tar.gz
+                 121796  
+binutils-1.9l.4.tar.gz
+                 175570  
+gas-1.38.1l.1.tar.gz
+                 186564  
+gas-2.2.tar.gz  1950621  
+gas-2.2l.diff      3397  
+make-3.70.tar.gz
+                 399307  
+make-3.71.tar.gz
+                 538220  
+make-doc-3.70.tar.gz
+                 253635  
+strace-3.0.lsm      822  
+strace-3.0.tar.gz
+                 128459  
+
+d/bison:
+00index.txt         122  
+bison-1.22.debian.diff.gz
+                    921  
+bison-1.22.tar.gz
+                 257396  
+
+d/byacc:
+00index.txt          52  
+byacc.tar.gz      51633  
+
+d/clisp:
+00index.txt          98  
+clisp-source.IAFA   654  
+clisp-source.tar.gz
+                2605598  
+
+d/f2c:
+00index.txt          98  
+libf2c-0.9.2.lsm    703  
+libf2c-0.9.2.tar.gz
+                 200165  
+
+d/flex:
+00index.txt          70  
+flex-2.4.6.tar.gz
+                 283738  
+
+d/gcc:
+00index.txt         112  
+gcc-2.4.5.tar.gz
+                5558673  
+gcc-2.5.8.tar.gz
+                5997896  
+
+d/gdb:
+00index.txt         114  
+gdb-4.12.hwdbg.diff
+                  29713  
+gdb-4.12.tar.gz
+                3682855  
+
+d/ipdms2:
+00index.txt         180  
+ipdm2s-install     5796  
+ipdm2s.9401.LINX.tar.gz
+                 278124  
+ipdm2s.doc.tar   271872  
+ipdm2s.manual     32327  
+ipdm2s.readme      1593  
+
+d/libc:
+00index.txt         206  
+libc-4.4.4.tar.gz
+                 929968  
+libc-4.5.24.tar.gz
+                 914525  
+libc-4.5.26.tar.gz
+                 933904  
+release.libc-4.5.26
+                   7423  
+
+d/libgxx:
+00index.txt         122  
+libg++-2.5.3.tar.gz
+                1281474  
+libg++-2.5.3l.2.diff.gz
+                  26732  
+
+d/m4:
+00index.txt          52  
+m4-1.1.tar.gz    255213  
+
+d/man2:
+00index.txt          52  
+README               64  
+
+d/man3:
+00index.txt          52  
+README               64  
+
+d/ncurses:
+00index.txt         124  
+1-8-5.tar.gz     259978  
+ncurses.dif        2825  
+ncurses1.8.1.tar.gz
+                 158112  
+
+d/p2c:
+00index.txt          78  
+p2c-1.20.tar.gz  391137  
+p2c.README        27537  
+
+d/perl:
+00index.txt         175  
+perl-4.036-linux-kit.lsm
+                   1101  
+perl-4.036-linux-kit.tar.gz
+                   3202  
+perl-4.036.tar.gz
+                 586178  
+
+d/pmake:
+00index.txt          96  
+pmake.v1.0.lsm      972  
+pmake.v1.0.tar.gz
+                 165904  
+
+d/rcs:
+00index.txt          70  
+rcs5.6.0.1.tar.gz
+                 253970  
+
+d/svgalib:
+00index.txt          70  
+svgalib111.tar.gz
+                 305979  
+
+d/tools:
+00index.txt          70  
+tools-2.11.tar.gz
+                 150064  
+
+e:
+00index.txt         294  
+emacs-19.25-patch  2966  
+emacs-19.25.tar.gz
+                7326186  
+emacs-manual-6.0.dvi.gz
+                 300114  
+lemacs-19.10         19  -> /cdrom/lemacs-19.10
+lemacs-19.10-slackware.txt
+                    160  
+lemacs-19.10.tar.gz
+                9286960  
+
+extra-stuff:
+00index.txt        2755  
+BSD-sendmail/         -  
+CPM-80-emulator/      -  
+DOS-emulator/         -  
+GNU/                  -  
+INDEX              1812  
+gated-routed/         -  
+gnu-finger-1.37/      -  
+iBCS2-emulator/       =  
+mmdf/                 -  
+
+extra-stuff/BSD-sendmail:
+00index.txt         279  
+sendmail.8.6.9.base.tar.Z
+                 500945  
+sendmail.8.6.9.cf.tar.Z
+                 199863  
+sendmail.8.6.9.misc.tar.Z
+                 106149  
+sendmail.8.6.9.patch
+                 130419  
+sendmail.8.6.9.xdoc.tar.Z
+                 306207  
+
+extra-stuff/CPM-80-emulator:
+00index.txt         104  
+cpm-0.2.tar.gz   103376  
+cpm.lsm             985  
+cpm.tar.gz       122513  
+
+extra-stuff/DOS-emulator:
+00index.txt         286  
+README             3279  
+SIG.tgz            5130  
+dosemu0.52.lsm     1050  
+dosemu0.52.tgz   556346  
+dosgde.tgz       253817  
+emumodule.tgz      4294  
+linpkt.com         2283  
+os2dos.gz        157888  
+pre51_24.tgz     497087  
+virt_dos.tgz      77527  
+
+extra-stuff/GNU:
+00index.txt         376  
+autoconf-1.8.tar.gz
+                 232059  
+f2c-1993.04.28.tar.gz
+                 378126  
+fax-3.2.1.tar.gz  74074  
+indent-1.9.1.tar.gz
+                 160411  
+screen-3.5.2.tar.gz
+                 263836  
+termcap-1.2.tar.gz
+                 142720  
+uuencode-1.0.tar.gz
+                  27331  
+xinfo-1.01.01.tar.gz
+                  33848  
+
+extra-stuff/gated-routed:
+00index.txt         192  
+gated.linux.bin.tar.gz
+                 294408  
+gated.linux.lsm    1284  
+gated.linux.man.tar.gz
+                  21049  
+gated.linux.tgz
+                1011986  
+
+extra-stuff/gnu-finger-1.37:
+00index.txt         124  
+finger-1.37.debian.diff.gz
+                   5636  
+finger-1.37.tar.gz
+                 238117  
+
+extra-stuff/iBCS2-emulator:
+00index.txt         880  
+INDEX               483  
+README             5072  
+coff-tools/           -  
+devel2/               =  
+ibcs-1.1.14.patches.tentative
+                   3968  
+ibcs-940609.tar.gz
+                 115373  
+libc_s-940330.tar.gz
+                 311183  
+svr4-libs-940330.tar.gz
+                  88690  
+
+extra-stuff/iBCS2-emulator/coff-tools:
+00index.txt         148  
+as-coff.gz       107519  
+bintools-3.3.coff.tar.gz
+                 611561  
+gdb-931007.coff.gz
+                 379585  
+
+extra-stuff/iBCS2-emulator/devel2:
+00index.txt         375  
+README             2626  
+old/                  -  
+sco-perl-test.tar.gz
+                 489180  
+shared-docs.tar.gz
+                   2828  
+
+extra-stuff/iBCS2-emulator/devel2/old:
+00Index            1742  
+00index.txt         199  
+coff.c.announce    1212  
+coff.c.gz          6142  
+coffpl13.patch.gz
+                  21862  
+ibcs-ioctl-931015.tar.gz
+                   6540  
+
+extra-stuff/mmdf:
+00index.txt          98  
+mmdf-IIb-4.3.lsm    931  
+mmdf-IIb-4.3.tar.gz
+                1064856  
+
+iv:
+00index.txt         123  
+3.1.tar.gz      2085003  
+iv-3.1l.2-diffs.gz
+                 179327  
+iv-3.1l.lsm         833  
+
+kernel-source:
+00index.txt        2613  
+Historic/             -  
+ToshibaPCD-1.1.tar.gz
+                   5874  
+ifs-5.1/              =  
+sony535-0.5/          -  
+umsdos/               -  
+v1.0/                 -  
+v1.1/                 =  
+
+kernel-source/Historic:
+00index.txt          70  
+linux-0.01.tar.gz
+                  73458  
+
+kernel-source/ifs-5.1:
+00index.txt         369  
+README             7186  
+README_IFS_1.1.8    705  
+ifs-5.1-1.1.8.diffs
+                   4170  
+ifs-5.1.tar       71680  
+ifsprogs/             -  
+
+kernel-source/ifs-5.1/ifsprogs:
+00index.txt         182  
+CHANGES             524  
+Makefile            199  
+README             7186  
+smount.c           3007  
+test.pl           24171  
+unwo.c              671  
+
+kernel-source/sony535-0.5:
+00index.txt         148  
+CHANGES            1550  
+README.sony535     5906  
+sony535-0.5.lsm     789  
+sony535-0.5.patch
+                  60522  
+
+kernel-source/umsdos:
+00index.txt         342  
+umsdos-0.2.bug-fix
+                   2541  
+umsdos-0.2.diff  157783  
+umsdos-0.2.rename_f.bug_fix
+                   3129  
+umsdos-0.3.diff.gz
+                  41277  
+umsdos-0.3.doc.gz
+                  16833  
+umsdos-0.3.lsm     1118  
+umsdos-0.3a.tar  471040  
+umsdos_progs-0.3.tar.gz
+                  27962  
+
+kernel-source/v1.0:
+00index.txt         359  
+linux-1.0.tar.gz
+                1259161  
+patch1.gz          5085  
+patch2.gz          3672  
+patch3.gz          8309  
+patch4.gz          1189  
+patch5.gz          7175  
+patch6.gz          3708  
+patch7.gz          1420  
+patch8.gz          6408  
+patch9.gz          1153  
+umsdos-0.3a-for-1.0.9.diff.gz
+                  63799  
+
+kernel-source/v1.1:
+00index.txt        1019  
+cdu31a/               -  
+patch1.gz         13156  
+patch10.gz        57649  
+patch11.gz        21366  
+patch12.gz        47687  
+patch13.gz       166528  
+patch14.gz        16062  
+patch15.gz        38988  
+patch16.gz        23485  
+patch17.gz         6780  
+patch18.gz        47414  
+patch19.gz         7158  
+patch2.gz         29971  
+patch20.gz        95773  
+patch21.gz        25523  
+patch22.gz        39132  
+patch3.gz         29198  
+patch4.gz        129857  
+patch5.gz          8000  
+patch6.gz         17383  
+patch7.gz          1180  
+patch8.gz          9177  
+patch9.gz          8212  
+ramdisk/              -  
+v1.1.0.tar.gz   1256165  
+v1.1.18+UMSDOS-0.3a+IFS-5.1.tgz
+                1483479  
+v1.1.19+UMSDOS-0.3a+IFS-5.1.tgz
+                1485065  
+
+kernel-source/v1.1/cdu31a:
+00index.txt         137  
+cdu31a-v1.patch1.diff
+                  11833  
+linux--fast-sony-cdu31a-driver.patch
+                  26828  
+
+kernel-source/v1.1/ramdisk:
+00index.txt          71  
+ramdisk.c.bootdisk
+                   4835  
+
+kernel_source:
+00index.txt         174  
+v1.1/                 =  
+
+kernel_source/v1.1:
+00index.txt         110  
+ncr/                  -  
+
+kernel_source/v1.1/ncr:
+00index.txt          52  
+ncr_src.3.tgz     94953  
+
+n:
+00index.txt       17222  
+README              127  
+cnews/                -  
+deliver/              -  
+dip/                  -  
+elm/                  -  
+inn_pkg/              -  
+lynx/                 -  
+mailx/                -  
+newspak-2.2.tar.gz
+                 152712  
+nn/                   -  
+pine/                 -  
+ppp/                  -  
+smail/                -  
+tcpip/                =  
+tin/                  -  
+trn/                  -  
+uucp/                 =  
+
+n/cnews:
+00index.txt          52  
+c-news.tar.gz    408499  
+
+n/deliver:
+00index.txt         129  
+deliver.README     2318  
+deliver.tar.gz    75004  
+deliver4slackware.tar.gz
+                  53143  
+
+n/dip:
+00index.txt          52  
+README               57  
+
+n/elm:
+00index.txt          52  
+elm2.4.tar.gz    632184  
+
+n/inn_pkg:
+00index.txt         156  
+faq-inn-1.gz      11183  
+faq-inn-2.gz       3457  
+faq-inn-3.gz      21222  
+faq-nov.gz         4279  
+inn1.4.tar.gz    483886  
+
+n/lynx:
+00index.txt          52  
+lynx2-2.tar.gz   628915  
+
+n/mailx:
+00index.txt         100  
+mailx-5.5.debian.diff
+                   8612  
+mailx-5.5.tar.gz  61981  
+
+n/nn:
+00index.txt          69  
+nn-6.4.18.tar.gz
+                 420920  
+
+n/pine:
+00index.txt          69  
+pine-3.89.tar.gz
+                1317917  
+
+n/ppp:
+00index.txt         118  
+ppp-2.1.2a.tar.gz
+                 328035  
+ppp-2.1.2a.tar.gz.lsm
+                   1303  
+
+n/smail:
+00index.txt          72  
+smail-3.1.28.tar.gz
+                 972252  
+
+n/tcpip:
+00index.txt       14960  
+BSD/                  =  
+Beta-Test/            =  
+Binaries/             =  
+INDEX               255  
+Patches/              =  
+System/               =  
+User/                 =  
+dig-2.0.tar.gz    61741  
+dip337a-uri.tar.gz
+                  37092  
+fwhois-1.00.tar.gz
+                   8596  
+rstatd_patched.lsm  838  
+rstatd_patched.tar.gz
+                   3801  
+security.tar.gz  262597  
+security.tar.gz-README
+                    221  
+yp-clients.README  2466  
+yp-clients.lsm     1283  
+yp-clients.tar.gz
+                  16473  
+
+n/tcpip/BSD:
+00index.txt        5687  
+Extract             302  
+INDEX                53  
+Install/              -  
+README             2272  
+arp.dif            6447  
+arp.tar.gz         4509  
+biff.dif            315  
+biff.tar.gz        2201  
+comsat.dif          328  
+comsat.tar.gz      4272  
+finger.dif         4198  
+finger.tar.gz     11170  
+fingerd.dif        1719  
+fingerd.tar.gz     3104  
+ftp.dif           12463  
+ftp.tar.gz        38472  
+ftpd.dif           4919  
+ftpd.tar.gz       22993  
+inetd.dif          1577  
+inetd.tar.gz      14962  
+libtelnet.dif      1577  
+libtelnet.tar.gz  22692  
+lpr/                  =  
+lpr.dif           12960  
+lpr.dif-new       12713  
+lpr.tar.gz        61412  
+named.tar.gz     280803  
+ping.dif          10111  
+ping.tar.gz       12593  
+portmap.dif        1358  
+portmap.tar.gz     6028  
+rarpd.tar.gz       8145  
+rcp.dif            1368  
+rcp.tar.gz         8599  
+rexecd.dif         4110  
+rexecd.tar.gz      4479  
+rlogin.dif        23887  
+rlogin.tar.gz      8746  
+rlogind.dif        1784  
+rlogind.tar.gz     8719  
+routed.tar.gz     29655  
+rpc.rstatd.Makefile
+                    203  
+rpc.rstatd.tar.gz  5303  
+rpc.rusersd.dif    1930  
+rpc.rusersd.tar.gz
+                   4609  
+rpc.rwalld.dif      604  
+rpc.rwalld.tar.gz  3118  
+rpcgen.new.tar.gz
+                  34411  
+rpcgen.tar.gz     15801  
+rpcinfo.dif        1006  
+rpcinfo.tar.gz     5628  
+rsh.dif            2381  
+rsh.tar.gz         5499  
+rshd.dif           1246  
+rshd.tar.gz        8441  
+rup.tar.gz         4393  
+rusers.dif         1156  
+rusers.tar.gz      3956  
+rwall.dif           328  
+rwall.tar.gz       3308  
+slattach.new.tar.gz
+                   3072  
+slattach.tar.gz    3109  
+sliplogin.dif      8710  
+sliplogin.tar.gz   6588  
+talk.FvK           1735  
+talk.dif           3630  
+talk.tar.gz       10725  
+talkd.dif           766  
+talkd.tar.gz       7358  
+telnet.dif         4174  
+telnet.tar.gz     70386  
+telnetd.dif        6637  
+telnetd.tar.gz    48418  
+tftp.dif            345  
+tftp.tar.gz       10780  
+tftpd.dif           397  
+tftpd.tar.gz       5720  
+timed.dif          4960  
+timed.tar.gz      54446  
+tn3270.README        17  
+tn3270.tar.gz     86947  
+
+n/tcpip/BSD/Install:
+00index.txt         260  
+inetd.conf         3012  
+protocols           595  
+rnusers.h          1408  
+rnusers.x          4674  
+rusers.h           2834  
+rusers.x           2640  
+rwall.h             737  
+rwall.x            1836  
+services           5565  
+
+n/tcpip/BSD/lpr:
+00index.txt        3166  
+Makefile            862  
+Makefile.orig       431  
+common_source/        -  
+etc.printcap       1497  
+filters/              -  
+lpc/                  -  
+lpd/                  -  
+lpq/                  -  
+lpr/                  -  
+lprm/                 -  
+lptest/               -  
+pac/                  -  
+
+n/tcpip/BSD/lpr/common_source:
+00index.txt         728  
+Makefile            324  
+Makefile.orig       162  
+common.c           8575  
+common.c.orig      8752  
+common.c.rej       1663  
+common.o           3573  
+displayq.c        10015  
+displayq.o         7811  
+libcommon.a       22814  
+lp.h               4750  
+lp.h.orig          4954  
+lp.h.rej           1840  
+lp.local.h         3263  
+lp.local.h.orig    3210  
+lp.local.h.rej      411  
+lpc.h              2136  
+pathnames.h        2501  
+pathnames.h.orig   2515  
+pathnames.h.rej    1064  
+printcap.c         9863  
+printcap.o         2914  
+rmjob.c            8315  
+rmjob.c.orig       8315  
+rmjob.c.rej         322  
+rmjob.o            5530  
+startdaemon.c      3204  
+startdaemon.o      1340  
+
+n/tcpip/BSD/lpr/filters:
+00index.txt         156  
+Makefile            170  
+Makefile.orig        85  
+lpf               11421  
+lpf.c              5407  
+lpf.o              3421  
+
+n/tcpip/BSD/lpr/lpc:
+00index.txt         390  
+Makefile            306  
+Makefile.orig       153  
+cmds.c            22054  
+cmds.c.orig       22051  
+cmds.c.rej         1759  
+cmds.o            15624  
+cmdtab.c           3592  
+cmdtab.c.orig      3590  
+cmdtab.c.rej       1070  
+cmdtab.o           1966  
+lpc               32312  
+lpc.8              5911  
+lpc.c              5865  
+lpc.o              3399  
+
+n/tcpip/BSD/lpr/lpd:
+00index.txt         494  
+Makefile            322  
+Makefile.orig       161  
+lpd               54011  
+lpd.8              7426  
+lpd.c             11495  
+lpd.c.orig        11461  
+lpd.c.rej           814  
+lpd.o              6971  
+lpdchar.c         16014  
+lpdchar.o          1052  
+printjob.c        29801  
+printjob.c.orig   30128  
+printjob.c.rej     3285  
+printjob.o        24187  
+recvjob.c          7255  
+recvjob.c.orig     7213  
+recvjob.c.rej       480  
+recvjob.o          4207  
+
+n/tcpip/BSD/lpr/lpq:
+00index.txt         182  
+Makefile            182  
+Makefile.orig        91  
+lpq               22435  
+lpq.1              4654  
+lpq.c              3510  
+lpq.o              1594  
+
+n/tcpip/BSD/lpr/lpr:
+00index.txt         260  
+Makefile            252  
+Makefile.orig       126  
+lpr               10056  
+lpr.1              7448  
+lpr.c             16386  
+lpr.c.orig        16341  
+lpr.c.rej          3259  
+lpr.o             11824  
+lpr.termios       31948  
+
+n/tcpip/BSD/lpr/lprm:
+00index.txt         182  
+Makefile            266  
+Makefile.orig       133  
+lprm              22181  
+lprm.1             4637  
+lprm.c             4021  
+lprm.o             1800  
+
+n/tcpip/BSD/lpr/lptest:
+00index.txt         182  
+Makefile            292  
+Makefile.orig       146  
+lptest             9275  
+lptest.1           2865  
+lptest.c           2714  
+lptest.o            876  
+
+n/tcpip/BSD/lpr/pac:
+00index.txt         182  
+Makefile            258  
+Makefile.orig       129  
+pac               16350  
+pac.8              3861  
+pac.c              9607  
+pac.o              5220  
+
+n/tcpip/Beta-Test:
+00index.txt         165  
+INDEX                42  
+sliplogin/            -  
+
+n/tcpip/Beta-Test/sliplogin:
+00index.txt          75  
+sliplogin-beta1.tar.gz
+                  10790  
+
+n/tcpip/Binaries:
+00index.txt         998  
+INDEX              1488  
+arp                9220  
+finger            17412  
+fingerd            9220  
+ftp               50180  
+ftpd              41988  
+inetd             17412  
+lpc               20132  
+lpd               38356  
+lpf                2744  
+lpq               10420  
+lpr               12024  
+lprm              10008  
+lptest             1352  
+pac                6716  
+ping               8700  
+portmap            4036  
+rlogin            13316  
+rlogind           13316  
+rpcinfo           13316  
+rshd              13316  
+rusers             9220  
+rusersd            9220  
+rwall              9220  
+rwalld             9220  
+sliplogin          9220  
+support/              -  
+talk              17412  
+talkd             13316  
+telnet            66564  
+telnetd           37892  
+tftp              17412  
+tftpd             13316  
+
+n/tcpip/Binaries/support:
+00index.txt         104  
+etc.printcap       1497  
+inetd.conf         2987  
+services           5565  
+
+n/tcpip/Patches:
+00index.txt         104  
+INDEX               170  
+alex.patches       3692  
+isode.patch.gz    44038  
+
+n/tcpip/System:
+00index.txt        5578  
+INDEX              1648  
+Obsolete/             =  
+amd/                  -  
+athena/               -  
+bind/                 -  
+bootpc/               -  
+bootpd/               -  
+bwnfsd/               -  
+dig/                  -  
+dip/                  -  
+fromto/               -  
+fsp/                  -  
+ftp-diku/             -  
+gobview/              -  
+host/                 -  
+intimed/              -  
+net032/               -  
+netdate/              -  
+netstat/              -  
+nfsd/                 -  
+nntpd/                -  
+pcnfsd/               =  
+pidentd/              -  
+pop2d/                -  
+pop3.older.d/         -  
+pop3d/                -  
+routed/               -  
+rpc/                  -  
+rstatd/               -  
+rwhod/                -  
+sendmail/             -  
+setup/                -  
+showmount/            -  
+smrsh/                -  
+tcpd/                 -  
+tcpdump/              -  
+tcpspray/             -  
+traceroute/           -  
+wdsetup/              -  
+yp/                   -  
+
+n/tcpip/System/Obsolete:
+00index.txt         882  
+arp.obsolete/         -  
+fingerd.obsolete/     -  
+ftpd.obsolete/        -  
+inetd.obsolete/       -  
+lpd.obsolete/         -  
+ping.obsolete/        -  
+rlogind.obsolete/     -  
+rshd.obsolete/        -  
+slattach.obsolete/    -  
+talkd.obsolete/       -  
+telnetd.obsolete/     -  
+tftpd.obsolete/       -  
+
+n/tcpip/System/Obsolete/arp.obsolete:
+00index.txt          26  
+
+n/tcpip/System/Obsolete/fingerd.obsolete:
+00index.txt          26  
+
+n/tcpip/System/Obsolete/ftpd.obsolete:
+00index.txt          26  
+
+n/tcpip/System/Obsolete/inetd.obsolete:
+00index.txt          26  
+
+n/tcpip/System/Obsolete/lpd.obsolete:
+00index.txt          26  
+
+n/tcpip/System/Obsolete/ping.obsolete:
+00index.txt          52  
+ping.README         279  
+
+n/tcpip/System/Obsolete/rlogind.obsolete:
+00index.txt          26  
+
+n/tcpip/System/Obsolete/rshd.obsolete:
+00index.txt          26  
+
+n/tcpip/System/Obsolete/slattach.obsolete:
+00index.txt          26  
+
+n/tcpip/System/Obsolete/talkd.obsolete:
+00index.txt          26  
+
+n/tcpip/System/Obsolete/telnetd.obsolete:
+00index.txt          26  
+
+n/tcpip/System/Obsolete/tftpd.obsolete:
+00index.txt          26  
+
+n/tcpip/System/amd:
+00index.txt          74  
+amd920824upl67.tar.gz
+                 496401  
+
+n/tcpip/System/athena:
+00index.txt         129  
+athena-inetd-5.30.tar.gz
+                  26795  
+athena-inetd.lsm    992  
+athena.tar.gz    503089  
+
+n/tcpip/System/bind:
+00index.txt          69  
+bind-483l.tar.gz
+                 298355  
+
+n/tcpip/System/bootpc:
+00index.txt          97  
+bootpc-cam.tar.gz  7552  
+bootpc-net3.tar.gz
+                   7572  
+
+n/tcpip/System/bootpd:
+00index.txt          71  
+bootpd-210a.tar.gz
+                  41563  
+
+n/tcpip/System/bwnfsd:
+00index.txt          52  
+bwnfsd.tar.gz     19135  
+
+n/tcpip/System/dig:
+00index.txt          78  
+dig-2.0.lsm       61741  
+dig-2.0.tar.gz    61741  
+
+n/tcpip/System/dip:
+00index.txt         164  
+dip337-oldroutepatch
+                   1276  
+dip337-uri.tar.gz
+                  23956  
+old-dip337uri.tar.gz
+                  23002  
+
+n/tcpip/System/fromto:
+00index.txt          52  
+fromto-101.tar.gz  1875  
+
+n/tcpip/System/fsp:
+00index.txt          52  
+fsp-2.71.tar.gz  115011  
+
+n/tcpip/System/ftp-diku:
+00index.txt          69  
+ftpd-diku.tar.gz
+                 131809  
+
+n/tcpip/System/gobview:
+00index.txt          71  
+gobview_1.0.tar.gz
+                  84591  
+
+n/tcpip/System/host:
+00index.txt          52  
+host-101.tar.gz   14373  
+
+n/tcpip/System/intimed:
+00index.txt          72  
+intimed-1.10.tar.gz
+                   1036  
+
+n/tcpip/System/net032:
+00index.txt         163  
+net-0.32.old.tar.gz
+                 124068  
+net-0.32b.tar.gz
+                 102175  
+net-0.32d-net3.tar.gz
+                 105725  
+
+n/tcpip/System/netdate:
+00index.txt          72  
+netdate-1.16.tar.gz
+                  15321  
+
+n/tcpip/System/netstat:
+00index.txt          52  
+netstat.tar.gz    12572  
+
+n/tcpip/System/nfsd:
+00index.txt          52  
+nfsd-150.tar.gz   45256  
+
+n/tcpip/System/nntpd:
+00index.txt          71  
+nntpd-1511A.tar.gz
+                 159799  
+
+n/tcpip/System/pcnfsd:
+00index.txt         151  
+INDEX               138  
+PCNFSD2.README     1151  
+linux_pcnfsd2.tar.gz
+                  39306  
+pcnsfd-140.tar.gz  6529  
+
+n/tcpip/System/pidentd:
+00index.txt          77  
+pidentd-2.2beta.4.tar.gz
+                  52080  
+
+n/tcpip/System/pop2d:
+00index.txt          72  
+pop2d-1.0.01.tar.gz
+                  34844  
+
+n/tcpip/System/pop3.older.d:
+00index.txt          96  
+README             1195  
+pop3d-1001.tar.gz
+                  17609  
+
+n/tcpip/System/pop3d:
+00index.txt          72  
+pop3d-1.00.4.tar.gz
+                  21572  
+
+n/tcpip/System/routed:
+00index.txt         121  
+routed-5.23-fixed.tar.gz
+                  45584  
+routed-523.tar.gz
+                  29514  
+
+n/tcpip/System/rpc:
+00index.txt         104  
+rpc-0.9.README    10341  
+rpc-0.9.tar.gz   342195  
+rpc-1.00.tar.gz  208878  
+
+n/tcpip/System/rstatd:
+00index.txt          76  
+rstatd-linux-15y.tar.gz
+                   5268  
+
+n/tcpip/System/rwhod:
+00index.txt          52  
+rwhod-519.tar.gz   8068  
+
+n/tcpip/System/sendmail:
+00index.txt          81  
+sendmail-5.67b+IDA1.5.tar.gz
+                1437278  
+
+n/tcpip/System/setup:
+00index.txt          52  
+setup.tar.gz       7171  
+
+n/tcpip/System/showmount:
+00index.txt          52  
+showmount.tar.gz   4083  
+
+n/tcpip/System/smrsh:
+00index.txt          52  
+smrsh.tar.gz       6569  
+
+n/tcpip/System/tcpd:
+00index.txt          52  
+tcpd-140.tar.gz   43858  
+
+n/tcpip/System/tcpdump:
+00index.txt         284  
+tcpdump            2727  
+tcpdump-net3-diffs
+                   2182  
+tcpdump.README      809  
+tcpdump.bin.tar.gz
+                 109209  
+tcpdump.lsm         671  
+tcpdump.old.tar.gz
+                 158009  
+tcpdump.src.tar.gz
+                 189175  
+
+n/tcpip/System/tcpspray:
+00index.txt          73  
+tcpspray.1.1a.tar.gz
+                   4166  
+
+n/tcpip/System/traceroute:
+00index.txt          73  
+traceroute0.99.15.gz
+                  22193  
+
+n/tcpip/System/wdsetup:
+00index.txt          72  
+wdsetup-0.6a.tar.gz
+                  19190  
+
+n/tcpip/System/yp:
+00index.txt          52  
+yp-linux.tar.gz   22458  
+
+n/tcpip/User:
+00index.txt        1314  
+INDEX               289  
+Obsolete/             =  
+popclient/            -  
+ruptime/              -  
+rwho/                 -  
+skey/                 -  
+tn3270/               -  
+ytalk/                -  
+
+n/tcpip/User/Obsolete:
+00index.txt         506  
+finger.obsolete/      -  
+ftp.obsolete/         -  
+rlogin.obsolete/      -  
+rsh.obsolete/         -  
+talk.obsolete/        -  
+telnet.obsolete/      -  
+tftp.obsolete/        -  
+
+n/tcpip/User/Obsolete/finger.obsolete:
+00index.txt          26  
+
+n/tcpip/User/Obsolete/ftp.obsolete:
+00index.txt          26  
+
+n/tcpip/User/Obsolete/rlogin.obsolete:
+00index.txt          26  
+
+n/tcpip/User/Obsolete/rsh.obsolete:
+00index.txt          26  
+
+n/tcpip/User/Obsolete/talk.obsolete:
+00index.txt          26  
+
+n/tcpip/User/Obsolete/telnet.obsolete:
+00index.txt          26  
+
+n/tcpip/User/Obsolete/tftp.obsolete:
+00index.txt          26  
+
+n/tcpip/User/popclient:
+00index.txt          75  
+pop3-miniclient.tar.gz
+                   4602  
+
+n/tcpip/User/ruptime:
+00index.txt          97  
+ruptime-570.tar.gz
+                   4064  
+ruptime-patch.tar  8192  
+
+n/tcpip/User/rwho:
+00index.txt          52  
+rwho-550.tar.gz    3735  
+
+n/tcpip/User/skey:
+00index.txt         101  
+diffs              2493  
+skey-linux-1.1b.tar.gz
+                  75054  
+
+n/tcpip/User/tn3270:
+00index.txt          70  
+tn3270-500.tar.gz
+                 116474  
+
+n/tcpip/User/ytalk:
+00index.txt          52  
+ytalk.tar.gz     177400  
+
+n/tin:
+00index.txt          52  
+tin-1.22.tar.gz  266381  
+
+n/trn:
+00index.txt          52  
+trn-3.4.tar.gz   303654  
+
+n/uucp:
+00index.txt         133  
+uucp-1.05/            -  
+
+n/uucp/uucp-1.05:
+00index.txt          69  
+uucp-1.05.tar.gz
+                 761308  
+
+oipatches:
+00index.txt         848  
+OI-4.0-gcc-2.5.patches.tar.gz
+                   2049  
+OI-4.0.diff         762  
+README.OI-4.0.patch
+                    552  
+__old_shared.o     2633  
+__old_static.o     2429  
+cpp-2.5.8.tar.gz  33263  
+oi1/                  -  
+oi2/                  -  
+oi3/                  -  
+
+oipatches/oi1:
+00index.txt         182  
+aletter.txt        7398  
+copying            1886  
+diskoi1             243  
+oiinc.tgz        227200  
+oilib.tgz       1029906  
+oimisc.tgz        29598  
+
+oipatches/oi2:
+00index.txt         182  
+copying            1886  
+diskoi2             324  
+oidemos.tgz      135917  
+oidoc.tgz        207904  
+oiman.tgz        167162  
+uib.tgz          320916  
+
+oipatches/oi3:
+00index.txt         156  
+aletter.txt        7398  
+copying            1886  
+diskoi3              81  
+install.end           0  
+oistat.tgz      1375208  
+
+oop:
+00index.txt         152  
+smalltalk-1.1.1.tar.gz
+                 308895  
+smalltalk-tutorial.ps.gz
+                  62887  
+stix.tar.gz       29575  
+
+rescue:
+00index.txt         156  
+tcx-linux.lsm      1229  
+tcx-linux.tar.gz  21028  
+zfs-0.10.patch    43354  
+zfs.README         1614  
+zfs.lsm             795  
+
+t:
+00index.txt        1328  
+GETTING.BUILDING-TeX
+                   8669  
+TeX-from-debian/      -  
+TeX-from-tsx11/       -  
+base.tar.gz         634  
+distribs.tar.gz
+                1381522  
+dvi2xx.051a9.tar.gz
+                  82172  
+dvipsk.tar.gz    521463  
+lib.tar.gz        73128  
+mf.tar.gz        128618  
+texbase.tar.gz    48281  
+tfm.tar.gz        46363  
+web2c.tar.gz    1609420  
+xdvik.tar.gz     265505  
+
+t/TeX-from-debian:
+00index.txt         234  
+CONTRIB            5883  
+dvgt.tar.gz      160850  
+makeindx.tar.gz  304510  
+mfinputs.tar.gz  897539  
+misctex.tar.gz    21335  
+tfmfiles.tar.gz  170435  
+web2c1.tar.gz   1271894  
+web2c2.tar.gz   1077311  
+
+t/TeX-from-tsx11:
+00index.txt         638  
+Components-of-TeX.dvi
+                  33636  
+GETTING.BUILDING-TeX
+                   8669  
+MakeTeXPK          1573  
+TeX-files-at-pip.shsu.edu.gz
+                 243494  
+Xdvisrc.taz      160970  
+auctex-7_3t.tz   255396  
+cm-mfsrc.tz      122355  
+cweb.tz          123328  
+diagramf.tz       25881  
+dot.emacs          7893  
+dvi2xx.051a8.tar.gz
+                  94221  
+dvidjp.tar.gz     58717  
+fig2mf.tz         22905  
+layout.tar.gz      3933  
+llogo.gif         12260  
+mfpic02.t.gz      29448  
+modes.mf.gz       16029  
+pstfm.t.gz        47165  
+texicons.tz        4460  
+texindex.c.gz     11769  
+
+tcl:
+00index.txt         539  
+blt/                  -  
+itcl/                 -  
+tcl/                  -  
+tclx/                 -  
+tk/                   -  
+
+tcl/blt:
+00index.txt          70  
+blt1.6-src.tar.gz
+                 386946  
+
+tcl/itcl:
+00index.txt          71  
+itcl1.3-src.tar.gz
+                 137278  
+
+tcl/tcl:
+00index.txt          70  
+tcl7.3-src.tar.gz
+                 366358  
+
+tcl/tclx:
+00index.txt          72  
+tclX7.3a-src.tar.gz
+                 476802  
+
+tcl/tk:
+00index.txt          69  
+tk3.6-src.tar.gz
+                 734663  
+
+u:
+00index.txt         230  
+umsdos_progs-0.3.tar.gz
+                  27962  
+umsdos_progs.0.2.tar.gz
+                 464030  
+umstools.lsm       1040  
+umstools.tar.gz    3580  
+umstools.zip      71776  
+umstools.zip.lsm   1252  
+
+x:
+00index.txt         933  
+README.ConfigXF86   280  
+XF86-2.1.1-doc.tar.gz
+                 130029  
+XFree86-2.1.diff.gz
+                 336920  
+XFree86-2.1.tar.gz
+                1118728  
+rxvt-1.92-source-patched.tar.gz
+                  51081  
+rxvt-1.92-source.tar.gz
+                  61064  
+rxvt.README         744  
+rxvt.lsm            874  
+xlock/                -  
+xman/                 -  
+xmandiff.tar.gz    6972  
+xpm32g/               -  
+xterm-color-pob.README
+                    816  
+xterm-color-pob.tar.gz
+                 263875  
+
+x/xlock:
+00index.txt          79  
+xlock+slack-patches.tar.gz
+                  46706  
+
+x/xman:
+00index.txt          72  
+xf86-man-2.0.tar.gz
+                 419262  
+
+x/xpm32g:
+00index.txt         205  
+xpm-3-paper.ps.Z  63627  
+xpm-3.2g.tar.Z   141919  
+xpm-contrib-1.2.tar.gz
+                 181602  
+xpm1icons.tar.Z   25131  
+xpm2icons.tar.Z   24783  
+xpm3icons.tar.Z   26574  
+
+xap:
+00index.txt        2724  
+gchess/               -  
+ghostview/            -  
+gnuplot/              -  
+libgr/                -  
+seyon/                -  
+workman/              -  
+x3270/                -  
+xfig/                 -  
+xfm/                  -  
+xfract/               -  
+xgames/               -  
+xgrabsc/              -  
+xpaint/               -  
+xspread/              -  
+xv/                   -  
+xxgdb/                -  
+
+xap/gchess:
+00index.txt         227  
+gnuchess-4.0.pl69.tar.gz
+                 170776  
+gnuchess.book-1.0.tar.gz
+                 750070  
+gnuchess.test-1.0.tar.gz
+                 361829  
+xboard-3.0.pl9.tar.gz
+                 138266  
+
+xap/ghostview:
+00index.txt          73  
+ghostview-1.5.tar.gz
+                 139742  
+
+xap/gnuplot:
+00index.txt          71  
+gnuplot-3.5.tar.gz
+                 626008  
+
+xap/libgr:
+00index.txt          73  
+libgr-1.3-src.tar.gz
+                 595266  
+
+xap/seyon:
+00index.txt          71  
+Seyon-2.14c-tar.gz
+                 162420  
+
+xap/workman:
+00index.txt         164  
+WorkMan-1.1.tar.gz
+                  90549  
+WorkMan-1.2.2a.tar.gz
+                 153246  
+WorkMan-1.2.tar.gz
+                 112400  
+
+xap/x3270:
+00index.txt         299  
+x3270-3.0.1.README
+                  13035  
+x3270-3.0.1.fix01  9253  
+x3270-3.0.1.fix02
+                  52166  
+x3270-3.0.1.fix03
+                  44585  
+x3270-3.0.1.tar.gz
+                 120588  
+x3270-3.0.README   9785  
+x3270-3.0.tar.gz
+                 102341  
+
+xap/xfig:
+00index.txt         144  
+README              244  
+transfig.2.1.8.tar.gz
+                 118274  
+xfig.2.1.8.tar.gz
+                 338364  
+
+xap/xfm:
+00index.txt          78  
+xfm-1.3.lsm        1347  
+xfm-1.3.tar.gz   105545  
+
+xap/xfract:
+00index.txt          74  
+xfractint-2.03.tar.gz
+                 731984  
+
+xap/xgames:
+00index.txt         536  
+spider.tar.gz    130637  
+xcolormap.tar.gz   2808  
+xcuckoo-1.1.tar.gz
+                   5937  
+xhextris.tar.gz   16849  
+xlander.patch01.gz
+                   1602  
+xlander.patch02.gz
+                   1928  
+xlander.shar.gz   15604  
+xmahjongg.tar.gz  32245  
+xmenu.tar.gz       3872  
+xminesweep2.1.tar.gz
+                  14513  
+xneko.tar.gz      22926  
+xroach.tar.gz     21694  
+xtetris-2.5.2.tar.gz
+                  19944  
+xtetris-quayle.patch
+                   6211  
+xvier.tar.gz      35880  
+
+xap/xgrabsc:
+00index.txt          71  
+xgrabsc.2_3.tar.gz
+                  54078  
+
+xap/xpaint:
+00index.txt          72  
+xpaint-2.1.1.tar.gz
+                 329787  
+
+xap/xspread:
+00index.txt          70  
+xspread2.1.tar.gz
+                 305356  
+
+xap/xv:
+00index.txt          52  
+xv-3.01.tar.gz  1730736  
+
+xap/xxgdb:
+00index.txt          69  
+xxgdb.108.tar.gz
+                 113815  
+
+xv:
+00index.txt         314  
+SlingShot2.0.Patch01.gz
+                   3543  
+SlingShot2.0.Patch02.gz
+                   4484  
+SlingShot2.0.Patch03.gz
+                   2711  
+SlingShot2.0.Patch04.gz
+                   9996  
+SlingShot2.0.tar.gz
+                 235918  
+xview3.2.tar.gz
+                3279360  
+
+y:
+00index.txt         487  
+Adventure550.tar.gz
+                  69984  
+bsd-games.src-1.3.tar.gz
+                 979493  
+bsd-games.src.lsm  1055  
+cal.lsm             631  
+cal.tar.gz         9762  
+dungeonsrc.tar.gz
+                 160019  
+nethack312-linux.tar.gz
+                 851098  
+sasteroids1.3-announce
+                   1436  
+sasteroids1.3-src.lsm
+                   1163  
+sasteroids1.3-src.tar.gz
+                 109191  
+tetris-src.tar.gz
+                  22158  

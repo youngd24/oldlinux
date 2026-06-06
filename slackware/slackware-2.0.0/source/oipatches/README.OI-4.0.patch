@@ -1,0 +1,20 @@
+Due to the changes in g++ 2.5.x. The OI 4.0 compiled with g++ 2.4.x
+is not compatible with g++ 2.5.x or above. Here I included a few
+fixes. I only tested with OI/demos/simple/hello_world.C. You need to
+do
+
+cd /tmp
+gzip -dc OI-4.0-gcc-2.5.patches.tar.gz | tar xof -
+ar ucv /usr/lib/libOI.a __old_static.o
+ar -d /usr/lib/libOI.a __.SYMDEF
+ranlib /usr/lib/libOI.a
+ar ucv /usr/lib/libOI.sa __old_static.o __old_shared.o
+ar -d /usr/lib/libOI.sa __.SYMDEF
+ranlib /usr/lib/libOI.sa
+cd /usr/include
+patch -p0 < /tmp/OI-4.0.diff
+
+
+H.J.
+hjl@nynexst.com
+02/12/94

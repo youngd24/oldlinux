@@ -1,0 +1,21 @@
+Begin2
+Title        = strace system call tracer
+Version      = STRACE-3.0
+Desc1        = strace is a program that traces and decodes system calls
+Desc2        = on SunOS, Linux, SysVr4 and Solaris2.
+Desc3        = platforms.
+Author       = Paul Kranenburg, Branko Lankester, Rick Sladkey
+AuthorEmail  = pk@cs.few.eur.nl, branko@hacktic.nl, jrs@world.std.com
+Maintainer   = Rick Sladkey
+MaintEmail   = jrs@world.std.com
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/devel/strace
+File1        = strace-3.0.tar.gz
+FileSize1    = 128K
+Required1    = Linux 0.99 or later or any other supported platform
+CopyPolicy1  = standard Berkeley-style copyright
+Keywords     = tool debug system call trace decode sunos linux svr4 solaris
+Entered      = 29JUN94
+EnteredBy    = Rick Sladkey
+CheckedEmail = jrs@world.std.com
+End

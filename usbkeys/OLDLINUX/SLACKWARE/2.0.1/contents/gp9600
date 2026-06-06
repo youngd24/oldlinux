@@ -1,0 +1,29 @@
+PACKAGE NAME:     gp9600
+PACKAGE SIZE:     2 K
+PACKAGE LOCATION: diskap4
+PACKAGE DESCRIPTION:
+gp9600:   This is a script that allows you to set your modem speed. If you do
+gp9600:   not install this script, your baud rate will be set to 9600. If you
+gp9600:   install it, a menu will be presented later on allowing you to select
+gp9600:   any of the following baud rates:
+gp9600:
+gp9600:   300, 1200, 2400, 4800, 9600, 19200, 38400.
+gp9600:
+gp9600:   If you need something faster than this, you should set the baud to
+gp9600:   38400, which can be changed to mean a faster rate with setserial.
+gp9600:
+FILE LIST:
+./
+etc/
+etc/skel/
+etc/skel/.less
+etc/skel/.term/
+home/
+root/
+root/.Xdefaults
+root/.less
+root/.term/
+var/
+var/adm/
+var/adm/setup/
+var/adm/setup/setup.gp9600

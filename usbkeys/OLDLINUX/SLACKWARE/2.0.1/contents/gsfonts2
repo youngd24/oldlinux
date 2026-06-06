@@ -1,0 +1,48 @@
+PACKAGE NAME:     gsfonts2
+PACKAGE SIZE:     1164 K
+PACKAGE LOCATION: diskap3
+PACKAGE DESCRIPTION:
+gsfonts2: More fonts for the Ghostscript interpreter/previewer.
+gsfonts2:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/ghostscript/
+usr/lib/ghostscript/fonts/
+usr/lib/ghostscript/fonts/pagd.gsf
+usr/lib/ghostscript/fonts/pagdo.gsf
+usr/lib/ghostscript/fonts/pagk.gsf
+usr/lib/ghostscript/fonts/pagko.gsf
+usr/lib/ghostscript/fonts/pbkd.gsf
+usr/lib/ghostscript/fonts/pbkdi.gsf
+usr/lib/ghostscript/fonts/pbkl.gsf
+usr/lib/ghostscript/fonts/pbkli.gsf
+usr/lib/ghostscript/fonts/phvb.gsf
+usr/lib/ghostscript/fonts/phvbo.gsf
+usr/lib/ghostscript/fonts/phvr.gsf
+usr/lib/ghostscript/fonts/phvro.gsf
+usr/lib/ghostscript/fonts/phvrrn.gsf
+usr/lib/ghostscript/fonts/pncb.gsf
+usr/lib/ghostscript/fonts/pncbi.gsf
+usr/lib/ghostscript/fonts/pncr.gsf
+usr/lib/ghostscript/fonts/pncri.gsf
+usr/lib/ghostscript/fonts/pplb.gsf
+usr/lib/ghostscript/fonts/pplbi.gsf
+usr/lib/ghostscript/fonts/pplr.gsf
+usr/lib/ghostscript/fonts/pplri.gsf
+usr/lib/ghostscript/fonts/psyr.gsf
+usr/lib/ghostscript/fonts/ptmb.gsf
+usr/lib/ghostscript/fonts/ptmbi.gsf
+usr/lib/ghostscript/fonts/ptmr.gsf
+usr/lib/ghostscript/fonts/ptmri.gsf
+usr/lib/ghostscript/fonts/putb.gsf
+usr/lib/ghostscript/fonts/putbi.gsf
+usr/lib/ghostscript/fonts/putr.gsf
+usr/lib/ghostscript/fonts/putri.gsf
+usr/lib/ghostscript/fonts/pzdr.gsf
+usr/lib/ghostscript/fonts/u003043t.gsf
+usr/lib/ghostscript/fonts/u004006t.gsf
+usr/lib/ghostscript/fonts/zcb.gsf
+usr/lib/ghostscript/fonts/zcr.gsf
+usr/lib/ghostscript/fonts/zcro.gsf

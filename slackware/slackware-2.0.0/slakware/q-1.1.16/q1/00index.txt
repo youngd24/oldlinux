@@ -1,0 +1,7 @@
+00index.txt         182  
+diskq1             1133  
+ifs.tgz           25754  
+maketag            1772  
+tagfile             138  
+tagfile.pat         138  
+v1_1_16.tgz     1337326  

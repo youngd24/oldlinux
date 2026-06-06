@@ -1,0 +1,34 @@
+CONTENTS: x_vga16 xf_lib xman1
+x_vga16:  A server for 16 colour graphics modes. (Last one!)
+x_vga16:
+x_vga16:  This is the last in a long list of servers for XFree86 2.0. In most 
+x_vga16:  cases you should only install the X server designed to work with your
+x_vga16:  video hardware. 
+x_vga16:
+x_vga16:  Installing this package will create a link in /usr/X386/bin from
+x_vga16:  XF86_VGA16 to X, setting this server as the default.
+x_vga16:
+x_vga16:
+x_vga16:
+xf_lib:   Dynamic libraries, bitmaps and minimal fonts for XFree86 2.0.
+xf_lib:
+xf_lib:
+xf_lib:
+xf_lib:
+xf_lib:
+xf_lib:
+xf_lib:
+xf_lib:
+xf_lib:
+xf_lib:
+xman1:    Man pages for programs that come with XFree86 2.0.
+xman1:    These have been preprocessed and compressed.
+xman1:
+xman1:
+xman1:
+xman1:
+xman1:
+xman1:
+xman1:
+xman1:
+xman1:

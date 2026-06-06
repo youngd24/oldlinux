@@ -1,0 +1,295 @@
+--- Makefile
++++ Makefile	1994/02/27 01:03:53
+@@ -0,0 +1,17 @@
++CFLAGS = -O2 -fomit-frame-pointer '-DISSUE_FILE="/etc/issue.net"' \
++	-include /usr/include/bsd/bsd.h -I /usr/include/bsd \
++	-DTERMCAP -DUSE_TERMIO -DKLUDGELINEMODE -DDIAGNOSTICS \
++	-DAUTHENTICATE -I..
++LDLIBS = -lbsd -ltermcap -ltelnet -L ../libtelnet
++LDFLAGS = -s
++
++telnetd: telnetd.o state.o termstat.o slc.o sys_term.o utility.o \
++		global.o authenc.o
++
++install: telnetd
++	install -m744 telnetd /usr/sbin/in.telnetd
++	install -m644 telnetd.8 /usr/man/man8
++
++clean:
++	rm -f *.o telnetd 
++
+--- authenc.c
++++ authenc.c	1994/02/27 01:03:54
+@@ -0,0 +1,77 @@
++/*-
++ * Copyright (c) 1991 The Regents of the University of California.
++ * All rights reserved.
++ *
++ * Redistribution and use in source and binary forms are permitted provided
++ * that: (1) source distributions retain this entire copyright notice and
++ * comment, and (2) distributions including binaries display the following
++ * acknowledgement:  ``This product includes software developed by the
++ * University of California, Berkeley and its contributors'' in the
++ * documentation or other materials provided with the distribution and in
++ * all advertising materials mentioning features or use of this software.
++ * Neither the name of the University nor the names of its contributors may
++ * be used to endorse or promote products derived from this software without
++ * specific prior written permission.
++ * THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR IMPLIED
++ * WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
++ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
++ */
++
++#ifndef lint
++static char sccsid[] = "@(#)authenc.c	5.1 (Berkeley) 3/1/91";
++#endif /* not lint */
++
++#if	defined(ENCRYPT) || defined(AUTHENTICATE)
++#include "telnetd.h"
++#include <libtelnet/misc.h>
++
++	int
++net_write(str, len)
++	unsigned char *str;
++	int len;
++{
++	if (nfrontp + len < netobuf + BUFSIZ) {
++		bcopy((void *)str, (void *)nfrontp, len);
++		nfrontp += len;
++		return(len);
++	}
++	return(0);
++}
++
++	void
++net_encrypt()
++{
++#if	defined(ENCRYPT)
++	char *s = (nclearto > nbackp) ? nclearto : nbackp;
++	if (s < nfrontp && encrypt_output) {
++		(*encrypt_output)((unsigned char *)s, nfrontp - s);
++	}
++	nclearto = nfrontp;
++#endif
++}
++
++	int
++telnet_spin()
++{
++	ttloop();
++	return(0);
++}
++
++	char *
++telnet_getenv(val)
++	char *val;
++{
++	extern char *getenv();
++	return(getenv(val));
++}
++
++	char *
++telnet_gets(prompt, result, length, echo)
++	char *prompt;
++	char *result;
++	int length;
++	int echo;
++{
++	return((char *)0);
++}
++#endif
+--- defs.h
++++ defs.h	1994/02/27 01:03:54
+@@ -120,9 +120,6 @@
+ # include <termios.h>
+ # endif
+ #endif
+-#if !defined(USE_TERMIO) || defined(NO_CC_T)
+-typedef unsigned char cc_t;
+-#endif
+ 
+ #ifdef	__STDC__
+ #include <unistd.h>
+--- ext.h
++++ ext.h	1994/02/27 01:03:54
+@@ -219,7 +219,11 @@
+ #endif
+ 
+ #ifndef	CRAY
++#ifdef __linux__
++#define DEFAULT_IM	"%i\r\n\r\n%s %r (%h%D) (%t)\r\n\r\r\n\r"
++#else
+ #define DEFAULT_IM	"\r\n\r\n4.3 BSD UNIX (%h) (%t)\r\n\r\r\n\r"
++#endif
+ #else
+ #define DEFAULT_IM	"\r\n\r\nCray UNICOS (%h) (%t)\r\n\r\r\n\r"
+ #endif
+--- state.c
++++ state.c	1994/02/27 01:09:53
+@@ -1004,7 +1004,7 @@
+ #endif
+ 			{
+ 				init_termbuf();
+-				tty_setecho(0);
++				  tty_setecho(0);
+ 				set_termbuf();
+ 			}
+ 			break;
+--- sys_term.c
++++ sys_term.c	1994/02/27 01:03:54
+@@ -50,8 +50,13 @@
+ struct	utmp wtmp;
+ 
+ # ifndef CRAY
++#ifdef __linux__
++char	wtmpf[] = _PATH_WTMP;
++char	utmpf[] = _PATH_UTMP;
++#else
+ char	wtmpf[]	= "/usr/adm/wtmp";
+ char	utmpf[] = "/etc/utmp";
++#endif
+ # else	/* CRAY */
+ char	wtmpf[]	= "/etc/wtmp";
+ #include <tmpdir.h>
+@@ -65,7 +70,6 @@
+ #ifdef	STREAMS
+ #include <sys/stream.h>
+ #endif
+-#include <sys/tty.h>
+ #ifdef	t_erase
+ #undef	t_erase
+ #undef	t_kill
+@@ -1046,6 +1050,8 @@
+ 	 * Hangup anybody else using this ttyp, then reopen it for
+ 	 * ourselves.
+ 	 */
++# if !defined(__linux__)
++	/* this looks buggy to me, our ctty is really a pty at this point */
+ # if !defined(CRAY) && (BSD <= 43)
+ 	(void) signal(SIGHUP, SIG_IGN);
+ 	vhangup();
+@@ -1054,6 +1060,7 @@
+ 	if (t < 0)
+ 		return(-1);
+ # endif
++# endif
+ # if	defined(CRAY) && defined(TCVHUP)
+ 	{
+ 		register int i;
+@@ -1152,6 +1159,7 @@
+ 	if ((i = fork()) < 0)
+ 		fatalperror(net, "fork");
+ 	if (i) {
++		signal(SIGHUP,SIG_IGN);
+ # ifdef	CRAY
+ 		/*
+ 		 * Cray parent will create utmp entry for child and send
+@@ -1183,6 +1191,7 @@
+ 		utmp_sig_notify(pid);
+ # endif	/* CRAY */
+ 	} else {
++		signal(SIGHUP,SIG_IGN);
+ 		getptyslave();
+ 		start_login(host, autologin, autoname);
+ 		/*NOTREACHED*/
+--- telnetd.c
++++ telnetd.c	1994/02/27 01:03:54
+@@ -173,8 +173,8 @@
+ #ifdef	AUTHENTICATE
+ 		case 'e':
+ 			if (strcmp(optarg, "debug") == 0) {
+-				extern int encrypt_debug_mode;
+-				encrypt_debug_mode = 1;
++				extern int auth_debug_mode;
++				auth_debug_mode = 1;
+ 				break;
+ 			}
+ 			usage();
+@@ -594,7 +594,7 @@
+ doit(who)
+ 	struct sockaddr_in *who;
+ {
+-	char *host, *inet_ntoa();
++	const char *host, *inet_ntoa();
+ 	int t;
+ 	struct hostent *hp;
+ 	int level;
+@@ -1129,7 +1129,7 @@
+ 				*nfrontp++ = '\r';
+ #endif	/* defined(CRAY2) && defined(UNICOS5) */
+ 			*nfrontp++ = c;
+-			if ((c == '\r') && (my_state_is_wont(TELOPT_BINARY))) {
++			if ((c == '\n') && (my_state_is_wont(TELOPT_BINARY))) {
+ 				if (pcc > 0 && ((*ptyip & 0377) == '\n')) {
+ 					*nfrontp++ = *ptyip++ & 0377;
+ 					pcc--;
+@@ -1229,8 +1229,8 @@
+ 		return;
+ 	}
+ #endif
+-	(void) strcpy(nfrontp, "\r\n[Yes]\r\n");
+-	nfrontp += 9;
++	sprintf(nfrontp, "\r\n[%s : yes]\r\n",host_name);
++	nfrontp += strlen(nfrontp);
+ }
+ 
+ 	void
+--- utility.c
++++ utility.c	1994/02/27 01:03:54
+@@ -455,6 +455,7 @@
+ 	char db[100];
+ 	extern char *rindex();
+ 
++	if (where)
+ 	putlocation = where;
+ 
+ 	while (*cp) {
+@@ -485,6 +486,48 @@
+ 		case '%':
+ 			putchr('%');
+ 			break;
++
++		case 'D':
++			{
++				char	buff[128];
++
++				if (getdomainname(buff,128) < 0) break;
++				putchr('.');
++				putstr(buff);
++			}
++			break;
++
++		case 'i':
++			{
++				char buff[3];
++				FILE *fp;
++				int p, c;
++
++				if ((fp = fopen(ISSUE_FILE, "r")) == NULL)
++					break;
++				p = '\n';
++				while ((c = fgetc(fp)) != EOF) {
++					if (p == '\n' && c == '#') {
++						do {
++							c = fgetc(fp);
++						} while (c != EOF && c != '\n');
++						continue;
++					} else if (c == '%') {
++						buff[0] = c;
++						c = fgetc(fp);
++						if (c == EOF) break;
++						buff[1] = c;
++						buff[2] = '\0';
++						putf(buff, NULL);
++					} else {
++						putchr(c);
++						p = c;
++					}
++				};
++				(void) fclose(fp);
++			}
++			return; /* ignore remainder of the banner string */
++			/*NOTREACHED*/
+ 
+ 		case 's':
+ 			putstr(kerninfo.sysname);

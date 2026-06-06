@@ -1,0 +1,34 @@
+PACKAGE NAME:     tin
+PACKAGE SIZE:     135 K
+PACKAGE LOCATION: diskn3
+PACKAGE DESCRIPTION:
+tin:      The 'tin' news reader. (1.2pl2)
+tin:
+tin:      Tin is a full-screen easy to use Netnews reader. It can read news
+tin:      locally (i.e. /usr/spool/news) or remotely (rtin or tin -r option)
+tin:      via a NNTP (Network News Transport Protocol) server.  It will
+tin:      automatically utilize nov (news overview) style index files if
+tin:      available locally or via the nntp xover command. Tin was written by
+tin:      Iain Lea.
+tin:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/tin
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/tin.1.gz
+usr/doc/
+usr/doc/tin/
+usr/doc/tin/CHANGES
+usr/doc/tin/README-Slackware
+usr/doc/tin/FTP
+usr/doc/tin/HACKERS
+usr/doc/tin/INSTALL
+usr/doc/tin/INSTALL.NNTP
+usr/doc/tin/README
+usr/doc/tin/README.NNTP
+install/
+install/doinst.sh

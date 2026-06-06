@@ -1,0 +1,92 @@
+PACKAGE NAME:     xfileman
+PACKAGE SIZE:     61 K
+PACKAGE LOCATION: diskxap1
+PACKAGE DESCRIPTION:
+xfileman: xfilemanager 0.5
+xfileman:
+xfileman: Ove Kalkan's xfilemanager - one of two file managers for X included
+xfileman: with the Slackware release. xfilemanager is an X11 based Unix
+xfileman: file manager with Drag'n Drop abilities, full color displays, and a
+xfileman: slackful logo.
+xfileman:
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/xfilemanager.1.gz
+usr/X11/
+usr/X11/bin/
+usr/X11/bin/xfilemanager
+usr/X11/include/
+usr/X11/include/X11/
+usr/X11/include/X11/bitmaps/
+usr/X11/include/X11/bitmaps/animation.xbm
+usr/X11/include/X11/bitmaps/binary.xbm
+usr/X11/include/X11/bitmaps/compress.xbm
+usr/X11/include/X11/bitmaps/compressor.xbm
+usr/X11/include/X11/bitmaps/decompressor.xbm
+usr/X11/include/X11/bitmaps/dev_printer.xbm
+usr/X11/include/X11/bitmaps/file_bin.xbm
+usr/X11/include/X11/bitmaps/file_compressed.xbm
+usr/X11/include/X11/bitmaps/file_core.xbm
+usr/X11/include/X11/bitmaps/file_ctar.xbm
+usr/X11/include/X11/bitmaps/file_dvi.xbm
+usr/X11/include/X11/bitmaps/file_graph.xbm
+usr/X11/include/X11/bitmaps/file_movie.xbm
+usr/X11/include/X11/bitmaps/file_pix.xbm
+usr/X11/include/X11/bitmaps/file_source.xbm
+usr/X11/include/X11/bitmaps/file_tar.xbm
+usr/X11/include/X11/bitmaps/file_text.xbm
+usr/X11/include/X11/bitmaps/ftp.xbm
+usr/X11/include/X11/bitmaps/news.xbm
+usr/X11/include/X11/bitmaps/picture.xbm
+usr/X11/include/X11/bitmaps/printer.xbm
+usr/X11/include/X11/bitmaps/source.xbm
+usr/X11/include/X11/bitmaps/texteditor.xbm
+usr/X11/include/X11/pixmaps/
+usr/X11/include/X11/pixmaps/dev_cdrom.xpm
+usr/X11/include/X11/pixmaps/dev_hfloppy.xpm
+usr/X11/include/X11/pixmaps/dev_lfloppy.xpm
+usr/X11/include/X11/pixmaps/dir_closed.xpm
+usr/X11/include/X11/pixmaps/dir_locked.xpm
+usr/X11/include/X11/pixmaps/dir_opened.xpm
+usr/X11/include/X11/pixmaps/dragon.xpm
+usr/X11/include/X11/pixmaps/file_bin.xpm
+usr/X11/include/X11/pixmaps/file_compressed.xpm
+usr/X11/include/X11/pixmaps/file_core.xpm
+usr/X11/include/X11/pixmaps/file_ctar.xpm
+usr/X11/include/X11/pixmaps/file_dlink.xpm
+usr/X11/include/X11/pixmaps/file_dvi.xpm
+usr/X11/include/X11/pixmaps/file_exec.xpm
+usr/X11/include/X11/pixmaps/file_graph.xpm
+usr/X11/include/X11/pixmaps/file_link.xpm
+usr/X11/include/X11/pixmaps/file_lock.xpm
+usr/X11/include/X11/pixmaps/file_movie.xpm
+usr/X11/include/X11/pixmaps/file_pix.xpm
+usr/X11/include/X11/pixmaps/file_plain.xpm
+usr/X11/include/X11/pixmaps/file_root.xpm
+usr/X11/include/X11/pixmaps/file_source.xpm
+usr/X11/include/X11/pixmaps/file_tar.xpm
+usr/X11/include/X11/pixmaps/file_text.xpm
+usr/X11/include/X11/pixmaps/floppy3.xpm
+usr/X11/include/X11/pixmaps/mail.xpm
+usr/X11/include/X11/pixmaps/tank.xpm
+usr/X11/include/X11/pixmaps/xconq.xpm
+usr/X11/include/X11/pixmaps/xdesigner.xpm
+usr/X11/include/X11/pixmaps/xedit.xpm
+usr/X11/include/X11/pixmaps/xlogo.xpm
+usr/X11/include/X11/pixmaps/xmore.xpm
+usr/X11/include/X11/pixmaps/xterm.xpm
+var/
+var/X11/
+var/X11/lib/
+var/X11/lib/X11/
+var/X11/lib/X11/app-defaults/
+var/X11/lib/X11/app-defaults/Xfilemanager
+var/lib/
+var/lib/xfilemanager/
+var/lib/xfilemanager/system.wsrc
+var/lib/xfilemanager/system.xfmmenurc
+var/lib/xfilemanager/system.xfmrc

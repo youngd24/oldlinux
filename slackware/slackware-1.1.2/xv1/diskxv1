@@ -1,0 +1,34 @@
+CONTENTS: xvol32 xv32_sa xv32_so
+xvol32:   Xview 3.2. Configuration files, programs, and documentation for
+xvol32:   the xview system (OpenLook Window Manager).
+xvol32:
+xvol32:
+xvol32:
+xvol32:
+xvol32:
+xvol32:
+xvol32:
+xvol32:
+xvol32:
+xv32_so:  Shared libraries for Xview 3.2. 
+xv32_so:
+xv32_so:
+xv32_so:
+xv32_so:
+xv32_so:
+xv32_so:
+xv32_so:
+xv32_so:
+xv32_so:
+xv32_so:
+xv32_sa:  Libraries for developing Xview applications which use the shared
+xv32_sa:  library libxv3.so.3.0.
+xv32_sa:
+xv32_sa:
+xv32_sa:
+xv32_sa:
+xv32_sa:
+xv32_sa:
+xv32_sa:
+xv32_sa:
+xv32_sa:

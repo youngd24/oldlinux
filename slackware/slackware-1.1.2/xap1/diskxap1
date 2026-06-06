@@ -1,0 +1,78 @@
+CONTENTS: gs_x11 libgr13 seyon vgaset workman xfileman xv300 
+gs_x11:   Replacement /usr/bin/gs with X11 options compiled in.
+gs_x11:
+gs_x11:   This should be installed on top of the "ghostscr" package from the
+gs_x11:   A series to provide X11 support for ghostview. If you plan to preview
+gs_x11:   Postscript documents under X, you need to install this. Also, if 
+gs_x11:   you've installed ghostscript already it is highly recommended that you
+gs_x11:   install this package just in case. Since it replaces another binary
+gs_x11:   it really only uses about 25K.
+gs_x11:
+gs_x11:
+gs_x11:
+libgr13:  Shared graphics libraries with GIF, TIFF, JPEG support.
+libgr13:  (these libraries are needed to run the XV image viewer) 
+libgr13:
+libgr13:
+libgr13:
+libgr13:
+libgr13:
+libgr13:
+libgr13:
+libgr13:
+libgr13:
+seyon:    Seyon 2.14B. 
+seyon:
+seyon:    A complete, full-featured telecommunications package for X.
+seyon:
+seyon:
+seyon:
+seyon:
+seyon:
+seyon:
+seyon:
+seyon:
+vgaset:   Utility to help you configure your monitor for X more easily. 
+vgaset:
+vgaset:
+vgaset:
+vgaset:
+vgaset:
+vgaset:
+vgaset:
+vgaset:
+vgaset:
+vgaset:
+workman:  Workman CD music player. Requires the XV series, but would have
+workman:  necessitated an extra XV floppy if I'd put it there. :^)
+workman:
+workman:
+workman:
+workman:
+workman:
+workman:
+workman:
+workman:
+workman:
+xfileman: One of two file managers for X included with the Slackware
+xfileman: release. This one uses full-color displays, and now includes the
+xfileman: Slackware logo.
+xfileman:
+xfileman:
+xfileman:
+xfileman:
+xfileman:
+xfileman:
+xfileman:
+xfileman:
+xv300:    XV 3.00 GIF/TIFF/JPEG/PostScript Image Viewer.
+xv300:
+xv300:    NOTICE: This program is unregistered SHAREWARE. Please 
+xv300:    read the license information included.
+xv300:
+xv300:
+xv300:
+xv300:
+xv300:
+xv300:
+xv300:

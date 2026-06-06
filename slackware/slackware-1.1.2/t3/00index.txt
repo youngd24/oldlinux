@@ -1,0 +1,4 @@
+diskt3              371  
+texcmpk.tgz      692601  
+texdoc.tgz        80611  
+texnfss2.tgz     432212  

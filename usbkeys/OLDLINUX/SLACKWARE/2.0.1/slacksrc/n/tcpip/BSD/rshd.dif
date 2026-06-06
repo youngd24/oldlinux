@@ -1,0 +1,56 @@
+--- Makefile
++++ Makefile	1994/02/22 14:37:07
+@@ -0,0 +1,15 @@
++CFLAGS = -O2 -fomit-frame-pointer -m486 \
++	-include /usr/include/bsd/bsd.h -I/usr/include/bsd \
++# -DKERBEROS -DCRYPT
++LDLIBS = -lbsd # -lutil -lkrb -ldes
++LDFLAGS = -s -v
++
++rshd: rshd.o # des_rw.o
++
++install: rshd
++	install -m744 rshd /usr/sbin/in.rshd
++	install -m644 rshd.8 /usr/man/man8
++
++clean:
++	rm -f *.o rshd
++
+--- rshd.c
++++ rshd.c	1994/02/22 14:28:02
+@@ -193,7 +193,7 @@
+ char	path[100] = "PATH=";
+ char	*envinit[] =
+ 	    {homedir, shell, path, username, 0};
+-char	**environ;
++extern	char	**environ;
+ 
+ doit(fromp)
+ 	struct sockaddr_in *fromp;
+@@ -203,7 +203,8 @@
+ 	struct passwd *pwd;
+ 	int s;
+ 	struct hostent *hp;
+-	char *hostname, *errorstr = NULL, *errorhost;
++	const char *hostname, *errorhost;
++	char *errorstr = NULL;
+ 	u_short port;
+ 	int pv[2], pid, cc;
+ 	int nfd;
+@@ -452,7 +453,6 @@
+ #endif
+ 
+ 		if (errorstr ||
+-		    pwd->pw_passwd != 0 && *pwd->pw_passwd != '\0' &&
+ 		    ruserok(hostname, pwd->pw_uid == 0, remuser, locuser) < 0) {
+ fail:
+ 			if (errorstr == NULL)
+@@ -624,7 +624,7 @@
+ 			    FD_ISSET(pv[0], &readfrom));
+ 			exit(0);
+ 		}
+-		setpgrp(0, getpid());
++		setpgrp();
+ 		(void) close(s); (void) close(pv[0]);
+ #ifdef CRYPT
+ #ifdef KERBEROS

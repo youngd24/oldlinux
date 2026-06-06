@@ -1,0 +1,18 @@
+PACKAGE NAME:     xv32_so
+PACKAGE SIZE:     834 K
+PACKAGE LOCATION: diskxv1
+PACKAGE DESCRIPTION:
+xv32_so:  Shared libraries for Xview 3.2. 
+xv32_so:
+FILE LIST:
+./
+usr/
+usr/openwin/
+usr/openwin/lib/
+usr/openwin/lib/libUIC.so.2.0
+usr/openwin/lib/libUSS.so.2.0
+usr/openwin/lib/libolg.so.3.0
+usr/openwin/lib/libss.so.3.1
+usr/openwin/lib/libxv3.so.3.0
+install/
+install/doinst.sh

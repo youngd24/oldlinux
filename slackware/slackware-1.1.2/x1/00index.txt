@@ -1,0 +1,12 @@
+00index.txt         312  
+diskx1             1388  
+list               4534  
+maketag            2007  
+readme             8896  
+tagfile            2647  
+tagfile.org        2647  
+tagfile.pat        2658  
+x_8514.tgz       379719  
+x_mach32.tgz     428220  
+x_mach8.tgz      383681  
+xf_doc.tgz       132918  

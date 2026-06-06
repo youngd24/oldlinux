@@ -1,0 +1,81 @@
+--- Makefile
++++ Makefile	1994/02/22 13:52:21
+@@ -0,0 +1,14 @@
++CFLAGS = -O2 -fomit-frame-pointer -m486 -include /usr/include/bsd/bsd.h \
++		-I/usr/include/bsd
++LDFLAGS = -s -v
++LDLIBS = -lbsd
++
++fingerd: fingerd.o
++
++install: fingerd
++	install -m755 fingerd /usr/sbin/in.fingerd
++	install -m644 fingerd.8 /usr/man/man8
++
++clean:
++	rm -f *.o fingerd
++
+--- fingerd.c
++++ fingerd.c	1994/02/22 13:50:06
+@@ -44,9 +44,16 @@
+ 
+ #include <stdio.h>
+ #include "pathnames.h"
++#include <pwd.h>
++#include <sys/utsname.h>
++#include <string.h>
+ 
+ main()
+ {
++	struct passwd *pw;
++	struct utsname utsname;
++	char myname[128], mydom[128];
++	char *sp;
+ 	register FILE *fp;
+ 	register int ch;
+ 	register char *lp;
+@@ -67,6 +74,24 @@
+ 	if (!fgets(line, sizeof(line), stdin))
+ 		exit(1);
+ 
++	/* Say hello first. */
++	(void) uname(&utsname);
++	gethostname(myname, 128);
++	if (getdomainname(mydom, 128) == 0) {
++		if ((sp = strchr(myname, '.')) != NULL)
++			*sp = '\0';
++		strcat(myname, ".");
++		strcat(myname, mydom);
++	}
++	printf("\r\nWelcome to %s version %s at %s !\r\n\n",
++			utsname.sysname, utsname.release, myname);
++	fflush(stdout);
++	sprintf(mydom, "%s -c %s", _PATH_SH, _PATH_UPTIME);
++	system(mydom);
++	fflush(stdout);
++	printf("\r\n");
++	fflush(stdout);
++
+ 	av[0] = "finger";
+ 	for (lp = line, ap = &av[1];;) {
+ 		*ap = strtok(lp, " \t\r\n");
+@@ -82,6 +107,11 @@
+ 
+ 	if (pipe(p) < 0)
+ 		fatal("pipe");
++
++	if ((pw = getpwnam("nobody")) != NULL) {
++		(void) setgid(pw->pw_gid);
++		(void) setuid(pw->pw_uid);
++	}
+ 
+ 	switch(fork()) {
+ 	case 0:
+--- pathnames.h
++++ pathnames.h	1994/02/22 13:50:06
+@@ -35,3 +35,5 @@
+  */
+ 
+ #define	_PATH_FINGER	"/usr/bin/finger"
++#define _PATH_UPTIME	"/usr/bin/uptime"
++#define _PATH_SH	"/bin/sh"

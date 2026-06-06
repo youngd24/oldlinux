@@ -1,0 +1,3 @@
+00index.txt          69  
+uucp-1.05.tar.gz
+                 761308  

@@ -1,0 +1,14 @@
+F CMDS.C;1                          	cmds.c
+F CMDS.O;1                          	cmds.o
+F CMDS_C.ORI;1                      	cmds.c.orig
+F CMDS_C.REJ;1                      	cmds.c.rej
+F CMDTAB.C;1                        	cmdtab.c
+F CMDTAB.O;1                        	cmdtab.o
+F CMDTAB_C.ORI;1                    	cmdtab.c.orig
+F CMDTAB_C.REJ;1                    	cmdtab.c.rej
+F LPC.8;1                           	lpc.8
+F LPC.;1                            	lpc
+F LPC.C;1                           	lpc.c
+F LPC.O;1                           	lpc.o
+F MAKEFILE.;1                       	Makefile
+F MAKEFILE.ORI;1                    	Makefile.orig

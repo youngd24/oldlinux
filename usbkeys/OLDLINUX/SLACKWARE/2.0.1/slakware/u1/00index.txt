@@ -1,0 +1,8 @@
+00index.txt         208  
+disku1              914  
+install.end          16  
+loadlin.tgz       92846  
+maketag            1077  
+tagfile              39  
+umsfix.tgz         3660  
+umsprogs.tgz      35008  

@@ -1,0 +1,61 @@
+* These are source files from NetBSD-current from 94/01/09, adapted for Linux.
+
+* I upload new versions onto sunacm.swan.ac.uk, ftp.funet.fi and 134.96.7.7.
+  sunacm is also mirrored by sunsite...
+
+* You should have the C library 4.5.19 or higher, gcc 2.5.7 or higher,
+  linux kernel version 0.99.15 or higher.
+
+* If you want to have shadow password support, install the "shadow-3.3.1"
+  package.
+
+* If you do *not* want to have shadow password support, edit the Makefile
+  from the ftpd package.
+
+* Copy from the "Install" directory the files rusers.h, rusers.x, rnusers.h,
+  rnusers.x, rwall.h rwall.x  into "/usr/include/rpcsvc".
+
+* Copy the file "Install/services" into "/etc". Also have a look at
+  Install/inetd.conf.
+
+* To install e.g. the "finger"-package, you have to do:
+  - ./Extract finger
+  - cd finger
+  - make install
+  - cd ..
+  - rm -fr finger
+
+* Some packages need other packages to be extracted. E.g. "ftpd" needs also
+  the ftp package to be extracted in the current directory.
+
+* All source codes (.tar.gz files), which do not have a corresponding context
+  diff file (.dif), are not yet changed for Linux.
+
+* Mail all changes and bug-fixes to rzsfl@rz.uni-sb.de or flla@stud.uni-sb.de.
+
+* Programs like "rwho" are not in here. My own opinion is that they waste
+  bandwidth, since they make regular broadcasts. People should be happy
+  with other programs like finger, if they need any information.
+  But I wouldn't refuse an upload, if someone else really wants to have them.
+
+BUGS:
+
+* ftp to a slow site and do "ls -ltr" a lot of times. ftp will get stuck and
+  there will be a "CLOSE" connection, that will not vanish for days.
+
+* Do "telnet localhost chargen" and end it with Ctrl-C. The process will hang.
+  You will have to go to another console and kill it with a HANGUP signal.
+
+* "rsh" is known to have a problem: A stopped rsh command will block the
+  port, so that other rsh commands will hang. Alan Cox has promised to fix
+  this in the kernel.
+
+* Do not use this version of tcpdump in here. It is newer than the other
+  linux port, but by far not ported yet.
+
+* I have adapted 'timed' to compile. I am not able to test it. If someone
+  wants to debug it for Linux, go ahead.
+
+
+Florian  La Roche   rzsfl@rz.uni-sb.de  flla@stud.uni-sb.de
+

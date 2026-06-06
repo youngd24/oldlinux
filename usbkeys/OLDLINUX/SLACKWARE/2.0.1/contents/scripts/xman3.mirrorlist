@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Mirror List</title>
+  <link type="text/css" rel="stylesheet" href="/css/mblist.css" />
+</head>
+
+<body>
+<div id="mirrorbrain-details">
+  <h2>Mirrors for <a href="/slackware/slackware-2.0.1/contents/scripts/xman3">xman3</a></h2>
+<div id="mirrorbrain-fileinfo">
+<h3>File information</h3>
+<ul>
+  <li><span class="mirrorbrain-label">Filename:</span> xman3</li>
+  <li><span class="mirrorbrain-label">Path:</span> /slackware/slackware-2.0.1/contents/scripts/xman3</li>
+  <li><span class="mirrorbrain-label">Size:</span>  71K (73194 bytes)</li>
+  <li><span class="mirrorbrain-label">Last modified:</span> Wed, 25 Feb 2004 14:22:00 GMT (Unix time: 1077718920)</li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.1/contents/scripts/xman3.sha256">SHA-256 Hash</a>:</span> <tt>b53663d053e103409957eb174d880e50231c461c89c8efddb71f1a03b708c676</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.1/contents/scripts/xman3.sha1">SHA-1 Hash</a>:</span> <tt>aa1806fcb0fb1951b214bb7b919adb53bf5faa82</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.1/contents/scripts/xman3.md5">MD5 Hash</a>:</span> <tt>9580abd2e8338008702f37f4a5df8f60</tt></li>
+</ul>
+<p><a href="/slackware/slackware-2.0.1/contents/scripts/xman3" class="mirrorbrain-btn">Download file from preferred mirror</a></p>
+</div>
+
+<div id="mirrorbrain-links">
+<h3>Reliable downloads</h3>
+<div class="mirrorbrain-links-grp">
+<h4>Metalink</h4>
+<ul>
+  <li><a href="/slackware/slackware-2.0.1/contents/scripts/xman3.meta4">/slackware/slackware-2.0.1/contents/scripts/xman3.meta4</a> (IETF Metalink)</li>
+  <li><a href="/slackware/slackware-2.0.1/contents/scripts/xman3.metalink">/slackware/slackware-2.0.1/contents/scripts/xman3.metalink</a> (old (v3) Metalink)</li>
+</ul>
+</div>
+</div>
+
+<div id="mirrorbrain-mirrors">
+<h3>Mirrors</h3>
+<p>List of best mirrors for IP address 172.59.189.70, located at 31.309299,120.601898 in United States (US).</p>
+
+<p><a href="https://maps.google.com/maps/api/staticmap?size=640x512&amp;visual_refresh=true&amp;scale=2&amp;maptype=roadmap&amp;sensor=false&amp;markers=color:red|31.309299,120.601898&amp;markers=color:yellow|label:1|28.538000,-81.378998&amp;markers=color:yellow|label:2|22.250000,114.167000&amp;markers=color:yellow|label:3|25.000000,45.000000&amp;markers=color:yellow|label:4|55.749001,37.618000&amp;markers=color:yellow|label:5|55.738998,37.606998&amp;markers=color:yellow|label:6|46.464001,30.739000&amp;markers=color:yellow|label:7|49.233002,28.481001&amp;markers=color:yellow|label:8|46.000000,25.000000&amp;markers=color:yellow|label:9|44.817001,20.448000">Map showing the closest mirrors</a></p>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 1 mirror which handle this country (US)</h4>
+<ul>
+ <li><a href="https://mirror.slackbuilds.org/slackware/slackware-2.0.1/contents/scripts/xman3">https://mirror.slackbuilds.org/slackware/slackware-2.0.1/contents/scripts/xman3</a> (us, prio 100)</li>
+</ul>
+</div>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 27 mirrors in other parts of the world</h4>
+<ul>
+  <li><a href="https://mirror-hk.koddos.net/slackware/slackware-2.0.1/contents/scripts/xman3">https://mirror-hk.koddos.net/slackware/slackware-2.0.1/contents/scripts/xman3</a> (hk, prio 100)</li>
+  <li><a href="https://mirror.lyrahosting.com/slackware/slackware-2.0.1/contents/scripts/xman3">https://mirror.lyrahosting.com/slackware/slackware-2.0.1/contents/scripts/xman3</a> (sa, prio 100)</li>
+  <li><a href="https://mirror.yandex.ru/slackware/slackware-2.0.1/contents/scripts/xman3">https://mirror.yandex.ru/slackware/slackware-2.0.1/contents/scripts/xman3</a> (ru, prio 100)</li>
+  <li><a href="http://mirror.mephi.ru/slackware/slackware-2.0.1/contents/scripts/xman3">http://mirror.mephi.ru/slackware/slackware-2.0.1/contents/scripts/xman3</a> (ru, prio 100)</li>
+  <li><a href="https://ifconfig.com.ua/slackware/slackware-2.0.1/contents/scripts/xman3">https://ifconfig.com.ua/slackware/slackware-2.0.1/contents/scripts/xman3</a> (ua, prio 100)</li>
+  <li><a href="http://slackware.ip-connect.info/slackware-2.0.1/contents/scripts/xman3">http://slackware.ip-connect.info/slackware-2.0.1/contents/scripts/xman3</a> (ua, prio 100)</li>
+  <li><a href="https://mirrors.nxthost.com/slackware/slackware-2.0.1/contents/scripts/xman3">https://mirrors.nxthost.com/slackware/slackware-2.0.1/contents/scripts/xman3</a> (ro, prio 100)</li>
+  <li><a href="https://mirror1.sox.rs/slackware/slackware-2.0.1/contents/scripts/xman3">https://mirror1.sox.rs/slackware/slackware-2.0.1/contents/scripts/xman3</a> (rs, prio 100)</li>
+  <li><a href="https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/contents/scripts/xman3">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/contents/scripts/xman3</a> (pl, prio 100)</li>
+  <li><a href="https://slackware.mirror.garr.it/slackware/slackware-2.0.1/contents/scripts/xman3">https://slackware.mirror.garr.it/slackware/slackware-2.0.1/contents/scripts/xman3</a> (it, prio 100)</li>
+  <li><a href="http://mirror.slackware.hr/slackware/slackware-2.0.1/contents/scripts/xman3">http://mirror.slackware.hr/slackware/slackware-2.0.1/contents/scripts/xman3</a> (hr, prio 100)</li>
+  <li><a href="https://mirror.bahnhof.net/slackware/slackware-2.0.1/contents/scripts/xman3">https://mirror.bahnhof.net/slackware/slackware-2.0.1/contents/scripts/xman3</a> (se, prio 100)</li>
+  <li><a href="https://mirrors.dotsrc.org/slackware/slackware-2.0.1/contents/scripts/xman3">https://mirrors.dotsrc.org/slackware/slackware-2.0.1/contents/scripts/xman3</a> (dk, prio 100)</li>
+  <li><a href="https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/contents/scripts/xman3">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/contents/scripts/xman3</a> (de, prio 100)</li>
+  <li><a href="http://mirrors.nav.ro/slackware/slackware-2.0.1/contents/scripts/xman3">http://mirrors.nav.ro/slackware/slackware-2.0.1/contents/scripts/xman3</a> (ro, prio 100)</li>
+  <li><a href="http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/contents/scripts/xman3">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/contents/scripts/xman3</a> (za, prio 100)</li>
+  <li><a href="https://linux.rz.rub.de/slackware/slackware-2.0.1/contents/scripts/xman3">https://linux.rz.rub.de/slackware/slackware-2.0.1/contents/scripts/xman3</a> (de, prio 100)</li>
+  <li><a href="https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/contents/scripts/xman3">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/contents/scripts/xman3</a> (nl, prio 100)</li>
+  <li><a href="https://mirror.koddos.net/slackware/slackware-2.0.1/contents/scripts/xman3">https://mirror.koddos.net/slackware/slackware-2.0.1/contents/scripts/xman3</a> (nl, prio 100)</li>
+  <li><a href="http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/contents/scripts/xman3">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/contents/scripts/xman3</a> (nl, prio 100)</li>
+  <li><a href="http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/contents/scripts/xman3">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/contents/scripts/xman3</a> (fr, prio 50)</li>
+  <li><a href="https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/contents/scripts/xman3">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/contents/scripts/xman3</a> (gb, prio 100)</li>
+  <li><a href="http://slackware.uk/slackware/slackware-2.0.1/contents/scripts/xman3">http://slackware.uk/slackware/slackware-2.0.1/contents/scripts/xman3</a> (gb, prio 100)</li>
+  <li><a href="https://mirrors.slackware.beco.cc/slackware-2.0.1/contents/scripts/xman3">https://mirrors.slackware.beco.cc/slackware-2.0.1/contents/scripts/xman3</a> (br, prio 100)</li>
+  <li><a href="https://linorg.usp.br/slackware/slackware-2.0.1/contents/scripts/xman3">https://linorg.usp.br/slackware/slackware-2.0.1/contents/scripts/xman3</a> (br, prio 100)</li>
+  <li><a href="https://ftp.slackware-brasil.com.br/slackware-2.0.1/contents/scripts/xman3">https://ftp.slackware-brasil.com.br/slackware-2.0.1/contents/scripts/xman3</a> (br, prio 100)</li>
+  <li><a href="https://mirror.cedia.org.ec/slackware/slackware-2.0.1/contents/scripts/xman3">https://mirror.cedia.org.ec/slackware/slackware-2.0.1/contents/scripts/xman3</a> (ec, prio 100)</li>
+</ul>
+</div>
+
+</div>
+<address>Powered by <a href="http://mirrorbrain.org/">MirrorBrain</a></address>
+</div><!-- mirrorbrain-details -->
+<!--
+<html>
+<a href="http://mirrorbrain.org/">MirrorBrain</a>
+powered by <a href="http://slackware.com/">Slackware</a>!
+</html>
+-->

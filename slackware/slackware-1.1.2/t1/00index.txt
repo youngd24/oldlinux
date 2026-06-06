@@ -1,0 +1,8 @@
+diskt1              124  
+maketag            1144  
+manifest.gz        7153  
+readme.tex         2738  
+tagfile             129  
+tagfile.org         129  
+tagfile.pat         129  
+texbin.tgz       954152  

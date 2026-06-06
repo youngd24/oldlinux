@@ -1,0 +1,14 @@
+Kernel versions:
+
+bare: 1.0.9
+cdu31a: 1.0.9
+mitsumi: 1.0.9
+modern: 1.1.18
+ncr: 1.1.19
+net: 1.0.9
+sbpcd: 1.0.9
+scsi: 1.0.9
+scsinet: 1.0.9
+sony535: 1.0.9
+xt: 1.0.9
+zfs: 1.1.21

@@ -1,0 +1,6 @@
+00index.txt         156  
+a_remove.tgz       1687  
+diskzdn1            559  
+gcc.tgz          533650  
+gxx.tgz          787367  
+tagfile             102  

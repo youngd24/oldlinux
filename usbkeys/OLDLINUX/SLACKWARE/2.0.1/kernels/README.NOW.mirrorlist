@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Mirror List</title>
+  <link type="text/css" rel="stylesheet" href="/css/mblist.css" />
+</head>
+
+<body>
+<div id="mirrorbrain-details">
+  <h2>Mirrors for <a href="/slackware/slackware-2.0.1/kernels/README.NOW">README.NOW</a></h2>
+<div id="mirrorbrain-fileinfo">
+<h3>File information</h3>
+<ul>
+  <li><span class="mirrorbrain-label">Filename:</span> README.NOW</li>
+  <li><span class="mirrorbrain-label">Path:</span> /slackware/slackware-2.0.1/kernels/README.NOW</li>
+  <li><span class="mirrorbrain-label">Size:</span> 2.4K (2466 bytes)</li>
+  <li><span class="mirrorbrain-label">Last modified:</span> Wed, 25 Feb 2004 14:26:57 GMT (Unix time: 1077719217)</li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.1/kernels/README.NOW.sha256">SHA-256 Hash</a>:</span> <tt>157a586c7a58b7439f6beed916993e9a76711dbf2e251d33fa09c9aa2896ab06</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.1/kernels/README.NOW.sha1">SHA-1 Hash</a>:</span> <tt>1dbb62627fa989e06a0ce8e28504a376c5332b14</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.1/kernels/README.NOW.md5">MD5 Hash</a>:</span> <tt>8485ac94a77b247053c2a69191d11d98</tt></li>
+</ul>
+<p><a href="/slackware/slackware-2.0.1/kernels/README.NOW" class="mirrorbrain-btn">Download file from preferred mirror</a></p>
+</div>
+
+<div id="mirrorbrain-links">
+<h3>Reliable downloads</h3>
+<div class="mirrorbrain-links-grp">
+<h4>Metalink</h4>
+<ul>
+  <li><a href="/slackware/slackware-2.0.1/kernels/README.NOW.meta4">/slackware/slackware-2.0.1/kernels/README.NOW.meta4</a> (IETF Metalink)</li>
+  <li><a href="/slackware/slackware-2.0.1/kernels/README.NOW.metalink">/slackware/slackware-2.0.1/kernels/README.NOW.metalink</a> (old (v3) Metalink)</li>
+</ul>
+</div>
+</div>
+
+<div id="mirrorbrain-mirrors">
+<h3>Mirrors</h3>
+<p>List of best mirrors for IP address 172.59.189.70, located at 41.848301,-87.651703 in United States (US).</p>
+
+<p><a href="https://maps.google.com/maps/api/staticmap?size=640x512&amp;visual_refresh=true&amp;scale=2&amp;maptype=roadmap&amp;sensor=false&amp;markers=color:red|41.848301,-87.651703&amp;markers=color:yellow|label:1|28.538000,-81.378998&amp;markers=color:yellow|label:2|-2.883000,-78.983002&amp;markers=color:yellow|label:3|-16.701000,-49.266998&amp;markers=color:yellow|label:4|-8.144000,-34.978001&amp;markers=color:yellow|label:5|-23.473000,-46.666000&amp;markers=color:yellow|label:6|51.495998,-0.122000&amp;markers=color:yellow|label:7|51.266998,1.083000&amp;markers=color:yellow|label:8|48.858002,2.339000&amp;markers=color:yellow|label:9|48.858002,2.339000">Map showing the closest mirrors</a></p>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 1 mirror which handle this country (US)</h4>
+<ul>
+ <li><a href="https://mirror.slackbuilds.org/slackware/slackware-2.0.1/kernels/README.NOW">https://mirror.slackbuilds.org/slackware/slackware-2.0.1/kernels/README.NOW</a> (us, prio 100)</li>
+</ul>
+</div>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 27 mirrors in other parts of the world</h4>
+<ul>
+  <li><a href="https://mirror.cedia.org.ec/slackware/slackware-2.0.1/kernels/README.NOW">https://mirror.cedia.org.ec/slackware/slackware-2.0.1/kernels/README.NOW</a> (ec, prio 100)</li>
+  <li><a href="https://ftp.slackware-brasil.com.br/slackware-2.0.1/kernels/README.NOW">https://ftp.slackware-brasil.com.br/slackware-2.0.1/kernels/README.NOW</a> (br, prio 100)</li>
+  <li><a href="https://mirrors.slackware.beco.cc/slackware-2.0.1/kernels/README.NOW">https://mirrors.slackware.beco.cc/slackware-2.0.1/kernels/README.NOW</a> (br, prio 100)</li>
+  <li><a href="https://linorg.usp.br/slackware/slackware-2.0.1/kernels/README.NOW">https://linorg.usp.br/slackware/slackware-2.0.1/kernels/README.NOW</a> (br, prio 100)</li>
+  <li><a href="http://slackware.uk/slackware/slackware-2.0.1/kernels/README.NOW">http://slackware.uk/slackware/slackware-2.0.1/kernels/README.NOW</a> (gb, prio 100)</li>
+  <li><a href="https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/kernels/README.NOW">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/kernels/README.NOW</a> (gb, prio 100)</li>
+  <li><a href="http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/kernels/README.NOW">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/kernels/README.NOW</a> (nl, prio 100)</li>
+  <li><a href="http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/kernels/README.NOW">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/kernels/README.NOW</a> (fr, prio 50)</li>
+  <li><a href="https://mirror.koddos.net/slackware/slackware-2.0.1/kernels/README.NOW">https://mirror.koddos.net/slackware/slackware-2.0.1/kernels/README.NOW</a> (nl, prio 100)</li>
+  <li><a href="https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/kernels/README.NOW">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/kernels/README.NOW</a> (nl, prio 100)</li>
+  <li><a href="https://linux.rz.rub.de/slackware/slackware-2.0.1/kernels/README.NOW">https://linux.rz.rub.de/slackware/slackware-2.0.1/kernels/README.NOW</a> (de, prio 100)</li>
+  <li><a href="http://mirrors.nav.ro/slackware/slackware-2.0.1/kernels/README.NOW">http://mirrors.nav.ro/slackware/slackware-2.0.1/kernels/README.NOW</a> (ro, prio 100)</li>
+  <li><a href="https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/kernels/README.NOW">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/kernels/README.NOW</a> (de, prio 100)</li>
+  <li><a href="https://mirrors.dotsrc.org/slackware/slackware-2.0.1/kernels/README.NOW">https://mirrors.dotsrc.org/slackware/slackware-2.0.1/kernels/README.NOW</a> (dk, prio 100)</li>
+  <li><a href="http://mirror.slackware.hr/slackware/slackware-2.0.1/kernels/README.NOW">http://mirror.slackware.hr/slackware/slackware-2.0.1/kernels/README.NOW</a> (hr, prio 100)</li>
+  <li><a href="https://slackware.mirror.garr.it/slackware/slackware-2.0.1/kernels/README.NOW">https://slackware.mirror.garr.it/slackware/slackware-2.0.1/kernels/README.NOW</a> (it, prio 100)</li>
+  <li><a href="https://mirror.bahnhof.net/slackware/slackware-2.0.1/kernels/README.NOW">https://mirror.bahnhof.net/slackware/slackware-2.0.1/kernels/README.NOW</a> (se, prio 100)</li>
+  <li><a href="https://mirror1.sox.rs/slackware/slackware-2.0.1/kernels/README.NOW">https://mirror1.sox.rs/slackware/slackware-2.0.1/kernels/README.NOW</a> (rs, prio 100)</li>
+  <li><a href="https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/kernels/README.NOW">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/kernels/README.NOW</a> (pl, prio 100)</li>
+  <li><a href="https://mirrors.nxthost.com/slackware/slackware-2.0.1/kernels/README.NOW">https://mirrors.nxthost.com/slackware/slackware-2.0.1/kernels/README.NOW</a> (ro, prio 100)</li>
+  <li><a href="http://slackware.ip-connect.info/slackware-2.0.1/kernels/README.NOW">http://slackware.ip-connect.info/slackware-2.0.1/kernels/README.NOW</a> (ua, prio 100)</li>
+  <li><a href="https://ifconfig.com.ua/slackware/slackware-2.0.1/kernels/README.NOW">https://ifconfig.com.ua/slackware/slackware-2.0.1/kernels/README.NOW</a> (ua, prio 100)</li>
+  <li><a href="http://mirror.mephi.ru/slackware/slackware-2.0.1/kernels/README.NOW">http://mirror.mephi.ru/slackware/slackware-2.0.1/kernels/README.NOW</a> (ru, prio 100)</li>
+  <li><a href="https://mirror.yandex.ru/slackware/slackware-2.0.1/kernels/README.NOW">https://mirror.yandex.ru/slackware/slackware-2.0.1/kernels/README.NOW</a> (ru, prio 100)</li>
+  <li><a href="http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/kernels/README.NOW">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/kernels/README.NOW</a> (za, prio 100)</li>
+  <li><a href="https://mirror.lyrahosting.com/slackware/slackware-2.0.1/kernels/README.NOW">https://mirror.lyrahosting.com/slackware/slackware-2.0.1/kernels/README.NOW</a> (sa, prio 100)</li>
+  <li><a href="https://mirror-hk.koddos.net/slackware/slackware-2.0.1/kernels/README.NOW">https://mirror-hk.koddos.net/slackware/slackware-2.0.1/kernels/README.NOW</a> (hk, prio 100)</li>
+</ul>
+</div>
+
+</div>
+<address>Powered by <a href="http://mirrorbrain.org/">MirrorBrain</a></address>
+</div><!-- mirrorbrain-details -->
+<!--
+<html>
+<a href="http://mirrorbrain.org/">MirrorBrain</a>
+powered by <a href="http://slackware.com/">Slackware</a>!
+</html>
+-->

@@ -1,0 +1,23 @@
+PACKAGE NAME:     x_mach32
+PACKAGE SIZE:     386 K
+PACKAGE LOCATION: diskx1
+PACKAGE DESCRIPTION:
+x_mach32: An accelerated server for cards using Mach32 chips.
+x_mach32:
+x_mach32: This is X server number 2 of 7. In most cases you should only install
+x_mach32: the X server designed to work with your video hardware. 
+x_mach32:
+x_mach32: Installing this package will create a link in /usr/X11/bin from
+x_mach32: XF86_Mach32 to X, setting this server as the default.
+x_mach32:
+FILE LIST:
+./
+usr/
+usr/X11/
+usr/X11/bin/
+usr/X11/bin/XF86_Mach32
+install/
+install/doinst.sh
+var/
+var/X11/
+var/X11/bin/

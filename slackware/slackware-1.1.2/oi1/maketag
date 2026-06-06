@@ -1,0 +1,34 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+rm -f /tmp/SeTnewtag # empty the return file
+dialog --title "SELECTING PACKAGES FOR SERIES OI (ObjectBuilder)" \
+       --checklist "Please select the packages you wish to install \
+from series OI. Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the packages you wish to install. It is recommended that you install \
+all of the selected packages, but you may skip some if you feel like \
+taking your chances. \
+Press ENTER when you are \
+done." 20 70 8 \
+"oilib" "Shared OI library (.so and .sa)" "on" \
+"oiinc" "OI include files" "on" \
+"oimisc" "OI configuration files, etc" "on" \
+"uib" "ObjectBuilder binaries, config files and other programs" "on" \
+"oidemos" "OI demo programs" "on" \
+"oidoc" "OI documentation, ObjectBuilder docs, COPYING, etc" "on" \
+"oiman" "OI manual pages" "on" \
+"oistat" "Static OI library" "on" \
+2> /tmp/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f /tmp/SeTpkgs
+ exit
+fi
+cat /dev/null > /tmp/SeTnewtag
+for PACKAGE in oilib oiinc oimisc uib oidemos oidoc oiman oistat ; do
+ if fgrep \"$PACKAGE\" /tmp/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> /tmp/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> /tmp/SeTnewtag
+ fi
+done
+rm -f /tmp/SeTpkgs

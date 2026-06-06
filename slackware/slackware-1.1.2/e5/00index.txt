@@ -1,0 +1,5 @@
+00index.txt         130  
+diske5              683  
+elisp2.tgz       791112  
+emac_nox.tgz     361486  
+install.end          43  

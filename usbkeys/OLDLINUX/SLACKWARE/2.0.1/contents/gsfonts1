@@ -1,0 +1,57 @@
+PACKAGE NAME:     gsfonts1
+PACKAGE SIZE:     483 K
+PACKAGE LOCATION: diskap2
+PACKAGE DESCRIPTION:
+gsfonts1: Fonts for the Ghostscript interpreter/previewer.
+gsfonts1:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/ghostscript/
+usr/lib/ghostscript/fonts/
+usr/lib/ghostscript/fonts/bchb.afm
+usr/lib/ghostscript/fonts/bchb.gsf
+usr/lib/ghostscript/fonts/bchbi.afm
+usr/lib/ghostscript/fonts/bchbi.gsf
+usr/lib/ghostscript/fonts/bchr.afm
+usr/lib/ghostscript/fonts/bchr.gsf
+usr/lib/ghostscript/fonts/bchri.afm
+usr/lib/ghostscript/fonts/bchri.gsf
+usr/lib/ghostscript/fonts/hrge_r.gsf
+usr/lib/ghostscript/fonts/hrge_rb.gsf
+usr/lib/ghostscript/fonts/hrge_ro.gsf
+usr/lib/ghostscript/fonts/hrgk_c.gsf
+usr/lib/ghostscript/fonts/hrgk_s.gsf
+usr/lib/ghostscript/fonts/hrgr_r.gsf
+usr/lib/ghostscript/fonts/hrgr_rb.gsf
+usr/lib/ghostscript/fonts/hrgr_ro.gsf
+usr/lib/ghostscript/fonts/hrit_r.gsf
+usr/lib/ghostscript/fonts/hrit_rb.gsf
+usr/lib/ghostscript/fonts/hrit_ro.gsf
+usr/lib/ghostscript/fonts/hrpl_r.gsf
+usr/lib/ghostscript/fonts/hrpl_rb.gsf
+usr/lib/ghostscript/fonts/hrpl_ro.gsf
+usr/lib/ghostscript/fonts/hrpl_s.gsf
+usr/lib/ghostscript/fonts/hrpl_sb.gsf
+usr/lib/ghostscript/fonts/hrpl_sbo.gsf
+usr/lib/ghostscript/fonts/hrpl_so.gsf
+usr/lib/ghostscript/fonts/hrpl_t.gsf
+usr/lib/ghostscript/fonts/hrpl_tb.gsf
+usr/lib/ghostscript/fonts/hrpl_tbi.gsf
+usr/lib/ghostscript/fonts/hrpl_ti.gsf
+usr/lib/ghostscript/fonts/hrsc_c.gsf
+usr/lib/ghostscript/fonts/hrsc_cb.gsf
+usr/lib/ghostscript/fonts/hrsc_co.gsf
+usr/lib/ghostscript/fonts/hrsc_s.gsf
+usr/lib/ghostscript/fonts/hrsc_sb.gsf
+usr/lib/ghostscript/fonts/hrsc_so.gsf
+usr/lib/ghostscript/fonts/hrsy_r.gsf
+usr/lib/ghostscript/fonts/cyr.gsf
+usr/lib/ghostscript/fonts/cyri.gsf
+usr/lib/ghostscript/fonts/ncrb.gsf
+usr/lib/ghostscript/fonts/ncrbi.gsf
+usr/lib/ghostscript/fonts/ncrr.gsf
+usr/lib/ghostscript/fonts/ncrri.gsf
+usr/lib/ghostscript/fonts/n019003l.gsf
+usr/lib/ghostscript/fonts/n021003l.gsf

@@ -1,0 +1,144 @@
+CONTENTS: bc gonzo gp9600 groff quota sc workbone ftape mt_st vim texinfo ash manpgs 
+ash:      Kenneth Almquist's ash shell.
+ash:
+ash:      A lightweight (62K) Bourne compatible shell. Great for machines with
+ash:      low memory, but does not provide all the extras of shells like bash,
+ash:      tcsh, and zsh. Runs most shell scripts compatible with the Bourne
+ash:      shell. Note that under Linux, most scripts seem to use at least some
+ash:      bash-specific syntax. The Slackware setup scripts are a notable
+ash:      exception, since ash is the shell used on the install disks. NetBSD
+ash:      uses ash as its /bin/sh.
+ash:
+ash:
+texinfo:  GNU texinfo-3.1
+texinfo:
+texinfo:  "Texinfo" is a documentation system that uses a single source file to
+texinfo:  produce both on-line information and printed output.  Using Texinfo,
+texinfo:  you can create a printed document with the normal features of a book,
+texinfo:  including chapters, sections, cross references, and indices.  From the
+texinfo:  same Texinfo source file, you can create a menu-driven, on-line Info
+texinfo:  file with nodes, menus, cross references, and indices.
+texinfo:
+texinfo:  This package is needed to read the documentation files in /usr/info.
+texinfo:
+vim:      Version 2.0 of Vim: Vi IMproved
+vim:
+vim:      Vim is an almost compatible version of the UNIX editor vi. Only the
+vim:      'Q' command is missing (you don't need it). Many new features have
+vim:      been added: multi level undo, command line history, filename 
+vim:      completion, block operations, etc.
+vim:
+vim:
+vim:
+vim:
+vim:
+mt_st:    mt-st-0.1 - controls magnetic tape drive operation
+mt_st:
+mt_st:    This mt originates from BSD NET-2. Some Linux SCSI tape-specific
+mt_st:    ioctls have been added to the original source and the man page has
+mt_st:    been updated. Although this mt program is tailored for SCSI tape, it
+mt_st:    can also be used with the QIC-02 driver and hopefully with other Linux
+mt_st:    tape drivers using the same ioctls (some of the commands may not work
+mt_st:    with all drivers).
+mt_st:
+mt_st:
+mt_st:
+bc:       GNU bc 1.02 - An arbitrary precision calculator language.
+bc:
+bc:       bc is a language that supports arbitrary precision numbers with 
+bc:       interactive execution of statements.  There are some similarities in
+bc:       the syntax to the C programming language.
+bc:
+bc:
+bc:
+bc:
+bc:
+bc:
+ftape:    ftape 0.9.9d, 0.9.10
+ftape:
+ftape:    Bas Laarhoven's FTAPE modules.
+ftape:
+ftape:    The FTAPE driver allows you to use a QIC-40 or QIC-80 floppy tape
+ftape:    drive with Linux.
+ftape:
+ftape:    These modules will only work with Linux version: 1.0.9
+ftape:
+ftape:
+ftape:
+workbone: Workbone 0.1 
+workbone:
+workbone: Text-based audio CD player.
+workbone:
+workbone:
+workbone:
+workbone:
+workbone:
+workbone:
+workbone:
+workbone:
+gonzo:    Sample users "gonzo", "snake", and "satan".               
+gonzo:
+gonzo:    NOTE: These sample users will be created without passwords. Be sure to
+gonzo:    assign passwords to them after rebooting. If you decide you want to
+gonzo:    remove them later, you can remove a user (and the user's home 
+gonzo:    directory) with this command:
+gonzo:
+gonzo:    userdel -r user
+gonzo:               ^^^^ Where this is the account to remove.
+gonzo:
+gonzo:
+gp9600:   This is a script that allows you to set your modem speed. If you do
+gp9600:   not install this script, your baud rate will be set to 9600. If you
+gp9600:   install it, a menu will be presented later on allowing you to select
+gp9600:   any of the following baud rates:
+gp9600:
+gp9600:   300, 1200, 2400, 4800, 9600, 19200, 38400.
+gp9600:
+gp9600:   If you need something faster than this, you should set the baud to
+gp9600:   38400, which can be changed to mean a faster rate with setserial.
+gp9600:
+gp9600:
+groff:    GNU troff 1.09 document formatting system.
+groff:
+groff:    The groff package provides versions of troff, nroff, eqn, tbl, and 
+groff:    other Unix text-formatting utilities. Groff is used to "compile" man
+groff:    pages stored in groff/nroff format into a form which can be printed or
+groff:    displayed on the screen. These man pages would be in /usr/man/man?. 
+groff:    Most of the man pages in the Slackware Linux distribution (except in
+groff:    the groff package) have been preformatted, GNU zipped, and placed in 
+groff:    the /usr/man/preformat/cat? directories. Groff is not needed to view
+groff:    preformatted man pages.                                 
+groff:
+quota:    quota-1.33.
+quota:
+quota:    Disk quota system, written by Marco van Wieringen, Edvard Tuinder, and
+quota:    Linus Torvalds. Also includes process accounting diffs and utilities.
+quota:    You will have to apply the included patch, recompile your kernel, and
+quota:    reinstall LILO in order to use this package. These patches work with
+quota:    Linux 1.1.21+ and possibly other 1.1.12+ kernels.
+quota:
+quota:
+quota:
+quota:
+sc:       The 'sc' spreadsheet. (v. 6.21)
+sc:
+sc:
+sc:
+sc:
+sc:
+sc:
+sc:
+sc:
+sc:
+sc:
+manpgs:   Manpages 1.2
+manpgs:
+manpgs:   Assorted man pages that go in sections 4, 5, 7, and 9.
+manpgs:
+manpgs:
+manpgs:
+manpgs:
+manpgs:
+manpgs:
+manpgs:
+manpgs:

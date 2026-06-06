@@ -1,0 +1,34 @@
+PACKAGE NAME:     ifs
+PACKAGE SIZE:     24 K
+PACKAGE LOCATION: diskq1
+PACKAGE DESCRIPTION:
+ifs:      IFS (Inheriting File System) 5.1 utilities and kernel patch.
+ifs:
+ifs:      These are patches for Werner Almesberger's Inheriting File System 
+ifs:      upgraded to work with Linux 1.1.8 - 1.1.11.  This experimental file
+ifs:      system lets you do things like this:
+ifs:      smount -t ifs /tmp/diffs,/cdrom /read-write-cd
+ifs:      where /tmp/diffs and /read-write-cd are directories on your hard 
+ifs:      drive, and /cdrom is where your CD is mounted. At the mount point
+ifs:      /read-write-cd, you'll find your CD-ROM mounted "read-write"!
+ifs:      This code has known bugs, but is fun to play with. Use at own risk.
+ifs:
+FILE LIST:
+./
+sbin/
+sbin/smount
+sbin/unwo
+usr/
+usr/src/
+usr/src/ifs-5.1/
+usr/src/ifs-5.1/README_IFS_1.1.8
+usr/src/ifs-5.1/ifs-5.1-1.1.8.diffs
+usr/src/ifs-5.1/README
+usr/src/ifs-5.1/ifsprogs/
+usr/src/ifs-5.1/ifsprogs/CHANGES
+usr/src/ifs-5.1/ifsprogs/Makefile
+usr/src/ifs-5.1/ifsprogs/README
+usr/src/ifs-5.1/ifsprogs/smount.c
+usr/src/ifs-5.1/ifsprogs/test.pl
+usr/src/ifs-5.1/ifsprogs/unwo.c
+usr/src/ifs-5.1/ifs-5.1.tar

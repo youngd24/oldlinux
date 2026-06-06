@@ -1,0 +1,35 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+rm -f /tmp/SeTnewtag # empty the return file
+dialog --title "SELECTING PACKAGES FOR SERIES T (TeX)" \
+       --checklist "Please select the packages you wish to install \
+from series T. Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the packages you wish to install. \
+Press ENTER when you are \
+done." 20 70 10 \
+"texbin" "TeX binaries" "on" \
+"texlibmc" "TeX fonts" "on" \
+"texcmpk" "TeX fonts" "on" \
+"texdoc" "TeX man pages" "on" \
+"texnfss2" "More TeX stuff" "on" \
+"texcm" "TeX fonts" "on" \
+"texlibib" "LaTeX2e distribution" "on" \
+"texlibms" "TeX lib macros" "on" \
+"texams" "TeX fonts" "on" \
+"texfont" "TeX fonts" "on" \
+2> /tmp/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f /tmp/SeTpkgs
+ exit
+fi
+cat /dev/null > /tmp/SeTnewtag
+for PACKAGE in texbin texlibmc texcmpk texdoc texnfss2 texcm \
+texlibib texlibms texams texfont ; do
+ if fgrep \"$PACKAGE\" /tmp/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> /tmp/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> /tmp/SeTnewtag
+ fi
+done
+rm -f /tmp/SeTpkgs

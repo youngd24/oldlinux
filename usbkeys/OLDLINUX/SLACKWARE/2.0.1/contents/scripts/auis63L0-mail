@@ -1,0 +1,8 @@
+( cd usr/andrew/bin ; rm -rf cui )
+( cd usr/andrew/bin ; ln -sf cuin cui )
+( cd usr/andrew/bin ; rm -rf messages )
+( cd usr/andrew/bin ; ln -sf runapp messages )
+( cd usr/andrew/bin ; rm -rf vui )
+( cd usr/andrew/bin ; ln -sf vuin vui )
+( cd usr/andrew/etc ; rm -rf AndrewSetup )
+( cd usr/andrew/etc ; ln -sf /var/andrew/AndrewSetup AndrewSetup )

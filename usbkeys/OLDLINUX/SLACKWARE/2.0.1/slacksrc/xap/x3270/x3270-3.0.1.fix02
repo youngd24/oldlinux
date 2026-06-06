@@ -1,0 +1,2089 @@
+x3270 v3.0.1 Patch Set #2, 3 November 1993
+
+  This file is in 'patch' format.  To apply, run 'patch <x3270-3.0.1.fix02'.
+  If you don't have 'patch', it is readily available on the net.
+
+Improve the handling of outbound data.  Set the socket back to blocking mode
+after making the connection, and pop up an error message rather than crashing
+on write failures.
+
+*** telnet.c.orig	Fri Oct 22 18:27:57 1993
+--- telnet.c	Fri Oct 22 18:27:58 1993
+***************
+*** 93,98 ****
+--- 93,99 ----
+  static void	trace_netdata();
+  static char	parse_ctlchar();
+  static void	net_interrupt();
++ static int	non_blocking();
+  
+  /* telnet states */
+  #define TNS_DATA	0	/* receiving data */
+***************
+*** 143,150 ****
+  	int			i;
+  	int			on = 1;
+  
+! #	define CN_FAIL(t) { popup_an_error(t); return -1; }
+! #	define CN_SYSFAIL(t) { popup_an_errno(t, errno); return -1; }
+  
+  	if (!t_valid) {
+  		vintr   = parse_ctlchar(appres.intr);
+--- 144,150 ----
+  	int			i;
+  	int			on = 1;
+  
+! #	define close_fail	{ (void) close(sock); sock = -1; return -1; }
+  
+  	if (!t_valid) {
+  		vintr   = parse_ctlchar(appres.intr);
+***************
+*** 175,182 ****
+  	/* get the tcp/ip service (telnet) */
+  	if (sp = getservbyname(portname, "tcp"))
+  		port = sp->s_port;
+! 	else if (!(port = htons(atoi(portname))))
+! 		CN_FAIL("unknown service");
+  
+  	/* fill in the socket address of the given host */
+  	(void) memset((char *) &sin, 0, sizeof(sin));
+--- 175,184 ----
+  	/* get the tcp/ip service (telnet) */
+  	if (sp = getservbyname(portname, "tcp"))
+  		port = sp->s_port;
+! 	else if (!(port = htons(atoi(portname)))) {
+! 		popup_an_error("unknown service");
+! 		return -1;
+! 	}
+  
+  	/* fill in the socket address of the given host */
+  	(void) memset((char *) &sin, 0, sizeof(sin));
+***************
+*** 200,223 ****
+  	sin.sin_port = port;
+  
+  	/* create the socket */
+! 	if ((sock = socket(AF_INET, SOCK_STREAM, 0)) == -1)
+! 		CN_SYSFAIL("socket");
+  
+  	/* set options for inline out-of-band data and keepalives */
+! 	if (setsockopt(sock, SOL_SOCKET, SO_OOBINLINE, (char *)&on, sizeof(on)) < 0)
+! 		CN_SYSFAIL("setsockopt(SO_OOBINLINE)");
+! 	if (setsockopt(sock, SOL_SOCKET, SO_KEEPALIVE, (char *)&on, sizeof(on)) < 0)
+! 		CN_SYSFAIL("setsockopt(SO_KEEPALIVE)");
+  
+  	/* set the socket to be non-delaying */
+! #ifdef FIONBIO
+! 	i = 1;
+! 	if (ioctl(sock, FIONBIO, &i) == -1)
+! 		CN_SYSFAIL("ioctl(FIONBIO)");
+! #else
+! 	if (fcntl(sock, F_SETFL, fcntl(sock, F_GETFL, 0) | O_NDELAY) == -1)
+! 		CN_SYSFAIL("fcntl(O_NDELAY)");
+! #endif
+  
+  	/* connect */
+  	if (connect(sock, (struct sockaddr *) &sin, sizeof(sin)) == -1) {
+--- 202,225 ----
+  	sin.sin_port = port;
+  
+  	/* create the socket */
+! 	if ((sock = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+! 		popup_an_errno("socket", errno);
+! 		return -1;
+! 	}
+  
+  	/* set options for inline out-of-band data and keepalives */
+! 	if (setsockopt(sock, SOL_SOCKET, SO_OOBINLINE, (char *)&on, sizeof(on)) < 0) {
+! 		popup_an_errno("setsockopt(SO_OOBINLINE)", errno);
+! 		close_fail;
+! 	}
+! 	if (setsockopt(sock, SOL_SOCKET, SO_KEEPALIVE, (char *)&on, sizeof(on)) < 0) {
+! 		popup_an_errno("setsockopt(SO_KEEPALIVE)", errno);
+! 		close_fail;
+! 	}
+  
+  	/* set the socket to be non-delaying */
+! 	if (non_blocking(True) < 0)
+! 		close_fail;
+  
+  	/* connect */
+  	if (connect(sock, (struct sockaddr *) &sin, sizeof(sin)) == -1) {
+***************
+*** 233,242 ****
+  
+  			popup_an_errno(msg, errno);
+  			XtFree(msg);
+! 			return -1;
+  		}
+! 	} else
+  		trace("connected\n");
+  
+  	/* clear statistics and flags */
+  	(void) time(&ns_time);
+--- 235,247 ----
+  
+  			popup_an_errno(msg, errno);
+  			XtFree(msg);
+! 			close_fail;
+  		}
+! 	} else {
+! 		if (non_blocking(False) < 0)
+! 			close_fail;
+  		trace("connected\n");
++ 	}
+  
+  	/* clear statistics and flags */
+  	(void) time(&ns_time);
+***************
+*** 245,257 ****
+  	ns_bsent = 0;
+  	ns_rsent = 0;
+  	syncing = 0;
+! 	check_linemode(1);
+  
+  	/* all done */
+  	return sock;
+  }
+! #undef CN_FAIL
+! #undef CN_SYSFAIL
+  
+  /*
+   * net_disconnect
+--- 250,261 ----
+  	ns_bsent = 0;
+  	ns_rsent = 0;
+  	syncing = 0;
+! 	check_linemode(True);
+  
+  	/* all done */
+  	return sock;
+  }
+! #undef close_fail
+  
+  /*
+   * net_disconnect
+***************
+*** 285,290 ****
+--- 289,298 ----
+  	nr = read(sock, (char *) netrbuf, BUFSZ);
+  	if (nr < 0) {
+  		if (HALF_CONNECTED && errno == EAGAIN) {
++ 			if (non_blocking(False) < 0) {
++ 				x_disconnect();
++ 				return;
++ 			}
+  			x_connected();
+  			trace("connected\n");
+  			return;
+***************
+*** 309,314 ****
+--- 317,326 ----
+  	/* Process the data. */
+  
+  	if (HALF_CONNECTED) {
++ 		if (non_blocking(False) < 0) {
++ 			x_disconnect();
++ 			return;
++ 		}
+  		x_connected();
+  		trace("connected\n");
+  	}
+***************
+*** 444,450 ****
+  			break;
+  		}
+  		telnet_state = TNS_DATA;
+! 		check_linemode(0);
+  		break;
+  	    case TNS_WONT:	/* telnet WONT DO OPTION command */
+  		trace("%s\n", opt(c));
+--- 456,462 ----
+  			break;
+  		}
+  		telnet_state = TNS_DATA;
+! 		check_linemode(False);
+  		break;
+  	    case TNS_WONT:	/* telnet WONT DO OPTION command */
+  		trace("%s\n", opt(c));
+***************
+*** 464,470 ****
+  		}
+  		telnet_state = TNS_DATA;
+  		check_in3270();
+! 		check_linemode(0);
+  		break;
+  	    case TNS_DO:	/* telnet PLEASE DO OPTION command */
+  		trace("%s\n", opt(c));
+--- 476,482 ----
+  		}
+  		telnet_state = TNS_DATA;
+  		check_in3270();
+! 		check_linemode(False);
+  		break;
+  	    case TNS_DO:	/* telnet PLEASE DO OPTION command */
+  		trace("%s\n", opt(c));
+***************
+*** 603,610 ****
+  			} else if (errno == EINTR) {
+  				continue;
+  			} else {
+! 				perror("x3270: write(net)");
+! 				exit(1);
+  			}
+  		}
+  		ns_bsent += len;
+--- 615,623 ----
+  			} else if (errno == EINTR) {
+  				continue;
+  			} else {
+! 				popup_an_errno("write", errno);
+! 				x_disconnect();
+! 				return;
+  			}
+  		}
+  		ns_bsent += len;
+***************
+*** 939,945 ****
+   */
+  static void
+  check_linemode(init)
+! int init;
+  {
+  	int wasline = linemode;
+  
+--- 952,958 ----
+   */
+  static void
+  check_linemode(init)
+! Boolean init;
+  {
+  	int wasline = linemode;
+  
+***************
+*** 1227,1230 ****
+--- 1240,1277 ----
+  	c[8].name = 0;
+  
+  	return c;
++ }
++ 
++ /*
++  * Set blocking/non-blocking mode on the socket.  On error, pops up an error
++  * message, but does not close the socket.
++  */
++ static int
++ non_blocking(on)
++ Boolean on;
++ {
++ #ifdef FIONBIO
++ 	int i = on ? 1 : 0;
++ 
++ 	if (ioctl(sock, FIONBIO, &i) < 0) {
++ 		popup_an_errno("ioctl(FIONBIO)", errno);
++ 		return -1;
++ 	}
++ #else
++ 	int f;
++ 
++ 	if ((f = fcntl(sock, F_GETFL, 0)) == -1) {
++ 		popup_an_errno("fcntl(F_GETFL)", errno);
++ 		return -1;
++ 	}
++ 	if (on)
++ 		f |= O_NDELAY;
++ 	else
++ 		f &= ~O_NDELAY;
++ 	if (fcntl(sock, F_SETFL, f) < 0) {
++ 		popup_an_errno("fcntl(F_SETFL)", errno);
++ 		return -1;
++ 	}
++ #endif
++ 	return 0;
+  }
+
+Fix a 3270 protocol problem with the PT order, which was nulling out fields
+it shouldn't have.
+
+*** ctlr.c.orig	Fri Oct 22 18:28:04 1993
+--- ctlr.c	Fri Oct 22 18:28:05 1993
+***************
+*** 791,796 ****
+--- 791,802 ----
+  					current_fa = &screen_buf[baddr];
+  					INC_BA(baddr);
+  					buffer_addr = baddr;
++ #ifdef notdef
++ 					/*
++ 					 * Under certain conditions, PT is
++ 					 * supposed to null out the field,
++ 					 * but these ain't them.
++ 					 */
+  					if (!last_cmd) {
+  						while (!IS_FA(screen_buf[baddr])) {
+  							ctlr_add(baddr, CG_NULLBLANK);
+***************
+*** 797,802 ****
+--- 803,809 ----
+  							INC_BA(baddr);
+  						}
+  					}
++ #endif
+  					break;
+  				}
+  				else {
+
+Implement screen printing with new PrintText and PrintWindow actions.  Includes
+HardPrint for minimal compatibility with v2.65, though using the environment
+variable to change the print command doesn't work -- use resources instead.
+
+*** kybd.c.orig	Fri Oct 22 20:00:43 1993
+--- kybd.c	Fri Oct 22 20:00:44 1993
+***************
+*** 1557,1562 ****
+--- 1557,1565 ----
+  	{ "PF7",	(XtActionProc)key_PF7 },
+  	{ "PF8",	(XtActionProc)key_PF8 },
+  	{ "PF9",	(XtActionProc)key_PF9 },
++ 	{ "PrintText",	(XtActionProc)print_text },
++ 	{ "HardPrint",	(XtActionProc)print_text },
++ 	{ "PrintWindow",(XtActionProc)print_window },
+  	{ "Quit",	(XtActionProc)quit_event },
+  	{ "Redraw",	(XtActionProc)redraw },
+  	{ "Reset",	(XtActionProc)key_Reset },
+*** screen.c.orig	Fri Oct 22 20:00:50 1993
+--- screen.c	Fri Oct 22 20:00:52 1993
+***************
+*** 1813,1815 ****
+--- 1813,1885 ----
+  	aicon_text = XtNewString(l);
+  	draw_aicon_label();
+  }
++ 
++ /* Print the contents of the screen as text. */
++ void
++ print_text(w, event, params, num_params)
++ Widget	w;
++ XEvent	*event;
++ String	*params;
++ Cardinal *num_params;
++ {
++ 	char *filter = get_resource("printTextCommand");
++ 	FILE *f;
++ 	register int i;
++ 	char c;
++ 	int ns = 0;
++ 
++ 	if (*num_params > 0)
++ 		filter = params[0];
++ 	if (*num_params > 1)
++ 		XtWarning("PrintText: extra arguments ignored");
++ 	if (!filter) {
++ 		XtWarning("PrintText: no command defined");
++ 		return;
++ 	}
++ 	if (!(f = popen(filter, "w"))) {
++ 		XtWarning("PrintText: popen of filter failed");
++ 		return;
++ 	}
++ 	for (i = 0; i < ROWS*COLS; i++) {
++ 		if (i && !(i % COLS)) {
++ 			fputc('\n', f);
++ 			ns = 0;
++ 		}
++ 		c = cg2asc[screen_buf[i]];
++ 		if (c == ' ')
++ 			ns++;
++ 		else {
++ 			while (ns) {
++ 				fputc(' ', f);
++ 				ns--;
++ 			}
++ 			fputc(c, f);
++ 		}
++ 	}
++ 	fputc('\n', f);
++ 	pclose(f);
++ }
++ 
++ /* Print the contents of the screen as a bitmap. */
++ void
++ print_window(w, event, params, num_params)
++ Widget	w;
++ XEvent	*event;
++ String	*params;
++ Cardinal *num_params;
++ {
++ 	char *filter = get_resource("printWindowCommand");
++ 	char *fb = XtMalloc(strlen(filter) + 16);
++ 
++ 	if (*num_params > 0)
++ 		filter = params[0];
++ 	if (*num_params > 1)
++ 		XtWarning("PrintWindow: extra arguments ignored");
++ 	if (!filter) {
++ 		XtWarning("PrintWindow: no command defined");
++ 		return;
++ 	}
++ 	sprintf(fb, filter, XtWindow(toplevel));
++ 	system(fb);
++ 	XtFree(fb);
++ }
+*** X3270.ad.orig	Fri Oct 22 20:00:56 1993
+--- X3270.ad	Fri Oct 22 20:00:57 1993
+***************
+*** 2,8 ****
+  ! piece of text but error and trace messages is defined here.
+  !
+  ! Basics
+! x3270.adVersion:	3.0.1
+  !
+  ! The following resource definitions are commented out, because they are
+  ! the defaults defined in x3270 itself.  They are listed here so you can
+--- 2,8 ----
+  ! piece of text but error and trace messages is defined here.
+  !
+  ! Basics
+! x3270.adVersion:	3.0.1.2
+  !
+  ! The following resource definitions are commented out, because they are
+  ! the defaults defined in x3270 itself.  They are listed here so you can
+***************
+*** 119,124 ****
+--- 119,128 ----
+  x3270*optionsMenu.model4Option.label:		Model 4 (43x80)
+  x3270*optionsMenu.model5Option.label:		Model 5 (27x132)
+  !
++ ! Print commands
++ x3270.printTextCommand:		lpr
++ x3270.printWindowCommand:	xwd -id %d | xpr | lpr
++ !
+  ! Messages
+  x3270.message.reconnect:			Reconnect to
+  x3270.message.model:				Model
+***************
+*** 261,266 ****
+--- 265,271 ----
+  	<Key>F10:		PF10()\n\
+  	<Key>F11:		PF11()\n\
+  	<Key>F12:		PF12()\n\
++ 	Meta<Key>b:		PrintWindow()\n\
+  	Meta<Key>c:		Clear()\n\
+  	Meta<Key>r:		Reset()\n\
+  	Meta<Key>1:		PA1()\n\
+***************
+*** 271,276 ****
+--- 276,282 ----
+  	Meta<Key>d:		Delete()\n\
+  	Meta<Key>h:		Home()\n\
+  	Meta<Key>l:		Redraw()\n\
++ 	Meta<Key>p:		PrintText()\n\
+  	Meta<Key>q:		Quit()\n\
+  	Ctrl<Key>u:		DeleteField()\n\
+  	Ctrl<Key>w:		DeleteWord()\n\
+*** x3270.man.orig	Fri Oct 22 20:01:01 1993
+--- x3270.man	Fri Oct 22 20:01:02 1993
+***************
+*** 501,511 ****
+--- 501,513 ----
+  Meta<Key>2:	PA2()
+  Meta<Key>3:	PA3()
+  Meta<Key>a:	Attn()
++ Meta<Key>b:	PrintWindow()
+  Meta<Key>c:	Clear()
+  Meta<Key>d:	Delete()
+  Meta<Key>h:	Home()
+  Meta<Key>i:	Insert()
+  Meta<Key>l:	Redraw()
++ Meta<Key>p:	PrintText()
+  Meta<Key>q:	Quit()
+  Meta<Key>r:	Reset()
+  Ctrl<Key>u:	DeleteField()
+***************
+*** 584,589 ****
+--- 586,593 ----
+  Newline	move cursor to first field on next line (or send ASCII LF)
+  PA1-PA3	Program Attention AID
+  PF1-PF24	Program Function AID
++ PrintText(\fIcommand\fP)	print screen text on printer
++ PrintWindow(\fIcommand\fP)	print screen image (bitmap) on printer
+  Quit	exit \fBx3270\fP
+  Redraw	redraw window
+  Reset	reset locked keyboard
+***************
+*** 829,834 ****
+--- 833,873 ----
+  apl_uptackjot	ef
+  .TE
+  .RE
++ .SH "SCREEN PRINTING"
++ Screen printing is handled through the PrintText and PrintWindow actions.
++ .PP
++ The PrintText action (usually assigned to the key <Meta>p) sends the current
++ screen image to the printer as 
++ .SM ASCII
++ characters.
++ The default command used to print the data is controlled by
++ the "x3270.printTextCommand" resource; the default is
++ .BR lpr .
++ You may also use a keymap definition to pass a print command the PrintText
++ action itself.
++ The command receives the screen text as its standard input.
++ For example, the following keymap will save the screen text in a file:
++ .IP
++ Meta<Key>f: PrintText("cat >screen.image")
++ .PP
++ Note: HardPrint is an alias for PrintText.
++ .PP
++ The PrintWindow action (usually assigned to the key <Meta>b) sends the current
++ screen image to the printer as a bitmap.
++ The default command used to print the data is controlled by
++ the "x3270.printWindowCommand" resource; the default is
++ .IP
++ .BR "xwd -id %d | xpr | lpr" .
++ .PP
++ You may also use a keymap definition to pass a print command to the
++ PrintWindow action itself.
++ If the command contains the text "%d", the window ID of
++ .B x3270
++ will be substituted before it is run.
++ For example, the following keymap will pop up a duplicate of the current
++ screen image:
++ .IP
++ Meta<Key>g: PrintWindow("xwd -id %d | xwud &")
+  .SH BUGS
+  Cursor highlighting will not work with if you use the
+  .B NoTitleFocus
+*** globals.h.orig	Fri Oct 22 20:01:06 1993
+--- globals.h	Fri Oct 22 20:01:07 1993
+***************
+*** 283,288 ****
+--- 283,290 ----
+  extern void mcursor_waiting();
+  extern void mcursor_locked();
+  extern void quit_event();
++ extern void print_text();
++ extern void print_window();
+  extern void redraw();
+  extern void ring_bell();
+  extern void screen_change_model();
+*** version.txt.orig	Mon Oct 25 14:45:58 1993
+--- version.txt	Mon Oct 25 14:45:58 1993
+***************
+*** 1 ****
+! 3.0.1
+--- 1 ----
+! 3.0.1.2
+
+Implement a "-once" option, which causes x3270 to exit when a host disconnects.
+
+*** x3270.c.orig	Fri Oct 22 20:59:40 1993
+--- x3270.c	Fri Oct 22 20:59:42 1993
+***************
+*** 62,67 ****
+--- 62,68 ----
+  enum cstate	cstate = NOT_CONNECTED;
+  Boolean		ansi_host = False;
+  Boolean		ever_3270 = False;
++ Boolean		exiting = False;
+  
+  /* Statics */
+  static XtInputId	ns_read_id;
+***************
+*** 86,91 ****
+--- 87,93 ----
+  	{ "-keymap",	".keymap",	XrmoptionSepArg,	NULL },
+  	{ "-model",	".model",	XrmoptionSepArg,	NULL },
+  	{ "-mono",	".mono",	XrmoptionNoArg,		"true" },
++ 	{ "-once",	".once",	XrmoptionNoArg,		"true" },
+  	{ "-port",	".port",	XrmoptionSepArg,	NULL },
+  	{ "-tn",	".termName",	XrmoptionSepArg,	NULL },
+  };
+***************
+*** 128,133 ****
+--- 130,137 ----
+  	  offset(visual_bell), XtRString, "false" },
+  	{ "aplMode", "AplMode", XtRBoolean, sizeof(Boolean),
+  	  offset(apl_mode), XtRString, "false" },
++ 	{ "once", "once", XtRBoolean, sizeof(Boolean),
++ 	  offset(once), XtRString, "false" },
+  	{ "model", "Model", XtRString, sizeof(char *),
+  	  offset(model), XtRString, "4", },
+  	{ "keymap", "Keymap", XtRString, sizeof(char *),
+***************
+*** 580,585 ****
+--- 584,595 ----
+  		}
+  		net_disconnect();
+  		net_sock = -1;
++ 		if (CONNECTED && appres.once) {
++ 			if (error_popup_visible)
++ 				exiting = True;
++ 			else
++ 				exit(0);
++ 		}
+  		cstate = NOT_CONNECTED;
+  	}
+  	menubar_connect();
+*** x3270.man.orig	Fri Oct 22 20:59:46 1993
+--- x3270.man	Fri Oct 22 20:59:47 1993
+***************
+*** 100,105 ****
+--- 100,110 ----
+  .B \-mono
+  Forces monochrome emulation on a color display.
+  .TP
++ .B \-once
++ Causes
++ .B x3270
++ to exit after a host disconnects.
++ .TP
+  .BI \-port " n"
+  Specifies a different
+  .SM TCP
+*** globals.h.orig	Fri Oct 22 20:59:51 1993
+--- globals.h	Fri Oct 22 20:59:52 1993
+***************
+*** 42,47 ****
+--- 42,48 ----
+  	Boolean active_icon;
+  	Boolean label_icon;
+  	Boolean	apl_mode;
++ 	Boolean	once;
+  	XtTranslations	default_translations;
+  	Cursor	wait_mcursor;
+  	Cursor	locked_mcursor;
+***************
+*** 92,97 ****
+--- 93,100 ----
+  extern Font		efont;
+  extern XFontStruct      **efontinfo;
+  extern char		*efontname;
++ extern Boolean		error_popup_visible;
++ extern Boolean		exiting;
+  extern char		*full_current_host;
+  extern Boolean		*latin1_font;
+  extern Pixmap		gray;
+*** popups.c.orig	Fri Oct 22 20:59:56 1993
+--- popups.c	Fri Oct 22 20:59:57 1993
+***************
+*** 362,367 ****
+--- 362,368 ----
+  
+  static Widget error_shell = NULL;
+  static Widget error_form;
++ Boolean error_popup_visible;
+  
+  /* Called when OK is pressed on the error popup */
+  /*ARGSUSED*/
+***************
+*** 374,379 ****
+--- 375,392 ----
+  	XtPopdown(error_shell);
+  }
+  
++ /* Called when the error popup is closed */
++ static void
++ error_popdown(w, client_data, call_data)
++ Widget w;
++ XtPointer client_data;
++ XtPointer call_data;
++ {
++ 	error_popup_visible = False;
++ 	if (exiting)
++ 		exit(1);
++ }
++ 
+  void
+  error_popup_init()
+  {
+***************
+*** 387,392 ****
+--- 400,407 ----
+  	    NULL);
+  	XtAddCallback(error_shell, XtNpopupCallback, place_popup,
+  	    (XtPointer) CenterP);
++ 	XtAddCallback(error_shell, XtNpopdownCallback, error_popdown,
++ 	    (XtPointer) NULL);
+  
+  	/* Create a dialog in the popup */
+  
+***************
+*** 420,425 ****
+--- 435,441 ----
+  	}
+  	ring_bell();
+  	XtVaSetValues(error_form, XtNlabel, msg, NULL);
++ 	error_popup_visible = True;
+  	popup_popup(error_shell, XtGrabExclusive);
+  }
+  
+
+By popular demand, restore the combination of the MoveCursor and select-start
+actions, now called move-select.  (The default is still to have them separate.)
+If you want to use this action, add the following keymap definition:
+    !<Btn1Down>: move-select()\n\
+
+*** kybd.c.orig	Mon Oct 25 11:28:08 1993
+--- kybd.c	Mon Oct 25 11:28:10 1993
+***************
+*** 1575,1580 ****
+--- 1575,1581 ----
+  	{ "ignore",	(XtActionProc)ignore },
+  	{ "start-extend",	(XtActionProc)start_extend },
+  	{ "insert-selection",	(XtActionProc)insert_selection },
++ 	{ "move-select",	(XtActionProc)move_select },
+  	{ "select-end",	(XtActionProc)select_end },
+  	{ "select-extend",	(XtActionProc)select_extend },
+  	{ "select-start",	(XtActionProc)select_start },
+*** select.c.orig	Mon Oct 25 11:28:15 1993
+--- select.c	Mon Oct 25 11:28:16 1993
+***************
+*** 68,74 ****
+--- 68,77 ----
+  #define NS		5
+  static Atom		want_sel[NS];
+  static Atom		own_sel[NS];
++ static Boolean		cursor_moved = False;
++ static int		saved_cursor_addr;
+  int			n_owned = -1;
++ Boolean	any_selected = False;
+  
+  extern Boolean		kybdlock;
+  extern unsigned char	*screen_buf;
+***************
+*** 170,182 ****
+  	down1_time = down_time = event_time(event);
+  	down1_x = event_x(event);
+  	down1_y = event_y(event);
+! 	if (down_time - up_time > CLICK_INTERVAL)
+  		num_clicks = 0;
+  	if (num_clicks == 0)
+  		unhighlight();
+  }
+  
+  /*
+   * Begin extending the current selection.
+   * Usually bound to <Btn3Down>.
+   */
+--- 173,229 ----
+  	down1_time = down_time = event_time(event);
+  	down1_x = event_x(event);
+  	down1_y = event_y(event);
+! 	if (down_time - up_time > CLICK_INTERVAL) {
+  		num_clicks = 0;
++ 		/* Commit any previous cursor move. */
++ 		cursor_moved = False;
++ 	}
+  	if (num_clicks == 0)
+  		unhighlight();
+  }
+  
+  /*
++  * Alternate form of select_start, which combines cursor motion with selection.
++  * Usually bound to <Btn1Down> in a user-specified keymap.
++  */
++ /*ARGSUSED*/
++ void
++ move_select(w, event, params, num_params)
++ Widget w;
++ XEvent *event;
++ String *params;
++ Cardinal num_params;
++ {
++ 	int x, y;
++ 	register int baddr;
++ 
++ 	if (w != *screen)
++ 		return;
++ 	BOUNDED_XY(event, x, y);
++ 	baddr = ROWCOL_TO_BA(y, x);
++ 
++ 	f_start = f_end = v_start = v_end = baddr;
++ 	down1_time = down_time = event_time(event);
++ 	down1_x = event_x(event);
++ 	down1_y = event_y(event);
++ 
++ 	if (down_time - up_time > CLICK_INTERVAL) {
++ 		num_clicks = 0;
++ 		/* Commit any previous cursor move. */
++ 		cursor_moved = False;
++ 	}
++ 	if (num_clicks == 0) {
++ 		if (any_selected) {
++ 			unhighlight();
++ 		} else {
++ 			cursor_moved = True;
++ 			saved_cursor_addr = cursor_addr;
++ 			cursor_move(baddr);
++ 		}
++ 	}
++ }
++ 
++ /*
+   * Begin extending the current selection.
+   * Usually bound to <Btn3Down>.
+   */
+***************
+*** 239,244 ****
+--- 286,297 ----
+  	else
+  		down1_time = 0L;
+  
++ 	/* If we moved the 3270 cursor on the first click, put it back. */
++ 	if (cursor_moved) {
++ 		cursor_move(saved_cursor_addr);
++ 		cursor_moved = False;
++ 	}
++ 
+  	BOUNDED_XY(event, x, y);
+  	baddr = ROWCOL_TO_BA(y, x);
+  
+***************
+*** 318,323 ****
+--- 371,383 ----
+  		}
+  		break;
+  	    case 2:
++ 		/*
++ 		 * If we moved the 3270 cursor on the first click, put it back.
++ 		 */
++ 		if (cursor_moved) {
++ 			cursor_move(saved_cursor_addr);
++ 			cursor_moved = False;
++ 		}
+  		select_word(f_start, event_time(event));
+  		break;
+  	    case 3:
+***************
+*** 360,366 ****
+  extern Boolean	screen_changed;
+  extern unsigned int	**x_image;
+  
+- Boolean	any_selected = False;
+  static Time	sel_time;
+  
+  
+--- 420,425 ----
+*** x3270.man.orig	Mon Oct 25 11:28:20 1993
+--- x3270.man	Mon Oct 25 11:28:21 1993
+***************
+*** 607,613 ****
+  (the following are similar to xterm)
+  _
+  ignore	do nothing
+! insert\-selection	paste selection
+  select\-extend	move the end of a selection
+  select\-start	mark the beginning of a selection
+  start\-extend	begin marking the end of a selection
+--- 607,614 ----
+  (the following are similar to xterm)
+  _
+  ignore	do nothing
+! insert\-selection([\fIatom\fP[\fI,atom...\fP]])	paste selection
+! move-select	a combination of \fBMoveCursor\fP and \fBselect\-start\fP
+  select\-extend	move the end of a selection
+  select\-start	mark the beginning of a selection
+  start\-extend	begin marking the end of a selection
+*** globals.h.orig	Mon Oct 25 11:28:26 1993
+--- globals.h	Mon Oct 25 11:28:27 1993
+***************
+*** 306,311 ****
+--- 306,312 ----
+  /* select.c */
+  extern void MoveCursor();
+  extern Boolean area_is_selected();
++ extern void move_select();
+  extern void select_end();
+  extern void select_extend();
+  extern void select_start();
+
+For easier configuration debugging, report the actual keymaps that were found
+on the "About x3270" popup.
+
+*** x3270.c.orig	Mon Oct 25 12:06:01 1993
+--- x3270.c	Mon Oct 25 12:06:03 1993
+***************
+*** 744,773 ****
+  
+  	buf = xs_buffer("keymap.%s", name);
+  	if (translations = get_resource(buf)) {
+! 		add_trans(translations);
+  		any++;
+  	}
+  	XtFree(buf);
+  	buf = xs_buffer("keymap.%s.user", name);
+  	if (translations = get_resource(buf)) {
+! 		add_trans(translations);
+  		any++;
+  	}
+  	XtFree(buf);
+! 	if (!any) {
+! 		buf = xs_buffer("Can't find keymap '%s'", name);
+! 		XtWarning(buf);
+! 		XtFree(buf);
+! 	}
+  }
+  
+  static void
+! add_trans(translations)
+  char *translations;
+  {
+  	struct trans_list *t;
+  
+  	t = (struct trans_list *)XtMalloc(sizeof(*t));
+  	t->translations = translations;
+  	t->next = NULL;
+  	*last_trans = t;
+--- 744,772 ----
+  
+  	buf = xs_buffer("keymap.%s", name);
+  	if (translations = get_resource(buf)) {
+! 		add_trans(name, translations);
+  		any++;
+  	}
+  	XtFree(buf);
+  	buf = xs_buffer("keymap.%s.user", name);
+  	if (translations = get_resource(buf)) {
+! 		add_trans(buf + 7, translations);
+  		any++;
+  	}
+  	XtFree(buf);
+! 	if (!any)
+! 		xs_warning("Can't find keymap '%s'", name);
+  }
+  
+  static void
+! add_trans(name, translations)
+! char *name;
+  char *translations;
+  {
+  	struct trans_list *t;
+  
+  	t = (struct trans_list *)XtMalloc(sizeof(*t));
++ 	t->name = XtNewString(name);
+  	t->translations = translations;
+  	t->next = NULL;
+  	*last_trans = t;
+*** globals.h.orig	Mon Oct 25 12:06:07 1993
+--- globals.h	Mon Oct 25 12:06:09 1993
+***************
+*** 115,120 ****
+--- 115,121 ----
+  extern enum kp_placement { kp_right, kp_bottom, kp_integral } kp_placement;
+  
+  extern struct trans_list {
++ 	char			*name;
+  	char			*translations;
+  	struct trans_list	*next;
+  } *trans_list;
+*** popups.c.orig	Mon Oct 25 12:06:12 1993
+--- popups.c	Mon Oct 25 12:06:13 1993
+***************
+*** 480,485 ****
+--- 480,486 ----
+  extern char ttype_val[];
+  extern Pixmap icon;
+  extern Boolean *overstrike;
++ extern struct trans_list *trans_list;
+  
+  /* Called when OK is pressed on the options popup */
+  /*ARGSUSED*/
+***************
+*** 582,588 ****
+  	Widget w = NULL, w_prev = NULL;
+  	Widget v = NULL;
+  	int vd = 4;
+! 	char fbuf[128];
+  	char *ftype;
+  	char *xbuf;
+  	Dimension height, width;
+--- 583,589 ----
+  	Widget w = NULL, w_prev = NULL;
+  	Widget v = NULL;
+  	int vd = 4;
+! 	char fbuf[1024];
+  	char *ftype;
+  	char *xbuf;
+  	Dimension height, width;
+***************
+*** 661,668 ****
+  		MAKE_LABEL(get_message("defaultCharacterSet"), 4);
+  
+  	if (appres.key_map) {
+  		MAKE_LABEL(get_message("keyboardMap"), 4)
+! 		MAKE_VALUE(appres.key_map);
+  	} else
+  		MAKE_LABEL(get_message("defaultKeyboardMap"), 4);
+  	if (appres.compose_map) {
+--- 662,677 ----
+  		MAKE_LABEL(get_message("defaultCharacterSet"), 4);
+  
+  	if (appres.key_map) {
++ 		struct trans_list *t;
++ 
++ 		fbuf[0] = '\0';
++ 		for (t = trans_list; t; t = t->next) {
++ 			if (fbuf[0])
++ 				(void) strcat(fbuf, ",");
++ 			(void) strcat(fbuf, t->name);
++ 		}
+  		MAKE_LABEL(get_message("keyboardMap"), 4)
+! 		MAKE_VALUE(fbuf);
+  	} else
+  		MAKE_LABEL(get_message("defaultKeyboardMap"), 4);
+  	if (appres.compose_map) {
+
+Additional keymap modifier definitions to cover the F11 and F12 keys under
+Sun's XNeWS server.  Yes they are ugly, but OpenWindows and X11R5 use different
+names for the same keys, and don't recognize each other's, so you can't put
+them all in a common definition.
+
+*** X3270.ad.orig	Mon Oct 25 14:25:52 1993
+--- X3270.ad	Mon Oct 25 14:25:53 1993
+***************
+*** 551,556 ****
+--- 551,574 ----
+  	!<Btn3Up>:		insert-selection(CLIPBOARD,PRIMARY)\n\
+  	!<BtnUp>:		select-end(CLIPBOARD,PRIMARY)\n\
+  	!<Key>F18:		insert-selection(CLIPBOARD,PRIMARY)\n
++ ! Additional OpenWindows keymap modifier.  Defines F11 and F12 keys on the Sun
++ ! Type 4 keyboard.  For use only with X11R4-based libraries such as OpenWindows
++ ! 3.  (If you are an OpenWindows-only site, you might as well just glue these
++ ! modifiers onto the end of the sun-k4 keymap.)
++ x3270.keymap.r4k4: \
++ 	!Shift<Key>SunXK_F36:	PF23()\n\
++ 	!Shift<Key>SunXK_F37:	PF24()\n\
++ 	<Key>SunXK_F36:		PF11()\n\
++ 	<Key>SunXK_F37:		PF12()\n
++ ! Truly obscure modifer, also for defining F11 and F12 on a Sun Type 4
++ ! keyboard.  For use with a client linked with X11R5 libraries, communicating
++ ! with a Sun XNeWS server.  (The MIT X11R5 server reports these keys as F11 and
++ ! F12, so there is no need for extra definitions.)
++ x3270.keymap.r5k4: \
++ 	!Shift<Key>SunF36:	PF23()\n\
++ 	!Shift<Key>SunF37:	PF24()\n\
++ 	<Key>SunF36:		PF11()\n\
++ 	<Key>SunF37:		PF12()\n
+  ! APL keymap modifier.
+  x3270.keymap.apl:	#override \
+  	!:Alt<Key>bracketleft:	Key(apl_leftarrow)\n\
+
+Trivial fix to add the charset default to the app-defaults file, so you don't
+have to go fishing through the source to find the name or value.
+
+*** X3270.ad.orig	Tue Oct 26 08:58:38 1993
+--- X3270.ad	Tue Oct 26 08:58:39 1993
+***************
+*** 36,41 ****
+--- 36,42 ----
+  ! x3270.eof:			^D
+  !
+  !   Miscellaneous configuration parameters
++ ! x3270.charset:		us
+  ! x3270.composeMap:		latin1
+  ! x3270.keypad:			right
+  ! x3270.keypadOn:		false
+
+Put in missing AID keys in the ANSI-mode translation table.
+
+*** kybd.c.orig	Wed Oct 27 14:00:07 1993
+--- kybd.c	Wed Oct 27 14:00:08 1993
+***************
+*** 98,104 ****
+  			AID_PF1, AID_PF2, AID_PF3, AID_PF4, AID_PF5, AID_PF6,
+  			AID_PF7, AID_PF8, AID_PF9, AID_PF10, AID_PF11,
+  			AID_PF12, AID_PF13, AID_PF14, AID_PF15, AID_PF16,
+! 			AID_PF17, AID_PF18, AID_PF19, AID_PF20
+  		};
+  		static unsigned char pa_xlate[] = { 
+  			AID_PA1, AID_PA2, AID_PA3
+--- 98,105 ----
+  			AID_PF1, AID_PF2, AID_PF3, AID_PF4, AID_PF5, AID_PF6,
+  			AID_PF7, AID_PF8, AID_PF9, AID_PF10, AID_PF11,
+  			AID_PF12, AID_PF13, AID_PF14, AID_PF15, AID_PF16,
+! 			AID_PF17, AID_PF18, AID_PF19, AID_PF20,
+! 			AID_PF21, AID_PF22, AID_PF23, AID_PF24
+  		};
+  		static unsigned char pa_xlate[] = { 
+  			AID_PA1, AID_PA2, AID_PA3
+
+Fix a problem with multiple select targets.
+
+*** select.c.orig	Wed Oct 27 14:00:13 1993
+--- select.c	Wed Oct 27 14:00:14 1993
+***************
+*** 642,675 ****
+  	any_selected = True;
+  	screen_changed = True;
+  	if (really) {
+- 		Boolean got_one = False;
+- 
+  		/*
+! 		 * Check for any overlap between the owned and requested
+! 		 * selections.
+  		 */
+! 		for (i = 0; !got_one && i < NS; i++) {
+  			if (want_sel[i] == None)
+  				continue;
+! 			for (j = 0; !got_one && j < NS; j++)
+! 				if (own_sel[j] == want_sel[i])
+! 					got_one = True;
+! 		}
+! 		if (!got_one) {
+! 			/*
+! 			 * Nope, gotta grab a new one.
+! 			 */
+! 			disown_sels();
+! 			for (i = 0; i < NS; i++) {
+! 				if (want_sel[i] == None)
+! 					continue;
+! 				if (XtOwnSelection(*screen, want_sel[i], t,
+! 				    convert_sel, lose_sel, NULL))
+! 					own_sel[n_owned++] = want_sel[i];
+  			}
+- 			if (!n_owned)
+- 				unhighlight();
+  		}
+  		sel_time = t;
+  	}
+  }
+--- 642,680 ----
+  	any_selected = True;
+  	screen_changed = True;
+  	if (really) {
+  		/*
+! 		 * Try to grab any new selections we may want.
+  		 */
+! 		for (i = 0; i < NS; i++) {
+! 			Boolean already_own = False;
+! 
+  			if (want_sel[i] == None)
+  				continue;
+! 
+! 			/* Check if we already own it. */
+! 			for (j = 0; j < NS; j++)
+! 				if (own_sel[j] == want_sel[i]) {
+! 					already_own = True;
+! 					break;
+! 				}
+! 			if (already_own)
+! 				continue;
+! 
+! 			/* Find an empty slot for it. */
+! 			for (j = 0; j < NS; j++)
+! 				if (own_sel[j] == None)
+! 					break;
+! 			if (j >= NS)
+! 				continue;
+! 
+! 			if (XtOwnSelection(*screen, want_sel[i], t,
+! 			    convert_sel, lose_sel, NULL)) {
+! 				n_owned++;
+! 				own_sel[j] = want_sel[i];
+  			}
+  		}
++ 		if (!n_owned)
++ 			unhighlight();
+  		sel_time = t;
+  	}
+  }
+
+Fix the cut/paste definitions in the "ow" keymap modifier, and remove the
+redundant Up/Down definitions in the Sun keymaps, which were keeping the
+Left2 and Right2 keys from working.
+
+*** X3270.ad.orig	Wed Oct 27 14:00:18 1993
+--- X3270.ad	Wed Oct 27 14:00:19 1993
+***************
+*** 222,230 ****
+  	!Shift<Key>Tab:		BackTab()\n\
+  	<Key>Tab:		Tab()\n\
+  	<Key>Home:		Home()\n\
+! 	<Key>Left:		Left()\n\
+  	!Meta<Key>Left:		Left2()\n\
+! 	<Key>Right: 		Right()\n\
+  	!Meta<Key>Right:	Right2()\n\
+  	<Key>Up:		Up()\n\
+  	<Key>Down:		Down()\n\
+--- 222,230 ----
+  	!Shift<Key>Tab:		BackTab()\n\
+  	<Key>Tab:		Tab()\n\
+  	<Key>Home:		Home()\n\
+! 	!<Key>Left:		Left()\n\
+  	!Meta<Key>Left:		Left2()\n\
+! 	!<Key>Right: 		Right()\n\
+  	!Meta<Key>Right:	Right2()\n\
+  	<Key>Up:		Up()\n\
+  	<Key>Down:		Down()\n\
+***************
+*** 445,455 ****
+  	<Key>F26:		EraseInput()\n\
+  	<Key>F27:		Clear()\n\
+  	<Key>F31:		Home()\n\
+- 	<Key>Up:		Up()\n\
+  	<Key>F29:		Redraw()\n\
+- 	<Key>Left:		Left()\n\
+- 	<Key>Right:		Right()\n\
+- 	<Key>Down:		Down()\n\
+  	<Key>KP_Enter:		Newline()\n\
+  	<Key>Insert:		Insert()\n\
+  	<Key>F35:		Delete()\n\
+--- 445,451 ----
+***************
+*** 480,490 ****
+  	<Key>F26:		EraseInput()\n\
+  	<Key>F27:		Clear()\n\
+  	<Key>F31:		Home()\n\
+- 	<Key>Up:		Up()\n\
+  	<Key>F29:		Redraw()\n\
+- 	<Key>Left:		Left()\n\
+- 	<Key>Right:		Right()\n\
+- 	<Key>Down:		Down()\n\
+  	<Key>KP_Enter:		Newline()\n\
+  	<Key>Insert:		Insert()\n\
+  	<Key>F35:		Delete()\n\
+--- 476,482 ----
+***************
+*** 540,547 ****
+  	<Key>KP_3:		PF24()\n\
+  	<Key>KP_0:		PA2()\n\
+  	<Key>KP_Decimal:	PA1()\n
+! ! Keymap modifier for OpenWindows (swaps buttons 2 and 3; defines Paste key;
+! ! uses CLIPBOARD).
+  x3270.keymap.ow:	#override \
+  	!<Btn1Down>:		select-start()\n\
+  	!<Btn1Motion>:		select-extend()\n\
+--- 532,539 ----
+  	<Key>KP_3:		PF24()\n\
+  	<Key>KP_0:		PA2()\n\
+  	<Key>KP_Decimal:	PA1()\n
+! ! Keymap modifier for OpenWindows (makes button 2 the extend key; defines the
+! ! Paste key; uses CLIPBOARD).
+  x3270.keymap.ow:	#override \
+  	!<Btn1Down>:		select-start()\n\
+  	!<Btn1Motion>:		select-extend()\n\
+***************
+*** 549,556 ****
+  	!<Btn2Motion>:		select-extend()\n\
+  	!<Btn3Down>:		ignore()\n\
+  	!<Btn3Motion>:		ignore()\n\
+! 	!<Btn3Up>:		insert-selection(CLIPBOARD,PRIMARY)\n\
+! 	!<BtnUp>:		select-end(CLIPBOARD,PRIMARY)\n\
+  	!<Key>F18:		insert-selection(CLIPBOARD,PRIMARY)\n
+  ! Additional OpenWindows keymap modifier.  Defines F11 and F12 keys on the Sun
+  ! Type 4 keyboard.  For use only with X11R4-based libraries such as OpenWindows
+--- 541,548 ----
+  	!<Btn2Motion>:		select-extend()\n\
+  	!<Btn3Down>:		ignore()\n\
+  	!<Btn3Motion>:		ignore()\n\
+! 	<Btn3Up>:		insert-selection(CLIPBOARD,PRIMARY)\n\
+! 	<BtnUp>:		select-end(CLIPBOARD,PRIMARY)\n\
+  	!<Key>F18:		insert-selection(CLIPBOARD,PRIMARY)\n
+  ! Additional OpenWindows keymap modifier.  Defines F11 and F12 keys on the Sun
+  ! Type 4 keyboard.  For use only with X11R4-based libraries such as OpenWindows
+
+Don't give up the selection just because the region on the screen changed.
+
+*** select.c.orig	Wed Oct 27 14:14:27 1993
+--- select.c	Wed Oct 27 14:14:28 1993
+***************
+*** 98,106 ****
+  		y = ROWS - 1;		\
+  }
+  
+- static void unhighlight();
+- 
+- 
+  
+  static void
+  select_word(baddr, t)
+--- 98,103 ----
+***************
+*** 179,185 ****
+  		cursor_moved = False;
+  	}
+  	if (num_clicks == 0)
+! 		unhighlight();
+  }
+  
+  /*
+--- 176,182 ----
+  		cursor_moved = False;
+  	}
+  	if (num_clicks == 0)
+! 		unselect(0, ROWS*COLS);
+  }
+  
+  /*
+***************
+*** 214,220 ****
+  	}
+  	if (num_clicks == 0) {
+  		if (any_selected) {
+! 			unhighlight();
+  		} else {
+  			cursor_moved = True;
+  			saved_cursor_addr = cursor_addr;
+--- 211,217 ----
+  	}
+  	if (num_clicks == 0) {
+  		if (any_selected) {
+! 			unselect(0, ROWS*COLS);
+  		} else {
+  			cursor_moved = True;
+  			saved_cursor_addr = cursor_addr;
+***************
+*** 521,527 ****
+  			break;
+  		}
+  	if (!n_owned)
+! 		unhighlight();
+  }
+  
+  static void
+--- 518,524 ----
+  			break;
+  		}
+  	if (!n_owned)
+! 		unselect(0, ROWS*COLS);
+  }
+  
+  static void
+***************
+*** 548,554 ****
+  	int start_row, end_row;
+  	int ix = 0;
+  
+! 	unhighlight();
+  
+  	if (start > end) {
+  		int exch = end;
+--- 545,551 ----
+  	int start_row, end_row;
+  	int ix = 0;
+  
+! 	unselect(0, ROWS*COLS);
+  
+  	if (start > end) {
+  		int exch = end;
+***************
+*** 674,680 ****
+  			}
+  		}
+  		if (!n_owned)
+! 			unhighlight();
+  		sel_time = t;
+  	}
+  }
+--- 671,677 ----
+  			}
+  		}
+  		if (!n_owned)
+! 			unselect(0, ROWS*COLS);
+  		sel_time = t;
+  	}
+  }
+***************
+*** 695,716 ****
+  }
+  
+  /*
+!  * Unhighlight the region of selected text.  Return whether or not anything was
+!  * highlighted before.
+   */
+- static void
+- unhighlight()
+- {
+- 	if (any_selected) {
+- 		(void) memset((char *) selected, 0, (ROWS*COLS + 7) / 8);
+- 		screen_changed = True;
+- 		any_selected = False;
+- 	}
+- }
+- 
+- /*
+-  * Give up the selection, because a region of the screen has changed.
+-  */
+  /*ARGSUSED*/
+  void
+  unselect(baddr, len)
+--- 692,699 ----
+  }
+  
+  /*
+!  * Unhighlight the region of selected text -- but don't give up the selection.
+   */
+  /*ARGSUSED*/
+  void
+  unselect(baddr, len)
+***************
+*** 717,721 ****
+  int baddr;
+  int len;
+  {
+! 	disown_sels();
+  }
+--- 700,708 ----
+  int baddr;
+  int len;
+  {
+! 	if (any_selected) {
+! 		(void) memset((char *) selected, 0, (ROWS*COLS + 7) / 8);
+! 		screen_changed = True;
+! 		any_selected = False;
+! 	}
+  }
+
+Fix the last instance of x3270's inability to skip zero-length fields, by
+calling common code in all five instances.  Yes, it makes the code smaller.
+
+*** kybd.c.orig	Thu Oct 28 18:51:25 1993
+--- kybd.c	Thu Oct 28 18:51:26 1993
+***************
+*** 85,90 ****
+--- 85,114 ----
+  
+  
+  /*
++  * Find the next unprotected field.  Returns the address following the
++  * unprotected attribute byte, or 0 if no nonzero-width unprotected field
++  * can be found.
++  */
++ static int
++ next_unprotected(baddr0)
++ int baddr0;
++ {
++ 	register int baddr, nbaddr;
++ 
++ 	nbaddr = baddr0;
++ 	do {
++ 		baddr = nbaddr;
++ 		INC_BA(nbaddr);
++ 		if (IS_FA(screen_buf[baddr]) &&
++ 		    !FA_IS_PROTECTED(screen_buf[baddr]) &&
++ 		    !IS_FA(screen_buf[nbaddr]))
++ 			return nbaddr;
++ 	} while (nbaddr != baddr0);
++ 	return 0;
++ }
++ 
++ 
++ /*
+   * Handle an AID (Attention IDentifier) key.  This is the common stuff that
+   * gets executed for all AID keys (PFs, PAs, Clear and etc).
+   */
+***************
+*** 214,231 ****
+  			}
+  
+  
+! 			/* Implement auto-skip. */
+  			INC_BA(baddr);
+  			if (IS_FA(screen_buf[baddr]) &&
+! 			    FA_IS_SKIP(screen_buf[baddr])) {
+! 				do {
+! 					INC_BA(baddr);
+! 				} while (!IS_FA(screen_buf[baddr]) ||
+! 					 FA_IS_PROTECTED(screen_buf[baddr]));
+! 				INC_BA(baddr);
+! 			}
+! 
+! 			/* Skip field attribute bytes. */
+  			else while (IS_FA(screen_buf[baddr]))
+  				INC_BA(baddr);
+  
+--- 238,249 ----
+  			}
+  
+  
+! 			/* Implement auto-skip, and don't land on attribute
+! 			   bytes. */
+  			INC_BA(baddr);
+  			if (IS_FA(screen_buf[baddr]) &&
+! 			    FA_IS_SKIP(screen_buf[baddr]))
+! 				baddr = next_unprotected(baddr);
+  			else while (IS_FA(screen_buf[baddr]))
+  				INC_BA(baddr);
+  
+***************
+*** 306,311 ****
+--- 324,330 ----
+  static void key_AltCr()	{ do_toggle(ALTCURSOR); }
+  void key_MonoCase()    	{ do_toggle(MONOCASE); }
+  
++ 
+  
+  /*
+   * Tab forward to next field.
+***************
+*** 313,320 ****
+  void
+  key_FTab()
+  {
+- 	register int	baddr, nbaddr, count = 0;
+- 
+  	if (IN_ANSI) {
+  		net_sendc('\t');
+  		return;
+--- 332,337 ----
+***************
+*** 321,344 ****
+  	}
+  	if (kybdlock)
+  		return;
+! 	nbaddr = cursor_addr;
+! 	if (!IS_FA(screen_buf[nbaddr]))
+! 		INC_BA(nbaddr);
+! 	while (True) {
+! 		baddr = nbaddr;
+! 		INC_BA(nbaddr);
+! 		if (IS_FA(screen_buf[baddr])
+! 		    &&  !FA_IS_PROTECTED(screen_buf[baddr])
+! 		    &&  !IS_FA(screen_buf[nbaddr]))
+! 			break;
+! 		if (baddr == cursor_addr && count != 0) {
+! 			cursor_move(0);
+! 			return;
+! 		}
+! 		count++;
+! 	}
+! 	INC_BA(baddr);
+! 	cursor_move(baddr);
+  }
+  
+  
+--- 338,344 ----
+  	}
+  	if (kybdlock)
+  		return;
+! 	cursor_move(next_unprotected(cursor_addr));
+  }
+  
+  
+***************
+*** 404,411 ****
+  void
+  key_Home()
+  {
+- 	register int	baddr, nbaddr;
+- 
+  	if (IN_ANSI) {
+  		ansi_send_home();
+  		return;
+--- 404,409 ----
+***************
+*** 416,435 ****
+  		cursor_move(0);
+  		return;
+  	}
+! 	baddr = nbaddr = 0;
+! 	do {
+! 		INC_BA(nbaddr);
+! 		if (IS_FA(screen_buf[baddr]) &&
+! 		    !FA_IS_PROTECTED(screen_buf[baddr]) &&
+! 		    !IS_FA(screen_buf[nbaddr])) {
+! 			cursor_move(nbaddr);
+! 			return;
+! 		}
+! 		baddr = nbaddr;
+! 	} while (baddr);
+! 
+! 	/* No unprotected fields */
+! 	cursor_move(0);
+  }
+  
+  
+--- 414,420 ----
+  		cursor_move(0);
+  		return;
+  	}
+! 	cursor_move(next_unprotected(ROWS*COLS-1));
+  }
+  
+  
+***************
+*** 581,604 ****
+  	fa = get_field_attribute(baddr);
+  	if (fa != (&screen_buf[baddr]) && !FA_IS_PROTECTED(*fa))
+  		cursor_move(baddr);
+! 	else {	/* find next unprotected */
+! 		if (fa == (&screen_buf[baddr]) && !FA_IS_PROTECTED(*fa)) {
+! 			INC_BA(baddr);
+! 		} else {
+! 			while (True) {
+! 				INC_BA(baddr);
+! 				if (IS_FA(screen_buf[baddr])
+! 				    &&  !FA_IS_PROTECTED(screen_buf[baddr]))
+! 					break;
+! 				if (baddr == cursor_addr) {
+! 					cursor_move(0);
+! 					return;
+! 				}
+! 			}
+! 			INC_BA(baddr);
+! 		}
+! 		cursor_move(baddr);
+! 	}
+  }
+  
+  
+--- 566,573 ----
+  	fa = get_field_attribute(baddr);
+  	if (fa != (&screen_buf[baddr]) && !FA_IS_PROTECTED(*fa))
+  		cursor_move(baddr);
+! 	else
+! 		cursor_move(next_unprotected(baddr));
+  }
+  
+  
+***************
+*** 608,635 ****
+  void
+  key_Dup()
+  {
+- 	register int	baddr, nbaddr;
+- 
+  	if (IN_ANSI)
+  		return;
+! 	if (key_Character(CG_DUP)) {
+! 		nbaddr = cursor_addr;
+! 		INC_BA(nbaddr);
+! 		while (True) {
+! 			baddr = nbaddr;
+! 			INC_BA(nbaddr);
+! 			if (IS_FA(screen_buf[baddr])
+! 			    &&  !FA_IS_PROTECTED(screen_buf[baddr])
+! 			    &&  !IS_FA(screen_buf[nbaddr]))
+! 				break;
+! 			if (baddr == cursor_addr) {
+! 				cursor_move(0);
+! 				return;
+! 			}
+! 		}
+! 		INC_BA(baddr);
+! 		cursor_move(baddr);
+! 	}
+  }
+  
+  
+--- 577,586 ----
+  void
+  key_Dup()
+  {
+  	if (IN_ANSI)
+  		return;
+! 	if (key_Character(CG_DUP))
+! 		cursor_move(next_unprotected(cursor_addr));
+  }
+  
+  
+
+Added three new actions: Erase(), a more Unix-like backspace; ToggleInsert(),
+a more heuristic way of setting and clearing insert mode; and FieldEnd(), which
+moves the cursor to the end of the current field.  None are mapped by default;
+add them if you like.
+
+*** kybd.c.orig	Thu Oct 28 20:00:14 1993
+--- kybd.c	Thu Oct 28 20:00:15 1993
+***************
+*** 453,458 ****
+--- 453,488 ----
+  
+  
+  /*
++  * Destructive backspace, like Unix "erase".
++  */
++ void
++ key_Erase()
++ {
++ 	int	baddr;
++ 	unsigned char	*fa;
++ 
++ 	if (IN_ANSI) {
++ 		net_send_erase();
++ 		return;
++ 	}
++ 	if (kybdlock)
++ 		return;
++ 	baddr = cursor_addr;
++ 	fa = get_field_attribute(baddr);
++ 	if (fa == &screen_buf[baddr] || FA_IS_PROTECTED(*fa)) {
++ 		status_protected();
++ 		mcursor_locked();
++ 		kybdlock = True;
++ 		return;
++ 	}
++ 	if (baddr && fa == &screen_buf[baddr - 1])
++ 		return;
++ 	key_Left();
++ 	key_Delete();
++ }
++ 
++ 
++ /*
+   * Cursor right 1 position.
+   */
+  void
+***************
+*** 969,974 ****
+--- 999,1060 ----
+  
+  
+  /*
++  * Toggle insert mode key.
++  */
++ void
++ key_ToggleInsert()
++ {
++ 	if (IN_ANSI || kybdlock)
++ 		return;
++ 	if (insert)
++ 		insert_mode(False);
++ 	else
++ 		insert_mode(True);
++ }
++ 
++ 
++ /*
++  * Move the cursor to the first blank after the last nonblank in the
++  * field, or if the field is full, to the last character in the field.
++  */
++ void
++ key_FieldEnd()
++ {
++ 	int	baddr;
++ 	unsigned char	*fa, c;
++ 	int	last_nonblank = -1;
++ 
++ 	if (IN_ANSI || kybdlock || !formatted)
++ 		return;
++ 	baddr = cursor_addr;
++ 	fa = get_field_attribute(baddr);
++ 	if (fa == &screen_buf[baddr] || FA_IS_PROTECTED(*fa))
++ 		return;
++ 
++ 	baddr = fa - screen_buf;
++ 	while (True) {
++ 		INC_BA(baddr);
++ 		c = screen_buf[baddr];
++ 		if (IS_FA(c))
++ 			break;
++ 		if (c != CG_NULLBLANK && c != CG_BLANK)
++ 			last_nonblank = baddr;
++ 	}
++ 
++ 	if (last_nonblank == -1) {
++ 		baddr = fa - screen_buf;
++ 		INC_BA(baddr);
++ 	} else {
++ 		baddr = last_nonblank;
++ 		INC_BA(baddr);
++ 		if (IS_FA(screen_buf[baddr]))
++ 			baddr = last_nonblank;
++ 	}
++ 	cursor_move(baddr);
++ }
++ 
++ 
++ /*
+   * X-dependent code starts here.
+   */
+  
+***************
+*** 1468,1475 ****
+--- 1554,1563 ----
+  	{ "Dup",	(XtActionProc)key_Dup },
+  	{ "Enter",	(XtActionProc)key_Enter },
+  	{ "EnterLeave",	(XtActionProc)enter_leave },
++ 	{ "Erase",	(XtActionProc)key_Erase },
+  	{ "EraseEOF",	(XtActionProc)key_EraseEOF },
+  	{ "EraseInput", (XtActionProc)key_EraseInput },
++ 	{ "FieldEnd",	(XtActionProc)key_FieldEnd },
+  	{ "FieldMark",	(XtActionProc)key_FieldMark },
+  	{ "FocusEvent",	(XtActionProc)focus_change },
+  	{ "HandleMenu",	(XtActionProc)handle_menu },
+***************
+*** 1523,1528 ****
+--- 1611,1617 ----
+  	{ "String",	(XtActionProc)string },
+  	{ "SysReq",	(XtActionProc)key_SysReq },
+  	{ "Tab",	(XtActionProc)key_FTab },
++ 	{ "ToggleInsert",(XtActionProc)key_ToggleInsert },
+  	{ "Up",		(XtActionProc)key_Up },
+  	{ "ignore",	(XtActionProc)ignore },
+  	{ "start-extend",	(XtActionProc)start_extend },
+*** x3270.man.orig	Thu Oct 28 20:00:19 1993
+--- x3270.man	Thu Oct 28 20:00:20 1993
+***************
+*** 1,5 ****
+  '\" t
+! .TH X3270 1 "22 September 1993"
+  .SH NAME
+  x3270 \-
+  .SM IBM
+--- 1,5 ----
+  '\" t
+! .TH X3270 1 "28 October 1993"
+  .SH NAME
+  x3270 \-
+  .SM IBM
+***************
+*** 578,585 ****
+--- 578,587 ----
+  Down	move cursor down
+  Dup	duplicate field
+  Enter	Enter AID (or send ASCII CR)
++ Erase	erase previous character (or send ASCII BS)
+  EraseEOF	erase to end of current field
+  EraseInput	erase all input fields
++ FieldEnd	move cursor to end of field
+  FieldMark	mark field
+  Home	move cursor to first input field
+  Insert	set insert mode
+***************
+*** 602,607 ****
+--- 604,610 ----
+  String(\fIstring\fP)	insert string (macro facility)
+  SysReq	System Request AID
+  Tab	move cursor to next input field
++ ToggleInsert	toggle insert mode
+  Up	move cursor up
+  _
+  (the following are similar to xterm)
+
+Add new targets to Makefile.aux to help in testing what you built without
+installing it (dryrun) and building under OpenWindows 3 (ow3 and ow3.install).
+
+*** Makefile.aux.orig	Wed Nov  3 20:26:42 1993
+--- Makefile.aux	Wed Nov  3 20:26:43 1993
+***************
+*** 1,5 ****
+--- 1,20 ----
+  # Auxiliary makefile for x3270
+  
++ all:
++ 	@echo "Must pick a specific make target."
++ 
++ # Dry run: Run x3270 with everything (app-defaults, fonts) in the current
++ # directory.
++ 
++ dryrun:
++ 	mkfontdir .
++ 	xset +fp `pwd`/
++ 	xset fp rehash
++ 	XFILESEARCHPATH=X3270.ad ./x3270
++ 	xset -fp `pwd`/
++ 
++ # Development tools.
++ 
+  SOURCES = ansi.c apl.c ctlr.c keypad.c kybd.c menubar.c popups.c screen.c \
+  	select.c tables.c status.c telnet.c x3270.c
+  HEADERS = 3270.h 3270_enc.h globals.h telnet.h
+***************
+*** 9,16 ****
+  	README.3.0 Makefile.aux
+  FILES = $(SOURCES) $(HEADERS) $(BITMAPS) $(FONTS) $(MISC)
+  
+- all: x3270
+- 
+  x3270.tar.Z: $(FILES)
+  	tar -cf - $(FILES) | compress > $@
+  
+--- 24,29 ----
+***************
+*** 20,30 ****
+--- 33,47 ----
+  x3270.inflate: x3270.tar.Z
+  	inflate x3270.tar.Z > $@
+  
++ # Sample makefile.
++ 
+  Makefile.sampl: Imakefile
+  	xmkmf
+  	sed -e 's/\.sa\.\$$(SO[A-Z]*REV)$$/.a/' \
+  	    -e 's/CCOPTIONS = .*/CCOPTIONS =/' Makefile >Makefile.sampl
+  
++ # Development tools.
++ 
+  ID: $(SOURCES) $(HEADERS)
+  	mkid $(SOURCES) $(HEADERS)
+  
+***************
+*** 31,35 ****
+  tags: $(SOURCES) $(HEADERS)
+  	ctags $(SOURCES) $(HEADERS)
+  
+! man:
+  	tbl x3270.man | nroff -man | less
+--- 48,103 ----
+  tags: $(SOURCES) $(HEADERS)
+  	ctags $(SOURCES) $(HEADERS)
+  
+! lessman:
+  	tbl x3270.man | nroff -man | less
++ 
++ ###############################################################################
++ # Build rules for Sun OpenWindows 3.  A lot easier than picking apart the
++ # Imakefile if your xmkmf isn't set up right.
++ ###############################################################################
++ 
++ OPENWINHOME=/usr/openwin
++ CFLAGS = -O -I$(OPENWINHOME)/include
++ OBJECTS = $(SOURCES:%.c=%.o)
++ 
++ OWFONTOBJS = $(FONTS:%.bdf=%.fb)
++ .bdf.fb:
++ 	convertfont -d. $<
++ .SUFFIXES: .bdf .fb $(SUFFIXES)
++ 
++ LIBS = -lXaw -lXmu -lX11 -lXt -lXext -lX11 -lm
++ 
++ # If you get the following ld error:
++ #
++ #     ld: Undefined symbol
++ #       _get_wmShellWidgetClass
++ #       _get_applicationShellWidgetClass
++ #
++ # then you need to get patches 100512-02 and 100573-03 from Sun.  In the
++ # meantime, use the following LIBS definition as a workaround:
++ #LIBS = -lXaw -Bstatic -lXmu -Bdynamic -lX11 -lXt -lXext -lX11 -lm
++ 
++ # For Solaris 2.x (SunOS 5.x), uncomment the line below:
++ #LIBS += -lnsl -lsocket
++ 
++ x3270: $(OBJECTS) version.o
++ 	$(CC) -o x3270 $(OBJECTS) version.o -L$(OPENWINHOME)/lib $(LIBS)
++ 	@$(RM) version.o
++ 
++ version.o: $(OBJECTS) version.txt
++ 	@echo "char *build = \"x3270 v`cat version.txt`, `date`\"; char *version = \"`cat version.txt`\";" >version.c
++ 	@$(CC) -c version.c
++ 	@$(RM) version.c
++ 
++ # Make x3270 for OpenWindows 3
++ ow3: x3270
++ 
++ # Install x3270 under OpenWindows 3: assumes you want to put everything in
++ # $OPENWINHOME.
++ ow3.install: ow3
++ 	install -m 755 x3270 $(OPENWINHOME)/bin
++ 	cp $(OWFONTOBJS) $(OPENWINHOME)/lib/fonts
++ 	mkfontdir $(OPENWINHOME)/lib/fonts
++ 	cp X3270.ad $(OPENWINHOME)/lib/app-defaults/X3270
++ 	cp x3270.man $(OPENWINHOME)/man/man1/x3270.1
++ 	cp ibm_hosts.man $(OPENWINHOME)/man/man5/ibm_hosts.5
+
+README updates, so you don't have to go looking at the patch files.
+*** README.3.0.orig	Tue Sep 28 16:30:57 1993
+--- README.3.0	Wed Nov  3 20:38:39 1993
+***************
+*** 1,4 ****
+! x3270 3.0 -- Update 1
+  ===============================================================================
+  
+  0. Introduction
+--- 1,4 ----
+! x3270 3.0.1.2 -- (Version 3.0, Update 1, Patch Set 2)
+  ===============================================================================
+  
+  0. Introduction
+***************
+*** 359,367 ****
+  
+  Fixed a problem in the implementation of auto-skip fields.
+  
+  =====
+  
+! Keep those cards and letters coming...
+  
+  				Paul Mattes
+! 				pdm@cnt.com (note new e-mail address)
+--- 359,445 ----
+  
+  Fixed a problem in the implementation of auto-skip fields.
+  
++ 5.6 Bugs Fixed in Patch Set 1 (v3.0.1.1)
++ 
++ Fix to Home key.  A previous bug fix was really a "bugswap", changing a key
++ that sometimes malfunctioned into one that always malfunctioned.
++ 
++ Fix for numeric port numbers (e.g., -port 23), which didn't work on little-
++ endian machines.
++ 
++ Fix for boneheaded font definition.
++ 
++ Fix for symbol "DEC", which causes compile errors on DEC machines.
++ 
++ Fix for redundant manpage install rule in Imakefile.
++ 
++ 5.7 Bugs Fixed in Patch Set 2 (v3.0.1.2)
++ 
++ Fixed 'EWOULDBLOCK' crashes on network writes by restoring blocking mode on
++ the socket; changed socket write errors from crashes to pop-up error messages.
++ [Found by Rusty Wright.]
++ 
++ Elminated the incorrect NULLing out of fields in response to PT orders.  It
++ still isn't obvious exactly when this *should* happen, so this fix introduces
++ another, more tolerable problem.  [Found by Alan Sengillo and Ilia Levi.]
++ 
++ Put back v3.0's original combination of select-start and MoveCursor on the
++ left mouse button, with a new action called "move-select."  You have to map
++ this explicitly; the default is still to have select-start on Btn1 and
++ MoveCursor on Shift-Btn1.  [Requested by Steve Lodin.]
++ 
++ Added missing AID keys 21-24 to the ANSI-mode translation table.  [Found by
++ Raymond Wiker.]
++ 
++ Fixed subtle problems with multiple select targets.  [Found by Tjemsland Svein.]
++ 
++ Fixed the cut/paste definitions in the "ow" keymap modifier, and removed
++ redundant cursor-key definitions from the Sun keymaps, which kept Left2 and
++ Right2 from working.  [Found by Tjemsland Svein and Raymond Wiker.]
++ 
++ Fixed selections so they aren't given up with the screen changes.  [Found by
++ Mike Bird.]
++ 
++ Fixed a bug in Newline() which caused the cursor to sometimes land on a field
++ attribute.  Finally implemented common code for this, so now I can break Tab,
++ Dup, Home and auto-skip at the same time.  [Found by Mike Bird.]
++ 
++ 5.8 Enhancements in Patch Set 2 (v3.0.1.2)
++ 
++ Implemented screen printing via new PrintText and PrintWindow actions.
++ (HardPrint is an alias for PrintText for minimal compatibility with other
++ versions.)  [Suggested by Bill Oliver and Laura Ambrose.]
++ 
++ Added a "-once" option which causes x3270 to exit when a host disconnects.
++ [Suggested by Ilia Levi.]
++ 
++ Enhanced the "About x3270" popup to report all keymaps found, including
++ "user" keymaps.  This should simplify keymap debugging somewhat.  [This has
++ plauged quite a number of people.]
++ 
++ Added keymap definitions for F11 and F12 under OpenWindows.  The keysym names
++ are different (and incompatible) between X11R4/OpenWindows 3 and X11R5, so
++ there are three, unmnemonically separate definitions.  [Found by Raymond Wiker
++ and David St. Pierre.]
++ 
++ Added the default charset to the app-defaults file.  [Mine!]
++ 
++ Added three new actions: Erase (Unix-like backspace), ToggleInsert (obvious),
++ and FieldEnd (go to end of field).  [Suggested by Raymond Wiker.]
++ 
++ Added three new targets to Makefile.aux:
++ 
++     dryrun	Run x3270 in the current directory, getting fonts and
++ 		resources from the current directory.
++ 
++     ow3		Build x3270 under OpenWindows 3.0, for users without
++ 		xmkmf (or without one that works).
++ 
++     ow3.install	Install x3270 in /usr/openwin.
++ 
+  =====
+  
+! Feel free to let me know what you think...
+  
+  				Paul Mattes
+! 				pdm@cnt.com

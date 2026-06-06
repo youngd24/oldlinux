@@ -1,0 +1,4 @@
+00index.txt         104  
+diskq4              499  
+install.end          24  
+v1_1_11.tgz     1368293  

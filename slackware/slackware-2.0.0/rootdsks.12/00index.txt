@@ -1,0 +1,8 @@
+00index.txt         208  
+README             1653  
+README.UMS         1655  
+README_T.APE       1808  
+colrlite.gz      443250  
+tape12.gz        454863  
+tty12.gz         488926  
+umsdos12.gz      455646  

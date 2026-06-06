@@ -1,0 +1,4 @@
+( cd usr/bin ; rm -rf gnatchp )
+( cd usr/bin ; ln -sf gnatf gnatchp )
+( cd usr/bin ; rm -rf gnatk8 )
+( cd usr/bin ; ln -sf gnatf gnatk8 )

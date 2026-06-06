@@ -1,0 +1,25 @@
+Begin2
+Title        = SysVinit and utilities
+Version      = 2.50 , 14 Feb 1994.
+Desc1        = This is the Linux SystemV init. The differences with 2.4 are
+Desc2        = that you can now build a complete SysV-alike booting environment
+Desc3        = for Linux, and some other features like a access file for
+Desc4        = CTRL-ALT-DEL, alternate system console etc.
+Desc5        =
+Author       = Miquel van Smoorenburg
+AuthorEmail  = miquels@drinkel.nl.mugnet.org
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/system/Daemons
+File1        = SysVinit-2.50.tgz
+FileSize1    = 49157
+Site2        = tsx-11.mit.edu
+Path2        = /pub/linux/sources/sbin
+File2        = SysVinit-2.50.tgz
+FileSize2    = 49157
+CopyPolicy1  = Gnu Public License.
+Keywords     = init shutdown halt reboot wall powerd
+Entered      = 14FEB94
+EnteredBy    = Miquel van Smoorenburg
+CheckedEmail = miquels@drinkel.nl.mugnet.org
+End
+

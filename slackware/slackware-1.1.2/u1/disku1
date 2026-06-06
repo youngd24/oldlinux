@@ -1,0 +1,33 @@
+umsfix:    Fixes for some of the problems introduced by using UMSDOS as the
+umsfix:    root filesystem. Makes the root partition mount read-write.
+umsfix:
+umsfix:
+umsfix:
+umsfix:
+umsfix:
+umsfix:
+umsfix:
+umsfix:
+umsfix:
+umskern:   A kernel image with UMSDOS, and SCSI support.
+umskern:
+umskern:
+umskern:
+umskern:
+umskern:
+umskern:
+umskern:
+umskern:
+umskern:
+umskern:
+umsprogs: umssetup and umssync - utilities needed to maintain UMSDOS partitions.
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 

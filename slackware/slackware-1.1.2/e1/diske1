@@ -1,0 +1,12 @@
+CONTENTS: emacsbin
+emacsbin:  The base binaries for the GNU Emacs editor/environment v. 19.22
+emacsbin:  This version supports X. If you do not have X installed, you will
+emacsbin:  also have to install the replacement /usr/bin/emacs-19.22 that 
+emacsbin:  does not require the X11 libraries.
+emacsbin:
+emacsbin:
+emacsbin:
+emacsbin:
+emacsbin:
+emacsbin:
+emacsbin:

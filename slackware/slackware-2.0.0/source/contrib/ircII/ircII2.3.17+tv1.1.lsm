@@ -1,0 +1,23 @@
+Title:		ircII2.3.17+tv1.1
+Version:	2.3.17+10.3+tv1.1
+Desc1:		IRC client with full term support, including dcc send and 
+Desc2:		recieve. This client also features a new set of functions
+Desc3:		for voice transmition thru irc (no, not realtime) via term.
+Desc4:		Originally chosen for it's fixed memory problems, and it's
+Desc5:		superior scripting ability.
+Author:		Ported mainly by Mcv with some help from salad
+AuthorEmail:	Undisclosed. (mainly because he's not on channel now.)
+Maintainer:	Mcv and salad
+Site1:		sunsite.unc.edu
+Path1:		/pub/Linux/Incoming
+File1:		ircII2.3.17+tv1.1.tar.gz
+FileSize1: 	441585
+Required1:	For voice support you need to have some audio device local
+Required2:	to the system running this client. Term support is not required
+Required3: 	for voice support. In fact, you don't have to use either if
+Required4:	you don't want to.
+CopyPolicy1:	No worries. Copy if ya wish.
+Comment1:	This version just fixes a few minor problems, as well as adding
+Comment2:	Support for Term116 and above.
+Entered:	Updated Tue Jun  7 13:29:10 EST 1994
+EnteredBy:	TheDoc@irc

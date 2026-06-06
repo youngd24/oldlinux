@@ -1,0 +1,9 @@
+F LPR.1;1                           	lpr.1
+F LPR.;1                            	lpr
+F LPR.C;1                           	lpr.c
+F LPR.O;1                           	lpr.o
+F LPR_C.ORI;1                       	lpr.c.orig
+F LPR_C.REJ;1                       	lpr.c.rej
+F LPR_TERM.;1                       	lpr.termios
+F MAKEFILE.;1                       	Makefile
+F MAKEFILE.ORI;1                    	Makefile.orig

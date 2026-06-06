@@ -1,0 +1,12 @@
+CONTENTS: kernel 
+kernel:   Linux kernel source version 1.0.9
+kernel:
+kernel:   Source code for Linus Torvalds' Linux kernel.
+kernel:
+kernel:   The include files in this package are needed to compile C programs,
+kernel:   so install this if you plan to use C even if you don't plan to
+kernel:   recompile the Linux kernel. In addition to the usual features of the
+kernel:   1.0.9 kernel, this package also contains the Mitsumi double speed
+kernel:   driver from Unifix, UMSDOS-0.3a, and PPP.
+kernel:
+kernel:

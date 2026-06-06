@@ -1,0 +1,17 @@
+There just wasn't enough room on the color12 disk for it to work in most cases.
+It worked fine on my 386-SX16, but maybe machines with more partitions were
+using up the space in /tmp.
+
+Anyway - use the tty12 disk for now. I'm working on the problem.
+
+You can also try this if you have a working Linux box:
+
+Put the "bareboot" disk in your boot drive, and type:
+
+rdev -r /dev/fd0 1440
+rdev /dev/fd0 /dev/fd1
+
+This will allow you to boot the color144 disk in your 1.44MB second floppy
+drive.
+
+Pat

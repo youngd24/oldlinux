@@ -1,0 +1,29 @@
+Hi,
+	I uploaded a beta version of minicom 1.5 to sunsite,
+in /pub/Linux/Incoming/minicom-1.5b.tgz. Would you please move it to
+/pub/Linux/apps/comm/minicom-1.5b.tgz ? Thanks.
+
+> Once you have completed the documentation as best as possible, email the
+> modified version of this file to:   jeffk@msen.com
+This is Cc:'d to him.
+
+Begin2
+Title        = minicom
+Version      = 1.5 BETA
+Desc1        = This is Minicom version 1.5, but Beta. Use at your own risk.
+Desc2        = I am pretty sure though it's better than 1.4g. The keyserv
+Desc3        = process is gone, and bugs have been solved. Major additions
+Desc4        = are _scrollback_ (10 pages!), local echo, and multiple
+Desc5        = dial strings.
+Author       = Miquel van Smoorenburg
+AuthorEmail  = miquels@drinkel.nl.mugnet.org
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/apps/comm/minicom-1.5b.tgz
+File1        = minicom-1.5b.tgz
+FileSize1    = around 85K (source only)
+Comment1     = I uploaded it to sunsite:/pub/Linux/Incoming/minicom-1.5b.tgz
+Comment2     = It will probably be moved to the destination mentioned
+Comment3     = above in a few days. This is BETA: please mail all bugs,
+Comment4     = comments, fixes etc. to me!
+End
+

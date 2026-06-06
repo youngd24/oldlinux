@@ -1,0 +1,16 @@
+00index.txt         376  
+autoconf-1.8.tar.gz
+                 232059  
+f2c-1993.04.28.tar.gz
+                 378126  
+fax-3.2.1.tar.gz  74074  
+indent-1.9.1.tar.gz
+                 160411  
+screen-3.5.2.tar.gz
+                 263836  
+termcap-1.2.tar.gz
+                 142720  
+uuencode-1.0.tar.gz
+                  27331  
+xinfo-1.01.01.tar.gz
+                  33848  

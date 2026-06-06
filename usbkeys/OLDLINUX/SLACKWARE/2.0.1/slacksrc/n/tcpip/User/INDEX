@@ -1,0 +1,9 @@
+See also the BSD directory
+
+Obsolete		Obsolete tools
+popclient		A simple pop3 client
+ruptime			View remote load average
+rwho			See who is on remote machines
+skey			Single use password security system
+tn3270			IBM 3270 terminal emulation over the network
+ytalk			Cleverer but buggier talk.

@@ -1,0 +1,89 @@
+CONTENTS: bin bootutls getty gzip ps shlibs util ldso 
+bin:      Binaries that go in /bin and /usr/bin.
+bin:
+bin:      System utilities and programs, such as GNU fileutils 3.9, 
+bin:      elvis 1.8pl3, at-2.7, Dillon's crond 3.0p1, file-3.9, 
+bin:      GNU gawk 2.15.5, jpeg utils v4, less-1.77, man-1.3, modutils-0.99.15,
+bin:      GNU patch 2.1, GNU sed 2.05, shar, time-1.6, splitvt-1.5.2, tput-1.0,
+bin:      unarj-230, Slackware's color-enabled ls (uses /etc/DIR_COLORS for 
+bin:      configuration), unzip-50p1A, and zoo-2.10.
+bin:
+bin:
+bin:
+ldso:     ld.so 1.4.4, the dynamic linker/loader.
+ldso:
+ldso:
+ldso:
+ldso:
+ldso:
+ldso:
+ldso:
+ldso:
+ldso:
+ldso:
+bootutls: Stephen Tweedie's bootutils package version 1.0
+bootutls:
+bootutls: The main purpose of this package is to ensure the safety of your
+bootutls: filesystems in the event of an improper shutdown. Your filesystems
+bootutls: will be checked automatically if an improper shutdown is detected.
+bootutls:
+bootutls:
+bootutls:
+bootutls:
+bootutls:
+bootutls:
+getty:    getty_ps 2.0.7e
+getty:
+getty:    /sbin/getty and /sbin/uugetty. 
+getty:    These control the process of logging into your system, and may be used
+getty:    instead of 'agetty', which is the default getty included with
+getty:    util-linux-1.6. getty_ps supports a number of enhancements such as
+getty:    ringback support.
+getty:
+getty:
+getty:
+getty:
+gzip:     GNU zip compression utilities. (v. 1.2.4)
+gzip:
+gzip:     Gzip reduces the size of the named files using Lempel-Ziv coding
+gzip:     (LZ77).  Whenever possible, each file is replaced by one with the
+gzip:     extension .gz, while keeping the same ownership modes, access and
+gzip:     modification times.
+gzip:
+gzip:
+gzip:
+gzip:
+gzip:
+ps:       procps 0.95 
+ps:
+ps:       Utilities for displaying process and memory information written by
+ps:       Michael K. Johnson, Werner Almesberger, Branko Lankester, Robert 
+ps:       Nation, David Engel, Larry Greenfield, Roger Binns, and Brian Edmonds.
+ps:       Also includes Steve "Mr. Bassman" Bryant's enhanced 'w', which does 
+ps:       the CPU accounting a little differently, keeping a running total for 
+ps:       all processes even after the processes have completed.
+ps:
+ps:
+ps:
+shlibs:   The shared C libraries libc.so.4.5.26 and libm.so.4.5.26. 
+shlibs:
+shlibs:   H.J. Lu's shared libraries - needed to run programs linked with
+shlibs:   the /lib/libc.so.4.*.*  and /lib/libm.so.4.*.* libraries
+shlibs:
+shlibs:
+shlibs:
+shlibs:
+shlibs:
+shlibs:
+shlibs:
+util:     util-linux 1.6
+util:
+util:     Selected utilities compiled from Rik Faith's huge utility collection:
+util:      agetty arch banner cal chroot chsh clear clock col colcrt colrm 
+util:      column ctrlaltdel dmesg domainname fdformat fdisk frag fsck 
+util:      fsck.minix hexdump hostname ipcrm ipcs kbdrate kill last logger login
+util:      look mesg mkfs.minix mkswap more mount newgrp passwd pwd rdev renice
+util:      reset rev script setfdprm setserial setsid setterm simpleinit strings
+util:      swapoff swapon sync syslogd tsort ul umount update uudecode uuencode
+util:      wall whereis write zdump zic zones
+util:

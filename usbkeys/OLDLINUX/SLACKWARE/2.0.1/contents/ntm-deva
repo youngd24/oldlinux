@@ -1,0 +1,42 @@
+PACKAGE NAME:     ntm-deva
+PACKAGE SIZE:     68 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntm-deva: ntm-deva 1.1
+ntm-deva:
+ntm-deva: This package contains software for the printing of the devanagari
+ntm-deva: script with TeX. The devanagari script is used for a number of
+ntm-deva: languages from Northern and Central India, such as Hindi and Marathi.
+ntm-deva: It is also the script used for writing and printing Sanskrit.
+ntm-deva:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/devnag
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/language/
+usr/lib/texmf/fonts/language/devanagari/
+usr/lib/texmf/fonts/language/devanagari/create.sh
+usr/lib/texmf/fonts/language/devanagari/src/
+usr/lib/texmf/fonts/language/devanagari/src/defs.mf
+usr/lib/texmf/fonts/language/devanagari/src/dnchars.mf
+usr/lib/texmf/fonts/language/devanagari/src/dvng10.mf
+usr/lib/texmf/fonts/language/devanagari/src/dvng8.mf
+usr/lib/texmf/fonts/language/devanagari/src/dvng9.mf
+usr/lib/texmf/fonts/language/devanagari/tfm/
+usr/lib/texmf/fonts/language/devanagari/tfm/dvng10.tfm
+usr/lib/texmf/fonts/language/devanagari/tfm/dvng8.tfm
+usr/lib/texmf/fonts/language/devanagari/tfm/dvng9.tfm
+usr/lib/texmf/fonts/language/devanagari/pk/
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/language/
+usr/lib/texmf/tex/language/devanagari/
+usr/lib/texmf/tex/language/devanagari/dev.sty
+usr/lib/texmf/tex/language/devanagari/devnag.c
+usr/lib/texmf/tex/language/devanagari/dnmacs.tex
+usr/lib/texmf/tex/language/devanagari/manual.tex
+usr/lib/texmf/tex/language/devanagari/misspaal.dn
+usr/lib/texmf/tex/language/devanagari/read.me

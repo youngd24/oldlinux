@@ -1,0 +1,15 @@
+F 00INDEX.TXT;1                     	00index.txt
+F BAREBOOT.GZ;1                     	bareboot.gz
+F BAREBOOT.LOG;1                    	bareboot.log
+F CD_BOOT.GZ;1                      	cd_boot.gz
+F CD_BOOT.LOG;1                     	cd_boot.log
+F COLOR144.GZ;1                     	color144.gz
+D EDIT                              	edit
+F NET_BOOT.GZ;1                     	net_boot.gz
+F NET_BOOT.LOG;1                    	net_boot.log
+F ONLYSCSI.GZ;1                     	onlyscsi.gz
+F ONLYSCSI.LOG;1                    	onlyscsi.log
+F READ.ME;1                         	READ.ME
+F SCSIBOOT.GZ;1                     	scsiboot.gz
+F SCSIBOOT.LOG;1                    	scsiboot.log
+F TTY144.GZ;1                       	tty144.gz

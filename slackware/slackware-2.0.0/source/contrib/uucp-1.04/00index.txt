@@ -1,0 +1,7 @@
+00index.txt         173  
+uucp-1.04.slack_diffs.tar.gz
+                  26717  
+uucp-1.04.tar.gz
+                 634624  
+uucp-doc-1.04.1.tar.gz
+                 383413  

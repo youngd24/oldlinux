@@ -1,0 +1,7 @@
+These disks are required for the UMSDOS installation package. If you
+are not using UMSDOS, you should not use them.
+
+If you are using UMSDOS, you MUST use them, or your system won't be able to
+make a boot disk, and will not be able to shift out of read-only mode when
+you boot.
+

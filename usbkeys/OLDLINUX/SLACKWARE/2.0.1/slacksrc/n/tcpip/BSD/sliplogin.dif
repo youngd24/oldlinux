@@ -1,0 +1,345 @@
+--- Makefile
++++ Makefile	1994/02/19 18:24:44
+@@ -0,0 +1,14 @@
++CFLAGS = -O2 -fomit-frame-pointer -m486 \
++		-include /usr/include/bsd/bsd.h -I/usr/include/bsd
++LDLIBS = -lbsd
++LDFLAGS = -s -v
++
++sliplogin: sliplogin.o
++
++install: sliplogin
++	install -m4744 sliplogin /usr/sbin
++	install -m644 sliplogin.8 /usr/man/man8
++
++clean:
++	rm -f *.o sliplogin
++
+--- pathnames.h
++++ pathnames.h	1994/02/19 18:28:14
+@@ -36,6 +36,7 @@
+ 
+ #include <paths.h>
+ 
+-#define	_PATH_ACCESS	"/etc/sliphome/slip.hosts"
+-#define	_PATH_LOGIN	"/etc/sliphome/slip.login"
+-#define	_PATH_LOGOUT	"/etc/sliphome/slip.logout"
++#define	_PATH_ACCESS	"/etc/slip.hosts"
++#undef  _PATH_LOGIN
++#define	_PATH_LOGIN	"/etc/slip.login"
++#define	_PATH_LOGOUT	"/etc/slip.logout"
+--- slip.hosts
++++ slip.hosts	1994/02/19 18:25:53
+@@ -1,6 +1,6 @@
+ #
+ # login	local-addr	remote-addr	mask		opt1	opt2 
+-#						(normal,compress,noicmp)	
++#					(normal,compress,6bit,adaptive)	
+ #
+ Shavoc	okeeffe         havoc		0xffffff00	normal
+ Soxford	okeeffe		oxford-gw	0xffffff00	compress
+--- sliplogin.8
++++ sliplogin.8	1994/02/19 18:24:44
+@@ -48,7 +48,7 @@
+ .Pq Tn SLIP
+ link to a remote host.  To do this, the program
+ searches the file
+-.Pa /etc/sliphome/slip.hosts
++.Pa /etc/slip.hosts
+ for an entry matching
+ .Ar loginname
+ (which defaults to the current login name if omitted).
+@@ -63,9 +63,9 @@
+ netmask, etc.
+ .Pp
+ The usual initialization script is
+-.Pa /etc/sliphome/slip.login
++.Pa /etc/slip.login
+ but, if particular hosts need special initialization, the file
+-.Pa /etc/sliphome/slip.login. Ns Ar loginname
++.Pa /etc/slip.login. Ns Ar loginname
+ will be executed instead if it exists.
+ The script is invoked with the parameters
+ .Bl -tag -width slipunit
+@@ -78,7 +78,7 @@
+ The speed of the line.
+ .It Em args
+ The arguments from the
+-.Pa /etc/sliphome/slip.hosts
++.Pa /etc/slip.hosts
+ entry, in order starting with
+ .Ar loginname .
+ .El
+@@ -90,11 +90,11 @@
+ module has been configured for it, all routes through that interface will
+ also disappear at the same time.  If there is other processing a site
+ would like done on hangup, the file
+-.Pa /etc/sliphome/slip.logout
++.Pa /etc/slip.logout
+ or
+-.Pa /etc/sliphome/slip.logout. Ns Ar loginname
++.Pa /etc/slip.logout. Ns Ar loginname
+ is executed if it exists.  It is given the same arguments as the login script.
+-.Ss Format of /etc/sliphome/slip.hosts
++.Ss Format of /etc/slip.hosts
+ Comments (lines starting with a `#') and blank lines are ignored.
+ Other lines must start with a
+ .Ar loginname
+@@ -191,16 +191,16 @@
+ .Fn ioctl
+ to set the line parameters failed.
+ .Pp
+-.It Sy /etc/sliphome/slip.hosts: Em reason
++.It Sy /etc/slip.hosts: Em reason
+ The
+-.Pa /etc/sliphome/slip.hosts
++.Pa /etc/slip.hosts
+ file could not be opened.
+ .Pp
+ .It Sy access denied for Em user
+ No entry for
+ .Em user
+ was found in
+-.Pa /etc/sliphome/slip.hosts .
++.Pa /etc/slip.hosts .
+ .El
+ .Pp
+ .Sy Notice Severity
+--- sliplogin.c
++++ sliplogin.c	1994/02/19 18:24:44
+@@ -75,19 +75,11 @@
+ #include <sys/syslog.h>
+ #include <netdb.h>
+ 
+-#if BSD >= 199006
+ #define POSIX
+-#endif
+-#ifdef POSIX
+ #include <sys/termios.h>
+ #include <sys/ioctl.h>
+-#include <ttyent.h>
+-#else
+-#include <sgtty.h>
+-#endif
+ #include <netinet/in.h>
+ #include <net/if.h>
+-#include <net/if_slvar.h>
+ 
+ #include <stdio.h>
+ #include <errno.h>
+@@ -96,13 +88,24 @@
+ #include <unistd.h>
+ #include "pathnames.h"
+ 
+-int	unit;
++char	unit[32];
++int	slip_mode;
+ int	speed;
+ int	uid;
+ char	loginargs[BUFSIZ];
+ char	loginfile[MAXPATHLEN];
+ char	loginname[BUFSIZ];
+ 
++struct slip_modes {
++	char	*sm_name;
++	int	sm_value;
++}	 modes[] = {
++	"normal",	0,              
++	"compress",	1,   
++	"6bit",		2,
++	"autocomp",	8
++};
++
+ void
+ findid(name)
+ 	char *name;
+@@ -133,6 +136,17 @@
+ 		if (strcmp(user, name) != 0)
+ 			continue;
+ 
++		slip_mode = 0;
++		for (i = 0; i < n - 4; i++) {
++			for (j = 0; j < sizeof(modes)/sizeof(struct slip_modes);
++				j++) {
++				if (strcmp(modes[j].sm_name, slopt[i]) == 0) {
++					slip_mode |= modes[j].sm_value;
++					break;
++				}
++			}
++		}
++
+ 		/*
+ 		 * we've found the guy we're looking for -- see if
+ 		 * there's a login file we can use.  First check for
+@@ -161,17 +175,46 @@
+ 	/* NOTREACHED */
+ }
+ 
+-const char *
++char *
+ sigstr(s)
+ 	int s;
+ {
+-	if (s > 0 && s < NSIG)
+-		return(sys_signame[s]);
+-	else {
+-		static char buf[32];
+-		(void)sprintf(buf, "sig %d", s);
+-		return(buf);
++	static char buf[32];
++
++	switch (s) {
++	case SIGHUP:	return("HUP");
++	case SIGINT:	return("INT");
++	case SIGQUIT:	return("QUIT");
++	case SIGILL:	return("ILL");
++	case SIGTRAP:	return("TRAP");
++	case SIGIOT:	return("IOT");
++	case SIGFPE:	return("FPE");
++	case SIGKILL:	return("KILL");
++	case SIGBUS:	return("BUS");
++	case SIGSEGV:	return("SEGV");
++	case SIGPIPE:	return("PIPE");
++	case SIGALRM:	return("ALRM");
++	case SIGTERM:	return("TERM");
++	case SIGURG:	return("URG");
++	case SIGSTOP:	return("STOP");
++	case SIGTSTP:	return("TSTP");
++	case SIGCONT:	return("CONT");
++	case SIGCHLD:	return("CHLD");
++	case SIGTTIN:	return("TTIN");
++	case SIGTTOU:	return("TTOU");
++	case SIGXCPU:	return("XCPU");
++	case SIGXFSZ:	return("XFSZ");
++	case SIGVTALRM:	return("VTALRM");
++	case SIGPROF:	return("PROF");
++	case SIGWINCH:	return("WINCH");
++#ifdef SIGLOST
++	case SIGLOST:	return("LOST");
++#endif
++	case SIGUSR1:	return("USR1");
++	case SIGUSR2:	return("USR2");
+ 	}
++	(void)sprintf(buf, "sig %d", s);
++	return(buf);
+ }
+ 
+ void
+@@ -186,12 +229,12 @@
+ 	if (access(logoutfile, R_OK|X_OK) == 0) {
+ 		char logincmd[2*MAXPATHLEN+32];
+ 
+-		(void) sprintf(logincmd, "%s %d %d %s", logoutfile, unit, speed,
++		(void) sprintf(logincmd, "%s %s %d %s", logoutfile, unit, speed,
+ 			      loginargs);
+ 		(void) system(logincmd);
+ 	}
+ 	(void) close(0);
+-	syslog(LOG_INFO, "closed %s slip unit %d (%s)\n", loginname, unit,
++	syslog(LOG_INFO, "closed %s slip unit %s (%s)\n", loginname, unit,
+ 	       sigstr(s));
+ 	exit(1);
+ 	/* NOTREACHED */
+@@ -203,11 +246,7 @@
+ {
+ 	int fd, s, ldisc, odisc;
+ 	char *name;
+-#ifdef POSIX
+ 	struct termios tios, otios;
+-#else
+-	struct sgttyb tty, otty;
+-#endif
+ 	char logincmd[2*BUFSIZ+32];
+ 	extern uid_t getuid();
+ 
+@@ -225,24 +264,10 @@
+ 		 * Disassociate from current controlling terminal, if any,
+ 		 * and ensure that the slip line is our controlling terminal.
+ 		 */
+-#ifdef POSIX
+ 		if (fork() > 0)
+ 			exit(0);
+-		if (setsid() < 0)
++		if (setsid() != 0)
+ 			perror("setsid");
+-#else
+-		if ((fd = open("/dev/tty", O_RDONLY, 0)) >= 0) {
+-			extern char *ttyname();
+-
+-			(void) ioctl(fd, TIOCNOTTY, (caddr_t)0);
+-			(void) close(fd);
+-			/* open slip tty again to acquire as controlling tty? */
+-			fd = open(ttyname(0), O_RDWR, 0);
+-			if (fd >= 0)
+-				(void) close(fd);
+-		}
+-		(void) setpgrp(0, getpid());
+-#endif
+ 		if (argc > 2) {
+ 			if ((fd = open(argv[2], O_RDWR)) == -1) {
+ 				perror(argv[2]);
+@@ -268,7 +293,6 @@
+ 	}
+ 	(void) fchmod(0, 0600);
+ 	(void) fprintf(stderr, "starting slip login for %s\n", loginname);
+-#ifdef POSIX
+ 	/* set up the line parameters */
+ 	if (tcgetattr(0, &tios) < 0) {
+ 		syslog(LOG_ERR, "tcgetattr: %m");
+@@ -282,40 +306,26 @@
+ 		exit(1);
+ 	}
+ 	speed = cfgetispeed(&tios);
+-#else
+-	/* set up the line parameters */
+-	if (ioctl(0, TIOCGETP, (caddr_t)&tty) < 0) {
+-		syslog(LOG_ERR, "ioctl (TIOCGETP): %m");
+-		exit(1);
+-	}
+-	otty = tty;
+-	speed = tty.sg_ispeed;
+-	tty.sg_flags = RAW | ANYP;
+-	if (ioctl(0, TIOCSETP, (caddr_t)&tty) < 0) {
+-		syslog(LOG_ERR, "ioctl (TIOCSETP): %m");
+-		exit(1);
+-	}
+-#endif
+ 	/* find out what ldisc we started with */
+ 	if (ioctl(0, TIOCGETD, (caddr_t)&odisc) < 0) {
+ 		syslog(LOG_ERR, "ioctl(TIOCGETD) (1): %m");
+ 		exit(1);
+ 	}
+-	ldisc = SLIPDISC;
++	ldisc = N_SLIP;
+ 	if (ioctl(0, TIOCSETD, (caddr_t)&ldisc) < 0) {
+ 		syslog(LOG_ERR, "ioctl(TIOCSETD): %m");
+ 		exit(1);
+ 	}
+ 	/* find out what unit number we were assigned */
+-	if (ioctl(0, SLIOCGUNIT, (caddr_t)&unit) < 0) {
+-		syslog(LOG_ERR, "ioctl (SLIOCGUNIT): %m");
++	if (ioctl(0, SIOCGIFNAME, (caddr_t)unit) < 0) {
++		syslog(LOG_ERR, "ioctl (SIOCGIFNAME): %m");
+ 		exit(1);
+ 	}
+ 	(void) signal(SIGHUP, hup_handler);
+ 	(void) signal(SIGTERM, hup_handler);
+ 
+-	syslog(LOG_INFO, "attaching slip unit %d for %s\n", unit, loginname);
+-	(void)sprintf(logincmd, "%s %d %d %s", loginfile, unit, speed,
++	syslog(LOG_INFO, "attaching slip unit %s for %s\n", unit, loginname);
++	(void)sprintf(logincmd, "%s %s %d %s", loginfile, unit, speed,
+ 		      loginargs);
+ 	/*
+ 	 * aim stdout and errout at /dev/null so logincmd output won't
+@@ -343,6 +353,10 @@
+ 		       loginname, s, loginfile);
+ 		(void) ioctl(0, TIOCSETD, (caddr_t)&odisc);
+ 		exit(6);
++	}
++	if (ioctl(0, SIOCSIFENCAP, (caddr_t)&slip_mode) < 0) {
++		syslog(LOG_ERR, "ioctl (SIOCSIFENCAP): %m");
++		exit(1);
+ 	}
+ 
+ 	/* twiddle thumbs until we get a signal */

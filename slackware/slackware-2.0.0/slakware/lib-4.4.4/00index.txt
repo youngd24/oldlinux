@@ -1,0 +1,32 @@
+00index.txt         697  
+README-4.4.4       1944  
+zdn1/                 -  
+zdn2/                 -  
+zzx1/                 -  
+
+zdn1:
+00index.txt         156  
+a_remove.tgz       1687  
+diskzdn1            559  
+gcc.tgz          533650  
+gxx.tgz          787367  
+tagfile             102  
+
+zdn2:
+00index.txt         234  
+binutils.tgz     138037  
+diskzdn2           1318  
+gmake.tgz         45066  
+include.tgz      134119  
+install.end           0  
+ldso.tgz           5833  
+libc.tgz         368206  
+shlibs.tgz       136632  
+
+zzx1:
+00index.txt         156  
+diskzzx1            300  
+extralib.tgz     785342  
+install.end           4  
+objc.tgz         513683  
+tagfile              24  

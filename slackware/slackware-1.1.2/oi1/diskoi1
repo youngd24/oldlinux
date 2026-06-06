@@ -1,0 +1,33 @@
+oilib:    Shared OI library (.so and .sa)                                  [REQ]
+oilib:
+oilib:
+oilib:
+oilib:
+oilib:
+oilib:
+oilib:
+oilib:
+oilib:
+oilib:
+oiinc:    OI include files                                                 [REQ]
+oiinc:
+oiinc:
+oiinc:
+oiinc:
+oiinc:
+oiinc:
+oiinc:
+oiinc:
+oiinc:
+oiinc:
+oimisc:   OI configuration files, etc                                      [REQ]
+oimisc:
+oimisc:
+oimisc:
+oimisc:
+oimisc:
+oimisc:
+oimisc:
+oimisc:
+oimisc:
+oimisc:

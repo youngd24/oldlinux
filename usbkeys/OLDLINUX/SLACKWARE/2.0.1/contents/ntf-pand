@@ -1,0 +1,52 @@
+PACKAGE NAME:     ntf-pand
+PACKAGE SIZE:     62 K
+PACKAGE LOCATION: diskt5
+PACKAGE DESCRIPTION:
+ntf-pand: ntf-pand 1.1
+ntf-pand:
+ntf-pand: The Pandora fonts.
+ntf-pand:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/misc/
+usr/lib/texmf/fonts/misc/pandora/
+usr/lib/texmf/fonts/misc/pandora/create.sh
+usr/lib/texmf/fonts/misc/pandora/misc/
+usr/lib/texmf/fonts/misc/pandora/misc/COPYRIGHT
+usr/lib/texmf/fonts/misc/pandora/misc/README
+usr/lib/texmf/fonts/misc/pandora/src/
+usr/lib/texmf/fonts/misc/pandora/src/caps.mf
+usr/lib/texmf/fonts/misc/pandora/src/fligs.mf
+usr/lib/texmf/fonts/misc/pandora/src/ligs.mf
+usr/lib/texmf/fonts/misc/pandora/src/number.mf
+usr/lib/texmf/fonts/misc/pandora/src/panaccent.mf
+usr/lib/texmf/fonts/misc/pandora/src/pandor.mf
+usr/lib/texmf/fonts/misc/pandora/src/pangreeku.mf
+usr/lib/texmf/fonts/misc/pandora/src/panlowers.mf
+usr/lib/texmf/fonts/misc/pandora/src/panpunct.mf
+usr/lib/texmf/fonts/misc/pandora/src/pnb10.mf
+usr/lib/texmf/fonts/misc/pandora/src/pnr10.mf
+usr/lib/texmf/fonts/misc/pandora/src/pnsl10.mf
+usr/lib/texmf/fonts/misc/pandora/src/pnss10.mf
+usr/lib/texmf/fonts/misc/pandora/src/pnssb10.mf
+usr/lib/texmf/fonts/misc/pandora/src/pnssi10.mf
+usr/lib/texmf/fonts/misc/pandora/src/pntt9.mf
+usr/lib/texmf/fonts/misc/pandora/src/punctr.mf
+usr/lib/texmf/fonts/misc/pandora/src/puncts.mf
+usr/lib/texmf/fonts/misc/pandora/src/punctt.mf
+usr/lib/texmf/fonts/misc/pandora/src/rotext.mf
+usr/lib/texmf/fonts/misc/pandora/src/ttchar.mf
+usr/lib/texmf/fonts/misc/pandora/src/tttext.mf
+usr/lib/texmf/fonts/misc/pandora/src/widths.mf
+usr/lib/texmf/fonts/misc/pandora/tfm/
+usr/lib/texmf/fonts/misc/pandora/tfm/pnr10.tfm
+usr/lib/texmf/fonts/misc/pandora/tfm/pnsl10.tfm
+usr/lib/texmf/fonts/misc/pandora/tfm/pnss10.tfm
+usr/lib/texmf/fonts/misc/pandora/tfm/pnssb10.tfm
+usr/lib/texmf/fonts/misc/pandora/tfm/pnssi10.tfm
+usr/lib/texmf/fonts/misc/pandora/tfm/pntt9.tfm
+usr/lib/texmf/fonts/misc/pandora/pk/

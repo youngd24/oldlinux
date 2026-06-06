@@ -1,0 +1,138 @@
+00index.txt        2724  
+gchess/               -  
+ghostview/            -  
+gnuplot/              -  
+libgr/                -  
+seyon/                -  
+workman/              -  
+x3270/                -  
+xfig/                 -  
+xfm/                  -  
+xfract/               -  
+xgames/               -  
+xgrabsc/              -  
+xpaint/               -  
+xspread/              -  
+xv/                   -  
+xxgdb/                -  
+
+gchess:
+00index.txt         227  
+gnuchess-4.0.pl69.tar.gz
+                 170776  
+gnuchess.book-1.0.tar.gz
+                 750070  
+gnuchess.test-1.0.tar.gz
+                 361829  
+xboard-3.0.pl9.tar.gz
+                 138266  
+
+ghostview:
+00index.txt          73  
+ghostview-1.5.tar.gz
+                 139742  
+
+gnuplot:
+00index.txt          71  
+gnuplot-3.5.tar.gz
+                 626008  
+
+libgr:
+00index.txt          73  
+libgr-1.3-src.tar.gz
+                 595266  
+
+seyon:
+00index.txt          71  
+Seyon-2.14c-tar.gz
+                 162420  
+
+workman:
+00index.txt         164  
+WorkMan-1.1.tar.gz
+                  90549  
+WorkMan-1.2.2a.tar.gz
+                 153246  
+WorkMan-1.2.tar.gz
+                 112400  
+
+x3270:
+00index.txt         299  
+x3270-3.0.1.README
+                  13035  
+x3270-3.0.1.fix01  9253  
+x3270-3.0.1.fix02
+                  52166  
+x3270-3.0.1.fix03
+                  44585  
+x3270-3.0.1.tar.gz
+                 120588  
+x3270-3.0.README   9785  
+x3270-3.0.tar.gz
+                 102341  
+
+xfig:
+00index.txt         144  
+README              244  
+transfig.2.1.8.tar.gz
+                 118274  
+xfig.2.1.8.tar.gz
+                 338364  
+
+xfm:
+00index.txt          78  
+xfm-1.3.lsm        1347  
+xfm-1.3.tar.gz   105545  
+
+xfract:
+00index.txt          74  
+xfractint-2.03.tar.gz
+                 731984  
+
+xgames:
+00index.txt         536  
+spider.tar.gz    130637  
+xcolormap.tar.gz   2808  
+xcuckoo-1.1.tar.gz
+                   5937  
+xhextris.tar.gz   16849  
+xlander.patch01.gz
+                   1602  
+xlander.patch02.gz
+                   1928  
+xlander.shar.gz   15604  
+xmahjongg.tar.gz  32245  
+xmenu.tar.gz       3872  
+xminesweep2.1.tar.gz
+                  14513  
+xneko.tar.gz      22926  
+xroach.tar.gz     21694  
+xtetris-2.5.2.tar.gz
+                  19944  
+xtetris-quayle.patch
+                   6211  
+xvier.tar.gz      35880  
+
+xgrabsc:
+00index.txt          71  
+xgrabsc.2_3.tar.gz
+                  54078  
+
+xpaint:
+00index.txt          72  
+xpaint-2.1.1.tar.gz
+                 329787  
+
+xspread:
+00index.txt          70  
+xspread2.1.tar.gz
+                 305356  
+
+xv:
+00index.txt          52  
+xv-3.01.tar.gz  1730736  
+
+xxgdb:
+00index.txt          69  
+xxgdb.108.tar.gz
+                 113815  

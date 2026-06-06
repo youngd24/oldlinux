@@ -1,0 +1,102 @@
+# This is a Slackware Installation Tagfile.
+# 
+# This one comes from disk: A1 (Base Linux series)
+# and a backup copy called "tagfile.org" can be found on the same disk. You
+# should never edit the "tagfile.org" copy, only the one called "tagfile". Use
+# the "tagfile.org" only if you want to restore original installation defaults
+# by copying it over the top of "tagfile".
+# 
+# It is used to automate software installation. 
+# There are two labels that you can use: ADD and SKP.
+#
+# If the PROMPT option is used during installation, this file will be checked
+# to determine the installation default. First, all the lines beginning with
+# <package_name>: 
+# will be extracted. Then, the last line in the extracted segment will be 
+# checked for the flags ADD, REC, OPT and SKP.
+#
+# If ADD is found, then a priority of [required] will be displayed, and the
+# package will be automatically installed. 
+#
+# If SKP is found, then a priority of [skip] will be displayed, and
+# the package will be automatically skipped.
+#
+# All other packages will be prompted for. There are two optional flags you
+# can use to change the package priority level shown when the user is 
+# prompted: REC and OPT. If REC is found, the priority shown will be
+# [recommended], while if OPT is found, the user sees priority [optional].
+#
+# If no flags are found for a given package, the user is shown priority
+# [unknown], and is prompted for whether the package should be installed.
+#
+# If you mess this file up beyond recognition, just restore from "tagfile.org"
+# 
+#
+base:     Basic system files that go in /bin /usr/bin and /usr/lib.
+base:     ADD
+devs:     Device files that represent the system's hardware, found in /dev.
+devs:     ADD
+etc:      System configuration files that belong in /etc   
+etc:      ADD
+hdsetup:  Slackware Setup scripts
+hdsetup:  ADD
+idekern:  Linux kernel version .99 patch level 15, without SCSI support. 
+idekern:  REC
+lilo:     The Linux Loader: boots Linux from your hard drive. (v. 0.14)
+lilo:     ADD
+passwd:   Password utilities, and account maintenance programs.
+passwd:   ADD
+scsikern: Linux kernel version .99 patch level 15, with SCSI support. 
+scsikern: REC
+sysvinit: Version 2.4 of the System V compatible INIT programs.  
+sysvinit: ADD
+bin:      System utilities and programs, such as GNU fileutils 3.9,
+bin:      ADD
+ldso:     ld.so 1.4, the dynamic linker/loader
+ldso:     ADD
+bootutls: Stephen Tweedie's bootutils package version 1.0
+bootutls: ADD
+getty:    /etc/getty and /etc/uugetty and man-pages. (v. 2.07)
+getty:    OPT
+gzip:     The GNU zip compression utilities. (v. 1.2.4)
+gzip:     ADD
+ps:       procps-0.8, utilities for displaying process and memory information.
+ps:       ADD
+shlibs:   The shared C libraries libc.so.4.5.19 and libm.so.4.5.19. 
+shlibs:   ADD
+util:     Selected utilities from the package util-linux
+util:     ADD
+comms:    Serial file-transfer and communication packages.
+comms:    REC
+cpio:     The GNU cpio backup and archiving utility. (v. 2.3)
+cpio:     ADD
+diff:    The GNU diff utilities - finds differences between files. (to make
+diff:    ADD
+e2fsbn:   Utilities for the second extended file system. (v. 0.4)
+e2fsbn:   ADD
+find:     GNU find 3.8
+find:     ADD
+grep:     This is GNU grep 2.0, the "fastest grep in the west" (we hope). 
+grep:     ADD
+keytbls:  Load and save keyboard mappings. Needed if you are not 
+keytbls:  OPT
+ksh:      A public domain version of the Korn Shell with man-pages. (v. 4.8)
+ksh:      OPT
+lpr:      Print spooling system.                           
+lpr:      ADD
+select:   Selection (v. 1.5)
+select:   REC
+shellutl: GNU shellutils-1.9
+shellutl: ADD
+shlbsvga: Shared library libsvga.so.1.0.9 (from svgalib 1.00)
+shlbsvga: ADD
+syslogd:  Logs and/or redirects system error messages.   
+syslogd:  ADD
+tar:      GNU tar 1.11.2
+tar:      ADD
+tcsh:     Extended C shell (tcsh) version 6.04 and man-pages.    
+tcsh:     OPT
+textutl: GNU textutil-1.9
+textutl: ADD
+zoneinfo: Allows you to configure your time zone. Look in /usr/lib/zoneinfo. 
+zoneinfo: ADD

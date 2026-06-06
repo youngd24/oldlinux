@@ -1,0 +1,5 @@
+00index.txt         130  
+diskx3              792  
+x_vga16.tgz      357908  
+xf_lib.tgz       685138  
+xman1.tgz        291050  

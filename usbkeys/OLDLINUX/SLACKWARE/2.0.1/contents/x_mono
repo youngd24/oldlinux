@@ -1,0 +1,23 @@
+PACKAGE NAME:     x_mono
+PACKAGE SIZE:     416 K
+PACKAGE LOCATION: diskx2
+PACKAGE DESCRIPTION:
+x_mono:   A Monochrome server.
+x_mono:
+x_mono:   This is X server number 4 of 7. In most cases you should only install
+x_mono:   the X server designed to work with your video hardware. 
+x_mono:
+x_mono:   Installing this package will create a link in /usr/X11/bin from
+x_mono:   XF86_Mono to X, setting this server as the default.
+x_mono:
+FILE LIST:
+./
+usr/
+usr/X11/
+usr/X11/bin/
+usr/X11/bin/XF86_Mono
+install/
+install/doinst.sh
+var/
+var/X11/
+var/X11/bin/

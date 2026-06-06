@@ -1,0 +1,11 @@
+kernel:    Source code for Linux 0.99.15, with the patches for the UMSDOS
+kernel:    filesystem already included. You'll need this to recompile your
+kernel:    kernel. Also, there are header files included in this package
+kernel:    that you'll need when compiling C code.
+kernel:
+kernel:
+kernel:
+kernel:
+kernel:
+kernel:
+kernel:

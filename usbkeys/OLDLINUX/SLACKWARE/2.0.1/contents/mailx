@@ -1,0 +1,28 @@
+PACKAGE NAME:     mailx
+PACKAGE SIZE:     40 K
+PACKAGE LOCATION: diskn2
+PACKAGE DESCRIPTION:
+mailx:    BSD mailx 5.5.
+mailx:
+mailx:    Mail is a intelligent mail processing system, which has a command
+mailx:    syntax reminiscent of ed with lines replaced by messages. It's small;
+mailx:    it's the standard; it's a good thing to install if you're going to use
+mailx:    mail.
+mailx:
+FILE LIST:
+./
+bin/
+usr/
+usr/lib/
+usr/lib/mail.help
+usr/lib/mail.tildehelp
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/mailx.1.gz
+usr/bin/
+usr/bin/Mail
+install/
+install/doinst.sh
+etc/
+etc/mail.rc

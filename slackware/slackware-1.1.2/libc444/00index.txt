@@ -1,0 +1,116 @@
+00index.txt        2593  
+README              345  
+a1/                   -  
+a2/                   -  
+a3/                   -  
+d1/                   -  
+d2/                   -  
+d3/                   -  
+d4/                   -  
+d5/                   -  
+d6/                   -  
+
+a1:
+00index.txt         416  
+base.tgz         272337  
+devs.tgz           7477  
+diska1             3623  
+etc.tgz           22736  
+hdsetup.tgz       71748  
+idekern.log        2977  
+idekern.tgz      290591  
+lilo.tgz          55420  
+maketag            2791  
+scsikern.log       3849  
+scsikern.tgz     343574  
+sysvinit.tgz      24205  
+tagfile            4049  
+tagfile.org        4049  
+tagfile.pat        4076  
+
+a2:
+00index.txt         260  
+bin.tgz          559963  
+bootutls.tgz      19704  
+diska2             2509  
+getty.tgz         37960  
+gzip.tgz          39140  
+ldso.tgz          57071  
+ps.tgz            48835  
+shlibs.tgz       136633  
+util.tgz         285493  
+
+a3:
+00index.txt         520  
+comms.tgz        221313  
+cpio.tgz          26802  
+diff.tgz          41057  
+diska3             4930  
+e2fsbn.tgz        33276  
+find.tgz          43756  
+grep.tgz          31200  
+install.end         154  
+keytbls.tgz       70991  
+ksh.tgz           65817  
+lpr.tgz           62596  
+select.tgz        10012  
+shellutl.tgz      74012  
+shlbsvga.tgz      31026  
+syslogd.tgz       23470  
+tar.tgz           59705  
+tcsh.tgz         148458  
+textutl.tgz      130383  
+zoneinfo.tgz      29908  
+
+d1:
+00index.txt         208  
+diskd1              372  
+gcc.tgz          533650  
+gxx.tgz          787367  
+maketag            2163  
+tagfile            3269  
+tagfile.org        3269  
+tagfile.pat        1767  
+
+d2:
+00index.txt         260  
+byacc.tgz         26362  
+diskd2             1887  
+flex.tgz          75264  
+gmake.tgz         45066  
+include.tgz      134119  
+man2.tgz         114198  
+objc.tgz         513683  
+p2c.tgz          288608  
+pmake.tgz         53276  
+
+d3:
+00index.txt         130  
+bison.tgz         97739  
+diskd3              752  
+extralib.tgz     785342  
+gdb.tgz          463369  
+
+d4:
+00index.txt          78  
+diskd4              351  
+kernel.tgz      1237746  
+
+d5:
+00index.txt         182  
+clisp.tgz        471787  
+diskd5             1078  
+f2c.tgz          184411  
+libc.tgz         368206  
+ncurses.tgz      196553  
+svgalib.tgz      117805  
+
+d6:
+00index.txt         208  
+binutils.tgz     138037  
+diskd6             1082  
+install.end          35  
+m4.tgz            53922  
+man3.tgz         122891  
+perl.tgz         493748  
+rcs.tgz          166573  

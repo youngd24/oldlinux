@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>MirrorBrain/2.19.0</generator>
+  <origin dynamic="true">https://mirrors.slackware.com/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz.meta4</origin>
+  <published>2026-06-02T04:27:12Z</published>
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <file name="xlock+slack-patches.tar.gz">
+    <size>46706</size>
+
+    <!-- <mtime>1077723818</mtime> -->
+
+    <!-- internal id: 204540 -->
+    <hash type="md5">c9ce156f2c1a6a14afce4259bcb437ba</hash>
+    <hash type="sha-1">0a2bebdb314237eeb1b3c103752e814302891c3c</hash>
+    <hash type="sha-256">3d65f87ffb3a629c7519197d0a8ff6353ad2c1d2e754cf2ea58cb5682b1bffcc</hash>
+    <pieces length="262144" type="sha-1">
+      <hash>0a2bebdb314237eeb1b3c103752e814302891c3c</hash>
+    </pieces>
+
+
+    <!-- Found 27 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 26 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url location="us" priority="1">https://mirror.slackbuilds.org/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url location="ec" priority="2">https://mirror.cedia.org.ec/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="br" priority="3">https://ftp.slackware-brasil.com.br/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="br" priority="4">https://mirrors.slackware.beco.cc/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="br" priority="5">https://linorg.usp.br/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="gb" priority="6">http://slackware.uk/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="gb" priority="7">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="nl" priority="8">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="nl" priority="9">https://mirror.koddos.net/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="nl" priority="10">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="de" priority="11">https://linux.rz.rub.de/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="ro" priority="12">http://mirrors.nav.ro/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="de" priority="13">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="dk" priority="14">https://mirrors.dotsrc.org/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="hr" priority="15">http://mirror.slackware.hr/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="it" priority="16">https://slackware.mirror.garr.it/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="se" priority="17">https://mirror.bahnhof.net/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="rs" priority="18">https://mirror1.sox.rs/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="pl" priority="19">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="ro" priority="20">https://mirrors.nxthost.com/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="ua" priority="21">http://slackware.ip-connect.info/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="ua" priority="22">https://ifconfig.com.ua/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="ru" priority="23">http://mirror.mephi.ru/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="ru" priority="24">https://mirror.yandex.ru/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="za" priority="25">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="sa" priority="26">https://mirror.lyrahosting.com/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+    <url location="hk" priority="27">https://mirror-hk.koddos.net/slackware/slackware-2.0.1/slacksrc/x/xlock/xlock+slack-patches.tar.gz</url>
+  </file>
+</metalink>

@@ -1,0 +1,5 @@
+00index.txt         130  
+diskncr1            314  
+maketag            1001  
+ncr_krn3.tgz    1363391  
+tagfile              42  

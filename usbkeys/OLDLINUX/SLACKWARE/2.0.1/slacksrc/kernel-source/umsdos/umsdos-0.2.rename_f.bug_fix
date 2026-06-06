@@ -1,0 +1,77 @@
+From michael@lab2.psy.univie.ac.at Tue Apr  5 10:49:13 1994
+Return-Path: <A6213DAD@AWIUNI11.EDVZ.UNIVIE.AC.AT>
+Resent-Message-Id: <m0po6ko-00033lC@lab1>
+Received: from AWIUNI11.EDVZ.UNIVIE.AC.AT by AWIUNI11.EDVZ.UniVie.AC.AT
+   (IBM VM SMTP V2R2) with BSMTP id 0523; Tue, 05 Apr 94 10:44:17 MEZ
+Received: from AWIUNI11.EDVZ.UNIVIE.AC.AT (NJE origin A6213DAD@AWIUNI11) by AWIUNI11.EDVZ.UNIVIE.AC.AT (LMail V1.2a/1.8a) with BSMTP id 9255; Tue, 5 Apr 1994 10:44:17 +0100
+Resent-Date:  Tue, 05 Apr 94 10:44:13 MEZ
+Resent-From:  Michael Leodolter <A6213DAD@AWIUNI11.EDVZ.UniVie.AC.AT>
+Resent-To:    michael@lab1.psy.univie.ac.at
+Date:         Fri, 18 Mar 94 13:38:10 MEZ
+From:         Michael Leodolter <A6213DAD@AWIUNI11.EDVZ.UniVie.AC.AT>
+Subject:      UMSDOS-0.2_rename_f_fix
+To:           linux-activists-request@niksula.hut.fi
+
+
+
+----------------------------Original message----------------------------
+X-Mn-Key: normal
+
+The following diff is a fix for a umsdos rename bug if the taget
+exists and has different mode
+        (Exp.: co -u test.c ; co -l test.c
+
+        or
+
+        before  "mv _Zdddd test.c"
+          -rw-r--r--   1 michael  devel         471 Mar 17 22:25 _Zdddd
+          -r--r--r--   1 michael  devel         471 Mar 17 22:25 test.c
+
+        after   "mv _Zdddd test.c"
+          -r--r--r--   1 michael  devel         471 Mar 17 22:25 test.c).
+
+!!! umsdos_newentry fills the new_info with old if found !!!
+
+--- diff ----
+cd /usr/src/linux/fs/umsdos/
+diff -c /usr/src/linux/fs/umsdos/namei.c.0.2 /usr/src/linux/fs/umsdos/namei.c
+*** /usr/src/linux/fs/umsdos/namei.c.0.2        Sun Mar 13 14:28:13 1994
+--- /usr/src/linux/fs/umsdos/namei.c    Thu Mar 17 22:16:07 1994
+***************
+*** 298,303 ****
+--- 298,304 ----
+        struct umsdos_info old_info;
+        int old_ret = umsdos_parse (old_name,old_len,&old_info);
+        struct umsdos_info new_info;
++       struct umsdos_info new_info_save;
+        int new_ret = umsdos_parse (new_name,new_len,&new_info);
+        PRINTK (("umsdos_rename %d %d ",old_ret,new_ret));
+        if (old_ret == 0 && new_ret == 0){
+***************
+*** 316,324 ****
+--- 317,329 ----
+                        new_info.entry.mtime = old_info.entry.mtime;
+                        new_info.entry.flags = flags ? flags :
+old_info.entry.flags;
+                        new_info.entry.nlink = old_info.entry.nlink;
++                       /* save if newentry fails */
++                       memcpy (&new_info_save, &new_info, sizeof(new_info));
+                        ret = umsdos_newentry (new_dir,&new_info);
+                        PRINTK (("ret %d %d ",ret,new_info.fake.len));
+                        if (ret == -EEXIST){
++                         /* restore if newentry fails */
++                         memcpy (&new_info, &new_info_save, sizeof(new_info));
+                                /* #Specification: rename / new name exist
+                                        If the destination name already exist,
+it will
+                                        silently be removed. EXT2 does it this
+way
+
+Diff finished at Thu Mar 17 22:35:06
+
+--- diff end ---
+
+Good luck!
+
+michael
+

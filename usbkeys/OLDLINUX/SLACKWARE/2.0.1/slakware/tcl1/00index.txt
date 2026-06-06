@@ -1,0 +1,8 @@
+00index.txt         208  
+disktcl1            548  
+maketag            1072  
+tagfile            1868  
+tagfile.org        1868  
+tagfile.pat        1868  
+tcl.tgz          318529  
+tk.tgz           737886  

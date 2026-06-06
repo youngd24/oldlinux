@@ -1,0 +1,165 @@
+--- Makefile
++++ Makefile	1994/03/01 16:32:55
+@@ -0,0 +1,20 @@
++# -DRESTRICT_FTP if you want to deny all users in /etc/ftusers to use rexecd
++# -DTCP_WRAPPER if you want to have support for the tcpd-6.1 or newer
++#		(Then do not wrap it in /etc/inetd.conf...)
++#		This also adds syslogging
++
++CFLAGS = -O2 -fomit-frame-pointer -m486 -DRESTRICT_FTP \
++	-include /usr/include/bsd/bsd.h -I/usr/include/bsd \
++# -DKERBEROS -DCRYPT
++LDLIBS = -lbsd # -lutil -lkrb -ldes
++LDFLAGS = -s -v
++
++rexecd: rexecd.o
++
++install: rexecd
++	install -m744 rexecd /usr/sbin/in.rexecd
++	install -m644 rexecd.8 /usr/man/man8
++
++clean:
++	rm -f *.o rexecd
++
+--- rexecd.8
++++ rexecd.8	1994/03/01 16:04:42
+@@ -115,9 +115,8 @@
+ The command line passed exceeds the size of the argument
+ list (as configured into the system).
+ .It Sy Login incorrect.
+-No password file entry for the user name existed.
+-.It Sy Password incorrect.
+-The wrong was password supplied.
++No password file entry for the user name existed or the wrong password
++was supplied.
+ .It Sy \&No remote directory.
+ The 
+ .Xr chdir
+@@ -136,10 +135,6 @@
+ .Sh SEE ALSO
+ .Xr rexec 3
+ .Sh BUGS
+-Indicating ``Login incorrect'' as opposed to ``Password incorrect''
+-is a security breach which allows people to probe a system for users
+-with null passwords.
+-.Pp
+ A facility to allow all data and password exchanges to be encrypted should be
+ present.
+ .Sh HISTORY
+--- rexecd.c
++++ rexecd.c	1994/03/01 16:31:13
+@@ -60,6 +60,19 @@
+ /*VARARGS1*/
+ int error();
+ 
++#ifdef TCP_WRAPPER
++#include <syslog.h>
++#include "log_tcp.h"
++
++struct from_host from_host;
++int allow_severity = LOG_INFO;
++int deny_severity = LOG_WARNING;
++#endif
++
++#ifdef RESTRICT_FTP
++#define FTPUSERS        "/etc/ftpusers"
++#endif
++
+ /*
+  * remote execute server:
+  *	username\0
+@@ -81,6 +94,13 @@
+ 		    "rexecd: getpeername: %s\n", strerror(errno));
+ 		exit(1);
+ 	}
++#ifdef	TCP_WRAPPER
++	(void) openlog(argv[0], LOG_PID, LOG_DAEMON);
++	/* Find out and report the remote host name. */
++	if (fromhost(&from_host) < 0 || !hosts_access(argv[0], &from_host))
++		refuse(&from_host);
++	syslog(allow_severity, "connect from %s", hosts_info(&from_host));
++#endif
+ 	doit(0, &from);
+ }
+ 
+@@ -106,6 +126,9 @@
+ 	int pv[2], pid, ready, readfrom, cc;
+ 	char buf[BUFSIZ], sig;
+ 	int one = 1;
++#ifdef RESTRICT_FTP
++	FILE *fp;
++#endif
+ 
+ 	(void) signal(SIGINT, SIG_DFL);
+ 	(void) signal(SIGQUIT, SIG_DFL);
+@@ -150,6 +173,11 @@
+ 	setpwent();
+ 	pwd = getpwnam(user);
+ 	if (pwd == NULL) {
++#ifdef	TCP_WRAPPER
++		/* Log failed attempts. */
++		syslog(LOG_ERR, "LOGIN FAILURE from %s, %s",
++			hosts_info(&from_host), user);
++#endif
+ 		error("Login incorrect.\n");
+ 		exit(1);
+ 	}
+@@ -157,10 +185,48 @@
+ 	if (*pwd->pw_passwd != '\0') {
+ 		namep = crypt(pass, pwd->pw_passwd);
+ 		if (strcmp(namep, pwd->pw_passwd)) {
+-			error("Password incorrect.\n");
++#ifdef	TCP_WRAPPER
++			/* Log failed attempts. */
++			syslog(LOG_ERR, "LOGIN FAILURE from %s, %s",
++				hosts_info(&from_host), user);
++#endif
++			error("Login incorrect.\n");
+ 			exit(1);
+ 		}
+ 	}
++	/* Disallow access to root account. */
++	if (pwd->pw_uid == 0) {
++#ifdef	TCP_WRAPPER
++		syslog(LOG_ERR, "%s LOGIN REFUSED from %s",
++			user, hosts_info(&from_host));
++#endif
++		error("Login incorrect.\n");
++		exit(1);
++	}
++#ifdef RESTRICT_FTP
++	/* Disallow access to accounts in /etc/ftpusers. */
++	if ((fp = fopen(FTPUSERS, "r")) != NULL) {
++	    while (fgets(buf, sizeof (buf), fp) != NULL) {
++		if ((cp = index(buf, '\n')) != NULL)
++			*cp = '\0';
++		if (strcmp(buf, pwd->pw_name) == 0) {
++#ifdef	TCP_WRAPPER
++			syslog(LOG_ERR, "%s LOGIN REFUSED from %s",
++				user, hosts_info(&from_host));
++#endif
++			error("Login incorrect.\n");
++			exit(1);
++		}
++	    }
++	}
++	(void) fclose(fp);
++#endif
++
++#ifdef	TCP_WRAPPER
++	/* Log successfull attempts. */
++	syslog(LOG_INFO, "login from %s as %s", hosts_info(&from_host), user);
++#endif
++
+ 	if (chdir(pwd->pw_dir) < 0) {
+ 		error("No remote directory.\n");
+ 		exit(1);
+@@ -201,7 +267,7 @@
+ 			} while (readfrom);
+ 			exit(0);
+ 		}
+-		setpgrp(0, getpid());
++		setpgrp();
+ 		(void) close(s); (void)close(pv[0]);
+ 		dup2(pv[1], 2);
+ 	}

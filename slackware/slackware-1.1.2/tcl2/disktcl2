@@ -1,0 +1,34 @@
+CONTENTS: blt itcl tclx
+blt:      This is the version 1.0 release of the blt library.  It is an
+blt:      extension to Tk toolkit (it requires no patching of the Tcl
+blt:      or Tk libraries).
+blt:
+blt:
+blt:
+blt:
+blt:
+blt:
+blt:
+blt:
+itcl:     [incr Tcl] - version 1.3
+itcl: 
+itcl:     [incr Tcl] adds object-oriented programming facilities to Tcl.  It
+itcl:     was NOT designed as yet another whiz-bang object-oriented programming
+itcl:     language; indeed, it is patterned somewhat after C++.  It was designed
+itcl:     to support more structured programming in Tcl.  Scripts that grow
+itcl:     beyond a few thousand lines become extremely difficult to maintain.
+itcl:     [incr Tcl] attacks this problem in the same way that any object-
+itcl:     oriented programming language would, by providing mechanisms for
+itcl:     data encapsulation behind well-defined interfaces.
+itcl: 
+tclx:     TclX - Extended Tcl: Extended command set for Tcl (v. 7.3a)
+tclx:
+tclx:     Extended Tcl is a superset of standard Tcl and is built alongside the
+tclx:     standard Tcl sources. Extended Tcl has three basic functional areas: 
+tclx:     A set of new commands, a Tcl shell (i.e. a Unix shell-style command 
+tclx:     line and interactive environment), and a user-extensible library of
+tclx:     useful Tcl procedures, any of which can be automatically loaded on the
+tclx:     first attempt to execute it.
+tclx:
+tclx:
+tclx:

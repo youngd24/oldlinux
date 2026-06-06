@@ -1,0 +1,169 @@
+00index.txt        3294  
+binutils/             -  
+bison/                -  
+byacc/                -  
+clisp/                -  
+extralib              4  -> libc
+f2c/                  -  
+flex/                 -  
+gcc/                  -  
+gdb/                  -  
+gxx                   3  -> gcc
+include               4  -> libc
+ipdms2/               -  
+libc/                 -  
+libgxx/               -  
+m4/                   -  
+man2/                 -  
+man3/                 -  
+ncurses/              -  
+objc                  3  -> gcc
+p2c/                  -  
+perl/                 -  
+pmake/                -  
+rcs/                  -  
+svgalib/              -  
+tools/                -  
+
+binutils:
+00index.txt         420  
+bin86-0.1.tar.gz
+                 121796  
+binutils-1.9l.4.tar.gz
+                 175570  
+gas-1.38.1l.1.tar.gz
+                 186564  
+gas-2.2.tar.gz  1950621  
+gas-2.2l.diff      3397  
+make-3.70.tar.gz
+                 399307  
+make-3.71.tar.gz
+                 538220  
+make-doc-3.70.tar.gz
+                 253635  
+strace-3.0.lsm      822  
+strace-3.0.tar.gz
+                 128459  
+
+bison:
+00index.txt         122  
+bison-1.22.debian.diff.gz
+                    921  
+bison-1.22.tar.gz
+                 257396  
+
+byacc:
+00index.txt          52  
+byacc.tar.gz      51633  
+
+clisp:
+00index.txt          98  
+clisp-source.IAFA   654  
+clisp-source.tar.gz
+                2605598  
+
+f2c:
+00index.txt          98  
+libf2c-0.9.2.lsm    703  
+libf2c-0.9.2.tar.gz
+                 200165  
+
+flex:
+00index.txt          70  
+flex-2.4.6.tar.gz
+                 283738  
+
+gcc:
+00index.txt         112  
+gcc-2.4.5.tar.gz
+                5558673  
+gcc-2.5.8.tar.gz
+                5997896  
+
+gdb:
+00index.txt         114  
+gdb-4.12.hwdbg.diff
+                  29713  
+gdb-4.12.tar.gz
+                3682855  
+
+ipdms2:
+00index.txt         180  
+ipdm2s-install     5796  
+ipdm2s.9401.LINX.tar.gz
+                 278124  
+ipdm2s.doc.tar   271872  
+ipdm2s.manual     32327  
+ipdm2s.readme      1593  
+
+libc:
+00index.txt         206  
+libc-4.4.4.tar.gz
+                 929968  
+libc-4.5.24.tar.gz
+                 914525  
+libc-4.5.26.tar.gz
+                 933904  
+release.libc-4.5.26
+                   7423  
+
+libgxx:
+00index.txt         122  
+libg++-2.5.3.tar.gz
+                1281474  
+libg++-2.5.3l.2.diff.gz
+                  26732  
+
+m4:
+00index.txt          52  
+m4-1.1.tar.gz    255213  
+
+man2:
+00index.txt          52  
+README               64  
+
+man3:
+00index.txt          52  
+README               64  
+
+ncurses:
+00index.txt         124  
+1-8-5.tar.gz     259978  
+ncurses.dif        2825  
+ncurses1.8.1.tar.gz
+                 158112  
+
+p2c:
+00index.txt          78  
+p2c-1.20.tar.gz  391137  
+p2c.README        27537  
+
+perl:
+00index.txt         175  
+perl-4.036-linux-kit.lsm
+                   1101  
+perl-4.036-linux-kit.tar.gz
+                   3202  
+perl-4.036.tar.gz
+                 586178  
+
+pmake:
+00index.txt          96  
+pmake.v1.0.lsm      972  
+pmake.v1.0.tar.gz
+                 165904  
+
+rcs:
+00index.txt          70  
+rcs5.6.0.1.tar.gz
+                 253970  
+
+svgalib:
+00index.txt          70  
+svgalib111.tar.gz
+                 305979  
+
+tools:
+00index.txt          70  
+tools-2.11.tar.gz
+                 150064  

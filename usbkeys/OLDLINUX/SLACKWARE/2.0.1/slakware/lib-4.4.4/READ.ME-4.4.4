@@ -1,0 +1,42 @@
+I've got a friend that needed libc-4.4.4 to compile a MUD, and occasionally
+I see people on the net who want to run the old libc-4.4.4 and GCC 2.4.5, so
+I've put this package together to allow people running Slackware 1.1.2 or
+higher to downgrade their compilers and C libraries to version 4.4.4.
+
+This package is really easy to install, but it *must* be installed from a
+boot/rootdisk, using setup or pkgtool. You won't get far if you try to install
+it from your hard drive - the first thing it does is remove the C libraries 
+and compilers, including libc.so.4.*.*.
+
+There are 2 series for this. The second series is the optional 
+profiling/debugging libs and GNU Objective-C 2.4.5.
+
+ZDN series (2 disks):
+  -- removes any 4.5.x C libraries, shared and development, and the GNU 2.5.x
+     C/C++/ObjC compilers.
+  -- adds the 4.4.4 C libraries and GNU C/C++ 2.4.5.
+  -- patches ld.so to prevent annoying warnings about possible library 
+     mismatches. If you find that new binaries no longer work under
+     libc-4.4.4, recompile them. Most will work fine, but C++ apps will
+     likely need to be recompiled.
+
+ZZX series (1 disk):
+  -- Adds debugging/profiling libs v. 4.4.4
+  -- Optional GNU Objective-C compiler 2.4.5.
+
+I haven't tried this stuff on a networked machine, but it seems to work.
+It's a mixed bag, though - I found when testing it that some new programs
+won't compile because they need header files that weren't present in the
+4.4.4 version. On the other hand, OI is likely to work a lot better with
+these libraries.
+
+I like the new 4.5.x libraries and GCC 2.5.x better myself, and plan to
+continue using those, but I like to give everyone as many options as
+possible.  Isn't that kind of flexibility what Linux is all about?
+
+Source for GCC 2.4.5 and libc 4.4.4 can still be found on ftp.cdrom.com,
+in /pub/linux/slackware_source/d/gcc, and /pub/linux/slackware_source/d/libc.
+
+---
+Patrick Volkerding
+volkerdi@ftp.cdrom.com

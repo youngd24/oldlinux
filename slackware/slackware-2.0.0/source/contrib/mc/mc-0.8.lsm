@@ -1,0 +1,32 @@
+Begin2
+Title        = MouseLess Commander, file manager
+Version      = 0.8
+Desc1        = The MouseLess Commander is Norton Commander clone, a program
+Desc2        = used for directory/file manipulation/managing. Nothing new
+Desc3        = but very usefull. 
+Desc4        = It's fast, has colors in the Linux console.
+Author       = Miguel de Icaza and Mauricio Plaza
+AuthorEmail  = {miguel,mok}@roxanne.nuclecu.unam.mx
+Maintainer   = Miguel, Mauricio
+MaintEmail   = mouseless@roxanne.nuclecu.unam.mx
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/utils/file
+File1        = mc-0.8.tar.gz
+FileSize1    = 66k
+Site2        = ftp.nuclecu.unam.mx
+Path2        = /linux/local
+File2        = mc-0.8.tar.gz
+FileSize2    = 66k
+Required1    = Linux 1.0, Linux 1.1, Ultrix 4.3 or SunOS 4.1
+Required2    = The GNU C Compiler 
+Required3    = The NCurses 1.8.5 package (it's in ftp.netcom.com:/pub/zmbenhal)
+CopyPolicy1  = GNU General Public License version 2.
+Keywords     = file manager, ncurses, directory browser
+Comment1     = Find File, displays two directories at the same time, default
+Comment2     = file operations act over the selected file or the tagged files
+Comment3     = and default to the other panel. User friendly shell
+Comment4     = New: user-menus, internal viewer.
+Entered      = 27JUN94
+EnteredBy    = Miguel
+CheckedEmail = miguel@roxanne.nuclecu.unam.mx
+End

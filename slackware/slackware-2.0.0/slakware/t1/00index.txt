@@ -1,0 +1,11 @@
+00index.txt         286  
+diskt1             1017  
+dvi2xx.tgz       106279  
+gentle.tgz        60135  
+maketag            1252  
+manifest.gz        7153  
+readme.tex         2738  
+tagfile             153  
+tagfile.org         153  
+tagfile.pat         153  
+texbin.tgz       727302  

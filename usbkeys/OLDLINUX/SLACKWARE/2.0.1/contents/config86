@@ -1,0 +1,49 @@
+PACKAGE NAME:     config86
+PACKAGE SIZE:     154 K
+PACKAGE LOCATION: diskx3
+PACKAGE DESCRIPTION:
+config86: Steven T Zwaska's ConfigXF86 XFree86 Xconfig generation script.
+config86:
+config86: This handy script asks you questions about your video card and
+config86: monitor. It then generates a custom Xconfig file based on your 
+config86: answers. 
+config86:
+config86: To use it, run the ConfigXF86 script in /usr/lib/X11/ConfigXF86.
+config86:
+FILE LIST:
+./
+usr/
+usr/X11/
+usr/X11/lib/
+usr/X11/lib/ConfigXF86/
+usr/X11/lib/ConfigXF86/CARDS
+usr/X11/lib/ConfigXF86/ConfigXF86
+usr/X11/lib/ConfigXF86/ConfigXF86.PS
+usr/X11/lib/ConfigXF86/ConfigXF86.rtf
+usr/X11/lib/ConfigXF86/ConfigXF86.txt
+usr/X11/lib/ConfigXF86/DATAFILES/
+usr/X11/lib/ConfigXF86/DATAFILES/ReCompile
+usr/X11/lib/ConfigXF86/DATAFILES/help/
+usr/X11/lib/ConfigXF86/DATAFILES/help/mouse.hlp
+usr/X11/lib/ConfigXF86/DATAFILES/help/Fiddle1.hlp
+usr/X11/lib/ConfigXF86/DATAFILES/help/MonQry.hlp
+usr/X11/lib/ConfigXF86/DATAFILES/help/VidCrdQry.hlp
+usr/X11/lib/ConfigXF86/DATAFILES/help/mouse.hlp.orig
+usr/X11/lib/ConfigXF86/DATAFILES/Cards.dat
+usr/X11/lib/ConfigXF86/DATAFILES/mkdatafiles
+usr/X11/lib/ConfigXF86/DATAFILES/Template
+usr/X11/lib/ConfigXF86/DATAFILES/Raw-Data
+usr/X11/lib/ConfigXF86/DATAFILES/Monitors.dat
+usr/X11/lib/ConfigXF86/DATAFILES/AccelChips
+usr/X11/lib/ConfigXF86/DATAFILES/SvgaChips
+usr/X11/lib/ConfigXF86/DATAFILES/xinitrc.probe
+usr/X11/lib/ConfigXF86/DATAFILES/xinitrc.test
+usr/X11/lib/ConfigXF86/DATAFILES/Xconfig.probe
+usr/X11/lib/ConfigXF86/Data.Format
+usr/X11/lib/ConfigXF86/HOWTO.Config
+usr/X11/lib/ConfigXF86/MONITORS
+usr/X11/lib/ConfigXF86/MakeCard
+usr/X11/lib/ConfigXF86/README.Conf
+usr/X11/lib/ConfigXF86/configxf.doc
+usr/X11/lib/ConfigXF86/h.eps
+usr/X11/lib/ConfigXF86/v.eps

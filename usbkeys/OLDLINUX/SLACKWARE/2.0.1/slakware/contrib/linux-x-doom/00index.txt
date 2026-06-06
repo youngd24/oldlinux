@@ -1,0 +1,5 @@
+00index.txt         130  
+README.linux      63764  
+doom1wad.tgz    1763210  
+linxdoom.lsm       1268  
+linxdoom.tgz     172422  

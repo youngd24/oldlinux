@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink version="3.0" xmlns="http://www.metalinker.org/"
+  origin="https://mirrors.slackware.com/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz.metalink"
+  generator="MirrorBrain 2.19.0 (see http://mirrorbrain.org/)"
+  type="dynamic"  pubdate="Tue, 02 Jun 2026 04:21:26 GMT"  refreshdate="Tue, 02 Jun 2026 04:21:26 GMT">
+
+  <publisher>
+    <name>Slackware Linux</name>
+    <url>https://mirrors.slackware.com</url>
+  </publisher>
+
+  <files>
+  <file name="clisp-source.tar.gz">
+    <size>2582289</size>
+
+    <!-- <mtime>1077720986</mtime> -->
+
+    <!-- internal id: 205709 -->
+      <verification>
+        <hash type="md5">56e0cd5463d8f178e9a902f28a36a5d5</hash>
+        <hash type="sha1">03e08ef550b765c269141c11589a6f6af1837c7e</hash>
+        <hash type="sha256">246573d18faf44ca61bb8cddada5eba54034c22d099eb658f509ff3ed8fa7a04</hash>
+        <pieces length="262144" type="sha1">
+          <hash piece="0">7ccd7fd47fb294d5bd53f30633f6fa88fe84bda5</hash>
+          <hash piece="1">12ecd81ab5cc46a8d0d3cba3f61cbafb309ab9ed</hash>
+          <hash piece="2">0d9ece28cb719b194eaf62b0ebbd4ac92ded7035</hash>
+          <hash piece="3">4ee08179b54bab6503da3832aca2ff2953403af2</hash>
+          <hash piece="4">0cc56c22d4e7d3686d8bcb72c8dd182d4a12e0a0</hash>
+          <hash piece="5">edc53bf2fc8791abbd549ac6308d0c776ebba02c</hash>
+          <hash piece="6">6252056b9317ab6b6d3a53fad5a90ff45888cfd3</hash>
+          <hash piece="7">ce5304e5abe8ba71615ca572f86db264a8e53bdb</hash>
+          <hash piece="8">4f2daf0c06d29a8cb2ac9f90ea9f0d2b6762daf8</hash>
+          <hash piece="9">4eebdefcb1cffbbdc3f213ce73a982e6ab654487</hash>
+        </pieces>
+      </verification>
+    <resources>
+
+
+
+    <!-- Found 28 mirrors: 0 in the same network prefix, 0 in the same autonomous system,
+         1 handling this country, 0 in the same region, 27 elsewhere -->
+
+    <!-- Mirrors in the same network (unknown): -->
+
+    <!-- Mirrors in the same AS (unknown): -->
+
+    <!-- Mirrors which handle this country (US): -->
+    <url type="https" location="us" preference="100">https://mirror.slackbuilds.org/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+
+    <!-- Mirrors in the same continent (NA): -->
+
+    <!-- Mirrors in the rest of the world: -->
+    <url type="https" location="ec" preference="99">https://mirror.cedia.org.ec/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="br" preference="98">https://ftp.slackware-brasil.com.br/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="br" preference="97">https://mirrors.slackware.beco.cc/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="br" preference="96">https://linorg.usp.br/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="http" location="gb" preference="95">http://slackware.uk/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="gb" preference="94">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="http" location="nl" preference="93">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="http" location="fr" preference="92">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="nl" preference="91">https://mirror.koddos.net/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="nl" preference="90">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="de" preference="89">https://linux.rz.rub.de/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="http" location="ro" preference="88">http://mirrors.nav.ro/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="de" preference="87">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="dk" preference="86">https://mirrors.dotsrc.org/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="http" location="hr" preference="85">http://mirror.slackware.hr/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="it" preference="84">https://slackware.mirror.garr.it/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="se" preference="83">https://mirror.bahnhof.net/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="rs" preference="82">https://mirror1.sox.rs/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="pl" preference="81">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="ro" preference="80">https://mirrors.nxthost.com/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="http" location="ua" preference="79">http://slackware.ip-connect.info/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="ua" preference="78">https://ifconfig.com.ua/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="http" location="ru" preference="77">http://mirror.mephi.ru/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="ru" preference="76">https://mirror.yandex.ru/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="http" location="za" preference="75">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="sa" preference="74">https://mirror.lyrahosting.com/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    <url type="https" location="hk" preference="73">https://mirror-hk.koddos.net/slackware/slackware-2.0.1/slacksrc/d/clisp/clisp-source.tar.gz</url>
+    </resources>
+    </file>
+  </files>
+</metalink>

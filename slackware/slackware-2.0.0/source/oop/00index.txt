@@ -1,0 +1,6 @@
+00index.txt         152  
+smalltalk-1.1.1.tar.gz
+                 308895  
+smalltalk-tutorial.ps.gz
+                  62887  
+stix.tar.gz       29575  

@@ -1,0 +1,11 @@
+00index.txt         279  
+sendmail.8.6.9.base.tar.Z
+                 500945  
+sendmail.8.6.9.cf.tar.Z
+                 199863  
+sendmail.8.6.9.misc.tar.Z
+                 106149  
+sendmail.8.6.9.patch
+                 130419  
+sendmail.8.6.9.xdoc.tar.Z
+                 306207  

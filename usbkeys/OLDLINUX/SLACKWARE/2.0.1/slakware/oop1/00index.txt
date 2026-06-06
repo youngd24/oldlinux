@@ -1,0 +1,9 @@
+00index.txt         234  
+diskoop1            368  
+install.end          33  
+maketag             859  
+smaltalk.tgz     252819  
+stix.tgz         113323  
+tagfile             120  
+tagfile.org          96  
+tagfile.pat         120  

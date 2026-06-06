@@ -1,0 +1,97 @@
+CONTENTS: base devs etc idekern lilo scsikern sysvinit hdsetup
+base:     Sets up the basic directory structure and adds a few important
+base:     binaries such as GNU bash, mtools, and fdisk.
+base:
+base:
+base:
+base:
+base:
+base:
+base:
+base:
+base:
+devs:     This package creates special files in the /dev directory that 
+devs:     represent your system's hardware.
+devs:
+devs:
+devs:
+devs:
+devs:
+devs:
+devs:
+devs:
+devs:
+etc:      System configuration files that go into the /etc directory.
+etc:
+etc:      The /etc directory is traditionally the location where configuration
+etc:      files and administration binaries are found. Under Linux, the binaries
+etc:      have been moved out of the /etc directory and into the /sbin 
+etc:      directory; the /etc directory is now reserved for configuaration files
+etc:      only. 
+etc:
+etc:
+etc:
+etc:
+idekern:  Linux kernel version .99 patch level 15, without SCSI support. 
+idekern:
+idekern:  A Linux kernel for computers that do not need SCSI support. You MUST
+idekern:  install either package "idekern", or package "scsikern" if you need
+idekern:  SCSI support. If you fail to install either one of them, your system
+idekern:  will not work. If you're not sure which package (idekern/scsikern) to
+idekern:  install, you should probably use scsikern, since it supports the most
+idekern:  hardware. If you don't have SCSI, the advantage of using the idekern
+idekern:  kernel is mainly that your machine will boot faster.
+idekern:
+idekern:
+lilo:     Lilo 0.14
+lilo:
+lilo:     The Linux Loader: boots Linux from your hard drive.
+lilo:
+lilo:
+lilo:
+lilo:
+lilo:
+lilo:
+lilo:
+lilo:
+passwd:   Password utilities, and account maintenance programs.
+passwd: 
+passwd:   These utilities do not support shadow passwords, but seem more stable
+passwd:   and secure than the versions that do. Mostly because of problems with
+passwd:   the shadow versions of some of the networking utilities, and because
+passwd:   most users have no need for shadow passwords anyway, Slackware has 
+passwd:   decided to follow MCC's lead and go with a non-shadow password 
+passwd:   system by default. 
+scsikern: Linux kernel version .99 patch level 15, with SCSI support. 
+scsikern:
+scsikern: This is a Linux kernel with full support for SCSI devices such as hard
+scsikern: drives, tape drives, and CD-ROM drives. If you have not already
+scsikern: installed the "idekern" kernel with IDE support only, then you must
+scsikern: install this package or your system will not boot. If you need this
+scsikern: kernel but have already installed "idekern", just go ahead and install
+scsikern: this package to replace the IDE kernel with a SCSI one.
+scsikern:
+scsikern:
+scsikern:
+sysvinit: SysV style init v. 2.4
+sysvinit:
+sysvinit: System V style init programs by Miquel van Smoorenburg that control
+sysvinit: the booting and shutdown of your system. These support a number of
+sysvinit: system runlevels, each with a specific set of utilities spawned. For
+sysvinit: example, the normal system runlevel is 5, which starts getty on 
+sysvinit: virtual consoles tty1 - tty6. Runlevel 6 starts xdm. Runlevel 0 shuts
+sysvinit: the system down. See the documentation in /usr/doc/SysVinit-2.4 and
+sysvinit: the scripts in /etc/rc.d for more information.
+sysvinit:
+sysvinit:
+hdsetup:  The Slackware setup system v. 1.1.2
+hdsetup:
+hdsetup:  The full screen and tty versions of setup and pkgtool, two utilities
+hdsetup:  included with Slackware that allow you to easily install software 
+hdsetup:  packages, remove software packages, and review the installed software
+hdsetup:  packages.
+hdsetup:
+hdsetup:
+hdsetup:
+hdsetup:
+hdsetup:

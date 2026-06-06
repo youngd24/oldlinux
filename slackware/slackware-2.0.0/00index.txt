@@ -1,0 +1,986 @@
+00index.txt       22128  
+COPYING           17976  
+ChangeLog         37065  
+Copyright          4515  
+GZIP.EXE          39910  
+INSTALL.TXT       58270  
+INS_1_2.MEG        1447  
+JUNKWARN            137  
+MIRRORS.TXT        3487  
+RAWRITE.EXE       13052  
+README.INS         3515  
+README.v2          7131  
+SLAKWARE.FAQ      10745  
+UPGRADE.TXT        6040  
+bootdsks.12/          -  
+bootdsks.144/         -  
+contrib/              =  
+kernels/              =  
+non-commercial-use/   =  
+rootdsks.12/          -  
+rootdsks.144/         -  
+slakware/             =  
+
+bootdsks.12:
+00index.txt         338  
+README             4951  
+bare.gz          465544  
+cdu31a.gz        535630  
+mitsumi.gz       534332  
+modern.gz        602939  
+ncr.gz           590033  
+net.gz           503018  
+sbpcd.gz         542452  
+scsi.gz          530589  
+scsinet.gz       567644  
+sony535.gz       534872  
+xt.gz            465523  
+
+bootdsks.144:
+00index.txt         338  
+README             4837  
+bare.gz          465714  
+cdu31a.gz        536001  
+mitsumi.gz       534491  
+modern.gz        603389  
+ncr.gz           590257  
+net.gz           503387  
+sbpcd.gz         542659  
+scsi.gz          530718  
+scsinet.gz       567732  
+sony535.gz       535784  
+xt.gz            465685  
+
+contrib:
+00index.txt        1476  
+CHECKSUMS          1919  
+ChangeLog            65  
+FILE_LIST          3469  
+INDEX              3508  
+MANIFEST         732774  
+XF86_S3_864.tar.gz.good.linux
+                 472179  
+aps-23.tgz       169621  
+auis63L0-dev.lsm   1382  
+auis63L0-dev.tgz
+                3721226  
+auis63L0-doc.lsm   1368  
+auis63L0-doc.tgz
+                3232246  
+auis63L0-mail.lsm  1500  
+auis63L0-mail.tgz
+                1984858  
+auis63L0-src.lsm   1367  
+auis63L0-src.tgz
+                 736636  
+auis63L0-wp.lsm    1264  
+auis63L0-wp.tgz
+                1454220  
+gcl.tgz          708364  
+gnat-1.79.tgz   1565406  
+gnat.lsm            923  
+gpc-2.5.7.tgz    583094  
+install/              -  
+ksh.tgz           65876  
+ksh.txt              88  
+lemacs.tgz      7356162  
+lemacs.txt           58  
+lodlin14.txt       1595  
+lodlin14.zip      92502  
+lynx-2.3+term.lsm   943  
+lynx-2.3+term.tgz
+                 114571  
+manpagesrc.tgz  2725306  
+mc-0.8.tgz        60185  
+mc-0.8.txt          512  
+ncurses-181.tgz  193253  
+ncurses-185.tgz  290041  
+perl-5.00a.tgz   289718  
+rescue-with-lilo.gz
+                1330472  
+rescue.gz       1322397  
+use-ncurses-1.8.1/    -  
+uucp-1.04-info.tgz
+                  67245  
+uucp-1.04.tgz    372795  
+
+contrib/install:
+00index.txt          78  
+installpkg         8553  
+removepkg          4270  
+
+contrib/use-ncurses-1.8.1:
+00index.txt         104  
+hdsetup.tgz       95351  
+mc-0.5.tgz        57847  
+mc-0.5.txt          512  
+
+kernels:
+00index.txt        2108  
+README.NOW         2510  
+VERSIONS            174  
+bare/                 -  
+cdu31a/               -  
+lilo.conf.1200      297  
+lilo.conf.1440      297  
+lodlin14.txt       1650  
+lodlin14.zip      92502  
+makedisk           1880  
+master/               -  
+mitsumi/              -  
+modern/               -  
+ncr/                  -  
+net/                  -  
+old-docs/             -  
+ramdisk.c.patch     891  
+sbpcd/                -  
+scsi/                 -  
+scsinet/              -  
+sony535/              -  
+xt/                   -  
+zfs/                  -  
+
+kernels/bare:
+00index.txt         104  
+bare             252420  
+bare.log           2584  
+zSystem.map       58432  
+
+kernels/cdu31a:
+00index.txt         104  
+cdu31a           322052  
+cdu31a.log         3457  
+zSystem.map       72744  
+
+kernels/master:
+00index.txt          78  
+README              205  
+master.tar.gz    644563  
+
+kernels/mitsumi:
+00index.txt         104  
+mitsumi          317956  
+mitsumi.log        3459  
+zSystem.map       72295  
+
+kernels/modern:
+00index.txt         123  
+modern           387588  
+modern.log         4751  
+zSystem.map.modern
+                  85982  
+
+kernels/ncr:
+00index.txt         104  
+ncr              375300  
+ncr.log            4740  
+zSystem.map       80791  
+
+kernels/net:
+00index.txt         104  
+net              289284  
+net.log            3141  
+zSystem.map       64855  
+
+kernels/old-docs:
+00index.txt          52  
+BOOTDISK.FAQ       2680  
+
+kernels/sbpcd:
+00index.txt         104  
+sbpcd            326148  
+sbpcd.log          3439  
+zSystem.map       73712  
+
+kernels/scsi:
+00index.txt         104  
+scsi             317956  
+scsi.log           3438  
+zSystem.map       71254  
+
+kernels/scsinet:
+00index.txt         104  
+scsinet          354820  
+scsinet.log        4031  
+zSystem.map       77677  
+
+kernels/sony535:
+00index.txt         104  
+sony535          322052  
+sony535.log        3501  
+zSystem.map       72492  
+
+kernels/xt:
+00index.txt         104  
+xt               252420  
+xt.log             2580  
+zSystem.map       58695  
+
+kernels/zfs:
+00index.txt         104  
+zSystem.map.zfs   93450  
+zfs              428548  
+zfs.log            4682  
+
+non-commercial-use:
+00index.txt         421  
+C-Kermit-Copyright  758  
+README.NOW          376  
+kermit-188.tgz   146749  
+kermit-189-readme  1270  
+kermit-189.tgz   163018  
+m1/                   -  
+
+non-commercial-use/m1:
+00index.txt         234  
+diskm1              446  
+install.end          22  
+maketag             885  
+mosaic.tgz       598944  
+tagfile              26  
+tagfile.org          26  
+tagfile.pat          26  
+term_mos.tgz     599442  
+
+rootdsks.12:
+00index.txt         208  
+README             1653  
+README.UMS         1655  
+README_T.APE       1808  
+colrlite.gz      443250  
+tape12.gz        454863  
+tty12.gz         488926  
+umsdos12.gz      455646  
+
+rootdsks.144:
+00index.txt         208  
+README             1446  
+README.UMS         1434  
+README_T.APE       1809  
+color144.gz      544647  
+tape144.gz       582261  
+tty144.gz        547961  
+umsds144.gz      522281  
+
+slakware:
+00index.txt       15563  
+CHECKSUMS         19619  
+FILE_LIST         37649  
+MANIFEST        1598622  
+a1/                   -  
+a2/                   -  
+a3/                   -  
+ap1/                  -  
+ap2/                  -  
+ap3/                  -  
+ap4/                  -  
+d1/                   -  
+d2/                   -  
+d3/                   -  
+d4/                   -  
+d5/                   -  
+d6/                   -  
+e1/                   -  
+e2/                   -  
+e3/                   -  
+e4/                   -  
+e5/                   -  
+f1/                   -  
+i1/                   -  
+i2/                   -  
+iv1/                  -  
+iv2/                  -  
+lib-4.4.4/            =  
+makeflop          13030  
+n1/                   -  
+n2/                   -  
+n3/                   -  
+ncr1/                 -  
+ncr2/                 -  
+oop1/                 -  
+q-1.1.10/             =  
+q-1.1.16/             =  
+q1/                   -  
+q2/                   -  
+q3/                   -  
+t1/                   -  
+t2/                   -  
+t3/                   -  
+t4/                   -  
+t5/                   -  
+tcl1/                 -  
+tcl2/                 -  
+u1/                   -  
+x1/                   -  
+x2/                   -  
+x3/                   -  
+x4/                   -  
+x5/                   -  
+x6/                   -  
+x7/                   -  
+x8/                   -  
+xap1/                 -  
+xap2/                 -  
+xap3/                 -  
+xd1/                  -  
+xd2/                  -  
+xd3/                  -  
+xv1/                  -  
+xv2/                  -  
+y1/                   -  
+
+slakware/a1:
+00index.txt         416  
+base.tgz         112475  
+devs.tgz           8693  
+diska1             2927  
+etc.tgz           60873  
+hdsetup.tgz      113347  
+idekern.log        3320  
+idekern.tgz      324573  
+lilo.tgz          55426  
+maketag            2739  
+scsikern.log       4186  
+scsikern.tgz     393341  
+sysvinit.tgz      26033  
+tagfile            2005  
+tagfile.org        2005  
+tagfile.pat         351  
+
+slakware/a2:
+00index.txt         260  
+bin.tgz          496625  
+bootutls.tgz      19739  
+diska2             3125  
+getty.tgz         50900  
+gzip.tgz          39120  
+ldso.tgz          51671  
+ps.tgz            46446  
+shlibs.tgz       133809  
+util.tgz         349469  
+
+slakware/a3:
+00index.txt         494  
+bash.tgz         135195  
+comms.tgz         73906  
+cpio.tgz          28532  
+diska3             5305  
+e2fsbn.tgz        55258  
+find.tgz          43848  
+grep.tgz          31227  
+install.end         154  
+keytbls.tgz      141247  
+lpr.tgz           52355  
+select.tgz         8903  
+shellutl.tgz      82714  
+shlbsvga.tgz      49854  
+syslogd.tgz       23712  
+tar.tgz           59715  
+tcsh.tgz         148575  
+textutl.tgz      130561  
+zoneinfo.tgz      30020  
+
+slakware/ap1:
+00index.txt         338  
+diskap1            2272  
+english.tgz      374889  
+ispell.tgz       241308  
+jove.tgz         126731  
+maketag            2439  
+man.tgz          430569  
+tagfile            1948  
+tagfile.org        1948  
+tagfile.pat         392  
+termbin.tgz       54391  
+termnet.tgz       85472  
+termsrc.tgz       97127  
+
+slakware/ap2:
+00index.txt         208  
+diff.tgz         102740  
+diskap2            2269  
+ghostscr.tgz     478920  
+gsfonts1.tgz     497301  
+jed.tgz          206624  
+joe.tgz           85284  
+sudo.tgz          14406  
+
+slakware/ap3:
+00index.txt         104  
+diskap3             734  
+gsfonts2.tgz    1195317  
+zsh.tgz          216328  
+
+slakware/ap4:
+00index.txt         416  
+ash.tgz           51757  
+bc.tgz            35757  
+diskap4            5170  
+ftape.tgz         84771  
+gonzo.tgz          4194  
+gp9600.tgz         2937  
+groff.tgz        674749  
+install.end          17  
+manpgs.tgz        44398  
+mt_st.tgz         11709  
+quota.tgz         64484  
+sc.tgz            87569  
+texinfo.tgz       96975  
+vim.tgz          154441  
+workbone.tgz       7003  
+
+slakware/d1:
+00index.txt         234  
+diskd1              568  
+gcc.tgz          566872  
+gxx.tgz          608120  
+maketag            2172  
+tagfile            1904  
+tagfile.org        1904  
+tagfile.pat         268  
+tools.tgz        144640  
+
+slakware/d2:
+00index.txt         234  
+byacc.tgz         26362  
+diskd2             1691  
+flex.tgz         126064  
+include.tgz      147544  
+man2.tgz         134451  
+objc.tgz         577381  
+p2c.tgz          283520  
+pmake.tgz         53279  
+
+slakware/d3:
+00index.txt         130  
+bison.tgz        102320  
+diskd3              744  
+extralib.tgz     674745  
+gdb.tgz          541925  
+
+slakware/d4:
+00index.txt          78  
+diskd4              508  
+kernel.tgz      1327270  
+
+slakware/d5:
+00index.txt         182  
+clisp.tgz        471799  
+diskd5             1593  
+f2c.tgz          146643  
+libc.tgz         268140  
+ncurses.tgz      369366  
+svgalib.tgz      190078  
+
+slakware/d6:
+00index.txt         234  
+binutils.tgz     231510  
+diskd6             1632  
+install.end          35  
+libgxx.tgz       299200  
+m4.tgz            55313  
+man3.tgz         152204  
+perl.tgz         493770  
+rcs.tgz          166573  
+
+slakware/e1:
+00index.txt         182  
+diske1              510  
+emacsbin.tgz    1291670  
+maketag            1424  
+tagfile             111  
+tagfile.org         111  
+tagfile.pat         111  
+
+slakware/e2:
+00index.txt          78  
+diske2              167  
+emacmisc.tgz     845620  
+
+slakware/e3:
+00index.txt          78  
+diske3              280  
+elispc.tgz      1406323  
+
+slakware/e4:
+00index.txt          78  
+diske4              159  
+elisp1.tgz      1433395  
+
+slakware/e5:
+00index.txt         130  
+diske5              791  
+elisp2.tgz       819843  
+emac_nox.tgz     550665  
+install.end          43  
+
+slakware/f1:
+00index.txt         208  
+diskf1              574  
+install.end          36  
+maketag             691  
+manyfaqs.tgz    1334645  
+tagfile            1676  
+tagfile.org        1676  
+tagfile.pat        1676  
+
+slakware/i1:
+00index.txt         156  
+diski1              704  
+info1.tgz       1145991  
+maketag             844  
+tagfile              22  
+tagfile.org          22  
+
+slakware/i2:
+00index.txt         104  
+diski2              188  
+info2.tgz       1192281  
+install.end          13  
+
+slakware/iv1:
+00index.txt         208  
+diskiv1             612  
+iv_bin.tgz       560385  
+libiv_so.tgz     423365  
+maketag             996  
+tagfile              53  
+tagfile.org          53  
+tagfile.pat          53  
+
+slakware/iv2:
+00index.txt         130  
+diskiv2             553  
+install.end          16  
+iv_docs.tgz      383169  
+libiv_sa.tgz     445273  
+
+slakware/lib-4.4.4:
+00index.txt         697  
+README-4.4.4       1944  
+zdn1/                 -  
+zdn2/                 -  
+zzx1/                 -  
+
+slakware/lib-4.4.4/zdn1:
+00index.txt         156  
+a_remove.tgz       1687  
+diskzdn1            559  
+gcc.tgz          533650  
+gxx.tgz          787367  
+tagfile             102  
+
+slakware/lib-4.4.4/zdn2:
+00index.txt         234  
+binutils.tgz     138037  
+diskzdn2           1318  
+gmake.tgz         45066  
+include.tgz      134119  
+install.end           0  
+ldso.tgz           5833  
+libc.tgz         368206  
+shlibs.tgz       136632  
+
+slakware/lib-4.4.4/zzx1:
+00index.txt         156  
+diskzzx1            300  
+extralib.tgz     785342  
+install.end           4  
+objc.tgz         513683  
+tagfile              24  
+
+slakware/n1:
+00index.txt         286  
+deliver.tgz       37640  
+diskn1             2275  
+mailx.tgz         41204  
+maketag            1650  
+netcfg.tgz         5749  
+tagfile            1786  
+tagfile.org        1786  
+tagfile.pat         156  
+tcpip.tgz        860415  
+uucp.tgz         409106  
+
+slakware/n2:
+00index.txt         156  
+diskn2             1003  
+elm.tgz          239281  
+lynx.tgz         114245  
+pine.tgz         386749  
+smail.tgz        424741  
+
+slakware/n3:
+00index.txt         234  
+cnews.tgz        151350  
+diskn3             1503  
+inn_pkg.tgz      559311  
+install.end          40  
+nn.tgz           335669  
+ppp.tgz           94711  
+tin.tgz          123286  
+trn.tgz          163866  
+
+slakware/ncr1:
+00index.txt         130  
+diskncr1            314  
+maketag            1001  
+ncr_krn3.tgz    1363391  
+tagfile              42  
+
+slakware/ncr2:
+00index.txt         156  
+diskncr2            623  
+install.end          17  
+ncr_inc3.tgz     153835  
+ncrkern3.log       4740  
+ncrkern3.tgz     392746  
+
+slakware/oop1:
+00index.txt         234  
+diskoop1            368  
+install.end          33  
+maketag             859  
+smaltalk.tgz     252819  
+stix.tgz         113323  
+tagfile             120  
+tagfile.org          96  
+tagfile.pat         120  
+
+slakware/q-1.1.10:
+00index.txt         852  
+q1/                   -  
+q2/                   -  
+q3/                   -  
+q4/                   -  
+
+slakware/q-1.1.10/q1:
+00index.txt         156  
+diskq1             1136  
+ifs.tgz           25754  
+maketag            1656  
+tagfile             124  
+v1_1_10.tgz     1365440  
+
+slakware/q-1.1.10/q2:
+00index.txt         234  
+diskq2             1891  
+ftape10.tgz       84777  
+idekern.log        3364  
+idekern.tgz      328668  
+mitsumi.log        4324  
+mitsumi.tgz      402047  
+scsikern.log       4219  
+scsikern.tgz     397811  
+
+slakware/q-1.1.10/q3:
+00index.txt         208  
+cdu31a.log         4205  
+cdu31a.tgz       403640  
+diskq3             1668  
+sbpcd.log          4274  
+sbpcd.tgz        387412  
+sony535.log        4260  
+sony535.tgz      403459  
+
+slakware/q-1.1.10/q4:
+00index.txt         104  
+diskq4              499  
+install.end          24  
+v1_1_11.tgz     1368293  
+
+slakware/q-1.1.16:
+00index.txt         930  
+q1/                   -  
+q2/                   -  
+q3/                   -  
+q4/                   -  
+
+slakware/q-1.1.16/q1:
+00index.txt         182  
+diskq1             1133  
+ifs.tgz           25754  
+maketag            1772  
+tagfile             138  
+tagfile.pat         138  
+v1_1_16.tgz     1337326  
+
+slakware/q-1.1.16/q2:
+00index.txt         260  
+diskq2             2406  
+ftape16.tgz       53161  
+i1_1_16.tgz      156518  
+idekern.log        3771  
+idekern.tgz      325787  
+mitsumi.log        4618  
+mitsumi.tgz      406513  
+scsikern.log       4681  
+scsikern.tgz     402259  
+
+slakware/q-1.1.16/q3:
+00index.txt         208  
+cdu31a.log         4668  
+cdu31a.tgz       407738  
+diskq3             1668  
+sbpcd.log          4666  
+sbpcd.tgz        418489  
+sony535.log        4665  
+sony535.tgz      407500  
+
+slakware/q-1.1.16/q4:
+00index.txt         130  
+diskq4              555  
+install.end          24  
+mitsumi2.log       4717  
+mitsumi2.tgz     409575  
+
+slakware/q1:
+00index.txt         182  
+diskq1             1142  
+ifs.tgz           25754  
+maketag            1699  
+tagfile             124  
+tagfile.pat         124  
+v1_1_18.tgz     1326312  
+
+slakware/q2:
+00index.txt         260  
+diskq2             2411  
+ftape18.tgz       53174  
+i1_1_18.tgz      158597  
+idekern.log        3846  
+idekern.tgz      336673  
+mitsumi.log        4791  
+mitsumi.tgz      419291  
+scsikern.log       4763  
+scsikern.tgz     413795  
+
+slakware/q3:
+00index.txt         234  
+cdu31a.log         4771  
+cdu31a.tgz       420386  
+diskq3             1668  
+install.end          24  
+sbpcd.log          4770  
+sbpcd.tgz        426365  
+sony535.log        4771  
+sony535.tgz      419244  
+
+slakware/t1:
+00index.txt         286  
+diskt1             1017  
+dvi2xx.tgz       106279  
+gentle.tgz        60135  
+maketag            1252  
+manifest.gz        7153  
+readme.tex         2738  
+tagfile             153  
+tagfile.org         153  
+tagfile.pat         153  
+texbin.tgz       727302  
+
+slakware/t2:
+00index.txt          78  
+diskt2              155  
+texlibmc.tgz    1061354  
+
+slakware/t3:
+00index.txt         130  
+diskt3              372  
+texcmpk.tgz      692601  
+texdoc.tgz        80611  
+texnfss2.tgz     432212  
+
+slakware/t4:
+00index.txt         130  
+diskt4              396  
+texcm.tgz        165314  
+texlibib.tgz     441104  
+texlibms.tgz     519891  
+
+slakware/t5:
+00index.txt         130  
+diskt5              238  
+install.end           4  
+texams.tgz       397715  
+texfont.tgz      795579  
+
+slakware/tcl1:
+00index.txt         208  
+disktcl1            548  
+maketag            1072  
+tagfile            1868  
+tagfile.org        1868  
+tagfile.pat        1868  
+tcl.tgz          318529  
+tk.tgz           737886  
+
+slakware/tcl2:
+00index.txt         156  
+blt.tgz          232585  
+disktcl2           1418  
+install.end          13  
+itcl.tgz         137365  
+tclx.tgz         408597  
+
+slakware/u1:
+00index.txt         208  
+disku1              914  
+install.end          16  
+loadlin.tgz       92846  
+maketag            1077  
+tagfile              39  
+umsfix.tgz         3660  
+umsprogs.tgz      35008  
+
+slakware/x1:
+00index.txt         260  
+diskx1             1388  
+maketag            2333  
+tagfile            2811  
+tagfile.org        2811  
+tagfile.pat        1852  
+x_8514.tgz       381860  
+x_mach32.tgz     396923  
+x_mach8.tgz      387307  
+xf_doc.tgz       149424  
+
+slakware/x2:
+00index.txt         182  
+diskx2             1567  
+x_mono.tgz       427883  
+x_s3.tgz         424336  
+x_svga.tgz       413743  
+xf_cfg.tgz       110484  
+xpm.tgz           72496  
+
+slakware/x3:
+00index.txt         156  
+config86.tgz     158172  
+diskx3             1176  
+x_vga16.tgz      360867  
+xf_lib.tgz       537405  
+xman1.tgz        279292  
+
+slakware/x4:
+00index.txt         104  
+diskx4              383  
+xf_bin.tgz       839423  
+xfnt.tgz         488041  
+
+slakware/x5:
+00index.txt          78  
+diskx5              253  
+xfnt75.tgz      1373604  
+
+slakware/x6:
+00index.txt         156  
+diskx6             1127  
+fnt100_1.tgz    1227792  
+fvwmicns.tgz      12672  
+xconfig.tgz       26122  
+xlock.tgz         27884  
+
+slakware/x7:
+00index.txt         130  
+diskx7              527  
+fnt100_2.tgz     447578  
+fntbig1.tgz      580550  
+speedo.tgz       366720  
+
+slakware/x8:
+00index.txt         130  
+diskx8              361  
+fntbig2.tgz     1183937  
+install.end          27  
+xinclude.tgz     177890  
+
+slakware/xap1:
+00index.txt         364  
+diskxap1           2569  
+gnuplot.tgz      258134  
+gs_x11.tgz       188220  
+libgr.tgz        378788  
+maketag            1904  
+seyon.tgz        121469  
+tagfile             306  
+tagfile.org         306  
+tagfile.pat         225  
+vgaset.tgz        14901  
+workman.tgz       53761  
+xfileman.tgz      63753  
+xv.tgz           213589  
+
+slakware/xap2:
+00index.txt         260  
+diskxap2           2388  
+gchess.tgz       522924  
+ghstview.tgz      55699  
+x3270.tgz        109344  
+xfm12.tgz         82330  
+xgames.tgz       156205  
+xgrabsc.tgz       35670  
+xspread.tgz      207619  
+xxgdb.tgz         36906  
+
+slakware/xap3:
+00index.txt         156  
+diskxap3           1387  
+install.end          33  
+xfig.tgz         412135  
+xfract.tgz       407029  
+xpaint.tgz       125213  
+
+slakware/xd1:
+00index.txt         208  
+diskxd1             825  
+maketag            1149  
+pex5inc.tgz       65882  
+tagfile              74  
+tagfile.org          74  
+xf_kit.tgz       859374  
+xman3.tgz        382937  
+
+slakware/xd2:
+00index.txt         104  
+diskxd2             524  
+xf_pex.tgz       947490  
+xstatic.tgz      465380  
+
+slakware/xd3:
+00index.txt         104  
+diskxd3             558  
+install.end          10  
+xf_kit2.tgz      750140  
+
+slakware/xv1:
+00index.txt         234  
+diskxv1             556  
+maketag            1285  
+tagfile             586  
+tagfile.org         586  
+tagfile.pat          90  
+xv32_sa.tgz      127115  
+xv32_so.tgz      854950  
+xvol32.tgz       454104  
+
+slakware/xv2:
+00index.txt         182  
+diskxv2             861  
+install.end           9  
+xv32_a.tgz       848516  
+xv32exmp.tgz     232992  
+xvinc32.tgz      346302  
+xvmenus.tgz        5641  
+
+slakware/y1:
+00index.txt         260  
+bsdgames.tgz    1108631  
+disky1             1257  
+install.end          23  
+maketag             918  
+sastroid.tgz      94304  
+tagfile            1708  
+tagfile.org        1708  
+tagfile.pat        1708  
+tetris.tgz         8829  

@@ -1,0 +1,6 @@
+00index.txt         156  
+diskx6             1127  
+fnt100_1.tgz    1227792  
+fvwmicns.tgz      12672  
+xconfig.tgz       26122  
+xlock.tgz         27884  

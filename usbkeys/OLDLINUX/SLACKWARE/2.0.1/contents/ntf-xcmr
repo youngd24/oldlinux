@@ -1,0 +1,22 @@
+PACKAGE NAME:     ntf-xcmr
+PACKAGE SIZE:     1 K
+PACKAGE LOCATION: diskt6
+PACKAGE DESCRIPTION:
+ntf-xcmr: ntf-xcmr 1.1
+ntf-xcmr:
+ntf-xcmr: A Computer Modern Roman Crossedout font.
+ntf-xcmr:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/cm/
+usr/lib/texmf/fonts/cm/xcmr/
+usr/lib/texmf/fonts/cm/xcmr/create.sh
+usr/lib/texmf/fonts/cm/xcmr/pk/
+usr/lib/texmf/fonts/cm/xcmr/src/
+usr/lib/texmf/fonts/cm/xcmr/src/xcmr12.mf
+usr/lib/texmf/fonts/cm/xcmr/tfm/
+usr/lib/texmf/fonts/cm/xcmr/tfm/xcmr12.tfm

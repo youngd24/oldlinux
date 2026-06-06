@@ -1,0 +1,5 @@
+00index.txt         130  
+diskap2            1181  
+ghostscr.tgz     488151  
+gsfonts1.tgz     497301  
+joe.tgz           85283  

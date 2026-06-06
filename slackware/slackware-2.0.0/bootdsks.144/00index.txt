@@ -1,0 +1,13 @@
+00index.txt         338  
+README             4837  
+bare.gz          465714  
+cdu31a.gz        536001  
+mitsumi.gz       534491  
+modern.gz        603389  
+ncr.gz           590257  
+net.gz           503387  
+sbpcd.gz         542659  
+scsi.gz          530718  
+scsinet.gz       567732  
+sony535.gz       535784  
+xt.gz            465685  

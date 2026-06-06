@@ -1,0 +1,32 @@
+These are root-install disks for Slackware 2.0.0.
+
+You will need one of these disks to install Linux. The disk is created by 
+uncompressing the image with GZIP.EXE. (Example: GZIP -d colrlite.gz), and
+then writing the image out with RAWRITE.EXE. RAWRITE is interactive and 
+reasonably user-friendly.
+
+Here's a description of the choices:
+
+--------------------------------------------------------------------------------
+1.2 MB drives: (NOTE: If you have a 1.44 MB second floppy drive, you can use the
+                      1.44 MB root disks in it)
+
+colrlite.gz: A root-install disk for 1.2 MB floppy drives. This disk uses the
+new full-screen color install program. The keytable support that is present in
+color144 was removed so this could fit on a 1.2 MB disk.  NOTE: This version of the install system
+has some known bugs. It is, in particular, not forgiving of extra keystrokes
+entered between screens. It is nice to look at, though. :^)
+
+umsdos12.gz: A version of colrlite used to install using UMSDOS - a filesystem
+that allows you to install Linux into a directory on an existing MS-DOS
+partition. Not as fast as ext2 or xiafs, but it works, and you don't have to
+repartition your drive. See README.UMS for more information.
+
+tty12.gz: A root-install disk for 1.2 MB floppy drives. This contains new 
+versions of the tty-based install scripts from previous Slackware releases. All
+the new keymaps should be supported.
+
+tape12.gz: A semi-experimental disk designed to support installation from tape.
+See the file README_T.APE for more information about this disk.
+
+--------------------------------------------------------------------------------

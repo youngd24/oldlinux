@@ -1,0 +1,5 @@
+00index.txt         130  
+diskx8              361  
+fntbig2.tgz     1183937  
+install.end          27  
+xinclude.tgz     177890  

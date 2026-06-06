@@ -1,0 +1,47 @@
+Begin2
+Title        = DOOM for Linux (X Windows)
+Version      = v1.666
+Desc1        = This is a 3D networked texture-mapped action game.
+Desc2        = I believe it's the first commercial (sorta) game available.
+Desc3        = Get doom1wad.tgz if you don't have the DOOM v1.666 data
+Desc4        = file.
+Desc5        =
+Author       = id Software, port by dave
+AuthorEmail  = ddt@idsoftware.com
+Maintainer   = You.  Not supported.
+MaintEmail   = $LOGNAME@localhost
+Site1        = sunsite.unc.edu
+Path1        =
+File1        =
+FileSize1    =
+Site2        =
+Path2        =
+File2        =
+FileSize2    =
+Site3        =
+Path3        =
+File3        =
+FileSize3    =
+Site4        =
+Path4        =
+File4        =
+FileSize4    =
+Required1    = voxware 2.9 or 3.0, X, 486 w/ local bus video card, 8Mb RAM
+Required2    =
+Required3    =
+Required4    =
+CopyPolicy1  = If you copied doom.wad or doom2.wad, you're a pirate.
+CopyPolicy2  = doom1.wad is OK, though.  Please be nice.
+Keywords     = violence, hellspawn, productivity loss, DOS partition unnecessary
+Comment1     = Sorry for the delay.  Horribly busy (and still so).
+Comment2     =
+Comment3     =
+Comment4     =
+RelFiles1    =
+RelFiles2    =
+RelFiles3    =
+Entered      = Sept. 9, 1994
+EnteredBy    =
+CheckedEmail =
+End
+

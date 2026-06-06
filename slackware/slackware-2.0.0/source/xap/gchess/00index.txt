@@ -1,0 +1,9 @@
+00index.txt         227  
+gnuchess-4.0.pl69.tar.gz
+                 170776  
+gnuchess.book-1.0.tar.gz
+                 750070  
+gnuchess.test-1.0.tar.gz
+                 361829  
+xboard-3.0.pl9.tar.gz
+                 138266  

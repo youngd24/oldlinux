@@ -1,0 +1,421 @@
+#  DISCLAIMER: NO WARRANTY, NO SUPPORT, I DIDN'T WRITE THIS :^)
+#  (I've never even seen it)
+
+#  Retrives entire Slackware distribution from ftp.cdrom.com (but please
+#  use the closest site you can)
+#  change the next three lines to reflect your use along with the variable
+#  "mytmp" in the companion script.
+
+# expect, AND IGNORE, lots of 'no such file or directory' warnings when
+# you run this.
+
+sleeptime=20       # use 20 for fast network and lesser number for slow net.
+mytmp=/tmp         # where you want the files stored.
+me=root@i.dont.know     # your email address.
+
+slackpath=/pub/linux/slackware
+
+ftp -n -v ftp.cdrom.com <<EOF
+user anonymous $me
+binary
+prompt
+
+cd $slackpath
+!mkdir $mytmp/slackware
+lcd $mytmp/slackware
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/bootdisk
+!mkdir $mytmp/slackware/bootdisk
+lcd $mytmp/slackware/bootdisk
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/bootdisk/1_44meg
+!mkdir $mytmp/slackware/bootdisk/1_44meg
+lcd $mytmp/slackware/bootdisk/1_44meg
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/bootdisk/1_2meg
+!mkdir $mytmp/slackware/bootdisk/1_2meg
+lcd $mytmp/slackware/bootdisk/1_2meg
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/bootdisk/scripts
+!mkdir $mytmp/slackware/bootdisk/scripts
+lcd $mytmp/slackware/bootdisk/scripts
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/a1
+!mkdir $mytmp/slackware/a1
+lcd $mytmp/slackware/a1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/a2
+!mkdir $mytmp/slackware/a2
+lcd $mytmp/slackware/a2
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/a3
+!mkdir $mytmp/slackware/a3
+lcd $mytmp/slackware/a3
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/ap1
+!mkdir $mytmp/slackware/ap1
+lcd $mytmp/slackware/ap1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/ap2
+!mkdir $mytmp/slackware/ap2
+lcd $mytmp/slackware/ap2
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/ap3
+!mkdir $mytmp/slackware/ap3
+lcd $mytmp/slackware/ap3
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/ap4
+!mkdir $mytmp/slackware/ap4
+lcd $mytmp/slackware/ap4
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/cc1
+!mkdir $mytmp/slackware/cc1
+lcd $mytmp/slackware/cc1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/d1
+!mkdir $mytmp/slackware/d1
+lcd $mytmp/slackware/d1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/d2
+!mkdir $mytmp/slackware/d2
+lcd $mytmp/slackware/d2
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/d3
+!mkdir $mytmp/slackware/d3
+lcd $mytmp/slackware/d3
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/d4
+!mkdir $mytmp/slackware/d4
+lcd $mytmp/slackware/d4
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/d5
+!mkdir $mytmp/slackware/d5
+lcd $mytmp/slackware/d5
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/d6
+!mkdir $mytmp/slackware/d6
+lcd $mytmp/slackware/d6
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/e1
+!mkdir $mytmp/slackware/e1
+lcd $mytmp/slackware/e1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/e2
+!mkdir $mytmp/slackware/e2
+lcd $mytmp/slackware/e2
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/e3
+!mkdir $mytmp/slackware/e3
+lcd $mytmp/slackware/e3
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/e4
+!mkdir $mytmp/slackware/e4
+lcd $mytmp/slackware/e4
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/e5
+!mkdir $mytmp/slackware/e5
+lcd $mytmp/slackware/e5
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/f1
+!mkdir $mytmp/slackware/f1
+lcd $mytmp/slackware/f1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/iv1
+!mkdir $mytmp/slackware/iv1
+lcd $mytmp/slackware/iv1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/iv2
+!mkdir $mytmp/slackware/iv2
+lcd $mytmp/slackware/iv2
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/n1
+!mkdir $mytmp/slackware/n1
+lcd $mytmp/slackware/n1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/n2
+!mkdir $mytmp/slackware/n2
+lcd $mytmp/slackware/n2
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/n3
+!mkdir $mytmp/slackware/n3
+lcd $mytmp/slackware/n3
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/oi1
+!mkdir $mytmp/slackware/oi1
+lcd $mytmp/slackware/oi1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+
+cd $slackpath/oi2
+!mkdir $mytmp/slackware/oi2
+lcd $mytmp/slackware/oi2
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+
+cd $slackpath/oi3
+!mkdir $mytmp/slackware/oi3
+lcd $mytmp/slackware/oi3
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/oop1
+!mkdir $mytmp/slackware/oop1
+lcd $mytmp/slackware/oop1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/q1
+!mkdir $mytmp/slackware/q1
+lcd $mytmp/slackware/q1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/q2
+!mkdir $mytmp/slackware/q2
+lcd $mytmp/slackware/q2
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/q3
+!mkdir $mytmp/slackware/q3
+lcd $mytmp/slackware/q3
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/q4
+!mkdir $mytmp/slackware/q4
+lcd $mytmp/slackware/q4
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/t1
+!mkdir $mytmp/slackware/t1
+lcd $mytmp/slackware/t1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/t2
+!mkdir $mytmp/slackware/t2
+lcd $mytmp/slackware/t2
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/t3
+!mkdir $mytmp/slackware/t3
+lcd $mytmp/slackware/t3
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/tcl1
+!mkdir $mytmp/slackware/tcl1
+lcd $mytmp/slackware/tcl1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/tcl2
+!mkdir $mytmp/slackware/tcl2
+lcd $mytmp/slackware/tcl2
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/x1
+!mkdir $mytmp/slackware/x1
+lcd $mytmp/slackware/x1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/x2
+!mkdir $mytmp/slackware/x2
+lcd $mytmp/slackware/x2
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/x3
+!mkdir $mytmp/slackware/x3
+lcd $mytmp/slackware/x3
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/x4
+!mkdir $mytmp/slackware/x4
+lcd $mytmp/slackware/x4
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/x5
+!mkdir $mytmp/slackware/x5
+lcd $mytmp/slackware/x5
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/xap1
+!mkdir $mytmp/slackware/xap1
+lcd $mytmp/slackware/xap1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/xap2
+!mkdir $mytmp/slackware/xap2
+lcd $mytmp/slackware/xap2
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/xd1
+!mkdir $mytmp/slackware/xd1
+lcd $mytmp/slackware/xd1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/xd2
+!mkdir $mytmp/slackware/xd2
+lcd $mytmp/slackware/xd2
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/xd3
+!mkdir $mytmp/slackware/xd3
+lcd $mytmp/slackware/xd3
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/xv1
+!mkdir $mytmp/slackware/xv1
+lcd $mytmp/slackware/xv1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/xv2
+!mkdir $mytmp/slackware/xv2
+lcd $mytmp/slackware/xv2
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+cd $slackpath/y1
+!mkdir $mytmp/slackware/y1
+lcd $mytmp/slackware/y1
+mget *
+!echo snoozing for $sleeptime
+!sleep $sleeptime
+
+bye
+
+EOF
+
+echo Done with FTPing.

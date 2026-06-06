@@ -1,0 +1,56 @@
+CONTENTS: clisp f2c libc ncurses svgalib
+clisp:    A Common Lisp interpreter.                             
+clisp:
+clisp:
+clisp:
+clisp:
+clisp:
+clisp:
+clisp:
+clisp:
+clisp:
+clisp:
+f2c:      A Fortran-77 to C translator. 
+f2c:
+f2c:
+f2c:
+f2c:
+f2c:
+f2c:
+f2c:
+f2c:
+f2c:
+f2c:
+libc:     Development libraries for the C compiler. (v. 4.4.4)
+libc:     These libraries are needed to compile C code.    
+libc:
+libc:
+libc:
+libc:
+libc:
+libc:
+libc:
+libc:
+libc:
+ncurses:  A curses-compatible screen management library with color. (v. 1.8.1)
+ncurses:  Documentation and sample programs are included.
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+svgalib:  Svgalib Super-VGA Graphics Library (v1.00)
+svgalib: 
+svgalib:  A video hardware graphics library, based on VGAlib 1.2.
+svgalib:  Supports most standard and non-standard VGA modes, and Super-VGA
+svgalib:  modes for Tseng ET4000, Cirrus 542x (including 15/16/24 bit modes),
+svgalib:  and Trident 8900c/9000, and other cards. (see the docs in 
+svgalib:  /usr/doc/svgalib)
+svgalib:
+svgalib:
+svgalib:
+svgalib:

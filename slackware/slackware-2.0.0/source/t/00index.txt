@@ -1,0 +1,55 @@
+00index.txt        1328  
+GETTING.BUILDING-TeX
+                   8669  
+TeX-from-debian/      -  
+TeX-from-tsx11/       -  
+base.tar.gz         634  
+distribs.tar.gz
+                1381522  
+dvi2xx.051a9.tar.gz
+                  82172  
+dvipsk.tar.gz    521463  
+lib.tar.gz        73128  
+mf.tar.gz        128618  
+texbase.tar.gz    48281  
+tfm.tar.gz        46363  
+web2c.tar.gz    1609420  
+xdvik.tar.gz     265505  
+
+TeX-from-debian:
+00index.txt         234  
+CONTRIB            5883  
+dvgt.tar.gz      160850  
+makeindx.tar.gz  304510  
+mfinputs.tar.gz  897539  
+misctex.tar.gz    21335  
+tfmfiles.tar.gz  170435  
+web2c1.tar.gz   1271894  
+web2c2.tar.gz   1077311  
+
+TeX-from-tsx11:
+00index.txt         638  
+Components-of-TeX.dvi
+                  33636  
+GETTING.BUILDING-TeX
+                   8669  
+MakeTeXPK          1573  
+TeX-files-at-pip.shsu.edu.gz
+                 243494  
+Xdvisrc.taz      160970  
+auctex-7_3t.tz   255396  
+cm-mfsrc.tz      122355  
+cweb.tz          123328  
+diagramf.tz       25881  
+dot.emacs          7893  
+dvi2xx.051a8.tar.gz
+                  94221  
+dvidjp.tar.gz     58717  
+fig2mf.tz         22905  
+layout.tar.gz      3933  
+llogo.gif         12260  
+mfpic02.t.gz      29448  
+modes.mf.gz       16029  
+pstfm.t.gz        47165  
+texicons.tz        4460  
+texindex.c.gz     11769  

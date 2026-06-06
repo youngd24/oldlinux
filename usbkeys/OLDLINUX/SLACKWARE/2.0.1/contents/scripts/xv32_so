@@ -1,0 +1,20 @@
+#echo "Compacting shared libraries to decrease disk space utilization..."
+for f in usr/openwin/lib/lib*.so.?.?
+do
+	bname=`basename $f`
+#        echo "   - compacting $bname."
+	cp $f usr/openwin/lib/t$bname || exit 1
+	rm -f $f
+	mv usr/openwin/lib/t$bname $f
+done
+#echo "Shared libraries compacted."
+( cd usr/openwin/lib ; rm -rf libUIC.so.2 )
+( cd usr/openwin/lib ; ln -sf  libUIC.so.2.0 libUIC.so.2 )
+( cd usr/openwin/lib ; rm -rf libUSS.so.2 )
+( cd usr/openwin/lib ; ln -sf  libUSS.so.2.0 libUSS.so.2 )
+( cd usr/openwin/lib ; rm -rf libolg.so.3 )
+( cd usr/openwin/lib ; ln -sf  libolg.so.3.0 libolg.so.3 )
+( cd usr/openwin/lib ; rm -rf libss.so.3 )
+( cd usr/openwin/lib ; ln -sf  libss.so.3.1 libss.so.3 )
+( cd usr/openwin/lib ; rm -rf libxv3.so.3 )
+( cd usr/openwin/lib ; ln -sf  libxv3.so.3.0 libxv3.so.3 )

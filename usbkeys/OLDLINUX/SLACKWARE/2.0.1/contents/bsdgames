@@ -1,0 +1,135 @@
+PACKAGE NAME:     bsdgames
+PACKAGE SIZE:     1080 K
+PACKAGE LOCATION: disky1
+PACKAGE DESCRIPTION:
+bsdgames: Curtis Olson and Andy Tefft's port of the BSD games collection. (1.3)
+bsdgames: 
+bsdgames: This package puts these games into /usr/games:
+bsdgames:   arithmetic atc backgammon battlestar bcd bog caesar canfield
+bsdgames:   cfscores cribbage factor fish fortune hangman hunt mille monop
+bsdgames:   morse number paranoia pom ppt primes rain robots sail snake
+bsdgames:   snscore teachgammon trek wargames worm worms wump
+bsdgames:
+bsdgames: Adds a call to 'fortune' to /etc/profile and /etc/csh.login, so that
+bsdgames: users will get a fortune message when they log in.
+bsdgames:
+FILE LIST:
+./
+usr/
+usr/games/
+usr/games/dungeon
+usr/games/dungeon.s
+usr/games/DINDX.DAT
+usr/games/DTEXT.DAT
+usr/games/arithmetic
+usr/games/atc
+usr/games/battlestar
+usr/games/bcd
+usr/games/bog
+usr/games/caesar
+usr/games/canfield
+usr/games/cfscores
+usr/games/cribbage
+usr/games/factor
+usr/games/fish
+usr/games/fortune
+usr/games/fortunes/
+usr/games/fortunes/fortunes.dat
+usr/games/fortunes/startrek.dat
+usr/games/fortunes/zippy.dat
+usr/games/fortunes/fortunes-o.dat
+usr/games/fortunes/fortunes
+usr/games/fortunes/startrek
+usr/games/fortunes/zippy
+usr/games/fortunes/fortunes-o
+usr/games/hangman
+usr/games/hunt
+usr/games/lib/
+usr/games/lib/xvier_prog
+usr/games/lib/atc/
+usr/games/lib/atc/ATC_scores
+usr/games/lib/atc/Game_List
+usr/games/lib/atc/Killer
+usr/games/lib/atc/crossover
+usr/games/lib/atc/default
+usr/games/lib/atc/easy
+usr/games/lib/atc/game_2
+usr/games/lib/atc/atc_score
+usr/games/lib/battlestar.log
+usr/games/lib/bog/
+usr/games/lib/bog/dict
+usr/games/lib/bog/dict.ind
+usr/games/lib/bog/helpfile
+usr/games/lib/cfscores
+usr/games/lib/criblog
+usr/games/lib/cribbage.instr
+usr/games/lib/fish.instr
+usr/games/lib/hangman-words
+usr/games/lib/huntd
+usr/games/lib/cards.pck
+usr/games/lib/robots_roll
+usr/games/lib/saillog
+usr/games/lib/snakerawscores
+usr/games/lib/snake.log
+usr/games/lib/wump.info
+usr/games/mille
+usr/games/monop
+usr/games/morse
+usr/games/number
+usr/games/paranoia
+usr/games/pom
+usr/games/ppt
+usr/games/primes
+usr/games/rain
+usr/games/robots
+usr/games/sail
+usr/games/snake
+usr/games/snscore
+usr/games/trek
+usr/games/wargames
+usr/games/worm
+usr/games/worms
+usr/games/wump
+usr/games/backgammon
+usr/games/teachgammon
+usr/games/README.dungeon
+usr/games/dungeon.doc
+usr/games/dungeon-hints/
+usr/games/dungeon-hints/endhints.txt
+usr/games/dungeon-hints/hints.txt
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat6/
+usr/man/preformat/cat6/hunt.6.gz
+usr/man/preformat/cat6/atc.6.gz
+usr/man/preformat/cat6/battlestar.6.gz
+usr/man/preformat/cat6/bcd.6.gz
+usr/man/preformat/cat6/bog.6.gz
+usr/man/preformat/cat6/factor.6.gz
+usr/man/preformat/cat6/caesar.6.gz
+usr/man/preformat/cat6/cribbage.6.gz
+usr/man/preformat/cat6/fish.6.gz
+usr/man/preformat/cat6/fortune.6.gz
+usr/man/preformat/cat6/hangman.6.gz
+usr/man/preformat/cat6/huntd.6.gz
+usr/man/preformat/cat6/mille.6.gz
+usr/man/preformat/cat6/monop.6.gz
+usr/man/preformat/cat6/number.6.gz
+usr/man/preformat/cat6/pom.6.gz
+usr/man/preformat/cat6/rain.6.gz
+usr/man/preformat/cat6/robots.6.gz
+usr/man/preformat/cat6/snake.6.gz
+usr/man/preformat/cat6/worm.6.gz
+usr/man/preformat/cat6/worms.6.gz
+usr/man/preformat/cat6/wump.6.gz
+usr/man/preformat/cat6/arithmetic.6.gz
+usr/man/preformat/cat6/backgammon.6.gz
+usr/man/preformat/cat6/canfield.6.gz
+usr/man/preformat/cat6/sail.6.gz
+usr/man/preformat/cat6/trek.6.gz
+usr/man/preformat/cat8/
+usr/man/preformat/cat8/strfile.8.gz
+usr/bin/
+usr/bin/strfile
+install/
+install/doinst.sh

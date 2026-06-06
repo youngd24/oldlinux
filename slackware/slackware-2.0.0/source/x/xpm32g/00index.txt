@@ -1,0 +1,8 @@
+00index.txt         205  
+xpm-3-paper.ps.Z  63627  
+xpm-3.2g.tar.Z   141919  
+xpm-contrib-1.2.tar.gz
+                 181602  
+xpm1icons.tar.Z   25131  
+xpm2icons.tar.Z   24783  
+xpm3icons.tar.Z   26574  

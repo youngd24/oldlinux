@@ -1,0 +1,6 @@
+00index.txt         148  
+man-pages-1.2.Announce
+                   2180  
+man-pages-1.2.lsm   804  
+man-pages-1.2.tar.gz
+                 175024  

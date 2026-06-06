@@ -1,0 +1,67 @@
+CONTENTS: nn tin trn ppp inn_pkg cnews 
+inn_pkg:  INN 1.4
+inn_pkg:
+inn_pkg:  Rich Salz's InterNetNews news transport system. The Linux INN package
+inn_pkg:  was prepared by Andreas Klemm using the Newspak instructions by 
+inn_pkg:  Vince Skahan and Arjan de Vet.
+inn_pkg:
+inn_pkg:
+inn_pkg:
+inn_pkg:
+inn_pkg:
+inn_pkg:
+nn:       The 'nn' news reader. (v. 6.4.18)
+nn:
+nn:
+nn:
+nn:
+nn:
+nn:
+nn:
+nn:
+nn:
+nn:
+tin:      The 'tin' news reader. (1.2pl2)
+tin:
+tin:
+tin:
+tin:
+tin:
+tin:
+tin:
+tin:
+tin:
+tin:
+trn:      A threaded news reader. (v. 3.4.1)
+trn:
+trn:      Compiled to use Overviews or mthreads, and to read news remotely via
+trn:      NNTP. Be sure to set NNTPSERVER in your /etc/profile or 
+trn:      /etc/csh.login. If you need a different trn configuration, you'll have
+trn:      to recompile. This shouldn't scare anyone too badly - trn compiles 
+trn:      under Linux right out of the box. The latest versions can be found on
+trn:      ftp.uu.net under /networking/news/readers/trn. This version can be
+trn:      found on ftp.cdrom.com in /pub/linux/slackware_source/n/trn. 
+trn:
+trn:
+ppp:      PPP for Linux, version 2.1.2a
+ppp:
+ppp:      PPP for Linux -- Michael Callahan's ppp.c kernel driver and the pppd
+ppp:      daemon (ported by Al Longyear).  PPP support is included in most of
+ppp:      the precompiled kernels in Slackware.
+ppp:
+ppp:
+ppp:
+ppp:
+ppp:
+ppp:
+cnews:    Controls the spooling and transmission of Usenet news. 
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:

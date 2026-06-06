@@ -1,0 +1,78 @@
+CONTENTS: deliver dip mailx tcpip tracrout uucp netcfg
+netcfg:   "netconfig" is a script to help configure TCP/IP and mail on your 
+netcfg:   machine. It will ask you a series of questions about your network and
+netcfg:   use your answers to automatically configure rc.M, rc.inet1, networks,
+netcfg:   resolv, hosts, smail, and elm.rc. You may run the script again at any
+netcfg:   time to reconfigure your machine. If you install the "netconfig"
+netcfg:   script, it will be executed for you before you leave "setup".
+netcfg:
+netcfg:
+netcfg:
+netcfg:
+netcfg:
+deliver:  A small and simple program that delivers electronic mail once it
+deliver:  has arrived at a given machine. Although designed for Xenix, it
+deliver:  works well on many platforms, including (of course) Linux. Deliver
+deliver:  allows great flexibility in the handling of local mail delivery.  
+deliver:  All files used to control deliver are shell scripts. Thus, anything
+deliver:  that can be called by a shell script can be used to control mail
+deliver:  delivery. Deliver can also be used in conjunction with Smail.
+deliver:
+deliver:
+deliver:
+deliver:
+dip:      Source code for dip v.3.3.7 with Net2Debugged patches.
+dip:
+dip:      DIP, which stands for Dialup Internet Protocol, is used to initiate
+dip:      connections to SLIP servers. Source code and sample files are put in 
+dip:      /usr/src/dip-3.3.7.
+dip:
+dip:
+dip:
+dip:
+dip:
+dip:
+mailx:    The mailx mailer.
+mailx:
+mailx:    Mail is a intelligent mail processing system, which has a command 
+mailx:    syntax reminiscent of ed with lines replaced by messages. It's small;
+mailx:    it's the standard; it's a good thing to install if you're going to use
+mailx:    mail.
+mailx:
+mailx:
+mailx:
+mailx:
+mailx:
+tcpip:    TCP/IP networking programs and support files.
+tcpip:
+tcpip:    This is an updated set of utilities for Net2Debugged compiled from 
+tcpip:    various sources including NetBSD. The code was ported by Florian  
+tcpip:    La Roche, Alan Cox, and others.
+tcpip:
+tcpip:
+tcpip:
+tcpip:
+tcpip:
+tcpip:
+tracrout: Source and executable of "traceroute", a utility that allows you to 
+tracrout: determine the path from your machine to other machines on the network.
+tracrout:
+tracrout:
+tracrout:
+tracrout:
+tracrout:
+tracrout:
+tracrout:
+tracrout:
+tracrout:
+uucp:     Taylor UUCP 1.04 (configured for HoneyDanBer mode)
+uucp:     Unix to Unix copy: mail and news over modem lines. 
+uucp:
+uucp:
+uucp:
+uucp:
+uucp:
+uucp:
+uucp:
+uucp:
+uucp:

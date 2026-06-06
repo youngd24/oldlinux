@@ -1,0 +1,12 @@
+CONTENTS: ncr_krn3  
+ncr_krn3: Linux kernel source 1.1.19 with NCR53c810 and Trantor T128 drivers.
+ncr_krn3:
+ncr_krn3: This kernel also contains UMSDOS-0.3a. It does not contain
+ncr_krn3: the kernel include files -- these are on the next disk.
+ncr_krn3:
+ncr_krn3:
+ncr_krn3:
+ncr_krn3:
+ncr_krn3:
+ncr_krn3:
+ncr_krn3:

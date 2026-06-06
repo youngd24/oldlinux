@@ -1,0 +1,22 @@
+PACKAGE NAME:     sbpcd
+PACKAGE SIZE:     402 K
+PACKAGE LOCATION: diskq3
+PACKAGE DESCRIPTION:
+sbpcd:    Linux kernel version 1.1.18, with SCSI+IDE+SoundBlaster Pro CD
+sbpcd:    (also Panasonic/Lasermate).
+sbpcd:
+sbpcd:    This is a Linux kernel with support for the whole family of IDE-style
+sbpcd:    Kotobuki/Matsushita/Panasonic CR-5xx drives for SoundBlaster ("Pro" or
+sbpcd:    "16 ASP" or compatible) cards and for "no-sound" interfaces like 
+sbpcd:    Lasermate and the Panasonic CI-101P.
+sbpcd:
+sbpcd:    This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,
+sbpcd:    Ftape, and the PS/2 style mouse (but not other busmouse types).
+sbpcd:
+FILE LIST:
+./
+install/
+install/doinst.sh
+vmlinuz
+boot/
+boot/zSystem.map

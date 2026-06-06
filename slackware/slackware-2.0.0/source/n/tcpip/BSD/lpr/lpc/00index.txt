@@ -1,0 +1,15 @@
+00index.txt         390  
+Makefile            306  
+Makefile.orig       153  
+cmds.c            22054  
+cmds.c.orig       22051  
+cmds.c.rej         1759  
+cmds.o            15624  
+cmdtab.c           3592  
+cmdtab.c.orig      3590  
+cmdtab.c.rej       1070  
+cmdtab.o           1966  
+lpc               32312  
+lpc.8              5911  
+lpc.c              5865  
+lpc.o              3399  

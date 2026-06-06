@@ -1,0 +1,23 @@
+PACKAGE NAME:     ntf-bard
+PACKAGE SIZE:     3 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-bard: ntf-bard 1.1
+ntf-bard:
+ntf-bard: This package contains the bard font. It is based on the Celtic Bard
+ntf-bard: Runes and is nice to produce scrolls for role playing games.
+ntf-bard:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/ancient/
+usr/lib/texmf/fonts/ancient/bard/
+usr/lib/texmf/fonts/ancient/bard/create.sh
+usr/lib/texmf/fonts/ancient/bard/src/
+usr/lib/texmf/fonts/ancient/bard/src/bard.mf
+usr/lib/texmf/fonts/ancient/bard/tfm/
+usr/lib/texmf/fonts/ancient/bard/tfm/bard.tfm
+usr/lib/texmf/fonts/ancient/bard/pk/

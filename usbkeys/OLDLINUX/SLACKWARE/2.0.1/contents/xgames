@@ -1,0 +1,80 @@
+PACKAGE NAME:     xgames
+PACKAGE SIZE:     152 K
+PACKAGE LOCATION: diskxap2
+PACKAGE DESCRIPTION:
+xgames:   A collection of games for X:
+xgames:
+xgames:   spider xbombs xcolormap xcuckoo xhextris xlander xmahjongg xmenu
+xgames:   xroach xtetris xvier
+xgames:
+FILE LIST:
+./
+install/
+install/doinst.sh
+usr/
+usr/games/
+usr/games/lib/
+usr/games/lib/xvier_prog
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/xmenu.1.gz
+usr/man/preformat/cat6/
+usr/man/preformat/cat6/xroach.6.gz
+usr/man/preformat/cat6/xpuzzle.6.gz
+usr/man/preformat/cat6/xtetris.6.gz
+usr/man/preformat/cat6/xvier.6.gz
+usr/man/preformat/cat6/othello.6.gz
+usr/man/preformat/cat6/xboard.6.gz
+usr/man/preformat/cat6/xlander.6.gz
+usr/man/preformat/cat6/xmahjongg.6.gz
+usr/X11/
+usr/X11/bin/
+usr/X11/bin/Spider
+usr/X11/bin/spider
+usr/X11/bin/xcolormap
+usr/X11/bin/xcuckoo
+usr/X11/bin/xlander
+usr/X11/bin/xmenu
+usr/X11/bin/xroach
+usr/X11/bin/xtetris
+usr/X11/bin/xvier
+usr/X11/bin/xhextris
+usr/X11/bin/xbombs
+usr/X11/bin/xmahjongg
+usr/X11/lib/
+usr/X11/lib/xmahjongg/
+usr/X11/lib/xmahjongg/COPYRIGHT
+usr/X11/lib/xmahjongg/README.1
+usr/X11/lib/xmahjongg/README.2
+usr/X11/lib/xmahjongg/bridge
+usr/X11/lib/xmahjongg/default
+usr/X11/lib/xmahjongg/wedges
+usr/X11/lib/fonts/
+usr/X11/lib/fonts/misc/
+usr/X11/lib/fonts/misc/xhextris.pcf.Z
+usr/X11/lib/fonts/misc/xmahjongg.pcf.Z
+usr/X11/lib/fonts/misc/fonts.dir
+usr/X11/include/
+usr/X11/include/X11/
+usr/X11/include/X11/bitmaps/
+usr/X11/include/X11/bitmaps/stripe4
+var/
+var/X11/
+var/X11/lib/
+var/X11/lib/xtetris/
+var/X11/lib/xtetris/xtetris-scores
+var/X11/lib/xhextris/
+var/X11/lib/xhextris/xhextris.scores
+var/X11/lib/X11/
+var/X11/lib/X11/Xmodmap.fr
+var/X11/lib/X11/Xmodmap.gr
+var/X11/lib/X11/Xmodmap.no
+var/X11/lib/X11/Xmodmap.uk
+var/X11/lib/X11/app-defaults/
+var/X11/lib/X11/app-defaults/Xtetris
+var/X11/lib/X11/app-defaults/Xtetris.bw
+var/X11/lib/X11/app-defaults/Xtetris.c
+var/X11/lib/scores/
+var/X11/lib/scores/xbombs/
+var/X11/lib/scores/xbombs/xbombscores

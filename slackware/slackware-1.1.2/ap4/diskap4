@@ -1,0 +1,78 @@
+CONTENTS: bc gonzo gp9600 groff quota sc workbone
+bc:       GNU bc 1.02 - An arbitrary precision calculator language.
+bc:
+bc:       bc is a language that supports arbitrary precision numbers with 
+bc:       interactive execution of statements.  There are some similarities in
+bc:       the syntax to the C programming language.
+bc:
+bc:
+bc:
+bc:
+bc:
+bc:
+workbone: Workbone 0.1 
+workbone:
+workbone: Text-based audio CD player.
+workbone:
+workbone:
+workbone:
+workbone:
+workbone:
+workbone:
+workbone:
+workbone:
+gonzo:    Sample users "gonzo", "snake", and "satan".               
+gonzo:
+gonzo:
+gonzo:
+gonzo:
+gonzo:
+gonzo:
+gonzo:
+gonzo:
+gonzo:
+gonzo:
+gp9600:   This is a script that allows you to set your modem speed. If you do
+gp9600:   not install this script, your baud rate will be set to 9600. If you
+gp9600:   install it, a menu will be presented later on allowing you to select
+gp9600:   any of the following baud rates:
+gp9600:
+gp9600:   300, 1200, 2400, 4800, 9600, 19200, 38400.
+gp9600:
+gp9600:   If you need something faster than this, you should set the baud to
+gp9600:   38400, which can be changed to mean a faster rate with setserial.
+gp9600:
+gp9600:
+groff:    GNU troff 1.08 document formatting system.
+groff:
+groff:    The groff package provides versions of troff, nroff, eqn, tbl, and 
+groff:    other Unix text-formatting utilities. Groff is used to "compile" man
+groff:    pages stored in groff/nroff format into a form which can be printed or
+groff:    displayed on the screen. These man pages would be in /usr/man/man?. 
+groff:    Most of the man pages in the Slackware Linux distribution (except in
+groff:    the groff package) have been preformatted, GNU zipped, and placed in 
+groff:    the /usr/man/preformat/cat? directories. Groff is not needed to view
+groff:    preformatted man pages.                                 
+groff:
+quota:    quota-1.3 and acct-1.3.
+quota:
+quota:    Disk quotas and system usage accounting, written by 
+quota:    Marco van Wieringen and Edvard Tuinder.
+quota:    The source is put in /usr/src/acct-1.3 and /usr/src/quota-1.3.
+quota:    You will have to apply the included patch, recompile your kernel, and
+quota:    reinstall LILO in order to use this package. These patches will work
+quota:    with Linux 0.99pl15.
+quota:
+quota:
+quota:
+sc:       The 'sc' spreadsheet. (v. 6.21)
+sc:
+sc:
+sc:
+sc:
+sc:
+sc:
+sc:
+sc:
+sc:
+sc:

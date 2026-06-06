@@ -1,0 +1,61 @@
+PACKAGE NAME:     ntf-go
+PACKAGE SIZE:     18 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-go:   ntf-go 1.1
+ntf-go:
+ntf-go:   A font and macros for typesetting boards of the Go game.
+ntf-go:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/misc/
+usr/lib/texmf/fonts/misc/go/
+usr/lib/texmf/fonts/misc/go/create.sh
+usr/lib/texmf/fonts/misc/go/src/
+usr/lib/texmf/fonts/misc/go/src/go.mf
+usr/lib/texmf/fonts/misc/go/src/go10.mf
+usr/lib/texmf/fonts/misc/go/src/go15.mf
+usr/lib/texmf/fonts/misc/go/src/go1bla10.mf
+usr/lib/texmf/fonts/misc/go/src/go1bla15.mf
+usr/lib/texmf/fonts/misc/go/src/go1bla20.mf
+usr/lib/texmf/fonts/misc/go/src/go1black.mf
+usr/lib/texmf/fonts/misc/go/src/go1whi10.mf
+usr/lib/texmf/fonts/misc/go/src/go1whi15.mf
+usr/lib/texmf/fonts/misc/go/src/go1whi20.mf
+usr/lib/texmf/fonts/misc/go/src/go1white.mf
+usr/lib/texmf/fonts/misc/go/src/go20.mf
+usr/lib/texmf/fonts/misc/go/src/go2bla10.mf
+usr/lib/texmf/fonts/misc/go/src/go2bla15.mf
+usr/lib/texmf/fonts/misc/go/src/go2bla20.mf
+usr/lib/texmf/fonts/misc/go/src/go2black.mf
+usr/lib/texmf/fonts/misc/go/src/go2whi10.mf
+usr/lib/texmf/fonts/misc/go/src/go2whi15.mf
+usr/lib/texmf/fonts/misc/go/src/go2whi20.mf
+usr/lib/texmf/fonts/misc/go/src/go2white.mf
+usr/lib/texmf/fonts/misc/go/src/gosign50.mf
+usr/lib/texmf/fonts/misc/go/tfm/
+usr/lib/texmf/fonts/misc/go/tfm/go10.tfm
+usr/lib/texmf/fonts/misc/go/tfm/go15.tfm
+usr/lib/texmf/fonts/misc/go/tfm/go1bla10.tfm
+usr/lib/texmf/fonts/misc/go/tfm/go1bla15.tfm
+usr/lib/texmf/fonts/misc/go/tfm/go1bla20.tfm
+usr/lib/texmf/fonts/misc/go/tfm/go1whi10.tfm
+usr/lib/texmf/fonts/misc/go/tfm/go1whi15.tfm
+usr/lib/texmf/fonts/misc/go/tfm/go1whi20.tfm
+usr/lib/texmf/fonts/misc/go/tfm/go20.tfm
+usr/lib/texmf/fonts/misc/go/tfm/go2bla10.tfm
+usr/lib/texmf/fonts/misc/go/tfm/go2bla15.tfm
+usr/lib/texmf/fonts/misc/go/tfm/go2bla20.tfm
+usr/lib/texmf/fonts/misc/go/tfm/go2whi10.tfm
+usr/lib/texmf/fonts/misc/go/tfm/go2whi15.tfm
+usr/lib/texmf/fonts/misc/go/tfm/go2whi20.tfm
+usr/lib/texmf/fonts/misc/go/tfm/gosign50.tfm
+usr/lib/texmf/fonts/misc/go/pk/
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/misc/
+usr/lib/texmf/tex/misc/go.sty
+usr/lib/texmf/tex/misc/gomaps.ltx

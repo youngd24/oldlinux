@@ -1,0 +1,33 @@
+PACKAGE NAME:     ntm-tami
+PACKAGE SIZE:     47 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntm-tami: ntm-tami 1.1
+ntm-tami:
+ntm-tami: Some fonts and macros for typesetting texts in Tmail.
+ntm-tami:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/tamilize
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/language/
+usr/lib/texmf/fonts/language/tamil/
+usr/lib/texmf/fonts/language/tamil/src/
+usr/lib/texmf/fonts/language/tamil/src/tamil.mf
+usr/lib/texmf/fonts/language/tamil/src/tamilmax.mf
+usr/lib/texmf/fonts/language/tamil/src/wntamil.mf
+usr/lib/texmf/fonts/language/tamil/src/wntml10.mf
+usr/lib/texmf/fonts/language/tamil/tfm/
+usr/lib/texmf/fonts/language/tamil/tfm/wntml10.tfm
+usr/lib/texmf/fonts/language/tamil/pk/
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/language/
+usr/lib/texmf/tex/language/tamil/
+usr/lib/texmf/tex/language/tamil/readme.doc
+usr/lib/texmf/tex/language/tamil/tamdict.txt
+usr/lib/texmf/tex/language/tamil/tamilize.c
+usr/lib/texmf/tex/language/tamil/tamilmax.tex

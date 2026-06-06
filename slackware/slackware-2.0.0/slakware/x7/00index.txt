@@ -1,0 +1,5 @@
+00index.txt         130  
+diskx7              527  
+fnt100_2.tgz     447578  
+fntbig1.tgz      580550  
+speedo.tgz       366720  

@@ -1,0 +1,19 @@
+PACKAGE NAME:     bc
+PACKAGE SIZE:     34 K
+PACKAGE LOCATION: diskap4
+PACKAGE DESCRIPTION:
+bc:       GNU bc 1.02 - An arbitrary precision calculator language.
+bc:
+bc:       bc is a language that supports arbitrary precision numbers with 
+bc:       interactive execution of statements.  There are some similarities in
+bc:       the syntax to the C programming language.
+bc:
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/bc.1.gz
+usr/bin/
+usr/bin/bc

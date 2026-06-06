@@ -1,0 +1,43 @@
+00index.txt         930  
+q1/                   -  
+q2/                   -  
+q3/                   -  
+q4/                   -  
+
+q1:
+00index.txt         182  
+diskq1             1133  
+ifs.tgz           25754  
+maketag            1772  
+tagfile             138  
+tagfile.pat         138  
+v1_1_16.tgz     1337326  
+
+q2:
+00index.txt         260  
+diskq2             2406  
+ftape16.tgz       53161  
+i1_1_16.tgz      156518  
+idekern.log        3771  
+idekern.tgz      325787  
+mitsumi.log        4618  
+mitsumi.tgz      406513  
+scsikern.log       4681  
+scsikern.tgz     402259  
+
+q3:
+00index.txt         208  
+cdu31a.log         4668  
+cdu31a.tgz       407738  
+diskq3             1668  
+sbpcd.log          4666  
+sbpcd.tgz        418489  
+sony535.log        4665  
+sony535.tgz      407500  
+
+q4:
+00index.txt         130  
+diskq4              555  
+install.end          24  
+mitsumi2.log       4717  
+mitsumi2.tgz     409575  

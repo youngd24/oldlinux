@@ -1,0 +1,4 @@
+00index.txt         104  
+diskx4              583  
+xf_bin.tgz       872020  
+xfonts1.tgz      563166  

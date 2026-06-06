@@ -1,0 +1,28 @@
+PACKAGE NAME:     sudo
+PACKAGE SIZE:     14 K
+PACKAGE LOCATION: diskap2
+PACKAGE DESCRIPTION:
+sudo:     sudo 1.2
+sudo:
+sudo:     'sudo' is a command that allows users to execute some commands as 
+sudo:     root. The /etc/sudoers file (edited with 'visudo') specifies which
+sudo:     users have access to sudo and which commands they can run. 'sudo' logs
+sudo:     all its activities to /var/adm/sudo, so the system administrator can
+sudo:     can keep an eye on things.
+sudo:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/sudo.bin
+usr/bin/sudo
+usr/sbin/
+usr/sbin/visudo
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat8/
+usr/man/preformat/cat8/sudo.8.gz
+etc/
+etc/sudoers
+install/
+install/doinst.sh

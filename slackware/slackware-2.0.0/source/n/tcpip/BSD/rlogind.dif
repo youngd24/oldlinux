@@ -1,0 +1,76 @@
+--- Makefile
++++ Makefile	1994/02/22 14:22:06
+@@ -0,0 +1,15 @@
++CFLAGS = -O2 -fomit-frame-pointer -m486 \
++		-include /usr/include/bsd/bsd.h -I/usr/include/bsd \
++		# -DKERBEROS -DCRYPT
++LDLIBS = -lbsd # -lutil -lkrb -ldes
++LDFLAGS = -s -v
++
++rlogind: rlogind.o # des_rw.o
++
++install: rlogind
++	install -m744 rlogind /usr/sbin/in.rlogind
++	install -m644 rlogind.8 /usr/man/man8
++
++clean:
++	rm -f *.o rlogind
++
+--- pathnames.h
++++ pathnames.h	1994/02/22 14:18:20
+@@ -36,4 +36,4 @@
+ 
+ #include <paths.h>
+ 
+-#define	_PATH_LOGIN	"/usr/bin/login"
++#define	_PATH_LOGIN	"/bin/login"
+--- rlogind.c
++++ rlogind.c	1994/02/22 14:18:20
+@@ -58,17 +58,15 @@
+  *	data
+  */
+ 
+-#define	FD_SETSIZE	16		/* don't need many bits for select */
+ #include <sys/param.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
++#include <sys/time.h>
+ #include <signal.h>
+ #include <termios.h>
+ 
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+-#include <netinet/in_systm.h>
+-#include <netinet/ip.h>
+ #include <arpa/inet.h>
+ #include <netdb.h>
+ 
+@@ -163,6 +161,7 @@
+ 		fatal(STDERR_FILENO, "only one of -k and -v allowed", 0);
+ 	}
+ #endif
++	from.sin_family = AF_INET;
+ 	fromlen = sizeof (from);
+ 	if (getpeername(0, (struct sockaddr *)&from, &fromlen) < 0) {
+ 		syslog(LOG_ERR,"Can't get peer name of remote host: %m");
+@@ -171,9 +170,11 @@
+ 	if (keepalive &&
+ 	    setsockopt(0, SOL_SOCKET, SO_KEEPALIVE, &on, sizeof (on)) < 0)
+ 		syslog(LOG_WARNING, "setsockopt (SO_KEEPALIVE): %m");
++#ifdef IP_TOS
+ 	on = IPTOS_LOWDELAY;
+ 	if (setsockopt(0, IPPROTO_IP, IP_TOS, (char *)&on, sizeof(int)) < 0)
+ 		syslog(LOG_WARNING, "setsockopt (IP_TOS): %m");
++#endif
+ 	doit(0, &from);
+ }
+ 
+@@ -623,7 +624,7 @@
+ 	char *speed;
+ 	struct termios tt;
+ 
+-#ifndef notyet
++#ifdef notyet
+ 	tcgetattr(fd, &tt);
+ 	if (cp) {
+ 		*cp++ = '\0';

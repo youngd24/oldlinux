@@ -1,0 +1,10 @@
+00index.txt         260  
+diskxap2           2388  
+gchess.tgz       522924  
+ghstview.tgz      55699  
+x3270.tgz        109344  
+xfm12.tgz         82330  
+xgames.tgz       156205  
+xgrabsc.tgz       35670  
+xspread.tgz      207619  
+xxgdb.tgz         36906  

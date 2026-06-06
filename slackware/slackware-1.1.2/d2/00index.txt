@@ -1,0 +1,10 @@
+00index.txt         260  
+byacc.tgz         26362  
+diskd2             1883  
+flex.tgz          75264  
+gmake.tgz         45066  
+include.tgz      145881  
+man2.tgz         134286  
+objc.tgz         577381  
+p2c.tgz          288608  
+pmake.tgz         53276  

@@ -1,0 +1,14 @@
+00index.txt         359  
+linux-1.0.tar.gz
+                1259161  
+patch1.gz          5085  
+patch2.gz          3672  
+patch3.gz          8309  
+patch4.gz          1189  
+patch5.gz          7175  
+patch6.gz          3708  
+patch7.gz          1420  
+patch8.gz          6408  
+patch9.gz          1153  
+umsdos-0.3a-for-1.0.9.diff.gz
+                  63799  

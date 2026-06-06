@@ -1,0 +1,7 @@
+( cd usr/bin ; rm -rf c++ )
+( cd usr/bin ; ln -sf  g++ c++ )
+#if [ -d usr/g++-include ]; then
+#  ( cd usr/lib ; rm -rf g++-include )
+#  mv usr/g++-include usr/lib
+#  ( cd usr ; ln -sf lib/g++-include g++-include )
+#fi

@@ -1,0 +1,23 @@
+CONTENTS: xf_bin xfonts1
+xf_bin:   Basic client binaries required for XFree86 2.0.
+xf_bin:
+xf_bin:
+xf_bin:
+xf_bin:
+xf_bin:
+xf_bin:
+xf_bin:
+xf_bin:
+xf_bin:
+xf_bin:
+xfonts1:  More fonts for X windows. (part one)
+xfonts1: 
+xfonts1:  The XFree86 2.0 release comes with minimal fonts already preinstalled.
+xfonts1:  If you want all the 75dpi fonts that are released with X11 Release 5
+xfonts1:  (excluding PEX), then you must install this package and xfonts2.tgz.
+xfonts1: 
+xfonts1:  These fonts are now compressed, and take much less drive space.
+xfonts1: 
+xfonts1: 
+xfonts1: 
+xfonts1: 

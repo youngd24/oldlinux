@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Mirror List</title>
+  <link type="text/css" rel="stylesheet" href="/css/mblist.css" />
+</head>
+
+<body>
+<div id="mirrorbrain-details">
+  <h2>Mirrors for <a href="/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">ipdm2s.9401.LINX.tar.gz</a></h2>
+<div id="mirrorbrain-fileinfo">
+<h3>File information</h3>
+<ul>
+  <li><span class="mirrorbrain-label">Filename:</span> ipdm2s.9401.LINX.tar.gz</li>
+  <li><span class="mirrorbrain-label">Path:</span> /slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</li>
+  <li><span class="mirrorbrain-label">Size:</span> 272K (278124 bytes)</li>
+  <li><span class="mirrorbrain-label">Last modified:</span> Fri, 22 Jul 1994 00:07:22 GMT (Unix time: 774835642)</li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz.sha256">SHA-256 Hash</a>:</span> <tt>c2f70351ad050d0e12b41807e37d80bf2e308a8655168423defe46f60b2e6eb8</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz.sha1">SHA-1 Hash</a>:</span> <tt>dd0b6201472db3c556cf418f984a06cec597fe8e</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz.md5">MD5 Hash</a>:</span> <tt>d04bf60791bfb8d632f083401de6ab1b</tt></li>
+</ul>
+<p><a href="/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz" class="mirrorbrain-btn">Download file from preferred mirror</a></p>
+</div>
+
+<div id="mirrorbrain-links">
+<h3>Reliable downloads</h3>
+<div class="mirrorbrain-links-grp">
+<h4>Metalink</h4>
+<ul>
+  <li><a href="/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz.meta4">/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz.meta4</a> (IETF Metalink)</li>
+  <li><a href="/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz.metalink">/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz.metalink</a> (old (v3) Metalink)</li>
+</ul>
+</div>
+</div>
+
+<div id="mirrorbrain-mirrors">
+<h3>Mirrors</h3>
+<p>List of best mirrors for IP address 172.59.189.70, located at 41.848301,-87.651703 in United States (US).</p>
+
+<p><a href="https://maps.google.com/maps/api/staticmap?size=640x512&amp;visual_refresh=true&amp;scale=2&amp;maptype=roadmap&amp;sensor=false&amp;markers=color:red|41.848301,-87.651703&amp;markers=color:yellow|label:1|28.538000,-81.378998&amp;markers=color:yellow|label:2|-2.883000,-78.983002&amp;markers=color:yellow|label:3|-16.701000,-49.266998&amp;markers=color:yellow|label:4|-8.144000,-34.978001&amp;markers=color:yellow|label:5|-23.473000,-46.666000&amp;markers=color:yellow|label:6|51.495998,-0.122000&amp;markers=color:yellow|label:7|51.266998,1.083000&amp;markers=color:yellow|label:8|48.858002,2.339000&amp;markers=color:yellow|label:9|48.858002,2.339000">Map showing the closest mirrors</a></p>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 1 mirror which handle this country (US)</h4>
+<ul>
+ <li><a href="https://mirror.slackbuilds.org/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://mirror.slackbuilds.org/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (us, prio 100)</li>
+</ul>
+</div>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 27 mirrors in other parts of the world</h4>
+<ul>
+  <li><a href="https://mirror.cedia.org.ec/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://mirror.cedia.org.ec/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (ec, prio 100)</li>
+  <li><a href="https://ftp.slackware-brasil.com.br/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://ftp.slackware-brasil.com.br/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (br, prio 100)</li>
+  <li><a href="https://mirrors.slackware.beco.cc/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://mirrors.slackware.beco.cc/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (br, prio 100)</li>
+  <li><a href="https://linorg.usp.br/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://linorg.usp.br/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (br, prio 100)</li>
+  <li><a href="http://slackware.uk/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">http://slackware.uk/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (gb, prio 100)</li>
+  <li><a href="https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://www.mirrorservice.org/sites/ftp.slackware.com/pub/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (gb, prio 100)</li>
+  <li><a href="http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">http://bear.alienbase.nl/mirrors/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (nl, prio 100)</li>
+  <li><a href="http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">http://slackware.mirrors.ovh.net/ftp.slackware.com/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (fr, prio 50)</li>
+  <li><a href="https://mirror.koddos.net/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://mirror.koddos.net/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (nl, prio 100)</li>
+  <li><a href="https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://ftp.nluug.nl/os/Linux/distr/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (nl, prio 100)</li>
+  <li><a href="https://linux.rz.rub.de/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://linux.rz.rub.de/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (de, prio 100)</li>
+  <li><a href="http://mirrors.nav.ro/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">http://mirrors.nav.ro/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (ro, prio 100)</li>
+  <li><a href="https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://ftp6.gwdg.de/pub/linux/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (de, prio 100)</li>
+  <li><a href="https://mirrors.dotsrc.org/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://mirrors.dotsrc.org/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (dk, prio 100)</li>
+  <li><a href="http://mirror.slackware.hr/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">http://mirror.slackware.hr/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (hr, prio 100)</li>
+  <li><a href="https://slackware.mirror.garr.it/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://slackware.mirror.garr.it/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (it, prio 100)</li>
+  <li><a href="https://mirror.bahnhof.net/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://mirror.bahnhof.net/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (se, prio 100)</li>
+  <li><a href="https://mirror1.sox.rs/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://mirror1.sox.rs/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (rs, prio 100)</li>
+  <li><a href="https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://sunsite.icm.edu.pl/pub/Linux/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (pl, prio 100)</li>
+  <li><a href="https://mirrors.nxthost.com/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://mirrors.nxthost.com/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (ro, prio 100)</li>
+  <li><a href="http://slackware.ip-connect.info/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">http://slackware.ip-connect.info/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (ua, prio 100)</li>
+  <li><a href="https://ifconfig.com.ua/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://ifconfig.com.ua/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (ua, prio 100)</li>
+  <li><a href="http://mirror.mephi.ru/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">http://mirror.mephi.ru/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (ru, prio 100)</li>
+  <li><a href="https://mirror.yandex.ru/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://mirror.yandex.ru/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (ru, prio 100)</li>
+  <li><a href="http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">http://ftp.is.co.za/mirror/ftp.slackware.com/pub/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (za, prio 100)</li>
+  <li><a href="https://mirror.lyrahosting.com/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://mirror.lyrahosting.com/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (sa, prio 100)</li>
+  <li><a href="https://mirror-hk.koddos.net/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz">https://mirror-hk.koddos.net/slackware/slackware-2.0.0/source/d/ipdms2/ipdm2s.9401.LINX.tar.gz</a> (hk, prio 100)</li>
+</ul>
+</div>
+
+</div>
+<address>Powered by <a href="http://mirrorbrain.org/">MirrorBrain</a></address>
+</div><!-- mirrorbrain-details -->
+<!--
+<html>
+<a href="http://mirrorbrain.org/">MirrorBrain</a>
+powered by <a href="http://slackware.com/">Slackware</a>!
+</html>
+-->

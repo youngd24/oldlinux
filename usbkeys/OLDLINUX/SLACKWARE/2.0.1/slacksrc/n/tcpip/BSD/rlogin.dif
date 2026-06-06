@@ -1,0 +1,881 @@
+--- Makefile
++++ Makefile	1994/02/22 14:19:01
+@@ -0,0 +1,15 @@
++CFLAGS = -O2 -fomit-frame-pointer -m486 \
++		-include /usr/include/bsd/bsd.h -I/usr/include/bsd \
++		-DBSD=43 # -DKERBEROS -DCRYPT
++LDLIBS = -lbsd # -lkrb -ldes
++LDFLAGS = -s -v
++
++rlogin: rlogin.o # krcmd.o kcmd.o des_rw.o
++
++install: rlogin
++	install -m4755 rlogin /usr/bin
++	install -m644 rlogin.1 /usr/man/man1
++
++clean:
++	rm -f *.o rlogin
++
+--- README.linux
++++ README.linux	1994/02/22 14:18:17
+@@ -0,0 +1,178 @@
++From: Andrew.Tridgell@anu.edu.au (Andrew Tridgell)
++Newsgroups: comp.os.linux
++Distribution: world
++Subject: some patches for rlogin, rlogind and sock.c
++Keywords: rlogin, rlogind, window size, SUNOS
++NNTP-Posting-Host: 150.203.15.21
++Message-ID: <1o3mg6INNs3a@manuel.anu.edu.au>
++Organization: CSLab, Autralian National Uni.
++Date: 16 Mar 1993 04:53:25 GMT
++Lines: 230
++
++Included below are some patches that address a couple of problems with
++rlogin and rlogind.
++
++
++1) rlogin to SunOS machines 
++
++The first problem is that rlogin to SunOS machines produces an IO
++error message and refuses to connect. This is caused by the fact that
++rlogin only receives 1 SIGURG interrupt despite there being two pieces
++of urgent data. I believe this is a problem with tcp.c but a work
++around is to modify rlogin.c so it detects this condition and acts
++accordingly (it send itself a SIGURG signal). There are also some
++fixes to the signal handling in rlogin.c as it assumes BSD style
++keep-the-handler behaviour but linux seems to have SYSV style
++disconnect-the-handler behaviour. The fix should work with either
++behaviour - it just does another signal() call at the end of each
++interrupt handler.
++
++When you fix the OOB handler (aka the urgent data handler) you must
++also fix a ioctl problem as the BSD ioctl emulator in libbsd doesn't
++seem to handle certain TIOCSETN calls. This is fixed in the patch by
++removing that ioctl call (which was never used before as urgent data
++never worked properly)
++
++
++2) rlogind does not produce OOB data (window resizing problem)
++
++when rlogind was ported to linux all the urgent data handling was
++turned off - presumably because of the "rlogin to SunOS" bug. These
++changes can now be undone and normal rlogind can be used as rlogin can
++now handle urgent data (if you apply the above fix). The noticable
++effect this has is that changing the size of an xterm will
++automatically change the "rows" and "cols" stty values without user
++intervention. This is especially useful when you resize a xterm
++containing emacs - emacs will now automatically resize to fill the window.
++
++
++3) sock.c closed/dead socket problem (rlogin to linux fails sometimes)
++
++This was a very annoying problem to me. I use rlogin to get into my
++linux box and after I have opened and closed a couple of windows from
++machine A to my linux box I found opening any more was impossible from
++A - but I could still open from another box.
++
++The problem can be fixed by insering two lines in sock.c so that
++sockets that are closed and dead are not returned by get_sock. They
++seem to eventually be able to be re-used after some timer goes off -
++so this is probably just a work around and not really fixing the
++problem.
++
++
++*** rlogin.c.orig	Fri Aug 13 22:03:21 1993
++--- rlogin.c	Mon Sep 20 19:29:39 1993
++***************
++*** 85,90 ****
++--- 85,101 ----
++  extern char *krb_realmofhost();
++  #endif
++  
+++ /*
+++ * rlogin has problems with urgent data when logging into suns which
+++ * results in the connection being closed with an IO error. SUN_KLUDGE
+++ * is a work around - the actual bug is probably in tcp.c in the kernel, but
+++ * I haven't managed to find it yet.
+++ * Andrew.Tridgell@anu.edu.au (12th March 1993)
+++ */
+++ #ifdef linux
+++ #define SUN_KLUDGE
+++ #endif
+++ 
++  #ifndef TIOCPKT_WINDOW
++  #define	TIOCPKT_WINDOW	0x80
++  #endif
++***************
++*** 555,560 ****
++--- 566,574 ----
++  		winsize = ws;
++  		sendwindow();
++  	}
+++ #ifdef SUN_KLUDGE
+++        signal(SIGWINCH,sigwinch);
+++ #endif
++  }
++  
++  /*
++***************
++*** 595,602 ****
++  int ppid, rcvcnt, rcvstate;
++  char rcvbuf[8 * 1024];
++  
++  void
++! oob()
++  {
++  	struct sgttyb sb;
++  	int atmark, n, out, rcvd;
++--- 609,626 ----
++  int ppid, rcvcnt, rcvstate;
++  char rcvbuf[8 * 1024];
++  
+++ void oob()
+++ {
+++ void oob_real();
+++ oob_real();
+++ #ifdef SUN_KLUDGE
+++ signal(SIGURG,oob);
+++ #endif
+++ }
+++ 
+++ 
++  void
++! oob_real()
++  {
++  	struct sgttyb sb;
++  	int atmark, n, out, rcvd;
++***************
++*** 635,641 ****
++--- 659,667 ----
++  		(void)ioctl(0, TIOCGETP, (char *)&sb);
++  		sb.sg_flags &= ~CBREAK;
++  		sb.sg_flags |= RAW;
+++ #ifndef SUN_KLUDGE
++  		(void)ioctl(0, TIOCSETN, (char *)&sb);
+++ #endif
++  		notc.t_stopc = -1;
++  		notc.t_startc = -1;
++  		(void)ioctl(0, TIOCSETC, (char *)&notc);
++***************
++*** 727,732 ****
++--- 753,778 ----
++  #endif
++  #endif
++  			rcvcnt = read(rem, rcvbuf, sizeof (rcvbuf));
+++ 
+++ /*
+++ * If we get a EIO from a read then it may mean that we have unread ungent data
+++ * waiting that is getting in the way. We probably have got more then one lot of
+++ * urgent data but we only got one SIGURG due to a problem in the kernel tcp.
+++ * We can try and fix this by sending ourself a SIGURG and pretending the error
+++ * never occurred. This might be a problem if we really _should_ be getting
+++ * a EIO for some unrelated reason. (AJT 3/93)
+++ *
+++ * Hmm, I just checked this with the current (NET-2e BETA-1) kernel, and
+++ * it seems that this patch isn't needed anymore.  FvK 09/20/93
+++ */
+++ #ifdef XX_SUN_KLUDGE
+++ 		if (rcvcnt < 0 && errno == EIO)
+++ 		  {
+++ 		    errno = 0;		    
+++ 		    kill(getpid(),SIGURG);
+++ 		    continue;
+++ 		  }		
+++ #endif    
++  		if (rcvcnt == 0)
++  			return (0);
++  		if (rcvcnt < 0) {
++***************
++*** 792,797 ****
++--- 838,846 ----
++  copytochild()
++  {
++  	(void)kill(child, SIGURG);
+++ #ifdef SUN_KLUDGE
+++   signal(SIGCHLD,copytochild);
+++ #endif
++  }
++  
++  msg(str)
+--- des_rw.c
++++ des_rw.c	1994/02/22 14:18:17
+@@ -0,0 +1,193 @@
++/*-
++ * Copyright (c) 1989 The Regents of the University of California.
++ * All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. All advertising materials mentioning features or use of this software
++ *    must display the following acknowledgement:
++ *	This product includes software developed by the University of
++ *	California, Berkeley and its contributors.
++ * 4. Neither the name of the University nor the names of its contributors
++ *    may be used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ */
++
++#ifndef lint
++static char sccsid[] = "@(#)des_rw.c	5.8 (Berkeley) 2/25/91";
++#endif /* not lint */
++
++#ifdef CRYPT
++#ifdef KERBEROS
++#include <sys/param.h>
++#include <kerberosIV/des.h>
++#include <kerberosIV/krb.h>
++#include <time.h>
++#include <unistd.h>
++#include <stdlib.h>
++#include <string.h>
++
++extern long		random();
++static unsigned char	des_inbuf[10240], storage[10240], *store_ptr;
++static bit_64		*key;
++static u_char		*key_schedule;
++
++/*
++ * NB: These routines will not function properly if NBIO
++ * 	is set
++ */
++
++/*
++ * des_set_key
++ *
++ * Set des encryption/decryption key for use by the des_read and
++ * des_write routines
++ *
++ * The inkey parameter is actually the DES initial vector,
++ * and the insched is the DES Key unwrapped for faster decryption
++ */
++
++void
++des_set_key(inkey, insched)
++	bit_64		*inkey;
++	u_char		*insched;
++{
++	key = inkey;
++	key_schedule = insched;
++}
++
++void
++des_clear_key()
++{
++	bzero((char *) key, sizeof(C_Block));
++	bzero((char *) key_schedule, sizeof(Key_schedule));
++}
++	
++
++int
++des_read(fd, buf, len)
++	int fd;
++	register char *buf;
++	int len;
++{
++	int nreturned = 0;
++	long net_len, rd_len;
++	int nstored = 0;
++
++	if (nstored >= len) {
++		(void) bcopy(store_ptr, buf, len);
++		store_ptr += len;
++		nstored -= len;
++		return(len);
++	} else if (nstored) {
++		(void) bcopy(store_ptr, buf, nstored);
++		nreturned += nstored;
++		buf += nstored;
++		len -= nstored;
++		nstored = 0;
++	}
++	
++	if (krb_net_read(fd, &net_len, sizeof(net_len)) != sizeof(net_len)) {
++		/* XXX can't read enough, pipe
++		   must have closed */
++		return(0);
++	}
++	net_len = ntohl(net_len);
++	if (net_len <= 0 || net_len > sizeof(des_inbuf)) {
++		/* preposterous length; assume out-of-sync; only
++		   recourse is to close connection, so return 0 */
++		return(0);
++	}
++	/* the writer tells us how much real data we are getting, but
++	   we need to read the pad bytes (8-byte boundary) */
++	rd_len = roundup(net_len, 8);
++	if (krb_net_read(fd, des_inbuf, rd_len) != rd_len) {
++		/* pipe must have closed, return 0 */
++		return(0);
++	}
++	(void) des_pcbc_encrypt(des_inbuf,	/* inbuf */
++			    storage,		/* outbuf */
++			    net_len,		/* length */
++			    key_schedule,	/* DES key */
++			    key,		/* IV */
++			    DECRYPT);		/* direction */
++
++	if(net_len < 8)
++		store_ptr = storage + 8 - net_len;
++	else
++		store_ptr = storage;
++
++	nstored = net_len;
++	if (nstored > len) {
++		(void) bcopy(store_ptr, buf, len);
++		nreturned += len;
++		store_ptr += len;
++		nstored -= len;
++	} else {
++		(void) bcopy(store_ptr, buf, nstored);
++		nreturned += nstored;
++		nstored = 0;
++	}
++	
++	return(nreturned);
++}
++
++static	unsigned char des_outbuf[10240];	/* > longest write */
++
++int
++des_write(fd, buf, len)
++	int fd;
++	char *buf;
++	int len;
++{
++	static	int	seeded = 0;
++	static	char	garbage_buf[8];
++	long net_len, garbage;
++
++	if(len < 8) {
++		if(!seeded) {
++			seeded = 1;
++			srandom((int) time((long *)0));
++		}
++		garbage = random();
++		/* insert random garbage */
++		(void) bcopy(&garbage, garbage_buf, MIN(sizeof(long),8));
++		/* this "right-justifies" the data in the buffer */
++		(void) bcopy(buf, garbage_buf + 8 - len, len);
++	}
++	/* pcbc_encrypt outputs in 8-byte (64 bit) increments */
++
++	(void) des_pcbc_encrypt((len < 8) ? garbage_buf : buf,
++			    des_outbuf,
++			    (len < 8) ? 8 : len,
++			    key_schedule,	/* DES key */
++			    key,		/* IV */
++			    ENCRYPT);
++
++	/* tell the other end the real amount, but send an 8-byte padded
++	   packet */
++	net_len = htonl(len);
++	(void) write(fd, &net_len, sizeof(net_len));
++	(void) write(fd, des_outbuf, roundup(len,8));
++	return(len);
++}
++#endif /* KERBEROS */
++#endif /* CRYPT */
+--- rlogin.c
++++ rlogin.c	1994/02/22 14:18:18
+@@ -60,11 +60,33 @@
+ #include <sys/wait.h>
+ 
+ #include <netinet/in.h>
++#if 0
+ #include <netinet/in_systm.h>
+ #include <netinet/ip.h>
++#endif
+ #include <netdb.h>
+ 
++#ifdef linux
++#define USE_TERMIO
++#define CQUIT	'\034'
++#define CSTART	'\021'
++#define CSTOP	'\023'
++#define CEOF	'\004'
++#endif
++
++#ifdef USE_TERMIO
++#include <termios.h>
++#define sg_flags c_lflag
++#define sg_ospeed c_cflag&CBAUD
++
++#define TIOCGETP TCGETS
++#define TIOCSETP TCSETS
++#define TIOCSETN TCSETSW
++struct	termios defmodes;
++struct	termios ixon_state;
++#else
+ #include <sgtty.h>
++#endif
+ #include <setjmp.h>
+ #include <varargs.h>
+ #include <errno.h>
+@@ -84,6 +106,17 @@
+ extern char *krb_realmofhost();
+ #endif
+ 
++/*
++* rlogin has problems with urgent data when logging into suns which
++* results in the connection being closed with an IO error. SUN_KLUDGE
++* is a work around - the actual bug is probably in tcp.c in the kernel, but
++* I haven't managed to find it yet.
++* Andrew.Tridgell@anu.edu.au (12th March 1993)
++*/
++#ifdef notdef
++#define SUN_KLUDGE
++#endif
++
+ #ifndef TIOCPKT_WINDOW
+ #define	TIOCPKT_WINDOW	0x80
+ #endif
+@@ -101,7 +134,7 @@
+ 
+ char *speeds[] = {
+ 	"0", "50", "75", "110", "134", "150", "200", "300", "600", "1200",
+-	"1800", "2400", "4800", "9600", "19200", "38400", "57600", "115200"
++	"1800", "2400", "4800", "9600", "19200", "38400"
+ };
+ 
+ #ifdef sun
+@@ -126,7 +159,11 @@
+ 	extern int optind;
+ 	struct passwd *pw;
+ 	struct servent *sp;
++#ifdef	USE_TERMIO
++	struct termios ttyb;
++#else
+ 	struct sgttyb ttyb;
++#endif
+ 	long omask;
+ 	int argoff, ch, dflag, one, uid;
+ 	char *host, *p, *user, term[1024];
+@@ -244,6 +281,13 @@
+ 
+ 	(void)get_window_size(0, &winsize);
+ 
++#ifdef USE_TERMIO
++	/**** moved before rcmd call so that if get a SIGPIPE in rcmd **/
++	/**** we will have the defmodes set already. ***/
++	(void)ioctl(fileno(stdin), TIOCGETP, &defmodes);
++	(void)ioctl(fileno(stdin), TIOCGETP,&ixon_state);
++#endif
++
+ 	(void)signal(SIGPIPE, lostpeer);
+ 	/* will use SIGUSR1 for window size hack, so hold it off */
+ 	omask = sigblock(sigmask(SIGURG) | sigmask(SIGUSR1));
+@@ -299,9 +343,11 @@
+ 	    setsockopt(rem, SOL_SOCKET, SO_DEBUG, &one, sizeof(one)) < 0)
+ 		(void)fprintf(stderr, "rlogin: setsockopt: %s.\n",
+ 		    strerror(errno));
++#ifdef IP_TOS
+ 	one = IPTOS_LOWDELAY;
+ 	if (setsockopt(rem, IPPROTO_IP, IP_TOS, (char *)&one, sizeof(int)) < 0)
+ 		perror("rlogin: setsockopt TOS (ignored)");
++#endif
+ 
+ 	(void)setuid(uid);
+ 	doit(omask);
+@@ -310,6 +356,36 @@
+ 
+ int child, defflags, deflflags, tabflag;
+ char deferase, defkill;
++
++#ifdef USE_TERMIO
++char defvtim, defvmin;
++struct tchars {
++        char    t_intrc;        /* interrupt */
++        char    t_quitc;        /* quit */
++        char    t_startc;       /* start output */
++        char    t_stopc;        /* stop output */
++        char    t_eofc;         /* end-of-file */
++        char    t_brkc;         /* input delimiter (like nl) */
++};
++#ifdef linux
++struct ltchars {
++	char	t_suspc;	/* stop process */
++	char	t_dsuspc;	/* delayed stop process */
++	char	t_rprntc;	/* rprint line */
++	char	t_flushc;	/* flush output */
++	char	t_werasc;	/* word erase */
++	char	t_lnextc;	/* literal next char */
++};
++
++#ifndef TIOCPKT_FLUSHWRITE
++#define TIOCPKT_FLUSHWRITE 0x02
++#define TIOCPKT_NOSTOP 0x10
++#define TIOCPKT_DOSTOP 0x20
++#endif
++#endif
++
++#endif
++
+ struct tchars deftc;
+ struct ltchars defltc;
+ struct tchars notc = { -1, -1, -1, -1, -1, -1 };
+@@ -318,29 +394,65 @@
+ doit(omask)
+ 	long omask;
+ {
++#ifdef	USE_TERMIO
++	struct termios sb;
++#else
+ 	struct sgttyb sb;
++#endif
+ 	void catch_child(), copytochild(), exit(), writeroob();
+ 
+ 	(void)ioctl(0, TIOCGETP, (char *)&sb);
+ 	defflags = sb.sg_flags;
++#ifdef USE_TERMIO
++	tabflag = sb.c_oflag & TABDLY;
++	defflags |= ECHO;
++	deferase = sb.c_cc[VERASE];
++	defkill = sb.c_cc[VKILL];
++	sb.c_cc[VMIN] = 1;
++	sb.c_cc[VTIME] = 1;
++	defvtim = sb.c_cc[VTIME];
++	defvmin = sb.c_cc[VMIN];
++	deftc.t_quitc = CQUIT;
++	deftc.t_startc = CSTART;
++	deftc.t_stopc = CSTOP;
++	deftc.t_eofc = CEOF;
++	deftc.t_brkc =  '\n';
++	defltc.t_suspc = sb.c_cc[VSUSP];        /* stop process */
++#ifdef V_DSUSP
++	defltc.t_dsuspc = sb.c_cc[VDSUSP];        /* delayed stop process */
++#else
++	defltc.t_dsuspc = 255;
++#endif
++	defltc.t_rprntc = sb.c_cc[VREPRINT];       /* rprint line */
++	defltc.t_flushc = sb.c_cc[VDISCARD];        /* flush output */
++	defltc.t_werasc = sb.c_cc[VWERASE];         /* word erase */
++	defltc.t_lnextc = sb.c_cc[VLNEXT];         /* literal next char */
++#else
+ 	tabflag = defflags & TBDELAY;
+ 	defflags &= ECHO | CRMOD;
+ 	deferase = sb.sg_erase;
+ 	defkill = sb.sg_kill;
+ 	(void)ioctl(0, TIOCLGET, (char *)&deflflags);
+ 	(void)ioctl(0, TIOCGETC, (char *)&deftc);
++	(void)ioctl(0, TIOCGLTC, (char *)&defltc);
++#endif
+ 	notc.t_startc = deftc.t_startc;
+ 	notc.t_stopc = deftc.t_stopc;
+-	(void)ioctl(0, TIOCGLTC, (char *)&defltc);
+ 	(void)signal(SIGINT, SIG_IGN);
+ 	setsignal(SIGHUP, exit);
+ 	setsignal(SIGQUIT, exit);
++#ifdef linux
++	(void)signal(SIGCHLD, catch_child);
++#endif
+ 	child = fork();
+ 	if (child == -1) {
+ 		(void)fprintf(stderr, "rlogin: fork: %s.\n", strerror(errno));
+ 		done(1);
+ 	}
+ 	if (child == 0) {
++#ifdef linux
++		signal(SIGCHLD, SIG_IGN);
++#endif
+ 		mode(1);
+ 		if (reader(omask) == 0) {
+ 			msg("connection closed.");
+@@ -359,7 +471,11 @@
+ 	(void)signal(SIGURG, copytochild);
+ 	(void)signal(SIGUSR1, writeroob);
+ 	(void)sigsetmask(omask);
++#ifdef	__linux__
++	sleep(1);
++#else
+ 	(void)signal(SIGCHLD, catch_child);
++#endif
+ 	writer();
+ 	msg("closed connection.");
+ 	done(0);
+@@ -416,7 +532,7 @@
+ 	int pid;
+ 
+ 	for (;;) {
+-		pid = wait3((int *)&status,
++		pid = wait3(&status,
+ 		    WNOHANG|WUNTRACED, (struct rusage *)0);
+ 		if (pid == 0)
+ 			return;
+@@ -546,6 +662,9 @@
+ 		winsize = ws;
+ 		sendwindow();
+ 	}
++#ifdef SUN_KLUDGE
++       signal(SIGWINCH,sigwinch);
++#endif
+ }
+ 
+ /*
+@@ -586,16 +705,35 @@
+ int ppid, rcvcnt, rcvstate;
+ char rcvbuf[8 * 1024];
+ 
++void oob()
++{
++void oob_real();
++oob_real();
++#ifdef SUN_KLUDGE
++signal(SIGURG,oob);
++#endif
++}
++
++
+ void
+-oob()
++oob_real()
+ {
++#ifdef	USE_TERMIO
++	struct termios sb;
++#else
+ 	struct sgttyb sb;
++#endif
+ 	int atmark, n, out, rcvd;
+-	char waste[BUFSIZ], mark;
++	unsigned char waste[BUFSIZ], mark;
+ 
++#ifdef	USE_TERMIO
++	out = TCOFLUSH;
++#else
+ 	out = O_RDWR;
++#endif
+ 	rcvd = 0;
+-	while (recv(rem, &mark, 1, MSG_OOB) < 0)
++	while (recv(rem, &mark, 1, MSG_OOB) < 0) {
++		sleep(1);
+ 		switch (errno) {
+ 		case EWOULDBLOCK:
+ 			/*
+@@ -618,30 +756,48 @@
+ 		default:
+ 			return;
+ 	}
++	}
+ 	if (mark & TIOCPKT_WINDOW) {
+ 		/* Let server know about window size changes */
+ 		(void)kill(ppid, SIGUSR1);
+ 	}
+ 	if (!eight && (mark & TIOCPKT_NOSTOP)) {
+ 		(void)ioctl(0, TIOCGETP, (char *)&sb);
++#ifdef	USE_TERMIO
++		sb.c_iflag &= ~IXON;
++/*		sb.sg_flags &= ~ICANON;	*/
++#else
+ 		sb.sg_flags &= ~CBREAK;
+ 		sb.sg_flags |= RAW;
++#ifndef SUN_KLUDGE
+ 		(void)ioctl(0, TIOCSETN, (char *)&sb);
++#endif
+ 		notc.t_stopc = -1;
+ 		notc.t_startc = -1;
+ 		(void)ioctl(0, TIOCSETC, (char *)&notc);
++#endif
++		(void)ioctl(0, TIOCSETN, (char *)&sb);
+ 	}
+ 	if (!eight && (mark & TIOCPKT_DOSTOP)) {
+ 		(void)ioctl(0, TIOCGETP, (char *)&sb);
++#ifdef USE_TERMIO
++/*		sb.sg_flags  |= ICANON;*/
++		sb.c_iflag |= IXON;
++#else
+ 		sb.sg_flags &= ~RAW;
+ 		sb.sg_flags |= CBREAK;
+-		(void)ioctl(0, TIOCSETN, (char *)&sb);
+ 		notc.t_stopc = deftc.t_stopc;
+ 		notc.t_startc = deftc.t_startc;
+ 		(void)ioctl(0, TIOCSETC, (char *)&notc);
++#endif
++		(void)ioctl(0, TIOCSETN, (char *)&sb);
+ 	}
+ 	if (mark & TIOCPKT_FLUSHWRITE) {
++#ifdef	USE_TERMIO
++		(void)ioctl(1, TCFLSH, (char *)out);
++#else
+ 		(void)ioctl(1, TIOCFLUSH, (char *)&out);
++#endif
+ 		for (;;) {
+ 			if (ioctl(rem, SIOCATMARK, &atmark) < 0) {
+ 				(void)fprintf(stderr, "rlogin: ioctl: %s.\n",
+@@ -671,8 +827,9 @@
+ 	 * to the top to restart appropriately.  Don't abort a pending write,
+ 	 * however, or we won't know how much was written.
+ 	 */
+-	if (rcvd && rcvstate == READING)
++	if (rcvd && rcvstate == READING) {
+ 		longjmp(rcvtop, 1);
++	}
+ }
+ 
+ /* reader: read from remote: line -> 1 */
+@@ -692,7 +849,8 @@
+ 	(void)signal(SIGTTOU, SIG_IGN);
+ 	(void)signal(SIGURG, oob);
+ 	ppid = getppid();
+-	(void)fcntl(rem, F_SETOWN, pid);
++/*	(void)fcntl(rem, F_SETOWN, pid); */
++	ioctl(rem, SIOCSPGRP, &pid); /* @@@ */
+ 	(void)setjmp(rcvtop);
+ 	(void)sigsetmask(omask);
+ 	for (;;) {
+@@ -718,6 +876,26 @@
+ #endif
+ #endif
+ 			rcvcnt = read(rem, rcvbuf, sizeof (rcvbuf));
++
++/*
++* If we get a EIO from a read then it may mean that we have unread ungent data
++* waiting that is getting in the way. We probably have got more then one lot of
++* urgent data but we only got one SIGURG due to a problem in the kernel tcp.
++* We can try and fix this by sending ourself a SIGURG and pretending the error
++* never occurred. This might be a problem if we really _should_ be getting
++* a EIO for some unrelated reason. (AJT 3/93)
++*
++* Hmm, I just checked this with the current (NET-2e BETA-1) kernel, and
++* it seems that this patch isn't needed anymore.  FvK 09/20/93
++*/
++#ifdef XX_SUN_KLUDGE
++		if (rcvcnt < 0 && errno == EIO)
++		  {
++		    errno = 0;		    
++		    kill(getpid(),SIGURG);
++		    continue;
++		  }		
++#endif    
+ 		if (rcvcnt == 0)
+ 			return (0);
+ 		if (rcvcnt < 0) {
+@@ -733,41 +911,97 @@
+ mode(f)
+ {
+ 	struct ltchars *ltc;
++#ifdef	USE_TERMIO
++	struct termios sb;
++#else
+ 	struct sgttyb sb;
+ 	struct tchars *tc;
+ 	int lflags;
++	(void)ioctl(0, TIOCLGET, (char *)&lflags);
++#endif
+ 
+ 	(void)ioctl(0, TIOCGETP, (char *)&sb);
+-	(void)ioctl(0, TIOCLGET, (char *)&lflags);
+ 	switch(f) {
+ 	case 0:
++#ifdef USE_TERMIO
++		/*
++		**      remember whether IXON was set, so it can be restored
++		**      when mode(1) is next done
++		*/
++		(void) ioctl(fileno(stdin), TIOCGETP, &ixon_state);
++		/*
++		**      copy the initial modes we saved into sb; this is
++		**      for restoring to the initial state
++		*/
++		(void)memcpy(&sb, &defmodes, sizeof(defmodes));
++
++#else
+ 		sb.sg_flags &= ~(CBREAK|RAW|TBDELAY);
+ 		sb.sg_flags |= defflags|tabflag;
+-		tc = &deftc;
+-		ltc = &defltc;
+ 		sb.sg_kill = defkill;
+ 		sb.sg_erase = deferase;
+ 		lflags = deflflags;
++		tc = &deftc;
++		ltc = &defltc;
++#endif
+ 		break;
+ 	case 1:
++#ifdef USE_TERMIO
++                /*
++                **      turn off output mappings
++                */
++                sb.c_oflag &= ~(ONLCR|OCRNL);
++                /*
++                **      turn off canonical processing and character echo;
++                **      also turn off signal checking -- ICANON might be
++                **      enough to do this, but we're being careful
++                */
++                sb.c_lflag &= ~(ECHO|ICANON|ISIG);
++                sb.c_iflag &= ~(ICRNL);
++                sb.c_cc[VTIME] = 1;
++                sb.c_cc[VMIN] = 1;
++                if (eight)
++                        sb.c_iflag &= ~(ISTRIP);
++                /* preserve tab delays, but turn off tab-to-space expansion */
++                if ((sb.c_oflag & TABDLY) == TAB3)
++                        sb.c_oflag &= ~TAB3;
++                /*
++                **  restore current flow control state
++                */
++                if ((ixon_state.c_iflag & IXON) && ! eight ) {
++                    sb.c_iflag |= IXON;
++                } else {
++                    sb.c_iflag &= ~IXON;
++                }
++               sb.c_cc[VSUSP] = 255;
++               sb.c_cc[VEOL] = 255;
++               sb.c_cc[VREPRINT] = 255;
++               sb.c_cc[VDISCARD] = 255;
++               sb.c_cc[VWERASE] = 255;
++               sb.c_cc[VLNEXT] = 255;
++               sb.c_cc[VEOL2] = 255;
++#else /* ! USE_TERMIO */
+ 		sb.sg_flags |= (eight ? RAW : CBREAK);
+ 		sb.sg_flags &= ~defflags;
+ 		/* preserve tab delays, but turn off XTABS */
+ 		if ((sb.sg_flags & TBDELAY) == XTABS)
+ 			sb.sg_flags &= ~TBDELAY;
+ 		tc = &notc;
+-		ltc = &noltc;
+ 		sb.sg_kill = sb.sg_erase = -1;
+ 		if (litout)
+ 			lflags |= LLITOUT;
++		ltc = &noltc;
++#endif
+ 		break;
+ 	default:
+ 		return;
+ 	}
++#ifndef	USE_TERMIO
+ 	(void)ioctl(0, TIOCSLTC, (char *)ltc);
+ 	(void)ioctl(0, TIOCSETC, (char *)tc);
+-	(void)ioctl(0, TIOCSETN, (char *)&sb);
+ 	(void)ioctl(0, TIOCLSET, (char *)&lflags);
++#endif
++	(void)ioctl(0, TIOCSETN, (char *)&sb);
+ }
+ 
+ void
+@@ -783,6 +1017,9 @@
+ copytochild()
+ {
+ 	(void)kill(child, SIGURG);
++#ifdef SUN_KLUDGE
++  signal(SIGCHLD,copytochild);
++#endif
+ }
+ 
+ msg(str)

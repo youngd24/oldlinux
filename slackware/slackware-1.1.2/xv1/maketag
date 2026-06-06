@@ -1,0 +1,32 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+rm -f /tmp/SeTnewtag # empty the return file
+dialog --title "SELECTING PACKAGES FOR SERIES XV (OpenLook)" \
+       --checklist "Please select the packages you wish to install \
+from series XV. Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the packages you wish to install. Recommended packages have \
+already been selected for you, but you may unselect them if you wish. \
+Press ENTER when you are \
+done." 18 70 7 \
+"xvol32" "Xview 3.2 (OpenLook Window Manager)" "on" \
+"xv32_so" "Shared libraries for Xview 3.2" "on" \
+"xv32_sa" "Libraries for developing Xview apps" "on" \
+"xv32_a" "Static libraries for developing Xview apps" "off" \
+"xv32exmp" "Sample programs for Xview" "off" \
+"xvinc32" "Include files for Xview programming" "on" \
+"xvmenus" "Menus for the OpenLook Window Manager" "on" \
+2> /tmp/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f /tmp/SeTpkgs
+ exit
+fi
+cat /dev/null > /tmp/SeTnewtag
+for PACKAGE in xv32_a xv32exmp xvinc32 xvmenus xvol32 xv32_sa xv32_so ; do
+ if fgrep \"$PACKAGE\" /tmp/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> /tmp/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> /tmp/SeTnewtag
+ fi
+done
+rm -f /tmp/SeTpkgs

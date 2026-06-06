@@ -1,0 +1,12 @@
+CONTENTS: emacsbin 
+emacsbin:  GNU Emacs 19.25
+emacsbin:
+emacsbin:  The base binaries for the GNU Emacs editor/environment v. 19.25
+emacsbin:  This version supports X. If you do not have X installed, you will
+emacsbin:  also have to install the replacement /usr/bin/emacs-19.25 that 
+emacsbin:  does not require the X11, Xaw, and Xt libraries.
+emacsbin:
+emacsbin:  The emacs binary in this package was configured with these options:
+emacsbin:      --with-x11 --with-x-toolkit --prefix=/usr
+emacsbin:
+emacsbin:

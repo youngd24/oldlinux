@@ -1,0 +1,4 @@
+00index.txt         104  
+etc.printcap       1497  
+inetd.conf         2987  
+services           5565  

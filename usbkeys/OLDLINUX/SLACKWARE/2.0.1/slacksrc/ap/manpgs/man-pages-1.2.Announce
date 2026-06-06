@@ -1,0 +1,63 @@
+
+
+The Linux Documentation Project proudly announces. . .
+
+
+    man-pages-1.2.tar.gz - section 2, 3, 4, 5, 7, and 9 man pages for Linux
+
+Differences from version 1.0:
+    Thanks to Giorgio Ciucci for the following *NEW* man pages:
+        msgctl.2        msgrcv.2        semget.2        shmdt.2
+        msgget.2        msgsnd.2        semop.2         ipc.5
+        msgop.2         semctl.2        shmat.2         ftok.3
+    and for updates to shmctl.2, shmget.2, and shmop.2.
+
+    Michael Haardt pointed out that some general formatting problems needed
+    fixing:
+            Multi-word arguments to .SH are now in quotes
+            Many instances of - (hyphen) were changed to \- (minus)
+            Several instances of \- (minus) were changed to \(em (dash)
+
+    shells.5 updated (thanks to Michael Haardt)
+    gethostid.2 updated (thanks for Mitchum DSouza)
+    Minor updates to write.2, man.7, and a few other man pages.
+    Fully converted BSD man pages for:
+        all of the stdio functions (includes printf and scanf)
+        alloca, popen, stdarg, and exec
+
+
+Here is a breakdown of what this distribution contains:
+
+Section 2 = system calls
+Section 3 = libc calls
+Section 4 = devices (e.g., hd, sd)
+Section 5 = file formats (e.g., wtmp, /etc/passwd)
+Section 7 = macro packages, etc. (e.g., nroff, ascii)
+Section 9 = internal kernel routines (for kernel hackers)
+
+(There are no section 1 or section 8 man pages because these should be
+distributed with the binaries they are written for.)
+
+Note that only Section 2 is really complete, but Section 3 contains several
+hundred man pages.  I have included all completed man pages in this
+distribution to give people an idea of what is available.  If you want to
+write some man pages, please join the linux-activists DOC channel.
+
+To install this distribution, do something like:
+
+    cd /usr/man; zcat man-pages-1.2.tar.gz | tar xvpf -
+
+I would like to thank the following people (in alphabetical order by first
+name) who wrote, edited, or otherwise contributed to this project:
+
+Alan Cox
+Dan Miner
+Darren Senn
+David Metcalfe
+Drew Eckhardt
+Giorgio Ciucci
+Ian Jackson
+Luigi P. Bai
+Michael Haardt
+Mitchum DSouza
+Thomas Koenig
