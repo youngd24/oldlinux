@@ -1,5 +1,0 @@
-if fgrep 'bin/ash' etc/shells 1> /dev/null 2> /dev/null; then
- GOOD=y
-else
- echo "/bin/ash" >> etc/shells
-fi

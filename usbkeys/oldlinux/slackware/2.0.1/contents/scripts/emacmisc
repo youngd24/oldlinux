@@ -1,2 +1,0 @@
-( cd usr/lib/emacs/19.26/etc ; rm -rf DOC )
-( cd usr/lib/emacs/19.26/etc ; ln -sf DOC-19.26.1 DOC )

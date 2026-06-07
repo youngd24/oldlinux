@@ -1,8 +1,0 @@
-( cd usr/man/preformat/cat4 ; rm -rf zero.4.gz )
-( cd usr/man/preformat/cat4 ; ln -sf null.4.gz zero.4.gz )
-( cd usr/man/preformat/cat4 ; rm -rf kmem.4.gz )
-( cd usr/man/preformat/cat4 ; ln -sf mem.4.gz kmem.4.gz )
-( cd usr/man/preformat/cat4 ; rm -rf port.4.gz )
-( cd usr/man/preformat/cat4 ; ln -sf mem.4.gz port.4.gz )
-( cd usr/man/preformat/cat5 ; rm -rf wtmp.5.gz )
-( cd usr/man/preformat/cat5 ; ln -sf utmp.5.gz wtmp.5.gz )

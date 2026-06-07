@@ -1,9 +1,0 @@
-F INETD.CON;1                       	inetd.conf
-F PROTOCOL.;1                       	protocols
-F RNUSERS.H;1                       	rnusers.h
-F RNUSERS.X;1                       	rnusers.x
-F RUSERS.H;1                        	rusers.h
-F RUSERS.X;1                        	rusers.x
-F RWALL.H;1                         	rwall.h
-F RWALL.X;1                         	rwall.x
-F SERVICES.;1                       	services

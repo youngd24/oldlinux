@@ -1,4 +1,0 @@
-00index.txt         104  
-zSystem.map.zfs   93450  
-zfs              428548  
-zfs.log            4682  

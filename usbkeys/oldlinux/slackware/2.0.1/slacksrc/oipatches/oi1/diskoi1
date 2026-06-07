@@ -1,3 +1,0 @@
-oilib:    Shared OI library (.so and .sa)                                  [REQ]
-oiinc:    OI include files                                                 [REQ]
-oimisc:   OI configuration files, etc                                      [REQ]

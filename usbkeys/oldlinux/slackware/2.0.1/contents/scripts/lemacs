@@ -1,8 +1,0 @@
-( cd usr/lib/lemacs ; rm -rf lock )
-( cd usr/lib/lemacs ; ln -sf /var/lock/emacs lock )
-( cd usr/lib/lemacs-19.10/etc ; rm -rf sample.Xdefaults )
-( cd usr/lib/lemacs-19.10/etc ; ln -sf Emacs.ad sample.Xdefaults )
-( cd usr/lib/lemacs-19.10 ; rm -rf info )
-( cd usr/lib/lemacs-19.10 ; ln -sf /usr/info info )
-( cd usr/bin ; rm -rf lemacs )
-( cd usr/bin ; ln -sf lemacs-19.10 lemacs )

@@ -1,4 +1,0 @@
-( cd lib ; rm -rf libUnidraw.so.3.1.2 )
-( cd lib ; ln -sf  /usr/interviews/lib/libUnidraw.so.3.1.2 libUnidraw.so.3.1.2 )
-( cd lib ; rm -rf libIV.so.3.1.2 )
-( cd lib ; ln -sf  /usr/interviews/lib/libIV.so.3.1.2 libIV.so.3.1.2 )

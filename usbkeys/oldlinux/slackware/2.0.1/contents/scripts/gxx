@@ -1,2 +1,0 @@
-( cd usr/bin ; rm -rf c++ )
-( cd usr/bin ; ln -sf  g++ c++ )

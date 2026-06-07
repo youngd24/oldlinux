@@ -1,6 +1,0 @@
-( cd usr/lib ; rm -rf elm.rc )
-( cd usr/lib ; ln -sf  /var/lib/elm/elm.rc elm.rc )
-( cd usr/lib ; rm -rf elm.rc )
-( cd usr/lib ; ln -sf  /var/lib/elm/elm.rc elm.rc )
-( cd usr/man/preformat/cat1 ; rm -rf wnewmail.1.gz )
-( cd usr/man/preformat/cat1 ; ln -sf  newmail.1.gz wnewmail.1.gz )

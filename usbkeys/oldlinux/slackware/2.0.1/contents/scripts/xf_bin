@@ -1,6 +1,0 @@
-( cd usr/bin ; rm -rf X11 )
-( cd usr/bin ; ln -sf  /usr/X11/bin X11 )
-( cd usr/lib ; rm -rf X11 )
-( cd usr/lib ; ln -sf  /usr/X11/lib/X11 X11 )
-( cd usr/include ; rm -rf X11 )
-( cd usr/include ; ln -sf  /usr/X11/include/X11 X11 )

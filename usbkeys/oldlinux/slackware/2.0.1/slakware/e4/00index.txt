@@ -1,3 +1,0 @@
-00index.txt          78  
-diske4              159  
-elisp1.tgz      1433395  

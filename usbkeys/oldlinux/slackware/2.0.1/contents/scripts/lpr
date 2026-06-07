@@ -1,2 +1,0 @@
-( cd usr/bin ; rm -rf lpc )
-( cd usr/bin ; ln -sf  /usr/sbin/lpc lpc )

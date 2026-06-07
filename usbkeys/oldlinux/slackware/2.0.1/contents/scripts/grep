@@ -1,4 +1,0 @@
-( cd usr/bin ; rm -rf fgrep )
-( cd usr/bin ; ln -sf  grep fgrep )
-( cd usr/bin ; rm -rf egrep )
-( cd usr/bin ; ln -sf  grep egrep )

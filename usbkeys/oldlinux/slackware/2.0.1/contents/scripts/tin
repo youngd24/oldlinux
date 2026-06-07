@@ -1,2 +1,0 @@
-( cd usr/bin ; rm -rf rtin )
-( cd usr/bin ; ln -sf tin rtin )

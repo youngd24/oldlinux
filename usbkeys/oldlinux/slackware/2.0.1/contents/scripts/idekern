@@ -1,8 +1,0 @@
-#echo "Configuring the kernel to mount the root partition read-only..."
-rdev -R vmlinuz 1
-rdev -v vmlinuz -1
-rdev -r vmlinuz 0
-if [ -r zImage ]; then
-# echo "Moving your old kernel into /tmp..."
- mv zImage tmp
-fi

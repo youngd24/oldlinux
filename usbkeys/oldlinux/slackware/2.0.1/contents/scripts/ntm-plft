@@ -1,2 +1,0 @@
-( cd usr/bin ; rm -rf plftex )
-( cd usr/bin ; ln -sf virtex plftex )

@@ -1,2 +1,0 @@
-( cd usr/bin ; rm -rf turktex )
-( cd usr/bin ; ln -sf virtex turktex )

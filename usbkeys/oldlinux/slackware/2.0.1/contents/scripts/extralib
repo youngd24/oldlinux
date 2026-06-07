@@ -1,3 +1,0 @@
-#!/bin/sh
-rm -f usr/lib/libg.a
-mv usr/lib/libg.a-replace-the-link-with-this usr/lib/libg.a

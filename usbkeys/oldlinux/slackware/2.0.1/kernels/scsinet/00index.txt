@@ -1,4 +1,0 @@
-00index.txt         104  
-scsinet          354820  
-scsinet.log        4031  
-zSystem.map       77677  

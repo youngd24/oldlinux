@@ -1,4 +1,0 @@
-( cd sbin ; rm -rf telinit )
-( cd sbin ; ln -sf  init telinit )
-( cd sbin ; rm -rf reboot )
-( cd sbin ; ln -sf  halt reboot )

@@ -1,2 +1,0 @@
-( cd usr/lib ; rm -rf deliver )
-( cd usr/lib ; ln -sf  /var/deliver deliver )

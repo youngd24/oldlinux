@@ -1,4 +1,0 @@
-I couldn't get xfig to compile, due to a problem with the Imakefile. I don't
-know how to fix it, but am including the only xfig source I could find anyway.
-The xfig included in Slackware is the binary distribution that was uploaded
-to Sunsite.

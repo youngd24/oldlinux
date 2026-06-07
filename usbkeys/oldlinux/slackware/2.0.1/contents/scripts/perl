@@ -1,6 +1,0 @@
-( cd usr/bin ; rm -rf perl )
-( cd usr/bin ; ln -sf perl4.036 perl )
-( cd usr/bin ; rm -rf taintperl )
-( cd usr/bin ; ln -sf tperl4.036 taintperl )
-( cd usr/bin ; rm -rf suidperl )
-( cd usr/bin ; ln -sf sperl4.036 suidperl )

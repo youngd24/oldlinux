@@ -1,5 +1,0 @@
-00index.txt         130  
-README              179  
-gnat-1.82.lsm       844  
-gnat_bin.tgz    1486205  
-gnat_lib.tgz     571944  

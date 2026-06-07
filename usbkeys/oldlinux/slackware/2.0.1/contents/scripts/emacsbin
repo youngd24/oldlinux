@@ -1,4 +1,0 @@
-( cd usr/bin ; rm -rf emacs )
-( cd usr/bin ; ln -sf emacs-19.26-with-x11 emacs )
-( cd usr/lib/emacs ; rm -rf lock )
-( cd usr/lib/emacs ; ln -sf /var/lock/emacs lock )

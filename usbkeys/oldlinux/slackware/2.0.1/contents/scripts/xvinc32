@@ -1,1 +1,0 @@
-( cd usr/openwin/include/uit ; ln -sf  ./ListChoice.h ScrollChoice.h )

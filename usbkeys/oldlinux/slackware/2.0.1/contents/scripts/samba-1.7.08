@@ -1,2 +1,0 @@
-( cd usr/lib/samba ; rm -rf configs )
-( cd usr/lib/samba ; ln -sf /var/lib/samba configs )

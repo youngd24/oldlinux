@@ -1,7 +1,0 @@
-F TCPDUMP.;1                        	tcpdump
-F TCPDUMP.LSM;1                     	tcpdump.lsm
-F TCPDUMP.REA;1                     	tcpdump.README
-F TCPDUMP0.GZ;1                     	tcpdump.bin.tar.gz
-F TCPDUMP1.GZ;1                     	tcpdump.old.tar.gz
-F TCPDUMP2.GZ;1                     	tcpdump.src.tar.gz
-F TCPDUMP_.;1                       	tcpdump-net3-diffs

@@ -1,4 +1,0 @@
-( cd usr/man/preformat/cat1 ; rm -rf atobm.1x.gz )
-( cd usr/man/preformat/cat1 ; ln -sf  bitmap.1x.gz atobm.1x.gz )
-( cd usr/man/preformat/cat1 ; rm -rf bmtoa.1x.gz )
-( cd usr/man/preformat/cat1 ; ln -sf  bitmap.1x.gz bmtoa.1x.gz )

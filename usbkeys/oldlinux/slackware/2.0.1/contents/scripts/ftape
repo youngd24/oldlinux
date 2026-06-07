@@ -1,2 +1,0 @@
-( cd boot ; rm -rf ftape.o )
-( cd boot ; ln -sf  ftape.o-0.9.10.patched ftape.o )

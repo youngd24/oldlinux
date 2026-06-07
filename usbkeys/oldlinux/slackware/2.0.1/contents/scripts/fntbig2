@@ -1,9 +1,0 @@
-if [ ! -r /tmp/SeTcolor -a ! "$COLOR" = "on" ]; then
- echo "Running mkfontdir..."
-fi
-cd usr/X11/lib/fonts/misc
-if [ -r /usr/X11/bin/mkfontdir ]; then
-  /usr/X11/bin/mkfontdir
-elif [ -r /mnt/usr/X11/bin/mkfontdir ]; then
-  /mnt/usr/X11/bin/mkfontdir
-fi

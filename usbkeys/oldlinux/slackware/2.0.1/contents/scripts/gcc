@@ -1,4 +1,0 @@
-( cd usr/bin ; rm -rf cc )
-( cd usr/bin ; ln -sf  gcc cc )
-( cd lib ; rm -rf cpp )
-( cd lib ; ln -sf  /usr/lib/gcc-lib/i486-linux/2.5.8/cpp cpp )

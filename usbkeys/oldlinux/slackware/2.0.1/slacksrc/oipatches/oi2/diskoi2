@@ -1,4 +1,0 @@
-uib:      ObjectBuilder binaries, config files and other programs          [REQ]
-oidemos:  OI demo programs                                                 [OPT]
-oidoc:    OI documentation, ObjectBuilder documentation, COPYING, etc      [REC]
-oiman:    OI manual pages                                                  [OPT]

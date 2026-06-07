@@ -1,3 +1,0 @@
-A patch to use SVGAlib with ghostscript 2.6.1 to view Postscript documents
-on the screen. Allows the image to be resized and moved via command line
-options.

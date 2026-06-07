@@ -1,9 +1,0 @@
-F CPP_2_5_.GZ;1                     	cpp-2.5.8.tar.gz
-D OI1                               	oi1
-D OI2                               	oi2
-D OI3                               	oi3
-F OI_4_0.DIF;1                      	OI-4.0.diff
-F OI_4_0_G.GZ;1                     	OI-4.0-gcc-2.5.patches.tar.gz
-F README_O.PAT;1                    	README.OI-4.0.patch
-F __OLD_SH.O;1                      	__old_shared.o
-F __OLD_ST.O;1                      	__old_static.o

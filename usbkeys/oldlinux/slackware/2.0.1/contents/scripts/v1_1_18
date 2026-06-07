@@ -1,4 +1,0 @@
-( cd usr/src ; rm -rf linux )
-( cd usr/src ; ln -sf linux-1.1.18 linux )
-( cd usr/src/linux-1.1.18/drivers/block ; rm -rf ramdisk.c )
-( cd usr/src/linux-1.1.18/drivers/block ; ln -sf ramdisk.c-standard ramdisk.c )

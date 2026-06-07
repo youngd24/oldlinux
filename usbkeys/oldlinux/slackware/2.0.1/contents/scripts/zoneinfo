@@ -1,6 +1,0 @@
-( cd usr/lib/zoneinfo ; rm -rf posixrules )
-( cd usr/lib/zoneinfo ; ln -sf  localtime posixrules )
-( cd usr/lib/zoneinfo ; rm -rf timeconfig )
-( cd usr/lib/zoneinfo ; ln -sf  /var/adm/setup/setup.timeconfig timeconfig )
-( cd usr/lib/zoneinfo ; rm -rf localtime )
-( cd usr/lib/zoneinfo ; ln -sf  /var/lib/zoneinfo/localtime localtime )

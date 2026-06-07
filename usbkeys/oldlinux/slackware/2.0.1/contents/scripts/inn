@@ -1,4 +1,0 @@
-( cd usr/bin ; rm -rf inews )
-( cd usr/bin ; ln -sf /usr/lib/news/inews inews )
-( cd var/lib ; rm -rf news )
-( cd var/lib ; ln -sf /usr/lib/news news )

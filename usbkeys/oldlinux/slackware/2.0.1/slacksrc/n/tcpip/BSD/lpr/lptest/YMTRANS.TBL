@@ -1,6 +1,0 @@
-F LPTEST.1;1                        	lptest.1
-F LPTEST.;1                         	lptest
-F LPTEST.C;1                        	lptest.c
-F LPTEST.O;1                        	lptest.o
-F MAKEFILE.;1                       	Makefile
-F MAKEFILE.ORI;1                    	Makefile.orig

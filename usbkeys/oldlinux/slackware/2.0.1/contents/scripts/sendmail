@@ -1,8 +1,0 @@
-( cd usr/bin ; rm -rf newaliases )
-( cd usr/bin ; ln -sf /usr/sbin/sendmail newaliases )
-( cd usr/bin ; rm -rf mailq )
-( cd usr/bin ; ln -sf /usr/sbin/sendmail mailq )
-( cd usr/lib ; rm -rf sendmail )
-( cd usr/lib ; ln -sf /usr/sbin/sendmail sendmail )
-( cd usr/lib ; rm -rf deliver )
-( cd usr/lib ; ln -sf /var/deliver deliver )

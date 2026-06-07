@@ -1,2 +1,0 @@
-( cd sbin ; rm -rf netconfig )
-( cd sbin ; ln -sf  netconfig.color netconfig )

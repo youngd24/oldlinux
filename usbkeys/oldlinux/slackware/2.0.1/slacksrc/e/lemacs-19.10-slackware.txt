@@ -1,9 +1,0 @@
-
-The version of LUCID Emacs in Slackware was compiled thusly:
-
-configure i486-slackware-linux --with-gcc --cflags="-O2" --prefix=/usr
- --with-xpm
-
-Cheers!
-
-Pat

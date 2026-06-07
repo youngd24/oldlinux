@@ -1,7 +1,0 @@
-# Tagfile for emacs series
-emacsbin: ADD
-emacmisc: REC
-elispc:   REC
-elisp1:   OPT
-elisp2:   OPT
-emac_nox: OPT

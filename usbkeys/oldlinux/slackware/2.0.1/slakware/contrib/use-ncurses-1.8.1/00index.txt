@@ -1,4 +1,0 @@
-00index.txt         104  
-hdsetup.tgz       95351  
-mc-0.5.tgz        57847  
-mc-0.5.txt          512  

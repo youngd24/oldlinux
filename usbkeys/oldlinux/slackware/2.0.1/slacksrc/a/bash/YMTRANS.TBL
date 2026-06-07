@@ -1,3 +1,0 @@
-F BASH_1_0.GZ;1                     	bash-1.12.tar.gz
-F BASH_1_1.GZ;1                     	bash-1.13.5.tar.gz
-L BASH_1_2.GZ;1                     	bash-1.14.tar.gz	../../../gnu/bash-1.14.tar.gz

@@ -1,2 +1,0 @@
-( cd usr/X11/lib ; rm -rf libPEX5.so.1 )
-( cd usr/X11/lib ; ln -sf  libPEX5.so.1.1.0 libPEX5.so.1 )

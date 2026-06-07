@@ -1,2 +1,0 @@
-( cd usr/bin ; rm -rf amstex )
-( cd usr/bin ; ln -sf virtex amstex )

@@ -1,4 +1,0 @@
-( cd usr/lib/texmf/fonts/cm/sauter21/tfm ; rm -rf lcircle10.tfm )
-( cd usr/lib/texmf/fonts/cm/sauter21/tfm ; ln -sf circle10.tfm lcircle10.tfm )
-( cd usr/lib/texmf/fonts/cm/sauter21/tfm ; rm -rf lcirclew10.tfm )
-( cd usr/lib/texmf/fonts/cm/sauter21/tfm ; ln -sf circlew10.tfm lcirclew10.tfm )
