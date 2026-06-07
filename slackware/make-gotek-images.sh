@@ -1,7 +1,7 @@
 #!/bin/bash
-# make_slack201_imgs.sh
+# make-gotek-images.sh
 #
-# Creates GoTek-compatible .img files from a local mirror of Slackware 2.0.1
+# Creates GoTek-compatible .img files from a local mirror of a Slackware version.
 #
 # GoTek drives emulate floppy drives using .img files stored on a USB stick.
 # Each .img must be exactly 1.44MB (2880 x 512-byte sectors) to be recognized
@@ -12,30 +12,45 @@
 #   rootdisks/  — raw root ramdisk images, same treatment as boot disks
 #   slakware/   — FAT12 data disks containing package sets (a, ap, d, x, etc.)
 #
-# Run this from the root of your slackware-2.0.1 tree, i.e. the directory
-# containing bootdsks.144/, rootdsks.144/, and slakware/
+# Output is written to gotek/<version>/ alongside this script.
 #
 # Requires: dosfstools (mkfs.fat), coreutils (dd, cp)
 # WSL2: sudo apt install dosfstools
 #
-# Usage: bash make_slack201_imgs.sh [--force]
-#   --force removes output_dir if it already exists
+# Usage: bash make-gotek-images.sh <slackware-dir> [--force]
+#   <slackware-dir>  path to the slackware version directory (e.g. slackware-2.0.0)
+#   --force          remove output directory if it already exists
 
 set -e
 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # Parse command line arguments
 FORCE=0
+TARGET_DIR=""
 for arg in "$@"; do
     case "$arg" in
         --force) FORCE=1 ;;
+        -*) echo "ERROR: Unknown option: $arg"; exit 1 ;;
+        *)  TARGET_DIR="$arg" ;;
     esac
 done
 
-# Source directory layout — must exist before this script is run
-SLAKWARE_DIR="./slakware"       # package set subdirs (a1, ap2, x3, etc.)
-BOOT_DIR="./bootdsks.144"       # gzipped raw kernel images
-ROOT_DIR="./rootdsks.144"       # gzipped raw root ramdisk images
-OUT_DIR="./img_output"          # all generated .img files go here
+if [ -z "$TARGET_DIR" ]; then
+    echo "Usage: $(basename "$0") <slackware-dir> [--force]"
+    echo "  e.g. $(basename "$0") slackware-2.0.0"
+    exit 1
+fi
+
+# Resolve to absolute path and derive the version name from the directory basename
+TARGET_DIR="$( cd "$TARGET_DIR" && pwd )"
+VERSION="$(basename "$TARGET_DIR")"
+
+# Source directory layout — must exist inside the target tree
+SLAKWARE_DIR="$TARGET_DIR/slakware"       # package set subdirs (a1, ap2, x3, etc.)
+BOOT_DIR="$TARGET_DIR/bootdsks.144"       # gzipped raw kernel images
+ROOT_DIR="$TARGET_DIR/rootdsks.144"       # gzipped raw root ramdisk images
+OUT_DIR="$SCRIPT_DIR/gotek/$VERSION"      # all generated .img files go here
 
 # Number of disks in each package series.
 # These match the disk counts used by the original Slackware makeflop script.
@@ -94,7 +109,7 @@ check_dirs() {
     echo "checking for needed directories"
     for d in "$SLAKWARE_DIR" "$BOOT_DIR" "$ROOT_DIR"; do
         if [ ! -d "$d" ]; then
-            echo "ERROR: Directory '$d' not found. Run from the slackware-2.0.1 root."
+            echo "ERROR: Directory '$d' not found in $TARGET_DIR."
             ok=0
         fi
     done
@@ -148,7 +163,7 @@ make_fat_image() {
 ##############################################################################
 
 echo "=========================================="
-echo " Slackware 2.0.1 GoTek image builder"
+echo " Slackware GoTek image builder: $VERSION"
 echo "=========================================="
 echo
 
