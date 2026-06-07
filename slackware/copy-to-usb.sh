@@ -4,6 +4,10 @@
 # Copies GoTek image directories from gotek/<version>/ into the USB key tree
 # at ../usbkeys/oldlinux/slackware/<version>/.
 #
+# Also converts gotek/README.md to plain text and writes it to
+# ../usbkeys/oldlinux/slackware/README.txt for end-user reference.
+# Uses pandoc if available, otherwise falls back to a sed pipeline.
+#
 # Source:      <script-dir>/gotek/<version>/
 # Destination: <script-dir>/../usbkeys/oldlinux/slackware/<version>/
 #
@@ -105,6 +109,52 @@ copy_version() {
 }
 
 ##############################################################################
+# copy_readme
+#
+# Converts gotek/README.md to plain text and writes it to USB_DEST/README.txt
+# so an end user browsing the USB stick has a readable reference without
+# needing a Markdown renderer.
+#
+# Conversion order:
+#   1. pandoc -t plain  — clean, accurate output if pandoc is installed
+#   2. sed pipeline     — fallback that handles the markdown used in this file:
+#                         heading markers (#, ##), bold (**text**), inline code
+#                         (`text`), code fences (```), horizontal rules (---),
+#                         and table formatting (| col | col |)
+##############################################################################
+copy_readme() {
+    local src="$GOTEK_DIR/README.md"
+    local dest="$USB_DEST/README.txt"
+
+    if [ ! -f "$src" ]; then
+        echo "  README: $src not found, skipping"
+        return
+    fi
+
+    echo "  README: $src -> $dest"
+
+    if command -v pandoc &>/dev/null; then
+        pandoc -t plain --wrap=none "$src" > "$dest"
+        echo "  README: converted via pandoc"
+    else
+        sed \
+            -e '/^```/d' \
+            -e 's/`\([^`]*\)`/\1/g' \
+            -e 's/\*\*\([^*]*\)\*\*/\1/g' \
+            -e 's/^### /   /' \
+            -e 's/^## //' \
+            -e 's/^# //' \
+            -e 's/^---$/----------------------------------------/' \
+            -e '/^|[-: |]*|$/d' \
+            -e 's/^| //' \
+            -e 's/ |$//' \
+            -e 's/ | /    /g' \
+            "$src" > "$dest"
+        echo "  README: converted via sed (install pandoc for better output)"
+    fi
+}
+
+##############################################################################
 # Main
 ##############################################################################
 
@@ -141,6 +191,10 @@ else
         exit 1
     fi
 fi
+
+echo
+echo "--- README ---"
+copy_readme
 
 echo
 echo "Done."
