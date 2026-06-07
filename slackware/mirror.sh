@@ -79,6 +79,7 @@ wget \
     --cut-dirs=2 \
     --no-parent \
     --reject "index.html*,*.mirrorlist,*.meta4,*.md5,*.sha1,*.sha256" \
+    --exclude-directories="*/usr,*/slackpro,*/slakpro2,*/slakpro3" \
     --directory-prefix="$DEST_DIR" \
     --progress=bar \
     --show-progress \
