@@ -75,7 +75,7 @@ by `copy-to-usb.sh`.
 |---|---|---|---|
 | 1.1.2 | 1994 | 1.x flat | complete |
 | 2.0.0 | 1994 | 2.x subdirectory | complete |
-| 2.1 | 1995 | 2.x subdirectory | incomplete mirror (`slakware/` empty) |
+| 2.1 | 1995 | TBD | mirroring in progress — layout needs analysis once complete |
 
 ### Tree layout differences
 
