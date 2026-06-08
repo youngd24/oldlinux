@@ -286,8 +286,15 @@ make_fat_image() {
     # a 00index.txt manifest exists in the source directory.
     if [ -f "$srcdir/00index.txt" ]; then
         # 1.x and 2.0.x: copy only files listed in 00index.txt to avoid
-        # including mirror sidecar files (.md5, .sha256, YMTRANS.TBL, etc.)
+        # including mirror sidecar files (.md5, .sha256, YMTRANS.TBL, etc.).
+        # Guard each copy with an existence check — some 00index.txt entries
+        # reference files (e.g. .log files) that the mirror may not have
+        # downloaded; skip and warn rather than aborting the whole build.
         awk '{print $1}' "$srcdir/00index.txt" | while read -r f; do
+            if [ ! -f "$srcdir/$f" ]; then
+                echo "  WARNING: $f listed in 00index.txt but not found, skipping"
+                continue
+            fi
             sudo cp "$srcdir/$f" "$mnt/"
         done
     else
@@ -412,9 +419,12 @@ if [ -n "$ROOT_DIR" ]; then
             fi
         done
     else
-        # 2.1.x raw images — already the correct size, copy directly
+        # 2.1.x raw images — already the correct size, copy directly.
+        # Filter by exact size to skip README text files that share the
+        # directory; only files of exactly FLOPPY_BYTES are floppy images.
         for f in "$ROOT_DIR"/*; do
             [ -f "$f" ] || continue
+            [ "$(stat -c%s "$f")" -eq "$FLOPPY_BYTES" ] || continue
             base=$(basename "$f")
             imgfile="$OUT_DIR/rootdisks/root_${base}.img"
             echo "  $f -> $imgfile"
