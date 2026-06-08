@@ -51,16 +51,20 @@ slackware/
 ├── copy-to-usb.sh             copies built images into the USB key tree
 │
 ├── slackware-1.1.2/           mirrored release tree (1.x flat layout)
-├── slackware-2.0.0/           mirrored release tree (2.x subdirectory layout)
-├── slackware-2.1/             mirrored release tree (2.x, mirror incomplete)
+├── slackware-2.0.0/           mirrored release tree (2.0.x subdirectory layout)
+├── slackware-2.1/             mirrored release tree (2.1.x subdirectory layout)
 │
 └── gotek/                     generated .img files, one subdir per version
     ├── slackware-1.1.2/
     │   ├── bootdisks/         raw kernel images
     │   └── slakware/          FAT12 package disk images
-    └── slackware-2.0.0/
+    ├── slackware-2.0.0/
+    │   ├── bootdisks/         raw kernel images
+    │   ├── rootdisks/         raw ramdisk images
+    │   └── slakware/          FAT12 package disk images
+    └── slackware-2.1/
         ├── bootdisks/         raw kernel images
-        ├── rootdisks/         raw ramdisk images (2.x only)
+        ├── rootdisks/         raw ramdisk images (uncompressed source)
         └── slakware/          FAT12 package disk images
 ```
 
@@ -73,9 +77,9 @@ by `copy-to-usb.sh`.
 
 | Version | Year | Layout | Status |
 |---|---|---|---|
-| 1.1.2 | 1994 | 1.x flat | complete |
-| 2.0.0 | 1994 | 2.x subdirectory | complete |
-| 2.1 | 1995 | TBD | mirroring in progress — layout needs analysis once complete |
+| 1.1.2 | 1994 | 1.x | complete |
+| 2.0.0 | 1994 | 2.0.x | complete |
+| 2.1 | 1995 | 2.1.x | complete |
 
 ### Tree layout differences
 
@@ -84,13 +88,29 @@ by `copy-to-usb.sh`.
 - No separate rootdisk directory
 - Package series directories (`a1/`, `ap1/`, etc.) live directly in the tree root
 
-**2.x layout** (`slackware-2.0.0`, `slackware-2.1`):
+**2.0.x layout** (`slackware-2.0.0`):
 - Boot images in `bootdsks.144/*.gz`
-- Root ramdisk images in `rootdsks.144/*.gz`
-- Package series directories live under `slakware/` (`slakware/a1/`, etc.)
+- Root ramdisk images in `rootdsks.144/*.gz` (gzipped)
+- Package series directories under `slakware/`, each with `00index.txt`
 
-`make-gotek-images.sh` detects the layout automatically from whichever of
-these subdirectories is present.
+**2.1.x layout** (`slackware-2.1`):
+- Boot images in `bootdsks.144/*.gz` (same as 2.0.x)
+- Root images in `rootdsks.144/` as raw uncompressed files — already exactly 1,474,560 bytes, no gunzip needed
+- Package series directories under `slakware/`, no `00index.txt` — all files in each directory are copied
+
+`make-gotek-images.sh` detects the layout automatically. The primary key is
+presence of `bootdsks.144/` (2.x) vs `bootdisk/1_44meg/` (1.x). Within 2.x,
+it sub-detects by checking whether `rootdsks.144/` holds `.gz` files (2.0.x)
+or raw uncompressed images (2.1.x).
+
+### Version notes
+
+**slackware-2.1**: The `q2` disk has a file list referencing CD-ROM driver
+files (`cdu31a.tgz`, `sbpcd.tgz`, `sony535.tgz`, etc.) that are not present
+in the mirror. The image builder skips them with warnings and continues — this
+is expected behavior and the resulting images are otherwise complete. The
+distribution is significantly larger than 2.0.0; see the Package Series
+Reference table for per-series disk counts.
 
 ---
 
@@ -100,27 +120,27 @@ Each Slackware release is divided into named series, each spanning one or more
 floppy disks. The disk name is the series letter(s) followed by a number
 (e.g. `a1`, `ap2`, `x3`).
 
-| Series | Description | 1.1.2 disks | 2.0.0 disks |
-|---|---|---|---|
-| `a` | Base system — core binaries, libraries, filesystem utilities | 3 | 3 |
-| `ap` | Application programs — text editors, man pages, misc tools | 4 | 4 |
-| `d` | Development — GCC, make, debuggers, headers | 6 | 6 |
-| `e` | GNU Emacs | 5 | 5 |
-| `f` | FAQs, HOWTOs, documentation | 1 | 1 |
-| `i` | Info pages | 3 | 2 |
-| `iv` | InterViews — object-oriented C++ UI toolkit | 2 | 2 |
-| `n` | Networking — TCP/IP stack, mail, FTP, NFS | 3 | 3 |
-| `oi` | Object Interfaces — InterViews-based widget library | 3 | — |
-| `oop` | Object-oriented programming tools | 1 | 1 |
-| `q` | Kernel source and patches | — | 3 |
-| `t` | TeX / LaTeX typesetting system | 5 | 5 |
-| `tcl` | Tcl/Tk scripting and GUI toolkit | 2 | 2 |
-| `u` | System utilities (includes kernel image in 1.x) | 2 | 1 |
-| `x` | X Window System (XFree86) | 5 | 8 |
-| `xap` | X applications — common GUI programs | 2 | 3 |
-| `xd` | X development — headers and libraries for building X apps | 3 | 3 |
-| `xv` | XV image viewer and related X utilities | 2 | 2 |
-| `y` | BSD games | 1 | 1 |
+| Series | Description | 1.1.2 | 2.0.0 | 2.1 |
+|---|---|---|---|---|
+| `a` | Base system — core binaries, libraries, filesystem utilities | 3 | 3 | 4 |
+| `ap` | Application programs — text editors, man pages, misc tools | 4 | 4 | 5 |
+| `d` | Development — GCC, make, debuggers, headers | 6 | 6 | 7 |
+| `e` | GNU Emacs | 5 | 5 | 5 |
+| `f` | FAQs, HOWTOs, documentation | 1 | 1 | 1 |
+| `i` | Info pages | 3 | 2 | 2 |
+| `iv` | InterViews — object-oriented C++ UI toolkit | 2 | 2 | 1 |
+| `n` | Networking — TCP/IP stack, mail, FTP, NFS | 3 | 3 | 4 |
+| `oi` | Object Interfaces — InterViews-based widget library | 3 | — | — |
+| `oop` | Object-oriented programming tools | 1 | 1 | 1 |
+| `q` | Kernel source and patches | — | 3 | 5 |
+| `t` | TeX / LaTeX typesetting system | 5 | 5 | 10 |
+| `tcl` | Tcl/Tk scripting and GUI toolkit | 2 | 2 | 2 |
+| `u` | System utilities (includes kernel image in 1.x) | 2 | 1 | — |
+| `x` | X Window System (XFree86) | 5 | 8 | 13 |
+| `xap` | X applications — common GUI programs | 2 | 3 | 3 |
+| `xd` | X development — headers and libraries for building X apps | 3 | 3 | 3 |
+| `xv` | XV image viewer and related X utilities | 2 | 2 | 3 |
+| `y` | BSD games | 1 | 1 | 1 |
 
 ---
 

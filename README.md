@@ -65,4 +65,25 @@ At the end you're left with a bunch of img files that you copy to a USB key and 
 
 ### 2.1
 
-Mirroring is in progress. The tree structure looks similar to 2.0.0 but there are likely differences that need to be sorted out once the mirror is complete before the image builder will handle it cleanly.
+Mirror is complete and images build cleanly. The top-level tree structure looks the same as 2.0.0 — `bootdsks.144/`, `rootdsks.144/`, `slakware/` — so the same layout detection applies. The differences are under the hood and the image builder handles them automatically.
+
+The two things that changed from 2.0.0: the root disk images ship as raw uncompressed floppies instead of gzipped files, so no decompression step is needed. And the package disk directories don't have a `00index.txt` manifest, so the builder copies everything in the directory rather than using a file list. Neither requires any manual intervention.
+
+This is a noticeably bigger distribution than 2.0.0 — TeX alone went from 5 disks to 10, X went from 8 to 13. Full install with X is pushing 70+ disks.
+
+Boot disk options worth knowing about:
+
+- **bare** — standard IDE, no SCSI. Start here for most hardware.
+- **scsi** — generic SCSI support.
+- **loaded** — kitchen-sink kernel with a wide range of drivers compiled in.
+- **net** — network-enabled kernel.
+- **scsinet** — SCSI plus networking.
+- **old1118** — kernel 1.1.18, for hardware that doesn't work with the newer one.
+- **alpha** — Alpha architecture kernel.
+
+Root disk options are the same as 2.0.0:
+
+- **color144** — color terminal installer. Use this one.
+- **tty144** — plain TTY, no color.
+
+One thing to be aware of: `q2` (kernel source disk 2) has entries in its file list for some CD-ROM driver files that aren't present in the mirror. The image builder skips them with warnings and keeps going — the warnings are expected and the resulting image is fine for everything that was actually available.
