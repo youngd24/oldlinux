@@ -1,0 +1,23 @@
+CONTENTS: cdu31a cdu535  
+cdu31a:   Linux kernel version 1.1.59, with SCSI+IDE+Sony CDU31/33A CD support.
+cdu31a:
+cdu31a:   This is a Linux kernel with support for the Sony CDU31/33A CD-ROM
+cdu31a:   drives, as well as full support for SCSI devices such as hard drives,
+cdu31a:   tape drives, and SCSI CD-ROM drives. See the file 'cdu31a.cfg' for
+cdu31a:   an exact list of included drivers.
+cdu31a:
+cdu31a:   This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,
+cdu31a:   Ftape, and the PS/2 style mouse (but not other busmouse types).
+cdu31a:
+cdu31a:
+cdu535:   Linux kernel version 1.1.59, with SCSI+IDE+Sony CDU531/535 CD support.
+cdu535:
+cdu535:   This is a Linux kernel with support for the Sony CDU531/535 CD-ROM
+cdu535:   drives, as well as full support for SCSI devices such as hard drives,
+cdu535:   tape drives, and SCSI CD-ROM drives. See the file 'cdu535.cfg' for
+cdu535:   an exact list of included drivers.
+cdu535:
+cdu535:   This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,
+cdu535:   Ftape, and the PS/2 style mouse (but not other busmouse types).
+cdu535:
+cdu535:

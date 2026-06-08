@@ -1,0 +1,42 @@
+Dean Gehnert <deang@ims.com> was annoyed enough by having to install
+the driver that he sent me a patch to do it.  I've included this as
+"aic7770.patch".  I haven't tried it, so use it at your own risk, and
+please mail any problems with the patch to Dean.
+
+Here's the mail header which went with it:
+
+--
+From deang@ims.com Fri Sep  9 11:41:30 1994
+Received: from uu2.psi.com (uu2.psi.com [128.145.228.2])
+	by fsa.cpsc.ucalgary.ca (1.6) id <LAA03193@fsa.cpsc.ucalgary.ca>;
+	Fri, 9 Sep 1994 11:40:47 -0600
+Received: from phoenix.ims.com by uu2.psi.com (5.65b/4.0.071791-PSI/PSINet) via SMTP;
+	id AA11893 for aycock@cpsc.ucalgary.ca; Fri, 9 Sep 94 13:41:16 -0400
+Received: from jaguar.ims.com (jaguar.ims.com) by phoenix.ims.com (4.1/3.1server.120991-Integrated Measurement Systems)
+	id AA28352; Fri, 9 Sep 94 10:39:30 PDT
+Received: from jaguar (localhost) by jaguar.ims.com (5.0/SMI-SVR4)
+	id AA02913; Fri, 9 Sep 1994 10:39:26 +0800
+Message-Id: <9409091739.AA02913@jaguar.ims.com>
+To: aycock@cpsc.ucalgary.ca (John Aycock)
+Subject: Re: pre-release of 274x/284x version 5 
+In-Reply-To: Your message of "Thu, 08 Sep 1994 10:10:55 MDT."
+             <199409081610.KAA10228@awk.cpsc.ucalgary.ca> 
+Date: Fri, 09 Sep 1994 10:39:25 -0700
+From: "Dean W. Gehnert" <deang@ims.com>
+Content-Length: 91097
+Status: RO
+
+[...]
+
+Here is the patch for Kernels 1.1.45 - 1.1.49 to add the driver.
+Just unshar or sh everything between the cut lines. I didn't add the README,
+but the building of aic7770 and aha274x_seq.h are incorporated in and happen
+automatically, so aha274x_seq.h doesn't need to be sent along.
+
+Just extract the patch, and execute "patch -s < aic7770.patch" in the directory
+above the linux directory/symbolic link that is linux-1.1.4[5-9]
+
+[...]
+
+--
+:ja

@@ -1,0 +1,8 @@
+./usr/bin/pltotf
+./usr/bin/tftopl
+./usr/bin/vftovp
+./usr/bin/vptovf
+./usr/man/man1/pltotf.1
+./usr/man/man1/tftopl.1
+./usr/man/man1/vftovp.1
+./usr/man/man1/vptovf.1

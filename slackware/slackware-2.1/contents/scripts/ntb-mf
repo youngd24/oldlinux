@@ -1,0 +1,8 @@
+( cd usr/bin ; rm -rf cmmf )
+( cd usr/bin ; ln -sf virmf cmmf )
+( cd usr/bin ; rm -rf mf )
+( cd usr/bin ; ln -sf virmf mf )
+( cd usr/lib/texmf/ini ; rm -rf cmplain.base )
+( cd usr/lib/texmf/ini ; ln -sf cmmf.base cmplain.base )
+( cd usr/lib/texmf/fonts ; rm -rf tmp )
+( cd usr/lib/texmf/fonts ; ln -sf /var/texfonts tmp )

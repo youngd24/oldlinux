@@ -1,0 +1,4 @@
+xf_kit1: OPT
+xf_kit2: OPT
+xf_pex: OPT
+xstatic: OPT

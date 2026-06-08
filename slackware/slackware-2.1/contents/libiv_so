@@ -1,0 +1,19 @@
+PACKAGE NAME:     libiv_so
+COMPRESSED PACKAGE SIZE:     411 K
+UNCOMPRESSED PACKAGE SIZE:     1340 K
+PACKAGE LOCATION: diskiv1
+PACKAGE DESCRIPTION:
+libiv_so: Shared InterViews 3.1 libraries.
+libiv_so:
+libiv_so: These dynamic libraries are needed to run InterViews programs.
+libiv_so:
+FILE LIST:
+./
+usr/
+usr/interviews/
+usr/interviews/lib/
+usr/interviews/lib/libIV.so.3.1.2
+usr/interviews/lib/libUnidraw.so.3.1.2
+lib/
+install/
+install/doinst.sh

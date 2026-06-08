@@ -1,0 +1,62 @@
+PACKAGE NAME:     lilo
+COMPRESSED PACKAGE SIZE:     113 K
+UNCOMPRESSED PACKAGE SIZE:     400 K
+PACKAGE LOCATION: diska4
+PACKAGE DESCRIPTION:
+lilo:     LILO 0.15
+lilo:
+lilo:     Generic Boot Loader for Linux ("LInux LOader") by Werner Almesberger.
+lilo:     LILO boots Linux from your hard drive. It can also boot other
+lilo:     operating systems such as MS-DOS and OS/2, and can even boot DOS from
+lilo:     the second hard drive. LILO comes with utilities and documentation
+lilo:     that make it easier to install, such as "liloconfig" and "QuickStart".
+lilo:     NOTE: Installing boot loaders is inherently dangerous. Be sure to have
+lilo:     some means to boot your system from a different media if you install
+lilo:     LILO on your hard disk.
+lilo:
+FILE LIST:
+./
+sbin/
+sbin/lilo
+sbin/liloconfig
+etc/
+boot/
+boot/boot.b
+boot/any_b.b
+boot/any_d.b
+boot/chain.b
+boot/os2_d.b
+usr/
+usr/lib/
+usr/lib/lilo/
+usr/lib/lilo/CHANGES
+usr/lib/lilo/COPYING
+usr/lib/lilo/INCOMPAT
+usr/lib/lilo/QuickInst
+usr/lib/lilo/QuickInst.old
+usr/lib/lilo/README
+usr/lib/lilo/activate
+usr/lib/lilo/disktab
+usr/lib/lilo/dparam.com
+usr/lib/lilo/dparam.img
+usr/lib/lilo/doc/
+usr/lib/lilo/doc/README
+usr/lib/lilo/doc/Makefile
+usr/lib/lilo/doc/tech.tex
+usr/lib/lilo/doc/user.tex
+usr/lib/lilo/doc/bootloader.fig
+usr/lib/lilo/doc/image.fig
+usr/lib/lilo/doc/map.fig
+usr/lib/lilo/doc/other.fig
+usr/lib/lilo/doc/parameter.fig
+usr/lib/lilo/doc/fullpage.sty
+usr/lib/lilo/doc/rlatex
+usr/lib/lilo/doc/t2a.pl
+usr/doc/
+install/
+install/doinst.sh
+var/
+var/adm/
+var/adm/setup/
+var/adm/setup/setup.liloconfig
+var/adm/setup/text.lilohelp

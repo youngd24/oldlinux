@@ -1,0 +1,23 @@
+CONTENTS: ntb-html ntf-ps  
+ntb-html: ntb-html 1.1
+ntb-html:
+ntb-html: This package contains html2latex, a program which can translate HTML
+ntb-html: files (mainly used in the WorldWideWeb) to LaTeX files. Some
+ntb-html: documentation files for HTML are also included in this package (see
+ntb-html: /usr/lib/texmf/html).
+ntb-html:
+ntb-html:
+ntb-html:
+ntb-html:
+ntb-html:
+ntf-ps:   ntf-ps 1.2
+ntf-ps:
+ntf-ps:   Some loadable Postscript Type1 fonts: Charter, Courier, URWAntiquaT,
+ntf-ps:   URWGroteskT, Nimbus, Utopia, MSYM10 and the .afm, .tfm, .vf and .fd
+ntf-ps:   files for the standard adobe postscript fonts.
+ntf-ps:
+ntf-ps:
+ntf-ps:
+ntf-ps:
+ntf-ps:
+ntf-ps:

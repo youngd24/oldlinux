@@ -1,0 +1,34 @@
+PACKAGE NAME:     zsh
+COMPRESSED PACKAGE SIZE:     210 K
+UNCOMPRESSED PACKAGE SIZE:     400 K
+PACKAGE LOCATION: diskap3
+PACKAGE DESCRIPTION:
+zsh:      zsh version 2.4
+zsh:
+zsh:      Zsh is a UNIX command interpreter (shell) which of the standard shells
+zsh:      most resembles the Korn shell (ksh), although it is not completely
+zsh:      compatible.  It includes enhancements of many types, notably in the
+zsh:      command-line editor, options for customizing its behavior, filename
+zsh:      globbing, features to make C-shell (csh) users feel more at home and
+zsh:      extra features drawn from tcsh (another `custom' shell).  Zsh was 
+zsh:      written by Paul Falstad.
+zsh:
+FILE LIST:
+./
+bin/
+bin/zsh
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/zsh.1.gz
+usr/doc/
+usr/doc/zsh/
+usr/doc/zsh/BUGS
+usr/doc/zsh/FAQ
+usr/doc/zsh/FEATURES
+usr/doc/zsh/NEWS
+usr/doc/zsh/README
+install/
+install/doinst.sh
+etc/

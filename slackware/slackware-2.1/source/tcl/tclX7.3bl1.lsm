@@ -1,0 +1,18 @@
+Begin3
+Title:          Extended Tcl
+Version:        7.3bl1
+Entered-date:   21AUG94
+Description:    An add-on library for Tcl and Tk which adds several
+		Unix-oriented extensions.
+Keywords:       Tcl, Tk, scripting, language
+Author:         karl@neosoft.com (Karl Lehenbauer)
+		markd@grizzly.com (Mark Diekhans)
+Maintained-by:  david@ods.com (David Engel)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/tcl
+		tclX7.3bl1-src.tar.gz
+		tclX7.3bl1-bin.tar.gz
+Original-site:  harbor.ecn.purdue.edu /pub/tcl/extensions
+		tclX7.3b.tar.gz
+Platform:       Linux
+Copying-policy: Copyrighted but freely distributable
+End

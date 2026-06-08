@@ -1,0 +1,26 @@
+PACKAGE NAME:     linxdoom
+COMPRESSED PACKAGE SIZE:     168 K
+UNCOMPRESSED PACKAGE SIZE:     390 K
+PACKAGE LOCATION: linux-x-doom/linxdoom.tgz
+PACKAGE DESCRIPTION:
+linxdoom: Linux X DOOM v1.666.
+linxdoom:
+linxdoom: This is DOOM for Linux -- DOOM is a nifty 3D game originally
+linxdoom: released for NEXTSTEP and then DOS.
+linxdoom:
+linxdoom: If you don't have a 16 bit sound card, you'll want to remove
+linxdoom: /usr/games/sndserver, or if you have an 8 bit sound card (or the
+linxdoom: PC speaker) you can find a filter in the ./source/contrib/linux-x-doom
+linxdoom: directory that will allow you to get nice static-free sound.
+linxdoom:
+FILE LIST:
+./
+usr/
+usr/games/
+usr/games/doom/
+usr/games/doom/README.linux
+usr/games/doom/linuxxdoom
+usr/games/doom/sndserver
+usr/X11/
+usr/X11/bin/
+usr/X11/bin/doom

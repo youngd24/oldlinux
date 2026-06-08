@@ -1,0 +1,17 @@
+PACKAGE NAME:     shlibs
+COMPRESSED PACKAGE SIZE:     130 K
+UNCOMPRESSED PACKAGE SIZE:     720 K
+PACKAGE LOCATION: diska2
+PACKAGE DESCRIPTION:
+shlibs:   The shared C libraries libc.so.4.5.26 and libm.so.4.5.26. 
+shlibs:
+shlibs:   H.J. Lu's port of the GNU shared C libraries - needed to run programs
+shlibs:   linked with the /lib/libc.so.4.*.*  and /lib/libm.so.4.*.* libraries.
+shlibs:
+FILE LIST:
+./
+lib/
+lib/libc.so.4.5.26
+lib/libm.so.4.5.26
+install/
+install/doinst.sh

@@ -1,0 +1,25 @@
+PACKAGE NAME:     x_p9000
+COMPRESSED PACKAGE SIZE:     496 K
+UNCOMPRESSED PACKAGE SIZE:     1110 K
+PACKAGE LOCATION: diskx2
+PACKAGE DESCRIPTION:
+x_p9000:  An accelerated server for cards using the P9000 chipset.
+x_p9000:
+x_p9000:  Some of the cards this server will work with are the Diamond Viper
+x_p9000:  VLB, Diamond Viper PCI, Orchid P9000 (and some other clones, such as
+x_p9000:  the STAR 2000).  Viper Pro and other P9100 and P9130 cards are NOT
+x_p9000:  supported yet.  Installing this package will create a link in
+x_p9000:  /usr/X11/bin from XF86_P9000 to X, setting this server as the
+x_p9000:  default.
+x_p9000:
+FILE LIST:
+./
+install/
+install/doinst.sh
+usr/
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/XF86_P9000
+var/
+var/X11R6/
+var/X11R6/bin/

@@ -1,0 +1,30 @@
+PACKAGE NAME:     ntf-cmb
+COMPRESSED PACKAGE SIZE:     4 K
+UNCOMPRESSED PACKAGE SIZE:     40 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-cmb:  ntf-cmb 1.2
+ntf-cmb:
+ntf-cmb:  This package contains some additional Computer Modern fonts.
+ntf-cmb:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/cm/
+usr/lib/texmf/fonts/cm/cmb/
+usr/lib/texmf/fonts/cm/cmb/create.sh
+usr/lib/texmf/fonts/cm/cmb/src/
+usr/lib/texmf/fonts/cm/cmb/src/cmbcsc10.mf
+usr/lib/texmf/fonts/cm/cmb/src/cmbtex10.mf
+usr/lib/texmf/fonts/cm/cmb/src/cmbtt10.mf
+usr/lib/texmf/fonts/cm/cmb/src/cmbtt8.mf
+usr/lib/texmf/fonts/cm/cmb/src/cmbtt9.mf
+usr/lib/texmf/fonts/cm/cmb/tfm/
+usr/lib/texmf/fonts/cm/cmb/tfm/cmbcsc10.tfm
+usr/lib/texmf/fonts/cm/cmb/tfm/cmbtex10.tfm
+usr/lib/texmf/fonts/cm/cmb/tfm/cmbtt10.tfm
+usr/lib/texmf/fonts/cm/cmb/tfm/cmbtt8.tfm
+usr/lib/texmf/fonts/cm/cmb/tfm/cmbtt9.tfm

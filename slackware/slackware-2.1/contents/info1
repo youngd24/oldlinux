@@ -1,0 +1,112 @@
+PACKAGE NAME:     info1
+COMPRESSED PACKAGE SIZE:     1133 K
+UNCOMPRESSED PACKAGE SIZE:     1210 K
+PACKAGE LOCATION: diski1
+PACKAGE DESCRIPTION:
+info1:    Part one of the info files collection.
+info1:  
+info1:    "Info" is a program which is used to view Info files on an ASCII
+info1:    terminal.  Info files are the result of processing Texinfo files with
+info1:    the program `makeinfo' or with one of the Emacs commands, such as `M-x
+info1:    texinfo-format-buffer'.  Texinfo itself is a documentation system that
+info1:    uses a single source file to produce both on-line information and
+info1:    printed output.  You can typeset and print the files that you read in
+info1:    Info. These info files will be installed in /usr/info, and will
+info1:    provide you with easy to use documentation about your system. 
+info1:  
+FILE LIST:
+./
+usr/
+usr/info/
+usr/info/bfd.info-3.gz
+usr/info/bfd.info-4.gz
+usr/info/cfg-paper.info.gz
+usr/info/configure.info.gz
+usr/info/cpp.info-1.gz
+usr/info/libg++.info.gz
+usr/info/libg++.info-2.gz
+usr/info/libg++.info-3.gz
+usr/info/cpp.info.gz
+usr/info/cpp.info-2.gz
+usr/info/cpp.info-3.gz
+usr/info/COPYING
+usr/info/elisp.gz
+usr/info/elisp-1.gz
+usr/info/elisp-10.gz
+usr/info/elisp-11.gz
+usr/info/elisp-12.gz
+usr/info/elisp-13.gz
+usr/info/elisp-14.gz
+usr/info/elisp-15.gz
+usr/info/elisp-16.gz
+usr/info/elisp-17.gz
+usr/info/elisp-19.gz
+usr/info/elisp-2.gz
+usr/info/elisp-20.gz
+usr/info/elisp-21.gz
+usr/info/elisp-22.gz
+usr/info/elisp-23.gz
+usr/info/elisp-24.gz
+usr/info/elisp-26.gz
+usr/info/elisp-27.gz
+usr/info/elisp-28.gz
+usr/info/elisp-29.gz
+usr/info/elisp-30.gz
+usr/info/elisp-31.gz
+usr/info/elisp-32.gz
+usr/info/elisp-4.gz
+usr/info/elisp-6.gz
+usr/info/elisp-7.gz
+usr/info/elisp-8.gz
+usr/info/elisp-9.gz
+usr/info/history.gz
+usr/info/iostream.info.gz
+usr/info/libg++.info-1.gz
+usr/info/libg++.info-4.gz
+usr/info/regex.gz
+usr/info/libg++.info-5.gz
+usr/info/readline.gz
+usr/info/recode.info.gz
+usr/info/tar.gz
+usr/info/termcap.gz
+usr/info/termcap-2.gz
+usr/info/termcap-3.gz
+usr/info/termcap-4.gz
+usr/info/texi.info.gz
+usr/info/texi.info-10.gz
+usr/info/texi.info-11.gz
+usr/info/texi.info-2.gz
+usr/info/texi.info-3.gz
+usr/info/texi.info-5.gz
+usr/info/texi.info-6.gz
+usr/info/texi.info-7.gz
+usr/info/texi.info-8.gz
+usr/info/texi.info-9.gz
+usr/info/uucp.info-1.gz
+usr/info/uucp.info-2.gz
+usr/info/uucp.info-3.gz
+usr/info/uucp.info-4.gz
+usr/info/uucp.info.gz
+usr/info/bfd.info.gz
+usr/info/bfd.info-1.gz
+usr/info/bfd.info-2.gz
+usr/info/configure.info-1.gz
+usr/info/configure.info-2.gz
+usr/info/elisp-18.gz
+usr/info/elisp-25.gz
+usr/info/elisp-3.gz
+usr/info/elisp-5.gz
+usr/info/info-stnd.info.gz
+usr/info/termcap-1.gz
+usr/info/texi.info-1.gz
+usr/info/texi.info-4.gz
+usr/info/uucp.info-5.gz
+usr/info/zsh.info-1.gz
+usr/info/zsh.info-2.gz
+usr/info/zsh.info-3.gz
+usr/info/zsh.info-4.gz
+usr/info/zsh.info-5.gz
+usr/info/zsh.info-6.gz
+usr/info/zsh.info.gz
+usr/info/bash.info.gz
+usr/info/features.gz

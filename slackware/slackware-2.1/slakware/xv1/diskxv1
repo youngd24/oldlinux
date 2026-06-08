@@ -1,0 +1,23 @@
+CONTENTS: xv32_sa xv32_so  
+xv32_so:  DLL (shared) libraries for xview3.2p1-X11R6.
+xv32_so:
+xv32_so:  XView provides a set of pre-built, user-interface objects such as
+xv32_so:  canvases, scrollbars, menus, and control panels.  The appearance and
+xv32_so:  functionality of these objects follow the OPEN LOOK Graphical User
+xv32_so:  Interface (GUI) specification.
+xv32_so:
+xv32_so:
+xv32_so:
+xv32_so:
+xv32_so:
+xv32_sa:  Shared library stubs for xview3.2p1-X11R6.
+xv32_sa:
+xv32_sa:  Library stubs, needed to compile Xview applications which use the
+xv32_sa:  shared libraries.
+xv32_sa:
+xv32_sa:
+xv32_sa:
+xv32_sa:
+xv32_sa:
+xv32_sa:
+xv32_sa:

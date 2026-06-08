@@ -1,0 +1,59 @@
+PACKAGE NAME:     xfract
+COMPRESSED PACKAGE SIZE:     397 K
+UNCOMPRESSED PACKAGE SIZE:     1060 K
+PACKAGE LOCATION: diskxap3
+PACKAGE DESCRIPTION:
+xfract:   xfractint-2.03
+xfract:
+xfract:   Xfractint draws a wide variety of fractals. Xfractint is a port of
+xfract:   the DOS program Fractint.  The primary original authors of Fractint
+xfract:   are Bert Tyler, Timothy Wegner, Mark Peterson, and Pieter 
+xfract:   Branderhorst.  The Xfractint port is by Ken Shirriff.
+xfract:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/xfractint/
+usr/lib/xfractint/fractint.hlp
+usr/lib/xfractint/cellular.par
+usr/lib/xfractint/fractint.par
+usr/lib/xfractint/icons.par
+usr/lib/xfractint/phoenix.par
+usr/lib/xfractint/fractint.frm
+usr/lib/xfractint/fractint.ifs
+usr/lib/xfractint/fractint.l
+usr/lib/xfractint/penrose.l
+usr/lib/xfractint/tiling.l
+usr/lib/xfractint/altern.map
+usr/lib/xfractint/blues.map
+usr/lib/xfractint/chroma.map
+usr/lib/xfractint/default.map
+usr/lib/xfractint/firestrm.map
+usr/lib/xfractint/froth3.map
+usr/lib/xfractint/froth316.map
+usr/lib/xfractint/froth6.map
+usr/lib/xfractint/froth616.map
+usr/lib/xfractint/gamma1.map
+usr/lib/xfractint/gamma2.map
+usr/lib/xfractint/glasses1.map
+usr/lib/xfractint/glasses2.map
+usr/lib/xfractint/goodega.map
+usr/lib/xfractint/green.map
+usr/lib/xfractint/grey.map
+usr/lib/xfractint/grid.map
+usr/lib/xfractint/headache.map
+usr/lib/xfractint/landscap.map
+usr/lib/xfractint/lyapunov.map
+usr/lib/xfractint/neon.map
+usr/lib/xfractint/paintjet.map
+usr/lib/xfractint/royal.map
+usr/lib/xfractint/topo.map
+usr/lib/xfractint/volcano.map
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/xfractint.1.gz
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/xfractint

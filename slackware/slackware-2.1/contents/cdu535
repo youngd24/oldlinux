@@ -1,0 +1,23 @@
+PACKAGE NAME:     cdu535
+COMPRESSED PACKAGE SIZE:     486 K
+UNCOMPRESSED PACKAGE SIZE:     580 K
+PACKAGE LOCATION: diskq3
+PACKAGE DESCRIPTION:
+cdu535:   Linux kernel version 1.1.59, with SCSI+IDE+Sony CDU531/535 CD support.
+cdu535:
+cdu535:   This is a Linux kernel with support for the Sony CDU531/535 CD-ROM
+cdu535:   drives, as well as full support for SCSI devices such as hard drives,
+cdu535:   tape drives, and SCSI CD-ROM drives. See the file 'cdu535.cfg' for
+cdu535:   an exact list of included drivers.
+cdu535:
+cdu535:   This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,
+cdu535:   Ftape, and the PS/2 style mouse (but not other busmouse types).
+cdu535:
+FILE LIST:
+./
+install/
+install/doinst.sh
+vmlinuz
+boot/
+boot/zSystem.map
+boot/config.in

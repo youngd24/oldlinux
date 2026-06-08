@@ -1,0 +1,4 @@
+./usr/lib/texmf/fonts/symbol/logic/create.sh
+./usr/lib/texmf/fonts/symbol/logic/src/milstd.mf
+./usr/lib/texmf/fonts/symbol/logic/tfm/milstd.tfm
+./usr/lib/texmf/tex/symbol/milstd.tex

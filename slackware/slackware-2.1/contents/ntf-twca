@@ -1,0 +1,46 @@
+PACKAGE NAME:     ntf-twca
+COMPRESSED PACKAGE SIZE:     28 K
+UNCOMPRESSED PACKAGE SIZE:     250 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-twca: ntf-twca 1.1
+ntf-twca:
+ntf-twca: The twcal font, a calligraphic script font.
+ntf-twca:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/misc/
+usr/lib/texmf/fonts/misc/twcal/
+usr/lib/texmf/fonts/misc/twcal/create.sh
+usr/lib/texmf/fonts/misc/twcal/src/
+usr/lib/texmf/fonts/misc/twcal/src/twcal14.mf
+usr/lib/texmf/fonts/misc/twcal/src/twcon.mf
+usr/lib/texmf/fonts/misc/twcal/src/twdig.mf
+usr/lib/texmf/fonts/misc/twcal/src/twlig1.mf
+usr/lib/texmf/fonts/misc/twcal/src/twlig2.mf
+usr/lib/texmf/fonts/misc/twcal/src/twlig3.mf
+usr/lib/texmf/fonts/misc/twcal/src/twlig4.mf
+usr/lib/texmf/fonts/misc/twcal/src/twlig5.mf
+usr/lib/texmf/fonts/misc/twcal/src/twlig6.mf
+usr/lib/texmf/fonts/misc/twcal/src/twlig7.mf
+usr/lib/texmf/fonts/misc/twcal/src/twligtb1.mf
+usr/lib/texmf/fonts/misc/twcal/src/twligtb2.mf
+usr/lib/texmf/fonts/misc/twcal/src/twligtb3.mf
+usr/lib/texmf/fonts/misc/twcal/src/twligtb4.mf
+usr/lib/texmf/fonts/misc/twcal/src/twligtb5.mf
+usr/lib/texmf/fonts/misc/twcal/src/twligtb6.mf
+usr/lib/texmf/fonts/misc/twcal/src/twligtb7.mf
+usr/lib/texmf/fonts/misc/twcal/src/twlow.mf
+usr/lib/texmf/fonts/misc/twcal/src/twsign.mf
+usr/lib/texmf/fonts/misc/twcal/src/twspec.mf
+usr/lib/texmf/fonts/misc/twcal/src/twup.mf
+usr/lib/texmf/fonts/misc/twcal/tfm/
+usr/lib/texmf/fonts/misc/twcal/tfm/twcal14.tfm
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/misc/
+usr/lib/texmf/tex/misc/twcal14.sty
+usr/lib/texmf/tex/misc/twreadme.tex

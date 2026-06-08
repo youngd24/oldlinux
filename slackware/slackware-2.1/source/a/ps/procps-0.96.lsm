@@ -1,0 +1,26 @@
+Begin2
+Title        = procps
+Version      = 0.96
+Desc1        = Procps is a suite of utilites which get their information
+Desc2        = from the /proc filesystem
+Author       = Michael K. Johnson
+AuthorEmail  = johnsonm@merengue.oit.unc.edu
+Maintainer   = Charles Blake
+MaintEmail   = cblake@ucsd.edu
+Site1        = tsx-11.mit.edu
+Path1        = /pub/linux/BETA/procps/
+File1        = procps-0.96.tar.gz
+FileSize1    = 128522
+Site2        = sunsite.unc.edu
+Path2        = /pub/Linux/system/Misc/ps/
+File2        = procps-0.96.tar.gz
+FileSize2    = 128522
+Required1    = Linux, /proc filesystem, c compiler, full includes.
+Required2    = Incompatible with SLS 1.03 because SLS 1.03 has broken
+Required3    = kernel header files that haven't been fixed.
+CopyPolicy1  = GNU Public License
+Keywords     = procps /proc ps uptime w free pstree killall fuser top
+Entered      = 27JUL94
+EnteredBy    = cblake@ucsd.edu
+End
+

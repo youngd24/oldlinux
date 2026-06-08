@@ -1,0 +1,23 @@
+PACKAGE NAME:     ntf-call
+COMPRESSED PACKAGE SIZE:     63 K
+UNCOMPRESSED PACKAGE SIZE:     310 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-call: ntf-call 1.2
+ntf-call:
+ntf-call: The Calligra font.
+ntf-call:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/misc/
+usr/lib/texmf/fonts/misc/calligra/
+usr/lib/texmf/fonts/misc/calligra/create.sh
+usr/lib/texmf/fonts/misc/calligra/src/
+usr/lib/texmf/fonts/misc/calligra/src/callig15.mf
+usr/lib/texmf/fonts/misc/calligra/src/calligra.mf
+usr/lib/texmf/fonts/misc/calligra/tfm/
+usr/lib/texmf/fonts/misc/calligra/tfm/callig15.tfm

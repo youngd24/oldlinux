@@ -1,0 +1,263 @@
+#!/bin/sh
+dialog --title "Install packages from the N series (Networking)" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disc must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+20 70 8 \
+"elm" "Menu-driven user mail program" "off" \
+"netcfg" "'netconfig' is a network config script" "off" \
+"tcpip" "TCP/IP networking programs" "off" \
+"deliver" "A small local mail program" "off" \
+"dip" "DIP - dialup IP connection handler" "off" \
+"mailx" "BSD mailx 5.5" "off" \
+"pine" "Pine version 3.89" "off" \
+"ppp" "PPP for Linux, version 2.1.2b" "off" \
+"sendmail" "BSD sendmail 8.6.9" "off" \
+"smailcfg" "Configuration files for sendmail" "off" \
+"uucp" "Taylor UUCP version 1.05" "off" \
+"cnews" "Cnews 20 Feb 1993 Performance Release" "off" \
+"inn" "INN 1.4" "off" \
+"tin" "The 'tin' news reader. (1.2pl2)" "off" \
+"trn-nntp" "A threaded news reader for NNTP" "off" \
+"trn" "A threaded news reader" "off" \
+"bind" "BIND-4.9.3-beta9" "off" \
+"nn-nntp" "nn-6.4.18 compiled to use NNTP" "off" \
+"nn-spool" "nn-6.4.18 for a local news spool" "off" \
+2> /tmp/return
+if fgrep '"elm"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package elm to your hard drive" --infobox \
+"Menu-driven user mail program. (v. 2.4pl23)\n\
+\n\
+Elm is an interactive screen-oriented mailer program originally\n\
+written by Dave Taylor, and continued by the Elm Development Group. \n\
+\n\
+" 7 75
+ installpkg n1/elm.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"netcfg"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package netcfg to your hard drive" --infobox \
+"'netconfig' is a script to help configure TCP/IP and mail on your \n\
+machine. It will ask you a series of questions about your network and\n\
+use your answers to automatically configure rc.M, rc.inet1, networks,\n\
+resolv, hosts, smail, and elm.rc. You may run the script again at any\n\
+time to reconfigure your machine. If you install the 'netconfig'\n\
+script, it will be executed for you before you leave 'setup'.\n\
+\n\
+" 9 75
+ installpkg n1/netcfg.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"tcpip"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package tcpip to your hard drive" --infobox \
+"TCP/IP networking programs and support files.\n\
+\n\
+This is an updated set of utilities for NET3. Some of these were\n\
+written from scratch and some were ported from various sources\n\
+including NetBSD. The code was written and ported by Florian  \n\
+La Roche, Alan Cox, Fred N. van Kempen, Donald J. Becker, Rick \n\
+Sladkey, Mark Shand, Orest Zborowski, Johannes Stille, Linus Torvalds,\n\
+and others.\n\
+\n\
+" 11 75
+ installpkg n1/tcpip.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"deliver"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package deliver to your hard drive" --infobox \
+"A small and simple program that delivers electronic mail once it\n\
+has arrived at a given machine. Although designed for Xenix, it\n\
+works well on many platforms, including (of course) Linux. Deliver\n\
+allows great flexibility in the handling of local mail delivery.\n\
+All files used to control deliver are shell scripts. Thus, anything\n\
+that can be called by a shell script can be used to control mail\n\
+delivery. Deliver can also be used in conjunction with Smail. It\n\
+is included by default with Slackware's sendmail package, too.\n\
+\n\
+" 11 75
+ installpkg n2/deliver.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"dip"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package dip to your hard drive" --infobox \
+"DIP - dialup IP connection handler 3.3.7i\n\
+\n\
+Uri Blumenthal's version of Fred N. van Kempen's DIP utility. DIP \n\
+handles the connections needed for dialup IP links, like SLIP or\n\
+CSLIP. It can handle both incoming and outgoing connections, using\n\
+password security for incoming connections.  \n\
+\n\
+" 9 75
+ installpkg n2/dip.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"mailx"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package mailx to your hard drive" --infobox \
+"BSD mailx 5.5.\n\
+\n\
+Mail is a intelligent mail processing system, which has a command\n\
+syntax reminiscent of ed with lines replaced by messages. It's small;\n\
+it's the standard; it's a good thing to install if you're going to use\n\
+mail.\n\
+\n\
+" 9 75
+ installpkg n2/mailx.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"pine"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package pine to your hard drive" --infobox \
+"Pine version 3.89\n\
+\n\
+A menu driven user mail program. Originally based on Elm (Pine Is\n\
+No-longer Elm), but with many additional features that make it\n\
+easier to use.\n\
+\n\
+" 8 75
+ installpkg n2/pine.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ppp"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ppp to your hard drive" --infobox \
+"PPP for Linux, version 2.1.2b\n\
+\n\
+PPP for Linux -- Michael Callahan's ppp.c kernel driver and the pppd\n\
+daemon (ported by Al Longyear).  PPP support is included in most of\n\
+the precompiled kernels in Slackware.\n\
+\n\
+" 8 75
+ installpkg n2/ppp.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"sendmail"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package sendmail to your hard drive" --infobox \
+"BSD sendmail 8.6.9.\n\
+\n\
+Eric Allman's mail transport agent. The _Unix System Administration\n\
+Handbook_ calls sendmail 'The most complex and complete mail delivery\n\
+system in common use...'\n\
+\n\
+Ready-made configuration files are included for systems connected by\n\
+TCP/IP (with or without a nameserver) and for systems using UUCP.\n\
+\n\
+'deliver' is included as a local mail agent.\n\
+\n\
+" 13 75
+ installpkg n2/sendmail.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"smailcfg"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package smailcfg to your hard drive" --infobox \
+"Configuration files for sendmail.\n\
+\n\
+These files are used to create sendmail.cf configuration files. The\n\
+m4 macro processor (on the D series of disks) is also required in\n\
+order to make use of these files. \n\
+\n\
+These files and the documentation in /usr/src/sendmail should make it\n\
+possible to support virtually any mail configuration. NOTE: you\n\
+probably won't need this package if you're planning to use one of the\n\
+sendmail.cf samples included in the sendmail package.\n\
+\n\
+" 13 75
+ installpkg n2/smailcfg.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"uucp"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package uucp to your hard drive" --infobox \
+"Taylor UUCP version 1.05\n\
+\n\
+Ian Taylor's Unix to Unix copy: mail and news over modem lines. \n\
+This is the standard UUCP package of the Free Software Foundation.\n\
+\n\
+Configured to use HoneyDanBer and/or Taylor configuration files.\n\
+\n\
+" 9 75
+ installpkg n2/uucp.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"cnews"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package cnews to your hard drive" --infobox \
+"20 Feb 1993 Performance Release of C News\n\
+\n\
+Controls the spooling and transmission of Usenet news. \n\
+Cnews is typically used with UUCP - for NNTP connections INN might\n\
+be a better choice.\n\
+\n\
+" 8 75
+ installpkg n3/cnews.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"inn"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package inn to your hard drive" --infobox \
+"INN 1.4\n\
+\n\
+Rich Salz's InterNetNews news transport system. The Linux INN package\n\
+was prepared by Andreas Klemm using the Newspak instructions by \n\
+Vince Skahan and Arjan de Vet.\n\
+\n\
+" 8 75
+ installpkg n3/inn.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"tin"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package tin to your hard drive" --infobox \
+"The 'tin' news reader. (1.2pl2)\n\
+\n\
+Tin is a full-screen easy to use Netnews reader. It can read news\n\
+locally (i.e. /usr/spool/news) or remotely (rtin or tin -r option)\n\
+via a NNTP (Network News Transport Protocol) server.  It will\n\
+automatically utilize nov (news overview) style index files if\n\
+available locally or via the nntp xover command. Tin was written by\n\
+Iain Lea.\n\
+\n\
+" 11 75
+ installpkg n3/tin.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"trn-nntp"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package trn-nntp to your hard drive" --infobox \
+"A threaded news reader for reading a remote NNTP server. (v. 3.5)\n\
+\n\
+Compiled to use Overviews or mthreads, and to read news remotely via\n\
+NNTP. Be sure to set NNTPSERVER in your /etc/profile or\n\
+/etc/csh.login. If you're planning to have your own local newspool\n\
+(i.e. use INN or Cnews) then you won't want to install this version.\n\
+\n\
+" 9 75
+ installpkg n3/trn-nntp.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"trn"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package trn to your hard drive" --infobox \
+"A threaded news reader for the local news spool. (v. 3.5)\n\
+\n\
+This version of trn is compiled to read a local news spool in \n\
+/var/spool/news for use with INN or Cnews.\n\
+\n\
+If you plan to read news from an NNTP server, don't install this\n\
+package -- instead, wait for the trn-nntp package coming next.\n\
+\n\
+" 10 75
+ installpkg n3/trn.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"bind"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package bind to your hard drive" --infobox \
+"BIND-4.9.3-beta9\n\
+\n\
+The named daemon and support utilities such as dig, dnsquery, host,\n\
+nslookup, nsquery, and nstest.  Documentation on setting up a name\n\
+server can be found in /usr/doc/bind-4.9.3-BETA9.\n\
+\n\
+" 8 75
+ installpkg n4/bind.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"nn-nntp"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package nn-nntp to your hard drive" --infobox \
+"nn-6.4.18 compiled to use NNTP.\n\
+\n\
+nn is an easy to use menu driven newsreader by Kim F. Storm.\n\
+\n\
+This version of nn has been compiled to read news via NNTP. If you're\n\
+planning to keep your own news spool in /var/spool/news, you should\n\
+install the next version (nn-spool) instead.\n\
+\n\
+" 10 75
+ installpkg n4/nn-nntp.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"nn-spool"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package nn-spool to your hard drive" --infobox \
+"nn-6.4.18 compiled to use a local news spool.\n\
+\n\
+nn is an easy to use menu driven newsreader by Kim F. Storm.\n\
+\n\
+This version looks for the news articles in /var/spool/news, and\n\
+has been set up to work with Cnews, INN, or another news transport\n\
+system of your choice.\n\
+\n\
+" 10 75
+ installpkg n4/nn-spool.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

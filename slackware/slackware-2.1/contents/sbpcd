@@ -1,0 +1,23 @@
+PACKAGE NAME:     sbpcd
+COMPRESSED PACKAGE SIZE:     495 K
+UNCOMPRESSED PACKAGE SIZE:     590 K
+PACKAGE LOCATION: diskq5
+PACKAGE DESCRIPTION:
+sbpcd:    Linux kernel version 1.1.59, with SCSI+IDE+Soundblaster CD support.
+sbpcd:
+sbpcd:    This is a Linux kernel with support for the whole family of
+sbpcd:    Matsushita/Panasonic CD-ROM drives, as well as full support for SCSI
+sbpcd:    devices such as hard drives, tape drives, and SCSI CD-ROM drives. See
+sbpcd:    the file 'sbpcd.cfg' for an exact list of included drivers.
+sbpcd:
+sbpcd:    This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,
+sbpcd:    Ftape, and the PS/2 style mouse (but not other busmouse types).
+sbpcd:
+FILE LIST:
+./
+install/
+install/doinst.sh
+vmlinuz
+boot/
+boot/zSystem.map
+boot/config.in

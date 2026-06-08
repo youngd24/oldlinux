@@ -1,0 +1,496 @@
+
+These are some slight patches to emacs-19.27:
+
+1) Minor patch to vc.el.  Be sure to regen loaddefs.el.  (This is mine, and
+   I've just sent it to FSF.)
+
+2) Dired patches -- Prevent multiple buffers each time a directory is
+   visited.  Nasty otherwise.
+
+3) Fontlock mode improvement.  Works with 19.27 as well as 19.26.  (I'm using
+   as I write.)
+
+Don't forget to byte-recompile-directory after applying these.
+
+---------- vc.el patch --------------------------------------------------------
+
+
+*** /tmp/vc.el	Wed Sep 21 13:38:02 1994
+--- vc.el	Wed Sep 21 13:38:37 1994
+***************
+*** 1183,1188 ****
+--- 1183,1189 ----
+  	(vc-checkout (buffer-file-name) nil)))
+      ))
+  
++ ;;;###autoload
+  (defun vc-rename-file (old new)
+    "Rename file OLD to NEW, and rename its master file likewise."
+    (interactive "fVC rename file: \nFRename to: ")
+
+---------- Dired patches ------------------------------------------------------
+>From dodd@roebling.poly.edu Wed Sep 21 14:30:26 EDT 1994
+Article: 15147 of gnu.emacs.bug
+Path: rpi!uwm.edu!spool.mu.edu!howland.reston.ans.net!math.ohio-state.edu!cis.ohio-state.edu!roebling.poly.edu!dodd
+From: dodd@roebling.poly.edu (Lawrence R. Dodd)
+Newsgroups: gnu.emacs.bug
+Subject: 19.27: dired-find-subdir, expand dir bug.
+Date: 16 Sep 1994 11:21:40 -0400
+Organization: GNUs Not Usenet
+Lines: 367
+Sender: daemon@cis.ohio-state.edu
+Approved: bug-gnu-emacs@prep.ai.mit.edu
+Distribution: gnu
+Message-ID: <9409161518.AA20091@roebling.poly.edu>
+Reply-To: dodd@roebling.poly.edu
+Xref: rpi gnu.emacs.bug:15147
+
+
+GNU Emacs 19.27.1 (sparc-sun-sunos4.1.2) of Thu Sep 15 1994 on roebling
+
+Doing this
+
+ emacs -q
+ (require 'dired-x)
+ (setq dired-find-subdir t)
+ (dired "~/")
+ (dired "~/")
+
+causes the dired buffer `~/<2>' to be formed where dired buffer `~/'
+should be used.  Here are patches, basically from Michael Ernst,
+that need to be applied to dired.el, dired-aux.el, and dired-x.el in
+order to fix this problem.
+
+Fri Sep 16 08:14:27 1994  Michael Ernst  <mernst@theory.lcs.mit.edu>
+			  Lawrence R. Dodd  <dodd@roebling.poly.edu>
+
+	* dired.el, dired-aux.el, dired-x.el: Make directories in
+	dired-buffers and dired-subdir-alist be expanded; adjust calls
+	accordingly.
+
+	* dired.el (dired-subdir-alist, dired-buffers): Doc mod.
+	(dired-buffers-for-dir): Check first if dired buffer exists.
+	(dired-advertise): Use expanded default-directory.
+	(dired-unadvertise): Expand DIR.
+	(dired-in-this-tree): Do not expand DIR.
+
+	* dired-aux.el (dired-fun-in-all-buffers): Expand DIRECTORY.
+	(dired-rename-subdir): Use expanded FROM-DIR.
+	(dired-rename-subdir-1): Use expanded DIR.
+	(dired-kill-tree): Expand DIRNAME.
+
+	* dired-x.el: (dired-find-buffer-nocreate,
+	dired-clean-up-after-deletion): Expand arg to
+	dired-buffers-for-dir.
+
+*** dired.el-orig	Sat Aug  6 14:36:26 1994
+--- dired.el	Fri Sep 16 08:50:39 1994
+***************
+*** 188,195 ****
+  (defvar dired-re-perms "-[-r][-w].[-r][-w].[-r][-w].")
+  (defvar dired-re-dot "^.* \\.\\.?$")
+  
+  (defvar dired-subdir-alist nil
+!   "Association list of subdirectories and their buffer positions.
+  Each subdirectory has an element: (DIRNAME . STARTMARKER).
+  The order of elements is the reverse of the order in the buffer.
+  In simple cases, this list contains one element.")
+--- 188,196 ----
+  (defvar dired-re-perms "-[-r][-w].[-r][-w].[-r][-w].")
+  (defvar dired-re-dot "^.* \\.\\.?$")
+  
++ ;; The subdirectory names in this list are expanded.
+  (defvar dired-subdir-alist nil
+!   "Association list of expanded subdirectories and their buffer positions.
+  Each subdirectory has an element: (DIRNAME . STARTMARKER).
+  The order of elements is the reverse of the order in the buffer.
+  In simple cases, this list contains one element.")
+***************
+*** 1250,1256 ****
+    ;; Enlarged by dired-advertise
+    ;; Queried by function dired-buffers-for-dir. When this detects a
+    ;; killed buffer, it is removed from this list.
+!   "Alist of directories and their associated dired buffers.")
+  
+  (defun dired-buffers-for-dir (dir)
+  ;; Return a list of buffers that dired DIR (top level or in-situ subdir).
+--- 1251,1257 ----
+    ;; Enlarged by dired-advertise
+    ;; Queried by function dired-buffers-for-dir. When this detects a
+    ;; killed buffer, it is removed from this list.
+!   "Alist of expanded directories and their associated dired buffers.")
+  
+  (defun dired-buffers-for-dir (dir)
+  ;; Return a list of buffers that dired DIR (top level or in-situ subdir).
+***************
+*** 1258,1286 ****
+  ;; As a side effect, killed dired buffers for DIR are removed from
+  ;; dired-buffers.
+    (setq dir (file-name-as-directory dir))
+!   (let ((alist dired-buffers) result elt)
+      (while alist
+!       (setq elt (car alist))
+!       (if (dired-in-this-tree dir (car elt))
+! 	  (let ((buf (cdr elt)))
+! 	    (if (buffer-name buf)
+! 		(if (assoc dir (save-excursion
+! 				 (set-buffer buf)
+! 				 dired-subdir-alist))
+! 		    (setq result (cons buf result)))
+! 	      ;; else buffer is killed - clean up:
+! 	      (setq dired-buffers (delq elt dired-buffers)))))
+        (setq alist (cdr alist)))
+      result))
+  
+  (defun dired-advertise ()
+!   ;;"Advertise in variable `dired-buffers' that we dired `default-directory'."
+    ;; With wildcards we actually advertise too much.
+!   (if (memq (current-buffer) (dired-buffers-for-dir default-directory))
+!       t					; we have already advertised ourselves
+!     (setq dired-buffers
+! 	  (cons (cons default-directory (current-buffer))
+! 		dired-buffers))))
+  
+  (defun dired-unadvertise (dir)
+    ;; Remove DIR from the buffer alist in variable dired-buffers.
+--- 1259,1288 ----
+  ;; As a side effect, killed dired buffers for DIR are removed from
+  ;; dired-buffers.
+    (setq dir (file-name-as-directory dir))
+!   (let ((alist dired-buffers) result elt buf)
+      (while alist
+!       (setq elt (car alist)
+! 	    buf (cdr elt))
+!       (if (buffer-name buf)
+! 	  (if (dired-in-this-tree dir (car elt))
+! 	      (if (assoc dir (save-excursion
+! 			       (set-buffer buf)
+! 			       dired-subdir-alist))
+! 		  (setq result (cons buf result))))
+! 	;; else buffer is killed - clean up:
+! 	(setq dired-buffers (delq elt dired-buffers)))
+        (setq alist (cdr alist)))
+      result))
+  
+  (defun dired-advertise ()
+!   ;; Advertise in variable `dired-buffers' that we dired `default-directory'.
+    ;; With wildcards we actually advertise too much.
+!   (let ((expanded-default (expand-file-name default-directory)))
+!     (if (memq (current-buffer) (dired-buffers-for-dir expanded-default))
+! 	t				; we have already advertised ourselves
+!       (setq dired-buffers
+! 	    (cons (cons expanded-default (current-buffer))
+! 		  dired-buffers)))))
+  
+  (defun dired-unadvertise (dir)
+    ;; Remove DIR from the buffer alist in variable dired-buffers.
+***************
+*** 1288,1294 ****
+    ;; It does not affect buffers in which DIR is a subdir.
+    ;; Removing is also done as a side-effect in dired-buffer-for-dir.
+    (setq dired-buffers
+!       (delq (assoc dir dired-buffers) dired-buffers)))
+  
+  ;; Tree Dired
+  
+--- 1290,1296 ----
+    ;; It does not affect buffers in which DIR is a subdir.
+    ;; Removing is also done as a side-effect in dired-buffer-for-dir.
+    (setq dired-buffers
+! 	(delq (assoc (expand-file-name dir) dired-buffers) dired-buffers)))
+  
+  ;; Tree Dired
+  
+***************
+*** 1297,1303 ****
+  (defun dired-in-this-tree (file dir)
+    ;;"Is FILE part of the directory tree starting at DIR?"
+    (let (case-fold-search)
+!     (string-match (concat "^" (regexp-quote (expand-file-name dir))) file)))
+  
+  (defun dired-normalize-subdir (dir)
+    ;; Prepend default-directory to DIR if relative path name.
+--- 1299,1305 ----
+  (defun dired-in-this-tree (file dir)
+    ;;"Is FILE part of the directory tree starting at DIR?"
+    (let (case-fold-search)
+!     (string-match (concat "^" (regexp-quote dir)) file)))
+  
+  (defun dired-normalize-subdir (dir)
+    ;; Prepend default-directory to DIR if relative path name.
+
+*** dired-aux.el-orig	Mon Jul 11 21:46:11 1994
+--- dired-aux.el	Thu Sep 15 14:21:46 1994
+***************
+*** 707,713 ****
+  (defun dired-fun-in-all-buffers (directory fun &rest args)
+    ;; In all buffers dired'ing DIRECTORY, run FUN with ARGS.
+    ;; Return list of buffers where FUN succeeded (i.e., returned non-nil).
+!   (let ((buf-list (dired-buffers-for-dir directory))
+  	(obuf (current-buffer))
+  	buf success-list)
+      (while buf-list
+--- 707,713 ----
+  (defun dired-fun-in-all-buffers (directory fun &rest args)
+    ;; In all buffers dired'ing DIRECTORY, run FUN with ARGS.
+    ;; Return list of buffers where FUN succeeded (i.e., returned non-nil).
+!   (let ((buf-list (dired-buffers-for-dir (expand-file-name directory)))
+  	(obuf (current-buffer))
+  	buf success-list)
+      (while buf-list
+***************
+*** 891,902 ****
+    (dired-fun-in-all-buffers from-dir
+  			    (function dired-rename-subdir-1) from-dir to-dir)
+    ;; Update visited file name of all affected buffers
+!   (let ((blist (buffer-list)))
+      (while blist
+        (save-excursion
+!         (set-buffer (car blist))
+  	(if (and buffer-file-name
+! 		 (dired-in-this-tree buffer-file-name from-dir))
+  	    (let ((modflag (buffer-modified-p))
+  		  (to-file (dired-replace-in-string
+  			    (concat "^" (regexp-quote from-dir))
+--- 891,903 ----
+    (dired-fun-in-all-buffers from-dir
+  			    (function dired-rename-subdir-1) from-dir to-dir)
+    ;; Update visited file name of all affected buffers
+!   (let ((expanded-from-dir (expand-file-name from-dir))
+! 	(blist (buffer-list)))
+      (while blist
+        (save-excursion
+! 	(set-buffer (car blist))
+  	(if (and buffer-file-name
+! 		 (dired-in-this-tree buffer-file-name expanded-from-dir))
+  	    (let ((modflag (buffer-modified-p))
+  		  (to-file (dired-replace-in-string
+  			    (concat "^" (regexp-quote from-dir))
+***************
+*** 909,920 ****
+  (defun dired-rename-subdir-1 (dir to)
+    ;; Rename DIR to TO in headerlines and dired-subdir-alist, if DIR or
+    ;; one of its subdirectories is expanded in this buffer.
+!   (let ((alist dired-subdir-alist)
+  	(elt nil))
+      (while alist
+        (setq elt (car alist)
+  	    alist (cdr alist))
+!       (if (dired-in-this-tree (car elt) dir)
+  	  ;; ELT's subdir is affected by the rename
+  	  (dired-rename-subdir-2 elt dir to)))
+      (if (equal dir default-directory)
+--- 910,922 ----
+  (defun dired-rename-subdir-1 (dir to)
+    ;; Rename DIR to TO in headerlines and dired-subdir-alist, if DIR or
+    ;; one of its subdirectories is expanded in this buffer.
+!   (let ((expanded-dir (expand-file-name dir))
+! 	(alist dired-subdir-alist)
+  	(elt nil))
+      (while alist
+        (setq elt (car alist)
+  	    alist (cdr alist))
+!       (if (dired-in-this-tree (car elt) expanded-dir)
+  	  ;; ELT's subdir is affected by the rename
+  	  (dired-rename-subdir-2 elt dir to)))
+      (if (equal dir default-directory)
+***************
+*** 1530,1535 ****
+--- 1532,1538 ----
+    ;;"Kill all proper subdirs of DIRNAME, excluding DIRNAME itself.
+    ;; With optional arg REMEMBER-MARKS, return an alist of marked files."
+    (interactive "DKill tree below directory: ")
++   (setq dirname (expand-file-name dirname))
+    (let ((s-alist dired-subdir-alist) dir m-alist)
+      (while s-alist
+        (setq dir (car (car s-alist))
+
+*** dired-x.el-orig	Tue Sep  6 02:56:43 1994
+--- dired-x.el	Thu Sep 15 14:25:22 1994
+***************
+*** 3,10 ****
+  ;; Author: Sebastian Kremer <sk@thp.uni-koeln.de>
+  ;;	Lawrence R. Dodd <dodd@roebling.poly.edu>
+  ;; Maintainer: Lawrence R. Dodd <dodd@roebling.poly.edu>
+! ;; Version: 2.37+
+! ;; Date: 1994/08/18 19:27:42
+  ;; Keywords: dired extensions
+  
+  ;; Copyright (C) 1993, 1994 Free Software Foundation
+--- 3,10 ----
+  ;; Author: Sebastian Kremer <sk@thp.uni-koeln.de>
+  ;;	Lawrence R. Dodd <dodd@roebling.poly.edu>
+  ;; Maintainer: Lawrence R. Dodd <dodd@roebling.poly.edu>
+! ;; Version: 2.43
+! ;; Date: 1994/08/21 21:34:58
+  ;; Keywords: dired extensions
+  
+  ;; Copyright (C) 1993, 1994 Free Software Foundation
+***************
+*** 301,307 ****
+                                  (file-name-nondirectory fn)))
+                 (save-excursion ; you never know where kill-buffer leaves you
+                   (kill-buffer buf))))
+!         (let ((buf-list (dired-buffers-for-dir fn))
+                (buf nil))
+            (and buf-list
+                 (y-or-n-p (format "Kill dired buffer%s of %s, too? "
+--- 301,307 ----
+                                  (file-name-nondirectory fn)))
+                 (save-excursion ; you never know where kill-buffer leaves you
+                   (kill-buffer buf))))
+!         (let ((buf-list (dired-buffers-for-dir (expand-file-name fn)))
+                (buf nil))
+            (and buf-list
+                 (y-or-n-p (format "Kill dired buffer%s of %s, too? "
+***************
+*** 1364,1370 ****
+  (defun dired-find-buffer-nocreate (dirname)
+    (if dired-find-subdir
+        (let* ((cur-buf (current-buffer))
+!              (buffers (nreverse (dired-buffers-for-dir dirname)))
+               (cur-buf-matches (and (memq cur-buf buffers)
+                                     ;; wildcards must match, too:
+                                     (equal dired-directory dirname))))
+--- 1364,1371 ----
+  (defun dired-find-buffer-nocreate (dirname)
+    (if dired-find-subdir
+        (let* ((cur-buf (current-buffer))
+!              (buffers (nreverse
+! 		       (dired-buffers-for-dir (expand-file-name dirname))))
+               (cur-buf-matches (and (memq cur-buf buffers)
+                                     ;; wildcards must match, too:
+                                     (equal dired-directory dirname))))
+***************
+*** 1388,1418 ****
+          (setq list (cdr list)))
+        more-recent)))
+  
+- ;;; Same thing as `dired-buffers-for-dir' of dired.el? - lrd 11/23/93
+- ;;; (defun dired-buffers-for-dir-exact (dir)
+- ;;; ;; Return a list of buffers that dired DIR (a directory or wildcard)
+- ;;; ;; at top level, or as subdirectory.
+- ;;; ;; Top level matches must match the wildcard part too, if any.
+- ;;; ;; The list is in reverse order of buffer creation, most recent last.
+- ;;; ;; As a side effect, killed dired buffers for DIR are removed from
+- ;;; ;; dired-buffers.
+- ;;;   (let ((alist dired-buffers) result elt)
+- ;;;     (while alist
+- ;;;       (setq elt (car alist)
+- ;;;             alist (cdr alist))
+- ;;;       (let ((buf (cdr elt)))
+- ;;;         (if (buffer-name buf)
+- ;;;             ;; Top level must match exactly against dired-directory in
+- ;;;             ;; case one of them is a wildcard.
+- ;;;             (if (or (equal dir (save-excursion (set-buffer buf)
+- ;;;                                                dired-directory))
+- ;;;                     (assoc dir (save-excursion (set-buffer buf)
+- ;;;                                                dired-subdir-alist)))
+- ;;;                 (setq result (cons buf result)))
+- ;;;           ;; else buffer is killed - clean up:
+- ;;;           (setq dired-buffers (delq elt dired-buffers)))))
+- ;;;     result))
+- 
+  ;;; REDEFINE.
+  ;;; Redefines dired.el's version of `dired-initial-position'
+  (defun dired-initial-position (dirname)
+--- 1389,1394 ----
+***************
+*** 1630,1636 ****
+  ;;; This section is provided for reports.  It uses Barry A. Warsaw's
+  ;;; reporter.el which is bundled with GNU Emacs v19.
+  
+! (defconst dired-x-version "2.37"
+    "Revision number of dired-x.el -- dired extra for GNU Emacs v19.
+  Type \\[dired-x-submit-report] to send a bug report.  Available via anonymous
+  ftp in
+--- 1606,1612 ----
+  ;;; This section is provided for reports.  It uses Barry A. Warsaw's
+  ;;; reporter.el which is bundled with GNU Emacs v19.
+  
+! (defconst dired-x-version "2.43"
+    "Revision number of dired-x.el -- dired extra for GNU Emacs v19.
+  Type \\[dired-x-submit-report] to send a bug report.  Available via anonymous
+  ftp in
+
+
+---------- fontlock patch -----------------------------------------------------
+
+>From dbrooks@ics.com Wed Sep 21 14:56:31 EDT 1994
+Article: 15130 of gnu.emacs.bug
+Path: rpi!usc!nic-nac.CSU.net!charnel.ecst.csuchico.edu!yeshua.marcam.com!MathWorks.Com!europa.eng.gtefsd.com!howland.reston.ans.net!math.ohio-state.edu!magnus.acs.ohio-state.edu!cis.ohio-state.edu!ics.com!dbrooks
+From: dbrooks@ics.com
+Newsgroups: gnu.emacs.bug
+Subject: font-lock still causing excessive redisplay
+Date: 15 Sep 1994 16:14:06 -0400
+Organization: GNUs Not Usenet
+Lines: 53
+Sender: daemon@cis.ohio-state.edu
+Approved: bug-gnu-emacs@prep.ai.mit.edu
+Distribution: gnu
+Message-ID: <9409152002.AA18904@cobra>
+Xref: rpi gnu.emacs.bug:15130
+
+In GNU Emacs 19.26.1 (hppa1.1-hp-hpux9) of Thu Sep 15 1994 on cobra
+
+The 19.26 version of font-lock calls save-restriction/narrow-to-region,
+which both set clip_changed, which is tested in redisplay, which sets
+all_windows and calls clear_face_vector.
+
+So, every time you type a character in a comment, the graphic contexts get
+freed and new ones allocated.
+
+I still think that clear_face_vector is called too readily, but I haven't
+looked too hard for a decent place to call it (maybe every time a window
+displays a new buffer or is destroyed).
+
+Note that, even with this patch, if you have the same buffer in two
+different windows (like just after ^X-2), you still get the face vector
+cleared on every keystroke.  But this makes it a lot better.
+
+David Brooks
+ICS
+
+*** font-lock.el.orig	Thu Sep 15 15:52:47 1994
+--- font-lock.el	Wed Sep 14 13:26:57 1994
+***************
+*** 191,205 ****
+  	      ;; We found a real comment start.
+  	      (let ((beg (match-beginning 0)))
+  		(goto-char beg)
+! 		(save-restriction
+! 		  (narrow-to-region (point-min) end)
+! 		  (condition-case nil
+! 		      (progn
+! 			(forward-comment 1)
+! 			;; forward-comment skips all whitespace,
+! 			;; so go back to the real end of the comment.
+! 			(skip-chars-backward " \t"))
+! 		    (error (goto-char end))))
+  		(put-text-property beg (point) 'face font-lock-comment-face)
+  		(setq state (parse-partial-sexp here (point) nil nil state)))
+  	    (if (nth 3 state)
+--- 191,203 ----
+  	      ;; We found a real comment start.
+  	      (let ((beg (match-beginning 0)))
+  		(goto-char beg)
+! 		(condition-case nil
+! 		    (progn
+! 		      (forward-comment 1)
+! 		      (skip-chars-backward " \t")
+! 		      (if (> (point) end)
+! 			  (goto-char end)))
+! 		  (error (goto-char end)))
+  		(put-text-property beg (point) 'face font-lock-comment-face)
+  		(setq state (parse-partial-sexp here (point) nil nil state)))
+  	    (if (nth 3 state)
+
+
+
+-------------------------------------------------------------------------------
+
+/Lindsay
+--
+Mr. Lindsay Todd, Systems Programmer, Rensselaer Polytechnic Institute, Troy NY
+toddr@rpi.edu  (518) 276-2605
+

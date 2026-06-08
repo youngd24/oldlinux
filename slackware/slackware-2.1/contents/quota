@@ -1,0 +1,73 @@
+PACKAGE NAME:     quota
+COMPRESSED PACKAGE SIZE:     62 K
+UNCOMPRESSED PACKAGE SIZE:     250 K
+PACKAGE LOCATION: diskap4
+PACKAGE DESCRIPTION:
+quota:    Disk quota utilities.
+quota:
+quota:    Disk quota utilities, written by Marco van Wieringen, Edvard Tuinder,
+quota:    and Linus Torvalds.  The required kernel patches are built into some
+quota:    of the kernels and source provided with Slackware, and the patches can
+quota:    be found in the ./kernel-source/v1.1 directory of the Slackware source
+quota:    tree.
+quota:
+FILE LIST:
+./
+usr/
+usr/src/
+usr/src/quota-1.33/
+usr/src/quota-1.33/REGISTRATION
+usr/src/quota-1.33/Makefile.owld
+usr/src/quota-1.33/Makefile
+usr/src/quota-1.33/README
+usr/src/quota-1.33/mntent.c
+usr/src/quota-1.33/Changelog
+usr/src/quota-1.33/edquota.8
+usr/src/quota-1.33/edquota.c
+usr/src/quota-1.33/hasquota.c
+usr/src/quota-1.33/mntent.h
+usr/src/quota-1.33/pathnames.h
+usr/src/quota-1.33/quota.1
+usr/src/quota-1.33/quota.c
+usr/src/quota-1.33/quotacheck.8
+usr/src/quota-1.33/quotacheck.c
+usr/src/quota-1.33/quotactl.2
+usr/src/quota-1.33/quotactl.c
+usr/src/quota-1.33/quotaon.8
+usr/src/quota-1.33/quotaon.c
+usr/src/quota-1.33/repquota.8
+usr/src/quota-1.33/repquota.c
+usr/src/quota-1.33/rquota.3
+usr/src/quota-1.33/rquota.x
+usr/src/quota-1.33/rquota_server.c
+usr/src/quota-1.33/rquota_svc.c
+usr/src/quota-1.33/rquotad.8
+usr/src/quota-1.33/warnquota.c
+usr/src/quota-1.33/Makefile.std
+usr/src/quota-1.33/rquota.h
+usr/src/quota-1.33/rquota_clnt.c
+usr/src/quota-1.33/rquota_xdr.c
+usr/src/quota-1.33/rquota.h.orig
+usr/bin/
+usr/bin/quota
+usr/sbin/
+usr/sbin/rpc.rquotad
+usr/sbin/edquota
+usr/sbin/quotacheck
+usr/sbin/quotaon
+usr/sbin/repquota
+usr/sbin/warnquota
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/quota.1.gz
+usr/man/preformat/cat2/
+usr/man/preformat/cat2/quotactl.2.gz
+usr/man/preformat/cat3/
+usr/man/preformat/cat3/rquota.3.gz
+usr/man/preformat/cat8/
+usr/man/preformat/cat8/edquota.8.gz
+usr/man/preformat/cat8/quotacheck.8.gz
+usr/man/preformat/cat8/quotaon.8.gz
+usr/man/preformat/cat8/repquota.8.gz
+usr/man/preformat/cat8/rquotad.8.gz

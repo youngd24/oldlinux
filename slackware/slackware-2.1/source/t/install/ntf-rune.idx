@@ -1,0 +1,9 @@
+./usr/lib/texmf/fonts/ancient/rune/create.sh
+./usr/lib/texmf/fonts/ancient/rune/src/olde.mf
+./usr/lib/texmf/fonts/ancient/rune/src/oldes.mf
+./usr/lib/texmf/fonts/ancient/rune/src/rune.mf
+./usr/lib/texmf/fonts/ancient/rune/src/runes.mf
+./usr/lib/texmf/fonts/ancient/rune/src/srune.mf
+./usr/lib/texmf/fonts/ancient/rune/src/srunes.mf
+./usr/lib/texmf/fonts/ancient/rune/tfm/rune.tfm
+./usr/lib/texmf/fonts/ancient/rune/tfm/srune.tfm

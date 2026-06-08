@@ -1,0 +1,14 @@
+./usr/lib/texmf/fonts/phantasy/futhark/create.sh
+./usr/lib/texmf/fonts/phantasy/futhark/misc/READ.ME
+./usr/lib/texmf/fonts/phantasy/futhark/misc/futhold.tex
+./usr/lib/texmf/fonts/phantasy/futhark/src/futhol10.mf
+./usr/lib/texmf/fonts/phantasy/futhark/src/futhol20.mf
+./usr/lib/texmf/fonts/phantasy/futhark/src/futhol30.mf
+./usr/lib/texmf/fonts/phantasy/futhark/src/futhol40.mf
+./usr/lib/texmf/fonts/phantasy/futhark/src/futhol50.mf
+./usr/lib/texmf/fonts/phantasy/futhark/src/futhold.mf
+./usr/lib/texmf/fonts/phantasy/futhark/tfm/futhol10.tfm
+./usr/lib/texmf/fonts/phantasy/futhark/tfm/futhol20.tfm
+./usr/lib/texmf/fonts/phantasy/futhark/tfm/futhol30.tfm
+./usr/lib/texmf/fonts/phantasy/futhark/tfm/futhol40.tfm
+./usr/lib/texmf/fonts/phantasy/futhark/tfm/futhol50.tfm

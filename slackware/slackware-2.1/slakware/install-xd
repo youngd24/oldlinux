@@ -1,0 +1,62 @@
+#!/bin/sh
+dialog --title "Install packages from the XD series (X Development)" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disc must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+16 70 4 \
+"xf_kit1" "XFree86 3.1 Linkkit (part one)" "off" \
+"xf_kit2" "XFree86 3.1 Linkkit (part two)" "off" \
+"xf_pex" "XFree86 3.1 PEX distribution" "off" \
+"xstatic" "Static versions of the X libraries" "off" \
+2> /tmp/return
+if fgrep '"xf_kit1"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xf_kit1 to your hard drive" --infobox \
+"XFree86 3.1 Linkkit (part one)\n\
+\n\
+If you want or need to rebuild an XFree86 3.1 server you need this\n\
+package in addition to the base configuration and the programmers kit.\n\
+It is not needed for other X program development.\n\
+\n\
+When rebuilding all the servers (including PEX) you will typically\n\
+need an additional 10MB of disk space.  If you are building just a\n\
+single server you will need 2MB (2.5MB with PEX) of space.\n\
+\n\
+" 12 75
+ installpkg xd1/xf_kit1.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xf_kit2"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xf_kit2 to your hard drive" --infobox \
+"XFree86 3.1 Linkkit (part two)\n\
+\n\
+If you want or need to rebuild an XFree86 3.1 server you need this\n\
+package in addition to the base configuration and the programmers kit.\n\
+It is not needed for other X program development.\n\
+\n\
+When rebuilding all the servers (including PEX) you will typically\n\
+need an additional 10MB of disk space.  If you are building just a\n\
+single server you will need 2MB (2.5MB with PEX) of space.\n\
+\n\
+" 12 75
+ installpkg xd2/xf_kit2.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xf_pex"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xf_pex to your hard drive" --infobox \
+"XFree86 3.1 PEX distribution\n\
+\n\
+If you would like to use and build PEX programs you will need this\n\
+package in addition to a server that supports PEX.  The distributed\n\
+servers do *not* include PEX support by default - you will have to\n\
+build one using the link kit.\n\
+\n\
+" 9 75
+ installpkg xd2/xf_pex.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xstatic"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xstatic to your hard drive" --infobox \
+"Static versions of the X libraries.\n\
+\n\
+These are needed to compile static X programs, or to debug X programs\n\
+(as with '-g').\n\
+\n\
+" 7 75
+ installpkg xd3/xstatic.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

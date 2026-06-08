@@ -1,0 +1,17 @@
+Begin3
+Title:          Tk
+Version:        3.6p1l1
+Entered-date:   21AUG94
+Description:    An X11 toolkit based on Tcl which provides a Motif-like
+		look and feel.
+Keywords:       Tcl, Tk, scripting, language
+Author:         ouster@cs.berkeley.edu (John Ousterhout)
+Maintained-by:  david@ods.com (David Engel)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/tcl
+		tk3.6p1l1-src.tar.gz
+		tk3.6p1l1-bin.tar.gz
+Original-site:  harbor.ecn.purdue.edu /pub/tcl/sprite-mirror
+		tk3.6.tar.gz
+Platform:       Linux
+Copying-policy: Copyrighted but freely distributable
+End

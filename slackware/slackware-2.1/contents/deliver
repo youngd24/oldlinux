@@ -1,0 +1,42 @@
+PACKAGE NAME:     deliver
+COMPRESSED PACKAGE SIZE:     36 K
+UNCOMPRESSED PACKAGE SIZE:     110 K
+PACKAGE LOCATION: diskn2
+PACKAGE DESCRIPTION:
+deliver:  A small and simple program that delivers electronic mail once it
+deliver:  has arrived at a given machine. Although designed for Xenix, it
+deliver:  works well on many platforms, including (of course) Linux. Deliver
+deliver:  allows great flexibility in the handling of local mail delivery.
+deliver:  All files used to control deliver are shell scripts. Thus, anything
+deliver:  that can be called by a shell script can be used to control mail
+deliver:  delivery. Deliver can also be used in conjunction with Smail. It
+deliver:  is included by default with Slackware's sendmail package, too.
+deliver:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/deliver
+usr/bin/header
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat8/
+usr/man/preformat/cat8/deliver.8.gz
+usr/doc/
+usr/doc/deliver/
+usr/doc/deliver/README
+usr/doc/deliver/README.linux
+usr/doc/deliver/config.h
+usr/doc/deliver/deliver.8
+usr/doc/deliver/samples/
+usr/doc/deliver/samples/README
+usr/doc/deliver/samples/p-aliases
+usr/doc/deliver/samples/s-aliases
+usr/doc/deliver/samples/u-chip
+usr/doc/deliver/samples/u-vacation
+usr/doc/deliver/samples/u-notify
+usr/lib/
+var/
+var/deliver/
+install/
+install/doinst.sh

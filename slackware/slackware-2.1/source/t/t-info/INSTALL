@@ -1,0 +1,202 @@
+How To Install NTeX Release 1.2
+===============================
+
+0. Read the whole file INSTALL (the one you are looking at right now) before 
+   you start to install anything!
+
+   If you have an installed the version 1.1 of NTeX you should remove this
+   installation with removepkg before you install 1.2 since the directory
+   structure changed. If you do not have other packages starting with nt?-*
+   you can do this with (assuming the package files are store in 
+   /usr/adm/packages)
+
+ 	cd /var/adm/packages
+	removepkg nt?-*
+
+   Please also note that the dvi drivers xdvik, xdvipsk and dviljk use the
+   kpathsea library 2.1, but TeX and MetaFont (web2c) still use version 1.7.
+   So if you change the paths for kpathsea 2.1 by editing the file texmf.cnf,
+   TeX and MetaFont will not use these paths. As soon as there is a version
+   of web2c that supports kpathsea 2.1 I will install it. Right now the
+   definitions in texmf.cnf and the one for web2c are equal. So there should
+   be no problems with the default values. If you have to change them use
+   the environment variables to do so.
+
+1. Download the directories ntex01 to ntex13. The contents of each directory 
+   should be copied on a 3.5" HD disk (1.44MB) with a MS-DOS file system. 
+
+   If you are using another format and the files in one directory do not fit 
+   onto one disk you can copy them on different ones. Just make sure that each
+   disk contains a empty file ntexN where N is a number from 01, 02, 03, ...
+   Then edit the file disknam on the disk ntex01. This file should contain
+   the names of the empty files. If you are not using a msdos filesystem
+   you also have to change the file diskfs on ntex01. It contains the name of 
+   the filesystem used for the mount command.
+
+2. To install NTeX mount the disk ntex01 with a command like
+
+     mkdir /tmp/ntex01
+     mount -r -t msdos /dev/fd0 /tmp/ntex01
+
+   where msdos is the filesystem /dev/fd0 is the disk drive (you may
+   change it to /dev/fd1) and /tmp/ntex01 is the directory under which the
+   disk is installed. Then copy the install.sh script on your harddisc. For
+   example
+
+    cp /tmp/ntex01/install.sh /tmp/install.sh
+
+3. Now call the installation script install.sh with the directory name you 
+   used for mounting ntex01. In the example above this would be
+
+     cd /tmp
+     install.sh /tmp/ntex01
+
+  (Don't stay in the /tmp/ntex01 directory during installation since it
+  ntex01 will be unmounted by install.sh.)
+  This script will copy some basic information for installing ntex in
+  /tmp/install.ntex and calls the script installntex contained in
+  install.tgz on ntex01. installntex does the real installation and could
+  also be used to install the packages from the current directory. If you want
+  to install the packages from the current directory create a directory
+  on your hardisk, unzip and untar the package install.tgz in this directory. 
+  Copy the packages you want to install in the same directory and call the 
+  installntex script form there.
+
+4. installntex asks you if you want to install from floppy or from the current 
+   directory. If you did not copy all the files from ntex01 to ntex13 in one 
+   directory on your harddisk, choose floppy (as supposed in step 1 and 2). In
+   this case you also have to choose the device file of the floppy drive 
+   (/dev/fd0 for DOS drive A and /dev/fd1 for DOS drive B). Now you can choose
+   the installation script which is used for installing the package. If you 
+   are using slackware you probably want to use the slackware installation 
+   script. I have included this in the installation package. If you do not 
+   want to use the slackware installation script, the installation will be 
+   done with a simple script provided by installntex. This simple script 
+   creates for each installed package a .files file in the installation 
+   directory which contains a list of the installed files. After this short 
+   configuration you get a list of the packages  and have to choose which you 
+   want to install. If you have limited disk  space you should choose the 
+   packages wisely and just install what you really need. All the packages 
+   have a status, which is either necessary, recommended or optional. You have
+   to install the packages with the status necessary in order to run TeX. The 
+   recommended packages should be installed unless you are sure that you do 
+   never need them. You should just install the optional packages if you 
+   really want to use them. After you have chosen the packages, they will be 
+   installed and you are asked to insert disk ntex01 to ntex13. Of course if 
+   you are installing from current directory, you do not have to do this.
+
+   After all the packages are installed you go through a basic configuration
+   for NTeX. Here you can configure dvips, xdvi, LaTeX2e and MetaFont for your
+   local printer and the hyphenation tables you want to use. If you do not
+   know what you have to change, keep the default settings. You can change
+   them later. To configure xdvi you have to change the file 
+   /usr/lib/texmf/X/XDvi. This is an app-defaults file and has to be linked
+   to your app-defaults directory for X11/openwin (for openwin this is most
+   likely /usr/openwin/lib/app-defaults and for X11 it is most likely
+   /usr/X11/lib/X11/app-defaults). installntex can do this job for you if 
+   you know the name of your app-defaults directory or you can do it later 
+   with
+
+     ln -s /usr/lib/texmf/X/XDvi <app-defaults-directory>/XDvi
+
+   A general note: Don't change anything in the configuration files and the
+   fonts unless you know exactly what you are doing. The default configuration
+   should work for a lot of systems and should always do it for a beginner.
+   You can run the configuration script for the packages you have installed
+   from /usr/lib/texmf/tools. If the package has an configuration script you
+   find a file <packagename>.cfg in this directory which you can run at
+   every time you want to change the configuration. 
+   The only thing that you really might have to change is the localfont mode 
+   in /usr/lib/texmf/mf/base/modes.mf. This is easiest done with the 
+   installntex script. You do not necessarily have to create the fonts after
+   you have done this. The script MakeTeXPK will do this for you.
+
+5. Note that the distribution does not contain any pk font files. They can
+   be created with a shell script in /usr/lib/texmf/fonts/create. The shell 
+   script is called createallfonts. Before you build the fonts you have to 
+   set the localfont mode to your printer in the file 
+   /usr/lib/texmf/mf/base/modes.mf. You can do this either with the 
+   installntex script after you have installed MetaFont or later by hand. If 
+   you do not know how this works, do it with installntex when you are asked 
+   so. After you changed the localfont mode in modes.mf you also have to 
+   recreate the bases for MetaFont. installntex does this automatically. In 
+   order to build the pk font files type
+
+	cd /usr/lib/texmf/fonts/create
+	createallfonts
+
+   This can take quite some time and you should run it over night. You can
+   also run it as background process with
+
+	cd /usr/lib/texmf/fonts/create
+	createallfonts &>/dev/null &
+
+   You can ignore the "font not installed" messages during creation.
+   There might also be created some *.ferr files in 
+   /usr/lib/texmf/fonts/create. They document some errors in some of
+   the fonts which are not removed... Don't care about them unless
+   you have some problems with a font (send a report to me in this
+   case).
+
+   If you want to build just a part of the fonts you have installed you
+   can call one of the create.sh scripts in the subdirectories of 
+   /usr/lib/texmf/fonts which just builds the fonts in this directory and
+   below. Please note that the create.sh scripts are the old version of
+   creating the fonts. They will not create all the fonts which are
+   created by createallfonts! 
+
+   However you do not have to build any pk files. TeX and the printer 
+   drivers can do this automatically with the shell script MakeTeXPK.
+   If you do not have a lot of diskspace or are not experienced with
+   TeX this may be the best solution. You might have to wait for the
+   creation of the fonts in the beginning, but just those fonts are
+   creasted which you really need. If you let MakeTeXPK create the pk 
+   fonts they will be installed in the directory /usr/lib/texmf/fonts/tmp/pk.
+
+   After you have created the fonts you should call 
+
+   /usr/lib/texmf/tools/create_ls-R
+
+   in order to update the kpathsea ls-R databse.
+
+   Note that also xdvi uses the localfont mode. If your localfont mode does 
+   not go along with xdvi, you should change the default mode of xdvi in
+   the app-defaults file /usr/lib/texmf/X/XDvi (this could also be done
+   with installntex or the ntb-xdvi.cfg script in /usr/lib/texmf/tools).
+
+6. After the installation is complete you can remove the installation directory
+   /tmp/install.ntex and the direcotry you used for mounting ntex01. In the
+   example above this was /tmp/ntex01. The disk ntex01 is unmounted 
+   automatically by the script install.sh
+
+All the packages are installed in the directories /usr/bin (binaries),
+/usr/lib/texmf (fonts, macros, etc.), /usr/info (info files) and /usr/src/tex
+(sources). If you want to use /usr/local instead of /usr, just move the 
+directory /usr/lib/texmf to /usr/local/lib/texmf and the binaries for ntex 
+from /usr/bin to /usr/local/bin. To figure out which binaries are installed 
+in /usr/bin, type 
+		grep ./usr/bin/ *.idx
+in the installation directory and you'll get a list of the binaries. You get
+a list of the info files with
+		grep ./usr/info/ *.idx
+If you have a /usr/local/info directory, you can copy them there. To change
+the directories for the sources just move /usr/src/tex to /usr/local/src/tex. 
+After you have copied all the files to /usr/local/... , you have to change the
+paths for TeX and MetaFont. See the manual pages of TeX and MetaFont for the
+environment variables which have to be changed. Note that you do not need
+these environment variables if you keep TeX where it is installed since these
+paths are used as default paths.
+
+Please also read the README file. You can find a list of the contents of the 
+disks ntex01 to ntex13 in the file DISKS. The files contained in each package 
+could be found in the .idx files on the installation disk. The .inf files on 
+the installation disk contain a short description for each package. All these
+descriptions could also be found in INFO.
+
+If you have serious problems with the installation, please contact me. I will
+try my best to answer your mail.
+
+Comments, suggestions and bug reports to Frank Langbein -
+e94fla@student.tdb.uu.se (till November 1994),
+langbein@fermat.mathematik.uni-stuttgart.de
+

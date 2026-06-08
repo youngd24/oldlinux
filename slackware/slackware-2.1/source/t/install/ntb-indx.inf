@@ -1,0 +1,7 @@
+
+NTeX Release 1.2 --- ntb-indx 1.1 --- status: recommended
+
+This package contains the binaries for the programs makeindex, glotex and 
+idxtex  to create indexes in TeX/LaTeX files and some macros for using
+this programs.
+

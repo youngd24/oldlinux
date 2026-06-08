@@ -1,0 +1,207 @@
+#!/bin/sh
+dialog --title "Install packages from the XAP series (X Applications)" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disc must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+20 70 8 \
+"gnuplot" "gnuplot 3.5" "off" \
+"gs_x11" "/usr/bin/gs with X11 drivers" "off" \
+"libgr" "libgr-1.3" "off" \
+"seyon" "Seyon 2.14c" "off" \
+"vgaset" "Utility to configure X" "off" \
+"xfileman" "xfilemanager 0.5" "off" \
+"xv" "John Bradley's XV 3.01 GIF/TIFF/JPEG viewer" "off" \
+"gchess" "GNU chess (v. 4.00 patch level 69)" "off" \
+"ghstview" "Ghostview 1.5" "off" \
+"x3270" "x3270 3.0.1.3 - IBM host access tool" "off" \
+"xfm" "xfm 1.3, a file manager for X" "off" \
+"xgames" "A collection of games for X" "off" \
+"xspread" "A spreadsheet for X" "off" \
+"xxgdb" "xxgdb-1.08" "off" \
+"xfract" "xfractint-2.03" "off" \
+"xpaint" "XPaint 2.1" "off" \
+2> /tmp/return
+if fgrep '"gnuplot"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gnuplot to your hard drive" --infobox \
+"gnuplot 3.5\n\
+\n\
+Gnuplot is a command-line driven interactive function plotting utility\n\
+for UNIX, MSDOS, and VMS platforms.  The software is copyrighted but\n\
+freely distributed (i.e., you don't have to pay for it).  It was\n\
+originally intended as graphical program which would allow scientists\n\
+and students to visualize mathematical functions and data.  Gnuplot\n\
+supports many different types of terminals, plotters, and printers\n\
+(including many color devices, and pseudo-devices like LaTeX) and is\n\
+easily extensible to include new devices.\n\
+\n\
+" 13 75
+ installpkg xap1/gnuplot.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gs_x11"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gs_x11 to your hard drive" --infobox \
+"Replacement /usr/bin/gs with X11 options compiled in.\n\
+\n\
+This should be installed on top of the 'ghostscr' package from the\n\
+A series to provide X11 support for ghostview. If you plan to preview\n\
+Postscript documents under X, you need to install this. Also, if \n\
+you've installed ghostscript already it is highly recommended that you\n\
+install this package just in case. Since it replaces another binary\n\
+it really only uses about 25K.\n\
+\n\
+" 11 75
+ installpkg xap1/gs_x11.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"libgr"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package libgr to your hard drive" --infobox \
+"libgr-1.3\n\
+\n\
+Shared graphics libraries with GIF, TIFF, JPEG support.  These \n\
+libraries are needed to run the XV image viewer, and InterViews 3.1.\n\
+\n\
+" 7 75
+ installpkg xap1/libgr.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"seyon"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package seyon to your hard drive" --infobox \
+"Seyon 2.14c. \n\
+\n\
+A complete, full-featured telecommunications package for X.\n\
+\n\
+" 6 75
+ installpkg xap1/seyon.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"vgaset"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package vgaset to your hard drive" --infobox \
+"Utility to help you configure your monitor for X more easily. \n\
+\n\
+" 4 75
+ installpkg xap1/vgaset.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xfileman"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xfileman to your hard drive" --infobox \
+"xfilemanager 0.5\n\
+\n\
+Ove Kalkan's xfilemanager - one of two file managers for X included\n\
+with the Slackware release. xfilemanager is an X11 based Unix\n\
+file manager with Drag'n Drop abilities, full color displays, and a\n\
+slackful logo.\n\
+\n\
+" 9 75
+ installpkg xap1/xfileman.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xv"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xv to your hard drive" --infobox \
+"John Bradley's XV 3.01 GIF/TIFF/JPEG/PostScript image viewer.\n\
+NOTICE: This program is unregistered shareware. Please read the \n\
+license information included.\n\
+" 5 75
+ installpkg xap1/xv.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gchess"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gchess to your hard drive" --infobox \
+"GNU chess (v. 4.00 patch level 69)  \n\
+and xboard (v. 3.0 patch level 9)\n\
+\n\
+A worthy chess opponent.  Adds 'gnuchess', an ASCII based chess \n\
+engine, and 'xboard', an X based interface to 'gnuchessx'.\n\
+\n\
+" 8 75
+ installpkg xap2/gchess.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ghstview"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ghstview to your hard drive" --infobox \
+"Ghostview 1.5\n\
+\n\
+The ghostview program provides an X11 user interface for the \n\
+ghostscript interpreter. Ghostview and ghostscript function as two\n\
+cooperating programs. Ghostview creates the viewing window and\n\
+ghostscript draws in it.\n\
+\n\
+" 9 75
+ installpkg xap2/ghstview.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"x3270"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package x3270 to your hard drive" --infobox \
+"x3270 3.0.1.3 - IBM host access tool.\n\
+\n\
+x3270 opens a telnet connection to an IBM host in an X window. Since\n\
+the window created by x3270 can use its own font for displaying\n\
+characters, is a fairly accurate representation of an IBM 3278. It is\n\
+similar to tn3270(1) except that it is X-based, not curses-based.\n\
+\n\
+" 9 75
+ installpkg xap2/x3270.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xfm"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xfm to your hard drive" --infobox \
+"xfm 1.3, a file manager for X.\n\
+\n\
+This is a powerful file and applications manager program written using\n\
+the X toolkit. It contains virtually all of the features that you\n\
+would expect in a file manager -- move around your directory tree in\n\
+multiple windows, and move, copy or delete files with simple mouse\n\
+operations. The integrated application manager allows you to load \n\
+files into your favorite applications from the file manager by \n\
+dragging icons. xfm was originally written by Simon Marlow, and was\n\
+improved by Albert Graef.\n\
+\n\
+" 13 75
+ installpkg xap2/xfm.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xgames"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xgames to your hard drive" --infobox \
+"A collection of games for X:\n\
+\n\
+maze spider xcuckoo xhextris xlander xmahjongg xmenu xroach xtetris\n\
+xvier\n\
+\n\
+" 7 75
+ installpkg xap2/xgames.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xspread"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xspread to your hard drive" --infobox \
+"A spreadsheet for the X window system, version 2.1.\n\
+\n\
+" 4 75
+ installpkg xap2/xspread.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xxgdb"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xxgdb to your hard drive" --infobox \
+"xxgdb-1.08.\n\
+\n\
+Xxgdb is a graphical user interface to the gdb debugger under the X\n\
+Window System. It provides visual feedback and mouse input for the\n\
+user to control program execution through breakpoints, to examine and\n\
+traverse the function call stack, to display values of variables and\n\
+data structures.\n\
+\n\
+" 10 75
+ installpkg xap2/xxgdb.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xfract"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xfract to your hard drive" --infobox \
+"xfractint-2.03\n\
+\n\
+Xfractint draws a wide variety of fractals. Xfractint is a port of\n\
+the DOS program Fractint.  The primary original authors of Fractint\n\
+are Bert Tyler, Timothy Wegner, Mark Peterson, and Pieter \n\
+Branderhorst.  The Xfractint port is by Ken Shirriff.\n\
+\n\
+" 9 75
+ installpkg xap3/xfract.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xpaint"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xpaint to your hard drive" --infobox \
+"XPaint 2.1\n\
+\n\
+XPaint is a versatile bitmap/pixmap editing tool written by David\n\
+Koblas. The short features list:\n\
+\n\
+Usual paint operations:\n\
+Brushes, Spray paint, Pencil, Lines, Arcs, Pattern Fill, Text,\n\
+Boxes, Circles, Polygons.\n\
+Works on multiple images simultaneously. Cut/Copy/Paste between all\n\
+active images. Fatbits/Zoom on the image windows.\n\
+\n\
+" 13 75
+ installpkg xap3/xpaint.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

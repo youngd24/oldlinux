@@ -1,0 +1,8 @@
+./usr/bin/fig2dev
+./usr/bin/fig2ps2tex
+./usr/bin/pic2tpic
+./usr/bin/transfig
+./usr/man/man1/fig2dev.1
+./usr/man/man1/fig2ps2tex.1
+./usr/man/man1/pic2tpic.1
+./usr/man/man1/transfig.1

@@ -1,0 +1,24 @@
+PACKAGE NAME:     byacc
+COMPRESSED PACKAGE SIZE:     25 K
+UNCOMPRESSED PACKAGE SIZE:     70 K
+PACKAGE LOCATION: diskd2
+PACKAGE DESCRIPTION:
+byacc:    Berkeley Yacc is an LALR(1) parser generator.  Berkeley Yacc
+byacc:    has been made as compatible as possible with AT&T Yacc.  Berkeley
+byacc:    Yacc can accept any input specification that conforms to the AT&T
+byacc:    Yacc documentation.  Specifications that take advantage of 
+byacc:    undocumented features of AT&T Yacc will probably be rejected.
+byacc:    
+byacc:    If you skip this package and install GNU bison, a /usr/bin/yacc
+byacc:    shell script will be created which will allow you to use bison
+byacc:    instead. (It contains 'bison -y $*')
+byacc:    
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/yacc
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/yacc.1.gz

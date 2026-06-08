@@ -1,0 +1,49 @@
+PACKAGE NAME:     ntf-cmcy
+COMPRESSED PACKAGE SIZE:     33 K
+UNCOMPRESSED PACKAGE SIZE:     210 K
+PACKAGE LOCATION: diskt9
+PACKAGE DESCRIPTION:
+ntf-cmcy: ntf-cmcy 1.2
+ntf-cmcy:
+ntf-cmcy: This package contains the Computer Modern Cyrillic fonts.
+ntf-cmcy:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/cm/
+usr/lib/texmf/fonts/cm/cmcyr/
+usr/lib/texmf/fonts/cm/cmcyr/create.sh
+usr/lib/texmf/fonts/cm/cmcyr/misc/
+usr/lib/texmf/fonts/cm/cmcyr/misc/MANIFEST
+usr/lib/texmf/fonts/cm/cmcyr/misc/README
+usr/lib/texmf/fonts/cm/cmcyr/src/
+usr/lib/texmf/fonts/cm/cmcyr/src/cc_cyrillic.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/cc_cyrl.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/cc_cyru.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/cc_cytextit.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/citall.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/cmcbx10.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/cmcbxsl10.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/cmcbxti10.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/cmcitt10.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/cmcsl10.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/cmcss10.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/cmcssdc10.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/cmcti10.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/cmctt10.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/cmcyr10.mf
+usr/lib/texmf/fonts/cm/cmcyr/src/coding.mf
+usr/lib/texmf/fonts/cm/cmcyr/tfm/
+usr/lib/texmf/fonts/cm/cmcyr/tfm/cmcbx10.tfm
+usr/lib/texmf/fonts/cm/cmcyr/tfm/cmcbxsl10.tfm
+usr/lib/texmf/fonts/cm/cmcyr/tfm/cmcbxti10.tfm
+usr/lib/texmf/fonts/cm/cmcyr/tfm/cmcitt10.tfm
+usr/lib/texmf/fonts/cm/cmcyr/tfm/cmcsl10.tfm
+usr/lib/texmf/fonts/cm/cmcyr/tfm/cmcss10.tfm
+usr/lib/texmf/fonts/cm/cmcyr/tfm/cmcssdc10.tfm
+usr/lib/texmf/fonts/cm/cmcyr/tfm/cmcti10.tfm
+usr/lib/texmf/fonts/cm/cmcyr/tfm/cmctt10.tfm
+usr/lib/texmf/fonts/cm/cmcyr/tfm/cmcyr10.tfm

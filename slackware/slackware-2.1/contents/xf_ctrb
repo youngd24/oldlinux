@@ -1,0 +1,65 @@
+PACKAGE NAME:     xf_ctrb
+COMPRESSED PACKAGE SIZE:     152 K
+UNCOMPRESSED PACKAGE SIZE:     470 K
+PACKAGE LOCATION: diskx4
+PACKAGE DESCRIPTION:
+xf_ctrb:  Selected contrib programs for X11R6:
+xf_ctrb:
+xf_ctrb:  This package installs the following optional programs in 
+xf_ctrb:  /usr/X11R6/bin:  ico listres showfont viewres xbiff xcalc xditview
+xf_ctrb:  xedit xev xeyes xfontsel xgc xload xman xmessage
+xf_ctrb:
+FILE LIST:
+./
+usr/
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/ico
+usr/X11R6/bin/listres
+usr/X11R6/bin/showfont
+usr/X11R6/bin/viewres
+usr/X11R6/bin/xbiff
+usr/X11R6/bin/xcalc
+usr/X11R6/bin/xditview
+usr/X11R6/bin/xedit
+usr/X11R6/bin/xev
+usr/X11R6/bin/xeyes
+usr/X11R6/bin/xfontsel
+usr/X11R6/bin/xgc
+usr/X11R6/bin/xload
+usr/X11R6/bin/xman
+usr/X11R6/bin/xmessage
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/showfont.1x.gz
+usr/man/preformat/cat1/viewres.1x.gz
+usr/man/preformat/cat1/xbiff.1x.gz
+usr/man/preformat/cat1/xcalc.1x.gz
+usr/man/preformat/cat1/xedit.1x.gz
+usr/man/preformat/cat1/xev.1x.gz
+usr/man/preformat/cat1/xeyes.1x.gz
+usr/man/preformat/cat1/xfontsel.1x.gz
+usr/man/preformat/cat1/xgc.1x.gz
+usr/man/preformat/cat1/xload.1x.gz
+usr/man/preformat/cat1/xmessage.1x.gz
+usr/man/preformat/cat1/ico.1x.gz
+usr/man/preformat/cat1/listres.1x.gz
+usr/man/preformat/cat1/xditview.1x.gz
+usr/man/preformat/cat1/xman.1x.gz
+var/
+var/X11R6/
+var/X11R6/lib/
+var/X11R6/lib/app-defaults/
+var/X11R6/lib/app-defaults/Viewres
+var/X11R6/lib/app-defaults/XCalc
+var/X11R6/lib/app-defaults/XCalc-color
+var/X11R6/lib/app-defaults/XFontSel
+var/X11R6/lib/app-defaults/XLoad
+var/X11R6/lib/app-defaults/Xditview
+var/X11R6/lib/app-defaults/Xditview-chrtr
+var/X11R6/lib/app-defaults/Xedit
+var/X11R6/lib/app-defaults/Xgc
+var/X11R6/lib/app-defaults/Xman
+var/X11R6/lib/app-defaults/Xmessage
+var/X11R6/lib/xman.help

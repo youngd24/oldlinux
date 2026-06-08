@@ -1,0 +1,162 @@
+.\"
+.\" selection.1 - the cut and paste utility for Linux virtual consoles
+.\"
+.\" Modified by faith@cs.unc.edu
+.\"
+.TH GPM 1 "October 1994" 
+.SH NAME
+gpm - a cut and paste utility and mouse server for virtual consoles
+.SH SYNTAX
+\fBgpm [options] \fR
+.SH DESCRIPTION
+This package, which is currently beta quality, tries to be a useful
+mouse server for applications running on the Linux console.  It is
+heavily based on the "selection" package, by Andrew Haylett, and quite
+a good deal of code comes from selection itself. This package is
+intended as a replacement for "selection", to provide additional
+facilities. gpm isn't needed if you don't run text-based applications
+with mouse support.
+.SH OPTIONS
+.IP \fB\-a\fP\fIaccel\fP
+movements of more than \fIdelta\fP pixels are multiplied by \fIaccel\fP (default 2)
+.IP \fB\-b\fP\fIbaud-rate\fP
+set the baud rate of the mouse (default 1200 baud)
+.IP \fB\-B\fP\fIsequence\fP
+ allows changing the buttons (default '123')
+.IP \fB\-d\fP\fIdelta\fP
+movements of more than \fIdelta\fP pixels are multiplied by \fIaccel\fP
+(default 25)
+.IP \fB\-D\fP
+dirty operation (debug only)
+.IP \fB\-m\fP\fImouse-device\fP
+specify the mouse device (default /dev/mouse)
+.IP \fB\-r\fP\fInumber\fP
+sets the responsiveness (default 10)
+.IP \fB\-s\fP\fIsample-rate\fP
+set the sample rate of the mouse (default 100)
+.IP \fB\-t\fP\fImouse-type\fP
+specify the mouse type (Microsoft = `ms', Mouse Systems Corp = `msc',
+MM Series = `mm', Logitech = `logi', BusMouse = `bm',
+MSC 3-bytes = `sun', PS/2 = `ps2'; default = ms)
+.IP \fB\-T\fP
+test: read mouse, no clients
+.IP \fB\-v\fP
+print version info and exit
+.SH OPERATION
+To invoke the selection mechanism, press and release the copy button
+(the meaning of the buttons may be set at startup as above). A highlighted
+block will start moving around the screen, correlated with the movement of the
+mouse.
+.PP
+Move the block to the first character of the selection, then press and hold
+down the copy button.
+.PP
+Drag out the selection; the selected text will be highlighted. Then release
+the copy button. You can take the end of the selection to before the start of
+the selection if necessary.
+.PP
+Double-clicking the copy button while the highlighted block is on the
+screen selects text by word boundaries; treble-clicking selects by entire
+lines. If the button is held down after double- or treble-clicking, multiple
+words or lines may be selected. A word consists of a set of alphanumeric
+characters and underscores.
+.PP
+If a trailing space after the contents of a line is highlighted, and if there
+is no other text on the remainder of the line, the rest of the line will be
+selected automatically. If a number of lines are selected, highlighted
+trailing spaces on each line will be removed from the selection buffer.
+.PP
+Pressing the paste button in any virtual console pastes the
+selected text into the read queue of the associated tty.
+.PP
+Any output on the virtual console holding the selection will clear the
+highlighted selection from the screen, to maintain integrity of the display,
+although the contents of the paste buffer will be unaffected.
+.PP
+The selection mechanism is disabled if the controlling virtual console is
+placed in graphics mode, for example when running X11, and is re-enabled when
+text mode is resumed. (But see BUGS section below.)
+.SH FILES
+/dev/mouse - default mouse device
+.br
+/dev/tty0 - current VC device
+.SH DIAGNOSTICS
+\fBgpm\fR complains if any of the devices it requires cannot be located.
+.SH BUGS
+The size of the paste buffer is set at 2048 bytes by default. This may be
+changed at compile time; consult the installation notes.
+.PP
+The selection mechanism doesn't work very well with graphics characters, or
+indeed with any characters where a mapping between the typed character and
+the displayed character is performed by the console driver. The selection
+mechanism pastes into the input buffer the character codes as they are
+displayed on the screen, not those originally typed in by the user.
+.PP
+Because of the way that the kernel bus mouse drivers work, allowing only one
+process to have the mouse device open at once, \fBgpm\fR cannot
+co-exist with X11 using ATI XL, Logitech and Microsoft bus mice or with a
+PS/2 mouse. The X server will not start while \fBgpm\fR is running.
+This problem is not present with serial mice.
+.SH AUTHORS
+.nf
+Andrew Haylett <ajh@gec-mrc.co.uk>
+Alessandro Rubini <rubini@ipvvis.unipv.it>
+
+.SH ACKNOWLEDGEMENTS
+.nf
+A few early gpm bugs were fixed by:
+.ti +4
+Steven S. Dick <ssd@nevets.oau.org>
+.br 
+Some bugs fixed, and a good client for testing (mc) by:
+.ti +4
+Miguel de Icaza <miguel@roxanne.nuclecu.unam.mx>
+.br
+MouseSystems compatible mouse fixes by:
+.ti +4
+Olav Woelfelschneider <wosch@rbg.informatik.th-darmstadt.de>
+.br
+Lefty patches originally suggested by:
+.ti +4
+Sotiris C. Vassilopoulos <scv2f@edu.Virginia.acc.honi4>
+.br
+Logitech patches from:
+.ti +4
+Jim Winstead Jr <jwinstea@jarthur.Claremont.EDU>
+.br
+Command line options based on those from:
+.ti +4
+Peter Macdonald <pmacdona@sanjuan>
+.br
+Patches for bus mouse from:
+.br
+.ti +4
+Erik Troan <ewtroan@eos.ncsu.edu>
+.br
+.ti +4
+Christoph Niemann <niemann@rubdv15.etdv.ruhr-uni-bochum.de>
+.br
+.ti +4
+Koen Gadeyne <kmg@barco.be>
+.br
+Patches for PS/2 mouse from:
+.br
+.ti +4
+Hans D. Fink
+.br
+Patches for Sun mouse from:
+.br
+.ti +4
+Michael Haardt <michael@gandalf.moria>
+.br
+Run-time configurable mouse buttons suggested by:
+.br
+.ti +4
+Charlie Brady <charlieb@au.oz.tpl.tplrd>
+.br
+Setsid patches by:
+.bt
+.ti +4
+Rick Sladkey <jrs@world.std.com>
+.sp
+Apologies to any contributors whose names I have omitted.

@@ -1,0 +1,72 @@
+#!/bin/sh
+dialog --title "Install packages from series E (Emacs)" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disc must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+18 70 6 \
+"emacsbin" " GNU Emacs 19.27" "off" \
+"emacmisc" "Miscellaneous files for emacs 19.27" "off" \
+"elispc" "Compiled Emacs lisp files" "off" \
+"elisp1" "Part one of the Lisp source files" "off" \
+"elisp2" " Part two of the Lisp source files" "off" \
+"emac_nox" "/usr/bin/emacs-19.27 WITHOUT X support" "off" \
+2> /tmp/return
+if fgrep '"emacsbin"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package emacsbin to your hard drive" --infobox \
+"GNU Emacs 19.27\n\
+\n\
+The base binaries for the GNU Emacs editor/environment v. 19.27\n\
+This version supports X. If you do not have X installed, you will\n\
+also have to install the replacement /usr/bin/emacs-19.27 that \n\
+does not require the X11, Xaw, and Xt libraries from XFree86 3.1.\n\
+\n\
+The emacs binary in this package was configured with these options:\n\
+--with-x11 --with-x-toolkit --prefix=/usr\n\
+\n\
+" 12 75
+ installpkg e1/emacsbin.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"emacmisc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package emacmisc to your hard drive" --infobox \
+"Miscellaneous files for emacs 19.27.\n\
+\n\
+" 4 75
+ installpkg e2/emacmisc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"elispc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package elispc to your hard drive" --infobox \
+"These are compiled lisp files for GNU Emacs 19.27.\n\
+\n\
+These provide many of the features of Emacs. You should probably\n\
+install them, or not everything in Emacs will work.\n\
+\n\
+" 7 75
+ installpkg e3/elispc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"elisp1"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package elisp1 to your hard drive" --infobox \
+"Part one of the Lisp source files for Emacs 19.27.\n\
+\n\
+" 4 75
+ installpkg e4/elisp1.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"elisp2"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package elisp2 to your hard drive" --infobox \
+"Part two of the Lisp source files for Emacs 19.27.\n\
+\n\
+" 4 75
+ installpkg e5/elisp2.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"emac_nox"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package emac_nox to your hard drive" --infobox \
+"A replacement /usr/bin/emacs-19.27 binary that is not compiled with\n\
+X11 menu support. This version of emacs is about 400K smaller than\n\
+the full version of emacs, and is the same in every respect except\n\
+for X11 extensions. It can still run in an xterm or rxvt if you wish\n\
+to run it under X, but it is mainly included for those folks who\n\
+don't have X11 (or the X11, Xaw, and Xt shared libs) installed on\n\
+their machines. You might want to remove the version that requires X\n\
+if you install and use this one.\n\
+\n\
+" 11 75
+ installpkg e5/emac_nox.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

@@ -1,0 +1,19 @@
+*** drivers/block/blk.h-orig46	Sat Sep  3 00:39:42 1994
+--- drivers/block/blk.h	Sat Sep  3 00:39:51 1994
+***************
+*** 223,229 ****
+  #define DEVICE_ON(device)
+  #define DEVICE_OFF(device)
+  
+! #else
+  
+  #error "unknown blk device"
+  
+--- 223,229 ----
+  #define DEVICE_ON(device)
+  #define DEVICE_OFF(device)
+  
+! #elseif (! defined (DEVICE_NAME))
+  
+  #error "unknown blk device"
+  

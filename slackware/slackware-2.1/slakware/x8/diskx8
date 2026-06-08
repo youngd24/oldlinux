@@ -1,0 +1,23 @@
+CONTENTS: config86 fnt100_1  
+config86: Steven T Zwaska's ConfigXF86 XFree86 Xconfig generation script.
+config86:
+config86: This handy script asks you questions about your video card and
+config86: monitor. It then generates a custom Xconfig file based on your 
+config86: answers.  This version has been modified to output the new XF86Config
+config86: file used in XFree86 3.1.
+config86:
+config86: To use it, run the ConfigXF86 script in /usr/lib/X11/ConfigXF86.
+config86:
+config86:
+config86:
+fnt100_1: 100-dpi screen fonts (part one)
+fnt100_1:
+fnt100_1: These fonts are compressed to reduce disk usage.
+fnt100_1:
+fnt100_1:
+fnt100_1:
+fnt100_1:
+fnt100_1:
+fnt100_1:
+fnt100_1:
+fnt100_1:

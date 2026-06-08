@@ -1,0 +1,41 @@
+PACKAGE NAME:     ntf-stma
+COMPRESSED PACKAGE SIZE:     23 K
+UNCOMPRESSED PACKAGE SIZE:     150 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-stma: ntf-stma 1.1
+ntf-stma:
+ntf-stma: St. Mary's Road Symbol font.
+ntf-stma:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/symbol/
+usr/lib/texmf/fonts/symbol/stmaryrd/
+usr/lib/texmf/fonts/symbol/stmaryrd/create.sh
+usr/lib/texmf/fonts/symbol/stmaryrd/misc/
+usr/lib/texmf/fonts/symbol/stmaryrd/misc/INSTALL
+usr/lib/texmf/fonts/symbol/stmaryrd/misc/README
+usr/lib/texmf/fonts/symbol/stmaryrd/misc/stmaryrd.dtx
+usr/lib/texmf/fonts/symbol/stmaryrd/src/
+usr/lib/texmf/fonts/symbol/stmaryrd/src/stmary10.mf
+usr/lib/texmf/fonts/symbol/stmaryrd/src/stmary5.mf
+usr/lib/texmf/fonts/symbol/stmaryrd/src/stmary6.mf
+usr/lib/texmf/fonts/symbol/stmaryrd/src/stmary7.mf
+usr/lib/texmf/fonts/symbol/stmaryrd/src/stmary8.mf
+usr/lib/texmf/fonts/symbol/stmaryrd/src/stmary9.mf
+usr/lib/texmf/fonts/symbol/stmaryrd/src/stmaryaj.mf
+usr/lib/texmf/fonts/symbol/stmaryrd/src/stmaryba.mf
+usr/lib/texmf/fonts/symbol/stmaryrd/src/stmarych.mf
+usr/lib/texmf/fonts/symbol/stmaryrd/src/stmaryjg.mf
+usr/lib/texmf/fonts/symbol/stmaryrd/src/stmaryrd.mf
+usr/lib/texmf/fonts/symbol/stmaryrd/tfm/
+usr/lib/texmf/fonts/symbol/stmaryrd/tfm/stmary10.tfm
+usr/lib/texmf/fonts/symbol/stmaryrd/tfm/stmary5.tfm
+usr/lib/texmf/fonts/symbol/stmaryrd/tfm/stmary6.tfm
+usr/lib/texmf/fonts/symbol/stmaryrd/tfm/stmary7.tfm
+usr/lib/texmf/fonts/symbol/stmaryrd/tfm/stmary8.tfm
+usr/lib/texmf/fonts/symbol/stmaryrd/tfm/stmary9.tfm

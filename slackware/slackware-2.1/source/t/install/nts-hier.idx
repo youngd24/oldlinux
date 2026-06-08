@@ -1,0 +1,11 @@
+./usr/src/tex/HieroTeX/Licence
+./usr/src/tex/HieroTeX/Makefile
+./usr/src/tex/HieroTeX/README
+./usr/src/tex/HieroTeX/fonctions.c
+./usr/src/tex/HieroTeX/hache.c
+./usr/src/tex/HieroTeX/hache.h
+./usr/src/tex/HieroTeX/mklex.awk
+./usr/src/tex/HieroTeX/newsesh.c
+./usr/src/tex/HieroTeX/sesh.y
+./usr/src/tex/HieroTeX/seshSource.txt
+./usr/src/tex/HieroTeX/seshl.l

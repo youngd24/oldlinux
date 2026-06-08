@@ -1,0 +1,8 @@
+
+NTeX Release 1.2 --- ntb-bibt 1.1 --- status: recommended
+
+This package contains the binaries for BiBTeX, a program to maintain
+bibliographies under tex and use them in your TeX and LaTeX documents. It 
+also contains some example databses for bibtex.
+
+

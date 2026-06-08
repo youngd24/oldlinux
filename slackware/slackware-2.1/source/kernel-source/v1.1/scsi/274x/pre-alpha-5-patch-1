@@ -1,0 +1,119 @@
+THIS IS PRE-PRE-RELEASE SOFTWARE - USE AT YOUR OWN RISK!
+
+Hopefully if you have a 274x/284x that functions using the unmodified
+driver, it will continue to function.  It appears that some machines
+use a different interrupt type than I assumed, however - this patch
+attempts to detect and correct those.
+:ja
+
+*** aha274x.c-rel5	Sun Sep 18 14:47:32 1994
+--- aha274x.c	Sun Sep 18 14:52:46 1994
+***************
+*** 1,5 ****
+  /*
+!  *  @(#)aha274x.c 1.25 94/09/06 jda
+   *
+   *  Adaptec 274x device driver for Linux.
+   *  Copyright (c) 1994 The University of Calgary Department of Computer Science.
+--- 1,5 ----
+  /*
+!  *  @(#)aha274x.c 1.26 94/09/18 jda
+   *
+   *  Adaptec 274x device driver for Linux.
+   *  Copyright (c) 1994 The University of Calgary Department of Computer Science.
+***************
+*** 153,159 ****
+  
+  struct aha274x_host {
+  	int base;					/* card base address */
+! 	int unpause;					/* value for HCNTRL */
+  	volatile Scsi_Cmnd *SCB_array[AHA274X_MAXSCB];	/* active commands */
+  };
+  
+--- 153,160 ----
+  
+  struct aha274x_host {
+  	int base;					/* card base address */
+! 	int startup;					/* intr type check */
+! 	volatile int unpause;				/* value for HCNTRL */
+  	volatile Scsi_Cmnd *SCB_array[AHA274X_MAXSCB];	/* active commands */
+  };
+  
+***************
+*** 437,442 ****
+--- 438,454 ----
+  	base = p->base;
+  
+  	/*
++ 	 *  Check the startup flag - if no commands have been queued,
++ 	 *  we probably have the interrupt type set wrong.  Unpausing
++ 	 *  the sequencer will reload the host control register.
++ 	 */
++ 	if (p->startup) {
++ 		p->unpause ^= 0x8;
++ 		UNPAUSE_SEQUENCER(p);
++ 		return;
++ 	}
++ 
++ 	/*
+  	 *  Handle all the interrupt sources - especially for SCSI
+  	 *  interrupts, we won't get a second chance at them.
+  	 */
+***************
+*** 906,914 ****
+  
+  	/*
+  	 *  The interrupt trigger is different depending
+! 	 *  on whether the card is EISA or VL-bus.
+  	 */
+  	p->unpause = (type != T_274X ? 0x2 : 0xa);
+  
+  	/*
+  	 *  Register IRQ with the kernel _after_ the host information
+--- 918,931 ----
+  
+  	/*
+  	 *  The interrupt trigger is different depending
+! 	 *  on whether the card is EISA or VL-bus - sometimes.
+! 	 *  The startup variable will be cleared once the first
+! 	 *  command is queued, and is checked in the isr to
+! 	 *  try and detect when the interrupt type is set
+! 	 *  incorrectly, triggering an interrupt immediately.
+  	 */
+  	p->unpause = (type != T_274X ? 0x2 : 0xa);
++ 	p->startup = !0;
+  
+  	/*
+  	 *  Register IRQ with the kernel _after_ the host information
+***************
+*** 994,1000 ****
+  	return("Adaptec AHA274x/284x (EISA/VL-bus -> Fast SCSI) "
+  	       AHA274X_SEQ_VERSION "/"
+  	       AHA274X_H_VERSION "/"
+! 	       "1.25");
+  }
+  
+  int aha274x_command(Scsi_Cmnd *cmd)
+--- 1011,1017 ----
+  	return("Adaptec AHA274x/284x (EISA/VL-bus -> Fast SCSI) "
+  	       AHA274X_SEQ_VERSION "/"
+  	       AHA274X_H_VERSION "/"
+! 	       "1.26");
+  }
+  
+  int aha274x_command(Scsi_Cmnd *cmd)
+***************
+*** 1119,1124 ****
+--- 1136,1147 ----
+  	 *  paused a minimal amount of time.
+  	 */
+  	aha274x_buildscb(p, cmd, &scb);
++ 
++ 	/*
++ 	 *  Clear the startup flag - we can now legitimately
++ 	 *  expect interrupts.
++ 	 */
++ 	p->startup = 0;
+  
+  	/*
+  	 *  This is a critical section, since we don't want the

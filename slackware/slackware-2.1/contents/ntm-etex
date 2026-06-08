@@ -1,0 +1,56 @@
+PACKAGE NAME:     ntm-etex
+COMPRESSED PACKAGE SIZE:     326 K
+UNCOMPRESSED PACKAGE SIZE:     870 K
+PACKAGE LOCATION: diskt5
+PACKAGE DESCRIPTION:
+ntm-etex: ntm-etex 1.2
+ntm-etex:
+ntm-etex: This package contains an extended version of the standard plain TeX
+ntm-etex: format called ETeX.
+ntm-etex:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/info/
+usr/info/eplain.info-4.gz
+usr/info/eplain.info-1.gz
+usr/info/eplain.info-2.gz
+usr/info/eplain.info.gz
+usr/info/eplain.info-3.gz
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/ini/
+usr/lib/texmf/ini/etex.fmt
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/etex/
+usr/lib/texmf/tex/etex/doc/
+usr/lib/texmf/tex/etex/doc/Makefile
+usr/lib/texmf/tex/etex/doc/README
+usr/lib/texmf/tex/etex/doc/arrow.texi
+usr/lib/texmf/tex/etex/doc/copying.texi
+usr/lib/texmf/tex/etex/doc/csindex.texi
+usr/lib/texmf/tex/etex/doc/eplain.texi
+usr/lib/texmf/tex/etex/doc/freedom.texi
+usr/lib/texmf/tex/etex/doc/index.texi
+usr/lib/texmf/tex/etex/doc/install.texi
+usr/lib/texmf/tex/etex/doc/intro.texi
+usr/lib/texmf/tex/etex/doc/invoke.texi
+usr/lib/texmf/tex/etex/doc/progdef.texi
+usr/lib/texmf/tex/etex/doc/userdef.texi
+usr/lib/texmf/tex/etex/macros/
+usr/lib/texmf/tex/etex/macros/add-date
+usr/lib/texmf/tex/etex/macros/add-version
+usr/lib/texmf/tex/etex/macros/arrow.tex
+usr/lib/texmf/tex/etex/macros/e_btxmac.tex
+usr/lib/texmf/tex/etex/macros/eplain.tex
+usr/lib/texmf/tex/etex/macros/merge
+usr/lib/texmf/tex/etex/macros/path.sty
+usr/lib/texmf/tex/etex/macros/texnames.sty
+usr/lib/texmf/tex/etex/macros/xeplain.tex
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/etex.1.gz
+install/
+install/doinst.sh

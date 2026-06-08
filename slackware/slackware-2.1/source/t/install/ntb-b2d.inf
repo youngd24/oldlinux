@@ -1,0 +1,6 @@
+
+NTeX Release 1.2 --- ntb-b2d 1.0 --- status: optional
+
+Bib2dvi converts a BibTeX .bib file directly into a by LaTeX formatted .dvi 
+file. You'll find the files for bib2dvi in /usr/lib/texmf/tools/bib2dvi.
+

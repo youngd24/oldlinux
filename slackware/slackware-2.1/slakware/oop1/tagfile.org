@@ -1,0 +1,4 @@
+smaltalk: GNU Smalltalk 1.1.1
+smaltalk: OPT
+stix:     Smalltalk Interface to X11.
+stix:     OPT

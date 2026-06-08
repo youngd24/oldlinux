@@ -1,0 +1,238 @@
+THIS IS PRE-PRE-RELEASE SOFTWARE - USE AT YOUR OWN RISK!
+
+### IF YOU HAVE DISABLED DISCONNECTION ON ANY DEVICES AS A WORK-  ###
+### AROUND, REENABLE IT BEFORE TRYING THIS PATCH!                 ###
+
+This fixed the tape drive bug for me.. I was unable to try this
+on a hard drive due to cabling problems, so I hope it doesn't
+break them.  Let me know.
+
+### ONCE THIS IS APPLIED, YOU _MUST_ REASSEMBLE THE SEQUENCER CODE ###
+### INTO aha274x_seq.h BEFORE REBUILDING THE KERNEL, OR THIS PATCH ###
+### WILL NOT WORK!                                                 ###
+:ja
+
+*** aha274x.c-old	Tue Oct  4 12:21:34 1994
+--- aha274x.c	Tue Oct  4 12:21:52 1994
+***************
+*** 1,5 ****
+  /*
+!  *  @(#)aha274x.c 1.27 94/09/20 jda
+   *
+   *  Adaptec 274x device driver for Linux.
+   *  Copyright (c) 1994 The University of Calgary Department of Computer Science.
+--- 1,5 ----
+  /*
+!  *  @(#)aha274x.c 1.28 94/10/04 jda
+   *
+   *  Adaptec 274x device driver for Linux.
+   *  Copyright (c) 1994 The University of Calgary Department of Computer Science.
+***************
+*** 877,883 ****
+  		break;
+  	    default:
+  		printk("aha274x is an unsupported type, ignoring\n");
+- 		free_irq(irq);
+  		return(0);
+  	}
+  
+--- 877,882 ----
+***************
+*** 1010,1016 ****
+  	return("Adaptec AHA274x/284x (EISA/VL-bus -> Fast SCSI) "
+  	       AHA274X_SEQ_VERSION "/"
+  	       AHA274X_H_VERSION "/"
+! 	       "1.27");
+  }
+  
+  int aha274x_command(Scsi_Cmnd *cmd)
+--- 1009,1015 ----
+  	return("Adaptec AHA274x/284x (EISA/VL-bus -> Fast SCSI) "
+  	       AHA274X_SEQ_VERSION "/"
+  	       AHA274X_H_VERSION "/"
+! 	       "1.28");
+  }
+  
+  int aha274x_command(Scsi_Cmnd *cmd)
+*** aha274x.seq-old	Tue Oct  4 12:21:25 1994
+--- aha274x.seq	Tue Oct  4 12:21:52 1994
+***************
+*** 1,4 ****
+! # @(#)aha274x.seq 1.27 94/09/19 jda
+  #
+  # Adaptec 274x device driver for Linux.
+  # Copyright (c) 1994 The University of Calgary Department of Computer Science.
+--- 1,4 ----
+! # @(#)aha274x.seq 1.28 94/10/04 jda
+  #
+  # Adaptec 274x device driver for Linux.
+  # Copyright (c) 1994 The University of Calgary Department of Computer Science.
+***************
+*** 17,23 ****
+  # along with this program; if not, write to the Free Software
+  # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  
+! VERSION AHA274X_SEQ_VERSION 1.27
+  
+  MAXSCB		= 4
+  
+--- 17,23 ----
+  # along with this program; if not, write to the Free Software
+  # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  
+! VERSION AHA274X_SEQ_VERSION 1.28
+  
+  MAXSCB		= 4
+  
+***************
+*** 120,126 ****
+  #  bank, so force a kernel panic if the target attempts a data in/out or
+  #  command phase instead of corrupting something.
+  #
+! #  Note that LAST_SHADDR and SG_NEXT occupy four bytes each.
+  #
+  SYNCNEG		= 0x20
+  DISC_DSB_A	= 0x32
+--- 120,126 ----
+  #  bank, so force a kernel panic if the target attempts a data in/out or
+  #  command phase instead of corrupting something.
+  #
+! #  Note that SG_NEXT occupies four bytes.
+  #
+  SYNCNEG		= 0x20
+  DISC_DSB_A	= 0x32
+***************
+*** 145,160 ****
+  
+  SIGSTATE	= 0x4e				# value written to SCSISIGO
+  NEEDSDTR	= 0x4f				# send SDTR message, 1 bit/trgt
+- LAST_SHADDR	= 0x50				# value after last dma transfer
+  
+  SG_SIZEOF	= 12				# sizeof(struct scatterlist)
+! SG_NOLOAD	= 0x54				# load SG pointer/length?
+! SG_COUNT	= 0x55				# working value of SG count
+! SG_NEXT		= 0x56				# working value of SG pointer
+! SG_NEXT+0	= 0x56
+! SG_NEXT+1	= 0x57
+! SG_NEXT+2	= 0x58
+! SG_NEXT+3	= 0x59
+  
+  #  Poll QINCNT for work - the lower three bits contain
+  #  the number of entries in the Queue In FIFO.
+--- 145,159 ----
+  
+  SIGSTATE	= 0x4e				# value written to SCSISIGO
+  NEEDSDTR	= 0x4f				# send SDTR message, 1 bit/trgt
+  
+  SG_SIZEOF	= 12				# sizeof(struct scatterlist)
+! SG_NOLOAD	= 0x50				# load SG pointer/length?
+! SG_COUNT	= 0x51				# working value of SG count
+! SG_NEXT		= 0x52				# working value of SG pointer
+! SG_NEXT+0	= 0x52
+! SG_NEXT+1	= 0x53
+! SG_NEXT+2	= 0x54
+! SG_NEXT+3	= 0x55
+  
+  #  Poll QINCNT for work - the lower three bits contain
+  #  the number of entries in the Queue In FIFO.
+***************
+*** 294,299 ****
+--- 293,312 ----
+  	mvi	0x3d		call dma	# SCSIEN|SDMAEN|HDMAEN|
+  						#   DIRECTION|FIFORESET
+  
++ #  After a DMA finishes, save the final transfer pointer and count
++ #  back into the SCB, in case a device disconnects in the middle of
++ #  a transfer.  Use SHADDR and STCNT instead of HADDR and HCNT, since
++ #  it's a reflection of how many bytes were transferred on the SCSI
++ #  (as opposed to the host) bus.
++ #
++ 	mvi	A,3
++ 	mvi	DINDEX,SCBARRAY+23
++ 	mvi	STCNT		call bcopy
++ 
++ 	mvi	A,4
++ 	mvi	DINDEX,SCBARRAY+19
++ 	mvi	SHADDR		call bcopy
++ 
+  	call	sg_advance
+  	mov	SCBARRAY+18,SG_COUNT		# residual S/G count
+  
+***************
+*** 318,323 ****
+--- 331,344 ----
+  
+  	mvi	0x39		call dma	# SCSIEN|SDMAEN|HDMAEN|
+  						#   !DIRECTION|FIFORESET
++ 	mvi	A,3
++ 	mvi	DINDEX,SCBARRAY+23
++ 	mvi	STCNT		call bcopy
++ 
++ 	mvi	A,4
++ 	mvi	DINDEX,SCBARRAY+19
++ 	mvi	SHADDR		call bcopy
++ 
+  	call	sg_advance
+  	mov	SCBARRAY+18,SG_COUNT		# residual S/G count
+  
+***************
+*** 496,520 ****
+  	or	SCBARRAY+0,0x4			# set "disconnected" bit
+  	jmp	p_mesgin_done
+  
+! #  Save data pointers message?  Use SHADDR and STCNT instead of HADDR
+! #  and HCNT, since it's a reflection of how many bytes were transferred
+! #  on the SCSI (as opposed to the host) bus.  Make sure to use the values
+! #  saved after the last DMA transfer - reading the message in byte changes
+! #  the values in them.
+  #
+  p_mesgin3:
+  	cmp	A,2		jne p_mesgin4	# save data pointers code?
+  
+- 	mvi	A,4
+- 	mvi	DINDEX,SCBARRAY+19
+- 	mvi	LAST_SHADDR	call bcopy
+- 
+- 	mvi	A,3
+- 	mvi	DINDEX,SCBARRAY+23
+- 	mvi	SCBARRAY+15	call bcopy	# residual data count (stcnt)
+- 
+  	call	sg_ram2scb
+- 
+  	jmp	p_mesgin_done
+  
+  #  Restore pointers message?  Data pointers are recopied from the
+--- 517,529 ----
+  	or	SCBARRAY+0,0x4			# set "disconnected" bit
+  	jmp	p_mesgin_done
+  
+! #  Save data pointers message?  Copy working values into the SCB,
+! #  usually in preparation for a disconnect.
+  #
+  p_mesgin3:
+  	cmp	A,2		jne p_mesgin4	# save data pointers code?
+  
+  	call	sg_ram2scb
+  	jmp	p_mesgin_done
+  
+  #  Restore pointers message?  Data pointers are recopied from the
+***************
+*** 735,751 ****
+  #  amount, if any) to the SCB registers; SG_COUNT will get copied to
+  #  the SCB's residual S/G count field after sg_advance is called.  Make
+  #  sure that the DMA enables are actually off first lest we get an ILLSADDR.
+- #  Save the value of SHADDR into scratch RAM in case we need to save data
+- #  pointers.
+  #
+  dma5:
+  	clr	DFCNTRL				# disable DMA
+  dma6:
+  	test	DFCNTRL,0x38	jnz dma6	# SCSIENACK|SDMAENACK|HDMAENACK
+- 
+- 	mvi	A,4
+- 	mvi	DINDEX,LAST_SHADDR
+- 	mvi	SHADDR		call bcopy
+  
+  	mvi	A,3
+  	mvi	DINDEX,SCBARRAY+15
+--- 744,754 ----

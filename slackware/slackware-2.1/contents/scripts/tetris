@@ -1,0 +1,2 @@
+( cd usr/games ; ln -sf  tt tetris )
+( cd usr/games ; ln -sf  /var/games/tetrislib tetrislib )

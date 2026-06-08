@@ -1,0 +1,33 @@
+#!/bin/sh
+dialog --title "Install packages from the I series (Info Files)" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disc must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+14 70 2 \
+"info1" "Part one of the info files collection" "off" \
+"info2" "Part two of the info files collection" "off" \
+2> /tmp/return
+if fgrep '"info1"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package info1 to your hard drive" --infobox \
+"Part one of the info files collection.\n\
+\n\
+'Info is a program which is used to view Info files on an ASCII\n\
+terminal.  Info files are the result of processing Texinfo files with\n\
+the program 'makeinfo' or with one of the Emacs commands, such as 'M-x\n\
+texinfo-format-buffer'.  Texinfo itself is a documentation system that\n\
+uses a single source file to produce both on-line information and\n\
+printed output.  You can typeset and print the files that you read in\n\
+Info. These info files will be installed in /usr/info, and will\n\
+provide you with easy to use documentation about your system. \n\
+\n\
+" 13 75
+ installpkg i1/info1.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"info2"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package info2 to your hard drive" --infobox \
+"Part two of the info files collection.\n\
+\n\
+These files go into /usr/info.\n\
+\n\
+" 6 75
+ installpkg i2/info2.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

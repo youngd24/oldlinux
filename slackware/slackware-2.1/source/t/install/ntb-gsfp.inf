@@ -1,0 +1,8 @@
+
+NTeX Release 1.2 --- ntb-gsfp 1.0 --- status: recommended
+
+The binaries for gsftopk. A program to convert ghostscript fonts (gsf) to
+pk fonts. If you are producing documents with PS fonts and want to display
+the fonts with xdvi, this program can do it for you. It is called by
+MakeTeXPK.
+

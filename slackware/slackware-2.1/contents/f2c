@@ -1,0 +1,35 @@
+PACKAGE NAME:     f2c
+COMPRESSED PACKAGE SIZE:     189 K
+UNCOMPRESSED PACKAGE SIZE:     940 K
+PACKAGE LOCATION: diskd5
+PACKAGE DESCRIPTION:
+f2c:      A Fortran-77 to C translator. 
+f2c:
+f2c:      Contains libf2c.so.0.10, ported by Rob Hooft. This package uses
+f2c:      an 'f77' script that hides the C translation process from the user.
+f2c:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/f2c
+usr/bin/f77
+usr/bin/getopt
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/f2c.1.gz
+usr/lib/
+usr/lib/f77.Notice
+usr/lib/libf2c.sa
+usr/lib/libf2c.a
+usr/lib/libf2c.so.0.10
+usr/include/
+usr/include/f2c.h
+usr/doc/
+usr/doc/f2c/
+usr/doc/f2c/hello.f
+usr/doc/f2c/README
+usr/doc/f2c/getopt.c
+install/
+install/doinst.sh

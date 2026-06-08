@@ -1,0 +1,40 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+rm -f /tmp/SeTnewtag # empty the return file
+dialog --title "SELECTING PACKAGES FOR SERIES Q (EXTRA KERNEL IMAGES)" \
+       --checklist "Please select the package you wish to install \
+from series Q. Use the UP/DOWN keys to scroll through the list, and the SPACE \
+key to select the packages you wish to install. Select a maximum of one kernel \
+image, and make sure to reinstall LILO before rebooting (if you use it). \
+If you have special hardware (like a CD-ROM drive) you ***MUST*** install \
+a kernel that supports it, or it won't work when you reboot. Press ENTER \
+when you are done." \
+20 70 7 \
+"alpha" "1.1.59 image with IN2000/EATA support" "off" \
+"cdu31a" "1.1.59 image with Sony CDU31/33A" "off" \
+"cdu535" "1.1.59 image with IDE+SCSI+Sony535" "off" \
+"mitsumi" "1.1.59 image with fast Mitsumi driver" "off" \
+"nec260" "1.1.59 image with NEC 260 IDE CD driver" "off" \
+"sbpcd" "1.1.59 image with IDE+SCSI+SB Pro CD" "off" \
+"xt" "1.1.59 image with XT (RLL/MFM) support" "off" \
+"idekerno" "1.1.18 image with IDE support" "off" \
+"scsikrno" "1.1.18 image with IDE+SCSI support" "off" \
+"cdu31ao" "1.1.18 image with Sony CDU31/33A" "off" \
+"sony535o" "1.1.18 image with Sony CDU531/535" "off" \
+"sbpcdo" "1.1.18 image with IDE+SCSI+SB Pro CD" "off" \
+2> /tmp/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f /tmp/SeTpkgs
+ exit
+fi
+cat /dev/null > /tmp/SeTnewtag
+for PACKAGE in alpha cdu31a cdu535 mitsumi nec260 sbpcd xt \
+idekerno scsikrno cdu31ao sony535o sbpcdo \
+ ; do
+ if fgrep \"$PACKAGE\" /tmp/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> /tmp/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> /tmp/SeTnewtag
+ fi
+done
+rm -f /tmp/SeTpkgs

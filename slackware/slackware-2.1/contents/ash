@@ -1,0 +1,29 @@
+PACKAGE NAME:     ash
+COMPRESSED PACKAGE SIZE:     50 K
+UNCOMPRESSED PACKAGE SIZE:     100 K
+PACKAGE LOCATION: diskap4
+PACKAGE DESCRIPTION:
+ash:      Kenneth Almquist's ash shell.
+ash:
+ash:      A lightweight (62K) Bourne compatible shell. Great for machines with
+ash:      low memory, but does not provide all the extras of shells like bash,
+ash:      tcsh, and zsh. Runs most shell scripts compatible with the Bourne
+ash:      shell. Note that under Linux, most scripts seem to use at least some
+ash:      bash-specific syntax. The Slackware setup scripts are a notable
+ash:      exception, since ash is the shell used on the install disks. NetBSD
+ash:      uses ash as its /bin/sh.
+ash:
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/ash.1.gz
+usr/doc/
+usr/doc/ash/
+usr/doc/ash/TOUR
+install/
+install/doinst.sh
+bin/
+bin/ash

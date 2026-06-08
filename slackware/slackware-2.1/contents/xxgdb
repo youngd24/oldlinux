@@ -1,0 +1,28 @@
+PACKAGE NAME:     xxgdb
+COMPRESSED PACKAGE SIZE:     36 K
+UNCOMPRESSED PACKAGE SIZE:     90 K
+PACKAGE LOCATION: diskxap2
+PACKAGE DESCRIPTION:
+xxgdb:    xxgdb-1.08.
+xxgdb:
+xxgdb:    Xxgdb is a graphical user interface to the gdb debugger under the X
+xxgdb:    Window System. It provides visual feedback and mouse input for the
+xxgdb:    user to control program execution through breakpoints, to examine and
+xxgdb:    traverse the function call stack, to display values of variables and
+xxgdb:    data structures.
+xxgdb:
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/xxgdb.1.gz
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/xxgdb
+var/
+var/X11R6/
+var/X11R6/lib/
+var/X11R6/lib/app-defaults/
+var/X11R6/lib/app-defaults/XDbx

@@ -1,0 +1,38 @@
+PACKAGE NAME:     mc
+COMPRESSED PACKAGE SIZE:     76 K
+UNCOMPRESSED PACKAGE SIZE:     190 K
+PACKAGE LOCATION: diskap5
+PACKAGE DESCRIPTION:
+mc:       MouseLess Commander version 0.14
+mc:
+mc:       The MouseLess Commander is a Norton Commander clone, a program that
+mc:       manipulates and manages files and directories. Useful, fast, and has
+mc:       color displays on the Linux console.  Contrary to its name, it also
+mc:       has mouse support if you run the gpm mouse server.  This program
+mc:       requires the terminal description files in /usr/lib/terminfo, which
+mc:       can be found in ncurses.tgz or hdsetup.tgz (the Slackware setup script
+mc:       package).  mc-0.14 was written by Miguel de Icaza and Mauricio Plaza.
+mc:
+FILE LIST:
+./
+.depend
+usr/
+usr/bin/
+usr/bin/mc
+usr/lib/
+usr/lib/mc/
+usr/lib/mc/man2hlp.pl
+usr/lib/mc/xnc.hlp
+usr/lib/mc/mc.ext
+usr/lib/mc/mc.hlp
+usr/lib/mc/mc.menu
+usr/lib/mc/gindex.pl
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/mc.1.gz
+usr/doc/
+usr/doc/mc-0.14/
+usr/doc/mc-0.14/NEWS
+usr/doc/mc-0.14/README
+usr/doc/mc-0.14/TODO

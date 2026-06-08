@@ -1,0 +1,43 @@
+--- Makefile
++++ Makefile	1994/02/22 14:31:50
+@@ -0,0 +1,12 @@
++CFLAGS = -O2 -fomit-frame-pointer -m486 $(CPPFLAGS)
++LDFLAGS = -s -v
++
++rpcinfo: rpcinfo.o
++
++install: rpcinfo
++	install -m644 rpcinfo.8 /usr/man/man8
++	install -m744 rpcinfo /usr/sbin
++
++clean:
++	rm -f *.o rpcinfo
++
+--- rpcinfo.c
++++ rpcinfo.c	1994/02/22 14:27:48
+@@ -476,7 +476,9 @@
+ 	char **argv;
+ {
+ 	struct sockaddr_in server_addr;
++#ifndef linux
+ 	register struct hostent *hp;
++#endif
+ 	struct pmaplist *head = NULL;
+ 	int socket = RPC_ANYSOCK;
+ 	struct timeval minutetimeout;
+@@ -492,11 +494,15 @@
+ 	else {
+ 		bzero((char *)&server_addr, sizeof server_addr);
+ 		server_addr.sin_family = AF_INET;
++#ifdef linux
++		server_addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
++#else
+ 		if ((hp = gethostbyname("localhost")) != NULL)
+ 			bcopy(hp->h_addr, (caddr_t)&server_addr.sin_addr,
+ 			    hp->h_length);
+ 		else
+ 			server_addr.sin_addr.s_addr = inet_addr("0.0.0.0");
++#endif
+ 	}
+ 	minutetimeout.tv_sec = 60;
+ 	minutetimeout.tv_usec = 0;

@@ -1,0 +1,6 @@
+./usr/src/tex/html2latex/HTMLparse.c
+./usr/src/tex/html2latex/HTMLparse.h
+./usr/src/tex/html2latex/HTMLplist.c
+./usr/src/tex/html2latex/Makefile
+./usr/src/tex/html2latex/html2latex.c
+./usr/src/tex/html2latex/html2latex.html

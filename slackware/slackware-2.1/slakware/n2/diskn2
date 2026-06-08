@@ -1,0 +1,89 @@
+CONTENTS: pine sendmail smailcfg mailx deliver uucp ppp dip  
+dip:      DIP - dialup IP connection handler 3.3.7i
+dip:
+dip:      Uri Blumenthal's version of Fred N. van Kempen's DIP utility. DIP 
+dip:      handles the connections needed for dialup IP links, like SLIP or
+dip:      CSLIP. It can handle both incoming and outgoing connections, using
+dip:      password security for incoming connections.  
+dip:
+dip:
+dip:
+dip:
+dip:
+deliver:  A small and simple program that delivers electronic mail once it
+deliver:  has arrived at a given machine. Although designed for Xenix, it
+deliver:  works well on many platforms, including (of course) Linux. Deliver
+deliver:  allows great flexibility in the handling of local mail delivery.
+deliver:  All files used to control deliver are shell scripts. Thus, anything
+deliver:  that can be called by a shell script can be used to control mail
+deliver:  delivery. Deliver can also be used in conjunction with Smail. It
+deliver:  is included by default with Slackware's sendmail package, too.
+deliver:
+deliver:
+deliver:
+mailx:    BSD mailx 5.5.
+mailx:
+mailx:    Mail is a intelligent mail processing system, which has a command
+mailx:    syntax reminiscent of ed with lines replaced by messages. It's small;
+mailx:    it's the standard; it's a good thing to install if you're going to use
+mailx:    mail.
+mailx:
+mailx:
+mailx:
+mailx:
+mailx:
+sendmail: BSD sendmail 8.6.9.
+sendmail:
+sendmail: Eric Allman's mail transport agent. The _Unix System Administration
+sendmail: Handbook_ calls sendmail 'The most complex and complete mail delivery
+sendmail: system in common use...'
+sendmail:
+sendmail: Ready-made configuration files are included for systems connected by
+sendmail: TCP/IP (with or without a nameserver) and for systems using UUCP.
+sendmail:
+sendmail: 'deliver' is included as a local mail agent.
+sendmail:
+smailcfg: Configuration files for sendmail.
+smailcfg:
+smailcfg: These files are used to create sendmail.cf configuration files. The
+smailcfg: m4 macro processor (on the D series of disks) is also required in
+smailcfg: order to make use of these files. 
+smailcfg:
+smailcfg: These files and the documentation in /usr/src/sendmail should make it
+smailcfg: possible to support virtually any mail configuration. NOTE: you
+smailcfg: probably won't need this package if you're planning to use one of the
+smailcfg: sendmail.cf samples included in the sendmail package.
+smailcfg:
+pine:     Pine version 3.89
+pine:
+pine:     A menu driven user mail program. Originally based on Elm (Pine Is
+pine:     No-longer Elm), but with many additional features that make it
+pine:     easier to use.
+pine:
+pine:
+pine:
+pine:
+pine:
+pine:
+uucp:     Taylor UUCP version 1.05
+uucp:
+uucp:     Ian Taylor's Unix to Unix copy: mail and news over modem lines. 
+uucp:     This is the standard UUCP package of the Free Software Foundation.
+uucp:
+uucp:     Configured to use HoneyDanBer and/or Taylor configuration files.
+uucp:
+uucp:
+uucp:
+uucp:
+uucp:
+ppp:      PPP for Linux, version 2.1.2b
+ppp:
+ppp:      PPP for Linux -- Michael Callahan's ppp.c kernel driver and the pppd
+ppp:      daemon (ported by Al Longyear).  PPP support is included in most of
+ppp:      the precompiled kernels in Slackware.
+ppp:
+ppp:
+ppp:
+ppp:
+ppp:
+ppp:

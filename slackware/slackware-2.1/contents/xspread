@@ -1,0 +1,34 @@
+PACKAGE NAME:     xspread
+COMPRESSED PACKAGE SIZE:     202 K
+UNCOMPRESSED PACKAGE SIZE:     620 K
+PACKAGE LOCATION: diskxap2
+PACKAGE DESCRIPTION:
+xspread:  A spreadsheet for the X window system, version 2.1.
+xspread:
+FILE LIST:
+./
+usr/
+usr/doc/
+usr/doc/xspread/
+usr/doc/xspread/Sample_Run
+usr/doc/xspread/demo_dates
+usr/doc/xspread/demo_func
+usr/doc/xspread/demo_math
+usr/doc/xspread/demo_matrix
+usr/doc/xspread/demo_strval
+usr/doc/xspread/sc.changes
+usr/doc/xspread/sc.readme
+usr/doc/xspread/sc.vms_notes
+usr/doc/xspread/tutorial
+usr/doc/xspread/xspread.dvi
+usr/doc/xspread/xspread.ps
+usr/doc/xspread/xspread.tex
+usr/doc/xspread/xspread.toc
+usr/doc/xspread/xspread_prog.asc
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/xspread.1.gz
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/xspread

@@ -1,0 +1,21 @@
+PACKAGE NAME:     scsikrno
+COMPRESSED PACKAGE SIZE:     404 K
+UNCOMPRESSED PACKAGE SIZE:     480 K
+PACKAGE LOCATION: diskq1
+PACKAGE DESCRIPTION:
+scsikrno: Linux kernel version 1.1.18, with SCSI + IDE support. 
+scsikrno:
+scsikrno: This is a Linux kernel with full support for SCSI devices such as hard
+scsikrno: drives, tape drives, and CD-ROM drives. See the file 'scsikern.log' 
+scsikrno: for an exact list of included drivers.
+scsikrno:
+scsikrno: This kernel also has support for PPP, UMSDOS, CSLIP, ethernet,
+scsikrno: Ftape, and the PS/2 style mouse (but not other busmouse types).
+scsikrno:
+FILE LIST:
+./
+install/
+install/doinst.sh
+vmlinuz
+boot/
+boot/zSystem.map

@@ -1,0 +1,69 @@
+#!/bin/sh
+dialog --title "Install packages from the TCL series" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  Press ENTER when you are done." \
+14 70 5 \
+"tcl" "The Tcl script language, version 7.3" "off" \
+"tk" "The Tk toolkit for Tcl, version 3.6" "off" \
+"blt" "This is the version 1.7 release of blt" "off" \
+"itcl" "[incr Tcl] - version 1.5" "off" \
+"tclx" "TclX - Extended Tcl 7.3b" "off" \
+2> /tmp/return
+if fgrep '"tcl"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package tcl to your hard drive" --infobox \
+"The Tcl script language, version 7.3\n\
+\n\
+Tcl, developed by Dr. John Ousterhout, is a simple to use text-based\n\
+script language with many built-in features which make it especially\n\
+nice for writing interactive scripts.\n\
+\n\
+" 8 75
+ installpkg tcl1/tcl.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"tk"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package tk to your hard drive" --infobox \
+"The Tk toolkit for Tcl, version 3.6\n\
+Tk is an extension to Tcl that allows you to quickly and easily build\n\
+X11 applications that have the look and feel of Motif apps.\n\
+" 5 75
+ installpkg tcl1/tk.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"blt"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package blt to your hard drive" --infobox \
+"This is the version 1.7 release of the blt library.  It is an\n\
+extension to Tk toolkit (it requires no patching of the Tcl\n\
+or Tk libraries).\n\
+\n\
+" 6 75
+ installpkg tcl2/blt.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"itcl"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package itcl to your hard drive" --infobox \
+"[incr Tcl] - version 1.5\n\
+\n\
+[incr Tcl] adds object-oriented programming facilities to Tcl.  It\n\
+was NOT designed as yet another whiz-bang object-oriented programming\n\
+language; indeed, it is patterned somewhat after C++.  It was designed\n\
+to support more structured programming in Tcl.  Scripts that grow\n\
+beyond a few thousand lines become extremely difficult to maintain.\n\
+[incr Tcl] attacks this problem in the same way that any object-\n\
+oriented programming language would, by providing mechanisms for\n\
+data encapsulation behind well-defined interfaces.\n\
+\n\
+" 13 75
+ installpkg tcl2/itcl.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"tclx"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package tclx to your hard drive" --infobox \
+"TclX - Extended Tcl: Extended command set for Tcl (v. 7.3b)\n\
+\n\
+Extended Tcl is a superset of standard Tcl and is built alongside the\n\
+standard Tcl sources. Extended Tcl has three basic functional areas: \n\
+A set of new commands, a Tcl shell (i.e. a Unix shell-style command \n\
+line and interactive environment), and a user-extensible library of\n\
+useful Tcl procedures, any of which can be automatically loaded on the\n\
+first attempt to execute it.\n\
+\n\
+" 11 75
+ installpkg tcl2/tclx.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

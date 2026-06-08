@@ -1,0 +1,56 @@
+CONTENTS: ntb-dps ntb-indx ntb-utl1 ntb-utl2 ntb-xdvi  
+ntb-dps:  ntb-dps 1.2
+ntb-dps:
+ntb-dps:  These are the binaries for the dvips driver, a program that translates
+ntb-dps:  .dvi files into postscript files. This package also contains some 
+ntb-dps:  metric files for postscript fonts. You can configure divps with the 
+ntb-dps:  file /usr/lib/texmf/dvips/config.ps for your own printer. Dvips can 
+ntb-dps:  also help you to print files on a printer for which no dvi driver is
+ntb-dps:  provided. Translate the dvi file to a postscript file and print it
+ntb-dps:  with ghostscript. (Ghostscript is not included in the T series.) The
+ntb-dps:  current version of dvipsk (the 'k' indicates that the sources use the
+ntb-dps:  kpathsea library) is 5.58a.
+ntb-indx: ntb-indx 1.1
+ntb-indx:
+ntb-indx: This package contains the binaries for the programs makeindex, glotex
+ntb-indx: and idxtex to create indexes in TeX/LaTeX files and some macros for
+ntb-indx: using these programs.
+ntb-indx:
+ntb-indx:
+ntb-indx:
+ntb-indx:
+ntb-indx:
+ntb-indx:
+ntb-utl1: ntb-utl1 1.1
+ntb-utl1:
+ntb-utl1: This package contains the binaries for the TeX utilities dvicopy,
+ntb-utl1: dvitype, pooltype, tangle, texi2dvi and weave.
+ntb-utl1:
+ntb-utl1:
+ntb-utl1:
+ntb-utl1:
+ntb-utl1:
+ntb-utl1:
+ntb-utl1:
+ntb-utl2: ntb-utl2 1.1 
+ntb-utl2:
+ntb-utl2: This package contains the binaries for the utilities gftodvi, gftopk,
+ntb-utl2: gftype, mft, pktogf, and pktype.
+ntb-utl2:
+ntb-utl2:
+ntb-utl2:
+ntb-utl2:
+ntb-utl2:
+ntb-utl2:
+ntb-utl2:
+ntb-xdvi: ntb-xdvi 1.2
+ntb-xdvi:
+ntb-xdvi: These are the binaries for xdvi, a program to display dvi files under
+ntb-xdvi: X. It can also display epsf files which are included in dvi files. 
+ntb-xdvi: (You'll need ghostscript for this) The current version of xdvik is 
+ntb-xdvi: 1.8b. The epsf file handling has been patched so that xdvi can also
+ntb-xdvi: display scaled epsf files without problems.  
+ntb-xdvi:
+ntb-xdvi:
+ntb-xdvi:
+ntb-xdvi:

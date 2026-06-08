@@ -1,0 +1,10 @@
+./usr/lib/texmf/fonts/symbol/rsfs/create.sh
+./usr/lib/texmf/fonts/symbol/rsfs/src/rsfs10.mf
+./usr/lib/texmf/fonts/symbol/rsfs/src/rsfs5.mf
+./usr/lib/texmf/fonts/symbol/rsfs/src/rsfs7.mf
+./usr/lib/texmf/fonts/symbol/rsfs/src/script.mf
+./usr/lib/texmf/fonts/symbol/rsfs/src/scriptu.mf
+./usr/lib/texmf/fonts/symbol/rsfs/tfm/rsfs10.tfm
+./usr/lib/texmf/fonts/symbol/rsfs/tfm/rsfs5.tfm
+./usr/lib/texmf/fonts/symbol/rsfs/tfm/rsfs7.tfm
+./usr/lib/texmf/tex/symbol/scrload.tex

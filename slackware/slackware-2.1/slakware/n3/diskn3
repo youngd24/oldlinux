@@ -1,0 +1,56 @@
+CONTENTS: trn trn-nntp inn cnews tin  
+inn:      INN 1.4
+inn:
+inn:      Rich Salz's InterNetNews news transport system. The Linux INN package
+inn:      was prepared by Andreas Klemm using the Newspak instructions by 
+inn:      Vince Skahan and Arjan de Vet.
+inn:
+inn:
+inn:
+inn:
+inn:
+inn:
+trn-nntp: A threaded news reader for reading a remote NNTP server. (v. 3.5)
+trn-nntp:
+trn-nntp: Compiled to use Overviews or mthreads, and to read news remotely via
+trn-nntp: NNTP. Be sure to set NNTPSERVER in your /etc/profile or
+trn-nntp: /etc/csh.login. If you're planning to have your own local newspool
+trn-nntp: (i.e. use INN or Cnews) then you won't want to install this version.
+trn-nntp:
+trn-nntp:
+trn-nntp:
+trn-nntp:
+trn-nntp:
+trn:      A threaded news reader for the local news spool. (v. 3.5)
+trn:
+trn:      This version of trn is compiled to read a local news spool in 
+trn:      /var/spool/news for use with INN or Cnews.
+trn:
+trn:      If you plan to read news from an NNTP server, don't install this
+trn:      package -- instead, wait for the trn-nntp package coming next.
+trn:
+trn:
+trn:
+trn:
+cnews:    20 Feb 1993 Performance Release of C News
+cnews:
+cnews:    Controls the spooling and transmission of Usenet news. 
+cnews:    Cnews is typically used with UUCP - for NNTP connections INN might
+cnews:    be a better choice.
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:
+tin:      The 'tin' news reader. (1.2pl2)
+tin:
+tin:      Tin is a full-screen easy to use Netnews reader. It can read news
+tin:      locally (i.e. /usr/spool/news) or remotely (rtin or tin -r option)
+tin:      via a NNTP (Network News Transport Protocol) server.  It will
+tin:      automatically utilize nov (news overview) style index files if
+tin:      available locally or via the nntp xover command. Tin was written by
+tin:      Iain Lea.
+tin:
+tin:
+tin:

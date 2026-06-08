@@ -1,0 +1,4 @@
+( cd usr/bin ; rm -rf selection )
+( cd usr/bin ; ln -sf gpm selection )
+( cd usr/man/preformat/cat1 ; rm -rf selection.1.gz )
+( cd usr/man/preformat/cat1 ; ln -sf gpm.1.gz selection.1.gz )

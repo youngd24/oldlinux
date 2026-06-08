@@ -1,0 +1,34 @@
+CONTENTS: ntb-mf ntf-cms ntb-tex  
+ntb-mf:   ntb-mf 1.2
+ntb-mf:
+ntb-mf:   This package contains the binaries for MetaFont, the bases mf.base
+ntb-mf:   (plain.base) and cmmf.base (cmplain.base) and the basic setup for the
+ntb-mf:   font directories. The current version of MetaFont is 2.71 (C version 
+ntb-mf:   6.1).
+ntb-mf:
+ntb-mf:
+ntb-mf:
+ntb-mf:
+ntb-mf:
+ntf-cms:  ntf-cms 1.2
+ntf-cms:
+ntf-cms:  The Sauter Computer Modern fonts. These are the basic fonts for TeX 
+ntf-cms:  in the NTeX distribution.
+ntf-cms:
+ntf-cms:
+ntf-cms:
+ntf-cms:
+ntf-cms:
+ntf-cms:
+ntf-cms:
+ntb-tex:  ntb-tex 1.2
+ntb-tex:
+ntb-tex:  This package contains the binaries for the TeX program and the 
+ntb-tex:  MakeTeX* scripts. MakeTeXTFM tries to create a tfm file, MakeTeXMF
+ntb-tex:  tries to create a mf file and MakeTeXPK tries to create a pk file.
+ntb-tex:  Note that the MakeTeXPK script can also uncompress pk fonts that are
+ntb-tex:  compressed with gzip. However, the uncompressed fonts are not
+ntb-tex:  compressed again, but it can help to save disk space, especially if
+ntb-tex:  you have installed fonts that you do not need all the time. The 
+ntb-tex:  current version of TeX is 3.1415 (C version 6.1).
+ntb-tex:

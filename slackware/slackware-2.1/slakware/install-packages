@@ -1,0 +1,74 @@
+#!/bin/sh
+dialog --title "Install packages to run from your hard drive" \
+       --checklist "Please select the disk sets you would like to install software from. Press ENTER when you are done." \
+20 70 12 \
+"install-a" "Base Linux packages (CAUTION!)" "off" \
+"install-ap" "Applications" "off" \
+"install-d" "Program development" "off" \
+"install-e" "Emacs" "off" \
+"install-f" "Documentation" "off" \
+"install-i" "Info files" "off" \
+"install-iv" "Interviews 3.1" "off" \
+"install-n" "Networking" "off" \
+"install-oop" "Smalltalk" "off" \
+"install-q" "Linux Kernels" "off" \
+"install-t" "TeX" "off" \
+"install-tcl" "Tcl/Tk/TclX/blt/itcl" "off" \
+"install-x" "XFree86 3.1" "off" \
+"install-xap" "X Applications" "off" \
+"install-xd" "X Development" "off" \
+"install-xv" "XView 3.2 (OpenLook)" "off" \
+"install-y" "Games that do not need X" "off" \
+2> /tmp/rturn
+if fgrep '"install-a"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-a
+fi
+if fgrep '"install-ap"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-ap
+fi
+if fgrep '"install-d"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-d
+fi
+if fgrep '"install-e"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-e
+fi
+if fgrep '"install-f"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-f
+fi
+if fgrep '"install-i"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-i
+fi
+if fgrep '"install-iv"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-iv
+fi
+if fgrep '"install-n"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-n
+fi
+if fgrep '"install-oop"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-oop
+fi
+if fgrep '"install-q"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-q
+fi
+if fgrep '"install-t"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-t
+fi
+if fgrep '"install-tcl"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-tcl
+fi
+if fgrep '"install-x"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-x
+fi
+if fgrep '"install-xap"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-xap
+fi
+if fgrep '"install-xd"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-xd
+fi
+if fgrep '"install-xv"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-xv
+fi
+if fgrep '"install-y"' /tmp/rturn 1> /dev/null 2> /dev/null ; then
+ install-y
+fi
+rm -f /tmp/rturn

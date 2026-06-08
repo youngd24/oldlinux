@@ -1,0 +1,19 @@
+Begin3
+Title:          ftape-irq-dma.patch
+Version:        1.0
+Entered-date:   September 18, 1994
+Description:    Patch to ftape-1.13b to work with the new request_irq()
+		and request_dma() in the newer kernels.
+Keywords:       ftape 
+Author:         Dennis Flaherty, dennisf@denix.elk.miles.com
+Maintained-by:  
+Primary-site:   sunsite.unc.edu
+Alternate-site: 
+Original-site:  
+Platform:       Linux
+Copying-policy: 
+End
+
+
+This new form doesn't let me tell you where to put ftape-irq-dma.patch,
+but put it in /pub/Linux/kernel/tapes, right next to ftape-1.13b.tar.gz.

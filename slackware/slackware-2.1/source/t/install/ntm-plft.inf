@@ -1,0 +1,6 @@
+
+NTeX Release 1.2 --- ntm-plft 1.1 --- status: optional
+
+This package contains plftex, a TeX format based on the plain TeX format
+using the NFSS font scheme.
+

@@ -1,0 +1,8 @@
+
+NTeX Release 1.2 --- ntb-dlj 1.2 --- status: recommended
+
+This are the binaries for the dvi2xx drivers based on the kpathsea
+library. It contains the drivers dvi2lj, dvi2lj2p, dvi2lj4 and 
+dvilj4l for the HP Laserjet series and compatible laser printers.
+The current version is 2.1 using the kpathsea library 2.1.
+

@@ -1,0 +1,34 @@
+PACKAGE NAME:     diff
+COMPRESSED PACKAGE SIZE:     102 K
+UNCOMPRESSED PACKAGE SIZE:     210 K
+PACKAGE LOCATION: diskap2
+PACKAGE DESCRIPTION:
+diff:     GNU diffutils-2.7
+diff:
+diff:     The GNU diff utilities - finds differences between files. (to make
+diff:     source code patches, for instance)
+diff:
+FILE LIST:
+./
+usr/
+usr/info/
+usr/info/diff.info.gz
+usr/info/diff.info-1.gz
+usr/info/diff.info-2.gz
+usr/info/diff.info-3.gz
+usr/info/diff.info-4.gz
+usr/bin/
+usr/bin/cmp
+usr/bin/diff
+usr/bin/diff3
+usr/bin/sdiff
+usr/doc/
+usr/doc/diffutils/
+usr/doc/diffutils/NEWS
+usr/doc/diffutils/README
+usr/doc/diffutils/COPYING
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/diff.1.gz
+usr/man/preformat/cat1/diff3.1.gz

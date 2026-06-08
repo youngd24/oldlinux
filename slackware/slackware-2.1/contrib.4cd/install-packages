@@ -1,0 +1,219 @@
+#!/bin/sh
+dialog --title "Install packages to run from the Slackware CD-ROM" \
+       --checklist "Please select the packages you would like to install \
+so that they will run from the Slackware Professional CD-ROM.  The CD-ROM \
+must be mounted under /cdrom for this to work. If you are reinstalling an \
+existing package, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+20 70 8 \
+"aps-23" "* Apsfilter-2.3" "off" \
+"auis63L2-mail" "* Andrew multimedia mail system" "off" \
+"auis63L2-src" "* Andrew source editing system" "off" \
+"auis63L2-wp" "* Andrew word processing system" "off" \
+"dosemu.53p28" "* An MSDOS emulator" "off" \
+"gcl" "* GNU common lisp 1.0" "off" \
+"gpc-2.5.8" "* GNU Pascal compiler" "off" \
+"httpd" "* NCSA httpd Web server" "off" \
+"ircII+term" "* ircII2.3.17+tv1.1 for TERM" "off" \
+"ircII" "* ircII2.3.17+tv1.1 for TCP/IP" "off" \
+"lemacs-X11R6" "* Lucid Emacs version 19.10" "off" \
+"manpagesrc" "* groff source for manpages" "off" \
+"nvi" "* nvi - 'vi' clone" "off" \
+"samba-1.8.05" "* print/file server for OS/2,NT,WfW" "off" \
+"seejpeg" "* Linux console GIF/JPEG viewer" "off" \
+"xgrabsc" "* A screengrabber for X" "off" \
+2> /tmp/return
+if fgrep '"aps-23"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package aps-23 to run from CD" --infobox \
+"* Apsfilter-2.3\n\
+\n\
+Andreas Klemm's Apsfilter-2.3. aps-2 is an lineprinter input filter\n\
+for Unix Systems with Berkeley alike printing system (configuration\n\
+using /etc/printcap).  Main features are AUTOMATIC FILE TYPE\n\
+RECOGNITION for the filetypes: * ASCII * DATA * POSTSCRIPT * DVI *\n\
+\n\
+" 9 75
+ installpkg aps-23.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"auis63L2-mail"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package auis63L2-mail to run from CD" --infobox \
+"* Andrew User Interface System - Mail System\n\
+\n\
+This package is aimed at those needing A BETTER MAIL INTERFACE\n\
+and those interested in a MULTI-MEDIA (MIME) MAIL INTERFACE\n\
+\n\
+REQUIREMENTS:\n\
+YOU MUST HAVE INSTALLED AUIS63L2-WP.TGZ FIRST.\n\
+/bin/csh  (e.g. ln -sf /bin/tcsh /bin/csh)\n\
+X Window System\n\
+A WORKING MAIL SYSTEM (using mail/elm or whatever).\n\
+\n\
+" 13 75
+ installpkg auis63L2-mail.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"auis63L2-src"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package auis63L2-src to run from CD" --infobox \
+"* Andrew User Interface System - For the Programmer\n\
+\n\
+This package is aimed at the SOURCE CODE DEVELOPER.\n\
+\n\
+REQUIREMENTS:\n\
+YOU MUST HAVE INSTALLED AUIS63L2-WP.TGZ FIRST.\n\
+/bin/csh  (e.g. ln -sf /bin/tcsh /bin/csh)\n\
+X Window System\n\
+\n\
+" 11 75
+ installpkg auis63L2-src.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"auis63L2-wp"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package auis63L2-wp to run from CD" --infobox \
+"* Andrew User Interface System - Word Processing\n\
+\n\
+This package is aimed at the WORD PROCESSING audience.\n\
+\n\
+ALSO REQUIRES:\n\
+/bin/csh  (e.g. ln -sf /bin/tcsh /bin/csh)\n\
+X Window System\n\
+\n\
+" 10 75
+ installpkg auis63L2-wp.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"dosemu.53p28"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package dosemu.53p28 to run from CD" --infobox \
+"* An MSDOS emulator.\n\
+\n\
+This package allows you to run MS-DOS under Linux by setting up\n\
+a virtual machine (DOS box) capable of servicing BIOS calls and\n\
+other requirements of DOS while Linux continues to run in \n\
+protected mode.  It runs most MS-DOS software that doesn't require\n\
+DOS extenders, etc, including Windows 3.0 in real mode.\n\
+\n\
+Configuration instructions are placed in /usr/doc/dosemu.\n\
+\n\
+" 12 75
+ installpkg dosemu.53p28.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gcl"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gcl to run from CD" --infobox \
+"* GNU common lisp 1.0\n\
+\n\
+" 4 75
+ installpkg gcl.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gpc-2.5.8"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gpc-2.5.8 to run from CD" --infobox \
+"GNU Pascal compiler.\n\
+\n\
+Based on the GCC 2.5.8 compiler.\n\
+\n\
+" 6 75
+ installpkg gpc-2.5.8.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"httpd"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package httpd to run from CD" --infobox \
+"* NCSA httpd Web server.\n\
+\n\
+This is NCSA's public domain HTTP server.  It allows your machine to\n\
+act as a server for World Wide Web clients such as Mosiac, Lynx, and\n\
+Netscape.\n\
+\n\
+This server was developed at the National Center for Supercomputing\n\
+Applications at the University of Illinois at Urbana-Champaign.\n\
+\n\
+" 11 75
+ installpkg httpd.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ircII+term"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ircII+term to run from CD" --infobox \
+"* ircII2.3.17+tv1.1 with term support\n\
+\n\
+This is a version of IRC (Internet Relay Chat) for the systems\n\
+running TERM 2.x.x.  It also includes voice support and other\n\
+extra features.\n\
+\n\
+" 8 75
+ installpkg ircII+term.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ircII"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ircII to run from CD" --infobox \
+"* ircII2.3.17+tv1.1 for TCP/IP\n\
+\n\
+This is a version of IRC (Internet Relay Chat) for the systems\n\
+with direct TCP/IP access (including SLIP/PPP).  It also includes\n\
+voice support and other extra features.\n\
+\n\
+" 8 75
+ installpkg ircII.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"lemacs-X11R6"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package lemacs-X11R6 to run from CD" --infobox \
+"* Lucid Emacs version 19.10\n\
+\n\
+This is a version of Emacs enhanced to work under X.  This\n\
+version has been linked with the shared libraries from XFree86\n\
+3.1 (X11R6).\n\
+\n\
+" 8 75
+ installpkg lemacs-X11R6.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"manpagesrc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package manpagesrc to run from CD" --infobox \
+"* groff source for manpages\n\
+\n\
+This package contains the groff source for the manpages used in \n\
+Slackware, and is useful for creating hard copy of the manpages.\n\
+Why this is preferable to 'man', well.... I really don't know.\n\
+\n\
+" 8 75
+ installpkg manpagesrc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"nvi"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package nvi to run from CD" --infobox \
+"* nvi - 'vi' clone.\n\
+\n\
+Version 1.34 of nex/nvi, a freely redistributable replacement for the\n\
+Berkeley ex and vi text editors.\n\
+\n\
+" 7 75
+ installpkg nvi.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"samba-1.8.05"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package samba-1.8.05 to run from CD" --infobox \
+"* Samba 1.8.05\n\
+\n\
+Samba is a Unix based SMB file server. This allows a Unix host to\n\
+act as a file and print server for SMB clients. This includes\n\
+Lan-Manager compatible clients such as LanManager for DOS, Windows\n\
+for Workgroups, Windows NT, OS/2, Pathworks and many more. If you\n\
+have any PCs running SMB clients, such as a PC running Windows for\n\
+Workgroups, then you can mount file space or printers from a Linux\n\
+host, so that directories, files and printers on the Linux host \n\
+are available on the PC.\n\
+\n\
+" 13 75
+ installpkg samba-1.8.05.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"seejpeg"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package seejpeg to run from CD" --infobox \
+"* seejpeg v1.4.3\n\
+\n\
+seejpeg is Evan Harris's JPEG viewer which utilizes svgalib and \n\
+contains limited GIF, PPM and TARGA viewing support.  The most useful\n\
+feature of seejpeg is that it automatically decides on the 'best'\n\
+video mode to use based on the image being displayed and the video\n\
+card being used.  To aid it, various hints may be given as program\n\
+options.  In the worst case, it may be overridden.\n\
+\n\
+" 11 75
+ installpkg seejpeg.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xgrabsc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xgrabsc to run from CD" --infobox \
+"* A screengrabber for X.\n\
+\n\
+Xgrabsc and xgrab allow you do take PostScript shapshots of individual\n\
+X clients, regions of the X screen, or the entire screen.\n\
+\n\
+" 7 75
+ installpkg xgrabsc.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

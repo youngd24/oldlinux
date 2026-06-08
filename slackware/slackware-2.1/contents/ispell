@@ -1,0 +1,61 @@
+PACKAGE NAME:     ispell
+COMPRESSED PACKAGE SIZE:     643 K
+UNCOMPRESSED PACKAGE SIZE:     1680 K
+PACKAGE LOCATION: diskap5
+PACKAGE DESCRIPTION:
+ispell:   ispell-3.1.08
+ispell:
+ispell:   Ispell is a fast screen-oriented spelling checker that shows you your
+ispell:   errors in the context of the original file, and suggests possible 
+ispell:   corrections when it can figure them out.  Compared to UNIX spell, it
+ispell:   is faster and much easier to use.  Ispell can also handle languages
+ispell:   other than English. Ispell has a long history, and many people have
+ispell:   contributed to the current version -- some of the major contributors
+ispell:   include R. E. Gorin, Pace Willisson, Walt Buehring, and Geoff 
+ispell:   Kuenning. 
+ispell:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/ispell/
+usr/lib/ispell/english.aff
+usr/lib/ispell/americanmed+.hash
+usr/lib/ispell/ispell.dict
+usr/lib/ispell/ispell.words
+usr/lib/emacs/
+usr/lib/emacs/site-lisp/
+usr/lib/emacs/site-lisp/ispell.el
+usr/lib/emacs/site-lisp/ispell.elc
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/sq.1.gz
+usr/man/preformat/cat1/ispell.1.gz
+usr/man/preformat/cat4/
+usr/man/preformat/cat4/english.4.gz
+usr/man/preformat/cat4/ispell.4.gz
+usr/bin/
+usr/bin/ispell
+usr/bin/buildhash
+usr/bin/icombine
+usr/bin/ijoin
+usr/bin/munchlist
+usr/bin/findaffix
+usr/bin/tryaffix
+usr/bin/sq
+usr/bin/unsq
+usr/info/
+usr/info/ispell.info
+usr/doc/
+usr/doc/ispell/
+usr/doc/ispell/Contributors
+usr/doc/ispell/Magiclines
+usr/doc/ispell/README
+usr/doc/ispell/WISHES
+usr/doc/ispell/addons/
+usr/doc/ispell/addons/xspell.shar
+usr/doc/ispell/Copyright
+usr/doc/ispell/ispell.texinfo
+install/
+install/doinst.sh

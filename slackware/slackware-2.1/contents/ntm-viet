@@ -1,0 +1,77 @@
+PACKAGE NAME:     ntm-viet
+COMPRESSED PACKAGE SIZE:     45 K
+UNCOMPRESSED PACKAGE SIZE:     210 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntm-viet: ntm-viet 1.1
+ntm-viet:
+ntm-viet: Some Vietnamese TeX files.
+ntm-viet:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/vntex
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/language/
+usr/lib/texmf/tex/language/vietnamese/
+usr/lib/texmf/tex/language/vietnamese/6.tex
+usr/lib/texmf/tex/language/vietnamese/7.tex
+usr/lib/texmf/tex/language/vietnamese/8.tex
+usr/lib/texmf/tex/language/vietnamese/VNTEX-MACRO.tex
+usr/lib/texmf/tex/language/vietnamese/ages_of_dreams.tex
+usr/lib/texmf/tex/language/vietnamese/book.tex
+usr/lib/texmf/tex/language/vietnamese/cay_da.tex
+usr/lib/texmf/tex/language/vietnamese/crow.tex
+usr/lib/texmf/tex/language/vietnamese/day_di.tex
+usr/lib/texmf/tex/language/vietnamese/de_lay_quan.tex
+usr/lib/texmf/tex/language/vietnamese/do_dua.tex
+usr/lib/texmf/tex/language/vietnamese/dreams.tex
+usr/lib/texmf/tex/language/vietnamese/duongvn_amy.tex
+usr/lib/texmf/tex/language/vietnamese/header.tex
+usr/lib/texmf/tex/language/vietnamese/hoang.tex
+usr/lib/texmf/tex/language/vietnamese/hoi_trang.tex
+usr/lib/texmf/tex/language/vietnamese/hom_nay.tex
+usr/lib/texmf/tex/language/vietnamese/horse.tex
+usr/lib/texmf/tex/language/vietnamese/index.tex
+usr/lib/texmf/tex/language/vietnamese/innocent.tex
+usr/lib/texmf/tex/language/vietnamese/intro.tex
+usr/lib/texmf/tex/language/vietnamese/ky_vat.tex
+usr/lib/texmf/tex/language/vietnamese/ly_ngua_o.tex
+usr/lib/texmf/tex/language/vietnamese/makefile
+usr/lib/texmf/tex/language/vietnamese/makefile.2
+usr/lib/texmf/tex/language/vietnamese/manysongs.tex
+usr/lib/texmf/tex/language/vietnamese/mat_troi_amy.tex
+usr/lib/texmf/tex/language/vietnamese/nghin_trung.tex
+usr/lib/texmf/tex/language/vietnamese/nghin_trung_trung.tex
+usr/lib/texmf/tex/language/vietnamese/ngua_o_trung.tex
+usr/lib/texmf/tex/language/vietnamese/qc_vn.tex
+usr/lib/texmf/tex/language/vietnamese/qua_cau.tex
+usr/lib/texmf/tex/language/vietnamese/qua_keu.tex
+usr/lib/texmf/tex/language/vietnamese/quoc_ca.tex
+usr/lib/texmf/tex/language/vietnamese/readme
+usr/lib/texmf/tex/language/vietnamese/readme.2
+usr/lib/texmf/tex/language/vietnamese/s10.tex
+usr/lib/texmf/tex/language/vietnamese/s11.tex
+usr/lib/texmf/tex/language/vietnamese/s12.tex
+usr/lib/texmf/tex/language/vietnamese/s13.tex
+usr/lib/texmf/tex/language/vietnamese/s14.tex
+usr/lib/texmf/tex/language/vietnamese/s15.tex
+usr/lib/texmf/tex/language/vietnamese/s16.tex
+usr/lib/texmf/tex/language/vietnamese/s17.tex
+usr/lib/texmf/tex/language/vietnamese/tex2vnt.l
+usr/lib/texmf/tex/language/vietnamese/text.vnt
+usr/lib/texmf/tex/language/vietnamese/trong_com.tex
+usr/lib/texmf/tex/language/vietnamese/tuoi-tre.vnt
+usr/lib/texmf/tex/language/vietnamese/tuoi_hong.tex
+usr/lib/texmf/tex/language/vietnamese/tuoi_mo.tex
+usr/lib/texmf/tex/language/vietnamese/v_moon.tex
+usr/lib/texmf/tex/language/vietnamese/van-hoa-vn.vnt
+usr/lib/texmf/tex/language/vietnamese/viet-macro.tex
+usr/lib/texmf/tex/language/vietnamese/vietnam.tex
+usr/lib/texmf/tex/language/vietnamese/vn_que_huong.tex
+usr/lib/texmf/tex/language/vietnamese/vntex.c
+usr/lib/texmf/tex/language/vietnamese/vong_tay.tex
+usr/lib/texmf/tex/language/vietnamese/vsa.sty

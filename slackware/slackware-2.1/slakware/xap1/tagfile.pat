@@ -1,0 +1,16 @@
+gchess: SKP
+xfm: SKP
+ghstview: SKP
+x3270: SKP
+xgames: ADD
+xspread: SKP
+xxgdb: SKP
+gs_x11: SKP
+libgr: ADD
+seyon: SKP
+vgaset: SKP
+workman: ADD
+xv: ADD
+gnuplot: SKP
+xpaint: SKP
+xfract: ADD

@@ -1,0 +1,19 @@
+PACKAGE NAME:     nec260
+COMPRESSED PACKAGE SIZE:     484 K
+UNCOMPRESSED PACKAGE SIZE:     570 K
+PACKAGE LOCATION: diskq4
+PACKAGE DESCRIPTION:
+nec260:   Linux kernel version 1.1.59, with SCSI+IDE+NEC260 IDE CD support.
+nec260:
+nec260:   This is a Linux kernel with support for the NEC 260 CD-ROM as the
+nec260:   second device on the IDE controller.  It also supports all the SCSI
+nec260:   devices supported by the standard kernel.
+nec260:
+FILE LIST:
+./
+install/
+install/doinst.sh
+vmlinuz
+boot/
+boot/zSystem.map
+boot/config.in

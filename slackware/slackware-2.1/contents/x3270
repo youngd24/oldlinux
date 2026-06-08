@@ -1,0 +1,43 @@
+PACKAGE NAME:     x3270
+COMPRESSED PACKAGE SIZE:     106 K
+UNCOMPRESSED PACKAGE SIZE:     210 K
+PACKAGE LOCATION: diskxap2
+PACKAGE DESCRIPTION:
+x3270:    x3270 3.0.1.3 - IBM host access tool.
+x3270:
+x3270:    x3270 opens a telnet connection to an IBM host in an X window. Since
+x3270:    the window created by x3270 can use its own font for displaying
+x3270:    characters, is a fairly accurate representation of an IBM 3278. It is
+x3270:    similar to tn3270(1) except that it is X-based, not curses-based.
+x3270:
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/x3270.1.gz
+usr/man/preformat/cat5/
+usr/man/preformat/cat5/ibm_hosts.5.gz
+usr/doc/
+usr/doc/x3270/
+usr/doc/x3270/README.3.0
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/x3270
+usr/X11R6/lib/
+usr/X11R6/lib/fonts/
+usr/X11R6/lib/fonts/misc/
+usr/X11R6/lib/fonts/misc/3270-12.pcf.Z
+usr/X11R6/lib/fonts/misc/3270-12b.pcf.Z
+usr/X11R6/lib/fonts/misc/3270.pcf.Z
+usr/X11R6/lib/fonts/misc/3270a.pcf.Z
+usr/X11R6/lib/fonts/misc/3270ab.pcf.Z
+usr/X11R6/lib/fonts/misc/3270b.pcf.Z
+install/
+install/doinst.sh
+var/
+var/X11R6/
+var/X11R6/lib/
+var/X11R6/lib/app-defaults/
+var/X11R6/lib/app-defaults/X3270

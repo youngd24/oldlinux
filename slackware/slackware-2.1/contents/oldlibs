@@ -1,0 +1,27 @@
+PACKAGE NAME:     oldlibs
+COMPRESSED PACKAGE SIZE:     321 K
+UNCOMPRESSED PACKAGE SIZE:     800 K
+PACKAGE LOCATION: diskx6
+PACKAGE DESCRIPTION:
+oldlibs:  Shared X libraries from XFree86 2.1.1 (X11R5).
+oldlibs:
+oldlibs:  This package adds libX11.so.3.1.0, libXaw.so.3.1.0, and
+oldlibs:  libXt.so.3.1.0 to your /usr/X11R6/lib directory.  Although most 
+oldlibs:  X software in Slackware has been recompiled to use the new X
+oldlibs:  libraries, there's still plenty of software out there that will
+oldlibs:  require these libraries for compatibility with XFree86 3.1.
+oldlibs:
+oldlibs:  Some things that currently require these libraries: the XV series,
+oldlibs:  workman, and DOOM.
+oldlibs:
+FILE LIST:
+./
+usr/
+usr/X11R6/
+usr/X11R6/lib/
+usr/X11R6/lib/libX11.so.3.1.0
+usr/X11R6/lib/libXaw.so.3.1.0
+usr/X11R6/lib/libXt.so.3.1.0
+install/
+install/doinst.sh
+lib/

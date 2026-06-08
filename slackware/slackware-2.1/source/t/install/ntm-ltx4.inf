@@ -1,0 +1,7 @@
+
+NTeX Release 1.2 --- ntm-ltx4 1.1 --- status: recommended
+
+This package contains some hyphenation tables used with LaTeX2e and babel.
+Currently tables for ukenglish, usaenglish, german, swedish, durch, finish,
+Czech, french, polish, portuguise, spanish and turkish are included.
+

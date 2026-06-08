@@ -1,0 +1,7 @@
+
+NTeX Release 1.2 --- ntb-html 1.1 --- status: optional
+
+This package contains a program html2latex which can translate HTML files
+(mainly used in the WWW) to LaTeX files. I also included some documentation
+files for HTML in this package (see /usr/lib/texmf/html).
+

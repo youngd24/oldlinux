@@ -1,0 +1,34 @@
+CONTENTS: xv32exmp xvol32 workman  
+xv32exmp: Sample programs for Xview which demonstrate the Slingshot and UIT
+xv32exmp: extensions, libraries which greatly simplify programming a user
+xv32exmp: interface under X.
+xv32exmp:
+xv32exmp:
+xv32exmp:
+xv32exmp:
+xv32exmp:
+xv32exmp:
+xv32exmp:
+xv32exmp:
+xvol32:   Binaries for xview3.2p1-X11R6.
+xvol32:
+xvol32:   Configuration files, programs, and documentation for xview3.2p1-X11R6.
+xvol32:
+xvol32:   Includes these programs: xgettext msgfmt olwm svenv toolwait winsysck
+xvol32:   owplaces openwin xcenter clock cmdtool olwmslave props textedit
+xvol32:   olvwm xtoolplaces meminfo
+xvol32:
+xvol32:
+xvol32:
+xvol32:
+workman:  WorkMan-1.2.2a
+workman:
+workman:  A graphical tool for playing audio compact discs in a CD-ROM drive.
+workman:  It has most of the features available on standalone CD players, such
+workman:  as a shuffle mode, programmable  playlists, and elapsed/remaining 
+workman:  timers.  Extra features include the ability to store information about
+workman:  CDs in a database and then automatically extract that information when
+workman:  the CD is inserted later.
+workman:
+workman:
+workman:

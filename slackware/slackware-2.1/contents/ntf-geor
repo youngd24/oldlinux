@@ -1,0 +1,41 @@
+PACKAGE NAME:     ntf-geor
+COMPRESSED PACKAGE SIZE:     14 K
+UNCOMPRESSED PACKAGE SIZE:     100 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-geor: ntf-geor 1.1
+ntf-geor:
+ntf-geor: A Georgian font with TeX macros.
+ntf-geor:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/language/
+usr/lib/texmf/fonts/language/georgian/
+usr/lib/texmf/fonts/language/georgian/create.sh
+usr/lib/texmf/fonts/language/georgian/misc/
+usr/lib/texmf/fonts/language/georgian/misc/README
+usr/lib/texmf/fonts/language/georgian/misc/itgeorgian.README
+usr/lib/texmf/fonts/language/georgian/src/
+usr/lib/texmf/fonts/language/georgian/src/georgian.mf
+usr/lib/texmf/fonts/language/georgian/src/itgeorgian.mf
+usr/lib/texmf/fonts/language/georgian/src/mxed.mf
+usr/lib/texmf/fonts/language/georgian/src/mxed10.mf
+usr/lib/texmf/fonts/language/georgian/src/mxedbase.mf
+usr/lib/texmf/fonts/language/georgian/src/mxedbf10.mf
+usr/lib/texmf/fonts/language/georgian/src/mxedd.mf
+usr/lib/texmf/fonts/language/georgian/src/mxedfont.mf
+usr/lib/texmf/fonts/language/georgian/src/mxedp.mf
+usr/lib/texmf/fonts/language/georgian/tfm/
+usr/lib/texmf/fonts/language/georgian/tfm/georgian.tfm
+usr/lib/texmf/fonts/language/georgian/tfm/itgeorgian.tfm
+usr/lib/texmf/fonts/language/georgian/tfm/mxed10.tfm
+usr/lib/texmf/fonts/language/georgian/tfm/mxedbf10.tfm
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/language/
+usr/lib/texmf/tex/language/georgian/
+usr/lib/texmf/tex/language/georgian/mxedruli.sty
+usr/lib/texmf/tex/language/georgian/mxedtext.tex

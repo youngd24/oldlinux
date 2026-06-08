@@ -1,0 +1,7 @@
+
+NTeX Release 1.2 --- ntb-mf 1.2 --- status: necessary
+
+This packages contains the binaries for MetaFont, the bases mf.base 
+(plain.base) and cmmf.base (cmplain.base) and the basic setup for the 
+font directories. The current version of MetaFont is 2.71 (C version 6.1).
+

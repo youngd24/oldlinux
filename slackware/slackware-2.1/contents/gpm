@@ -1,0 +1,40 @@
+PACKAGE NAME:     gpm
+COMPRESSED PACKAGE SIZE:     17 K
+UNCOMPRESSED PACKAGE SIZE:     60 K
+PACKAGE LOCATION: diska3
+PACKAGE DESCRIPTION:
+gpm:      General purpose mouse support v0.17
+gpm:
+gpm:      This program is based on the "selection" package, and allows you to
+gpm:      use the mouse to cut and paste text from the screen.  It also acts as
+gpm:      a mouse server for applications running on the Linux console, such as 
+gpm:      the (now inaccurately named) MouseLess Commander and dialog.  NOTE:
+gpm:      This program may cause problems when you start X on systems that do
+gpm:      not use a serial mouse.  If you get an 'unable to open mouse device'
+gpm:      error from X, remove gpm from /etc/rc.d/rc.local.
+gpm:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/gpm
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/gpm.1.gz
+usr/doc/
+usr/doc/gpm/
+usr/doc/gpm/Abstract
+usr/doc/gpm/README
+usr/doc/gpm/TIMINGS
+usr/doc/gpm/TODO
+usr/lib/
+usr/lib/libgpm.a
+usr/include/
+usr/include/gpm.h
+var/
+var/adm/
+var/adm/setup/
+var/adm/setup/setup.selection
+install/
+install/doinst.sh

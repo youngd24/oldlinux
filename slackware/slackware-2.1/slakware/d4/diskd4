@@ -1,0 +1,45 @@
+CONTENTS: perl rcs man3 libgxx 
+perl:     Larry Wall's interpreted systems language. (v. 4.0pl36)
+perl:
+perl:     Prepared using Louis J. LaBash, Jr.'s perl-4.036-linux-kit.tar.gz
+perl:     package.
+perl:
+perl:
+perl:
+perl:
+perl:
+perl:
+perl:
+rcs:      GNU revision control system.  (v. 5.6)
+rcs:
+rcs:      RCS, the Revision Control System, manages multiple revisions of files.
+rcs:
+rcs:      RCS can store, retrieve, log, identify, and merge revisions. It is 
+rcs:      useful for files that are revised frequently, e.g. programs, 
+rcs:      documentation, graphics, and papers.
+rcs:
+rcs:
+rcs:
+rcs:
+man3:     Man pages for the C library functions. (from manpages-1.4)
+man3:
+man3:
+man3:
+man3:
+man3:
+man3:
+man3:
+man3:
+man3:
+man3:
+libgxx:   GNU libg++-2.5.3, Linux release 2
+libgxx: 
+libgxx:   G++ library and include files, needed to compile C++ code. 
+libgxx:
+libgxx:
+libgxx:
+libgxx:
+libgxx:
+libgxx:
+libgxx:
+libgxx:

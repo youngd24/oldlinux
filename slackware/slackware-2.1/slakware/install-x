@@ -1,0 +1,387 @@
+#!/bin/sh
+dialog --title "Install packages from the X series (XFree86 3.1)" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disc must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+20 70 8 \
+"x_8514" "An accelerated server 8514/A cards" "off" \
+"x_agx" "An accelerated server for IIT AGX cards" "off" \
+"x_mach32" "An accelerated server for Mach32 cards" "off" \
+"x_mach8" "An accelerated server for Mach8 cards" "off" \
+"x_mono" "A Monochrome server" "off" \
+"x_p9000" "An accelerated server for P9000 cards" "off" \
+"x_s3" "An accelerated server for S3 cards" "off" \
+"x_svga" "A server for SuperVGA video cards" "off" \
+"fvwmicns" "Color icons from xpm3icons.tar.Z" "off" \
+"x_vga16" "A server for 16 color EGA/VGA" "off" \
+"x_w32" "A server for ET4000/W32 cards" "off" \
+"xf_cfg" "XDM configuration, chooser, and FVWM" "off" \
+"xf_ctrb" "Selected contrib programs for X11R6" "off" \
+"xf_bin" "Basic client required binaries" "off" \
+"xinclude" "Header files for X11 programming" "off" \
+"xlock" "xlockmore-1.14" "off" \
+"xpm" "The Xpm shared and static libraries" "off" \
+"xusrbin" "Rstartd daemon" "off" \
+"oldlibs" "Shared X libraries from XFree86 2.1.1" "off" \
+"xextra" "Two optional experimental servers" "off" \
+"xfnt" "Fonts for the X window system" "off" \
+"xfnt75" "75dpi Fonts for the X window system" "off" \
+"config86" "Steven T Zwaska's ConfigXF86 script" "off" \
+"fnt100_1" "100-dpi screen fonts (part one)" "off" \
+"fnt100_2" "100-dpi screen fonts (part two)" "off" \
+"xf_lib" "Dynamic libraries and configuration" "off" \
+"fntbig1" "Large fonts (part one)" "off" \
+"fntbig2" "Large fonts (part two)" "off" \
+"fntbig3" "Large fonts (part three)" "off" \
+"xman" "Man pages" "off" \
+"fntscl" "Scaled fonts" "off" \
+"xf_doc" "Documentation and release notes" "off" \
+2> /tmp/return
+if fgrep '"x_8514"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package x_8514 to your hard drive" --infobox \
+"An accelerated server for cards using IBM8514 chips.\n\
+\n\
+Installing this package will create a link in /usr/X11/bin from\n\
+XF86_8514 to X, setting this server as the default.\n\
+\n\
+" 7 75
+ installpkg x1/x_8514.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"x_agx"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package x_agx to your hard drive" --infobox \
+"An accelerated server for IIT AGX-016, AGX-015, and AGX-014 chipsets.\n\
+\n\
+Installing this package will create a link in /usr/X11/bin from\n\
+XF86_AGX to X, setting this server as the default.\n\
+\n\
+" 7 75
+ installpkg x1/x_agx.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"x_mach32"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package x_mach32 to your hard drive" --infobox \
+"An accelerated server for cards using Mach32 chips.\n\
+\n\
+Installing this package will create a link in /usr/X11/bin from\n\
+XF86_Mach32 to X, setting this server as the default.\n\
+\n\
+" 7 75
+ installpkg x1/x_mach32.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"x_mach8"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package x_mach8 to your hard drive" --infobox \
+"An accelerated server for cards using Mach8 chips.\n\
+\n\
+Installing this package will create a link in /usr/X11/bin from\n\
+XF86_Mach8 to X, setting this server as the default.\n\
+\n\
+" 7 75
+ installpkg x2/x_mach8.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"x_mono"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package x_mono to your hard drive" --infobox \
+"A Monochrome server.\n\
+\n\
+Installing this package will create a link in /usr/X11/bin from\n\
+XF86_Mono to X, setting this server as the default.\n\
+\n\
+" 7 75
+ installpkg x2/x_mono.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"x_p9000"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package x_p9000 to your hard drive" --infobox \
+"An accelerated server for cards using the P9000 chipset.\n\
+\n\
+Some of the cards this server will work with are the Diamond Viper\n\
+VLB, Diamond Viper PCI, Orchid P9000 (and some other clones, such as\n\
+the STAR 2000).  Viper Pro and other P9100 and P9130 cards are NOT\n\
+supported yet.  Installing this package will create a link in\n\
+/usr/X11/bin from XF86_P9000 to X, setting this server as the\n\
+default.\n\
+\n\
+" 11 75
+ installpkg x2/x_p9000.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"x_s3"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package x_s3 to your hard drive" --infobox \
+"An accelerated server for cards using S3 chips.\n\
+\n\
+The current S3 Server supports all available S3 chipsets: 911, 924,\n\
+801/805, 928, 864, and 964.  However, this does not mean that all S3\n\
+boards will work -- see the XFree86 docs for complete information.\n\
+Installing this package will create a link in /usr/X11/bin from\n\
+XF86_S3 to X, setting this server as the default.\n\
+\n\
+" 10 75
+ installpkg x3/x_s3.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"x_svga"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package x_svga to your hard drive" --infobox \
+"A server for SuperVGA video cards.\n\
+\n\
+Installing this package will create a link in /usr/X11/bin from\n\
+XF86_SVGA to X, setting this server as the default.\n\
+\n\
+" 7 75
+ installpkg x3/x_svga.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"fvwmicns"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package fvwmicns to your hard drive" --infobox \
+"Color icons from xpm3icons.tar.Z, found in the /pub/X11/contrib\n\
+directory of sunsite.unc.edu. These icons work great with fvwm.\n\
+\n\
+They are placed in /usr/lib/xfilemanager/icons, since there are other\n\
+icons put in there for xfilemanager that also work with fvwm.\n\
+\n\
+See the man page for fvwm for more information on how to use these\n\
+icons.\n\
+\n\
+" 11 75
+ installpkg x4/fvwmicns.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"x_vga16"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package x_vga16 to your hard drive" --infobox \
+"A server for 16 color EGA/VGA graphics modes.\n\
+\n\
+This is a server that uses standard generic video modes -- it works\n\
+with nearly all video hardware (but with only 16 colors).  Installing\n\
+this package will create a link in /usr/X11/bin from XF86_VGA16 to X,\n\
+setting this server as the default.\n\
+\n\
+" 9 75
+ installpkg x4/x_vga16.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"x_w32"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package x_w32 to your hard drive" --infobox \
+"A server for chipsets in the ET4000/W32 series.\n\
+\n\
+This server currently supports the w32, w32i, and w32p chips. \n\
+Installing this package will create a link in /usr/X11/bin from\n\
+XF86_W32 to X, setting this server as the default.\n\
+\n\
+" 8 75
+ installpkg x4/x_w32.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xf_cfg"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xf_cfg to your hard drive" --infobox \
+"XDM configuration, chooser, and FVWM 1.23b.\n\
+\n\
+" 4 75
+ installpkg x4/xf_cfg.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xf_ctrb"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xf_ctrb to your hard drive" --infobox \
+"Selected contrib programs for X11R6:\n\
+\n\
+This package installs the following optional programs in \n\
+/usr/X11R6/bin:  ico listres showfont viewres xbiff xcalc xditview\n\
+xedit xev xeyes xfontsel xgc xload xman xmessage\n\
+\n\
+" 8 75
+ installpkg x4/xf_ctrb.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xf_bin"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xf_bin to your hard drive" --infobox \
+"Basic client binaries required for XFree86 3.1.\n\
+\n\
+Installs these programs in /usr/X11R6/bin: SuperProbe Xmark appres\n\
+atobm bdftopcf beforelight bitmap bmtoa color_xterm editres fsinfo\n\
+fslsfonts fstobdf iceauth imake lbxproxy lndir makedepend mergelib\n\
+mkdirhier mkfontdir oclock reconfig resize rstart rxvt sessreg showrgb\n\
+startx twm x11perf x11perfcomp xauth xclipboard xclock xcmsdb xconsole\n\
+xcutsel xdm xdpyinfo xfd xfs xhost xieperf xinit xkill xlogo xlsatoms\n\
+xlsclients xlsfonts xmag xmh xmkmf xmodmap xon xprop xrdb xrefresh\n\
+xset xsetroot xsm xsmclient xstdcmap xterm xwd xwininfo xwud\n\
+\n\
+" 13 75
+ installpkg x5/xf_bin.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xinclude"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xinclude to your hard drive" --infobox \
+"Header files for X11 programming.\n\
+\n\
+" 4 75
+ installpkg x5/xinclude.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xlock"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xlock to your hard drive" --infobox \
+"xlockmore-1.14\n\
+\n\
+Patrick J. Naughton's _xlock_ screensaver/locker for X, with many\n\
+more modes added by David A. Bagley. The 'Bob' mode (previously\n\
+'image') has also been included especially for Slackware.\n\
+\n\
+" 8 75
+ installpkg x5/xlock.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xpm"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xpm to your hard drive" --infobox \
+"The Xpm shared and static libraries, v. 3.4c (with libXpm.so.4.3)\n\
+\n\
+These libraries provide a means for X programs to store and retrieve\n\
+bitmaps.  The shared libraries are needed to run programs compiled\n\
+with Xpm, such as xfilemanager and fvwm.\n\
+\n\
+" 8 75
+ installpkg x5/xpm.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xusrbin"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xusrbin to your hard drive" --infobox \
+"Rstartd daemon.\n\
+\n\
+This package includes rstartd, which you'll need to run if you plan\n\
+to use the rstart client.\n\
+\n\
+" 7 75
+ installpkg x5/xusrbin.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"oldlibs"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package oldlibs to your hard drive" --infobox \
+"Shared X libraries from XFree86 2.1.1 (X11R5).\n\
+\n\
+This package adds libX11.so.3.1.0, libXaw.so.3.1.0, and\n\
+libXt.so.3.1.0 to your /usr/X11R6/lib directory.  Although most \n\
+X software in Slackware has been recompiled to use the new X\n\
+libraries, there's still plenty of software out there that will\n\
+require these libraries for compatibility with XFree86 3.1.\n\
+\n\
+Some things that currently require these libraries: the XV series,\n\
+workman, and DOOM.\n\
+\n\
+" 13 75
+ installpkg x6/oldlibs.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xextra"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xextra to your hard drive" --infobox \
+"Two optional experimental servers for X11R6.\n\
+\n\
+Xvfb -- a virtual framebuffer X server. Xvfb is an X server that can\n\
+run on machines with no display hardware and no physical input \n\
+devices.  It emulates a dumb framebuffer using virtual memory.\n\
+\n\
+Xnest -- a nested X server.  Xnest is a client of the real server\n\
+which manages windows and graphics requests on its behalf.  Xnest is a\n\
+server to its own clients.  Xnest manages windows and graphics \n\
+requests on their behalf.\n\
+\n\
+" 13 75
+ installpkg x6/xextra.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xfnt"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xfnt to your hard drive" --infobox \
+"Fonts for the X window system.\n\
+\n\
+This is the minimal set of fonts needed to run XFree86 3.1.\n\
+\n\
+These fonts are compressed to reduce disk usage.\n\
+\n\
+" 8 75
+ installpkg x6/xfnt.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xfnt75"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xfnt75 to your hard drive" --infobox \
+"75dpi Fonts for the X window system.\n\
+\n\
+These are all of the 75dpi fonts that come with X11R6.\n\
+\n\
+These fonts are compressed to reduce disk usage.\n\
+\n\
+" 8 75
+ installpkg x7/xfnt75.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"config86"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package config86 to your hard drive" --infobox \
+"Steven T Zwaska's ConfigXF86 XFree86 Xconfig generation script.\n\
+\n\
+This handy script asks you questions about your video card and\n\
+monitor. It then generates a custom Xconfig file based on your \n\
+answers.  This version has been modified to output the new XF86Config\n\
+file used in XFree86 3.1.\n\
+\n\
+To use it, run the ConfigXF86 script in /usr/lib/X11/ConfigXF86.\n\
+\n\
+" 11 75
+ installpkg x8/config86.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"fnt100_1"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package fnt100_1 to your hard drive" --infobox \
+"100-dpi screen fonts (part one)\n\
+\n\
+These fonts are compressed to reduce disk usage.\n\
+\n\
+" 6 75
+ installpkg x8/fnt100_1.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"fnt100_2"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package fnt100_2 to your hard drive" --infobox \
+"100-dpi screen fonts (part two)\n\
+\n\
+These fonts are compressed to reduce disk usage.\n\
+\n\
+" 6 75
+ installpkg x9/fnt100_2.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xf_lib"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xf_lib to your hard drive" --infobox \
+"Dynamic libraries and configuration files for XFree86 3.1.\n\
+\n\
+" 4 75
+ installpkg x9/xf_lib.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"fntbig1"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package fntbig1 to your hard drive" --infobox \
+"Large fonts (part one)\n\
+\n\
+These fonts are compressed to reduce disk usage.\n\
+\n\
+Fonts included: gb16fs.pcf.Z gb16st.pcf.Z gb24st.pcf.Z\n\
+\n\
+" 8 75
+ installpkg x10/fntbig1.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"fntbig2"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package fntbig2 to your hard drive" --infobox \
+"Large fonts (part two)\n\
+\n\
+These fonts are compressed to reduce disk usage.\n\
+\n\
+Fonts included: hanglg16.pcf.Z hanglm16.pcf.Z hanglm24.pcf.Z\n\
+jiskan16.pcf.Z\n\
+\n\
+" 9 75
+ installpkg x11/fntbig2.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"fntbig3"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package fntbig3 to your hard drive" --infobox \
+"Large fonts (part three)\n\
+\n\
+These fonts are compressed to reduce disk usage.\n\
+\n\
+Fonts included: jiskan24.pcf.Z k14.pcf.Z\n\
+\n\
+" 8 75
+ installpkg x12/fntbig3.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xman"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xman to your hard drive" --infobox \
+"Man pages for programs that come with XFree86 3.1.\n\
+\n\
+These have been preprocessed and compressed.\n\
+\n\
+" 6 75
+ installpkg x12/xman.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"fntscl"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package fntscl to your hard drive" --infobox \
+"Scaled fonts.\n\
+\n\
+Speedo and Type 1 scalable fonts for XFree86 3.1.\n\
+\n\
+" 6 75
+ installpkg x13/fntscl.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xf_doc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xf_doc to your hard drive" --infobox \
+"Documentation and release notes for XFree86 3.1.\n\
+\n\
+" 4 75
+ installpkg x13/xf_doc.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

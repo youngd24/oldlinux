@@ -1,0 +1,200 @@
+--- Makefile.Linux
++++ Makefile.Linux	1994/07/17 20:34:41
+@@ -0,0 +1,31 @@
++
++compile: praliases/praliases makemap/makemap mailstats/mailstats \
++	src/sendmail rmail/rmail
++
++install: compile
++	make -C src install -f Makefile.Linux
++	install -s praliases/praliases /usr/bin
++	install -s mailstats/mailstats /usr/sbin
++	install -s makemap/makemap /usr/sbin
++	install -m644 makemap/makemap.8 /usr/man/man8
++	install -s rmail/rmail /usr/bin
++	install -m644 rmail/rmail.8 /usr/man/man8
++
++rmail/rmail: rmail/rmail.c
++	(cd rmail; gcc -O6 -fomit-frame-pointer -m486 rmail.c -o rmail -lbsd)
++
++mailstats/mailstats: mailstats/mailstats.c
++	(cd mailstats; gcc -O6 -fomit-frame-pointer -m486 -I ../src \
++		 mailstats.c -o mailstats -ldbm)
++
++makemap/makemap: makemap/makemap.c
++	(cd makemap; gcc -O6 -fomit-frame-pointer -m486 -I ../src \
++		-DNDBM makemap.c -o makemap -ldbm)
++
++praliases/praliases: praliases/praliases.c
++	(cd praliases; gcc -O6 -fomit-frame-pointer -m486 -I ../src \
++		 praliases.c -o praliases -ldbm)
++
++src/sendmail:
++	make -C src -f Makefile.Linux
++
+--- cf/README.linux
++++ cf/README.linux	1994/07/17 20:24:37
+@@ -0,0 +1,22 @@
++I have included two posssible setups for sendmail:
++
++- "cf/linux.smtp.mc" for people who are directly connected to the internet
++  (most possible via ethernet or slip). This configuration is installed by
++  default.
++
++- "cf/linux.uucp.mc", if you have one uucp host to send all mail (via uucp).
++  The other uucp host must understand domain names and "normal" internet
++  mail addresses like luser@host.domain.edu.
++  You first have to configure uucp to work properly (/usr/conf/uucp).
++  Then you have to change the name of the uucp host you are connected to in
++  the sendmail config file. If you are connected to "hugo", your config file
++  has a line "define(`SMART_HOST', uucp-dom:hugo)".
++
++If you want to install a new configuration file, do as root
++"m4 linux.mc > /etc/sendmail.cf", where linux.mc is one of the above
++config files or a new one by yourself.
++
++The file README contains a good description about sendmail config files.
++
++Florian  La Roche        flla@stud.uni-sb.de
++
+--- cf/cf/linux.smtp.mc
++++ cf/cf/linux.smtp.mc	1994/07/17 20:24:37
+@@ -0,0 +1,7 @@
++include(`../m4/cf.m4')
++VERSIONID(`linux for smtp-only setup')dnl
++OSTYPE(linux)
++FEATURE(nouucp)dnl
++FEATURE(always_add_domain)dnl
++MAILER(local)dnl
++MAILER(smtp)dnl
+--- cf/cf/linux.uucp.mc
++++ cf/cf/linux.uucp.mc	1994/07/17 20:24:37
+@@ -0,0 +1,9 @@
++include(`../m4/cf.m4')
++VERSIONID(`linux for setup with uucp which uses domain names')dnl
++OSTYPE(linux)
++FEATURE(nodns)dnl
++FEATURE(always_add_domain)dnl
++MAILER(local)dnl
++MAILER(smtp)dnl
++MAILER(uucp)
++define(`SMART_HOST', uucp-dom:otheruucphost)
+--- cf/ostype/linux.m4
++++ cf/ostype/linux.m4	1994/07/17 20:24:37
+@@ -35,4 +35,7 @@
+ 
+ divert(0)
+ VERSIONID(`@(#)linux.m4	8.2 (Berkeley) 8/21/93')
+-define(`LOCAL_MAILER_PATH', /bin/mail.local)dnl
++define(`LOCAL_MAILER_PATH',`/usr/bin/procmail')dnl
++define(`LOCAL_MAILER_FLAGS',`ShP')dnl
++define(`LOCAL_MAILER_ARGS',`procmail -d $u')dnl
++define(`QUEUE_DIR', /var/mqueue)dnl
+--- rmail/rmail.c
++++ rmail/rmail.c	1994/07/17 20:24:37
+@@ -78,6 +78,8 @@
+ #include <sysexits.h>
+ #include <unistd.h>
+ 
++#define MAX(a, b) ((a)>(b)?(a):(b))
++
+ void err __P((int, const char *, ...));
+ void usage __P((void));
+ 
+--- src/Makefile.Linux
++++ src/Makefile.Linux	1994/07/17 20:24:37
+@@ -15,7 +15,7 @@
+ #
+ 
+ # use O=-O (usual) or O=-g (debugging)
+-O=	-O
++O=	-O2 -fomit-frame-pointer -m486 -Dsleep=sleepXXX
+ 
+ # define the database mechanisms available for map & alias lookups:
+ #	-DNDBM -- use new DBM
+@@ -32,13 +32,13 @@
+ # see also conf.h for additional compilation flags
+ 
+ # include directories
+-INCDIRS=-I/usr/local/include
++INCDIRS=
+ 
+ # library directories
+ LIBDIRS=-L/usr/local/lib
+ 
+ # libraries required on your system
+-LIBS=	-lndbm
++LIBS=	-ldbm
+ 
+ # location of sendmail binary (usually /usr/sbin or /usr/lib)
+ BINDIR=	${DESTDIR}/usr/sbin
+@@ -52,9 +52,6 @@
+ # additional .o files needed
+ OBJADD=
+ 
+-# additional pseudo-sources needed
+-BEFORE=
+-
+ ###################  end of user configuration flags  ######################
+ 
+ CFLAGS=	-I. $O ${INCDIRS} ${DBMDEF} ${ENVDEF}
+@@ -67,15 +64,15 @@
+ 
+ LINKS=	${DESTDIR}/usr/bin/newaliases ${DESTDIR}/usr/bin/mailq
+ BINOWN=	root
+-BINGRP=	kmem
++BINGRP=	root
+ BINMODE=6555
+ 
+ ALL=	sendmail aliases.0 mailq.0 newaliases.0 sendmail.0
+ 
+ all: ${ALL}
+ 
+-sendmail: ${BEFORE} ${OBJS}
+-	${CC} -o sendmail ${OBJS} ${LIBDIRS} ${LIBS}
++sendmail: ${OBJS}
++	${CC} -o sendmail -v ${OBJS} ${LIBDIRS} ${LIBS}
+ 
+ unistd.h:
+ 	cp /dev/null unistd.h
+@@ -101,7 +98,7 @@
+ install: install-sendmail install-docs
+ 
+ install-sendmail: sendmail
+-	install -o ${BINOWN} -g ${BINGRP} -m ${BINMODE} sendmail ${BINDIR}
++	install -s -o ${BINOWN} -g ${BINGRP} -m ${BINMODE} sendmail ${BINDIR}
+ 	for i in ${LINKS}; do rm -f $$i; ln -s ${BINDIR}/sendmail $$i; done
+ 	cp /dev/null ${STDIR}/sendmail.st
+ 	chmod 644 ${STDIR}/sendmail.st
+@@ -110,7 +107,10 @@
+ 	install -c -o ${BINOWN} -g ${BINGRP} -m 444 sendmail.hf ${HFDIR}
+ 
+ # doesn't actually install them -- you may want to install pre-nroff versions
+-install-docs: aliases.0 mailq.0 newaliases.0 sendmail.0
++install-docs:
++	install -m644 mailq.1 newaliases.1 /usr/man/man1
++	install -m644 aliases.5 /usr/man/man5
++	install -m644 sendmail.8 /usr/man/man8
+ 
+ clean:
+ 	rm -f ${OBJS} sendmail aliases.0 mailq.0 newaliases.0 sendmail.0
+--- src/conf.h
++++ src/conf.h	1994/07/17 20:24:37
+@@ -81,7 +81,7 @@
+ # define NETINET	1	/* include internet support */
+ # define SETPROCTITLE	1	/* munge argv to display current status */
+ # define MATCHGECOS	1	/* match user names from gecos field */
+-# define XDEBUG		1	/* enable extended debugging */
++/* # define XDEBUG		1	/* enable extended debugging */
+ # ifdef NEWDB
+ # define USERDB		1	/* look in user database (requires NEWDB) */
+ # endif
+@@ -628,6 +628,8 @@
+ # define SFS_TYPE	SFS_VFS		/* use <sys/vfs.h> statfs() impl */
+ # include <sys/sysmacros.h>
+ # undef atol			/* wounded in <stdlib.h> */
++# define _PATH_SENDMAILCF	"/etc/sendmail.cf"
++# define _PATH_SENDMAILPID	"/var/run/sendmail.pid"
+ #endif
+ 
+ 

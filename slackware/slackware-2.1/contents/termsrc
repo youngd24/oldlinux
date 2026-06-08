@@ -1,0 +1,112 @@
+PACKAGE NAME:     termsrc
+COMPRESSED PACKAGE SIZE:     211 K
+UNCOMPRESSED PACKAGE SIZE:     720 K
+PACKAGE LOCATION: diskap1
+PACKAGE DESCRIPTION:
+termsrc:  Term 2.2.4 source code
+termsrc:  
+termsrc:  SOURCE code for the TERM daemon which allows multiple sessions over a
+termsrc:  modem line to another Unix machine also running term. This source code
+termsrc:  is not needed to run term on your Linux machine, but you may have to
+termsrc:  upload this to your intended term host machine to compile. TERM
+termsrc:  has support for these operating systems:
+termsrc:  
+termsrc:  Linux, NetBSD, SunOS, ULTRIX, IRIX, NeXT, CX/UX, AIX, BSD386, sco386,
+termsrc:  vistra800, ptx, iris3d, iris4d, OSF1, m68k, ConvexOS, and HP-UX.
+termsrc:  
+FILE LIST:
+./
+usr/
+usr/include/
+usr/include/termnet.h
+usr/src/
+usr/src/term-2.2.4/
+usr/src/term-2.2.4/BUGS
+usr/src/term-2.2.4/BUGS-PROBLEM-REPORTS
+usr/src/term-2.2.4/CHANGES
+usr/src/term-2.2.4/COPYING
+usr/src/term-2.2.4/CREDITS
+usr/src/term-2.2.4/FAQ
+usr/src/term-2.2.4/INSTALL
+usr/src/term-2.2.4/Makefile.in
+usr/src/term-2.2.4/README
+usr/src/term-2.2.4/README.porting
+usr/src/term-2.2.4/README.security
+usr/src/term-2.2.4/SCO.CHANGES
+usr/src/term-2.2.4/TERMRC
+usr/src/term-2.2.4/TODO
+usr/src/term-2.2.4/Term.HOWTO
+usr/src/term-2.2.4/checksum.c
+usr/src/term-2.2.4/client.c
+usr/src/term-2.2.4/client.h
+usr/src/term-2.2.4/compress.c
+usr/src/term-2.2.4/config.h
+usr/src/term-2.2.4/configure
+usr/src/term-2.2.4/debug.h
+usr/src/term-2.2.4/do_connect.c
+usr/src/term-2.2.4/do_link.c
+usr/src/term-2.2.4/do_select.c
+usr/src/term-2.2.4/download.c
+usr/src/term-2.2.4/host_lookup.c
+usr/src/term-2.2.4/includes.h
+usr/src/term-2.2.4/jump/
+usr/src/term-2.2.4/jump/README.jump-updating
+usr/src/term-2.2.4/jump/jump.funcs
+usr/src/term-2.2.4/jump/jump.ignore
+usr/src/term-2.2.4/jump/jump.params
+usr/src/term-2.2.4/jump/jump.undefs
+usr/src/term-2.2.4/jump/jump.vars
+usr/src/term-2.2.4/jump/size.nm
+usr/src/term-2.2.4/linecheck.1
+usr/src/term-2.2.4/linecheck.c
+usr/src/term-2.2.4/main.c
+usr/src/term-2.2.4/meta.c
+usr/src/term-2.2.4/misc.c
+usr/src/term-2.2.4/old/
+usr/src/term-2.2.4/old/Blurb
+usr/src/term-2.2.4/old/INTERNALS
+usr/src/term-2.2.4/old/PROTOCOL.seria
+usr/src/term-2.2.4/old/PROTOCOL.unix
+usr/src/term-2.2.4/patches/
+usr/src/term-2.2.4/patches/README.patches
+usr/src/term-2.2.4/patches/term-2.2.1.patch.gz
+usr/src/term-2.2.4/patches/term-2.2.2.patch.gz
+usr/src/term-2.2.4/patches/term-2.2.3.patch.gz
+usr/src/term-2.2.4/pty.c
+usr/src/term-2.2.4/redir.c
+usr/src/term-2.2.4/samples/
+usr/src/term-2.2.4/samples/termrc-14.4k-1
+usr/src/term-2.2.4/samples/termrc-14.4k-2
+usr/src/term-2.2.4/samples/termrc-2400-1
+usr/src/term-2.2.4/samples/termrc-2400-2
+usr/src/term-2.2.4/serial.c
+usr/src/term-2.2.4/server.c
+usr/src/term-2.2.4/sevenbit.c
+usr/src/term-2.2.4/shutdown.c
+usr/src/term-2.2.4/sockets.c
+usr/src/term-2.2.4/spipe.c
+usr/src/term-2.2.4/statistics.c
+usr/src/term-2.2.4/tclient.c
+usr/src/term-2.2.4/term.1
+usr/src/term-2.2.4/term_clients.1
+usr/src/term-2.2.4/term_clients.c
+usr/src/term-2.2.4/term_getopt.c
+usr/src/term-2.2.4/term_herror.c
+usr/src/term-2.2.4/term_main.h
+usr/src/term-2.2.4/term_putenv.c
+usr/src/term-2.2.4/term_setup.1
+usr/src/term-2.2.4/term_spair.c
+usr/src/term-2.2.4/terminal.c
+usr/src/term-2.2.4/terminal.h
+usr/src/term-2.2.4/termnet.c
+usr/src/term-2.2.4/termnet.h
+usr/src/term-2.2.4/termtest.1
+usr/src/term-2.2.4/termtest.c
+usr/src/term-2.2.4/tmon.c
+usr/src/term-2.2.4/trdate.c
+usr/src/term-2.2.4/trshell.c
+usr/src/term-2.2.4/udpredir.c
+usr/src/term-2.2.4/upload.c
+usr/src/term-2.2.4/utils.c
+usr/src/term-2.2.4/xconn.c
+usr/src/term-2.2.4/configure.slackware

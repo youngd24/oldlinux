@@ -1,0 +1,23 @@
+PACKAGE NAME:     mitsumi
+COMPRESSED PACKAGE SIZE:     487 K
+UNCOMPRESSED PACKAGE SIZE:     580 K
+PACKAGE LOCATION: diskq4
+PACKAGE DESCRIPTION:
+mitsumi:  Linux kernel version 1.1.59, with SCSI+IDE+Mitsumi CD support.
+mitsumi:
+mitsumi:  This is a Linux kernel with support for Mitsumi CD-ROM drives, as 
+mitsumi:  well as full support for SCSI devices such as hard drives, tape
+mitsumi:  drives, and SCSI CD-ROM drives. See the file 'mitsumi.cfg' for an
+mitsumi:  exact list of included drivers.
+mitsumi:
+mitsumi:  This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,
+mitsumi:  Ftape, and the PS/2 style mouse (but not other busmouse types).
+mitsumi:
+FILE LIST:
+./
+install/
+install/doinst.sh
+vmlinuz
+boot/
+boot/zSystem.map
+boot/config.in

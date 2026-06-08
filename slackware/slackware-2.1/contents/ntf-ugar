@@ -1,0 +1,25 @@
+PACKAGE NAME:     ntf-ugar
+COMPRESSED PACKAGE SIZE:     1 K
+UNCOMPRESSED PACKAGE SIZE:     20 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-ugar: ntf-ugar 1.0
+ntf-ugar:
+ntf-ugar: The Ugaritic script is a cuneiform alphabet (as opposed to the
+ntf-ugar: syllabic cuneiform of Akkadian or Hittite), as found on tablets
+ntf-ugar: dated from the Late Bronze Age (c 1400 - 1200 BC) in Northern Syria
+ntf-ugar: and Palestine, notably in the archives at Ugarit.
+ntf-ugar:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/ancient/
+usr/lib/texmf/fonts/ancient/ugaritic/
+usr/lib/texmf/fonts/ancient/ugaritic/create.sh
+usr/lib/texmf/fonts/ancient/ugaritic/src/
+usr/lib/texmf/fonts/ancient/ugaritic/src/ugaritic.mf
+usr/lib/texmf/fonts/ancient/ugaritic/tfm/
+usr/lib/texmf/fonts/ancient/ugaritic/tfm/ugaritic.tfm

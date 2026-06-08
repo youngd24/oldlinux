@@ -1,0 +1,28 @@
+PACKAGE NAME:     umsprogs
+COMPRESSED PACKAGE SIZE:     34 K
+UNCOMPRESSED PACKAGE SIZE:     130 K
+PACKAGE LOCATION: diska4
+PACKAGE DESCRIPTION:
+umsprogs: umsdos_progs 0.3a
+umsprogs: 
+umsprogs: Various utilities needed by Jacques Gelinas' UMSDOS filesystem.
+umsprogs: 
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat8/
+usr/man/preformat/cat8/umssync.8.gz
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/umsmanifest.1.gz
+usr/doc/
+usr/doc/umsdos/
+usr/doc/umsdos/umsdos-0.3.doc
+usr/doc/umsdos/rdev.exe
+usr/doc/umsdos/Readme.umstools
+bin/
+bin/umssetup
+bin/umssync
+bin/emddump
+bin/umsmanifest

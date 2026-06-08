@@ -1,0 +1,6 @@
+
+NTeX Release 1.2 --- ntf-ams 1.2 --- status: recommended
+
+This package contains the ams fonts. If you are using amstex or amslatex
+you should install them. The fonts could also be used without amstex.
+

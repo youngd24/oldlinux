@@ -1,0 +1,34 @@
+CONTENTS: xv32_a xvinc32 xvmenus 
+xv32_a:   Static libraries for xview3.2p1-X11R6.
+xv32_a:
+xv32_a:   Libraries for compiling statically linked Xview applications. Only
+xv32_a:   needed if you are planning to debug Xview applications, or compile
+xv32_a:   them with the -g or -static flags.
+xv32_a:
+xv32_a:
+xv32_a:
+xv32_a:
+xv32_a:
+xv32_a:
+xvinc32:  Include files for xview3.2p1-X11R6.
+xvinc32:
+xvinc32:  Include files needed for Xview programming.
+xvinc32:
+xvinc32:
+xvinc32:
+xvinc32:
+xvinc32:
+xvinc32:
+xvinc32:
+xvinc32:
+xvmenus:  Menus and help files for the OpenLook Window Manager.
+xvmenus:
+xvmenus:
+xvmenus:
+xvmenus:
+xvmenus:
+xvmenus:
+xvmenus:
+xvmenus:
+xvmenus:
+xvmenus:

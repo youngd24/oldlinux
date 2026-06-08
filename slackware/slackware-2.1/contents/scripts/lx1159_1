@@ -1,0 +1,6 @@
+( cd usr/src/linux-1.1.59 ; rm -rf boot )
+( cd usr/src/linux-1.1.59 ; ln -sf arch/i386/boot boot )
+( cd usr/src/linux-1.1.59/kernel ; rm -rf entry.S )
+( cd usr/src/linux-1.1.59/kernel ; ln -sf ../arch/i386/entry.S entry.S )
+( cd usr/src ; rm -rf linux )
+( cd usr/src ; ln -sf linux-1.1.59 linux )

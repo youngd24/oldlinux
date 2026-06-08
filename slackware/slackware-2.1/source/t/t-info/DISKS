@@ -1,0 +1,62 @@
+Disks of NTeX Release 1.2
+=========================
+
+This file contains a list of the contents of the disks ntex01 to ntex13
+for NTeX Release 1.2. The disks should all be in MS-DOS format. For more
+information read the files README and INSTALL on ntex01.
+
+NTeX01:
+ntb-mf.tgz   	ntex01	  	ntf-cml.tgz  	ntf-cms.tgz  	ntf-cmu.tgz
+
+NTeX02:
+ntb-utl1.tgz  	ntex02	    	ntm-ltx1.tgz  	ntm-tex.tgz
+
+NTeX03:
+ntb-dps.tgz   	ntm-arab.tgz  	ntb-tex.tgz	ntb-utl2.tgz	ntb-xdvi.tgz
+ntex03
+
+NTeX04:
+ntb-bibt.tgz  	ntex04	    	ntm-ltx3.tgz  	ntm-turk.tgz
+
+NTeX05:
+ntb-utl3.tgz  	ntex05	    	ntf-ams.tgz	ntf-dc.tgz	ntm-amst.tgz
+ntm-ltx4.tgz
+
+NTeX06:
+ntb-djc.tgz   	ntb-traf.tgz  	ntb-xfig.tgz  	ntex06		ntf-bl.tgz
+ntf-phon.tgz  	ntf-xcmr.tgz  	ntm-ltx2.tgz
+
+NTeX07:
+ntb-html.tgz  	ntex07	    	ntf-ps.tgz
+
+NTeX08:
+ntb-texi.tgz  	ntex08	    	ntm-hebr.tgz  	ntm-hier.tgz
+
+NTeX09:
+ntb-kpat.tgz  	ntex09	    	ntf-bbm.tgz  	ntf-cmca.tgz	ntf-cmcy.tgz
+ntf-fc.tgz  	ntf-goth.tgz  	ntf-pand.tgz  	ntm-etex.tgz	ntm-gree.tgz
+ntm-pict.tgz	ntb-indx.tgz
+
+NTeX10:
+ntb-b2d.tgz   	ntb-gsfp.tgz  	ntex10	  	ntf-astr.tgz	ntf-bard.tgz
+ntf-call.tgz  	ntf-cher.tgz  	ntf-cmas.tgz  	ntf-cmb.tgz	ntf-cmoe.tgz
+ntf-cmpc.tgz  	ntf-cmts.tgz  	ntf-conc.tgz  	ntf-cypr.tgz	ntf-ding.tgz
+ntf-duer.tgz  	ntf-elvi.tgz  	ntf-engw.tgz  	ntf-futh.tgz	ntf-geor.tgz
+ntf-go.tgz    	ntf-hand.tgz  	ntf-hge.tgz  	ntf-kart.tgz	ntf-klin.tgz
+ntf-la.tgz    	ntf-logi.tgz  	ntf-logo.tgz  	ntf-ocm.tgz	ntf-ocra.tgz
+ntf-ogha.tgz  	ntf-okud.tgz  	ntf-osma.tgz  	ntf-punk.tgz	ntf-recy.tgz
+ntf-rsfs.tgz  	ntf-rune.tgz  	ntf-stma.tgz  	nts-html.tgz	ntf-teng.tgz
+ntf-thai.tgz  	ntf-twca.tgz 	ntf-ugar.tgz  	ntf-wasy.tgz	ntf-wsui.tgz
+ntm-deva.tgz  	ntm-germ.tgz  	ntm-plft.tgz  	ntm-tami.tgz	ntm-viet.tgz
+nts-djc.tgz   	nts-dpsk.tgz  	nts-hier.tgz
+
+NTeX11:
+ntex11	      	nts-texi.tgz  	nts-w2c3.tgz  	nts-xdvi.tgz
+
+NTeX12:
+ntex12	      	nts-dljk.tgz  	nts-kpat.tgz 	nts-mkid.tgz	nts-w2c2.tgz
+nts-xfig.tgz
+
+NTeX13:
+ntb-dlj.tgz   	ntex13	    	nts-git.tgz	nts-gsfp.tgz	nts-traf.tgz
+nts-w2c1.tgz

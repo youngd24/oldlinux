@@ -1,0 +1,29 @@
+Begin2
+Title        = EATA SCSI driver (DPT/NEC/AT&T)
+Version      = 0.3a
+Desc1        = Lowlevel device driver for all EATA compliant ISA and EISA 
+Desc2        = SCSI controllers
+Desc3        = Supported controllers are DPT PM2011, PM2012A, PM2012B
+Desc4        = PM2021, PM2022, PM2122, PM2322 and some OEMs from NEC and AT&T
+Author       = Michael Neuffer
+AuthorEmail  = Michael_Neuffer@wi2.maus.de, neuffer@goofy.zdv.uni-mainz.de
+Maintainer   = Michael Neuffer
+MaintEmail   = Michael_Neuffer@wi2.maus.de, neuffer@goofy.zdv.uni-mainz.de
+Site1        = tsx-11.mit.edu
+Path1        = /pub/linux/ALPHA/scsi/
+File1        = dpt_eata3a.tgz
+Site2        = sunsite.unc.edu
+Path2        = /pub/Linux/ALPHA/scsi
+File2        = dpt_eata03a.tgz
+Site3        = ftp.uni-mainz.de
+Path3        = /pub/Linux/Driver/SCSI
+File3        = dpt_eata03a.tgz
+Required1    = EATA compilant controller, Linux 1.1.51
+CopyPolicy1  = Code copyrighted be Michael Neuffer
+CopyPolicy2  = GNU Copyleft
+Keywords     = SCSI EATA DPT PM2011 PM2012A PM2012B PM2021 PM2022 PM2122 PM2322 NEC AT&T
+RelFiles1    = Slackboot_eata.gz Linux 1.1.51 Slackware bootdisk, kernel with many enabled features
+Entered      = 15AUG94
+EnteredBy    = Michael Neuffer
+End
+

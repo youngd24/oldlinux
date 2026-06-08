@@ -1,0 +1,42 @@
+#!/bin/sh
+dialog --title "Install packages from the IV series (InterViews)" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disc must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+15 70 3 \
+"iv_bin" "Binaries and miscellaneous IV files" "off" \
+"iv_docs" "Documentation files for InterViews" "off" \
+"libiv_so" "Shared InterViews 3.1 libraries" "off" \
+2> /tmp/return
+if fgrep '"iv_bin"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package iv_bin to your hard drive" --infobox \
+"Binaries and miscellaneous files for InterViews 3.1\n\
+\n\
+Contains these binaries:\n\
+alert  dclock  ibmkmf  iclass  idraw  ivmkmf  mailbox  cpu  doc\n\
+ibuild  idemo  ifc  logo  remind\n\
+\n\
+This package also contains many sample files for 'doc', 'idraw',\n\
+'build', and other InterViews programs.\n\
+\n\
+" 11 75
+ installpkg iv1/iv_bin.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"iv_docs"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package iv_docs to your hard drive" --infobox \
+"Documentation files for InterViews 3.1.\n\
+\n\
+Adds the file refman.PS to /usr/doc/interviews, and adds man pages for\n\
+the programs in InterViews 3.1 in /usr/man/preformat/catn.\n\
+\n\
+" 7 75
+ installpkg iv1/iv_docs.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"libiv_so"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package libiv_so to your hard drive" --infobox \
+"Shared InterViews 3.1 libraries.\n\
+\n\
+These dynamic libraries are needed to run InterViews programs.\n\
+\n\
+" 6 75
+ installpkg iv1/libiv_so.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

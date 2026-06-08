@@ -1,0 +1,36 @@
+#!/bin/sh
+dialog --title "Install packages to your hard drive" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disk must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+15 70 3 \
+"gcc260" "GNU GCC 2.6.0 C compiler" "off" \
+"gxx260" "GNU G++ 2.6.0 C++ compiler" "off" \
+"objc260" "GNU Objective-C 2.6.0 compiler" "off" \
+2> /tmp/return
+if fgrep '"gcc260"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gcc260 to your hard drive" --infobox \
+"GCC 2.6.0\n\
+\n\
+GNU GCC 2.6.0 C compiler.\n\
+\n\
+" 6 75
+ installpkg gcc260.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gxx260"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gxx260 to your hard drive" --infobox \
+"G++ 2.6.0\n\
+\n\
+GNU G++ 2.6.0 C++ compiler.\n\
+\n\
+" 6 75
+ installpkg gxx260.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"objc260"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package objc260 to your hard drive" --infobox \
+"GNU Objective-C 2.6.0\n\
+\n\
+GNU Objective-C 2.6.0 compiler.\n\
+\n\
+" 6 75
+ installpkg objc260.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

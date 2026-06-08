@@ -1,0 +1,24 @@
+PACKAGE NAME:     x_s3
+COMPRESSED PACKAGE SIZE:     561 K
+UNCOMPRESSED PACKAGE SIZE:     1280 K
+PACKAGE LOCATION: diskx3
+PACKAGE DESCRIPTION:
+x_s3:     An accelerated server for cards using S3 chips.
+x_s3:
+x_s3:     The current S3 Server supports all available S3 chipsets: 911, 924,
+x_s3:     801/805, 928, 864, and 964.  However, this does not mean that all S3
+x_s3:     boards will work -- see the XFree86 docs for complete information.
+x_s3:     Installing this package will create a link in /usr/X11/bin from
+x_s3:     XF86_S3 to X, setting this server as the default.
+x_s3:
+FILE LIST:
+./
+install/
+install/doinst.sh
+usr/
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/XF86_S3
+var/
+var/X11R6/
+var/X11R6/bin/

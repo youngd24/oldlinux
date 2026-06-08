@@ -1,0 +1,23 @@
+CONTENTS: xpm xf_cfg 
+xpm:      The Xpm shared and static libraries, v. 3.4c (with libXpm.so.4.3)
+xpm:
+xpm:      These libraries provide a means for X programs to store and retrieve
+xpm:      bitmaps. The shared libraries are needed to run programs compiled
+xpm:      with Xpm, such as xfilemanager and fvwm.
+xpm:
+xpm:
+xpm:
+xpm:
+xpm:
+xpm:
+xf_cfg:   XDM configuration, chooser, and FVWM 1.23b.
+xf_cfg:
+xf_cfg:
+xf_cfg:
+xf_cfg:
+xf_cfg:
+xf_cfg:
+xf_cfg:
+xf_cfg:
+xf_cfg:
+xf_cfg:

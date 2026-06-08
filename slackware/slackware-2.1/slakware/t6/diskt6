@@ -1,0 +1,89 @@
+CONTENTS: ntb-djc ntb-traf ntb-xfig ntf-ams ntf-bl ntf-dc ntf-phon ntf-xcmr  
+ntb-djc:  ntb-djc 0.1
+ntb-djc:
+ntb-djc:  These are the binaries for the dvi driver for the HP Deskjet 500, 
+ntb-djc:  500c and 550c. They do not use the kpathsea library, and expect the
+ntb-djc:  pk files for the Deskjet in the directory /usr/lib/texmf/fonts/pk and
+ntb-djc:  the tfm files in /usr/lib/texmf/fonts/tfm. Therefore, if you want to
+ntb-djc:  use these drivers you have to copy the pk and tfm files in these 
+ntb-djc:  directories or make symbolic links from these directories to the pk 
+ntb-djc:  and tfm files.
+ntb-djc:
+ntb-djc:
+ntb-traf: ntb-traf 1.1
+ntb-traf:
+ntb-traf: This package contains the binaries to transform .fig files (created by
+ntb-traf: xfig) to some other formats like epsf and LaTeX. If you have installed
+ntb-traf: xfig you should also install this package if you want to use xfig to
+ntb-traf: create other files than .fig files, which can then be included in your
+ntb-traf: LaTeX documents.
+ntb-traf:
+ntb-traf:
+ntb-traf:
+ntb-traf:
+ntb-xfig: ntb-xfig 1.1
+ntb-xfig:
+ntb-xfig: This package contains the binaries for xfig, an interactive drawing
+ntb-xfig: tool under X. xfig can create fig, epsf and LaTeX files with various
+ntb-xfig: options.  You also have to install ntb-traf so that xfig can export
+ntb-xfig: fig files as epsf and LaTeX files. This package also contains a set
+ntb-xfig: of basic examples of fig files (see /usr/lib/texmf/xfig/examples).
+ntb-xfig:
+ntb-xfig:
+ntb-xfig:
+ntb-xfig:
+ntf-ams:  ntf-ams 1.2
+ntf-ams:
+ntf-ams:  This package contains the ams fonts. If you are using amstex or 
+ntf-ams:  amslatex you should install them. The fonts could also be used without
+ntf-ams:  amstex.
+ntf-ams:
+ntf-ams:
+ntf-ams:
+ntf-ams:
+ntf-ams:
+ntf-ams:
+ntf-bl:   ntf-bl 1.1
+ntf-bl:
+ntf-bl:   The Blackletter font.
+ntf-bl:
+ntf-bl:
+ntf-bl:
+ntf-bl:
+ntf-bl:
+ntf-bl:
+ntf-bl:
+ntf-bl:
+ntf-dc:   ntf-dc 1.1
+ntf-dc:
+ntf-dc:   The DC fonts, a package of European scalable fonts.
+ntf-dc:
+ntf-dc:
+ntf-dc:
+ntf-dc:
+ntf-dc:
+ntf-dc:
+ntf-dc:
+ntf-dc:
+ntf-phon: ntf-phon 1.1
+ntf-phon:
+ntf-phon: A font containing a set of phonetic symbols.
+ntf-phon:
+ntf-phon:
+ntf-phon:
+ntf-phon:
+ntf-phon:
+ntf-phon:
+ntf-phon:
+ntf-phon:
+ntf-xcmr: ntf-xcmr 1.1
+ntf-xcmr:
+ntf-xcmr: A Computer Modern Roman Crossedout font.
+ntf-xcmr:
+ntf-xcmr:
+ntf-xcmr:
+ntf-xcmr:
+ntf-xcmr:
+ntf-xcmr:
+ntf-xcmr:
+ntf-xcmr:

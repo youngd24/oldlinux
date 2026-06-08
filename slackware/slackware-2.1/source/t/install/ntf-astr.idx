@@ -1,0 +1,11 @@
+./usr/lib/texmf/fonts/symbol/astro/create.sh
+./usr/lib/texmf/fonts/symbol/astro/misc/astrosym.doc
+./usr/lib/texmf/fonts/symbol/astro/misc/astrosym.tex
+./usr/lib/texmf/fonts/symbol/astro/src/astrosym.cal
+./usr/lib/texmf/fonts/symbol/astro/src/astrosym.com
+./usr/lib/texmf/fonts/symbol/astro/src/astrosym.mac
+./usr/lib/texmf/fonts/symbol/astro/src/astrosym.mf
+./usr/lib/texmf/fonts/symbol/astro/src/astrosym.uni
+./usr/lib/texmf/fonts/symbol/astro/tfm/astrosym.tfm
+./usr/lib/texmf/tex/symbol/astro.sty
+./usr/lib/texmf/tex/symbol/astro.tex

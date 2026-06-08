@@ -1,0 +1,91 @@
+THIS IS PRE-PRE-RELEASE SOFTWARE - USE AT YOUR OWN RISK!
+
+Ok, after a round of musical patches with map@europa.ecn.uoknor.edu,
+the interrupt level problem with some cards is fixed "for sure this time" :-)
+Anyway, it worked on his system and it works on my "normal" system.
+
+This is based on patch #1, so you can just apply the whole mess of
+patches easily.
+:ja
+
+*** aha274x.c-rel5p1	Fri Sep 23 14:06:48 1994
+--- aha274x.c	Fri Sep 23 14:09:42 1994
+***************
+*** 1,5 ****
+  /*
+!  *  @(#)aha274x.c 1.26 94/09/18 jda
+   *
+   *  Adaptec 274x device driver for Linux.
+   *  Copyright (c) 1994 The University of Calgary Department of Computer Science.
+--- 1,5 ----
+  /*
+!  *  @(#)aha274x.c 1.27 94/09/20 jda
+   *
+   *  Adaptec 274x device driver for Linux.
+   *  Copyright (c) 1994 The University of Calgary Department of Computer Science.
+***************
+*** 439,450 ****
+  
+  	/*
+  	 *  Check the startup flag - if no commands have been queued,
+! 	 *  we probably have the interrupt type set wrong.  Unpausing
+! 	 *  the sequencer will reload the host control register.
+  	 */
+  	if (p->startup) {
+  		p->unpause ^= 0x8;
+! 		UNPAUSE_SEQUENCER(p);
+  		return;
+  	}
+  
+--- 439,451 ----
+  
+  	/*
+  	 *  Check the startup flag - if no commands have been queued,
+! 	 *  we probably have the interrupt type set wrong.  Reverse
+! 	 *  the stored value and the active one in the host control
+! 	 *  register.
+  	 */
+  	if (p->startup) {
+  		p->unpause ^= 0x8;
+! 		outb(inb(O_HCNTRL(p->base)) ^ 0x8, O_HCNTRL(p->base));
+  		return;
+  	}
+  
+***************
+*** 929,938 ****
+  
+  	/*
+  	 *  Register IRQ with the kernel _after_ the host information
+! 	 *  is set up, in case we take an interrupt right away.
+! 	 *
+! 	 *  XXX - the card is reset and disabled, so why would we be
+! 	 *	  getting an interrupt?
+  	 */
+  	if (request_irq(irq, aha274x_isr, SA_INTERRUPT, "AHA274x/284x")) {
+  		printk("aha274x couldn't register irq %d, ignoring\n", irq);
+--- 930,937 ----
+  
+  	/*
+  	 *  Register IRQ with the kernel _after_ the host information
+! 	 *  is set up, in case we take an interrupt right away, due to
+! 	 *  the interrupt type being set wrong.
+  	 */
+  	if (request_irq(irq, aha274x_isr, SA_INTERRUPT, "AHA274x/284x")) {
+  		printk("aha274x couldn't register irq %d, ignoring\n", irq);
+***************
+*** 1011,1017 ****
+  	return("Adaptec AHA274x/284x (EISA/VL-bus -> Fast SCSI) "
+  	       AHA274X_SEQ_VERSION "/"
+  	       AHA274X_H_VERSION "/"
+! 	       "1.26");
+  }
+  
+  int aha274x_command(Scsi_Cmnd *cmd)
+--- 1010,1016 ----
+  	return("Adaptec AHA274x/284x (EISA/VL-bus -> Fast SCSI) "
+  	       AHA274X_SEQ_VERSION "/"
+  	       AHA274X_H_VERSION "/"
+! 	       "1.27");
+  }
+  
+  int aha274x_command(Scsi_Cmnd *cmd)

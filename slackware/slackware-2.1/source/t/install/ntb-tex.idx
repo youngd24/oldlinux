@@ -1,0 +1,12 @@
+./usr/bin/MakeTeXMF
+./usr/bin/MakeTeXPK
+./usr/bin/MakeTeXTFM
+./usr/bin/initex
+./usr/bin/patgen
+./usr/bin/virtex
+./usr/lib/texmf/texmf.cnf
+./usr/lib/texmf/fonts/texfonts.map
+./usr/lib/texmf/ini/tex.pool
+./usr/man/man1/initex.1
+./usr/man/man1/patgen.1
+./usr/man/man1/virtex.1

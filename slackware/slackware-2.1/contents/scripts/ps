@@ -1,0 +1,2 @@
+( cd usr/bin ; rm -rf w )
+( cd usr/bin ; ln -sf w.procps w )

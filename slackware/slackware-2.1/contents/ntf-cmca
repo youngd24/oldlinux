@@ -1,0 +1,34 @@
+PACKAGE NAME:     ntf-cmca
+COMPRESSED PACKAGE SIZE:     32 K
+UNCOMPRESSED PACKAGE SIZE:     180 K
+PACKAGE LOCATION: diskt9
+PACKAGE DESCRIPTION:
+ntf-cmca: ntf-cmca 1.2
+ntf-cmca:
+ntf-cmca: This package contains the Computer Modern Cyrillic Alt fonts.
+ntf-cmca:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/cm/
+usr/lib/texmf/fonts/cm/cmcyralt/
+usr/lib/texmf/fonts/cm/cmcyralt/create.sh
+usr/lib/texmf/fonts/cm/cmcyralt/readme
+usr/lib/texmf/fonts/cm/cmcyralt/src/
+usr/lib/texmf/fonts/cm/cmcyralt/src/cmrctz10.mf
+usr/lib/texmf/fonts/cm/cmcyralt/src/cyccsc-old.mf
+usr/lib/texmf/fonts/cm/cmcyralt/src/cyccscco.mf
+usr/lib/texmf/fonts/cm/cmcyralt/src/cycoding-old.mf
+usr/lib/texmf/fonts/cm/cmcyralt/src/cyitall-old.mf
+usr/lib/texmf/fonts/cm/cmcyralt/src/cyrillic-old.mf
+usr/lib/texmf/fonts/cm/cmcyralt/src/cyrl-old.mf
+usr/lib/texmf/fonts/cm/cmcyralt/src/cyrsymb-old.mf
+usr/lib/texmf/fonts/cm/cmcyralt/src/cyru-old.mf
+usr/lib/texmf/fonts/cm/cmcyralt/src/cytextit-old.mf
+usr/lib/texmf/fonts/cm/cmcyralt/src/cytitle-old.mf
+usr/lib/texmf/fonts/cm/cmcyralt/src/czinch.mf
+usr/lib/texmf/fonts/cm/cmcyralt/tfm/
+usr/lib/texmf/fonts/cm/cmcyralt/tfm/cmrctz10.tfm

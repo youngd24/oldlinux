@@ -1,0 +1,6 @@
+
+NTeX Release 1.2 --- nts-xdvi 1.2 --- status: optional
+
+The sources for xdvik. You need the pathsea library 2.1 in order to compile 
+this program.
+

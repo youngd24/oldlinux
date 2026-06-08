@@ -1,0 +1,24 @@
+PACKAGE NAME:     scsikern
+COMPRESSED PACKAGE SIZE:     482 K
+UNCOMPRESSED PACKAGE SIZE:     570 K
+PACKAGE LOCATION: diska1
+PACKAGE DESCRIPTION:
+scsikern: Linux kernel version 1.1.59, with SCSI + IDE support. 
+scsikern:
+scsikern: This is a Linux kernel with full support for SCSI devices such as hard
+scsikern: drives, tape drives, and CD-ROM drives. This kernel also contains
+scsikern: UMSDOS and PPP.  See the file 'config.in' for an exact list of 
+scsikern: included drivers.
+scsikern:
+scsikern: ***IMPORTANT***!  If you have special hardware, such as a non-SCSI
+scsikern: CD-ROM drive, you'll need to install a kernel from the Q series that
+scsikern: supports it, or compile the support into your own custom kernel.
+scsikern:
+FILE LIST:
+./
+install/
+install/doinst.sh
+vmlinuz
+boot/
+boot/zSystem.map
+boot/config.in

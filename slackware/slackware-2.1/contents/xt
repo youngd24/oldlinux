@@ -1,0 +1,21 @@
+PACKAGE NAME:     xt
+COMPRESSED PACKAGE SIZE:     384 K
+UNCOMPRESSED PACKAGE SIZE:     460 K
+PACKAGE LOCATION: diskq5
+PACKAGE DESCRIPTION:
+xt:       Linux kernel version 1.1.59, with IDE+XT (MFM/RLL) drive support.
+xt:
+xt:       This is a Linux kernel with support for XT style (MFM/RLL) hard 
+xt:       drives.  See 'xt.cfg' for an exact list of included drivers.
+xt:
+xt:       This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,
+xt:       Ftape, and the PS/2 style mouse (but not other busmouse types).
+xt:
+FILE LIST:
+./
+install/
+install/doinst.sh
+vmlinuz
+boot/
+boot/zSystem.map
+boot/config.in

@@ -1,0 +1,34 @@
+Begin2
+Title        =floppy-tape streamer (ftape) device driver
+Version      =1.13b
+Desc1        =device driver for QIC-40/QIC-80 type tape streamers that connect
+Desc2        =to the floppy disk controller. (runtime loadable module)
+Desc3        =
+Desc4        =
+Desc5        =
+Author       =Bas Laarhoven
+AuthorEmail  =bas@vimec.nl
+Maintainer   =Bas Laarhoven
+MaintEmail   =bas@vimec.nl
+Site1        =sunsite.unc.edu
+Path1        =/pub/Linux/kernel/tapes
+File1        =ftape-1.13a.tar.gz
+FileSize1    =68262
+Required1    =Kernel 0.99pl14t or up for easy installation & modutils-0.99.14 package.
+Required2    =Kernel must be re-build with FTAPE support enabled.
+Required3    =Gnu tar and cpio packages needed for testing and making backups.
+Required4    =
+CopyPolicy1  =GPL
+CopyPolicy2  =
+Keywords     =tape device-driver qic 40 80 117
+Comment1     =
+Comment2     =
+Comment3     =
+Comment4     =
+RelFiles1    =
+RelFiles2    =
+RelFiles3    =
+Entered      =05JUL94
+EnteredBy    =Bas Laarhoven
+CheckedEmail =bas@vimec.nl
+End

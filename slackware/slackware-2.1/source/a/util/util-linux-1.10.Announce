@@ -1,0 +1,71 @@
+
+util-linux-1.10.tar.gz     (source distribution)
+util-linux-1.10.bin.tar.gz (binary distribution)
+
+    WARNING: THIS COLLECTION DOES *NOT* SUPPORT SHADOW PASSWORDS.
+
+    WARNING: THIS COLLECTION DOES *NOT* SUPPORT SYSTEM V INITTAB.
+
+    WARNING: USE GNU TAR -- OTHER TARS WILL FAIL SILENTLY!
+
+    WARNING: DO *NOT* INSTALL WITHOUT THINKING.
+
+    WARNING: *READ* the util-linux-1.10.bin.Notes file *BEFORE* and *AFTER*
+             installation: there are a few links you must make by hand.
+
+    This is a collection of many assorted utilities for Linux.  Some are
+    system utilities that are not easily available anywhere elsewhere
+    (e.g., mkfs); others are BSD ports of common utilities that are not yet
+    contained in any FSF package (e.g., col); others are non-System-V
+    alternatives to common utilities (e.g., simpleinit, agetty, login,
+    passwd).
+
+    This distribution is a superset of my previous distributions:
+    util-etc*, util-bin*, and util-usrbin*.  There are no binaries in /etc.
+    The arrangement, as nearly as I can determine, conforms to the Linux
+    Filesystem Standard, with no exceptions.
+
+    Many people provided patches and suggestions.  I deeply appreciate
+    this.
+
+
+    HIGHLIGHTS for version 1.10:
+    1) domainname is no longer installed.  The source for domainname is still
+       included in the source distribution, as is the hostname-1.5 package, by
+       Peter Tobias (tobias@server.et-inf.fho-emden.de), which contains a new
+       hostname and a dnsdomainname program.  If you have any questions read
+       the documentation in hostname-1.5 and NetKit-A.
+    2) Alan Modra (alan@spri.levels.unisa.edu.au) updated syslogd and clock.
+    3) Joe Ragland (jrr@interpath.net) updated whereis.1
+    4) Kai Petzke (wpp@marie.physik.tu-berlin.de) updated setserial.8
+    5) Michael K. Johnson (johnsonm@nigel.vnet.net) updated tunelp
+    6) Carl Christofferson (cchris@connected.com) updated col
+    7) bjdouma@xs4all.nl updated rev
+    8) Lots of updates to mount: without -t, (null) is no longer entered in
+       mtab; readonly file systems are now remounted readonly if they weren't
+       the first time; you can mount loop devices; umount will send RPC calls
+       to the NFS server.
+    9) agetty, login, hostid updated.
+
+
+    HIGHLIGHTS for version 1.9:
+
+    1) Miscellaneous bug fixes by Dave Gentzel (gentzel@nova.enet.dec.com) and
+       Sander van Malssen (svm@kozmix.hacktic.nl)
+    2) tunelp has been added
+    3) selection now allows the mouse pointer to wrap (this is off by default)
+       (Thanks to Sander van Malssen (svm@kozmix.hacktic.nl).)
+    4) Many old versions have been removed, making the source distribution
+       smaller.
+
+
+    HIGHLIGHTS for version 1.8:
+
+    1) bdflush is now installed as update (WARNING!).
+    2) MAKEDEV was updated.  This version uses /proc/devices.
+    3) Minor corrections (thanks to Dave Gentzel).
+    4) Nigel Gamble's lpcntl is included.
+
+
+    See the included util-linux-1.10.bin.Notes file for HIGHLIGHTS of
+    previous versions.

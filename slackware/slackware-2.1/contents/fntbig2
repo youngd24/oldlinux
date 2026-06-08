@@ -1,0 +1,26 @@
+PACKAGE NAME:     fntbig2
+COMPRESSED PACKAGE SIZE:     1270 K
+UNCOMPRESSED PACKAGE SIZE:     1390 K
+PACKAGE LOCATION: diskx11
+PACKAGE DESCRIPTION:
+fntbig2:  Large fonts (part two)
+fntbig2:
+fntbig2:  These fonts are compressed to reduce disk usage.
+fntbig2:
+fntbig2:  Fonts included: hanglg16.pcf.Z hanglm16.pcf.Z hanglm24.pcf.Z
+fntbig2:  jiskan16.pcf.Z
+fntbig2:
+FILE LIST:
+./
+install/
+install/doinst.sh
+usr/
+usr/X11R6/
+usr/X11R6/lib/
+usr/X11R6/lib/fonts/
+usr/X11R6/lib/fonts/misc/
+usr/X11R6/lib/fonts/misc/hanglg16.pcf.Z
+usr/X11R6/lib/fonts/misc/hanglm16.pcf.Z
+usr/X11R6/lib/fonts/misc/hanglm24.pcf.Z
+usr/X11R6/lib/fonts/misc/jiskan16.pcf.Z
+usr/X11R6/lib/fonts/misc/fonts.dir.big

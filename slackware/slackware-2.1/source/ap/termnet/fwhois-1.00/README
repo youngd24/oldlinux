@@ -1,0 +1,44 @@
+fwhois (finger whois) by Chris Cappuccio <ccappuc@santafe.edu>
+
+Fwhois is a finger-style whois for BSD systems. It is smaller and more
+compact then the standard InterNIC whois.c, and also runs in a different
+manner. fwhois user@whois.internic.net would be the same as 'whois -h
+whois.internic.net user'. This command is espically useful in environments
+where different servers are queued, e.g. an organization with multiple
+whois servers running for different purposes. This type of command
+can also be useful when a user or group of users makes frequent use
+of many different whois servers. If a user simply types 'fwhois user'
+without a hostname, fwhois will automatically use host whois.internic.net.
+
+Why Did You Write This?
+-----------------------
+I got bored and also the regular whois.c wasn't compiling under any
+version of GCC for me.
+
+Recompiling
+-----------
+To recomplie, just type: make or make bsd
+
+Notes on Compiling and Included Binaries
+----------------------------------------
+The compiled fwhois.linux included with this package was compiled using
+GCC 2.4.5, libc 4.4.1. The compiled fwhois.sun4 included in this package
+was compiled using standard Sun 4 C compiler. This should compile without
+any problems on *any* BSD-type machine (SunOS, Linux, Ultrix,
+386/NetBSD, etc...) but it was only tested under Linux 0.99.11 and
+SunOS 4.1.3. I have also compiled it with success under NetBSD 0.8,
+with GCC 1.39. However, I was not able to bring back the binary
+because I don't have all of the mtools installed on the NetBSD machine :)
+I think this should also compile on SVR4 systems with the
+BSD-Compatibility package installed. (P.S.-Yes, I know Linux isn't
+a 'bsd-type machine', but fwhois compiles just as easy under Linux
+as under SunOS or any other BSD-type system)
+
+Other Notes
+-----------
+This program comes with no manual pages, because I am not exactily
+compelled to make them, but if you have any enhancements or something
+you did to make fwhois better, please send the modified fwhois.c to
+ccappuc@santafe.edu.
+
+--Chris

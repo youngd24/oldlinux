@@ -1,0 +1,36 @@
+#!/bin/sh
+dialog --title "Install packages to your hard drive" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disk must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+14 70 2 \
+"auis63L2-dev" "Andrew Development System" "off" \
+"auis63L2-doc" "Obscure Andrew documentation" "off" \
+2> /tmp/return
+if fgrep '"auis63L2-dev"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package auis63L2-dev to your hard drive" --infobox \
+"Andrew User Interface System - For the AUIS Programmer\n\
+\n\
+This package is aimed at THOSE WHO WANT TO DEVELOPE AUIS APPS.\n\
+\n\
+REQUIRED:\n\
+YOU MUST HAVE INSTALLED AUIS63L2-SRC.TGZ FIRST.\n\
+/bin/csh  (e.g. ln -sf /bin/tcsh /bin/csh)\n\
+X Window System\n\
+\n\
+" 11 75
+ installpkg auis63L2-dev.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"auis63L2-doc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package auis63L2-doc to your hard drive" --infobox \
+"Andrew User Interface System - Documentation\n\
+\n\
+This package is aimed at those wanting complete documentation.\n\
+\n\
+REQUIRED:\n\
+YOU MUST HAVE INSTALLED AUIS63L2-WP.TGZ FIRST.\n\
+/bin/csh  (e.g. ln -sf /bin/tcsh /bin/csh)\n\
+X Window System\n\
+\n\
+" 11 75
+ installpkg auis63L2-doc.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

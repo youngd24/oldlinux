@@ -1,0 +1,32 @@
+PACKAGE NAME:     less
+COMPRESSED PACKAGE SIZE:     50 K
+UNCOMPRESSED PACKAGE SIZE:     110 K
+PACKAGE LOCATION: diska3
+PACKAGE DESCRIPTION:
+less:     less-237
+less:
+less:     Less is a paginator similar to more (1), but which allows backward
+less:     movement in the file as well as forward movement. Also, less does not
+less:     have to read the entire input file before starting, so with large
+less:     input files it starts up faster than text editors like vi (1). 
+less:
+less:     Less was written by Mark Nudelman.
+less:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/less
+usr/bin/lesskey
+usr/lib/
+usr/lib/less.hlp
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/less.1.gz
+usr/man/preformat/cat1/lesskey.1.gz
+usr/doc/
+usr/doc/less/
+usr/doc/less/Copyright
+usr/doc/less/README
+usr/doc/less/NEWS

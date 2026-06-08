@@ -1,0 +1,32 @@
+#!/bin/sh
+dialog --title "Linux X DOOM (3D networkable video game)" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disk must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+14 70 2 \
+"doom1wad" "This is the shareware DOOM data file" "off" \
+"linxdoom" "Linux X DOOM v1.666" "off" \
+2> /tmp/return
+if fgrep '"doom1wad"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package doom1wad to your hard drive" --infobox \
+"This is the shareware DOOM data file.\n\
+\n\
+You'll need this to run DOOM.\n\
+\n\
+" 6 75
+ installpkg doom1wad.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"linxdoom"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package linxdoom to your hard drive" --infobox \
+"Linux X DOOM v1.666.\n\
+\n\
+This is DOOM for Linux -- DOOM is a nifty 3D game originally\n\
+released for NEXTSTEP and then DOS.\n\
+\n\
+If you don't have a 16 bit sound card, you'll want to remove\n\
+/usr/games/sndserver, or if you have an 8 bit sound card (or the\n\
+PC speaker) you can find a filter in the ./source/contrib/linux-x-doom\n\
+directory that will allow you to get nice static-free sound.\n\
+\n\
+" 12 75
+ installpkg linxdoom.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

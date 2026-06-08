@@ -1,0 +1,65 @@
+PACKAGE NAME:     xgames
+COMPRESSED PACKAGE SIZE:     129 K
+UNCOMPRESSED PACKAGE SIZE:     350 K
+PACKAGE LOCATION: diskxap2
+PACKAGE DESCRIPTION:
+xgames:   A collection of games for X:
+xgames:
+xgames:   maze spider xcuckoo xhextris xlander xmahjongg xmenu xroach xtetris
+xgames:   xvier
+xgames:
+FILE LIST:
+./
+install/
+install/doinst.sh
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat6/
+usr/man/preformat/cat6/xroach.6.gz
+usr/man/preformat/cat6/xtetris.6.gz
+usr/man/preformat/cat6/xvier.6.gz
+usr/man/preformat/cat6/othello.6.gz
+usr/man/preformat/cat6/xboard.6.gz
+usr/man/preformat/cat6/xlander.6.gz
+usr/man/preformat/cat6/xmahjongg.6.gz
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/spider
+usr/X11R6/bin/xcuckoo
+usr/X11R6/bin/xlander
+usr/X11R6/bin/xroach
+usr/X11R6/bin/xvier
+usr/X11R6/bin/xhextris
+usr/X11R6/bin/xmahjongg
+usr/X11R6/bin/tophextris
+usr/X11R6/bin/xtetris
+usr/X11R6/bin/maze
+usr/X11R6/lib/
+usr/X11R6/lib/xmahjongg/
+usr/X11R6/lib/xmahjongg/COPYRIGHT
+usr/X11R6/lib/xmahjongg/README.1
+usr/X11R6/lib/xmahjongg/README.2
+usr/X11R6/lib/xmahjongg/bridge
+usr/X11R6/lib/xmahjongg/default
+usr/X11R6/lib/xmahjongg/wedges
+usr/X11R6/lib/fonts/
+usr/X11R6/lib/fonts/misc/
+usr/X11R6/lib/fonts/misc/xhextris.pcf.Z
+usr/X11R6/lib/fonts/misc/xmahjongg.pcf.Z
+usr/X11R6/include/
+usr/X11R6/include/X11/
+usr/X11R6/include/X11/bitmaps/
+usr/X11R6/include/X11/bitmaps/stripe4
+var/
+var/X11R6/
+var/X11R6/lib/
+var/X11R6/lib/app-defaults/
+var/X11R6/lib/app-defaults/Xtetris
+var/X11R6/lib/app-defaults/Xtetris.bw
+var/X11R6/lib/app-defaults/Xtetris.c
+var/X11R6/scores/
+var/X11R6/scores/xhextris.scores
+var/X11R6/scores/xtetris-scores
+var/games/
+var/games/xvier_prog

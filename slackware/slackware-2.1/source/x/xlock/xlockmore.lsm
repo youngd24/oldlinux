@@ -1,0 +1,25 @@
+Begin3
+Title:          xlockmore
+Version:        1.11 
+Entered-date:   26AUG94 
+Description:    Patrick Naughton's xlock + more.  (Actually, image mode was
+                taken out (I could put it back in) world is similar though).
+                New modes are: spline, maze, sphere, hyper, helix, rock, blot,
+                grav, bounce, world, & rect.  Also includes a new option
+                -inwindow which allows you to run it in a window. Also
+		improvements in portability.
+Keywords:       xlock, screen saver, screen lock 
+Author:         bagleyd@source.asset.com (David Bagley) 
+                and of course Patrick Naughton & others
+Maintained-by:  bagleyd@source.asset.com (David Bagley) 
+Primary-site:   ftp.x.org /contrib/applications
+                83k xlockmore-1.11.tar.gz
+                10k xlockmore.README
+Alternate-site: sunsite.unc.edu /pub/Linux/X11/xutils/screensavers
+                83k xlockmore.1.11.tgz
+Original-site:  ftp.x.org /R5contrib
+Platform:       SunOS 4.1, Solaris 2.3, Linux, FreeBSD, HP-UX 9.0, AIXV3, VMS.
+		Requires X & K&R C although it should compile "right out of
+		the box", read the README especially for Solaris2.3.
+Copying-policy: BSD
+End

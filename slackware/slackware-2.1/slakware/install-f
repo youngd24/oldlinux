@@ -1,0 +1,21 @@
+#!/bin/sh
+dialog --title "Install documentation in /usr/doc/faq" \
+       --checklist "Please select the package you would like to install to your hard drive from the Slackware Professional CD-ROM.  Press ENTER when you are done." \
+10 70 1 \
+"manyfaqs" "Answers to frequently asked questions" "off" \
+2> /tmp/return
+if fgrep '"manyfaqs"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package manyfaqs to your hard drive" --infobox \
+"A collection of frequently asked questions/answers on many subjects.\n\
+\n\
+Some of the FAQs included in this package: The full set of Linux\n\
+HOWTOs; comp.lang FAQs for Fortran, GCC, G++, TCL, Objective-C, Lisp,\n\
+Scheme, and Perl; PostScript FAQ; Linux FAQ; comp.windows.x X FAQ\n\
+and many other FAQs relating to X. \n\
+\n\
+These FAQs will be installed under /usr/doc/faq. \n\
+\n\
+" 11 75
+ installpkg f1/manyfaqs.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

@@ -1,0 +1,22 @@
+PACKAGE NAME:     grep
+COMPRESSED PACKAGE SIZE:     30 K
+UNCOMPRESSED PACKAGE SIZE:     80 K
+PACKAGE LOCATION: diska3
+PACKAGE DESCRIPTION:
+grep:     GNU grep 2.0
+grep:
+grep:     Grep searches the named input files (or standard input if no files are
+grep:     named, or the file name - is given) for lines containing a match to
+grep:     the given pattern.  This is the "fastest grep in the west" (we hope).
+grep:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/grep
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/grep.1.gz
+install/
+install/doinst.sh

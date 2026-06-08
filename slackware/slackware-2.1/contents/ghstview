@@ -1,0 +1,27 @@
+PACKAGE NAME:     ghstview
+COMPRESSED PACKAGE SIZE:     54 K
+UNCOMPRESSED PACKAGE SIZE:     130 K
+PACKAGE LOCATION: diskxap2
+PACKAGE DESCRIPTION:
+ghstview: Ghostview 1.5
+ghstview: 
+ghstview: The ghostview program provides an X11 user interface for the 
+ghstview: ghostscript interpreter. Ghostview and ghostscript function as two
+ghstview: cooperating programs. Ghostview creates the viewing window and
+ghstview: ghostscript draws in it.
+ghstview: 
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/ghostview.1.gz
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/ghostview
+var/
+var/X11R6/
+var/X11R6/lib/
+var/X11R6/lib/app-defaults/
+var/X11R6/lib/app-defaults/Ghostview

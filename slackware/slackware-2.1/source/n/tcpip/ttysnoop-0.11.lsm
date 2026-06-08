@@ -1,0 +1,19 @@
+Begin3
+Title: 		ttysnoop
+Version:        0.11
+Entered-date:   940820
+Description:    A utility which lets you watch on serial lines/telnet ins.
+		You *will* need getty or in.telnetd source
+Keywords:       tty getty snoop pty
+Author:         carl@p10.f500.n292.z2.fidonet.org (Carl Declerck)
+Maintained-by:  carl@p10.f500.n292.z2.fidonet.org (Carl Declerck)
+Primary-site:   igwe1.vub.ac.be /pub/misc
+		7453 ttysnoop-0.11.tar.gz
+		648 ttysnoop-0.11.lsm
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Misc
+		7453 ttysnoop-0.11.tar.gz
+		648 ttysnoop-0.11.lsm
+Original-site:  
+Platform:       linux, getty/in.telnetd source
+Copying-policy:  none
+End

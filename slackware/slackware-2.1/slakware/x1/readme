@@ -1,0 +1,147 @@
+Installation instructions for XFree86[TM] 3.1 Linux distribution [9/28/94]
+--------------------------------------------------------------------------
+
+Introduction
+------------
+	This is the Linux binary distribution of XFree86 release 3.1.
+Please read this document carefully before installation, and the included
+doc package for detailed configuration information.
+
+Requirements
+------------
+	Linux 1.0, 1.1.X, or later
+	libc-4.5.26, or 4.5.X
+	libm-4.5.26, or 4.5.X
+	ld.so-1.4.3, or later
+	shadow-3.3.2 (if using xdmshdw)
+
+	This distribution was tested using Linux 1.1.49 and should work
+without problems on all versions 1.0, 1.1.X and later. Kernel networking
+support is required, although each server will work without TCP support
+(using the "partial network" option). In order to use the XShm extension,
+kernel shared memory support is required. All serial and bus mice detected
+by the 1.1.49 kernel are supported by the servers.
+
+Contents
+--------
+	The distribution is composed of the following parts:
+
+     	  name			req/opt description
+          XF86-3.1-8514.tar.gz	  R[1]	Server for 8514-based boards.
+          XF86-3.1-AGX.tar.gz	  R[1]	Server for AGX-based boards.
+          XF86-3.1-Mach32.tar.gz  R[1]	Server for Mach32-based boards.
+          XF86-3.1-Mach8.tar.gz	  R[1]	Server for Mach8-based boards.
+          XF86-3.1-Mono.tar.gz	  R[1]	Server for monochrome video modes.
+          XF86-3.1-P9000.tar.gz	  R[1]	Server for P9000-based boards.
+          XF86-3.1-S3.tar.gz	  R[1]	Server for S3-based boards.
+          XF86-3.1-SVGA.tar.gz	  R[1]	Server for Super VGA-based boards.
+          XF86-3.1-VGA16.tar.gz	  R[1]	Server for VGA/EGA-based boards.
+          XF86-3.1-W32.tar.gz	  R[1]	Server for ET4000/W32-based boards.
+          XF86-3.1-bin.tar.gz	  R	The rest of the X11R6 binaries.
+          XF86-3.1-cfg.tar.gz	  R[2]	Config files for xdm, xinit and fs.
+          XF86-3.1-ctrb.tar.gz	  O	Selected contrib programs.
+          XF86-3.1-doc.tar.gz	  R	XFree86 documentation and manpages.
+          XF86-3.1-inc.tar.gz	  R	Include files.
+          XF86-3.1-lib.tar.gz	  R	Shared X libraries and support files.
+          XF86-3.1-lkit.tar.gz	  O[3]	Server linkkit for customization.
+          XF86-3.1-fnt.tar.gz	  R	Basic fonts.
+          XF86-3.1-fnt75.tar.gz	  O	75-dpi screen fonts.
+          XF86-3.1-fnt100.tar.gz  O	100-dpi screen fonts.
+          XF86-3.1-fntbig.tar.gz  O	Large Kanji and other fonts.
+          XF86-3.1-fntscl.tar.gz  O	Scaled fonts (Speedo, Type1).
+          XF86-3.1-man.tar.gz	  O	Manual pages.
+          XF86-3.1-pex.tar.gz	  O	PEX binaries, includes and libraries.
+          XF86-3.1-slib.tar.gz	  O	Static X libraries and support files.
+          XF86-3.1-usrbin.tar.gz  O[4]	Daemons which reside in /usr/bin.
+          XF86-3.1-xdmshdw.tar.gz O	Shadow password version of xdm.
+
+	R = Required for basic operation.
+	O = Optional.
+	1 = Select server required for your board. If you're unsure which
+	    server to choose, run SuperProbe (in the bin package).
+	2 = These includee the initialization files for xdm and xinit. If you
+	    don't have them, this is required. If you do have them, these
+	    have not changed.
+	3 = Use the linkkit to create a server with PEX and/or XIE support.
+	4 = Includes rstartd, for the rstart client. Must be installed from /.
+
+Installation
+------------
+	The distribution was compiled to reside in /usr/X11R6. The entire
+installation takes up about 42Mb. A "normal" installation takes up about 15Mb.
+
+	The installation must be done as root as there are binaries which
+must be unpacked setuid-root. Note that setuid-root operation is not required
+when using xdm. Each package is tarred up relative to /usr/X11R6 rather than /,
+so it's possible to unpack the distribution on another partition and make a
+symlink from there to /usr/X11R6.
+
+	Each tarfile has been compressed using gzip, so the command
+`gunzip < {xxx.tar.gz} | tar xfBp -' will decompress and untar the file.
+At the very least, you will have to unpack all of the required
+packages described above. The optional packages can be unpacked now or
+later.
+
+	The next step is to configure the server. First, make sure the
+symbolic link /usr/X11R6/bin/X points to the correct server. As mentioned
+above, if you're unsure about which server to select, run the SuperProbe
+program (in /usr/X11R6/bin) which should give you that information.
+
+	Then, you have to create a configuration file XF86Config, found in
+/usr/X11R6/lib/X11. The distribution provides a sample XF86Config.eg,
+which can be used as a starting point. If upgrading from XFree86 2.1,
+the Xconfig can be turned into an XF86Config using the reconfig program,
+available in the bin package. The format has been extensively improved, so
+read the XF86Config manpages and all documentation regarding your server.
+
+	The X libraries use the dynamic linker, ld.so, which must be
+installed. Make sure that /usr/X11R6/lib is one of the entries in
+/etc/ld.so.conf, or add it to your LD_LIBRARY_PATH environment variable.
+After installing, run ldconfig to update the system with the location of
+the new X libraries.
+
+	Finally, add /usr/X11R6/bin to your PATH, and /usr/X11R6/man to
+your MANPATH. The command `startx' can be used to start the server and
+any clients. Xdm is also available for remote and local logins to the
+X server. A shadow-password compatible version of xdm is available,
+though it hasn't been tested. Further information on these programs is
+available in the manpages.
+
+Configuration
+-------------
+	The precompiled servers were compiled with LBX and ScreenSaver
+extensions included. The linkkit is provided with all extensions except
+LBX, which currently requires the server sources to recompile. Fresco
+is unavailable because it requires gcc 2.6.X (X > 0) which wasn't available
+at this time.
+
+	All servers have been compiled with all available drivers. Smaller
+servers can be generated by selecting minimal options via the linkkit.
+The VGA16 and Mono servers were not compiled with dual-head support, but
+this option is also available through the linkkit.
+
+Compatibility
+-------------
+	X11R6 is presented as a complete upgrade from X11R5. In particular,
+this means that X11R6 shared libraries cannot be used in place of the
+X11R5 (old X386) libraries. The major number has been upgraded on all
+the shared libraries to reflect this fact.
+
+	In order to use old binaries, you must retain the X11R5 libraries.
+They can either remain in /usr/X386/lib or you can move them to some other
+location, remembering to update the ld.so config file /etc/ld.so.conf and
+re-running ldconfig. Old binaries should be compatible with the new X11R6
+server.
+
+Sources
+-------
+	Sources relative to X11R6 PL5 are available from ftp.XFree86.org
+under /pub/XFree86/current. The main README provided in the distribution
+has detailed information about mirror sites and XFree86 in general.
+
+
+	Please report all errors in this distribution and documentation
+to me. Thank you.
+
+-orest
+orestz@eskimo.com

@@ -1,0 +1,41 @@
+*** kernel/ksyms.c-orig50	Mon Sep 12 02:01:39 1994
+--- kernel/ksyms.c	Mon Sep 12 02:05:09 1994
+***************
+*** 51,56 ****
+--- 51,65 ----
+  
+  extern void (* iABI_hook)(struct pt_regs * regs);
+  
++ #ifdef CONFIG_NEC260
++ #include <linux/sched.h>
++ extern int the_nec260_major;
++ extern void (*do_hd) (void);
++ #ifdef CONFIG_BLK_DEV_HD1
++ extern void (*do_hd1) (void);
++ #endif
++ #endif
++ 
+  struct symbol_table symbol_table = { 0, 0, 0, /* for stacked module support */
+  	{
+  	/* stackable module support */
+***************
+*** 183,188 ****
+--- 192,209 ----
+  	X(dev_rint),
+  	X(dev_tint),
+  	X(irq2dev_map),
++ #endif
++ #ifdef CONFIG_NEC260
++ 	/* for the nec cdr-260 cdrom drive */
++ 	X (the_nec260_major),
++ 	X (do_hd),
++         X (read_ahead),
++ 	X (sync_dev),
++ 	X (invalidate_buffers),
++ 	X (__down),
++ #ifdef CONFIG_BLK_DEV_HD1
++ 	X (do_hd1),
++ #endif
+  #endif
+  
+  	/********************************************************

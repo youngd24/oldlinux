@@ -1,0 +1,16 @@
+#!/bin/sh
+if [ -r /usr/X11R6/bin/mkfontdir ]; then
+  ( cd usr/X11R6/lib/fonts/misc ; /usr/X11/bin/mkfontdir )
+elif [ -r /cdrom/usr/X11R6/bin/mkfontdir ]; then
+  ( cd usr/X11R6/lib/fonts/misc ; /cdrom/usr/X11R6/bin/mkfontdir )
+elif [ -r /var/adm/mount/usr/X11R6/bin/mkfontdir ]; then
+  ( cd usr/X11R6/lib/fonts/misc ; /var/adm/mount/usr/X11R6/bin/mkfontdir )
+elif [ -r /mnt/linux/usr/X11R6/bin/mkfontdir ]; then
+  ( cd usr/X11R6/lib/fonts/misc ; /mnt/linux/usr/X11R6/bin/mkfontdir )
+elif [ -r /mnt/usr/X11R6/bin/mkfontdir ]; then
+  ( cd usr/X11R6/lib/fonts/misc ; /mnt/usr/X11R6/bin/mkfontdir )
+else
+  dialog --title "WARNING" --msgbox "mkfontdir could not be found at \
+this time. You'll have to run it yourself in /usr/X11R6/lib/fonts/misc \
+after you reboot." 8 63
+fi

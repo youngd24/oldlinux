@@ -1,0 +1,34 @@
+CONTENTS: nn-spool nn-nntp bind  
+bind:     BIND-4.9.3-beta9
+bind:
+bind:     The named daemon and support utilities such as dig, dnsquery, host,
+bind:     nslookup, nsquery, and nstest.  Documentation on setting up a name
+bind:     server can be found in /usr/doc/bind-4.9.3-BETA9.
+bind:
+bind:
+bind:
+bind:
+bind:
+bind:
+nn-nntp:  nn-6.4.18 compiled to use NNTP.
+nn-nntp:
+nn-nntp:  nn is an easy to use menu driven newsreader by Kim F. Storm.
+nn-nntp:
+nn-nntp:  This version of nn has been compiled to read news via NNTP. If you're
+nn-nntp:  planning to keep your own news spool in /var/spool/news, you should
+nn-nntp:  install the next version (nn-spool) instead.
+nn-nntp:
+nn-nntp:
+nn-nntp:
+nn-nntp:
+nn-spool: nn-6.4.18 compiled to use a local news spool.
+nn-spool:
+nn-spool: nn is an easy to use menu driven newsreader by Kim F. Storm.
+nn-spool:
+nn-spool: This version looks for the news articles in /var/spool/news, and
+nn-spool: has been set up to work with Cnews, INN, or another news transport
+nn-spool: system of your choice.
+nn-spool:
+nn-spool:
+nn-spool:
+nn-spool:

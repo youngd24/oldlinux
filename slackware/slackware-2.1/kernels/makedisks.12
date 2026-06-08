@@ -1,0 +1,51 @@
+#!/bin/sh
+# 
+# This makes a bootkernel disk in /dev/fd0 from a kernel image.
+#
+# Run this in a directory containing the kernels you're gonna use, and a
+# subdirectory with a master image of the bootkernel disk.
+#
+# This is the command to use:
+#
+# makedisk kernel_image disk_size
+#          ^^           ^^^^^^^^^ This is 1200 or 1200
+#          ^^^^^ This is the name (and maybe path to) the kernel you're going
+#                to use, such as scsinet/zImage.
+#
+makedisk b-alpha/zImage 1200
+echo "cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/alpha.gz"
+cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/alpha.gz
+makedisk b-bare/zImage 1200
+echo "cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/bare.gz"
+cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/bare.gz
+makedisk b-cdu31a/zImage 1200
+echo "cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/cdu31a.gz"
+cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/cdu31a.gz
+makedisk b-cdu535/zImage 1200
+echo "cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/cdu535.gz"
+cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/cdu535.gz
+makedisk b-loaded/zImage 1200
+echo "cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/loaded.gz"
+cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/loaded.gz
+makedisk b-mitsumi/zImage 1200
+echo "cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/mitsumi.gz"
+cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/mitsumi.gz
+makedisk b-nec260/zImage 1200
+echo "cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/nec260.gz"
+cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/nec260.gz
+makedisk b-net/zImage 1200
+echo "cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/net.gz"
+cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/net.gz
+makedisk b-sbpcd/zImage 1200
+echo "cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/sbpcd.gz"
+cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/sbpcd.gz
+makedisk b-scsi/zImage 1200
+echo "cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/scsi.gz"
+cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/scsi.gz
+makedisk b-scsinet/zImage 1200
+echo "cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/scsinet.gz"
+cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/scsinet.gz
+makedisk b-xt/zImage 1200
+echo "cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/xt.gz"
+cat /dev/fd0 | gzip -9c > /cdrom/bootdsks.12/xt.gz
+

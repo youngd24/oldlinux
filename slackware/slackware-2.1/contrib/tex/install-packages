@@ -1,0 +1,27 @@
+#!/bin/sh
+dialog --title "Remove X11 support from TeX" \
+       --checklist "This package will replace MetaFont from the T series \
+with a version that isn't linked with the X shared libraries.  This allows \
+TeX to work on systems where X is not installed.  If X is installed on your \
+machine, you're not going to want to install this package. \
+Press ENTER when you are done." \
+12 70 1 \
+"mf-nox11" "mf-nox11 - MetaFont with no X11 support" "off" \
+2> /tmp/return
+if fgrep '"mf-nox11"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package mf-nox11 to your hard drive" --infobox \
+"mf-nox11 \n\
+\n\
+This package contains the binaries for MetaFont, the bases mf.base\n\
+(plain.base) and cmmf.base (cmplain.base) and the basic setup for the\n\
+font directories. The current version of MetaFont is 2.71 (C version\n\
+6.1).\n\
+\n\
+This is a special version of the MetaFont package that was compiled\n\
+to _not_ use any X shared libraries.  Obviously, you won't want to\n\
+install this on machines that do run X.\n\
+\n\
+" 13 75
+ installpkg mf-nox11.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

@@ -1,0 +1,16 @@
+./usr/bin/devnag
+./usr/lib/texmf/fonts/language/devanagari/create.sh
+./usr/lib/texmf/fonts/language/devanagari/src/defs.mf
+./usr/lib/texmf/fonts/language/devanagari/src/dnchars.mf
+./usr/lib/texmf/fonts/language/devanagari/src/dvng10.mf
+./usr/lib/texmf/fonts/language/devanagari/src/dvng8.mf
+./usr/lib/texmf/fonts/language/devanagari/src/dvng9.mf
+./usr/lib/texmf/fonts/language/devanagari/tfm/dvng10.tfm
+./usr/lib/texmf/fonts/language/devanagari/tfm/dvng8.tfm
+./usr/lib/texmf/fonts/language/devanagari/tfm/dvng9.tfm
+./usr/lib/texmf/tex/language/devanagari/dev.sty
+./usr/lib/texmf/tex/language/devanagari/devnag.c
+./usr/lib/texmf/tex/language/devanagari/dnmacs.tex
+./usr/lib/texmf/tex/language/devanagari/manual.tex
+./usr/lib/texmf/tex/language/devanagari/misspaal.dn
+./usr/lib/texmf/tex/language/devanagari/read.me

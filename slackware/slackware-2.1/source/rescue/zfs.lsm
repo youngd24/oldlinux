@@ -1,0 +1,23 @@
+
+Begin2
+Title        = ZFS patch
+Version      = 0.10
+Desc1        = This package contains a patch that allow Linux to load
+Desc2        = a compressed root filesystem into ramdisk. 
+Desc3        = Can be used to build one disk Linux systems like
+Desc4        = boot or rescuedisks. 
+Author       = Petri Mattila
+AuthorEmail  = ptjmatti@kruuna.helsinki.fi
+Site1        = sunsite.unc.edu
+Path1        = pub/Linux/kernel/misc-patches
+File1        = zfs-0.10.patch
+FileSize1    = 43354
+Required1    = Linux kernel 1.1.11 or later,
+Required2    = knowledge how to create a bootable system.
+CopyPolicy1  = GPL
+Keywords     = filesystem, compressed, bootdisk, ramdisk
+Comment1     = No more swapping disks during boot !
+RelFiles1    = zfs.README
+Entered      = 11MAY94
+EnteredBy    = Petri Mattila
+End

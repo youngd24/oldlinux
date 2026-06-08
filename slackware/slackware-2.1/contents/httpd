@@ -1,0 +1,71 @@
+PACKAGE NAME:     httpd
+COMPRESSED PACKAGE SIZE:     144 K
+UNCOMPRESSED PACKAGE SIZE:     550 K
+PACKAGE LOCATION: httpd.tgz
+PACKAGE DESCRIPTION:
+httpd:    NCSA httpd Web server.
+httpd:
+httpd:    This is NCSA's public domain HTTP server.  It allows your machine to
+httpd:    act as a server for World Wide Web clients such as Mosaic, Lynx, and
+httpd:    Netscape.
+httpd:
+httpd:    This server was developed at the National Center for Supercomputing
+httpd:    Applications at the University of Illinois at Urbana-Champaign.
+httpd:
+FILE LIST:
+./
+usr/
+usr/doc/
+usr/doc/httpd/
+usr/doc/httpd/installation.txt
+usr/doc/httpd/intro-to-server.txt
+usr/doc/httpd/tutorials.txt
+usr/doc/httpd/upgrades.txt
+usr/doc/httpd/usage.txt
+usr/doc/httpd/Installation_Instructions.ps
+usr/doc/httpd/IntroToServer.ps
+usr/doc/httpd/Overview.html
+usr/doc/httpd/README
+usr/doc/httpd/Tutorials.ps
+usr/doc/httpd/UsingTheServer.ps
+usr/doc/httpd/Version_History.ps
+usr/doc/httpd/exampleAccessConf.ps
+usr/doc/httpd/upgrades.ps
+usr/sbin/
+usr/sbin/httpd
+var/
+var/httpd/
+var/httpd/conf/
+var/httpd/conf/access.conf-dist
+var/httpd/conf/httpd.conf-dist
+var/httpd/conf/mime.types
+var/httpd/conf/srm.conf-dist
+var/httpd/cgi-bin/
+var/httpd/cgi-bin/archie
+var/httpd/cgi-bin/calendar
+var/httpd/cgi-bin/date
+var/httpd/cgi-bin/finger
+var/httpd/cgi-bin/fortune
+var/httpd/cgi-bin/nph-test-cgi
+var/httpd/cgi-bin/test-cgi
+var/httpd/cgi-bin/test-cgi.tcl
+var/httpd/cgi-bin/uptime
+var/httpd/cgi-bin/wais.pl
+var/httpd/support/
+var/httpd/support/auth/
+var/httpd/support/auth/pgp-dec
+var/httpd/support/auth/pgp-enc
+var/httpd/support/auth/ripem-dec
+var/httpd/support/auth/ripem-enc
+var/httpd/support/auth/uudecode.c
+var/httpd/support/auth/uuencode.c
+var/httpd/support/Makefile
+var/httpd/support/change-passwd.readme
+var/httpd/support/htpasswd.c
+var/httpd/support/inc2shtml.c
+var/httpd/support/unescape.c
+var/httpd/support/htpasswd
+var/httpd/support/unescape
+var/httpd/support/inc2shtml
+var/httpd/logs/
+var/httpd/htdocs/

@@ -1,0 +1,77 @@
+PACKAGE NAME:     shellutl
+COMPRESSED PACKAGE SIZE:     80 K
+UNCOMPRESSED PACKAGE SIZE:     210 K
+PACKAGE LOCATION: diska3
+PACKAGE DESCRIPTION:
+shellutl: GNU shellutils 1.9.4
+shellutl:
+shellutl: This is a package of small shell programming utilities.  They are
+shellutl: mostly compliant with POSIX.2, where applicable.
+shellutl:
+shellutl: The programs in this package are:
+shellutl:   basename date dirname echo env expr false logname nice hohup
+shellutl:   pathchk printenv printf sleep stty tee test true tty uname
+shellutl:   who whoami yes
+shellutl:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/basename
+usr/bin/dirname
+usr/bin/env
+usr/bin/expr
+usr/bin/groups
+usr/bin/id
+usr/bin/logname
+usr/bin/pathchk
+usr/bin/printenv
+usr/bin/printf
+usr/bin/sleep
+usr/bin/tee
+usr/bin/test
+usr/bin/tty
+usr/bin/who
+usr/bin/whoami
+usr/bin/yes
+usr/bin/nice
+usr/bin/nohup
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/basename.1.gz
+usr/man/preformat/cat1/date.1.gz
+usr/man/preformat/cat1/dirname.1.gz
+usr/man/preformat/cat1/echo.1.gz
+usr/man/preformat/cat1/env.1.gz
+usr/man/preformat/cat1/expr.1.gz
+usr/man/preformat/cat1/false.1.gz
+usr/man/preformat/cat1/groups.1.gz
+usr/man/preformat/cat1/id.1.gz
+usr/man/preformat/cat1/logname.1.gz
+usr/man/preformat/cat1/nice.1.gz
+usr/man/preformat/cat1/nohup.1.gz
+usr/man/preformat/cat1/pathchk.1.gz
+usr/man/preformat/cat1/printenv.1.gz
+usr/man/preformat/cat1/printf.1.gz
+usr/man/preformat/cat1/sleep.1.gz
+usr/man/preformat/cat1/stty.1.gz
+usr/man/preformat/cat1/su.1.gz
+usr/man/preformat/cat1/tee.1.gz
+usr/man/preformat/cat1/test.1.gz
+usr/man/preformat/cat1/true.1.gz
+usr/man/preformat/cat1/tty.1.gz
+usr/man/preformat/cat1/uname.1.gz
+usr/man/preformat/cat1/who.1.gz
+usr/man/preformat/cat1/whoami.1.gz
+usr/man/preformat/cat1/yes.1.gz
+bin/
+bin/su
+bin/date
+bin/false
+bin/true
+bin/uname
+bin/stty
+bin/echo
+install/
+install/doinst.sh

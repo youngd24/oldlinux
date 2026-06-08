@@ -1,0 +1,17 @@
+Begin3
+Title:          Tcl
+Version:        7.3l1
+Entered-date:   21AUG94
+Description:    Tool Command Language -- a popular, embeddable
+		scripting language.
+Keywords:       Tcl, Tk, scripting, language
+Author:         ouster@cs.berkeley.edu (John Ousterhout)
+Maintained-by:  david@ods.com (David Engel)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/tcl
+		tcl7.3l1-src.tar.gz
+		tcl7.3l1-bin.tar.gz
+Original-site:  harbor.ecn.purdue.edu /pub/tcl/sprite-mirror
+		tcl7.3.tar.gz
+Platform:       Linux
+Copying-policy: Copyrighted but freely distributable
+End

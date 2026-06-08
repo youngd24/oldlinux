@@ -1,0 +1,75 @@
+This implementation of yp for linux is based on the yp-patches for
+NetBSD from Theo Deraadt and an independend port of Hlu. 
+
+This implementation only provides NIS _clients_. You must already have
+a NIS server running somewhere.
+
+The binary of yppasswd is not included, it caused our yppasswdd on a Sun to
+hang.
+
+
+How to set up your system as a NIS client:
+
+1. Set your NIS domain with domainname at boottime.
+
+Example:
+if [ -x /etc/defaultdomain ] ; then
+	domainname `cat /etc/defaultdomain`
+fi
+You should create the file /etc/defaultdomain with the command
+	echo -n your_domain_name > /etc/defaultdomain
+Old versions of the domainname program could not deal with a \n at the
+end of /etc/defaultdomain and made it part of the domainname. This is
+fixed in this version. 
+
+Please do _not_ confuse the NIS domainname (set with the domainname
+command, which uses setdomainname()) with the DNS domain name (set in
+/etc/resolv.conf). Some distributions falsely assume these are the
+same. This is wrong.
+
+2. Find a NIS server. 
+Here you have 2 possibilities. If your NIS server is in your local
+net, you can simply start ypbind. It will use broadcast to find a
+servers. You can check for a NIS server with the command
+	rpcinfo -b 100007 2
+
+Starting with this release, you can enter the name of your NIS server
+to the file /etc/yp.conf. If /etc/yp.conf exists when ypbind is
+started, it will search it for lines formed like
+	ypserver <Name_of_ypserver>
+ypbind then tests if the given servers are up and serve the NIS
+domain. If one of the servers responds, it will use it for all further
+NIS requests, else it will fallback to broadcast. This gives you the
+possibility to use a server behind a gateway. 
+
+3. Start ypbind
+The recommended way of starting ypbind is as follows:
+
+if [ -d /var/yp ] ; then
+	/usr/sbin/ypbind ;	echo ypbind
+fi
+
+Be sure to set the domainname before calling ypbind and to append
++:*:0:0:::
+to /etc/passwd, and
++:*:0:
+to /etc/group.
+
+Don't forget to create the directory /var/yp.
+Make sure the portmapper is running before ypbind gets startd.
+
+You can use NIS for your host map by adding nis to /etc/host.conf.
+Example:
+
+order hosts nis bind
+multi on
+
+This will look into /etc/hosts first, then ask nis and then the domain
+name server.
+
+Feel free to correct any errors in the programs or documentation
+(including spelling and grammar!)
+
+Comments, corrections, enhancements, patches, praise, money etc. to 
+swen@uni-paderborn.de, flames to /dev/null
+

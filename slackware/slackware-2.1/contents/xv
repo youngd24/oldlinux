@@ -1,0 +1,28 @@
+PACKAGE NAME:     xv
+COMPRESSED PACKAGE SIZE:     210 K
+UNCOMPRESSED PACKAGE SIZE:     510 K
+PACKAGE LOCATION: diskxap1
+PACKAGE DESCRIPTION:
+xv:       John Bradley's XV 3.01 GIF/TIFF/JPEG/PostScript image viewer.
+xv:
+xv:       NOTICE: This program is unregistered shareware. Please read the 
+xv:       license information included.
+xv:
+FILE LIST:
+./
+usr/
+usr/doc/
+usr/doc/xv/
+usr/doc/xv/XV3_README
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/xv.1.gz
+usr/man/preformat/cat1/bggen.1.gz
+usr/man/preformat/cat1/xcmap.1.gz
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/xv
+usr/X11R6/bin/bggen
+usr/X11R6/bin/vdcomp
+usr/X11R6/bin/xcmap

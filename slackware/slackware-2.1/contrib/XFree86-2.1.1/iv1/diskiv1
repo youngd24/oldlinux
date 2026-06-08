@@ -1,0 +1,23 @@
+CONTENTS: libiv_so iv_bin 
+iv_bin:   Binaries and miscellaneous files for InterViews 3.1
+iv_bin:
+iv_bin:   Contains these binaries:
+iv_bin:   alert  dclock  ibmkmf  iclass  idraw  ivmkmf  mailbox  cpu  doc
+iv_bin:   ibuild  idemo  ifc  logo  remind
+iv_bin:
+iv_bin:   This package also contains many sample files for 'doc', 'idraw',
+iv_bin:   'build', and other InterViews programs.
+iv_bin:
+iv_bin:
+iv_bin:
+libiv_so: Shared InterViews 3.1 libraries.
+libiv_so:
+libiv_so: These dynamic libraries are needed to run InterViews programs.
+libiv_so:
+libiv_so:
+libiv_so:
+libiv_so:
+libiv_so:
+libiv_so:
+libiv_so:
+libiv_so:

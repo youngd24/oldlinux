@@ -1,0 +1,96 @@
+PACKAGE NAME:     xf_bin
+COMPRESSED PACKAGE SIZE:     811 K
+UNCOMPRESSED PACKAGE SIZE:     2260 K
+PACKAGE LOCATION: diskx5
+PACKAGE DESCRIPTION:
+xf_bin:   Basic client binaries required for XFree86 3.1.
+xf_bin:
+xf_bin:   Installs these programs in /usr/X11R6/bin: SuperProbe Xmark appres
+xf_bin:   atobm bdftopcf beforelight bitmap bmtoa color_xterm editres fsinfo
+xf_bin:   fslsfonts fstobdf iceauth imake lbxproxy lndir makedepend mergelib
+xf_bin:   mkdirhier mkfontdir oclock reconfig resize rstart rxvt sessreg showrgb
+xf_bin:   startx twm x11perf x11perfcomp xauth xclipboard xclock xcmsdb xconsole
+xf_bin:   xcutsel xdm xdpyinfo xfd xfs xhost xieperf xinit xkill xlogo xlsatoms
+xf_bin:   xlsclients xlsfonts xmag xmh xmkmf xmodmap xon xprop xrdb xrefresh
+xf_bin:   xset xsetroot xsm xsmclient xstdcmap xterm xwd xwininfo xwud
+xf_bin:
+FILE LIST:
+./
+usr/
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/imake
+usr/X11R6/bin/Xmark
+usr/X11R6/bin/xfs
+usr/X11R6/bin/xieperf
+usr/X11R6/bin/SuperProbe
+usr/X11R6/bin/showrgb
+usr/X11R6/bin/appres
+usr/X11R6/bin/beforelight
+usr/X11R6/bin/bitmap
+usr/X11R6/bin/bmtoa
+usr/X11R6/bin/atobm
+usr/X11R6/bin/editres
+usr/X11R6/bin/oclock
+usr/X11R6/bin/twm
+usr/X11R6/bin/xauth
+usr/X11R6/bin/xclipboard
+usr/X11R6/bin/xcmsdb
+usr/X11R6/bin/xcutsel
+usr/X11R6/bin/xclock
+usr/X11R6/bin/xconsole
+usr/X11R6/bin/xfd
+usr/X11R6/bin/xdpyinfo
+usr/X11R6/bin/xkill
+usr/X11R6/bin/xlogo
+usr/X11R6/bin/xlsatoms
+usr/X11R6/bin/xlsclients
+usr/X11R6/bin/xlsfonts
+usr/X11R6/bin/xmag
+usr/X11R6/bin/xmh
+usr/X11R6/bin/xmodmap
+usr/X11R6/bin/xprop
+usr/X11R6/bin/xrdb
+usr/X11R6/bin/xrefresh
+usr/X11R6/bin/xdm
+usr/X11R6/bin/sessreg
+usr/X11R6/bin/xhost
+usr/X11R6/bin/xinit
+usr/X11R6/bin/startx
+usr/X11R6/bin/xset
+usr/X11R6/bin/xsetroot
+usr/X11R6/bin/xstdcmap
+usr/X11R6/bin/xterm
+usr/X11R6/bin/resize
+usr/X11R6/bin/xwd
+usr/X11R6/bin/xwininfo
+usr/X11R6/bin/xwud
+usr/X11R6/bin/x11perf
+usr/X11R6/bin/x11perfcomp
+usr/X11R6/bin/xmkmf
+usr/X11R6/bin/mkdirhier
+usr/X11R6/bin/lndir
+usr/X11R6/bin/xon
+usr/X11R6/bin/makedepend
+usr/X11R6/bin/bdftopcf
+usr/X11R6/bin/fsinfo
+usr/X11R6/bin/fslsfonts
+usr/X11R6/bin/fstobdf
+usr/X11R6/bin/mkfontdir
+usr/X11R6/bin/iceauth
+usr/X11R6/bin/mergelib
+usr/X11R6/bin/rstart
+usr/X11R6/bin/xsm
+usr/X11R6/bin/xsmclient
+usr/X11R6/bin/reconfig
+usr/X11R6/bin/lbxproxy
+usr/X11R6/bin/color_xterm
+usr/X11R6/bin/rxvt
+usr/bin/
+usr/include/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/rxvt.1.gz
+install/
+install/doinst.sh

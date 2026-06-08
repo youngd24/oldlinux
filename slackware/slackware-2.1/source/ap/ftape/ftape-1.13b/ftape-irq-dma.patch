@@ -1,0 +1,37 @@
+While wondering where Bas has disappeared to lately, I decided to upload
+two patches to ftape-1.13b which are needed.
+
+This patch fixes fdc-io.c to work with the newer kernels.  It changes
+the irqaction() call to request_irq() with more parameters, and adds a
+parameter to request_dma() as now required.
+
+--
+Dennis Flaherty           dennisf@denix.elk.miles.com
+    Oatmeal Stout: It's the Right Thing to Drink!
+
+
+--- fdc-io.c.orig	Tue Jul  5 15:18:09 1994
++++ fdc-io.c	Sat Aug 27 22:14:23 1994
+@@ -938,20 +938,14 @@
+ {
+   TRACE_FUN( 8, "fdc_grab_irq_and_dma");
+   int result = 0;
+-  struct sigaction ftape_sig_action = {
+-    ftape_interrupt, 0, SA_INTERRUPT, NULL
+-  };
+ 
+   if (fdc.hook != &do_floppy) {
+-    /*  Cannot use request_irq because we want a fast interrupt
+-     *  handler instead of a normal one (see kernel/irq.c).
+-     */
+-    result = irqaction( fdc.irq, &ftape_sig_action);
++    result = request_irq( fdc.irq, ftape_interrupt, SA_INTERRUPT, "ftape");
+     if (result) {
+       TRACEx1( -1, "Unable to grab IRQ%d for ftape driver", fdc.irq);
+       result = -EIO;
+     } else {
+-      result = request_dma( fdc.dma);
++      result = request_dma( fdc.dma, "ftape");
+       if (result) {
+         TRACEx1( -1, "Unable to grab DMA%d for ftape driver", fdc.dma);
+         free_irq( fdc.irq);

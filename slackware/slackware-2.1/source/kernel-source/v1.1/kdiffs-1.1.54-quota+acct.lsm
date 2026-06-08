@@ -1,0 +1,12 @@
+Begin3
+Title:          Quota and accounting diffs for kernel 1.1.54
+Version:        1
+Entered-date:   19101994
+Description:    patches for diskquotas and process accounting
+Keywords:       quota, acct
+Author:         M. v Wieringen
+Maintained-by:  M. v Wieringen
+Primary-site:   sunsite.unc.edu
+Platform:       linux-i?86
+Copying-policy: GNU GPL
+End

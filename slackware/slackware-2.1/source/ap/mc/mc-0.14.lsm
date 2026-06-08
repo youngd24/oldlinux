@@ -1,0 +1,298 @@
+
+
+Hi.
+
+I'm taking over maintenance of the Linux Software Map, or LSM for short.
+I'll start by making a number of changes; see the new LSM template below.
+In addition to changes to the template, you might want to prepare yourselves
+for some initial confusion on my part while I make myself comfortable with
+the new job. :-)
+
+Hopefully everything will go well.  Don't wish me luck, send me constructive
+criticism.
+
+I am uploading to sunsite a database in the new form and a tool for browsing
+it.  The tool, called lsmtool, is not all that well written, is somewhat
+prone to crash.  You have been warned.  It also requires Publib, a library
+of C functions I've written, which you will have to get separately.  (New
+format LSM entries for lsmtool and Publib are included at the end of this
+message.)
+
+The conversion to the new form did not go very cleanly (I had hoped to
+make it quite automatic, but there where somewhat too many interesting
+stuff in there for that to work without a lot of work, so I did some of
+the work by hand), and there are probably rather a many bugs left still.
+I should probably go through it all entry by entry, but let's hope it'll
+work well enough.
+
+I would be grateful if anyone who keeps the LSM on WWW or makes it
+otherwise available would contact me.  There might be something that I
+can do to make your life simpler, and at the very least, I can list
+URL's in the README.
+
+
+---8<---8<---
+
+
+=============================================================================
+Linux Software Map Entry Template                            Release: 09AUG94
+=============================================================================
+
+The LSM is a directory of information about each of the software
+packages available via FTP for the Linux operating system.  It is meant
+to be a public information resource.  All entries have been entered by
+volunteers all over the world via email using the template below.  New
+versions will appear first on sunsite.unc.edu and will be announced in
+the newsgroup comp.os.linux.announce .  Discussions pertaining to the
+LSM will be held in the newsgroup comp.os.linux.misc .  Any questions or
+comments can be entered in comp.os.linux.misc or sent to me directly at
+lars.wirzenius@helsinki.fi.
+
+As of the end of July, 1994, the LSM is being maintained by Lars
+Wirzenius.  The Linux Software Map was originally conceived and
+maintained by Jeff Kopmanis.  As of the end of July, 1994, it is being
+maintained by Lars Wirzenius.  We owe Jeff a lot for making LSM the
+asset it is.
+
+
+=============================================================================
+Instructions
+=============================================================================
+
+Any new packages or updates to old entries should be entered in the
+template below and sent to lars.wirzenius@helsinki.fi or uploaded with
+the package to sunsite.unc.edu.  Each release of the LSM will have the
+current template as part of the package.  Any changes to the template
+will be made and released there.
+
+*PLEASE* use the entry template at the end when submitting information.
+It has been designed so that all you have to do is fill in the blanks
+and send it in as is.  Your entry will be read into the database
+directly from your email response with little if any hand manipulation.
+
+DO NOT RENAME FIELDS.  DO NOT REMOVE THE BEGIN OR END MARKERS.  There
+are no longer any limits on the fields lengths, but please try to be
+short.
+
+Complete as many fields as possible.  I strongly encourage developers to
+complete all the fields, as its more descriptive.  You must fill in at
+least the Title, Version, Entered-date, Description, and Primary-site fields.
+
+Make any corrections to an existing entry that are necessary.  The
+initial data came from a variety of sources, and is not at all assumed
+to be correct.  Remember to update the Entered-date field if you update
+an existing entry.
+
+Thank you VERY much for your time and enthusiasm.  Your contribution
+will help to ensure that the Linux Software Map will continue to be a
+trusted Linux resource.
+
+
+=============================================================================
+Lsmtool
+=============================================================================
+
+I've written a small (and still fragile) tool to make it easier to
+browse and update the LSM.  It will only work on a new style database
+(09AUG94).  Find it on sunsite.unc.edu (I don't know yet where there).
+Filename is lsmtool-0.1.tar.gz.  Source only.
+
+
+=============================================================================
+As of the 09AUG94 version...
+=============================================================================
+
+The 09AUG94 version of the template is a radical change from the syntax
+of earlier versions.  It is not upward compatible.  There are several
+reasons for the change:
+
+	* no limits on line lengths
+	* less awkward multi-line format
+	* nicer method (for the user) for specifying the ftp site and
+	  files
+	* one entry for all files comprising a package
+
+The new version is identified by the "Begin3" line that starts it.
+Earlier versions had "Begin" and "Begin3".  Old versions will be
+accepted for a while, but please use the newest one to make things
+easier for me.
+
+
+=============================================================================
+The LSM Entry Form
+=============================================================================
+
+The general syntax is now similar to that of netnews headers, i.e., a
+keyword (at the beginning of a line), a colon (with no spaces separating
+it from the keyword), and text that may be continued to the next line by
+starting each continuing line with whitespace (space, tab).  Empty lines
+are also allowed (unlike netnews).  Since fields may be several lines
+long, there is no longer a separate keyword for each line (we now have
+one "Description" keyword, where the older versions had "Desc1",
+"Desc2", and so on).
+
+There are no limits on the line lenght or the number of lines for one
+keyword, but please try to be short, especially in the description.
+Don't put the whole README into the description, usually half a dozen
+of lines is more than enough.  Please keep each line (including keyword)
+below 80 characters for maximal viewing comfort.  Use a tab width of 8
+spaces, or don't use tabs at all.
+
+Mandatory fields: Title, Version, Entered-date, Description, Primary-site.
+
+Descriptions of the fields (an empty form is included at the end; use that
+to fill in).
+
+PLEASE NOTE THAT THE "Begin3" AND "End" LINES ARE ESSENTIAL.  IF YOU
+REMOVE THEM, THE ENTRY WILL BE USELESS AND WILL REQUIRE MANUAL EDITING
+BY ME AND I DON'T WANT TO DO THAT.
+
+Note that case is significant.
+
+Begin3
+Title:		MouseLess Commander
+
+Version:	0.14
+
+Entered-date:	7, Sep 1994.
+
+Description:	File manager with mouse support.
+
+Keywords:	File manager, mouse support, gpm client, user shell,
+		menu utility.
+
+Author: 	miguel@roxanne.nuclecu.unam.mx
+		mok@roxanne.nuclecu.unam.mx
+
+Maintained-by:	miguel@roxanne.nuclecu.unam.mx
+
+Primary-site:	sunsite.unc.edu /pub/Linux/utils/file/managers
+		85k mc-0.14.tar.gz
+
+Alternate-site: ftp.nuclecu.unam.mx /linux/local
+		85k mc-0.14.tar.gz
+
+Platforms:	ncurses 1.8.5; ftp.netcom.com:/pub/zmbenhal
+		if Mouse Support is required, then the GPM mouse server.
+		iride.unipv.it:/pub/gpm/
+
+Copying-policy:	GPL
+
+End
+
+
+=============================================================================
+IAFA
+=============================================================================
+
+The IAFA (Internet Anonymous Ftp Archives) have a form similar to LSM
+for specifying similar information about files.  The 24JUL94 version of
+LSM is much more close to the IAFA format, but is still not quite the
+same.
+
+Straight IAFA is not suitable for LSM.  It only allows one filename
+(many packages consist of several files).  It is also awkward because it
+specifies different formats for records for different types of files.
+
+(This information is based on a draft version of a description on the
+iafa format from the iafa work group.  The draft is dated 92.06.10; it
+was the newest I could find, but if there are any newer ones with
+significant changes, please send me information.)
+
+However, this revision of the LSM format tries to be as close to iafa as
+possible.  The major differences are:
+
+	* Package-name, Document-name, and Dataset-name are
+	  converted to one Primary-site (with site and location taken
+	  from Maintained-at, if given, or filled in by LSM maintainer).
+	* Field names "Author" and "Revision-date" converted to "Authors"
+	  and "Version".
+	* Other fields are added to the database as is.
+	* Added fields: primary-site, alternate-site, original-site,
+	  entered-date, checked-date, and checked-status.
+	* an LSM template _must_ begin with "Begin3" and end with "End",
+	  with both delimiters being the only things on the line (except
+	  for trailing whitespace), and must be at the beginning of the
+	  line.  This is to make it easier to automatically extract them
+	  from news articles and such.
+	* fields in an LSM entry can be in whatever order
+
+We only support iafa records for packages, documents and datasets.
+
+
+
+=============================================================================
+Empty Template
+=============================================================================
+
+Cut this out, fill it in, send it to me.
+
+Begin3
+Title:          
+Version:        
+Entered-date:   
+Description:    
+Keywords:       
+Author:         
+Maintained-by:  
+Primary-site:   
+Alternate-site: 
+Original-site:  
+Platform:       
+Copying-policy: 
+End
+
+
+---8<---8<---
+
+This is the entry for lsmtool.
+
+Begin3
+Title:          lsmtool
+Version:        0.1
+Entered-date:	09AUG94
+Description:    A tool for browsing and updating an LSM database.  This
+		is very fragile.
+Keywords:       Linux Software Map, LSM, browser
+Author:         lars.wirzenius@helsinki.fi (Lars Wirzenius)
+Primary-site:   sunsite.unc.edu  /pub/Linux/apps/databases
+		lsmtool-0.1.tar.gz
+Platform:       Linux, but should work on any Unix box with curses and ANSI C.
+		Requires my Publib library, which can be found in
+		ftp://ftp.cs.helsinki.fi/pub/Software/Local/Publib/ .
+Copying-policy: GPL
+End
+
+---8<---8<---
+
+This is the entry for Publib.
+
+Begin3
+Title:		Publib
+Version:	0.3
+Entered-date:	09AUG94
+Description:	A library of reusable C functions.  Publib consists of a
+		framework for building and installing the library, and of
+		a collection of modules that contain the actual library
+		functions.  Each module contains functions that somehow
+		belong together (e.g., there are modules for string
+		manipulation, and expression evaluation).  Special attention
+		has been given for making it easy to write new modules:
+		a module writer needs to write very little more in addition
+		to the actual C code for doing real work.
+Keywords:	C, library, reusable, functions
+Author:		lars.wirzenius@helsinki.fi (Lars Wirzenius)
+Primary-site:	ftp.cs.helsinki.fi /pub/Software/Local/Publib
+		liw-modules-0.3.tar.gz
+		publib-0.3.README
+		publib-0.3.tar.gz
+Platform:	ANSI C, UNIX
+Copying-policy: framework is Public Domain, liw-modules under a Berkeley
+		style copyright (although I don't think it says that anywhere)
+End
+
+
+--
+Send submissions for comp.os.linux.announce to: linux-announce@tc.cornell.edu
+Be sure to include Keywords: and a short description of your software.
+

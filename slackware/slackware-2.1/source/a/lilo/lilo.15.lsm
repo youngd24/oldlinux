@@ -1,0 +1,19 @@
+Begin3
+Title:		LILO
+Version:	0.15
+Entered-date:	October 23, 1994
+Description:	Generic boot loader for Linux. Distribution includes full
+		source, documentation and support files, but no pre-compiled
+		binaries.
+Keywords:	Linux, boot loader
+Author:		Werner Almesberger <almesber@di.epfl.ch>
+Maintained-by:	Werner Almesberger <almesber@di.epfl.ch>
+Primary-site:	nessie.ethz.ch /pub/linux/local/lilo
+		120 kB lilo.15.tar.gz
+		 77 kB lilo.u.15.ps.gz
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/Linux-boot/lilo
+Platforms:	Linux 0.99pl12 or newer, gcc and as86 needed to compile.
+		LaTeX and (optionally) Perl and Transfig needed to print the
+		documentation.
+Copying-Policy:	BSDish
+End

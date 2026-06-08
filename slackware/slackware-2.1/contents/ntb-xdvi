@@ -1,0 +1,34 @@
+PACKAGE NAME:     ntb-xdvi
+COMPRESSED PACKAGE SIZE:     51 K
+UNCOMPRESSED PACKAGE SIZE:     110 K
+PACKAGE LOCATION: diskt3
+PACKAGE DESCRIPTION:
+ntb-xdvi: ntb-xdvi 1.2
+ntb-xdvi:
+ntb-xdvi: These are the binaries for xdvi, a program to display dvi files under
+ntb-xdvi: X. It can also display epsf files which are included in dvi files. 
+ntb-xdvi: (You'll need ghostscript for this) The current version of xdvik is 
+ntb-xdvi: 1.8b. The epsf file handling has been patched so that xdvi can also
+ntb-xdvi: display scaled epsf files without problems.  
+ntb-xdvi:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/X/
+usr/lib/texmf/X/XDvi
+usr/lib/texmf/tools/
+usr/lib/texmf/tools/ntb-xdvi.cfg
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/xdvi.1.gz
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/xdvi
+var/
+var/X11R6/
+var/X11R6/lib/
+var/X11R6/lib/app-defaults/
+var/X11R6/lib/app-defaults/XDvi

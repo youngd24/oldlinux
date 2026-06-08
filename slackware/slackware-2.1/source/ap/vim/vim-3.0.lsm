@@ -1,0 +1,22 @@
+Begin3
+Title:          vim
+Version:        3.0
+Entered-date:   26AUG84
+Description:    Vim (Vi IMproved) is an almost compatible version of the UNIX
+                editor vi. Many new features have been added: multi level undo,
+                command line history, filename completion, block operations,
+                multiple windows, interactive compilation, text formatting, etc.
+                An MS-DOS binary is available as well.
+Keywords:       Editor, vi, vim
+Author:         mool@oce.nl (Bram Moolenaar)
+Maintained-by:  mool@oce.nl (Bram Moolenaar)
+Primary-site:   ftp.FU-Berlin.DE /unix/editors/vim
+        468 kB  vim-3.0.tar.gz                      (Complete source and doc's)
+        270 kB  /pc/msdos/editors/vim/vim30bin.zip  (MS_DOS binary and doc's)
+Alternate-site: sunsite.unc.edu /pub/Linux/apps/editors
+        468 kB  vim-3.0.tar.gz                      (Complete source and doc's)
+          1 kB  vim-3.0.lsm
+Original-site:  ftp.FU-Berlin.DE /unix/editors/vim
+Platform:       UNIX, MS-DOS, Amiga
+Copying-policy: CharityWare (author encourages making a contribution to charity)
+End

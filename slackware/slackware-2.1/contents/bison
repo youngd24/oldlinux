@@ -1,0 +1,30 @@
+PACKAGE NAME:     bison
+COMPRESSED PACKAGE SIZE:     99 K
+UNCOMPRESSED PACKAGE SIZE:     170 K
+PACKAGE LOCATION: diskd3
+PACKAGE DESCRIPTION:
+bison:    GNU bison parser generator version 1.22.
+bison:
+bison:    Bison is a parser generator in the style of yacc(1). It should be
+bison:    upwardly compatible with input files designed for yacc.
+bison:
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/bison.1.gz
+usr/info/
+usr/info/bison.info-2.gz
+usr/info/bison.info-3.gz
+usr/info/bison.info-4.gz
+usr/info/bison.info.gz
+usr/info/bison.info-1.gz
+usr/lib/
+usr/lib/bison.hairy
+usr/lib/bison.simple
+usr/bin/
+usr/bin/bison
+install/
+install/doinst.sh

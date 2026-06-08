@@ -1,0 +1,10 @@
+--- src/conf.h.orig	Thu Aug 11 20:11:29 1994
++++ src/conf.h	Thu Aug 11 20:09:19 1994
+@@ -620,6 +620,7 @@
+ # define NEEDGETOPT	1	/* need a replacement for getopt(3) */
+ # define HASUNAME	1	/* use System V uname(2) system call */
+ # define HASUNSETENV	1	/* has unsetenv(3) call */
++# define HASFLOCK 	0	/* flock() appears broken in some Linuxes */
+ # define ERRLIST_PREDEFINED	/* don't declare sys_errlist */
+ # define GIDSET_T	gid_t	/* from <linux/types.h> */
+ # ifndef LA_TYPE

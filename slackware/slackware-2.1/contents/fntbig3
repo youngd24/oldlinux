@@ -1,0 +1,23 @@
+PACKAGE NAME:     fntbig3
+COMPRESSED PACKAGE SIZE:     674 K
+UNCOMPRESSED PACKAGE SIZE:     750 K
+PACKAGE LOCATION: diskx12
+PACKAGE DESCRIPTION:
+fntbig3:  Large fonts (part three)
+fntbig3:
+fntbig3:  These fonts are compressed to reduce disk usage.
+fntbig3:
+fntbig3:  Fonts included: jiskan24.pcf.Z k14.pcf.Z
+fntbig3:
+FILE LIST:
+./
+install/
+install/doinst.sh
+usr/
+usr/X11R6/
+usr/X11R6/lib/
+usr/X11R6/lib/fonts/
+usr/X11R6/lib/fonts/misc/
+usr/X11R6/lib/fonts/misc/jiskan24.pcf.Z
+usr/X11R6/lib/fonts/misc/k14.pcf.Z
+usr/X11R6/lib/fonts/misc/fonts.dir.big

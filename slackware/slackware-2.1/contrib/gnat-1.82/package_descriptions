@@ -1,0 +1,26 @@
+
+Packages for the GNU Ada compiler:
+
+gnat_bin: Binaries for GNU GNAT 1.82
+gnat_bin:
+gnat_bin: GNu Ada Translator, an Ada83 and Ada9X front end to gcc-2.6.0.  You
+gnat_bin: will need to install GCC-2.6.0 in order to use this compiler.
+gnat_bin:
+gnat_bin:
+gnat_bin:
+gnat_bin:
+gnat_bin:
+gnat_bin:
+gnat_bin:
+
+gnat_lib: Libraries for GNU GNAT 1.82
+gnat_lib:
+gnat_lib: Libraries for the GNu Ada Translator, an Ada83 and Ada9X front end to
+gnat_lib: gcc-2.6.0.  You will need to install GCC-2.6.0 in order to use this
+gnat_lib: compiler.
+gnat_lib:
+gnat_lib:
+gnat_lib:
+gnat_lib:
+gnat_lib:
+gnat_lib:

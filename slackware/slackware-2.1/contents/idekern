@@ -1,0 +1,24 @@
+PACKAGE NAME:     idekern
+COMPRESSED PACKAGE SIZE:     392 K
+UNCOMPRESSED PACKAGE SIZE:     470 K
+PACKAGE LOCATION: diska1
+PACKAGE DESCRIPTION:
+idekern:  Linux kernel version 1.1.59, without SCSI support.
+idekern:  
+idekern:  A Linux kernel for computers that do not need SCSI support. You MUST
+idekern:  install a kernel image in order for your system to boot. This kernel
+idekern:  also contains UMSDOS and PPP.  See the file 'config.in' for an exact
+idekern:  list of included drivers.
+idekern:
+idekern:  ***IMPORTANT***!  If you have special hardware, such as a non-SCSI
+idekern:  CD-ROM drive, you'll need to install a kernel from the Q series that
+idekern:  supports it, or compile the support into your own custom kernel.
+idekern:
+FILE LIST:
+./
+install/
+install/doinst.sh
+vmlinuz
+boot/
+boot/zSystem.map
+boot/config.in

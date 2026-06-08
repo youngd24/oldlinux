@@ -1,0 +1,39 @@
+Begin3
+Title:          NTeX - A TeX distribution for Linux
+Version:        1.2
+Entered-date:   15-SEP-1994
+Description:    NTeX is a TeX distribution containing TeX, MF, BibTeX etc. from
+	        the web2c sources 6.1, xfig, MakeIndex, GLOTeX IDXTeX, xdvik,
+                dvipsk, dviljk, texinfo, ... 
+                Formats: plain TeX, extended plain TeX, AMSTeX, PicTeX,
+                LaTeX2e (including AMSLaTeX, BABEL, SLITeX, ...), arabic,
+                Devanagari, Greek, Hebrew, HieroTeX, Tamil, Turkish, Thai, ...
+		Fonts: Sauter Computer Modern Fonts, DC (european fonts),
+          	fc (african fonts), ...
+Keywords:       ntex tex metafont latex amstex web2c typesetting
+Author:         karl@cs.umb.edu (Karl Berry)
+		phc@renoir.berkeley.edu (Pehong Chen)
+		bvsmith@lbl.gov (Brian V. Smith)
+		Donald Knuth
+   		Leslie Lamport
+   		Johannes Braams 
+   		David Carlisle
+   		Alan Jeffrey
+   		Frank Mittelbach
+   		Chris Rowley
+		... 
+		see the files AUTHORS, README and COPYING in the packages
+ 		for more
+Maintained-by:  langbein@mathematik.uni-stuttgart.de (Frank Langbein)
+Primary-site:   sunsite.unc.edu /pub/Linux/distributions/
+		17 MB ntex/
+Alternate-site: 
+Original-site:  ftp.uni-stuttgart.de /tex-archive/
+Platform:       xdvi needs ghostscript to display epsf files and postscript 
+		fonts.
+Copying-policy: Mainly GPL, for details refer to the notices in the single
+		packages. Everything is freely distributable as long as the
+  		notices are left intact and the contents of some files are
+		not changed.
+End
+

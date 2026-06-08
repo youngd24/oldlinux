@@ -1,0 +1,72 @@
+PACKAGE NAME:     dosemu.53p28
+COMPRESSED PACKAGE SIZE:     420 K
+UNCOMPRESSED PACKAGE SIZE:     1190 K
+PACKAGE LOCATION: dosemu.53p28.tgz
+PACKAGE DESCRIPTION:
+dosemu.53p28: An MSDOS emulator.
+dosemu.53p28:
+dosemu.53p28: This package allows you to run MS-DOS under Linux by setting up
+dosemu.53p28: a virtual machine (DOS box) capable of servicing BIOS calls and
+dosemu.53p28: other requirements of DOS while Linux continues to run in 
+dosemu.53p28: protected mode.  It runs most MS-DOS software that doesn't require
+dosemu.53p28: DOS extenders, etc, including Windows 3.0 in real mode.
+dosemu.53p28:
+dosemu.53p28: Configuration instructions are placed in /usr/doc/dosemu.
+dosemu.53p28:
+FILE LIST:
+./
+var/
+var/lib/
+var/lib/dosemu/
+var/lib/dosemu/hdimage.dist
+var/lib/dosemu/config.dist
+usr/
+usr/doc/
+usr/doc/dosemu/
+usr/doc/dosemu/DANG
+usr/doc/dosemu/DPR
+usr/doc/dosemu/EMUsuccess.txt
+usr/doc/dosemu/Makefile
+usr/doc/dosemu/announce0.53
+usr/doc/dosemu/dos.1
+usr/doc/dosemu/dosemu.info
+usr/doc/dosemu/dosemu.texinfo
+usr/doc/dosemu/lsm
+usr/doc/dosemu/commands/
+usr/doc/dosemu/commands/lredir.readme
+usr/doc/dosemu/commands/dosdbg.readme
+usr/doc/dosemu/commands/exitemu.com
+usr/doc/dosemu/commands/vgaoff.com
+usr/doc/dosemu/commands/vgaon.com
+usr/doc/dosemu/commands/eject.com
+usr/doc/dosemu/commands/bootoff.com
+usr/doc/dosemu/commands/booton.com
+usr/doc/dosemu/commands/pdipx.com
+usr/doc/dosemu/commands/lredir.exe
+usr/doc/dosemu/commands/dumpconf.exe
+usr/doc/dosemu/commands/dosdbg.exe
+usr/doc/dosemu/commands/lancheck.exe
+usr/doc/dosemu/commands/isemu.com
+usr/bin/
+usr/bin/dos
+usr/bin/xtermdos
+usr/lib/
+usr/lib/dosemu/
+usr/lib/dosemu/mkhdimage
+usr/lib/dosemu/mkpartition
+usr/lib/dosemu/getrom
+usr/lib/dosemu/putrom
+usr/lib/libdosemu0.53pl28
+usr/X11R6/
+usr/X11R6/lib/
+usr/X11R6/lib/fonts/
+usr/X11R6/lib/fonts/misc/
+usr/X11R6/lib/fonts/misc/vga.pcf
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/dos.1.gz
+usr/info/
+usr/info/dosemu.info.gz
+install/
+install/doinst.sh

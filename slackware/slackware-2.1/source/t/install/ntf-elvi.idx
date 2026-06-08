@@ -1,0 +1,12 @@
+./usr/lib/texmf/fonts/phantasy/elvish/create.sh
+./usr/lib/texmf/fonts/phantasy/elvish/misc/README
+./usr/lib/texmf/fonts/phantasy/elvish/src/cirth.mf
+./usr/lib/texmf/fonts/phantasy/elvish/src/teng10.mf
+./usr/lib/texmf/fonts/phantasy/elvish/src/tengdev.mf
+./usr/lib/texmf/fonts/phantasy/elvish/src/tengmacs.mf
+./usr/lib/texmf/fonts/phantasy/elvish/src/tengmain.mf
+./usr/lib/texmf/fonts/phantasy/elvish/src/tengsecs.mf
+./usr/lib/texmf/fonts/phantasy/elvish/src/tengteht.mf
+./usr/lib/texmf/fonts/phantasy/elvish/tfm/cirth.tfm
+./usr/lib/texmf/fonts/phantasy/elvish/tfm/teng10.tfm
+./usr/lib/texmf/tex/phantasy/teng.tex

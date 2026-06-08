@@ -1,0 +1,35 @@
+PACKAGE NAME:     jpeg
+COMPRESSED PACKAGE SIZE:     81 K
+UNCOMPRESSED PACKAGE SIZE:     200 K
+PACKAGE LOCATION: diskap5
+PACKAGE DESCRIPTION:
+jpeg:     Independent JPEG Group's 5beta2 JPEG software
+jpeg:
+jpeg:     Software to implement JPEG image compression and decompression. JPEG
+jpeg:     (pronounced "jay-peg") is a standardized compression method for 
+jpeg:     full-color and gray-scale images.  JPEG is intended for compressing
+jpeg:     "real-world" scenes; cartoons and other non-realistic images are not
+jpeg:     its strong suit.  JPEG is lossy, however, on typical images of 
+jpeg:     real-world scenes, very good compression levels can be obtained with
+jpeg:     no visible change, and amazingly high compression levels are possible
+jpeg:     if you can tolerate a low-quality image.
+jpeg:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/cjpeg
+usr/bin/djpeg
+usr/bin/unjpeg
+usr/bin/rdjpgcom
+usr/bin/wrjpgcom
+usr/doc/
+usr/doc/jpeg/
+usr/doc/jpeg/README
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/cjpeg.1.gz
+usr/man/preformat/cat1/djpeg.1.gz
+usr/man/preformat/cat1/rdjpgcom.1.gz
+usr/man/preformat/cat1/wrjpgcom.1.gz

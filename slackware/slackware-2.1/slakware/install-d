@@ -1,0 +1,321 @@
+#!/bin/sh
+dialog --title "Install packages from the D series (Program Development)" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disc must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+20 70 8 \
+"gcc" "The GNU C compiler" "off" \
+"gxx" "The GNU C++ compiler" "off" \
+"tools" "tools 2.16" "off" \
+"byacc" "Berkeley Yacc is an LALR(1) parser" "off" \
+"flex" "flex - fast lexical analyzer" "off" \
+"include" "Standard include files" "off" \
+"man2" "Man pages for Linux system calls" "off" \
+"objc" "GNU compiler for Objective-C" "off" \
+"p2c" "A Pascal to C translator. (v. 1.19)" "off" \
+"pmake" "BSD 4.4 make" "off" \
+"bison" "GNU bison parser generator" "off" \
+"extralib" "Extra static libraries" "off" \
+"gdb" "The GNU debugger. (v. 4.13)" "off" \
+"libgxx" "GNU libg++-2.5.3, Linux release 2" "off" \
+"man3" "Man pages for the C library" "off" \
+"perl" "Larry Wall's systems language" "off" \
+"rcs" "GNU revision control system" "off" \
+"f2c" "A Fortran-77 to C translator" "off" \
+"libc" "Development libraries for C" "off" \
+"m4" "GNU m4 1.3" "off" \
+"ncurses" "A curses-compatible screen library" "off" \
+"svgalib" "Svgalib Super-VGA Graphics Library" "off" \
+"lx1159_1" "Linux kernel source 1.1.59, part 1" "off" \
+"binutils" "GNU binutils 1.9 for Linux" "off" \
+"clisp" "A Common Lisp interpreter" "off" \
+"lx1159_2" "Linux kernel source 1.1.59, part 2" "off" \
+"lx1159_3" "Include files for Linux 1.1.59" "off" \
+2> /tmp/return
+if fgrep '"gcc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gcc to your hard drive" --infobox \
+"The GNU C compiler and support files (v. 2.5.8)       \n\
+\n\
+Compiled with 486 optimizations, but works fine with 386.\n\
+\n\
+NOTE: Be sure to install at least the following packages besides this\n\
+one, or you won't be able to compile:  binutils, include, libc, and\n\
+the third part of the kernel source.  (the include files)  \n\
+\n\
+" 10 75
+ installpkg d1/gcc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gxx"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gxx to your hard drive" --infobox \
+"The GNU C++ compiler and support files (v. 2.5.8)   \n\
+\n\
+Compiled with 486 optimizations, but works fine with 386.\n\
+\n\
+" 6 75
+ installpkg d1/gxx.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"tools"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package tools to your hard drive" --infobox \
+"tools 2.16\n\
+\n\
+Eric Youngdale's collection of tools that are used to generate DLL\n\
+jumptable libraries.\n\
+\n\
+" 7 75
+ installpkg d1/tools.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"byacc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package byacc to your hard drive" --infobox \
+"Berkeley Yacc is an LALR(1) parser generator.  Berkeley Yacc\n\
+has been made as compatible as possible with AT&T Yacc.  Berkeley\n\
+Yacc can accept any input specification that conforms to the AT&T\n\
+Yacc documentation.  Specifications that take advantage of \n\
+undocumented features of AT&T Yacc will probably be rejected.\n\
+\n\
+If you skip this package and install GNU bison, a /usr/bin/yacc\n\
+shell script will be created which will allow you to use bison\n\
+instead. (It contains 'bison -y $*')\n\
+\n\
+" 12 75
+ installpkg d2/byacc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"flex"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package flex to your hard drive" --infobox \
+"flex - fast lexical analyzer generator version 2.4.7\n\
+\n\
+flex is a tool for generating scanners: programs which\n\
+recognize lexical patterns in text.  \n\
+\n\
+" 7 75
+ installpkg d2/flex.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"include"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package include to your hard drive" --infobox \
+"Standard include files needed to compile C programs.  (v. 4.5.26)\n\
+\n\
+" 4 75
+ installpkg d2/include.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"man2"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package man2 to your hard drive" --infobox \
+"Man pages for Linux system calls. (from manpages-1.4)\n\
+\n\
+" 4 75
+ installpkg d2/man2.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"objc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package objc to your hard drive" --infobox \
+"GNU compiler for the Objective-C language. (v. 2.5.8) \n\
+\n\
+Compiled with 486 optimizations, but works fine on 386.\n\
+\n\
+" 6 75
+ installpkg d2/objc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"p2c"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package p2c to your hard drive" --infobox \
+"A Pascal to C translator. (v. 1.19)\n\
+\n\
+" 4 75
+ installpkg d2/p2c.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"pmake"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package pmake to your hard drive" --infobox \
+"BSD 4.4 make. This may be required if you're going to port software\n\
+with Makefiles designed for BSD. The binary is installed as\n\
+/usr/bin/pmake. Man pages are included.\n\
+\n\
+" 6 75
+ installpkg d2/pmake.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"bison"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package bison to your hard drive" --infobox \
+"GNU bison parser generator version 1.22.\n\
+\n\
+Bison is a parser generator in the style of yacc(1). It should be\n\
+upwardly compatible with input files designed for yacc.\n\
+\n\
+" 7 75
+ installpkg d3/bison.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"extralib"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package extralib to your hard drive" --infobox \
+"Extra static libraries used for profiling and debugging. (v. 4.5.26)\n\
+(libc_p.a, libgmon.a, gcrt0.o, libg.a, libmcheck.a)\n\
+\n\
+" 5 75
+ installpkg d3/extralib.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gdb"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gdb to your hard drive" --infobox \
+"The GNU debugger. (v. 4.13)\n\
+\n\
+You can use GDB to debug programs written in C, C++, and Modula-2. \n\
+Fortran support will be added when a GNU Fortran compiler is ready.\n\
+\n\
+" 7 75
+ installpkg d3/gdb.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"libgxx"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package libgxx to your hard drive" --infobox \
+"GNU libg++-2.5.3, Linux release 2\n\
+\n\
+G++ library and include files, needed to compile C++ code. \n\
+\n\
+" 6 75
+ installpkg d4/libgxx.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"man3"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package man3 to your hard drive" --infobox \
+"Man pages for the C library functions. (from manpages-1.4)\n\
+\n\
+" 4 75
+ installpkg d4/man3.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"perl"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package perl to your hard drive" --infobox \
+"Larry Wall's interpreted systems language. (v. 4.0pl36)\n\
+\n\
+Prepared using Louis J. LaBash, Jr.'s perl-4.036-linux-kit.tar.gz\n\
+package.\n\
+\n\
+" 7 75
+ installpkg d4/perl.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"rcs"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package rcs to your hard drive" --infobox \
+"GNU revision control system.  (v. 5.6)\n\
+\n\
+RCS, the Revision Control System, manages multiple revisions of files.\n\
+\n\
+RCS can store, retrieve, log, identify, and merge revisions. It is \n\
+useful for files that are revised frequently, e.g. programs, \n\
+documentation, graphics, and papers.\n\
+\n\
+" 10 75
+ installpkg d4/rcs.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"f2c"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package f2c to your hard drive" --infobox \
+"A Fortran-77 to C translator. \n\
+\n\
+Contains libf2c.so.0.10, ported by Rob Hooft. This package uses\n\
+an 'f77' script that hides the C translation process from the user.\n\
+\n\
+" 7 75
+ installpkg d5/f2c.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"libc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package libc to your hard drive" --infobox \
+"Development libraries for the C compiler. (v. 4.5.26)\n\
+\n\
+These libraries are needed to compile C code.    \n\
+\n\
+" 6 75
+ installpkg d5/libc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"m4"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package m4 to your hard drive" --infobox \
+"GNU m4 1.3\n\
+This is release 1.3 of GNU m4, a program which copies its input to the\n\
+output, expanding macros as it goes. m4 has built-in functions for\n\
+including named files, running Unix commands, doing integer \n\
+arithmetic, manipulating text in various ways, recursion, etc...  \n\
+Macros can also be user-defined, and can take any number of arguments.\n\
+GNU 'm4' has been originally written by Rene Seindal, from Denmark.\n\
+" 9 75
+ installpkg d5/m4.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ncurses"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ncurses to your hard drive" --infobox \
+"A curses-compatible screen management library with color. (v. 1.8.5)\n\
+\n\
+Documentation and sample programs are included.\n\
+\n\
+" 6 75
+ installpkg d5/ncurses.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"svgalib"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package svgalib to your hard drive" --infobox \
+"Svgalib Super-VGA Graphics Library (v1.12)\n\
+\n\
+A video hardware graphics library, based on VGAlib 1.2. Supports most\n\
+standard and non-standard VGA modes, and Super-VGA modes for Tseng\n\
+ET4000, Cirrus 542x (including 15/16/24 bit modes), Mach32, Trident\n\
+8900c/9000, and other cards. (see the docs in /usr/doc/svgalib)\n\
+\n\
+" 9 75
+ installpkg d5/svgalib.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"lx1159_1"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package lx1159_1 to your hard drive" --infobox \
+"Linux kernel source version 1.1.59, part one.\n\
+\n\
+Source code for Linus Torvalds' Linux kernel.\n\
+\n\
+IMPORTANT!  This is a really big kernel, so it's been split into 3\n\
+files.  You'll need all three of them if you want to compile the\n\
+Linux kernel.\n\
+\n\
+This source contains all sorts of extra drivers not found in the\n\
+standard Linux kernel.\n\
+\n\
+" 13 75
+ installpkg d6/lx1159_1.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"binutils"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package binutils to your hard drive" --infobox \
+"GNU binutils 1.9 (linux-binutils-1.0)\n\
+\n\
+C compiler utilities:\n\
+\n\
+ar as.1.38.1l2 as.2.2l as86 gprof ld.1.9l.3 ld86 libconvert make nm\n\
+objdump ranlib size strace strip \n\
+\n\
+These utilities are REQUIRED to compile C, C++, Objective-C, and\n\
+many other programming languages.\n\
+\n\
+" 12 75
+ installpkg d7/binutils.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"clisp"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package clisp to your hard drive" --infobox \
+"A Common Lisp interpreter. (CLISP version 4-Jul-94)\n\
+\n\
+Common Lisp is a high-level, all-purpose programming language. CLISP\n\
+is an implementation of Common Lisp, largely compliant to the book\n\
+'Guy L. Steele Jr.: Common Lisp - The Language.' It includes an\n\
+interactive programming environment with interpreter, compiler and\n\
+debugger. CLISP was implemented by Bruno Haible of Karlsruhe\n\
+University and Michael Stoll of Munich University.\n\
+\n\
+" 11 75
+ installpkg d7/clisp.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"lx1159_2"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package lx1159_2 to your hard drive" --infobox \
+"Linux kernel source version 1.1.59, part two.\n\
+\n\
+Source code for Linus Torvalds' Linux kernel.\n\
+\n\
+IMPORTANT!  This is a really big kernel, so it's been split into 3\n\
+files.  You'll need all three of them if you want to compile the\n\
+Linux kernel.\n\
+\n\
+This source contains all sorts of extra drivers not found in the\n\
+standard Linux kernel.\n\
+\n\
+" 13 75
+ installpkg d7/lx1159_2.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"lx1159_3"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package lx1159_3 to your hard drive" --infobox \
+"Include files for Linux 1.1.59. (Kernel source 1.1.59, part three)\n\
+\n\
+These are the include files REQUIRED to compile Linux 1.1.59, and\n\
+other system software.  If you plan to port C programs to Linux,\n\
+you'll need to install this package.  (even if you don't plan to\n\
+recompile your kernel)\n\
+\n\
+" 9 75
+ installpkg d7/lx1159_3.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

@@ -1,0 +1,4 @@
+( cd usr/bin ; rm -rf emacs )
+( cd usr/bin ; ln -sf emacs-19.27-no-x11 emacs )
+( cd usr/lib/emacs/19.27/etc ; rm -rf DOC )
+( cd usr/lib/emacs/19.27/etc ; ln -sf DOC-19.27.1 DOC )

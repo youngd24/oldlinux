@@ -1,0 +1,32 @@
+PACKAGE NAME:     rcs
+COMPRESSED PACKAGE SIZE:     162 K
+UNCOMPRESSED PACKAGE SIZE:     410 K
+PACKAGE LOCATION: diskd4
+PACKAGE DESCRIPTION:
+rcs:      GNU revision control system.  (v. 5.6)
+rcs:
+rcs:      RCS, the Revision Control System, manages multiple revisions of files.
+rcs:
+rcs:      RCS can store, retrieve, log, identify, and merge revisions. It is 
+rcs:      useful for files that are revised frequently, e.g. programs, 
+rcs:      documentation, graphics, and papers.
+rcs:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/ci
+usr/bin/co
+usr/bin/ident
+usr/bin/merge
+usr/bin/rcs
+usr/bin/rcsdiff
+usr/bin/rcsmerge
+usr/bin/rlog
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat5/
+usr/man/preformat/cat5/rcsfile.5.gz
+usr/src/
+usr/src/rcs/
+usr/src/rcs/README

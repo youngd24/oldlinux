@@ -1,0 +1,79 @@
+PACKAGE NAME:     tools
+COMPRESSED PACKAGE SIZE:     141 K
+UNCOMPRESSED PACKAGE SIZE:     600 K
+PACKAGE LOCATION: diskd1
+PACKAGE DESCRIPTION:
+tools:    tools 2.16
+tools:
+tools:    Eric Youngdale's collection of tools that are used to generate DLL
+tools:    jumptable libraries.
+tools:
+tools:    
+tools:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/jumpas
+usr/bin/getsize
+usr/bin/mkimage
+usr/bin/mkstubs
+usr/bin/mkcompat
+usr/bin/verify-shlib
+usr/dll/
+usr/doc/
+usr/doc/tools-2.16/
+usr/doc/tools-2.16/ChangeLog
+usr/doc/tools-2.16/Makefile
+usr/doc/tools-2.16/README
+usr/doc/tools-2.16/TODO
+usr/doc/tools-2.16/doc/
+usr/doc/tools-2.16/doc/Makefile
+usr/doc/tools-2.16/doc/README.DYNRES
+usr/doc/tools-2.16/doc/shbuild.X11
+usr/doc/tools-2.16/doc/shbuild.libc
+usr/doc/tools-2.16/doc/README.tr
+usr/doc/tools-2.16/doc/logo.eps
+usr/doc/tools-2.16/doc/table_description
+usr/doc/tools-2.16/doc/motif.advert
+usr/doc/tools-2.16/doc/README.ps
+usr/doc/tools-2.16/example/
+usr/doc/tools-2.16/example/Makefile
+usr/doc/tools-2.16/example/README
+usr/doc/tools-2.16/example/complete.c
+usr/doc/tools-2.16/example/editline.3
+usr/doc/tools-2.16/example/editline.c
+usr/doc/tools-2.16/example/editline.h
+usr/doc/tools-2.16/example/jump/
+usr/doc/tools-2.16/example/jump/_GVAR_00001.s
+usr/doc/tools-2.16/example/jump/jump.funcs
+usr/doc/tools-2.16/example/jump/jump.vars
+usr/doc/tools-2.16/example/jump/_GCMN_00002.s
+usr/doc/tools-2.16/example/jump/_GCMN_00003.s
+usr/doc/tools-2.16/example/jump/_GCMN_00004.s
+usr/doc/tools-2.16/example/jump/_GCMN_00005.s
+usr/doc/tools-2.16/example/jump/_GCMN_00006.s
+usr/doc/tools-2.16/example/jump/jump.ignore
+usr/doc/tools-2.16/example/jump/jump.params
+usr/doc/tools-2.16/example/jump/jump.undefs
+usr/doc/tools-2.16/example/jump/_GVAR_00007.s
+usr/doc/tools-2.16/example/jump/_GVAR_libedit__rl_meta_chars.s
+usr/doc/tools-2.16/example/jump/_GCMN_libedit__rl_eof.s
+usr/doc/tools-2.16/example/jump/_GCMN_libedit__rl_erase.s
+usr/doc/tools-2.16/example/jump/_GCMN_libedit__rl_intr.s
+usr/doc/tools-2.16/example/jump/_GCMN_libedit__rl_kill.s
+usr/doc/tools-2.16/example/jump/_GCMN_libedit__rl_quit.s
+usr/doc/tools-2.16/example/jump/_GVAR_libedit__version_string.s
+usr/doc/tools-2.16/example/jump/_GVAR_libedit__string.s
+usr/doc/tools-2.16/example/jump/_GVAR_00008.s
+usr/doc/tools-2.16/example/jump/_GVAR_libedit__foo_string.s
+usr/doc/tools-2.16/example/jump/_GVAR_00009.s
+usr/doc/tools-2.16/example/jump/__jump.s
+usr/doc/tools-2.16/example/os9.h
+usr/doc/tools-2.16/example/sysos9.c
+usr/doc/tools-2.16/example/sysunix.c
+usr/doc/tools-2.16/example/testit.c
+usr/doc/tools-2.16/example/unix.h
+usr/doc/tools-2.16/example/version.c
+install/
+install/doinst.sh

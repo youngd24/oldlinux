@@ -1,0 +1,2 @@
+( cd usr/man/preformat/cat8 ; rm -rf visudo.8.gz )
+( cd usr/man/preformat/cat8 ; ln -sf  sudo.8.gz visudo.8.gz )

@@ -1,0 +1,18 @@
+( cd usr/bin ; rm -rf X11 )
+( cd usr/bin ; ln -sf  /usr/X11R6/bin X11 )
+( cd usr/lib ; rm -rf X11 )
+( cd usr/lib ; ln -sf  /usr/X11R6/lib/X11 X11 )
+( cd usr/include ; rm -rf X11 )
+( cd usr/include ; ln -sf  /usr/X11R6/include/X11 X11 )
+if [ -d usr/X11 -a ! -L usr/X11 ]; then
+  ( cd usr ; rm -fr X11.old )
+  mv usr/X11 usr/X11.old
+fi
+( cd usr ; rm -rf X11 )
+( cd usr ; ln -sf X11R6 X11 )
+if [ ! -L usr/X386 -a -d usr/X386 ]; then
+  rm -rf usr/X386.old
+  mv usr/X386 usr/X386.old
+fi
+( cd usr ; rm -rf X386 )
+( cd usr ; ln -sf  X11R6 X386 )

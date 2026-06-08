@@ -1,0 +1,25 @@
+PACKAGE NAME:     ntf-cher
+COMPRESSED PACKAGE SIZE:     4 K
+UNCOMPRESSED PACKAGE SIZE:     40 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-cher: ntf-cher 1.2
+ntf-cher:
+ntf-cher: The Cherokee font. It comes along with a style file for latex.
+ntf-cher:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/misc/
+usr/lib/texmf/fonts/misc/cherokee/
+usr/lib/texmf/fonts/misc/cherokee/create.sh
+usr/lib/texmf/fonts/misc/cherokee/src/
+usr/lib/texmf/fonts/misc/cherokee/src/cherokee.mf
+usr/lib/texmf/fonts/misc/cherokee/tfm/
+usr/lib/texmf/fonts/misc/cherokee/tfm/cherokee.tfm
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/misc/
+usr/lib/texmf/tex/misc/cherokee.sty

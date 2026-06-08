@@ -1,0 +1,4 @@
+./usr/lib/texmf/fonts/symbol/recycle/create.sh
+./usr/lib/texmf/fonts/symbol/recycle/src/recycle.mf
+./usr/lib/texmf/fonts/symbol/recycle/tfm/recycle.tfm
+./usr/lib/texmf/tex/symbol/recycle.sty

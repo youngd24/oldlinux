@@ -1,0 +1,26 @@
+PACKAGE NAME:     ntf-ding
+COMPRESSED PACKAGE SIZE:     9 K
+UNCOMPRESSED PACKAGE SIZE:     50 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-ding: ntf-ding 1.1
+ntf-ding:
+ntf-ding: The Dingbat font.
+ntf-ding:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/symbol/
+usr/lib/texmf/fonts/symbol/dingbat/
+usr/lib/texmf/fonts/symbol/dingbat/create.sh
+usr/lib/texmf/fonts/symbol/dingbat/misc/
+usr/lib/texmf/fonts/symbol/dingbat/misc/dingbat.tex
+usr/lib/texmf/fonts/symbol/dingbat/src/
+usr/lib/texmf/fonts/symbol/dingbat/src/ark10.mf
+usr/lib/texmf/fonts/symbol/dingbat/src/dingbat.mf
+usr/lib/texmf/fonts/symbol/dingbat/tfm/
+usr/lib/texmf/fonts/symbol/dingbat/tfm/ark10.tfm
+usr/lib/texmf/fonts/symbol/dingbat/tfm/dingbat.tfm

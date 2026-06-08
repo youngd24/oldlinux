@@ -1,0 +1,146 @@
+PACKAGE NAME:     hdsetup
+COMPRESSED PACKAGE SIZE:     117 K
+UNCOMPRESSED PACKAGE SIZE:     430 K
+PACKAGE LOCATION: diska4
+PACKAGE DESCRIPTION:
+hdsetup:  The Slackware setup/package maintenance system v. 2.1.0
+hdsetup:
+hdsetup:  The full screen and tty versions of setup and pkgtool, two utilities
+hdsetup:  included with Slackware that allow you to easily install software 
+hdsetup:  packages, remove software packages, and review the installed software
+hdsetup:  packages.
+hdsetup:
+hdsetup:  Also contains the command line utilities 'installpkg', 'removepkg',
+hdsetup:  'makepkg', and 'explodepkg' that install, remove, build, and examine
+hdsetup:  software packages. Man pages are included for all of these utilities.
+hdsetup:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/terminfo/
+usr/lib/terminfo/tic
+usr/lib/terminfo/untic
+usr/lib/terminfo/A/
+usr/lib/terminfo/B/
+usr/lib/terminfo/C/
+usr/lib/terminfo/D/
+usr/lib/terminfo/E/
+usr/lib/terminfo/F/
+usr/lib/terminfo/G/
+usr/lib/terminfo/H/
+usr/lib/terminfo/I/
+usr/lib/terminfo/J/
+usr/lib/terminfo/K/
+usr/lib/terminfo/L/
+usr/lib/terminfo/M/
+usr/lib/terminfo/N/
+usr/lib/terminfo/O/
+usr/lib/terminfo/P/
+usr/lib/terminfo/Q/
+usr/lib/terminfo/R/
+usr/lib/terminfo/S/
+usr/lib/terminfo/T/
+usr/lib/terminfo/U/
+usr/lib/terminfo/V/
+usr/lib/terminfo/W/
+usr/lib/terminfo/X/
+usr/lib/terminfo/Y/
+usr/lib/terminfo/Z/
+usr/lib/terminfo/a/
+usr/lib/terminfo/a/ansi
+usr/lib/terminfo/b/
+usr/lib/terminfo/c/
+usr/lib/terminfo/c/console
+usr/lib/terminfo/d/
+usr/lib/terminfo/d/dumb
+usr/lib/terminfo/e/
+usr/lib/terminfo/f/
+usr/lib/terminfo/g/
+usr/lib/terminfo/h/
+usr/lib/terminfo/h/hp70092
+usr/lib/terminfo/i/
+usr/lib/terminfo/j/
+usr/lib/terminfo/k/
+usr/lib/terminfo/l/
+usr/lib/terminfo/m/
+usr/lib/terminfo/n/
+usr/lib/terminfo/o/
+usr/lib/terminfo/p/
+usr/lib/terminfo/p/pc
+usr/lib/terminfo/p/pcvt25h
+usr/lib/terminfo/p/pcvt25hc
+usr/lib/terminfo/q/
+usr/lib/terminfo/r/
+usr/lib/terminfo/s/
+usr/lib/terminfo/t/
+usr/lib/terminfo/u/
+usr/lib/terminfo/v/
+usr/lib/terminfo/v/vt100
+usr/lib/terminfo/v/vt200
+usr/lib/terminfo/v/vt300
+usr/lib/terminfo/v/vs100
+usr/lib/terminfo/v/vs100s
+usr/lib/terminfo/w/
+usr/lib/terminfo/w/wyse60-25
+usr/lib/terminfo/x/
+usr/lib/terminfo/x/xterm-bold
+usr/lib/terminfo/x/xterm-ic
+usr/lib/terminfo/y/
+usr/lib/terminfo/z/
+usr/lib/terminfo/0/
+usr/lib/terminfo/1/
+usr/lib/terminfo/2/
+usr/lib/terminfo/3/
+usr/lib/terminfo/4/
+usr/lib/terminfo/5/
+usr/lib/terminfo/6/
+usr/lib/terminfo/7/
+usr/lib/terminfo/8/
+usr/lib/terminfo/9/
+usr/lib/setup/
+usr/lib/setup/HDhelp
+usr/lib/setup/INSCD
+usr/lib/setup/INSNFS
+usr/lib/setup/INSdir
+usr/lib/setup/INSfd
+usr/lib/setup/INShd
+usr/lib/setup/README
+usr/lib/setup/SeTHELP
+usr/lib/setup/SeTPKG
+usr/lib/setup/SeTkeymap
+usr/lib/setup/SeTmaketag
+usr/lib/setup/SeTmedia
+usr/lib/setup/SeTquick
+usr/lib/setup/cpkgtool
+usr/lib/setup/hdsetup
+usr/lib/setup/SeTprHELP
+usr/lib/setup/PROMPThelp
+usr/lib/setup/SeTconfig
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/dialog.1.gz
+usr/man/preformat/cat8/
+usr/man/preformat/cat8/pkgtool.8.gz
+usr/man/preformat/cat8/setup.8.gz
+usr/man/preformat/cat8/explodepkg.8.gz
+usr/man/preformat/cat8/makepkg.8.gz
+usr/man/preformat/cat8/installpkg.8.gz
+usr/man/preformat/cat8/removepkg.8.gz
+bin/
+bin/dialog
+bin/ipmask
+sbin/
+sbin/setup.tty
+sbin/pkgtool.tty
+sbin/installpkg
+sbin/makepkg
+sbin/removepkg
+sbin/explodepkg
+var/
+var/adm/
+var/adm/setup/
+var/adm/setup/setup.cdrom
+install/
+install/doinst.sh

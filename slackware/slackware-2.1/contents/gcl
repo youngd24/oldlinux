@@ -1,0 +1,36 @@
+PACKAGE NAME:     gcl
+COMPRESSED PACKAGE SIZE:     691 K
+UNCOMPRESSED PACKAGE SIZE:     2240 K
+PACKAGE LOCATION: gcl.tgz
+PACKAGE DESCRIPTION:
+gcl:      GNU common lisp 1.0
+gcl:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/gcl
+usr/lib/
+usr/lib/gcl-1.0/
+usr/lib/gcl-1.0/unixport/
+usr/lib/gcl-1.0/unixport/saved_gcl
+usr/lib/gcl-1.0/doc/
+usr/lib/gcl-1.0/doc/DOC
+usr/lib/gcl-1.0/doc/DOC-keys.el
+usr/lib/gcl-1.0/doc/ansi-doc.el
+usr/lib/gcl-1.0/doc/dbl.el
+usr/lib/gcl-1.0/doc/doc-com.el
+usr/lib/gcl-1.0/doc/find-doc.el
+usr/lib/gcl-1.0/doc/gcl.el
+usr/lib/gcl-1.0/doc/lisp-complete.el
+usr/lib/gcl-1.0/doc/procs.el
+usr/lib/gcl-1.0/doc/sshell.el
+usr/lib/gcl-1.0/cmpnew/
+usr/lib/gcl-1.0/cmpnew/collectfn.o
+usr/lib/gcl-1.0/lsp/
+usr/lib/gcl-1.0/lsp/gprof.c
+usr/lib/gcl-1.0/lsp/gprof.data
+usr/lib/gcl-1.0/lsp/gprof.h
+usr/lib/gcl-1.0/lsp/gprof.hc
+usr/lib/gcl-1.0/lsp/gprof.lsp
+usr/lib/gcl-1.0/lsp/profile.lsp

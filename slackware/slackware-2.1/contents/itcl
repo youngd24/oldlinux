@@ -1,0 +1,84 @@
+PACKAGE NAME:     itcl
+COMPRESSED PACKAGE SIZE:     124 K
+UNCOMPRESSED PACKAGE SIZE:     510 K
+PACKAGE LOCATION: disktcl2
+PACKAGE DESCRIPTION:
+itcl:     [incr Tcl] - version 1.5
+itcl: 
+itcl:     [incr Tcl] adds object-oriented programming facilities to Tcl.  It
+itcl:     was NOT designed as yet another whiz-bang object-oriented programming
+itcl:     language; indeed, it is patterned somewhat after C++.  It was designed
+itcl:     to support more structured programming in Tcl.  Scripts that grow
+itcl:     beyond a few thousand lines become extremely difficult to maintain.
+itcl:     [incr Tcl] attacks this problem in the same way that any object-
+itcl:     oriented programming language would, by providing mechanisms for
+itcl:     data encapsulation behind well-defined interfaces.
+itcl: 
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/itcl_sh
+usr/bin/itcl_wish
+usr/include/
+usr/include/tcl/
+usr/include/tcl/itcl.h
+usr/lib/
+usr/lib/libitcl.a
+usr/lib/libitcl.sa
+usr/lib/libitcl.so.3.1.0
+usr/lib/itcl/
+usr/lib/itcl/destroy.tcl
+usr/lib/itcl/itcl_mkindex.tcl
+usr/lib/itcl/itcl_reload.tcl
+usr/lib/itcl/tclIndex
+usr/lib/itcl/doc/
+usr/lib/itcl/doc/CHANGES
+usr/lib/itcl/doc/README.linux
+usr/lib/itcl/doc/Intro.ps
+usr/lib/itcl/doc/README
+usr/lib/itcl/demos/
+usr/lib/itcl/demos/counters/
+usr/lib/itcl/demos/counters/counter.tcl
+usr/lib/itcl/demos/README
+usr/lib/itcl/demos/coloredit
+usr/lib/itcl/demos/listboxes
+usr/lib/itcl/demos/toasters/
+usr/lib/itcl/demos/toasters/Appliance.tcl
+usr/lib/itcl/demos/toasters/Hazard.tcl
+usr/lib/itcl/demos/toasters/Outlet.tcl
+usr/lib/itcl/demos/toasters/SmartToaster.tcl
+usr/lib/itcl/demos/toasters/Toaster.tcl
+usr/lib/itcl/demos/toasters/tclIndex
+usr/lib/itcl/demos/toasters/usualway.tcl
+usr/lib/itcl/demos/widgets/
+usr/lib/itcl/demos/widgets/ColorEditor.tcl
+usr/lib/itcl/demos/widgets/ColorEntry.tcl
+usr/lib/itcl/demos/widgets/FilteredBox.tcl
+usr/lib/itcl/demos/widgets/ListBox.tcl
+usr/lib/itcl/demos/widgets/SelectBox.tcl
+usr/lib/itcl/demos/widgets/tclIndex
+usr/lib/itcl/tests/
+usr/lib/itcl/tests/AAA.test
+usr/lib/itcl/tests/Bar.tcl
+usr/lib/itcl/tests/BarFoo.tcl
+usr/lib/itcl/tests/Baz.tcl
+usr/lib/itcl/tests/Foo.tcl
+usr/lib/itcl/tests/FooBar.tcl
+usr/lib/itcl/tests/Geek.tcl
+usr/lib/itcl/tests/Mongrel.tcl
+usr/lib/itcl/tests/VirtualErr.tcl
+usr/lib/itcl/tests/all
+usr/lib/itcl/tests/basic.test
+usr/lib/itcl/tests/inherit.test
+usr/lib/itcl/tests/tclIndex
+usr/lib/itcl/tests/testlib.tcl
+usr/lib/itcl/tests/toaster.test
+usr/lib/itcl/tests/uplevel.test
+usr/lib/itcl/tests/upvar.test
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat3/
+usr/man/preformat/cat3/incrTcl.3itcl.gz
+install/
+install/doinst.sh

@@ -1,0 +1,66 @@
+PACKAGE NAME:     samba-1.8.05
+COMPRESSED PACKAGE SIZE:     298 K
+UNCOMPRESSED PACKAGE SIZE:     710 K
+PACKAGE LOCATION: samba-1.8.05.tgz
+PACKAGE DESCRIPTION:
+samba-1.8.05: Samba 1.8.05
+samba-1.8.05:
+samba-1.8.05: Samba is a Unix based SMB file server. This allows a Unix host to
+samba-1.8.05: act as a file and print server for SMB clients. This includes
+samba-1.8.05: Lan-Manager compatible clients such as LanManager for DOS, Windows
+samba-1.8.05: for Workgroups, Windows NT, OS/2, Pathworks and many more. If you
+samba-1.8.05: have any PCs running SMB clients, such as a PC running Windows for
+samba-1.8.05: Workgroups, then you can mount file space or printers from a Linux
+samba-1.8.05: host, so that directories, files and printers on the Linux host 
+samba-1.8.05: are available on the PC.
+samba-1.8.05:
+FILE LIST:
+./
+usr/
+usr/doc/
+usr/doc/samba/
+usr/doc/samba/COPYING
+usr/doc/samba/README
+usr/doc/samba/SMBGuide.txt
+usr/doc/samba/THANKS
+usr/doc/samba/announce
+usr/doc/samba/change-log
+usr/doc/samba/history
+usr/doc/samba/samba.faq
+usr/doc/samba/README-Slackware
+usr/doc/samba/BROWSING.txt
+usr/doc/samba/INSTALL.txt
+usr/doc/samba/MIRRORS
+usr/doc/samba/PROJECTS
+usr/doc/samba/OS2.txt
+usr/doc/samba/smb.conf.sample
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/smbclient.1.gz
+usr/man/preformat/cat1/smbrun.1.gz
+usr/man/preformat/cat1/testparm.1.gz
+usr/man/preformat/cat1/testprns.1.gz
+usr/man/preformat/cat1/smbstatus.1.gz
+usr/man/preformat/cat5/
+usr/man/preformat/cat5/smb.conf.5.gz
+usr/man/preformat/cat8/
+usr/man/preformat/cat8/nmbd.8.gz
+usr/man/preformat/cat8/smbd.8.gz
+usr/lib/
+usr/lib/samba/
+usr/lib/samba/nmbd
+usr/lib/samba/smbclient
+usr/lib/samba/smbd
+usr/lib/samba/smbrun
+usr/lib/samba/testparm
+usr/lib/samba/testprns
+usr/lib/samba/smbprint
+usr/lib/samba/smbstatus
+var/
+var/lib/
+var/lib/samba/
+var/lib/samba/smb.conf
+var/lib/samba/smb.conf.sample
+install/
+install/doinst.sh

@@ -1,0 +1,34 @@
+CONTENTS: idekerno scsikrno alpha   
+alpha:    Linux kernel 1.1.59 with some alpha SCSI drivers.
+alpha:
+alpha:    This is a Linux kernel with support for Adaptec AHA274X/284X SCSI,
+alpha:    Always IN2000 SCSI, and EATA-DMA (rev. 2.0b) (DPT,NEC,AT&T) SCSI.
+alpha:    (Adaptec AHA274X/284X SCSI is also included in other kernels with
+alpha:    SCSI support)
+alpha:
+alpha:
+alpha:
+alpha:
+alpha:
+scsikrno: Linux kernel version 1.1.18, with SCSI + IDE support. 
+scsikrno:
+scsikrno: This is a Linux kernel with full support for SCSI devices such as hard
+scsikrno: drives, tape drives, and CD-ROM drives. See the file 'scsikern.log' 
+scsikrno: for an exact list of included drivers.
+scsikrno:
+scsikrno: This kernel also has support for PPP, UMSDOS, CSLIP, ethernet,
+scsikrno: Ftape, and the PS/2 style mouse (but not other busmouse types).
+scsikrno:
+scsikrno:
+scsikrno:
+idekerno: Linux kernel version 1.1.18, without SCSI support.
+idekerno: 
+idekerno: A Linux kernel for computers that do not need SCSI support. If you 
+idekerno: don't have SCSI, the advantage of using the idekern kernel is that 
+idekerno: your machine will boot faster with a leaner kernel. See the file
+idekerno: 'idekern.log' for an exact list of included drivers. A short list:
+idekerno:  
+idekerno: This kernel also has support for PPP, UMSDOS, CSLIP, ethernet,
+idekerno: Ftape, and the PS/2 style mouse (but not other busmouse types).
+idekerno:
+idekerno:

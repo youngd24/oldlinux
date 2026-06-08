@@ -1,0 +1,23 @@
+CONTENTS: xf_kit2 xf_pex  
+xf_kit2:  XFree86 3.1 Linkkit (part two)
+xf_kit2: 
+xf_kit2:  If you want or need to rebuild an XFree86 3.1 server you need this
+xf_kit2:  package in addition to the base configuration and the programmers kit.
+xf_kit2:  It is not needed for other X program development.
+xf_kit2:
+xf_kit2:  When rebuilding all the servers (including PEX) you will typically
+xf_kit2:  need an additional 10MB of disk space.  If you are building just a
+xf_kit2:  single server you will need 2MB (2.5MB with PEX) of space.
+xf_kit2: 
+xf_kit2: 
+xf_pex:   XFree86 3.1 PEX distribution
+xf_pex:
+xf_pex:   If you would like to use and build PEX programs you will need this
+xf_pex:   package in addition to a server that supports PEX.  The distributed
+xf_pex:   servers do *not* include PEX support by default - you will have to
+xf_pex:   build one using the link kit.
+xf_pex:
+xf_pex:
+xf_pex:
+xf_pex:
+xf_pex:

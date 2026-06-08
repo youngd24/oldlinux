@@ -1,0 +1,15 @@
+Begin3
+Title:          Sony CDU-535/CDU-531 CD-ROM device driver
+Version:        0.6
+Entered-date:   Thu Aug 18 01:12:16 PDT 1994
+Description:    device driver for Sony CDU-535 and CDU-531 drives
+Keywords:       CD-ROM CDU-535 CDU-531 Sony device driver
+Author:         ronj.an@site007.saic.com (Ron Jeppesen)
+Maintained-by:  ken@halcyon.com (Ken Pizzini)
+Primary-site:   sunsite.unc.edu /pub/Linux/kernel/cdrom
+                18332 sony535-0.6.tar.gz
+Alternate-site: tsx-11.mit.edu /pub/linux/BETA/cdrom
+Platforms:      Linux 1.1.45,
+                Sony CDU-535 or CDU-531 CD-ROM controller
+Copying-policy: GPL
+End

@@ -1,0 +1,20 @@
+PACKAGE NAME:     alpha
+COMPRESSED PACKAGE SIZE:     425 K
+UNCOMPRESSED PACKAGE SIZE:     510 K
+PACKAGE LOCATION: diskq1
+PACKAGE DESCRIPTION:
+alpha:    Linux kernel 1.1.59 with some alpha SCSI drivers.
+alpha:
+alpha:    This is a Linux kernel with support for Adaptec AHA274X/284X SCSI,
+alpha:    Always IN2000 SCSI, and EATA-DMA (rev. 2.0b) (DPT,NEC,AT&T) SCSI.
+alpha:    (Adaptec AHA274X/284X SCSI is also included in other kernels with
+alpha:    SCSI support)
+alpha:
+FILE LIST:
+./
+install/
+install/doinst.sh
+vmlinuz
+boot/
+boot/zSystem.map
+boot/config.in

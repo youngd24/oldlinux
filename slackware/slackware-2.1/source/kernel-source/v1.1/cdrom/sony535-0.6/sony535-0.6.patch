@@ -1,0 +1,88 @@
+--- linux-1.1.45/config.in	Wed Aug 17 13:04:19 1994
++++ linux/config.in	Wed Aug 17 17:31:03 1994
+@@ -132,6 +132,7 @@
+ comment 'CD-ROM drivers'
+ 
+ bool 'Sony CDU31A/CDU33A CDROM driver support' CONFIG_CDU31A n
++bool 'Sony CDU535 CDROM driver support' CONFIG_CDU535 y
+ bool 'Mitsumi CDROM driver support' CONFIG_MCD n
+ bool 'Matsushita/Panasonic CDROM driver support' CONFIG_SBPCD n
+ if [ "$CONFIG_SBPCD" = "y" ]; then
+--- linux-1.1.45/drivers/block/Makefile	Fri Jul  8 08:36:03 1994
++++ linux/drivers/block/Makefile	Wed Aug 17 16:14:00 1994
+@@ -64,6 +64,11 @@
+ SRCS := $(SRCS) xd.c
+ endif
+ 
++ifdef CONFIG_CDU535
++OBJS := $(OBJS) sonycd535.o
++SRCS := $(SRCS) sonycd535.c
++endif
++
+ all: block.a
+ 
+ block.a: $(OBJS)
+--- linux-1.1.45/drivers/block/blk.h	Tue Aug  9 06:35:23 1994
++++ linux/drivers/block/blk.h	Wed Aug 17 19:28:02 1994
+@@ -82,6 +82,9 @@
+ extern unsigned long hd_init(unsigned long mem_start, unsigned long mem_end);
+ extern unsigned long cdu31a_init(unsigned long mem_start, unsigned long mem_end);
+ extern unsigned long mcd_init(unsigned long mem_start, unsigned long mem_end);
++#ifdef CONFIG_CDU535
++extern unsigned long init_sony535(unsigned long mem_start, unsigned long mem_end);
++#endif
+ #ifdef CONFIG_SBPCD
+ extern unsigned long sbpcd_init(unsigned long, unsigned long);
+ #endif CONFIG_SBPCD
+@@ -178,6 +181,14 @@
+ 
+ #define DEVICE_NAME "CDU31A"
+ #define DEVICE_REQUEST do_cdu31a_request
++#define DEVICE_NR(device) (MINOR(device))
++#define DEVICE_ON(device)
++#define DEVICE_OFF(device)
++
++#elif (MAJOR_NR == CDU535_CDROM_MAJOR)
++#define DEVICE_NAME "SONY-CDU535"
++#define DEVICE_INTR do_cdu535
++#define DEVICE_REQUEST do_cdu535_request
+ #define DEVICE_NR(device) (MINOR(device))
+ #define DEVICE_ON(device)
+ #define DEVICE_OFF(device)
+--- linux-1.1.45/drivers/block/ll_rw_blk.c	Wed Aug 10 16:25:58 1994
++++ linux/drivers/block/ll_rw_blk.c	Wed Aug 17 16:14:01 1994
+@@ -347,6 +347,9 @@
+ 	int correct_size;
+ 	struct blk_dev_struct * dev;
+ 	int i;
++#if defined(CONFIG_CDU535) && defined(CONFIG_CDU31A)
++	int sonycd_save_mem_start;
++#endif
+ 
+ 	/* Make sure that the first block contains something reasonable */
+ 	while (!*bh) {
+@@ -487,9 +490,24 @@
+ #ifdef CONFIG_BLK_DEV_XD
+ 	mem_start = xd_init(mem_start,mem_end);
+ #endif
++#if defined(CONFIG_CDU535) && defined(CONFIG_CDU31A)
++	{  /* since controllers for 535 and 31A can be at same location
++	    * we have to be careful.
++	    */
++		sonycd_save_mem_start = mem_start;
++		mem_start = cdu31a_init(mem_start,mem_end);
++		if ( mem_start == sonycd_save_mem_start ) {  /* CDU31A not found */
++			mem_start = init_sony535(mem_start,mem_end);
++		}
++	}
++#else
+ #ifdef CONFIG_CDU31A
+ 	mem_start = cdu31a_init(mem_start,mem_end);
+ #endif
++#ifdef CONFIG_CDU535
++	mem_start = init_sony535(mem_start,mem_end);
++#endif
++#endif  /* CONFIG_CDU31A && CONFIG_CDU535 */
+ #ifdef CONFIG_MCD
+ 	mem_start = mcd_init(mem_start,mem_end);
+ #endif

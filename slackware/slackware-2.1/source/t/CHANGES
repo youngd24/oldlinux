@@ -1,0 +1,96 @@
+Changes of the NTeX distribution
+================================
+
+1.2 (940915)
+
+* some minor changes not documented here.
+* xdvik, dvipsk, dviljk with kpathsea 2.1 installed
+* installed the sauter fonts 2.2
+* gsftopk installed
+
+Postscript fonts again (according to the report of Thomas Esser,
+te@informatik.uni-ahnnover.de):
+* new psfonts.map
+* installed new postscript .fd, .adm, .tfm, .vf, .sty files based on a package
+  from Sebastian Rahtz in ./fonts/psfonts
+* removed the old ps font directories
+
+1.1.4 (940908)
+
+* minor errors in babel installation removed (language.dat now in 
+ /usr/lib/texmf/tex/latex/cfg, ...)
+* Changed MakeTeXMF for the new font structure ofo DC, FC and CM.
+* Change the default font definitions for T1 and OT1. The definitions
+  sautercm.fd and sauterdc.fd were removed and replaced by two new
+  definitions ntexT1.fd and ntexOT1.fd. Now the DC fonts and the sauter
+  CM fonts are appropriately used. (inspired by Thomas Esser and 
+  Christian Saucier (saucc00@DMI.USherb.CA))
+* eufm works now at size 10 and greater (problem reported by Thomas Esser).
+* added an experimental T1fcr.fd to the FC fonts. FC directories changed.
+* added some magsteps for pnb10, pnr10, cmr10, cmr25, cmsltt10 in allfonts.lst
+
+Recreating the ps font structure according to the report of
+Thomas Esser (te@informatik.uni-hannover.de):
+* the psfonts courier, urw, utopia, charter found a place in psfonts and got
+  a new structure. ntf-ps package totally recreated.
+* installed psfont msym10
+
+* installed psfig
+
+1.1.3 (940907)
+
+* splitted installntex and the configuration scripts. (now in 
+  /usr/lib/texmf/tools)
+* new directory structure for fc
+* added the createallfonts scripts in /usr/lib/texmf/fonts/create to
+  repleace the create.sh system. The create.sh are still there (but will
+  not be maintained properly).
+* xdvi scanning of parameters for specials changed (based on tv001).
+
+1.1.2 (940906)
+
+* cmcyralt is nearly totally replaced by the sauter fonts
+* extracm fonts of ams replaced by sauter fonts
+* removed/renamed duplicate filenames in /usr/lib/txmf/...
+* added ugaritic font
+* upgraded arabtex to 3.02b
+* the make*font scripts in /usr/lib/texmf/tools now create the pk and the
+  tfm directory if it does not exist. Permissions for the scripts changed to
+  0744.
+* renamed /usr/lib/texmf/tex/plftex/tracefnt.sty to plf_tracefnt.sty
+* The fonts hieroglphy, Hebrew, Blackletter, callig15, cherokee, cypriote,
+  dingbat, georgian, go, hands, hge, karta, klinz, la, logic, ogham, osmanian
+  and thai are now created proberly by create.sh. New metrics created.
+
+1.1.1 (940905)
+
+Changes according to a report of Thomas Esser (te@informatik.uni-hannover.de)
+(his detailed report enabled me to improve ntex a lot, THANKS!)
+* upgraded LaTeX2e to patchlevel 3
+* added isolatin1.sty in /usr/lib/texmf/tex/latex/sty
+* apps-default file for xdvi included, configuring with installntex.
+* installntex now creates the ls-R database for kpathsea. Could be
+  recreated by a shell script in ./tools later.
+* directory structure in /usr/lib/texmf changed to speed up kpathsea.
+* in installntex lthyphen.cfg will now be linked to lthyphen.babel or 
+  lthyphen.latex depending if babel was installed or not.
+* changed the permissions for the direcotires/files in /usr/lib/texmf.
+  /usr/lib/texmf/fonts/tmp/... is now 1777, all create.sh are now 0700
+  the directories are 0755, the files are 0644, the rest of the scripts 
+  are 0755.
+* installntex now uses /usr/bin/initex to avoid using an old version of initex.
+* changed definitions for DocumentPaperSizes in /usr/lib/texmf/ps/config.ps
+* install.sh does no longer assume that "." is in PATH.
+
+1.1  (940902)
+
+* removed all pk files from the packages to reduce the size of the 
+  distribution.
+* thanks to a hint from Benedikt Eric Heinen (beh@icemark.oche.de)  the size 
+  of the distribution could be reduced further. I made a terrible mistake...
+* added a deskjet driver package. Does not work with the compelte kpathsea 
+  directory structure.
+
+1.0
+
+* First release - never made it to a large public

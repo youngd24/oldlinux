@@ -1,0 +1,17 @@
+Begin3
+Title: procps
+Version: 0.97
+Entered-date: 16OCT94
+Description: Procps is a suite of utilites which get their information
+	from the /proc filesystem.
+Keywords: procps /proc ps uptime w free pstree killall fuser top tload vmstat
+	psupdate
+Author: johnsonm@merengue.oit.unc.edu (Michael K. Johnson)
+Maintained-by: cblake@ucsd.edu (Charles Blake)
+Primary-site: tsx-11.mit.edu /pub/linux/BETA/procps
+	131kB procps-0.97.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Misc/ps
+	131kB procps-0.97.tar.gz
+Platform: Linux
+Copying-policy: GNU Public License
+End

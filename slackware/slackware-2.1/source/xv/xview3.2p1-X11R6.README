@@ -1,0 +1,19 @@
+This is version 3.2 of the sun microsystems xview/openlook toolkit.
+
+i did several patches to be able to compile it under x11r6. The patches are
+clean, no XLIB_ILLEGAL_ACCESS or modifications of include files are necessary.
+
+This is the whole release 3.2 patchlevel 1 + X11R6 patches. Diffs will be
+available at a later time as soon as i figure out how to do them :-) Never did
+that before.
+
+Tested environments;
+
+sunos 4.1.{2,3}, sun4c - should run on sun4m too. No solaris version yet, since
+we don't run solaris here.
+
+No known bugs, all applications i tested (includs olwm, ftptool, etc.) ran fine.Clients and Contrib build without errors.
+
+Be informed that xview can right now not be compiled yet with gcc.
+
+Joern Lubkoll, lumpi@dobag.in-berlin.de

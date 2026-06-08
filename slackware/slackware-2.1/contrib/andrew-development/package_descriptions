@@ -1,0 +1,27 @@
+
+Packages for Andrew development:
+
+auis63L2-dev: Andrew User Interface System - For the AUIS Programmer
+auis63L2-dev:
+auis63L2-dev: This package is aimed at THOSE WHO WANT TO DEVELOPE AUIS APPS.
+auis63L2-dev:
+auis63L2-dev: REQUIRED:
+auis63L2-dev: YOU MUST HAVE INSTALLED AUIS63L2-SRC.TGZ FIRST.
+auis63L2-dev: /bin/csh  (e.g. ln -sf /bin/tcsh /bin/csh)
+auis63L2-dev: X Window System
+auis63L2-dev:
+auis63L2-dev:
+auis63L2-dev:
+
+auis63L2-doc: Andrew User Interface System - Documentation
+auis63L2-doc:
+auis63L2-doc: This package is aimed at those wanting complete documentation.
+auis63L2-doc:
+auis63L2-doc: REQUIRED:
+auis63L2-doc: YOU MUST HAVE INSTALLED AUIS63L2-WP.TGZ FIRST.
+auis63L2-doc: /bin/csh  (e.g. ln -sf /bin/tcsh /bin/csh)
+auis63L2-doc: X Window System
+auis63L2-doc:
+auis63L2-doc:
+auis63L2-doc:
+

@@ -1,0 +1,2 @@
+( cd usr/lib/texmf/tex/language/greek ; rm -rf ibygrk.map )
+( cd usr/lib/texmf/tex/language/greek ; ln -sf /usr/lib/texmf/fonts/language/greek/src/ibygrk.map ibygrk.map )

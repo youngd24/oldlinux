@@ -1,0 +1,26 @@
+PACKAGE NAME:     joe
+COMPRESSED PACKAGE SIZE:     102 K
+UNCOMPRESSED PACKAGE SIZE:     250 K
+PACKAGE LOCATION: diskap2
+PACKAGE DESCRIPTION:
+joe:      Joe text editor, 2.2.
+joe:
+joe:      Joseph H. Allen's easy to use text editor, similar to WordStar[tm].
+joe:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/joe
+usr/bin/termidx
+usr/lib/
+usr/lib/joe/
+usr/lib/joe/joerc
+usr/lib/joe/jstarrc
+usr/lib/joe/jmacsrc
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/joe.1.gz
+install/
+install/doinst.sh

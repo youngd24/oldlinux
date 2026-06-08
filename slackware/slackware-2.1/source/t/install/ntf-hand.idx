@@ -1,0 +1,7 @@
+./usr/lib/texmf/fonts/symbol/hands/create.sh
+./usr/lib/texmf/fonts/symbol/hands/src/hands.mf
+./usr/lib/texmf/fonts/symbol/hands/src/handsdef.mf
+./usr/lib/texmf/fonts/symbol/hands/src/mirror.mf
+./usr/lib/texmf/fonts/symbol/hands/src/reverse.mf
+./usr/lib/texmf/fonts/symbol/hands/src/rvmirror.mf
+./usr/lib/texmf/fonts/symbol/hands/tfm/hands.tfm

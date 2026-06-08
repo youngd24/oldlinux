@@ -1,0 +1,21 @@
+Begin3
+Title:		Acculogic ISApport and NCR53c406a SCSI driver
+Version:        0.9
+Entered-date:   9SEP94
+Description:	This is an alpha SCSI driver for the Acculogic ISApport
+		SCSI card.  It should also work on other SCSI cards based on
+		the NCR53c406a chip.
+Keywords:       SCSI, driver, NCR53c406a, ISApport, Acculogic
+Author:         saumanis@cps.msu.edu (Normunds Saumanis)
+Maintained-by:  saumanis@cps.msu.edu (Normunds Saumanis)
+Primary-site:   tsx-11.mit.edu /pub/linux/ALPHA/scsi
+		6632 ncr53c406-0.9.patch.gz
+		2113 ncr53c40-0.9.README
+Alternate-site: sunsite.unc.edu /pub/Linux/kernel/patches/scsi
+		6632 ncr53c406-0.9.patch.gz
+		2113 ncr53c406-0.9.README
+Original-site:  
+Platform:       Linux 1.1.50
+Copying-policy: Copyright (C) 1994 Normunds Saumanis
+		GNU General Public License version 2
+End

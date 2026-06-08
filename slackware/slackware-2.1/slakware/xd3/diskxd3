@@ -1,0 +1,12 @@
+CONTENTS: xstatic  
+xstatic:  Static versions of the X libraries.
+xstatic:
+xstatic:  These are needed to compile static X programs, or to debug X programs
+xstatic:  (as with '-g').
+xstatic:
+xstatic:
+xstatic:
+xstatic:
+xstatic:
+xstatic:
+xstatic:

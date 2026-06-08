@@ -1,0 +1,4 @@
+libiv_so: ADD
+iv_bin: ADD
+libiv_sa: OPT
+iv_docs: REC

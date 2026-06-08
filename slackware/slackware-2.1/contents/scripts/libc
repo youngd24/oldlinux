@@ -1,0 +1,2 @@
+( cd usr/lib ; rm -f libgcc.a )
+( cd usr/lib ; rm -f libgcc.sa )

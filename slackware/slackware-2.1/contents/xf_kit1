@@ -1,0 +1,142 @@
+PACKAGE NAME:     xf_kit1
+COMPRESSED PACKAGE SIZE:     1243 K
+UNCOMPRESSED PACKAGE SIZE:     3660 K
+PACKAGE LOCATION: diskxd1
+PACKAGE DESCRIPTION:
+xf_kit1:  XFree86 3.1 Linkkit (part one)
+xf_kit1: 
+xf_kit1:  If you want or need to rebuild an XFree86 3.1 server you need this
+xf_kit1:  package in addition to the base configuration and the programmers kit.
+xf_kit1:  It is not needed for other X program development.
+xf_kit1:
+xf_kit1:  When rebuilding all the servers (including PEX) you will typically
+xf_kit1:  need an additional 10MB of disk space.  If you are building just a
+xf_kit1:  single server you will need 2MB (2.5MB with PEX) of space.
+xf_kit1: 
+FILE LIST:
+./
+usr/
+usr/X11R6/
+usr/X11R6/lib/
+usr/X11R6/lib/Server/
+usr/X11R6/lib/Server/lib/
+usr/X11R6/lib/Server/lib/libXau.a
+usr/X11R6/lib/Server/lib/libXdmcp.a
+usr/X11R6/lib/Server/lib/libdix.a
+usr/X11R6/lib/Server/lib/libfont.a
+usr/X11R6/lib/Server/lib/libos.a
+usr/X11R6/lib/Server/lib/libmi.a
+usr/X11R6/lib/Server/lib/libcbrt.a
+usr/X11R6/lib/Server/lib/libext.a
+usr/X11R6/lib/Server/lib/libdixie.a
+usr/X11R6/lib/Server/lib/libmixie.a
+usr/X11R6/lib/Server/lib/libdidipex.a
+usr/X11R6/lib/Server/lib/libdiswapex.a
+usr/X11R6/lib/Server/lib/libdiobpex.a
+usr/X11R6/lib/Server/lib/libddpex1.a
+usr/X11R6/lib/Server/lib/libddpex2.a
+usr/X11R6/lib/Server/lib/libddpex3.a
+usr/X11R6/lib/Server/lib/libddpex4.a
+usr/X11R6/lib/Server/lib/libddpexs.a
+usr/X11R6/lib/Server/lib/libospex.a
+usr/X11R6/lib/Server/lib/libmfb.a
+usr/X11R6/lib/Server/lib/libcfb.a
+usr/X11R6/lib/Server/lib/libcfb16.a
+usr/X11R6/lib/Server/lib/libcfb32.a
+usr/X11R6/lib/Server/lib/libxf86.a
+usr/X11R6/lib/Server/lib/xf86Init.o
+usr/X11R6/lib/Server/lib/xf86Init_m.o
+usr/X11R6/lib/Server/lib/libxf86_hw.a
+usr/X11R6/lib/Server/lib/libxf86_os.a
+usr/X11R6/lib/Server/lib/libxf86cache.a
+usr/X11R6/lib/Server/include/
+usr/X11R6/lib/Server/include/X.h
+usr/X11R6/lib/Server/include/Xmd.h
+usr/X11R6/lib/Server/include/Xos.h
+usr/X11R6/lib/Server/include/Xproto.h
+usr/X11R6/lib/Server/include/Xprotostr.h
+usr/X11R6/lib/Server/include/fontstruct.h
+usr/X11R6/lib/Server/include/font.h
+usr/X11R6/lib/Server/include/fsmasks.h
+usr/X11R6/lib/Server/include/closure.h
+usr/X11R6/lib/Server/include/colormap.h
+usr/X11R6/lib/Server/include/colormapst.h
+usr/X11R6/lib/Server/include/cursor.h
+usr/X11R6/lib/Server/include/cursorstr.h
+usr/X11R6/lib/Server/include/dix.h
+usr/X11R6/lib/Server/include/dixfont.h
+usr/X11R6/lib/Server/include/dixfontstr.h
+usr/X11R6/lib/Server/include/gc.h
+usr/X11R6/lib/Server/include/gcstruct.h
+usr/X11R6/lib/Server/include/input.h
+usr/X11R6/lib/Server/include/misc.h
+usr/X11R6/lib/Server/include/miscstruct.h
+usr/X11R6/lib/Server/include/opaque.h
+usr/X11R6/lib/Server/include/os.h
+usr/X11R6/lib/Server/include/pixmap.h
+usr/X11R6/lib/Server/include/pixmapstr.h
+usr/X11R6/lib/Server/include/property.h
+usr/X11R6/lib/Server/include/resource.h
+usr/X11R6/lib/Server/include/region.h
+usr/X11R6/lib/Server/include/regionstr.h
+usr/X11R6/lib/Server/include/screenint.h
+usr/X11R6/lib/Server/include/servermd.h
+usr/X11R6/lib/Server/include/scrnintstr.h
+usr/X11R6/lib/Server/include/validate.h
+usr/X11R6/lib/Server/include/window.h
+usr/X11R6/lib/Server/include/windowstr.h
+usr/X11R6/lib/Server/include/mi.h
+usr/X11R6/lib/Server/include/mibstore.h
+usr/X11R6/lib/Server/include/mipointer.h
+usr/X11R6/lib/Server/include/misprite.h
+usr/X11R6/lib/Server/include/mispritest.h
+usr/X11R6/lib/Server/include/mistruct.h
+usr/X11R6/lib/Server/include/fastblt.h
+usr/X11R6/lib/Server/include/mfb.h
+usr/X11R6/lib/Server/include/mergerop.h
+usr/X11R6/lib/Server/include/cfb.h
+usr/X11R6/lib/Server/include/cfb8bit.h
+usr/X11R6/lib/Server/include/cfbmap.h
+usr/X11R6/lib/Server/include/cfbmskbits.h
+usr/X11R6/lib/Server/include/cfbrrop.h
+usr/X11R6/lib/Server/include/xf86.h
+usr/X11R6/lib/Server/include/xf86ExtInit.h
+usr/X11R6/lib/Server/include/xf86Priv.h
+usr/X11R6/lib/Server/include/xf86Procs.h
+usr/X11R6/lib/Server/include/xf86_Option.h
+usr/X11R6/lib/Server/include/xf86_Config.h
+usr/X11R6/lib/Server/include/compiler.h
+usr/X11R6/lib/Server/include/xf86_HWlib.h
+usr/X11R6/lib/Server/include/assyntax.h
+usr/X11R6/lib/Server/include/xf86_OSlib.h
+usr/X11R6/lib/Server/include/vga.h
+usr/X11R6/lib/Server/include/vga256.h
+usr/X11R6/lib/Server/include/vgaFasm.h
+usr/X11R6/lib/Server/xf86_Option.c
+usr/X11R6/lib/Server/XF86_SVGA.c
+usr/X11R6/lib/Server/XF86_VGA16.c
+usr/X11R6/lib/Server/XF86_Mono.c
+usr/X11R6/lib/Server/XF86_S3.c
+usr/X11R6/lib/Server/XF86_8514.c
+usr/X11R6/lib/Server/XF86_Mach8.c
+usr/X11R6/lib/Server/XF86_Mach32.c
+usr/X11R6/lib/Server/XF86_P9000.c
+usr/X11R6/lib/Server/XF86_AGX.c
+usr/X11R6/lib/Server/XF86_W32.c
+usr/X11R6/lib/Server/configvga2.sh
+usr/X11R6/lib/Server/confmono.sh
+usr/X11R6/lib/Server/confvga16.sh
+usr/X11R6/lib/Server/confvga256.sh
+usr/X11R6/lib/Server/VGADriverDoc/
+usr/X11R6/lib/Server/VGADriverDoc/vgaHW.c
+usr/X11R6/lib/Server/VGADriverDoc/VGADriver.Doc
+usr/X11R6/lib/Server/VGADriverDoc/Imakefile.stub
+usr/X11R6/lib/Server/VGADriverDoc/stub_driver.c
+usr/X11R6/lib/Server/VGADriverDoc/stub_bank.s
+usr/X11R6/lib/Server/confS3.sh
+usr/X11R6/lib/Server/confw32.sh
+usr/X11R6/lib/Server/Imakefile
+usr/X11R6/lib/Server/site.def
+usr/X11R6/lib/Server/LinkKit.tmpl
+usr/X11R6/lib/Server/mkmf
+usr/X11R6/lib/Server/README

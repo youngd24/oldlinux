@@ -1,0 +1,16 @@
+./usr/lib/texmf/fonts/cm/cmastro/create.sh
+./usr/lib/texmf/fonts/cm/cmastro/src/cmastro10.mf
+./usr/lib/texmf/fonts/cm/cmastro/src/cmastro5.mf
+./usr/lib/texmf/fonts/cm/cmastro/src/cmastro6.mf
+./usr/lib/texmf/fonts/cm/cmastro/src/cmastro7.mf
+./usr/lib/texmf/fonts/cm/cmastro/src/cmastro8.mf
+./usr/lib/texmf/fonts/cm/cmastro/src/cmastro9.mf
+./usr/lib/texmf/fonts/cm/cmastro/src/symbols.mf
+./usr/lib/texmf/fonts/cm/cmastro/tfm/cmastro10.tfm
+./usr/lib/texmf/fonts/cm/cmastro/tfm/cmastro5.tfm
+./usr/lib/texmf/fonts/cm/cmastro/tfm/cmastro6.tfm
+./usr/lib/texmf/fonts/cm/cmastro/tfm/cmastro7.tfm
+./usr/lib/texmf/fonts/cm/cmastro/tfm/cmastro8.tfm
+./usr/lib/texmf/fonts/cm/cmastro/tfm/cmastro9.tfm
+./usr/lib/texmf/tex/symbol/cmastro.tex
+./usr/lib/texmf/tex/symbol/cmastrodemo.tex

@@ -1,0 +1,31 @@
+PACKAGE NAME:     ntf-rsfs
+COMPRESSED PACKAGE SIZE:     10 K
+UNCOMPRESSED PACKAGE SIZE:     60 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-rsfs: ntf-rsfs 1.1
+ntf-rsfs:
+ntf-rsfs: The RSFS fonts - Formal Symbol Math fonts.
+ntf-rsfs:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/symbol/
+usr/lib/texmf/fonts/symbol/rsfs/
+usr/lib/texmf/fonts/symbol/rsfs/create.sh
+usr/lib/texmf/fonts/symbol/rsfs/src/
+usr/lib/texmf/fonts/symbol/rsfs/src/rsfs10.mf
+usr/lib/texmf/fonts/symbol/rsfs/src/rsfs5.mf
+usr/lib/texmf/fonts/symbol/rsfs/src/rsfs7.mf
+usr/lib/texmf/fonts/symbol/rsfs/src/script.mf
+usr/lib/texmf/fonts/symbol/rsfs/src/scriptu.mf
+usr/lib/texmf/fonts/symbol/rsfs/tfm/
+usr/lib/texmf/fonts/symbol/rsfs/tfm/rsfs10.tfm
+usr/lib/texmf/fonts/symbol/rsfs/tfm/rsfs5.tfm
+usr/lib/texmf/fonts/symbol/rsfs/tfm/rsfs7.tfm
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/symbol/
+usr/lib/texmf/tex/symbol/scrload.tex

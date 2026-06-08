@@ -1,0 +1,8 @@
+
+NTeX Release 1.2 --- ntb-xdvi 1.2 --- status: recommended
+
+These are the binaries for xdvi, a program to display dvi files under X. It
+can also display epsf files which are included in dvi files. Therefore you
+need ghostscript (gs). The current version of xdvik is 18b using the kpathsea
+library 2.1. 
+

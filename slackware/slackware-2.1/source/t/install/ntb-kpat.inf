@@ -1,0 +1,11 @@
+
+NTeX Release 1.2 --- ntb-kpat 1.1 --- status: optional
+
+This is the binary version of the kpathsea library which was used to
+compile dvips, xdvi and dvi2xx. The current version for this binaries
+are 2.1 Note that web2c still uses 1.7! The sources of 1.7 and 2.1 could
+be found in the package nts-kpat. You do not need this library for
+any program included in NTeX. You shuld just install it if you want to
+use it in your own programs. In this case you should also install the
+sources for kpathsea.
+

@@ -1,0 +1,45 @@
+CONTENTS: x_vga16 xf_lib xman1 config86 
+x_vga16:  A server for 16 colour EGA/VGA graphics modes.
+x_vga16:
+x_vga16:  This is the last in a long list of servers for XFree86 2.1.1. In most 
+x_vga16:  cases you should only install the X server designed to work with your
+x_vga16:  video hardware. 
+x_vga16:
+x_vga16:  Installing this package will create a link in /usr/X11/bin from
+x_vga16:  XF86_VGA16 to X, setting this server as the default.
+x_vga16:
+x_vga16:
+x_vga16:
+config86: Steven T Zwaska's ConfigXF86 XFree86 Xconfig generation script.
+config86:
+config86: This handy script asks you questions about your video card and
+config86: monitor. It then generates a custom Xconfig file based on your 
+config86: answers. 
+config86:
+config86: To use it, run the ConfigXF86 script in /usr/lib/X11/ConfigXF86.
+config86:
+config86:
+config86:
+config86:
+xf_lib:   Dynamic libraries and configuration files for XFree86 2.1.1.
+xf_lib:
+xf_lib:
+xf_lib:
+xf_lib:
+xf_lib:
+xf_lib:
+xf_lib:
+xf_lib:
+xf_lib:
+xf_lib:
+xman1:    Man pages for programs that come with XFree86 2.1.1.
+xman1:
+xman1:    These have been preprocessed and compressed.
+xman1:
+xman1:
+xman1:
+xman1:
+xman1:
+xman1:
+xman1:
+xman1:

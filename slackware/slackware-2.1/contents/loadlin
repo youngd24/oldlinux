@@ -1,0 +1,17 @@
+PACKAGE NAME:     loadlin
+COMPRESSED PACKAGE SIZE:     114 K
+UNCOMPRESSED PACKAGE SIZE:     120 K
+PACKAGE LOCATION: diska4
+PACKAGE DESCRIPTION:
+loadlin:  LOADLIN v1.5
+loadlin:
+loadlin:  LOADLIN.EXE, a loader (running under DOS) for LINUX kernel images
+loadlin:  fully supporting the kernel's command line feature.  LOADLIN or
+loadlin:  BOOTLIN is the safest way to boot Linux (>0.99.14) from your hard
+loadlin:  disk. LOADLIN is (C) 1994 Hans Lermen (lermen@elserv.ffm.fgan.de) 
+loadlin:
+FILE LIST:
+./
+root/
+root/lodlin15.txt
+root/lodlin15.zip

@@ -1,0 +1,17 @@
+diff -u --recursive --new-file linux-1.1.55+new_quota+alpha/drivers/block/ramdisk.c linux/drivers/block/ramdisk.c
+--- linux-1.1.55+new_quota+alpha/drivers/block/ramdisk.c	Thu Oct 13 21:31:06 1994
++++ linux/drivers/block/ramdisk.c	Thu Oct 20 18:22:55 1994
+@@ -186,7 +186,12 @@
+ 		return;
+ 
+ 	/* for Slackware install disks */
+-	printk(KERN_NOTICE "VFS: Insert ramdisk floppy and press ENTER\n");
++        /* Pat's ugly hack */
++        printk(KERN_NOTICE "\n\nPlease remove the boot kernel disk from your floppy drive, insert a\n");
++        printk(KERN_NOTICE "root/install disk (such as one of the Slackware color144, colrlite,\n");
++        printk(KERN_NOTICE "tty144, or tty12 disks) or some other disk you wish to load into a\n");
++        printk(KERN_NOTICE "ramdisk and boot, and then press ENTER to continue.\n\n");
++/*	printk(KERN_NOTICE "VFS: Insert ramdisk floppy and press ENTER\n"); */
+ 	wait_for_keypress();
+ 
+ 	memset(&filp, 0, sizeof(filp));

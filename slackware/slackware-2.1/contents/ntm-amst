@@ -1,0 +1,49 @@
+PACKAGE NAME:     ntm-amst
+COMPRESSED PACKAGE SIZE:     310 K
+UNCOMPRESSED PACKAGE SIZE:     950 K
+PACKAGE LOCATION: diskt5
+PACKAGE DESCRIPTION:
+ntm-amst: ntm-amst 1.1
+ntm-amst:
+ntm-amst: This package contains the macros for AMSTeX. AMSTeX is used to typeset
+ntm-amst: mathematical articles and books and developed by the American
+ntm-amst: Mathematical Society.
+ntm-amst:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/ini/
+usr/lib/texmf/ini/amstex.fmt
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/amstex/
+usr/lib/texmf/tex/amstex/doc/
+usr/lib/texmf/tex/amstex/doc/READ.ME
+usr/lib/texmf/tex/amstex/doc/amsguide.tex
+usr/lib/texmf/tex/amstex/doc/amsppt.doc
+usr/lib/texmf/tex/amstex/doc/amstex.bug
+usr/lib/texmf/tex/amstex/doc/amstinst.tex
+usr/lib/texmf/tex/amstex/doc/joyerr.tex
+usr/lib/texmf/tex/amstex/doc/userdoc.cyr
+usr/lib/texmf/tex/amstex/doc/userdoc.def
+usr/lib/texmf/tex/amstex/doc/userdoc.fnt
+usr/lib/texmf/tex/amstex/doc/userdoc.ins
+usr/lib/texmf/tex/amstex/doc/userdoc.tex
+usr/lib/texmf/tex/amstex/macros/
+usr/lib/texmf/tex/amstex/macros/amsfonts.lst
+usr/lib/texmf/tex/amstex/macros/amsppt.sty
+usr/lib/texmf/tex/amstex/macros/amsppt1.tex
+usr/lib/texmf/tex/amstex/macros/amssym.def
+usr/lib/texmf/tex/amstex/macros/amssym.tex
+usr/lib/texmf/tex/amstex/macros/amstex.ini
+usr/lib/texmf/tex/amstex/macros/amstex.tex
+usr/lib/texmf/tex/amstex/macros/cyracc.def
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/amstex.1.gz
+usr/man/preformat/cat1/lamstex.1.gz
+install/
+install/doinst.sh

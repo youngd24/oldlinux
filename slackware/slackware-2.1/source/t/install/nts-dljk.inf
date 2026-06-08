@@ -1,0 +1,6 @@
+
+NTeX Release 1.2 --- nts-dljk 1.1 --- status: optional
+
+The sources for the dvi2xx drivers. You also need the sources for the
+kpathsea library 2.1 in order to compile the drivers.
+

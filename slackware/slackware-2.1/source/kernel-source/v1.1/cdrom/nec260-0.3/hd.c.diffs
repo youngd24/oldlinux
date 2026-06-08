@@ -1,0 +1,44 @@
+*** drivers/block/hd.c-orig50	Mon Sep 12 01:59:28 1994
+--- drivers/block/hd.c	Mon Sep 12 01:59:35 1994
+***************
+*** 45,50 ****
+--- 45,54 ----
+  #define MAJOR_NR HD_MAJOR
+  #include "blk.h"
+  
++ #ifdef CONFIG_NEC260
++ int the_nec260_major = 0;
++ #endif
++ 
+  #define HD_IRQ 14
+  
+  static int revalidate_hddisk(int, int);
+***************
+*** 646,651 ****
+--- 650,658 ----
+  		return;
+  	special_op [DEVICE_NR(CURRENT->dev)] += reset = 1;
+  	printk(KERN_DEBUG "HD timeout\n");
++ #ifdef CONFIG_NEC260
++ 	if (CURRENT->dev < 0) return;
++ #endif
+  	cli();
+  	if (++CURRENT->errors >= MAX_ERRORS) {
+  #ifdef DEBUG
+***************
+*** 676,681 ****
+--- 683,696 ----
+  		return;
+  repeat:
+  	timer_active &= ~(1<<HD_TIMER);
++ #ifdef CONFIG_NEC260
++ 	if (!CURRENT && the_nec260_major > 0 &&
++ 	    blk_dev[the_nec260_major].current_request) {
++ 	  cli ();
++ 	  (blk_dev[the_nec260_major].request_fn) ();
++ 	}
++ 	if (CURRENT && CURRENT->dev < 0) return;
++ #endif
+  	sti();
+  	INIT_REQUEST;
+  	dev = MINOR(CURRENT->dev);

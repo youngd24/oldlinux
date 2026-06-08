@@ -1,0 +1,21 @@
+PACKAGE NAME:     x_mach8
+COMPRESSED PACKAGE SIZE:     433 K
+UNCOMPRESSED PACKAGE SIZE:     970 K
+PACKAGE LOCATION: diskx2
+PACKAGE DESCRIPTION:
+x_mach8:  An accelerated server for cards using Mach8 chips.
+x_mach8:
+x_mach8:  Installing this package will create a link in /usr/X11/bin from
+x_mach8:  XF86_Mach8 to X, setting this server as the default.
+x_mach8:
+FILE LIST:
+./
+install/
+install/doinst.sh
+usr/
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/XF86_Mach8
+var/
+var/X11R6/
+var/X11R6/bin/

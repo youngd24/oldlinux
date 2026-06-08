@@ -1,0 +1,25 @@
+Begin2
+Title        = NEC CDR-260 cd-rom driver
+Version      = 0.3 alpha
+Desc1        = A prototype driver for the NEC CDR-260 cd-rom drive.
+Desc2        = Allows mounting and reading an iso-9660 filesystem.
+Desc3        = No audio functions are presently supported.
+Desc4        = Should work with devices on either IDE bus.
+Desc5        = Driver is built as a loadable module, but requires a few small
+Desc6        = kernel patches.  Patches are supplied as diffs against 1.1.50,
+Desc7        = but the driver should work with most 1.1 kernels.
+Author       = scott snyder
+AuthorEmail  = snyder@fnald0.fnal.gov
+Maintainer   = scott snyder
+MaintEmail   = snyder@fnald0.fnal.gov
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/kernel/patches/cdrom
+File1        = nec260-0_3.tgz
+FileSize1    = 11265 bytes
+Required1    = NEC CDR-260 cd-rom drive, 1.1 kernel, modules utilities
+CopyPolicy1  = GPL
+Keywords     = cd-rom driver NEC CDR-260
+Entered      = 14SEP94
+EnteredBy    = scott snyder
+CheckedEmail = snyder@fnald0.fnal.gov
+End

@@ -1,0 +1,40 @@
+
+These are GCC 2.6.0 packages.  Note that this isn't really considered
+ready yet and if you use it you take your chances.
+
+gcc260:   GCC 2.6.0
+gcc260:
+gcc260:   GNU GCC 2.6.0 C compiler.
+gcc260:
+gcc260:
+gcc260:
+gcc260:
+gcc260:
+gcc260:
+gcc260:
+gcc260:
+
+gxx260:   G++ 2.6.0
+gxx260:
+gxx260:   GNU G++ 2.6.0 C++ compiler.
+gxx260:
+gxx260:
+gxx260:
+gxx260:
+gxx260:
+gxx260:
+gxx260:
+gxx260:
+
+objc260:  GNU Objective-C 2.6.0
+objc260:
+objc260:  GNU Objective-C 2.6.0 compiler.
+objc260:
+objc260:
+objc260:
+objc260:
+objc260:
+objc260:
+objc260:
+objc260:
+

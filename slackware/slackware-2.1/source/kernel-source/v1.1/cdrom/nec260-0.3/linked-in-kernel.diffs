@@ -1,0 +1,42 @@
+*** drivers/block/Makefile-orig44	Sun Sep 11 02:31:43 1994
+--- drivers/block/Makefile	Sun Sep 11 03:35:22 1994
+***************
+*** 66,71 ****
+--- 66,85 ----
+  
+  all: block.a
+  
++ ifdef CONFIG_NEC260
++ OBJS := $(OBJS) nec260.o
++ SRCS := $(SRCS) nec260.c
++ 
++ CFLAGS := $(CFLAGS) -DLINKED_IN_KERNEL
++ 
++ version.h : ../../tools/version.h
++ 	@echo '#define KERNEL_MAJOR' `awk '/UTS_RELEASE/{print substr($$3,2,length($$3)-2)}' ../../tools/version.h | sed 's/\..*//'` >version.h
++ 	@echo '#define KERNEL_MINOR' `awk '/UTS_RELEASE/{print substr($$3,2,length($$3)-2)}' ../../tools/version.h | sed 's/[^.]*\.//;s/\..*//'` >>version.h
++ 	@echo '#define KERNEL_PATCH' `awk '/UTS_RELEASE/{print substr($$3,2,length($$3)-2)}' ../../tools/version.h | sed 's/.*\.//'` >>version.h
++ 
++ dep :: version.h
++ endif
++ 
+  block.a: $(OBJS)
+  	rm -f block.a
+  	$(AR) rcs block.a $(OBJS)
+*** drivers/block/ll_rw_blk.c-orig44	Sun Sep 11 02:30:41 1994
+--- drivers/block/ll_rw_blk.c	Sun Sep 11 22:55:56 1994
+***************
+*** 496,501 ****
+--- 496,507 ----
+  #ifdef CONFIG_SBPCD
+  	mem_start = sbpcd_init(mem_start, mem_end);
+  #endif CONFIG_SBPCD
++ #ifdef CONFIG_NEC260
++         {
++           extern unsigned long nec260_init (unsigned long, unsigned long);
++ 	  mem_start = nec260_init(mem_start, mem_end);
++ 	}
++ #endif
+  	if (ramdisk_size)
+  		mem_start += rd_init(mem_start, ramdisk_size*1024);
+  	return mem_start;

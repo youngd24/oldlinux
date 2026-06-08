@@ -1,0 +1,33 @@
+Begin3
+Title:		Midnight Commander
+
+Version:	1.0
+
+Entered-date:	29 Oct 1994.
+
+Description:	File manager with mouse support.
+
+Keywords:	File manager, mouse support, gpm client, user shell,
+		menu utility.
+
+Author: 	miguel@roxanne.nuclecu.unam.mx
+		jtklehto@stekt.oulu.fi
+		mok@roxanne.nuclecu.unam.mx
+
+Maintained-by:	miguel@roxanne.nuclecu.unam.mx
+
+Primary-site:	sunsite.unc.edu /pub/Linux/utils/file/managers
+		136k mc-1.0.tar.gz
+
+Alternate-site: ftp.nuclecu.unam.mx /linux/local
+		136k mc-1.0.tar.gz
+
+Platforms:	ncurses 1.8.5; ftp.netcom.com:/pub/zmbenhal
+		if Mouse Support is required on the Linux Console,
+		then the GPM mouse server, available at:
+		iride.unipv.it:/pub/gpm/
+		Mouse support on xterms is standard.
+
+Copying-policy:	GPL
+
+End

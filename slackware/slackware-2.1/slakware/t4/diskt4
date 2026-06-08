@@ -1,0 +1,45 @@
+CONTENTS: ntb-bibt ntb-dlj ntb-utl3 ntf-cmu  
+ntb-bibt: ntb-bibt 1.1
+ntb-bibt:
+ntb-bibt: This package contains the binaries for BiBTeX, a program to maintain
+ntb-bibt: bibliographies under tex and use them in your TeX and LaTeX documents.
+ntb-bibt: It also contains some example databases for bibtex.
+ntb-bibt:
+ntb-bibt:
+ntb-bibt:
+ntb-bibt:
+ntb-bibt:
+ntb-bibt:
+ntb-dlj:  ntb-dlj 1.2
+ntb-dlj:
+ntb-dlj:  This are the binaries for the dvi2xx drivers based on the kpathsea
+ntb-dlj:  library. It contains the drivers dvi2lj, dvi2lj2, dvi2lj2p, dvi2lj4
+ntb-dlj:  and dviibm3812 for the HP Laserjet series and compatible laser 
+ntb-dlj:  printers. The current version is 2.1.
+ntb-dlj:
+ntb-dlj:
+ntb-dlj:
+ntb-dlj:
+ntb-dlj:
+ntb-utl3: ntb-utl3 1.1
+ntb-utl3:
+ntb-utl3: This package contains the binaries for the utilities pltotf, tftopl,
+ntb-utl3: vftovp and vptovf.
+ntb-utl3:
+ntb-utl3:
+ntb-utl3:
+ntb-utl3:
+ntb-utl3:
+ntb-utl3:
+ntb-utl3:
+ntf-cmu:  ntf-cmu 1.1
+ntf-cmu:
+ntf-cmu:  Some additional Computer Modern fonts. Some were used in the MetaFont
+ntf-cmu:  Book and the TeX Book.
+ntf-cmu:
+ntf-cmu:
+ntf-cmu:
+ntf-cmu:
+ntf-cmu:
+ntf-cmu:
+ntf-cmu:

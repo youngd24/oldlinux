@@ -1,0 +1,15 @@
+PACKAGE NAME:     doom1wad
+COMPRESSED PACKAGE SIZE:     1721 K
+UNCOMPRESSED PACKAGE SIZE:     4140 K
+PACKAGE LOCATION: linux-x-doom/doom1wad.tgz
+PACKAGE DESCRIPTION:
+doom1wad: This is the shareware DOOM data file.
+doom1wad:
+doom1wad: You'll need this to run DOOM.
+doom1wad:
+FILE LIST:
+./
+usr/
+usr/games/
+usr/games/doom/
+usr/games/doom/doom1.wad

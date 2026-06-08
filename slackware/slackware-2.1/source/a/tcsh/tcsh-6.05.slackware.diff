@@ -1,0 +1,27 @@
+--- config_f.h.orig	Sun Oct 23 14:41:22 1994
++++ config_f.h	Sun Oct 23 14:42:44 1994
+@@ -126,8 +126,12 @@
+  *		using first getpeername, and then the utmp file. If
+  *		successful, set $REMOTEHOST to the name or address of the
+  *		host
++ *
++ * NOTE: This causes delays on hosts that truncate the hostname in the
++ * utmp file.  This often happens on Linux, so be forewarned.
++ *
+  */
+-#define REMOTEHOST
++#undef REMOTEHOST
+ 
+ /*
+  * RCSID	This defines if we want rcs strings in the binary or not
+--- pathnames.h.orig	Sun Oct 23 14:46:12 1994
++++ pathnames.h	Sun Oct 23 14:46:42 1994
+@@ -141,7 +141,7 @@
+ #endif /* !_PATH_CSHELL */
+ 
+ #ifndef _PATH_TCSHELL
+-#  define _PATH_TCSHELL		"/usr/local/bin/tcsh"
++#  define _PATH_TCSHELL		"/bin/tcsh"
+ #endif /* !_PATH_TCSHELL */
+ 
+ #ifndef _PATH_LOGIN

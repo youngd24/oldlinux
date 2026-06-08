@@ -1,0 +1,40 @@
+PACKAGE NAME:     syslogd
+COMPRESSED PACKAGE SIZE:     23 K
+UNCOMPRESSED PACKAGE SIZE:     70 K
+PACKAGE LOCATION: diska3
+PACKAGE DESCRIPTION:
+syslogd:  Sysklogd 1.2
+syslogd:
+syslogd:  Dr. Greg Wettstein and Stephen Tweedie's syslogd/klogd.
+syslogd:
+syslogd:  This package contains a modified version of syslogd for the Linux
+syslogd:  environment.  An additional utility, klogd, is included which allows
+syslogd:  kernel logging to be directed through the syslogd facility.
+syslogd:  Syslogd and klogd are started when your system boots.
+syslogd:
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat4/
+usr/man/preformat/cat4/syslog.conf.4.gz
+usr/man/preformat/cat8/
+usr/man/preformat/cat8/klogd.8.gz
+usr/man/preformat/cat8/sysklogd.8.gz
+usr/sbin/
+usr/sbin/syslogd
+usr/sbin/klogd
+usr/sbin/syslog_tst
+usr/doc/
+usr/doc/sysklogd/
+usr/doc/sysklogd/README.linux
+usr/doc/sysklogd/INSTALL
+usr/doc/sysklogd/MANIFEST
+etc/
+etc/syslog.conf
+var/
+var/adm/
+var/adm/debug
+var/adm/messages
+var/adm/syslog

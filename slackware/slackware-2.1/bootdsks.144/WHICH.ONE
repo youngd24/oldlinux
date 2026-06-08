@@ -1,0 +1,73 @@
+Thu Sep 15 17:51:52 CDT 1994
+
+Q: There are so many bootdisks! Which one should I use?
+
+A: Here's a little table to help you decide. In each box, the best choice
+   will be at the top of the list. Other disks you might try if the recommended
+   choice doesn't work are preceded by a (*). If you can't install directly from
+   your CD-ROM, you might consider copying the disk directories onto your hard
+   drive on a DOS or HPFS partition and installing from there.
+
+   A little about the alternate choices: "old1118" is an older 1.1.18 kernel,
+   included just in case.  If you system turns out to need this, you might also
+   have trouble booting the installed system.  In that case, use the 1.1.18
+   disk to boot the installed system, too.  "alpha" is a bootdisk containing a
+   few alpha SCSI drivers (IN2000, 274x, EATA).  "loaded" is a last resort -
+   a disk with as many drivers as possible compiled into it.  My guess is that
+   most machines would have trouble booting it, but you never know.
+
+   -- Pat
+
+
+------------\              Target hard drive type:
+Slackware    \       
+source on:    \      IDE                 SCSI             MFM
+--------------+------------------+------------------+-------------------------
+Floppy:       | bare             | scsi             | xt
+              | * old1118        | * old1118        |
+              |                  | * alpha          |
+              |                  | * loaded         |
+--------------+------------------+------------------+-------------------------
+Hard Drive:   | bare             | scsi             | xt
+              | * old1118        | * old1118        |
+              |                  | * alpha          |
+              |                  | * loaded         |
+--------------+------------------+------------------+-------------------------
+SCSI CD-ROM:  | scsi             | scsi             |
+              | * old1118        | * old1118        |
+              | * alpha          | * alpha          |
+              | * loaded         | * loaded         |
+--------------+------------------+------------------+------------------------- 
+              | mitsumi          | mitsumi          |
+Mitsumi CD:   | * old1118        | * old1118        |
+              | * loaded         | * loaded         |
+--------------+------------------+------------------+-------------------------
+Sony CDU31a   | cdu31a           | cdu31a           |
+or CDU33a CD: | * old1118        | * old1118        |
+              | * loaded         | * loaded         |
+--------------+------------------+------------------+-------------------------
+Soundblaster, | sbpcd            | sbpcd            |
+Panasonic,    | * old1118        | * old1118        |
+Kotobuki,     | * loaded         | *loaded          |
+Matsushita,   |                  |                  |
+& Lasermate   |                  |                  |
+CD-ROM:       |                  |                  |
+--------------+------------------+------------------+-------------------------
+Sony 535/531  | cdu535           | cdu535           |
+CD-ROM:       | * loaded         | * loaded         | 
+------------------------------------------------------------------------------
+NEC 260 IDE   | nec260           | nec260           |
+CD-ROM:       | * loaded         | * loaded         |
+--------------+------------------+------------------+-------------------------
+NFS:          | net              | scsinet          |
+              | * old1118        | * old1118        |
+--------------+------------------+------------------+-------------------------
+Tape:         | bare (for floppy | scsi             | xt (for floppy tape)
+              |       tape)      | alpha (for SCSI  |
+              | scsi (for SCSI   |   tape on IN2000 |
+              |       tape)      |   or EATA)       |
+              | alpha (for SCSI  | * old1118        |
+              |   tape on IN2000 | * loaded         |
+              |   or EATA)       |                  |
+              | * old1118        |                  |
+--------------+------------------+------------------+-------------------------

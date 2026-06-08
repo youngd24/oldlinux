@@ -1,0 +1,134 @@
+Quickstart for LOADLIN-1.5
+==========================
+
+Version 1.5 of LOADLIN (as opposite to prior versions) normally needs no
+special configuration and has been reported very stable by all ALPHA testers,
+so I guess you will only need
+
+   LOADLIN.EXE,
+   LOADLINX.EXE  ( the optional preprocessor,
+                   processes on input params, then executes LOADLIN.EXE. )
+
+Copy these files to a DOS partition (e.g C:\LOADLIN). You must keep both files
+in the same directory, otherwise LOADLINX can't find LOADLIN.
+
+To boot Linux you need also a compressed kernel image file such as
+the "/vmlinuz" or the "/usr/src/zImage". In Slackware distribution you
+can find a lot of kernels (bare, scsi, modern, ...) in the directory
+..../slackware/kernels of the site you got it from.
+
+Copy the image file to your DOS partion (e.g. C:\).
+
+To boot type at dos prompt:
+
+  1. For a Linux partition (ext2, minix, ...) to mount as root
+
+         loadlin c:\vmlinuz root=/dev/hdb2 ro
+                                           ==
+
+  2. For an UMSDOS filesystem to mount as root
+
+         loadlin c:\vmlinuz root=/dev/hda1 rw
+                                           ==
+     or
+         loadlinX c:\vmlinuz root=c: rw
+
+  3. To boot from a SlackWare installation root floppy in drive A:
+     having the kernel image file on the hard disk.
+
+         loadlinX c:bare root=a: rw ramdisk=1440,no
+
+     To boot from a SlackWare installation root floppy in drive B:
+     having the DOS-floppy with the kernel image in drive A:
+
+         loadlinX a:scsi root=b: rw ramdisk=1440,no
+
+     To boot from a SlackWare installation root floppy in drive A:
+     *and* having the DOS-floppy with the kernel image in drive A:
+
+         loadlinX a:modern root=a: rw ramdisk=1440
+
+     ( LOADLIN will prompt for disk change after having loaded the kernel )
+
+
+NOTE: You must know what root partition to use, the above /dev/xxx or C:
+      are only examples !!!
+
+
+If you didn't succeed, please read the file MANUAL.TXT.
+
+
+Especially for Slackware users I append a modified version of
+Patrick Volkerding's LODLIN14.TXT which comes with SlackWare
+distribution 2.0.0.
+Assuming Pat will upgrade to LOADLIN-1.5, his then LODLIN15.TXT should
+look like the text below the "------".
+
+Please note, that the official LOADLIN distribution comes as *.TGZ,
+but Pat's comes as *.ZIP.
+
+[ NOTE: The original lodlin15.tgz file can be found in the 
+  slackware_source/contrib directory. -- Pat ]
+
+So, if you have already Slackware 2.0.0 installed, you must skip the
+"unzip ... pkunzip lodlin15.zip" part and install LOADLIN-1.5
+(under Linux) as follows:
+
+   mount -t msdos /dev/hda1 /mnt
+   cd /mnt
+   mkdir loadlin
+   cd loadlin
+   tar -xzvf lodlin15.tgz
+
+
+Hans Lermen
+elserv.ffm.fgan.de
+
+============================================================================
+----------------------------------------------------------------------------
+
+This is a utility that allows you to start Linux from MS-DOS. It's a good
+alternative to using LILO to boot your machine, and is probably a lot safer
+for beginners to deal with. It also works great with UMSDOS, while LILO
+does not.
+
+To use it, install Linux. Skip the LILO installation, but make a bootdisk at
+the beginning of the system configuration process. Boot your system, and copy
+the kernel (/vmlinuz) to your DOS partition. You may have had this mounted
+somewhere when you installed Linux. If not, you'll have to mount it yourself
+with a command like:
+
+   mount /dev/hda1 /mnt -t msdos
+
+You can look to see which partitions are DOS partitions with 'fdisk -l'.
+
+Copy the kernel over:
+
+   cp /vmlinuz /mnt/vmlinuz
+
+Next, get DOS going... and unzip the lodlin15.zip file:
+
+     unzip -d lodlin15.zip
+or:  pkunzip -d lodlin15.zip
+
+Then, read the docs in C:\LOADLIN (or wherever you put it). They'll be a lot
+more help than I will, since they were written by the program's author. :^)
+
+For the record, all I had to do to get loadlin.exe to boot my Linux partition
+was:
+
+     Booted my Linux system with this command:
+     loadlin c:\vmlinuz root=/dev/hdb3 ro
+
+If you use UMSDOS, you can use syntax like this as well:
+     loadlinx c:\vmlinuz root=c: rw
+
+Again, see the docs that come with LOADLIN for complete details on all the
+options, including the most complete list I've seen of options that can be
+passed to the kernel at boot time. :^)
+
+Good luck,
+
+---
+Patrick Volkerding
+volkerdi@mhd1.moorhead.msus.edu

@@ -1,0 +1,283 @@
+diff -ru --new-file linux-1.1.48/fs/exec.c linux/fs/exec.c
+--- linux-1.1.48/fs/exec.c	Mon Aug 29 14:42:39 1994
++++ linux/fs/exec.c	Mon Aug 29 14:34:45 1994
+@@ -203,6 +203,7 @@
+ 	if (!file.f_op->write)
+ 		goto close_coredump;
+ 	has_dumped = 1;
++	current->flags |= PF_DUMPCORE;
+ /* changed the size calculations - should hopefully work better. lbt */
+ 	dump.magic = CMAGIC;
+ 	dump.start_code = 0;
+@@ -817,6 +818,7 @@
+ 	current->mm->mmap = NULL;
+ 	current->suid = current->euid = current->fsuid = bprm->e_uid;
+ 	current->sgid = current->egid = current->fsgid = bprm->e_gid;
++ 	current->flags &= ~PF_FORKNOEXEC;
+ 	if (N_MAGIC(ex) == OMAGIC) {
+ 		do_mmap(NULL, 0, ex.a_text+ex.a_data,
+ 			PROT_READ|PROT_WRITE|PROT_EXEC,
+diff -ru --new-file linux-1.1.48/include/linux/acct.h linux/include/linux/acct.h
+--- linux-1.1.48/include/linux/acct.h	Thu Jan  1 02:00:00 1970
++++ linux/include/linux/acct.h	Mon Aug 29 14:33:03 1994
+@@ -0,0 +1,29 @@
++#ifndef __LINUX_ACCT_H
++#define __LINUX_ACCT_H
++
++#define ACCT_COMM 16
++
++struct acct
++{
++	char	ac_comm[ACCT_COMM];	/* Accounting command name */
++	time_t	ac_utime;		/* Accounting user time */
++	time_t	ac_stime;		/* Accounting system time */
++	time_t	ac_etime;		/* Accounting elapsed time */
++	time_t	ac_btime;		/* Beginning time */
++	uid_t	ac_uid;			/* Accounting user ID */
++	gid_t	ac_gid;			/* Accounting group ID */
++	dev_t	ac_tty;			/* controlling tty */
++	char	ac_flag;		/* Accounting flag */
++	long	ac_minflt;		/* Accounting minor pagefaults */
++	long	ac_majflt;		/* Accounting major pagefaults */
++	long	ac_exitcode;		/* Accounting process exitcode */
++};
++
++#define AFORK	0001	/* has executed fork, but no exec */
++#define ASU	0002	/* used super-user privileges */
++#define ACORE	0004	/* dumped core */
++#define AXSIG	0010	/* killed by a signal */
++
++#define AHZ     100
++
++#endif
+diff -ru --new-file linux-1.1.48/include/linux/kernel.h linux/include/linux/kernel.h
+--- linux-1.1.48/include/linux/kernel.h	Thu Aug 11 17:00:17 1994
++++ linux/include/linux/kernel.h	Mon Aug 29 14:38:16 1994
+@@ -55,16 +55,9 @@
+ 	__attribute__ ((format (printf, 1, 2)));
+ 
+ /*
+- * This is defined as a macro, but at some point this might become a
+- * real subroutine that sets a flag if it returns true (to do
+- * BSD-style accounting where the process is flagged if it uses root
+- * privs).  The implication of this is that you should do normal
+- * permissions checks first, and check suser() last.
+- *
+  * "suser()" checks against the effective user id, while "fsuser()"
+  * is used for file permission checking and checks against the fsuid..
+  */
+-#define suser() (current->euid == 0)
+ #define fsuser() (current->fsuid == 0)
+ 
+ extern int splx (int new_ipl);
+diff -ru --new-file linux-1.1.48/include/linux/sched.h linux/include/linux/sched.h
+--- linux-1.1.48/include/linux/sched.h	Mon Aug 29 14:42:44 1994
++++ linux/include/linux/sched.h	Mon Aug 29 14:33:12 1994
+@@ -310,6 +310,10 @@
+ 					/* Not implemented yet, only for 486*/
+ #define PF_PTRACED	0x00000010	/* set if ptrace (0) has been called. */
+ #define PF_TRACESYS	0x00000020	/* tracing system calls */
++#define PF_FORKNOEXEC	0x00000040	/* forked but didn't exec */
++#define PF_SUPERPREV	0x00000100	/* used super-user privileges */
++#define PF_DUMPCORE	0x00000200	/* dumped core */
++#define PF_SIGNALED	0x00000400	/* killed by a signal */
+ 
+ /*
+  * cloning flags:
+@@ -449,6 +453,19 @@
+ 
+ #define set_base(ldt,base) _set_base( ((char *)&(ldt)) , base )
+ #define set_limit(ldt,limit) _set_limit( ((char *)&(ldt)) , (limit-1)>>12 )
++
++/*
++ * This has now become a routine instead of a macro, it sets a flag if
++ * it returns true (to do BSD-style accounting where the process is flagged
++ * if it uses root privs). The implication of this is that you should do
++ * normal permissions checks first, and check suser() last.
++ */
++extern inline int suser(void)
++{
++	if (current->euid == 0)
++		current->flags |= PF_SUPERPREV;
++	return (current->euid == 0);
++}
+ 
+ /*
+  * The wait-queues are circular lists, and you have to be *very* sure
+diff -ru --new-file linux-1.1.48/kernel/exit.c linux/kernel/exit.c
+--- linux-1.1.48/kernel/exit.c	Tue Aug  9 09:34:45 1994
++++ linux/kernel/exit.c	Mon Aug 29 14:33:13 1994
+@@ -19,6 +19,7 @@
+ #include <asm/segment.h>
+ extern void shm_exit (void);
+ extern void sem_exit (void);
++extern void acct_process (long exitcode);
+ 
+ int getrusage(struct task_struct *, int, struct rusage *);
+ 
+@@ -411,6 +412,7 @@
+ 		intr_count = 0;
+ 	}
+ fake_volatile:
++	acct_process(code);
+ 	if (current->semun)
+ 		sem_exit();
+ 	if (current->shm)
+diff -ru --new-file linux-1.1.48/kernel/fork.c linux/kernel/fork.c
+--- linux-1.1.48/kernel/fork.c	Tue Jul 26 11:25:11 1994
++++ linux/kernel/fork.c	Mon Aug 29 14:33:13 1994
+@@ -188,7 +188,8 @@
+ 	p->did_exec = 0;
+ 	p->kernel_stack_page = 0;
+ 	p->state = TASK_UNINTERRUPTIBLE;
+-	p->flags &= ~(PF_PTRACED|PF_TRACESYS);
++	p->flags &= ~(PF_PTRACED|PF_TRACESYS|PF_SUPERPREV);
++	p->flags |= PF_FORKNOEXEC;
+ 	p->pid = last_pid;
+ 	p->p_pptr = p->p_opptr = current;
+ 	p->p_cptr = NULL;
+diff -ru --new-file linux-1.1.48/kernel/signal.c linux/kernel/signal.c
+--- linux-1.1.48/kernel/signal.c	Fri Jun 17 15:36:19 1994
++++ linux/kernel/signal.c	Mon Aug 29 14:33:13 1994
+@@ -356,6 +356,7 @@
+ 				/* fall through */
+ 			default:
+ 				current->signal |= _S(signr & 0x7f);
++				current->flags |= PF_SIGNALED;
+ 				do_exit(signr);
+ 			}
+ 		}
+diff -ru --new-file linux-1.1.48/kernel/sys.c linux/kernel/sys.c
+--- linux-1.1.48/kernel/sys.c	Mon Aug 29 14:42:46 1994
++++ linux/kernel/sys.c	Mon Aug 29 14:33:14 1994
+@@ -17,7 +17,11 @@
+ #include <linux/ptrace.h>
+ #include <linux/stat.h>
+ #include <linux/mman.h>
+-
++#include <linux/fcntl.h>
++#include <linux/acct.h>
++#include <linux/tty.h>
++#include <sys/sysmacros.h>
++  
+ #include <asm/segment.h>
+ #include <asm/io.h>
+ 
+@@ -250,10 +254,113 @@
+ 		return -EPERM;
+ 	return 0;
+ }
+-
+-asmlinkage int sys_acct(void)
+-{
+-	return -ENOSYS;
++  
++static char acct_active = 0;
++static struct file acct_file;
++
++int acct_process(long exitcode)
++{
++   struct acct ac;
++   unsigned short fs;
++
++   if (acct_active) {
++      strncpy(ac.ac_comm, current->comm, ACCT_COMM);
++      ac.ac_comm[ACCT_COMM] = '\0';
++      ac.ac_utime = current->utime;
++      ac.ac_stime = current->stime;
++      ac.ac_btime = CT_TO_SECS(current->start_time) + (xtime.tv_sec - (jiffies / HZ));
++      ac.ac_etime = CURRENT_TIME - ac.ac_btime;
++      ac.ac_uid   = current->uid;
++      ac.ac_gid   = current->gid;
++      ac.ac_tty   = (current)->tty == NULL ? -1 : 
++         makedev (4, current->tty->device);
++      ac.ac_flag  = 0;
++      if (current->flags & PF_FORKNOEXEC)
++         ac.ac_flag |= AFORK;
++      if (current->flags & PF_SUPERPREV)
++         ac.ac_flag |= ASU;
++      if (current->flags & PF_DUMPCORE)
++         ac.ac_flag |= ACORE;
++      if (current->flags & PF_SIGNALED)
++         ac.ac_flag |= AXSIG;
++      ac.ac_minflt = current->mm->min_flt;
++      ac.ac_majflt = current->mm->maj_flt;
++      ac.ac_exitcode = exitcode;
++
++      /* Kernel segment override */
++      fs = get_fs();
++      set_fs(KERNEL_DS);
++
++      acct_file.f_op->write(acct_file.f_inode, &acct_file,
++                             (char *)&ac, sizeof(struct acct));
++
++      set_fs(fs);
++   }
++   return 0;
++}
++
++asmlinkage int sys_acct(const char *name)
++{
++   struct inode *inode = (struct inode *)0;
++   char *tmp;
++   int error;
++
++   if (!suser())
++      return -EPERM;
++
++   if (name == (char *)0) {
++      if (acct_active) {
++         if (acct_file.f_op->release)
++            acct_file.f_op->release(acct_file.f_inode, &acct_file);
++
++         if (acct_file.f_inode != (struct inode *) 0)
++            iput(acct_file.f_inode);
++
++         acct_active = 0;
++      }
++      return 0;
++   } else {
++      if (!acct_active) {
++
++         if ((error = getname(name, &tmp)) != 0)
++            return (error);
++
++         error = open_namei(tmp, O_RDWR, 0600, &inode, 0);
++         putname(tmp);
++
++         if (error)
++            return (error);
++
++         if (!S_ISREG(inode->i_mode)) {
++            iput(inode);
++            return -EACCES;
++         }
++
++         if (!inode->i_op || !inode->i_op->default_file_ops || 
++             !inode->i_op->default_file_ops->write) {
++            iput(inode);
++            return -EIO;
++         }
++
++         acct_file.f_mode = 3;
++         acct_file.f_flags = 0;
++         acct_file.f_count = 1;
++         acct_file.f_inode = inode;
++         acct_file.f_pos = inode->i_size;
++         acct_file.f_reada = 0;
++         acct_file.f_op = inode->i_op->default_file_ops;
++
++         if (acct_file.f_op->open)
++            if (acct_file.f_op->open(acct_file.f_inode, &acct_file)) {
++               iput(inode);
++               return -EIO;
++            }
++
++         acct_active = 1;
++         return 0;
++      } else
++         return -EBUSY;
++   }
+ }
+ 
+ asmlinkage int sys_phys(void)

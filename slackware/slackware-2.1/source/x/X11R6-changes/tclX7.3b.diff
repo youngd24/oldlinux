@@ -1,0 +1,8 @@
+--- tksrc/jump/jump.undefs.orig	Sat Oct  8 02:27:23 1994
++++ tksrc/jump/jump.undefs	Sat Oct  8 02:27:34 1994
+@@ -1,4 +1,4 @@
+-60d8947c D __NEEDS_SHRLIB_libX11_3
++60d8947c D __NEEDS_SHRLIB_libX11_6
+ 60d894a4 D __NEEDS_SHRLIB_libc_4
+ 60d89490 D __NEEDS_SHRLIB_libm_4
+ 60d89468 D __NEEDS_SHRLIB_libtcl_3

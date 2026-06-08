@@ -1,0 +1,8 @@
+--- jump/jump.undefs.orig	Sat Oct  8 02:00:00 1994
++++ jump/jump.undefs	Sat Oct  8 02:00:07 1994
+@@ -1,4 +1,4 @@
+-60d57d94 D __NEEDS_SHRLIB_libX11_3
++60d57d94 D __NEEDS_SHRLIB_libX11_6
+ 60d57dd0 D __NEEDS_SHRLIB_libc_4
+ 60d57dbc D __NEEDS_SHRLIB_libm_4
+ 60d57da8 D __NEEDS_SHRLIB_libtcl_3

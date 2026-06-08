@@ -1,0 +1,35 @@
+PACKAGE NAME:     gzip
+COMPRESSED PACKAGE SIZE:     38 K
+UNCOMPRESSED PACKAGE SIZE:     90 K
+PACKAGE LOCATION: diska2
+PACKAGE DESCRIPTION:
+gzip:     GNU zip compression utilities. (v. 1.2.4)
+gzip:
+gzip:     Gzip reduces the size of the named files using Lempel-Ziv coding
+gzip:     (LZ77).  Whenever possible, each file is replaced by one with the
+gzip:     extension .gz, while keeping the same ownership modes, access and
+gzip:     modification times.
+gzip:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/zgrep
+usr/bin/zforce
+usr/bin/znew
+usr/bin/zdiff
+usr/bin/gzexe
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/zforce.1.gz
+usr/man/preformat/cat1/zgrep.1.gz
+usr/man/preformat/cat1/zmore.1.gz
+usr/man/preformat/cat1/znew.1.gz
+usr/man/preformat/cat1/gzexe.1.gz
+usr/man/preformat/cat1/gzip.1.gz
+usr/man/preformat/cat1/zdiff.1.gz
+install/
+install/doinst.sh
+bin/
+bin/gzip

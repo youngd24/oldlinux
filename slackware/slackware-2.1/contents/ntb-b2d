@@ -1,0 +1,23 @@
+PACKAGE NAME:     ntb-b2d
+COMPRESSED PACKAGE SIZE:     4 K
+UNCOMPRESSED PACKAGE SIZE:     30 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntb-b2d:  ntb-b2d 1.0
+ntb-b2d:
+ntb-b2d:  Bib2dvi converts a BibTeX .bib file into a LaTeX formatted .dvi file.
+ntb-b2d:  You'll find the files for bib2dvi in /usr/lib/texmf/tools/bib2dvi.
+ntb-b2d:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/tools/
+usr/lib/texmf/tools/bib2dvi/
+usr/lib/texmf/tools/bib2dvi/b2d_dutch.sty
+usr/lib/texmf/tools/bib2dvi/b2d_english.sty
+usr/lib/texmf/tools/bib2dvi/bib2dvi
+usr/lib/texmf/tools/bib2dvi/bib2dvi.sty
+usr/lib/texmf/tools/bib2dvi/bib2dvi1.awk
+usr/lib/texmf/tools/bib2dvi/bib2dvi2.awk

@@ -1,0 +1,99 @@
+#!/bin/sh
+dialog --title "Install packages from the XV series (XView)" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disc must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+20 70 8 \
+"xv32_sa" "Shared library stubs for xview3.2" "off" \
+"xv32_so" "DLL (shared) libraries for xview3.2" "off" \
+"xv32_a" "Static libraries for xview3.2" "off" \
+"xvinc32" "Include files for xview3.2" "off" \
+"xvmenus" "Menus and help files for the OpenLook WM" "off" \
+"workman" "WorkMan-1.2.2a" "off" \
+"xv32exmp" "Sample source code for Xview" "off" \
+"xvol32" "Binaries for xview3.2" "off" \
+2> /tmp/return
+if fgrep '"xv32_sa"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xv32_sa to your hard drive" --infobox \
+"Shared library stubs for xview3.2p1-X11R6.\n\
+\n\
+Library stubs, needed to compile Xview applications which use the\n\
+shared libraries.\n\
+\n\
+" 7 75
+ installpkg xv1/xv32_sa.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xv32_so"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xv32_so to your hard drive" --infobox \
+"DLL (shared) libraries for xview3.2p1-X11R6.\n\
+\n\
+XView provides a set of pre-built, user-interface objects such as\n\
+canvases, scrollbars, menus, and control panels.  The appearance and\n\
+functionality of these objects follow the OPEN LOOK Graphical User\n\
+Interface (GUI) specification.\n\
+\n\
+" 9 75
+ installpkg xv1/xv32_so.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xv32_a"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xv32_a to your hard drive" --infobox \
+"Static libraries for xview3.2p1-X11R6.\n\
+\n\
+Libraries for compiling statically linked Xview applications. Only\n\
+needed if you are planning to debug Xview applications, or compile\n\
+them with the -g or -static flags.\n\
+\n\
+" 8 75
+ installpkg xv2/xv32_a.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xvinc32"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xvinc32 to your hard drive" --infobox \
+"Include files for xview3.2p1-X11R6.\n\
+\n\
+Include files needed for Xview programming.\n\
+\n\
+" 6 75
+ installpkg xv2/xvinc32.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xvmenus"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xvmenus to your hard drive" --infobox \
+"Menus and help files for the OpenLook Window Manager.\n\
+\n\
+" 4 75
+ installpkg xv2/xvmenus.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"workman"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package workman to your hard drive" --infobox \
+"WorkMan-1.2.2a\n\
+\n\
+A graphical tool for playing audio compact discs in a CD-ROM drive.\n\
+It has most of the features available on standalone CD players, such\n\
+as a shuffle mode, programmable  playlists, and elapsed/remaining \n\
+timers.  Extra features include the ability to store information about\n\
+CDs in a database and then automatically extract that information when\n\
+the CD is inserted later.\n\
+\n\
+" 11 75
+ installpkg xv3/workman.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xv32exmp"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xv32exmp to your hard drive" --infobox \
+"Sample programs for Xview which demonstrate the Slingshot and UIT\n\
+extensions, libraries which greatly simplify programming a user\n\
+interface under X.\n\
+\n\
+" 6 75
+ installpkg xv3/xv32exmp.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xvol32"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xvol32 to your hard drive" --infobox \
+"Binaries for xview3.2p1-X11R6.\n\
+\n\
+Configuration files, programs, and documentation for xview3.2p1-X11R6.\n\
+\n\
+Includes these programs: xgettext msgfmt olwm svenv toolwait winsysck\n\
+owplaces openwin xcenter clock cmdtool olwmslave props textedit\n\
+olvwm xtoolplaces meminfo\n\
+\n\
+" 10 75
+ installpkg xv3/xvol32.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

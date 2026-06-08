@@ -1,0 +1,21 @@
+PACKAGE NAME:     x_mono
+COMPRESSED PACKAGE SIZE:     438 K
+UNCOMPRESSED PACKAGE SIZE:     1120 K
+PACKAGE LOCATION: diskx2
+PACKAGE DESCRIPTION:
+x_mono:   A Monochrome server.
+x_mono:
+x_mono:   Installing this package will create a link in /usr/X11/bin from
+x_mono:   XF86_Mono to X, setting this server as the default.
+x_mono:
+FILE LIST:
+./
+install/
+install/doinst.sh
+usr/
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/XF86_Mono
+var/
+var/X11R6/
+var/X11R6/bin/

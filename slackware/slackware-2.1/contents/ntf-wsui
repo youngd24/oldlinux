@@ -1,0 +1,69 @@
+PACKAGE NAME:     ntf-wsui
+COMPRESSED PACKAGE SIZE:     70 K
+UNCOMPRESSED PACKAGE SIZE:     440 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-wsui: ntf-wsui 1.1
+ntf-wsui:
+ntf-wsui: The WSU IPA fonts providing a set of symbols for the International
+ntf-wsui: Phonetic Alphabet.
+ntf-wsui:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/symbol/
+usr/lib/texmf/fonts/symbol/wsuipa/
+usr/lib/texmf/fonts/symbol/wsuipa/create.sh
+usr/lib/texmf/fonts/symbol/wsuipa/src/
+usr/lib/texmf/fonts/symbol/wsuipa/src/iaccent.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/igreekl.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/iparoman.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/iromanl.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/iromanp.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/iromanu.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wbxipa10.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wbxipa11.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wbxipa12.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wbxipa17.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wbxipa8.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wbxipa9.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wslipa10.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wslipa11.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wslipa12.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wslipa17.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wslipa8.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wslipa9.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wsuipa10.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wsuipa11.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wsuipa12.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wsuipa17.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wsuipa8.mf
+usr/lib/texmf/fonts/symbol/wsuipa/src/wsuipa9.mf
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wbxipa10.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wbxipa11.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wbxipa12.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wbxipa17.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wbxipa8.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wbxipa9.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wslipa10.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wslipa11.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wslipa12.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wslipa17.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wslipa8.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wslipa9.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wsuipa10.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wsuipa11.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wsuipa12.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wsuipa17.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wsuipa8.tfm
+usr/lib/texmf/fonts/symbol/wsuipa/tfm/wsuipa9.tfm
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/symbol/
+usr/lib/texmf/tex/symbol/ipamacs.tex
+usr/lib/texmf/tex/symbol/ipaman.dvi
+usr/lib/texmf/tex/symbol/ipaman.ltx
+usr/lib/texmf/tex/symbol/ipaman.tex

@@ -1,0 +1,24 @@
+PACKAGE NAME:     gs_x11
+COMPRESSED PACKAGE SIZE:     186 K
+UNCOMPRESSED PACKAGE SIZE:     450 K
+PACKAGE LOCATION: diskxap1
+PACKAGE DESCRIPTION:
+gs_x11:   Replacement /usr/bin/gs with X11 options compiled in.
+gs_x11:
+gs_x11:   This should be installed on top of the "ghostscr" package from the
+gs_x11:   A series to provide X11 support for ghostview. If you plan to preview
+gs_x11:   Postscript documents under X, you need to install this. Also, if 
+gs_x11:   you've installed ghostscript already it is highly recommended that you
+gs_x11:   install this package just in case. Since it replaces another binary
+gs_x11:   it really only uses about 25K.
+gs_x11:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/gs
+var/
+var/X11R6/
+var/X11R6/lib/
+var/X11R6/lib/app-defaults/
+var/X11R6/lib/app-defaults/Ghostview

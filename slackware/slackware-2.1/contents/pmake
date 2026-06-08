@@ -1,0 +1,28 @@
+PACKAGE NAME:     pmake
+COMPRESSED PACKAGE SIZE:     51 K
+UNCOMPRESSED PACKAGE SIZE:     120 K
+PACKAGE LOCATION: diskd2
+PACKAGE DESCRIPTION:
+pmake:    BSD 4.4 make. This may be required if you're going to port software
+pmake:    with Makefiles designed for BSD. The binary is installed as
+pmake:    /usr/bin/pmake. Man pages are included.
+pmake:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/pmake
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/pmake.1.gz
+usr/share/
+usr/share/mk/
+usr/share/mk/Makefile
+usr/share/mk/bsd.README
+usr/share/mk/bsd.doc.mk
+usr/share/mk/bsd.lib.mk
+usr/share/mk/bsd.man.mk
+usr/share/mk/bsd.prog.mk
+usr/share/mk/bsd.subdir.mk
+usr/share/mk/sys.mk

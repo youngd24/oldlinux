@@ -1,0 +1,34 @@
+CONTENTS: oldlibs xfnt xextra  
+oldlibs:  Shared X libraries from XFree86 2.1.1 (X11R5).
+oldlibs:
+oldlibs:  This package adds libX11.so.3.1.0, libXaw.so.3.1.0, and
+oldlibs:  libXt.so.3.1.0 to your /usr/X11R6/lib directory.  Although most 
+oldlibs:  X software in Slackware has been recompiled to use the new X
+oldlibs:  libraries, there's still plenty of software out there that will
+oldlibs:  require these libraries for compatibility with XFree86 3.1.
+oldlibs:
+oldlibs:  Some things that currently require these libraries: the XV series,
+oldlibs:  workman, and DOOM.
+oldlibs:
+xfnt:     Fonts for the X window system.
+xfnt:
+xfnt:     This is the minimal set of fonts needed to run XFree86 3.1.
+xfnt:
+xfnt:     These fonts are compressed to reduce disk usage.
+xfnt:
+xfnt:
+xfnt:
+xfnt:
+xfnt:
+xfnt:
+xextra:   Two optional experimental servers for X11R6.
+xextra:
+xextra:   Xvfb -- a virtual framebuffer X server. Xvfb is an X server that can
+xextra:   run on machines with no display hardware and no physical input 
+xextra:   devices.  It emulates a dumb framebuffer using virtual memory.
+xextra:
+xextra:   Xnest -- a nested X server.  Xnest is a client of the real server
+xextra:   which manages windows and graphics requests on its behalf.  Xnest is a
+xextra:   server to its own clients.  Xnest manages windows and graphics 
+xextra:   requests on their behalf.
+xextra:

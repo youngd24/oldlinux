@@ -1,0 +1,14 @@
+
+NTeX Release 1.2 --- ntb-djc 0.1 --- status: optional
+
+This are the binaries for the dvi driver for the HP Deskjet 500, 500c 
+and 550c. They do not use that kpathsea library and expect the pk files
+for the Deskjet in the directory /usr/lib/texmf/pk and the tfm files
+in /usr/lib/texmf/tfm. So if you want to use this drivers you have to
+copy the pk and tfm files in these directories or make a symbolic link
+from these directories to the pk and tfm files. I could not test these
+drivers, but they seem to work if the font-files are in the appropriate 
+directories. If someone knows more about these drivers or has a 
+kpathsea library version of them please let me know. The sources of the
+drivers could be found in the package nts-djc
+

@@ -1,0 +1,21 @@
+PACKAGE NAME:     x_svga
+COMPRESSED PACKAGE SIZE:     592 K
+UNCOMPRESSED PACKAGE SIZE:     1380 K
+PACKAGE LOCATION: x3/x_svga.tgz
+PACKAGE DESCRIPTION:
+x_svga:   A server for SuperVGA video cards.
+x_svga:
+x_svga:   Installing this package will create a link in /usr/X11/bin from
+x_svga:   XF86_SVGA to X, setting this server as the default.
+x_svga:
+FILE LIST:
+./
+install/
+install/doinst.sh
+usr/
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/XF86_SVGA
+var/
+var/X11R6/
+var/X11R6/bin/

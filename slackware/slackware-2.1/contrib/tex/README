@@ -1,0 +1,6 @@
+
+If you're going to run TeX without installing X, then install this
+package (mf-nox11.tgz) after you finish installing TeX. It will replace
+your /usr/bin/virmf with a version which does not require the X shared
+libraries.
+

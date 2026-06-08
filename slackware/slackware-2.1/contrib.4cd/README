@@ -1,0 +1,10 @@
+
+These packages are configured to run from the Slackware CD-ROM when it's
+mounted under /cdrom.  Install them with pkgtool, installpkg, or the 
+install-packages script provided here.
+
+If you decide later that you'd rather run the software from your hard drive,
+you can just reinstall the packages from the /cdrom/contrib directory.
+
+Have fun!
+

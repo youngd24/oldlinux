@@ -1,0 +1,12 @@
+*** arch/i386/config.in-orig50	Mon Sep 12 02:07:06 1994
+--- arch/i386/config.in	Mon Sep 12 02:08:46 1994
+***************
+*** 143,148 ****
+--- 143,149 ----
+      fi
+    fi
+  fi
++ bool 'NEC CDR-260 CDROM driver support' CONFIG_NEC260 y
+  
+  comment 'Filesystems'
+  

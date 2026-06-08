@@ -1,0 +1,27 @@
+
+Packages for Linux DOOM:
+
+doom1wad: * This is the shareware DOOM data file.
+doom1wad:
+doom1wad: You'll need this to run DOOM.
+doom1wad:
+doom1wad:
+doom1wad:
+doom1wad:
+doom1wad:
+doom1wad:
+doom1wad:
+doom1wad:
+
+linxdoom: * Linux X DOOM v1.666.
+linxdoom:
+linxdoom: This is DOOM for Linux -- DOOM is a nifty 3D game originally
+linxdoom: released for NEXTSTEP and then DOS.
+linxdoom:
+linxdoom: If you don't have a 16 bit sound card, you'll want to remove
+linxdoom: /usr/games/sndserver, or if you have an 8 bit sound card (or the
+linxdoom: PC speaker) you can find a filter in the ./source/contrib/linux-x-doom
+linxdoom: directory that will allow you to get nice static-free sound.
+linxdoom:
+linxdoom:
+

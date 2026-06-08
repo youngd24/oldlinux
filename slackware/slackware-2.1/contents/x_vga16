@@ -1,0 +1,23 @@
+PACKAGE NAME:     x_vga16
+COMPRESSED PACKAGE SIZE:     452 K
+UNCOMPRESSED PACKAGE SIZE:     1060 K
+PACKAGE LOCATION: diskx4
+PACKAGE DESCRIPTION:
+x_vga16:  A server for 16 color EGA/VGA graphics modes.
+x_vga16:
+x_vga16:  This is a server that uses standard generic video modes -- it works
+x_vga16:  with nearly all video hardware (but with only 16 colors).  Installing
+x_vga16:  this package will create a link in /usr/X11/bin from XF86_VGA16 to X,
+x_vga16:  setting this server as the default.
+x_vga16:
+FILE LIST:
+./
+install/
+install/doinst.sh
+usr/
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/XF86_VGA16
+var/
+var/X11R6/
+var/X11R6/bin/

@@ -1,0 +1,33 @@
+Begin2
+Title        =The Andrew User Interface System - Documentation
+Version      =63L2  6.3.1 Linux version
+Desc1        =Latest version of AUIS (aka ATK) 6.3.1
+Desc2        =AUIS is an integrated set of tools that allow you to create,
+Desc3        =use, and mail multi-media documents and apps containing
+Desc4        =formatted text and embedded objects.
+Desc5        =This package is aimed at those wanting complete documentation
+Author       =Andrew Consortium
+AuthorEmail  =info-andrew-request@andrew.cmu.edu
+Maintainer   =Terry Gliedt
+MaintEmail   =tpg@mr.net 
+Site1        =sunsite.unc.edu
+Path1        =pub/Linux/X11/andrew
+File1        =auis63L2-doc.tgz
+FileSize1    =3.2MB
+Required1    =YOU MUST HAVE INSTALLED AUIS63L2-WP.TGZ FIRST.
+Required2    =/bin/csh  (e.g. ln -sf /bin/tcsh /bin/csh)
+Required3    =X Window System
+CopyPolicy1  =Use, copy, modify, and distribute this software and its
+CopyPolicy2  =documentation for any purpose is granted without fee.
+Keywords     =ATK, AUIS, word processing, multi-media
+Comment1     =Installation instructions as ROOT:
+Comment2     =   cd /
+Comment3     =   tar xzf [path]/auis63L?-doc.tgz
+Comment4     =   /usr/andrew/etc/complete-setup doc
+Comment5     =   Read /usr/andrew/README.doc
+RelFiles1    =Adds to directory tree /usr/andrew
+Entered      =25SEP94
+EnteredBy    =Terry Gliedt
+CheckedEmail =tpg@mr.net
+End
+

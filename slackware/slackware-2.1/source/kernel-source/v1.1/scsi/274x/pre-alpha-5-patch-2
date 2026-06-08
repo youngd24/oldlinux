@@ -1,0 +1,66 @@
+THIS IS PRE-PRE-RELEASE SOFTWARE - USE AT YOUR OWN RISK!
+
+I think this should fix the problems with devices that want asynchronous
+transfers.  So hopefully all the tape drives and removable media that
+people have will work now..
+
+### ONCE THIS IS APPLIED, YOU _MUST_ REASSEMBLE THE SEQUENCER CODE ###
+### INTO aha274x_seq.h BEFORE REBUILDING THE KERNEL, OR THIS PATCH ###
+### WILL NOT WORK!                                                 ###
+:ja
+
+*** aha274x.seq-rel5	Mon Sep 19 09:23:04 1994
+--- aha274x.seq	Mon Sep 19 09:22:30 1994
+***************
+*** 1,4 ****
+! # @(#)aha274x.seq 1.26 94/09/06 jda
+  #
+  # Adaptec 274x device driver for Linux.
+  # Copyright (c) 1994 The University of Calgary Department of Computer Science.
+--- 1,4 ----
+! # @(#)aha274x.seq 1.27 94/09/19 jda
+  #
+  # Adaptec 274x device driver for Linux.
+  # Copyright (c) 1994 The University of Calgary Department of Computer Science.
+***************
+*** 17,23 ****
+  # along with this program; if not, write to the Free Software
+  # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  
+! VERSION AHA274X_SEQ_VERSION 1.26
+  
+  MAXSCB		= 4
+  
+--- 17,23 ----
+  # along with this program; if not, write to the Free Software
+  # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  
+! VERSION AHA274X_SEQ_VERSION 1.27
+  
+  MAXSCB		= 4
+  
+***************
+*** 374,381 ****
+--- 374,385 ----
+  #  the message.  Otherwise, keep going until the message is exhausted.
+  #  (We can't use outb for this since it wants the input in SINDEX.)
+  #
++ #  Keep an eye out for a phase change, in case the target issues
++ #  a MESSAGE REJECT.
++ #
+  p_mesgout2:
+  	test	SSTAT0,0x2	jz p_mesgout2	# SPIORDY
++ 	test	SSTAT1,0x10	jnz p_mesgout6	# PHASEMIS
+  
+  	cmp	DINDEX,1	jne p_mesgout3	# last byte?
+  	mvi	CLRSINT1,0x40			# CLRATNO - drop ATN
+***************
+*** 420,425 ****
+--- 424,430 ----
+  	jmp	ITloop
+  
+  p_mesgout6:
++ 	mvi	CLRSINT1,0x40			# CLRATNO - in case of PHASEMIS
+  	clr	MSG_FLAGS			# no active msg
+  	jmp	ITloop
+  

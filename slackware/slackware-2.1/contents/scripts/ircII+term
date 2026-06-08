@@ -1,0 +1,4 @@
+( cd usr/bin ; rm -rf irc )
+( cd usr/bin ; ln -sf irc-term irc )
+( cd usr/man/preformat/cat1 ; rm -rf irc.1.gz )
+( cd usr/man/preformat/cat1 ; ln -sf ircII.1.gz irc.1.gz )

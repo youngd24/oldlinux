@@ -1,0 +1,8 @@
+( cd usr/bin ; rm -rf ntalk )
+( cd usr/bin ; ln -sf talk ntalk )
+( cd usr/bin ; rm -rf whois )
+( cd usr/bin ; ln -sf fwhois whois )
+( cd usr/bin ; rm -rf inews )
+( cd usr/bin ; ln -sf inews-nntp inews )
+( cd usr/sbin ; rm -rf in.ntalkd )
+( cd usr/sbin ; ln -sf in.talkd in.ntalkd )

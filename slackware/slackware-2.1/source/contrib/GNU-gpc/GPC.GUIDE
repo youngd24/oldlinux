@@ -1,0 +1,1780 @@
+Last modified: Thu Jan 20 11:30:47 1994
+
+/* Copyright (C) 1993 Free Software Foundation, Inc.
+
+This file is part of GNU GCC.
+
+GNU GCC is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 1, or (at your option)
+any later version.
+
+GNU GCC is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with GNU GCC; see the file COPYING.  If not, write to
+the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA. */
+
+
+Author: Juki <jtv@hut.fi>
+Gpc version 1.03 (2.5.7)
+
+	
+		Notes On GNU Pascal (GPC)
+		=========================
+	
+	
+PURPOSE
+-------
+
+	The purpose of the GNU Pascal project is to produce a
+	Pascal compiler (called GNU Pascal or gpc) which
+	- supports both the Pascal standard and the Extended Pascal
+	  standard as defined by ISO and ANSI and IEEE.
+	  (ISO 7185:1990, ISO/IEC 10206:1991, ANSI/IEEE770X3.160-1989)
+	- may be distributed under normal GNU license conditions
+	- can genarate code and run on any computer for which the GNU C
+	  compiler can genarate code and run.
+
+	One reason for this is the desire to promote the use of Extended
+	Pascal, which combines the clarity of Pascal with powerful
+	tools (e.g. modules and string manipulation) suitable for real-life
+	programming. Pascal was originally designed for teaching.
+	Extended Pascal provides a smooth way to proceed to challenging
+	programming tasks without learning a completely different language.
+
+	GNU Pascal compiler is part of the GNU Compiler family
+	combining a language independent part of the GNU Compiler with
+	a Pascal specific front end.
+
+	Other compilers of the family currently include compilers for
+	the C, C++ and Objective C languages.
+
+
+ABOUT THE PASCAL AND EXTENDED PASCAL LANGUAGES
+----------------------------------------------
+
+	Pascal is a well-known programming language and hardly needs to
+	be described here. Notice, however, that some people's idea of
+	Pascal is affected by acquaintance with such products as Turbo
+	Pascal which differ from the Pascal standard and provide a lot
+	of nonstandard extensions (some of which are compatible with
+	the Extended Pascal standard). Moreover, it is worth mentioning
+	that the ISO Pascal standard defines two levels of the language,
+	level 0 and level 1; the only difference between the levels is
+	that level 1 supports the so-called conformant array schemas
+	in parameter declarations.
+
+	Extended Pascal is a standardized language which contains so
+	significant extensions to Pascal that it is best regarded as
+	a new language. It is currently not very well known, and computer
+	vendors do not seem to be eager to provide compilers for it.
+	Thus, there is social need for GNU Pascal supporting Extended
+	Pascal.
+
+
+STATUS
+------
+
+	The current version of GNU Pascal
+	- supports most of the Pascal standard
+	- supports a large subset of the Extended Pascal standard
+
+	Conformant array schemas have been implemented, but they do not
+	work in all cases. Thus, GNU Pascal is at present basically
+	a level 0 compiler.
+
+	GNU Pascal supports a large number of extensions to the Pascal
+	standard. They do not necessarily conform to the Extended Pascal
+	standard yet, but they will be checked and developed with the aim
+	of full conformance, plus some extensions to Extended Pascal.
+
+	Unfortunately, the current version still contains deviations
+	from the Pascal standard, so GNU Pascal is not yet a valid
+	Pascal compiler, but not very far from it. The biggest
+	problems are:
+
+	  - Type checking is not as strict as required in the standard
+	  - Run-time checks are not implemented.
+
+	The rest of this document describes, in more detail, the
+	extensions to standard Pascal which are currently supported,
+	and some implementation decisions, features, and future plans.
+
+
+KNOWN BUGS:
+-----------
+
+	The biggest problem is that the GPC does not enforce the type
+	checking rules of Pascal. So it compiles programs that should
+	not be accepted because they violate the Pascal standard.
+	NOTE: If you can find ANY problems GPC has with this, let me know.
+
+	Run time checks are not implemented in the compiled code
+	(However, the GPC run time library traps most problems like it should).
+	This means that there is no compiler support for runtime checks
+	like array bounds checking, uninitialized variables, dereferencing
+	NIL and whatever.
+
+	The parser also sometimes gives extra-verbose output on syntax errors.
+
+	On a 64 bit machine (Alpha) some set operations do not work correctly.
+
+	NEW and DISPOSE ignore variant selector fields.
+	(Gives warning, code works)
+
+	Negative set bounds do not work.
+	
+	set of integer is currently limited to 4 words, that is on a 32
+	bit machine it is 0..255, on 64 bit machines it is 0..511
+	(Warning given.)
+
+	Modules are only partially implemented...
+	
+	If your program declares lots of large variables you may run
+	out of stack because all program top-level variables are also
+	put in the stack. If you can't change the stacklimit (e.g. with
+	the "limit" command), put your variables in a module; the top level
+	vars there are not stored in stack. But there is a risk of name
+	clashes on module top level declarations currently (a bug).
+	
+	Just before the snapshot I noticed that passing value parameter
+	string type arguments has severe problems. You should be able to pass
+	one string as value parameter to an undiscriminated string schema,
+	and that should be the last parameter. Otherwise, I suggest you
+	currently pass them as var parameters. To fix this requires a major
+	rewrite. I don't want to do this before this snapshot.
+
+
+NOTE:
+-----
+	For this snapshot:
+
+	I did not notice that E.P. syntax for EXPORT-clauses requires
+	an equal sign after the export-identifier. This gpc snapshot
+	gives a warning if the '=' is not present.
+
+	EOLN is not implicitely set when reset(input) is done.
+
+	If I have to use constructs that affect the syntax of the language
+	I use tokens that look like __TOKEN__  (two adjacent underscores).
+	The current parser does not allow redefinition of these tokens,
+	but on the other hand, the extended pascal standard forbids
+	identifiers that start or end with an underscore. GCC also has
+	similar names for some extensions in C. (E.g. the word `Inline'
+	is no longer a "reserved" word; to compile routines inline,
+	use __inline__ instead.)
+
+	The __cstring__ formal parameter type should convert a VALUE string-type
+	parameter (not a char_type) to a pointer and pass that. If the actual
+	parameter is a string schema, the address of the character array is
+	passed, not the address of the schema object. Use with care.
+
+	If a formal parameter is a pointer to a VOID type, e.g.
+
+		type voidptr = ^void;
+
+	any pointer value is accepted as the actual parameter.
+	Use with care.
+
+
+EXTENSIONS TO ISO-7185 PASCAL LANGUAGE:
+---------------------------------------	
+
+	GPC contains a number of extensions to the ISO 7185 Pascal language.
+
+	Most of these extensions are written so that they should conform
+	conform to the international standard ISO/IEC 10206 : 1991, Information
+	technology - Programming Languages - Extended Pascal.
+	
+	GPC is not yet fully compliant to the requirements of the Extended
+	Pascal language.
+
+	The following Extended Pascal features are implemented:
+	- I/O from/to strings
+	- append file open mode: extend(File)
+	- binding of external objects (GPC supports only binding of files)
+	- complex dyadic operations +,-,/,* and monadic -,+
+	- complex exponentiation operators (POW and **)
+	- complex functions (sqr,arctan,sqrt,exp,ln,sin,cos)
+	- complex number info with re, im and arg functions
+	- complex numbers constructed by cmplx or polar
+	- constant expressions
+	- direct access I/O
+	- exponentiation operators (POW and **)
+	- function result variable
+	- functions returning structured types
+	- generalized Succ/Pred (val := succ (val, 5);)
+	- gettimestamp, date, time
+	- halt procedure
+	- initial values to type declarations and/or variable declarations
+	- local variable declarations may dynamically select the type and size
+	- maxchar/minreal/maxreal/epsreal values.
+	- modules are partially supported (@@@incomplete, see below)
+	- non-decimal numbers, base from 2 through 36: base#number
+	- pointer and component access of structured return values 
+	- protected parameters
+	- ranges and otherwise in case statements and variant records
+	- read procedure can read strings from text files
+	- relaxation of rules on number & order of declarations
+	- required module interfaces StandardInput and StandardOutput
+	- restricted types
+	- set extensions (symmetric difference(XOR) and CARD)
+	- short circuit logical operators (AND_THEN, OR_ELSE)
+	- standard numeric input (ISO 6093)
+	- string and char values are compatible
+	- string catenations with "+"
+	- string comparisons with and without padding
+	- string functions (trim,substr,index,length)
+	- string schema (variable length strings)
+	- string schema discriminant 'Capacity' dynamically set with NEW
+	- type inquiry
+	- underscore in identifiers
+	- zero fieldwidth output
+	
+	Gpc extensions not in Extended Pascal:
+	- alphanumeric labels
+	- assembler code inclusion with access to variables
+	- character escapes in strings
+	- close file (@@@ unbind(F) also closes a bound file F)
+	- computed goto
+	- function pointers
+	- halt procedure may have a numeric exit status parameter
+	- mark/release
+	- optional file name in reset/rewrite/extend as a string
+	- return / break / continue statements
+	- simple "modules" in addition to the Extended Pascal modules.
+	- sizeof/alignof functions
+	- string[ XX ] works like string(XX) as a string schema type selector
+	- storage qualifiers in variable declarations
+	- synonyms for otherwise: others and default
+	- taking address of labels
+	- taking address of objects
+	- type casts
+	- type qualifiers
+	- module initializers can be run in user specified order
+	
+
+EXTENDED PASCAL FEATURES STILL MISSING FROM GPC:
+------------------------------------------------
+	
+	- set member iteration (FOR ch IN [ 'a'..'z','0'..'9' ] DO...)
+	- set types with variable bounds
+	- substring variables (str[5..7] := 'foo';)
+	- structured value constructors
+	- general schema types & make NEW to work with them
+	- features of the module interface missing
+	- subrange lower bound is an expression
+	  (this is *hard* to do with an LALR(1) parser in single pass!
+	   GPC allows upper bound as an arbitrary expression;
+	   lower bound must be an identifier, a constant or a
+	   variable name.
+		
+	Other currently unimplemented extensions:
+	- pre-prosess input files
+	  (@@ Otherwise would work, but cccp must be modified:
+	      - recognize Pascal comments
+	      - do not recognize C-comments)
+
+	
+I/O TO TEXT FILES:
+------------------
+
+	GPC implements "lazy" text file I/O, i.e. do a PUT as soon
+	as you can and do GET as late as you can.
+
+	This should avoid most of the problems sometimes considered
+	to be the most stupid feature of Pascal.
+
+	When passing a file buffer as parameter the buffer
+	is validated when the parameter is passed.
+	@@@ Perhaps it would be nice to hack it to be validated when
+	the VAR parameter is referenced...
+
+	When any lazy file is RESET, the file buffer state is set
+	to undefined. It is validated on the first reference to it.
+	Now this is also true for terminal devices.
+
+	
+VARIABLE LENGTH STRINGS IN GPC:
+-------------------------------	
+	
+	Extended Pascal has a "type selector" feature called schema
+	types.
+
+	Strings are a predefined schema-type "string(capacity)" where
+	"capacity" is called a discriminant-identifier.
+	
+	GPC does *not* implement general schema types, but the STRING
+	SCHEMA is now fully implemented.
+
+	(An example of a (unimplemented) schemata would be, e.g:
+
+	 Matrix (N,M: Positive_int) = array [ 1..N, 1..M ] of integer;
+		 
+	Here the M and N are discriminant identifiers.)
+
+	A STRING SCHEMA is the only predefined schema type in Extended
+	Pascal, with one required discriminant identifier "Capacity".
+
+	The string schema type, if explicitely defined, would look like:
+	TYPE string(capacity) = packed array [ 1..capacity ] of char;
+
+	Internally GPC implements STRING SCHEMA as follows:
+
+	The type representing the SCHEMA TYPE is a RECORD_TYPE node,
+	with the following fields:
+
+	STRING  = RECORD
+		    Capacity : integer;
+		    length   : integer;
+		    string   : packed array [ 1..Capacity ] of char;
+		  END;
+
+	The "Capacity" field may be directly referenced by user,
+
+	"length" is referenced by a predefined string function
+	LENGTH(str) and contains the current string length.
+
+	"string" contains the chars in the string.
+
+	The "string" and "length" fields can not be directly referenced
+	by a user program.
+
+	References to the schema discriminants are allowed, and
+	the WITH statement is also allowed, so one can say:
+
+	 var str : string (80);
+	 begin
+	    writeln (str.capacity), (* writes 80 *)
+	
+	    with str do
+	      writeln (capacity);   (* writes 80 *)
+	 end;
+	
+	When a new SCHEMA_TYPE is created, the discriminant identifier
+	fields need to be initialized. GPC initializes the new schema
+	type discriminant identifiers of every VAR_DECL node before it
+	executes any instructions of the procedure, function or
+	program where the string variable is declared.
+
+	If new internal schema types are created (for conversion
+	of fixed-string or char type parameters to a string schema
+	formal parameter), the discriminant identifiers are
+	initialized immediately. The discriminant identifiers
+	of PARM_DECL nodes are not initialized separately, they
+	get their values from the actual parameters.
+
+	If a parameter is a SCHEMA_NAME (a schema with no discriminant
+	identifiers), a proto string schema is used as the type
+	of the parameter.
+
+	VAR-parameter:
+	An actual parameter to a formal schema name must be of
+	STRING_SCHEMA type. The type of the actual parameter is used
+	instead of the proto schema for the formal parameter.
+	
+	VALUE-parameter:
+	An actual parameter to a schema name may be either a
+	STRING_SCHEMA type, a fixed string type or a char type.  If
+	the actual parameter is a string schema type, that is used
+	instead of the proto schema. If it is not a schema, a new
+	variable length string VAR_DECL is created, the actual
+	parameter is copied to the new variable and the "capacity"
+	field is set to the length of the actual variable.
+	
+	Variable length string parameters look like:
+
+PROGRAM Zap (output);
+
+TYPE
+   stype = string (10);
+   sptr  = ^string;
+
+VAR
+   str  : stype;
+   str2 : string(100000);
+   dstr : ^string;
+   zstr : sptr;
+   len  : integer value 256;
+
+  (* "string" accepts any length of strings *)
+  PROCEDURE foo(z: string);
+
+  BEGIN
+    writeln ('Capacity : ',z.capacity);
+    writeln ('Length   : ',length (z));
+    writeln ('Contents : ',z);
+  END;
+
+  (* Another way to use dynamic strings *)
+  PROCEDURE bar(slen : integer);
+
+  var
+    lstring : string (slen);
+    foostr  : type of lstring;
+
+  BEGIN
+    lstring := 'Hello World!';
+    foo (lstring);
+    foostr := 'Ent{ miksi juuri t{m{?';
+    foo(foostr);
+  END;
+
+BEGIN
+  str   := 'KUKKUU';
+  str2  := 'A longer string variable';
+	
+  new (dstr, 1000);	{ Select the string Capacity with NEW }
+  dstr^ := 'The max length of this is 1000 chars';
+  new (zstr, len);
+  zstr^ := 'This should fit here';
+	
+  foo(str);
+  foo(str2);
+  foo('This is a constant string');
+  foo('R');		{ A char parameter to string routine }
+  foo('');		{ An empty string }
+  foo (dstr^);
+  foo (zstr^);
+  bar (10000);
+END. (* Zap *)
+		
+	In the above example, the required procedure NEW was used
+	to select the capacity of the strings. Procedure "BAR" also has
+	a string whose size depends of the parameter passed to it
+	and another string whose type will be the same than the type of
+	the first string ("type of" construct).
+
+	All string and char types are compatible as long as the
+	destination string is long enough to hold the source in
+	assignments. If the source string is shorter than the
+	destination, the destination is automatically blank padded if
+	the destination string is not of string schema type.
+
+
+STRING ROUTINES (mostly in library):
+------------------------------------
+
+	S1 and S2 may be of string or char type.
+	S is of string type.
+
+	WRITESTR (s, write-parameter-list)
+	READSTR (s, read-parameter-list)
+
+		Write to a string and read from a string.
+		The parameter lists are identical to write/read from TEXT
+		files. The semantics is closely modeled after
+		file I/O.
+
+	INDEX(s1,s2)
+
+		If S2 is empty, return 1 else if S1 is empty return 0
+		else returns the position of s2 in s1 (an integer).
+
+	LENGTH (s1)
+
+		Return the length of S1 (an integer from 0..Capacity)
+
+	TRIM (s1)
+
+		Returns a new string with spaces stripped of the end of S.
+
+	SUBSTR (s1, i)
+	SUBSTR (s1, i, j)
+
+		If J is missing it is calculated as: J := LENGTH (S1) - I + 1;
+		Return a new substring of S1 that contains J characters
+		starting from I.
+
+	EQ (s1,s2)
+	NE (s1,s2)
+	LT (s1,s2)
+	LE (s1,s2)
+	GT (s1,s2)
+	GE (s1,s2)
+
+		Lexicographic comparisons of S1 and S2. Returns boolean result.
+		Strings are not padded with spaces.
+
+	s1  = s2
+	s1 <> s2
+	s1  < s2
+	s1 <= s2
+	s1  > s2
+	s1 >= s2
+
+		Pascal string compare of S1 and S2. Returns boolean result.
+		Shorter string is blank padded to length of the longer one.
+	
+
+NO NAME SPACE POLLUTION WITH EXTENSIONS:	
+----------------------------------------	
+
+	In GPC you are free to re-define everything that is not a
+	reserved word in ISO 7185 Pascal in your program.
+
+	All Extended Pascal additional "reserved words" may be redefined,
+	so you do not have to modify your code for GPC if you have an
+	identifier like RESTRICTED or VALUE or some such.
+	@@ This violates Extended Pascal standard.
+
+	You may also redefine words like INTEGER and CHAR if you like.
+
+	@@@@ NOTE: The *only* exception to the redefinition rule currently
+	is the word INLINE (to make routines inline compiled), because I
+	added it in front of PROCEDURE or FUNCTION.  But I think I will
+	change the syntax later and make INLINE a directive instead of a
+	reserved word.
+
+
+COMPILE TIME SWITCHES:
+----------------------	
+
+	to get info of possible clashes of keywords and other
+	info of your program constructs that gpc thinks are "non-standard"
+	use the switch "-pedantic" when compiling. See the GCC info files.
+	
+	@@@ I have not tested the switches like -Wall very much. If you do,
+	@@@ give me info of error messages that don't make sense in Pascal.
+
+	@@@ As a rule, GPC implements most of the switches GCC implements,
+	and a couple of more that can not currently be set.
+	
+
+IMPLEMENTED DIRECTIVES:
+-----------------------
+
+	FORWARD		Required by pascal standard.
+	
+	EXTERNAL	Call external routine "foo" as "Foo"
+	EXTERN		Same as external
+
+	C		Call external routine "foo" as "foo"
+	C_LANGUAGE	Same as C.
+	
+ PROGRAM foo;
+	
+ PROCEDURE gotoxy(x,y: Integer); C;
+	
+ BEGIN
+   gotoxy(10,10); (* Call external routine "gotoxy" *)
+ END.
+	
+
+SET OPERATIONS:
+---------------
+
+	GPC supports standard Pascal set operations. In addition it
+	supports the extended Pascal set operation symmetric
+	difference (set1 >< set2) operation (a XOR of the set
+	elements).
+
+	It also has a function that counts the elements in the set:
+	a := card (set1)
+
+	NOTE:
+	the set operations are still under construction, e.g. the set
+	code does not fully work in the 64 bit Alpha machines.
+
+
+INITIAL VALUES TO TYPES AND VARIABLES:
+--------------------------------------
+
+	A type or variable may be initialized to a value of
+	expression when it is declared, as in:
+
+program zap;
+
+type
+   int10   = integer value 10;
+   footype = real;
+   mytype  = char value pred('A');
+   etype   = (a,b,c,d,e,f,g) value d;
+
+var
+   ii  : int10;		(* Value of ii set to 10 *)
+   ch  : mytype  value pred('z');
+   aa  : integer value ii+10;
+   foo : footype value sqrt(aa);
+   e1  : etype;		(* value set to d *)
+   e2  : etype value g; (* value set to g *)
+
+begin
+end.
+
+	Extended pascal requires the type initializers to be
+	constant expressions. GPC allows any valid expression.
+	
+	Note, however, that the expressions that affect the size
+	of storage allocated for objects (e.g. the length of
+	arrays) may contain variables only inside functions or
+	procedures.
+
+	GPC evaluates the initial values used for the type
+	when an identifier is declared for that type, if
+	the variable declaration does not have it's own
+	initialization. The latter initialization has
+	precedence.
+	
+	@@@@ GPC does not know how to calculate constant
+	values for math functions in the runtime library
+	at compile time, e.g. exp(sin(2.4567)), so you should
+	not use these kind of expressions in object size
+	expressions. (Extended Pascal allows this).
+
+
+DATE AND TIME ROUTINES:
+-----------------------
+
+	Predefined date and time routines:
+	 procedure gettimestamp(VAR t: Timestamp);
+	 function date(t: Timestamp) : packed array [ 1..DATE_LENGTH ] of char;
+	 function time(t: Timestamp) : packed array [ 1..TIME_LENGTH ] of char;
+		
+	DATE_LENGTH and TIME_LENGTH are implementation dependent constants.
+	See E.20 and E.22 in chapter IMPLEMENTATION DEPENDENT FEATURES
+	to find out these values for GPC.
+
+	GetTimeStamp(t) fills the record T with values. If they are
+	valid, the boolean flags are set to TRUE.
+
+	TimeStamp is a required predefined type in extended pascal standard.
+	(It may be extended in an implementation.)
+
+	The required part of the type looks like:
+
+	TimeStamp = PACKED RECORD
+			     DateValid,
+			     TimeValid : Boolean;
+			     year      : integer;
+			     month     : 1 .. 12;
+			     day       : 1 .. 31;
+			     hour      : 0 .. 23;
+			     minute    : 0 .. 59;
+			     second    : 0 .. 59;
+		           END;
+
+	@@@ NOTE:
+	TimeStamp may be later extended in GPC to contain the
+	following fields at the end of the TimeStamp record:
+
+	       Dst_used   : Boolean; (* If daylight savings are used *)
+	       TimeZone   : Integer; (* Positive if WEST, in minutes *)
+	       Weekday    : 0..6;    (* 0 is Sunday *)
+	       TimerValid : Boolean; (* Is the following timer valid *)
+	       us_Timer   : Integer; (* A microsecond timer that is a 32 bit
+					modulus of the timer returned by the
+					system. *)
+
+	Fields Dst_used, TimeZone and WeekDay will be valid when DateValid
+	is TRUE. Field us_Timer will be valid when TimerValid is TRUE.
+
+
+COMPLEX TYPE AND OPERATIONS:
+----------------------------
+
+	The following sample programs illustrates most of the
+	COMPLEX type operations. In addition monadic + and - are
+	supported and dyadic +,-,*,/ operations.
+
+program complex_test(output);
+
+var
+   z1,z2       : complex;
+   len, angle  : real;
+
+begin
+   z1 := cmplx (2,1);
+   writeln;
+   writeln ('Complex number Z1 is: (',re(z1):1,',',im(z1):1,')');
+   writeln;
+   z2 := conjugate(z1); { GPC extension }
+   writeln ('Conjugate of Z1 is: (',re(z2):1,',',im(z2):1,')');
+   writeln;
+   len   := abs (z1);
+   angle := arg (z1);
+   writeln ('The polar representation of Z1 is LENGTH=',len:1,
+	    ' ANGLE=',angle:1);
+   writeln;
+   z2    := polar (len, angle);
+   writeln ('Converting (LENGTH,ANGLE) back to (X,Y) gives: (',
+	    re(z2):1,',',im(z2):1,')');
+   writeln;
+   writeln ('The following operations operate on the complex number Z1');
+   writeln;
+
+   z2 := arctan (z1);
+   writeln ('arctan:  R=',re(z2),', I=',im(z2));
+   z2 := z1 ** 3.141;
+   writeln ('**3.141: R=',re(z2),', I=',im(z2));
+   { cos, ln, exp, sqrt and sqr exist also }
+   z2 := sin(z1);
+   writeln ('sin:     R=',re(z2),', I=',im(z2));
+   z2 := z1 pow 8;
+   writeln ('POW 8:   R=',re(z2),', I=',im(z2));
+   z2 := z1 pow (-8);
+   writeln ('POW (-8):  R=',re(z2),', I=',im(z2));
+end.
+	
+
+DIRECT ACCESS FILES:
+--------------------
+
+	@@@@ Not tested.
+	@@@@ Write a demo program.
+
+	type
+           Dfile = file [ 1 .. 100 ] of integer;
+	var
+	   F : Dfile;
+	   P, N : 1..100;
+	   
+	Declares a type for a file that contains 100 integers.
+	
+	The following direct access routines may be applied to a
+	direct access file:
+
+	SeekRead   (F, N);	{ Open file in Inspection mode, seek to record N }
+	SeekWrite  (F, N);	{ Open file in Generation mode, seek to record N }
+	SeekUpdate (F, N);	{ Open file in Update mode, seek to record N }
+	Update (F);		{ Writes F^, position not changed. F^ kept. }
+	p := Position (F);	{ Return current record number }
+	p := LastPosition (F);	{ Return the last record number in file }
+	
+	If the file is open for Inspection or Update, GET may be applied.
+	If the file is open for Generation or Update, PUT may be applied.
+
+	@@@ GPC acts like the file would always start at record number 0,
+	and subtracts/adds the lower index from the record number.
+	If you think this is incorrect, let me know.
+	
+
+RESTRICTED TYPES:
+-----------------
+
+	Extended Pascal defines restricted types as:
+
+	  restricted-type = 'restricted' type-name .
+
+	A value of a restricted type may be passed as a value parameter
+	to a formal parameter possessing its underlying type, or returned
+	as the result of a function. A variable of a restricted type may
+	be passed as a variable parameter to a formal parameter possessing
+	the same type or its underlying type. No other operations, such as
+	accessing a component of a restricted type value or performing
+	arithmetic, are possible.
+	
+program zap;
+
+type
+   unres_rec =  record
+		  a :  integer;
+		end;
+
+   res =  restricted unres_rec;
+
+var
+   r1 :  unres_rec;
+   r2 :  res;
+
+   i  :  restricted integer;       
+   k  :  integer;       
+
+  function zap(p : unres_rec) : res;
+  var
+     ures :  unres_rec;
+
+  begin
+     { The parameter is treated as unrestricted, even though the actual
+       parameter may be a restricted object }
+     ures.a := p.a;
+
+     { Legal to assign a return value }
+     zap := ures;
+  end; { zap }
+
+begin
+   r1.a := 354;
+	
+   { Assigning a restricted return value to a restricted object }
+   { @@@ Verify if this should really be allowed????? }
+   r2 := zap(r1);
+	
+   { Passing a restricted object to unrestericted formal parameter is ok }
+   r2 := zap(r2);
+
+   { *** The following are illegal *** }
+   r2.a := 100;	  { field access }
+   r1 := r2;      { := source is restricted type }
+   r2 := r1;	  { := target is restricted type }
+   r1 := zap(r2); { := a restricted return value to unrestricted object }
+   i  := 16#ffff; { := target is restricted type }
+   k  := i + 2;   { Arithmetic with restricted type }
+end.
+	
+	
+EXTENDED PASCAL MODULES:
+------------------------
+
+	@@@ Gpc does not yet support:
+	  - renaming with '=>'
+	  - QUALIFIED interfaces
+	  - PROTECTED export variables
+	  - ONLY
+	  - IMPORT does not work semantically correct.
+	  - EXPORT does not work semantically correct.
+	  - exported ranges (compiler calls abort())
+	  - module parameter lists	
+
+	Gpc should be able to parse full Extended Pascal module syntax,
+	but the externally visible names include ALL top level declarations
+	in the modules (both interface and implementation).
+
+	You may load one PROGRAM and several MODULEs to make up
+	one pascal program. A single file may contain zero or more
+	modules and/or zero or one programs.
+	
+	Sample module code with separate INTERFACE and IMPLEMENTATION
+	parts follows:
+
+MODULE foobar Interface;	(* INTERFACE *)
+	
+  EXPORT catch22 = (footype,setfoo,getfoo);
+
+  TYPE footype = integer;
+
+  PROCEDURE setfoo(f: footype);
+  FUNCTION  getfoo: footype;
+
+END. { module foobar interface }
+
+	
+MODULE foobar Implementation;	(* IMPLEMENTATION *)
+
+  IMPORT StandardInput;
+	 StandardOutput;
+
+  VAR foo : footype;
+
+  { Note: the effect is the same as the Forward directive would have:
+    parameter lists and return types are not "allowed" in the declaration
+    of exported routines.
+  }
+  PROCEDURE setfoo;
+  BEGIN
+    foo := f;
+  END;
+
+  FUNCTION getfoo;
+  BEGIN
+    getfoo := foo;
+  END;
+
+  TO BEGIN DO
+    BEGIN
+      foo := 59;
+      writeln ('Just an example of a module initializer. See comment below');
+    END;
+
+  TO END DO
+   BEGIN
+     foo := 0;
+     writeln ('Goodbye');
+   END;
+	
+END. { foobar implementation }
+
+	
+	Alternatively the module interface and implementation may
+	be combined as follows:
+	
+	
+MODULE foobar;			(* ALTERNATIVE METHOD *)
+	
+  EXPORT catch22 = (footype,setfoo,getfoo);
+
+  TYPE footype = integer;
+
+  PROCEDURE setfoo(f: footype);
+  FUNCTION getfoo: footype;
+
+  END; { NOTE: this END is required here, even if the
+	 module-block below would be empty. }
+
+  VAR foo : footype;
+
+  PROCEDURE setfoo;
+  BEGIN
+    foo := f;
+  END;
+
+  FUNCTION getfoo;
+  BEGIN
+    getfoo := foo;
+  END;
+
+END. { module foobar }
+	
+	Either one of the two methods may be used with:
+
+PROGRAM what(output);
+
+import catch22;
+	
+BEGIN
+  setfoo (999);
+  writeln (getfoo);
+END.
+
+	The INTERFACE has to be in the same file as the program/module that
+	uses it's exported names.  Otherwise GPC does not know anything
+	about it and fails to compile the file.
+
+	@@@ What is the portable way to avoid this? It could be done
+	@@@ with the #include "interface.p" but that is not portable.
+	@@@ Neither is deriving the file name from the interface name.
+	@@@ Suggestions, please. Portable suggestions preferred :-)
+	@@@
+	@@@ How about making the compiler front end read some user
+	@@@ defined compiling-environment description file that
+	@@@ binds the imported names to some machine specific files
+	@@@ and pass the info to the compiler? This way the source
+	@@@ does not need to have any knowledge of the extenal binding.
+	
+	
+SOMEWHAT SIMPLER GPC MODULES ARE ALSO SUPPORTED:
+------------------------------------------------
+	
+	Note: this is not supported in Extended Pascal standard.
+
+	This is a simpler module support that does not
+	require exports, imports, module headers etc.
+	
+	These non-standard simple Gpc modules look like
+	(does not have an export part, does not have a separate
+	 module-block, does not use import/export features.)
+
+	NOTE: This module syntax has changed from the snapshot (2.5.0a):
+	There is no empty BEGIN END block at the end of the module,
+	just the END.
+
+MODULE foobar;
+  TYPE footype = integer;
+  VAR foo: footype;
+
+  PROCEDURE setfoo(f: footype);
+  BEGIN
+    foo := f;
+  END;
+
+  FUNCTION getfoo: footype;
+  BEGIN
+    getfoo := foo;
+  END;
+END.
+
+
+PROGRAM what(output);
+
+  (* In case the module foobar is loaded from another file *)
+  PROCEDURE setfoo(f: footype); External;
+  FUNCTION  getfoo: footype;    External;
+
+BEGIN
+  setfoo (999);
+  writeln (getfoo);
+END.
+
+	
+MODULE INITIALIZATION AND FINALIZATION:
+---------------------------------------	
+	
+
+	TO BEGIN DO module initialization and TO END DO module finalization
+	constructs are supported if the GNU compiler supports constructors
+	and destructors in your target machine. (It always does if you
+	use the GNU Linker).
+
+	If the initialization and finalizations do not work by default, but
+	you have the GNU Linker, use option -fgnu-linker when compiling the
+	program.
+
+	I re-implemeted the standard I/O handling and now the input and
+	output can also be used from the initialization and finalization
+	parts.
+
+	@@@ Try these, send me bug reports. These are not tested.
+	
+
+BINDING OF OBJECTS TO EXTERNAL NAMES:
+-------------------------------------
+
+	GPC supports the extended pascal bind,unbind and binding
+	operations when applied to files.
+
+	The compiler will currently reject binding of other object
+	types (@@@ Perhaps the run time system should do the rejection?)
+
+	GPC implements extensions to the required predefined record type
+	BindingType:
+
+	BindingType = PACKED_RECORD
+			Bound 		  : Boolean;
+			Extensions_Valid  : Boolean;
+			Writable	  : Boolean;
+			Readable          : Boolean;
+			Existing	  : Boolean;
+			Error		  : Integer; { Unused currently }
+			Size		  : Integer; { # of elements or -1 }
+			Name		  : String (BINDING_NAME_LENGTH);
+		      END;
+
+	The fields BOUND and NAME are required by the standard. All other
+	fields are extensions.
+
+	The meaning of the extensions to the BindingType record type,
+	and the value of BINDING_NAME_LENGTH is defined in this document,
+	section IMPLEMENTATION DEFINED FEATURES (E.14). It is a compiler
+	constant, the run time system accepts any length.
+
+	The Size field is a latest addition to BindingType; I added that because
+	the direct access files actually require that the file is not bigger
+	that the definition; and lastposition(file) does not work before the
+	file is opened. The "Size" field can then be used to determine
+	the size before open, and if the upper bound of the direct access
+	file is a variable one should be able to open files of any size
+	without violating the standard.
+
+	The following is an example of the binding:
+
+
+program z(input,output,f);
+
+var
+   f :  text;
+   
+procedure bindfile (var	f :  text);
+var
+   b : BindingType;
+
+begin
+  unbind (f);
+  b := binding (f);
+  repeat
+    write ('Enter file name:');
+    readln (b.name);
+    bind (f, b);
+    b := binding (f);
+    if not b.bound then
+      writeln ('File not bound--try again');
+  until b.bound;
+end;
+
+begin
+
+  bindfile (f);
+
+  (* Now the file F is bound to an external file.
+   *
+   * You can use the implementation defined fields
+   * to check if the file is Readable, Writable and
+   * if it Exists. These are valid if the.Extensions_Valid
+   * field is TRUE.
+   *)   
+end.
+
+FUNCTION POINTERS:
+------------------
+
+	@@ New feature.
+
+	GPC suports also function pointers and calls through them.
+	This is a non-standard feature.
+
+program zap(output);
+
+type
+    proc_ptr = ^ procedure (integer);
+
+var
+    pvar : proc_ptr;
+
+procedure write_int(i: integer);
+begin
+  writeln ('Integer: ',i:1);
+end;
+
+begin
+  (* PVAR points to function WRITE_IT *)
+  pvar := &write_int;
+	
+  (* Dereferencing a function pointer calls the function *)
+  pvar^(12345);
+end.
+
+
+STRING CATENATION:
+------------------
+
+	Gpc supports string catenation with the '+' operator.
+	All string-types are compatible, so you may catenate any chars,
+	fixed length strings and variable length strings with each other.
+
+program scat (input, output);
+
+var
+   ch	       : char;
+   str	       : string(100);
+   str2	       : string(50);
+   fstr        : packed array [ 1 .. 20 ] of char;
+
+begin
+   ch   := '$';
+   fstr := 'demo'; { padded with blanks }
+   write ('Give me some chars to play with: ');
+   readln (str);
+   str := '^' + 'prefix:' + str + ':suffix:' + fstr + ch;
+   writeln ('Len' + 'gth = ', length (str));
+   writeln (str);
+end.
+
+
+TYPE QUALIFIERS:
+----------------
+
+	@@ New feature.
+	@@ Currently gpc runtime does not know anything about these.
+	@@ These may change/or get removed...
+
+	As an extension, GPC allows you to use type qualifiers:
+	
+	__byte__		: 8 bit integer
+	__short__		: Short integer (16 bits) or real type (32 bits)
+	__long__		: Long integer or real type
+	__longlong__		: long long integer type (64 bits)
+	__unsigned__		: Unsigned INTEGER type
+
+	The __unsigned__ works for all integer types, also those
+	that have been previously declared with some other type
+	qualifier, like __short__. The other qualifiers do not accept
+	types that have already been modified with a type qualifier.
+
+	The syntax to use the qualifiers:
+
+		type-denoter > TYPE-QUALIFIER type-name
+
+	(The metasymbol > means type-denoter has also other meanings)
+
+	Most of these should be done with subranges anyway.
+	However, '__short__ real' can not be done like that, neither can
+	'__unsigned__ integer' or '__longlong__ integer'.
+
+
+program zap(output);
+
+type
+   byte	    = __byte__     integer;
+   longint  = __long__     integer;
+   float    = __short__    real;
+   u_long   = __unsigned__ longint;
+   verylong = __longlong__ integer;
+
+var
+  i8  : byte;
+  i16 : __short__ integer;
+  foo : u_long;
+  pi  : float;
+  big : verylong;
+
+begin
+  pi  := 3.141592654;
+  i16 := 1000;
+  big := MaxInt * i16;
+  i8  := 127;
+	
+  (*
+   * Hmm, does not work because constant is treated as an integer,
+   * and this is too large. Need a method to specify long constants.
+   * What is the syntax in other Pascal compilers?
+   *	
+	
+  foo := 16#deadbeef;
+	
+   *)
+end.
+	
+
+ACCESSING COMMAND LINE ARGUMENTS:
+---------------------------------
+
+	The following module accesses the command line with
+	ParamStr and ParamCount functions.
+
+	These follow the Un*x semantics, so that 
+	arg[0] == program name,
+	arg[1] .. arg[ParamCount-1] are the arguments.
+
+MODULE command_line interface;
+
+EXPORT cmdline = (Max_length, Arg_type, ParamStr, ParamCount);
+
+CONST
+   Max_length =	 255; { Max length of each argument.
+			If some arg is longer, the run time system
+			traps it.
+		      }
+
+TYPE
+   Arg_type = String(Max_length);
+
+  FUNCTION ParamCount: Integer;
+
+  FUNCTION ParamStr (arg_num: integer): Arg_type;
+END. { command_line interface }
+
+MODULE command_line implementation;
+
+  { These are in the GPC runtime library }
+  FUNCTION _p_paramcount : Integer; C;
+  FUNCTION _p_paramstr (num: Integer; VAR str: String): Boolean; C;
+
+  FUNCTION ParamCount;
+  BEGIN
+     ParamCount := _p_paramcount;
+  END; { ParamCount }
+
+  FUNCTION ParamStr;
+  
+  VAR
+   Str	       : Arg_type;
+   Success     : Boolean;
+
+  BEGIN
+     Success := _p_paramstr (arg_num, Str);
+
+     (* Should perhaps do something else on failure.
+      *
+      * Now it returns the empty string, which is also a valid
+      * parameter.
+      *)
+     IF Success THEN
+	ParamStr := Str
+     else
+	ParamStr := '';
+  END; { ParamStr }
+END. { command_line implementation }
+
+
+{ The program below, when compiled with the interface module and
+  linked with the implementation module, accesses the command
+  line arguments.
+}	
+
+program zap (output);
+
+import cmdline;
+
+var
+   counter : integer;
+
+begin
+   writeln ('Program fetches command line arguments and outputs one per line');
+   writeln ('Max length of each argument is ',Max_Length:1,' characters');
+
+   for counter := 0 to ParamCount-1 do
+      writeln ('Command line arg ',counter:1,' is "',paramstr(counter),'"');
+end.
+
+
+RUN TIME SYSTEM FLAGS:
+----------------------
+
+	There are some flags for the run time system, and now that
+	the pascal programs are able to access the command line, the
+	rts flag passing works as described.
+
+	The run time system command line args are invisible to the user
+	program, unless '-s' rts flag is given.
+
+	If you want to give flags to the run time system, the
+	FIRST argument has to be (literally):
+
+	-Grts
+
+	After this, the run time system recognizes the following args
+	in any order, up to the first arg it does not know.
+
+	-h		 : give help of rts flags and exit(1).
+	-d		 : set internal debugging (incremental)
+	-w		 : give warnings (I don't know if this is useful)
+	-s		 : pass also rts flags to user program
+	-i ARG		 : Pass ARG as one line to the program standard input
+	-a pfile:extname : Associate pascal external file Pfile to file extname
+	--		 : Rest of the args are not for the run time system
+
+	You may give multiple -a options for the same Pfile. They are accessed
+	in order with e.g. "close(pfile); reset(pfile);"
+
+	Also Input and Output may be bound with -a.
+
+	If the files bound with -a rts option does not contain the file
+	being opened, the run time system asks the file name from the
+	users terminal. If that is not available, read input from
+	standard input. If that is not available, exit with an error message.
+
+	You may give multiple '-i ARG' options to stack lines to the 'standard
+	input'. When they run out, the program starts reading the real
+	standard input, if available. (@@@ Does not yet work well :-)
+	
+
+HOW TO SEND A BUG REPORT:
+-------------------------
+
+	- Indicate the GCC version, GPC version and the configuration
+	  of GCC (what was given to GCC configure script; see file
+	  config.status in the GCC compilation directory)
+
+	- Give an abstract (a few lines) of the nature of the
+	  problem.
+
+	- State only facts in you bug reports.
+
+	- Try to generate the SHORTEST POSSIBLE sample code that still
+	  invokes the bug. If this is not possible, send the bug report
+	  anyway. Remember: If you do more work here, others may be able
+	  to find out and fix the problem sooner so you can continue
+	  your work faster.
+	
+	- Send the info above and all other info you think is useful
+	  either to me or the list of gpc testers.
+
+	   My email address: jtv@hut.fi
+	   GPC testers list: gpc@hut.fi
+	
+
+IMPLEMENTATION DEFINED FEATURES:
+--------------------------------
+
+	The following corresponds to the ISO/IEC 10206 : 1991 standard
+	of the programming language Extended Pascal, Annex E, page 186:
+
+	E.1  String type may contain any character that is legal in
+	     CHAR type and vice versa??? See E.9.
+
+	E.2  Alternate reference token "@" is supported.       vs  "^"
+	     Alternate comment delimiters "{ }" are supported. vs: "(* *)"
+	     Alternate subscripts "(. .)" are supported.       vs: "[ ]"
+	    
+	E.3  The value of Maxint varies per target machine. It is
+	     the maximum value that fits in the target machines
+	     integer type, usually 32 bits.
+
+	E.4  Real-type accuracy and range varies per target machine.
+	     Double precision is currently used to represent real-type.
+
+	E.5  Value of Minreal varies per target machine.
+
+	E.6  Value of Maxreal varies per target machine.
+
+	E.7  Value of Epsreal varies per target machine.
+
+	E.8  The accuracy of real arithmetic operation varies per
+	     target machine.
+
+	E.9  Eight bit ascii codes are used to represent Char type.
+	     (@@@@ C-style \-character escapes are supported)
+
+	E.10 Eight bit ascii codes are used to represent Char type.
+
+	E.11 Value of Maxchar is 255
+	     (@@@@ Is it really????? On some machines it seems to be 127)
+
+	E.12 The values of complex type are represented by two real
+	     values. See E.4.
+
+	E.13 The accuracy of complex arithmetic varies per target machine.
+
+	E.14 The Capacity of the variable length string type in the
+	     NAME field of the BindingType record is: 255 characters.
+
+	E.15 The only external entities supported are of FILE type.
+	     The run time system may cache the file modifications until
+	     the file is closed. The binding of a name to a file type
+	     object has no effect on the file until it is opened, in which
+	     case the bound name is used to access the external file.	     
+	     
+	E.16 The binding procedure BIND(F,B) associates the object F with
+	     the NAME field of the BindingType parameter B.
+	     
+	     Currently GPC allows binding of FILE TYPE objects only.
+	     When the binding is applied to a file type object, the
+	     file must not be opened by the Pascal program.
+
+	     (@@@ Should a file be closed if it is open when bound?).
+
+	     When a bound file is opened with reset,rewrite or extend,
+	     the file name bound to the pascal file is used to name the
+	     target file in the system. This method has precedence over
+	     all other file naming methods (See. E.34)
+
+	     If the required procedure UNBIND(F) is applied to a file
+	     type object, the file is first CLOSED if it is open. Then
+	     all the bindings existing with the object F are removed.
+	     
+	     After UNBIND(F), the BIND may be applied to object F again. 
+
+	E.17 The systems notion of the current local date.
+
+	E.18 The systems notion of the current local wall clock time.
+
+	E.19 Function `binding(F)' returns the binding state of an object
+	     F. If it has been previously bound to an external entity,
+	     the returned BindingType record will contain TRUE in the
+	     required field BOUND, otherwise it is FALSE.
+
+	     If the BOUND field is true, then the NAME field contains the
+	     string where it is bound to.
+
+	     The required record type BindinType is extended with the
+	     fields marked with `@'-character in the comment below:
+
+	    BindingType = PACKED RECORD
+	      Bound		: Boolean;     (* required field BOUND   *)
+	      Extensions_Valid  : Boolean;     (* @ Extended fields valid? *)
+	      Writable          : Boolean;     (* @ File is WRITABLE *)
+	      Readable          : Boolean;     (* @ File is READABLE *)
+	      Existing          : Boolean;     (* @ File EXISTS      *)
+	      Error             : Integer;     (* @ UNUSED currently *)
+	      Size              : Integer;     (* @ # of elements or -1 *)
+	      Name		: String(255); (* required field NAME *)
+	    END;
+
+	     If the BOUND field is FALSE, the required field NAME does not
+	     contain valid data. All the extended Boolean type fields are
+	     initialized to FALSE.
+
+	     Unbind: See E.16.
+
+	E.20 The length of the string returned by date(t) is 11 characters.
+
+	E.21 The three fields returned by date(t) are separated by a space,
+	     and they are to be interpreted as follows:
+	      1) two characters as specified by t.day.
+		 If t.day < 10 the first character is space otherwise
+		 it is a digit.
+	      2) three characters from the beginning of the english
+		 name of the month as specified by t.month, first letter
+		 capitalized, the other two in lower case.
+	      3) The year from t.year
+
+	      Example:  '15 Nov 1993'
+
+	E.22 The length of the string returned by time(t) is 8 characters.
+
+	E.23 The three fields returned by time(t) are separated by a colon.
+	     Each field consists of exactly two digits and they are to be
+	     interpreted as follows:
+	      1) The hour   from t.hour
+	      2) The minute from t.minute
+	      3) The second from t.second
+
+	      Example:  '23:45:05'
+
+	E.24 TotalWidth for integer type is 10
+
+	E.25 TotalWidth for real type is 14
+
+	E.26 TotalWidth for boolean type is 6
+
+	E.27 ExpDigits varies by the size of the exponent
+	     from 2 digits upward. Max size is target dependent.
+
+	E.28 The exponent character 'e' is used in output.
+	     'E' is also recognized in input.
+
+	E.29 The case of boolean values output is: "  True" and " False"
+
+	E.30 page(f) outputs the character FORM-FEED (octal 014)
+
+	E.31 @ The module parameters are currently not bound
+	     to external entities. Instead, they are ignored.
+	     (@@@ Check this)
+
+	E.32 The effect of reset, rewrite and extend to textfile INPUT:
+	       reset)    @@@@ Verify this.
+	       rewrite)  @@@@ Verify this.
+	       extend)   @@@@ Verify this.
+
+	E.33 The effect of reset, rewrite and extend to textfile OUTPUT:
+	     @@@@ Vefify these.
+	
+	E.34 External entities (files) are associates to their external
+	     representation currently (in order) with:
+	      1) binding the object with bind() procedure.
+	      2) Non-standard extra parameter for rewrite/reset/extend
+	      3) -a Internalname:external-file-name command line switch
+		 (See run time system flags)
+	      4) the binding is requested from terminal by the run
+ 		 time system.
+
+
+IMPLEMENTATION DEPENDENT FEATURES:
+----------------------------------
+
+	The following corresponds to the ISO/IEC 10206 : 1991 standard
+	of the programming language Extended Pascal, Annex F, page 189:
+
+	@@@ *** Add info here ***
+
+	F.1
+	F.2
+	F.3
+	F.4
+	F.5
+	F.6
+	F.7
+	F.8
+	F.10
+	F.11
+	F.12
+	F.13
+	F.14
+	F.15
+	F.16
+	F.17
+	F.18
+	
+
+RESULTS OF SOME IMPLEMENTATION DEPENDENT TEST PROGRAMS:
+-------------------------------------------------------
+
+	The programs were run in i486 with Mach 3/CMU UX (BSD) system.
+	Here are the results of the implementation dependent test:
+
+======= p641
+### p641 -->  IMPLEMENTATION DEFINED...6.1.7-15
+======= p642
+### p642 -->  OUTPUT FROM TEST...6.1.9-5
+ ALTERNATE SUBSCRIPT BRACKETS IMPLEMENTED
+ ALTERNATE COMMENT DELIMITERS IMPLEMENTED
+ IMPLEMENTATION DEFINED...6.1.9-5
+======= p643
+### p643 -->  OUTPUT FROM TEST...6.4.2.2-10
+ THE VALUE OF MAXINT IS 2147483647
+ IMPLEMENTATION DEFINED...6.4.2.2-10
+======= p644
+### p644 -->  OUTPUT FROM TEST...6.4.2.2-11
+ ACCURACY OF UNSIGNED-REAL IS
+ 16 DECIMAL PLACES
+ IMPLEMENTATION DEFINED...6.4.2.2-11
+======= p645
+### p645 -->  OUTPUT FROM TEST...6.4.2.2-12
+ ORDINAL VALUES OF CHARACTERS
+ VALUE    CHAR BETWEEN DECIMAL POINTS
+   65        .A. UPPER CASE LETTER
+   66        .B. UPPER CASE LETTER
+   67        .C. UPPER CASE LETTER
+   68        .D. UPPER CASE LETTER
+   69        .E. UPPER CASE LETTER
+   70        .F. UPPER CASE LETTER
+   71        .G. UPPER CASE LETTER
+   72        .H. UPPER CASE LETTER
+   73        .I. UPPER CASE LETTER
+   74        .J. UPPER CASE LETTER
+   75        .K. UPPER CASE LETTER
+   76        .L. UPPER CASE LETTER
+   77        .M. UPPER CASE LETTER
+   78        .N. UPPER CASE LETTER
+   79        .O. UPPER CASE LETTER
+   80        .P. UPPER CASE LETTER
+   81        .Q. UPPER CASE LETTER
+   82        .R. UPPER CASE LETTER
+   83        .S. UPPER CASE LETTER
+   84        .T. UPPER CASE LETTER
+   85        .U. UPPER CASE LETTER
+   86        .V. UPPER CASE LETTER
+   87        .W. UPPER CASE LETTER
+   88        .X. UPPER CASE LETTER
+   89        .Y. UPPER CASE LETTER
+   90        .Z. UPPER CASE LETTER
+   48        .0. DIGIT
+   49        .1. DIGIT
+   50        .2. DIGIT
+   51        .3. DIGIT
+   52        .4. DIGIT
+   53        .5. DIGIT
+   54        .6. DIGIT
+   55        .7. DIGIT
+   56        .8. DIGIT
+   57        .9. DIGIT
+   43        .+. PLUS
+   45        .-. MINUS
+   42        .*. MULTIPLY
+   47        ./. DIVIDE
+   61        .=. EQUALS
+   60        .<. LESS THAN
+   62        .>. GREATER THAN
+   46        ... DECIMAL POINT
+   44        .,. COMMA
+   58        .:. COLON
+   59        .;. SEMICOLON
+   94        .^. UP-ARROW OR COMMERCIAL AT
+   40        .(. OPEN ROUND BRACKET
+   41        .). CLOSED ROUND BRACKET
+   32        . . SPACE
+   39        .'. APOSTROPHE
+   97        .a. LOWER CASE LETTER
+   98        .b. LOWER CASE LETTER
+   99        .c. LOWER CASE LETTER
+  100        .d. LOWER CASE LETTER
+  101        .e. LOWER CASE LETTER
+  102        .f. LOWER CASE LETTER
+  103        .g. LOWER CASE LETTER
+  104        .h. LOWER CASE LETTER
+  105        .i. LOWER CASE LETTER
+  106        .j. LOWER CASE LETTER
+  107        .k. LOWER CASE LETTER
+  108        .l. LOWER CASE LETTER
+  109        .m. LOWER CASE LETTER
+  110        .n. LOWER CASE LETTER
+  111        .o. LOWER CASE LETTER
+  112        .p. LOWER CASE LETTER
+  113        .q. LOWER CASE LETTER
+  114        .r. LOWER CASE LETTER
+  115        .s. LOWER CASE LETTER
+  116        .t. LOWER CASE LETTER
+  117        .u. LOWER CASE LETTER
+  118        .v. LOWER CASE LETTER
+  119        .w. LOWER CASE LETTER
+  120        .x. LOWER CASE LETTER
+  121        .y. LOWER CASE LETTER
+  122        .z. LOWER CASE LETTER
+ IMPLEMENTATION DEFINED...6.4.2.2-12
+======= p646
+### p646 -->  OUTPUT FROM TEST...6.6.6.2-11
+   BETA =    2
+      T =   53
+    RND =    1
+   NGRD =    0
+ MACHEP =  -52
+  NEGEP =  -53
+   IEXP =   11
+ MINEXP =-1022
+ MAXEXP = 1022
+    EPS = 2.2204460e-16
+ EPSNEG = 1.1102230e-16
+   XMIN = 2.2250739e-308
+   XMAX = 4.4942328e+307
+ IMPLEMENTATION DEFINED...6.6.6.2-11
+======= p647
+### p647 -->  OUTPUT FROM TEST...6.7.2.2-17
+ ACCURACY OF REAL OPERATIONS IS
+ ABOUT 16 DECIMAL PLACES
+ IMPLEMENTATION DEFINED...6.7.2.2-17
+======= p648
+### p648 -->  OUTPUT FROM TEST...6.9.3.1-1
+ DEFAULT OUTPUT WIDTH FOR REALS
+ TOTALWIDTH DEFAULT VALUE =   14 CHARACTERS
+ IMPLEMENTATION DEFINED...6.9.3.1-1
+======= p649
+### p649 -->  OUTPUT FROM TEST...6.9.3.1-8
+ DEFAULT OUTPUT WIDTH FOR BOOLEANS
+ TOTALWIDTH DEFAULT VALUE =    6 CHARACTERS
+ IMPLEMENTATION DEFINED...6.9.3.1-8
+======= p650
+### p650 -->  OUTPUT FROM TEST...6.9.3.1-9
+ DEFAULT OUTPUT WIDTH FOR INTEGERS
+ TOTALWIDTH DEFAULT VALUE =   10 CHARACTERS
+ IMPLEMENTATION DEFINED...6.9.3.1-9
+======= p651
+### p651 -->  OUTPUT FROM TEST...6.9.3.4.1-1
+ NUMBER OF DIGITS IN AN EXPONENT
+ EXPDIGITS IS    2
+ IMPLEMENTATION DEFINED...6.9.3.4.1-1
+======= p652
+### p652 -->  OUTPUT FROM TEST...6.9.3.4.1-2
+ IMPLEMENTATION DEFINED EXPONENT CHARACTER
+ IS e
+ LOWER CASE
+ IMPLEMENTATION DEFINED...6.9.3.4.1-2
+======= p653
+### p653 -->  OUTPUT FROM TEST...6.9.3.5-1
+ CASE OF BOOLEAN VALUES
+ TRUE, FALSE
+ ULLL, ULLLL
+ IMPLEMENTATION DEFINED...6.9.3.5-1
+======= p654
+### p654 -->  OUTPUT FROM TEST...6.5.3.2-6
+ EVALUATION ORDER OF V(.A,B,C.) IS ABC
+ IMPLEMENTATION DEPENDENT...6.5.3.2-6
+======= p655
+### p655 -->  OUTPUT FROM TEST...6.6.5.2-16
+ NUMBER OF EVALUATIONS OF F IN READ(F,A,B,C) IS  1
+ IMPLEMENTATION DEPENDENT...6.6.5.2-16
+======= p656
+### p656 -->  OUTPUT FROM TEST...6.6.5.2-17
+ NUMBER OF EVALUATIONS OF F IN WRITE(F,A,B,C) IS  1
+ IMPLEMENTATION DEPENDENT...6.6.5.2-17
+======= p657
+### p657 -->  OUTPUT FROM TEST...6.6.5.4-8
+ ORDER OF EVALUATION OF PACK(A,I,Z) IS AIZ    
+ IMPLEMENTATION DEPENDENT...6.6.5.4-8
+======= p658
+### p658 -->  OUTPUT FROM TEST...6.6.5.4-9
+ ORDER OF EVALUATION OF UNPACK(Z,A,I) IS AIZ    
+ IMPLEMENTATION DEPENDENT...6.6.5.4-9
+======= p659
+### p659 -->  OUTPUT FROM TEST...6.7.1-11
+ ORDER OF EVALUATION OF (. A, B, C .) IS ABC
+ IMPLEMENTATION DEPENDENT...6.7.1-11
+======= p660
+### p660 -->  OUTPUT FROM TEST...6.7.1-12
+ ORDER OF EVALUATION OF (. A..B .) IS AB
+ IMPLEMENTATION DEPENDENT...6.7.1-12
+======= p661
+### p661 -->  IMPLEMENTATION DEPENDENT...6.7.1-13
+======= p662
+### p662 -->  OUTPUT FROM TEST...6.7.1-14
+ ORDER OF EVALUATION OF (. A .. B .) IS AB
+ IMPLEMENTATION DEPENDENT...6.7.1-14
+======= p663
+### p663 -->  OUTPUT FROM TEST...6.7.2.3-3
+ TEST OF SHORT CIRCUIT EVALUATION OF (A AND B)
+ BOTH EXPRESSIONS EVALUATED
+ IMPLEMENTATION DEPENDENT...6.7.2.3-3
+======= p664
+### p664 -->  OUTPUT FROM TEST...6.7.2.3-4
+ TEST OF SHORT CIRCUIT EVALUATION OF (A OR B)
+ BOTH EXPRESSIONS EVALUATED
+ IMPLEMENTATION DEPENDENT...6.7.2.3-4
+======= p665
+### p665 -->  OUTPUT FROM TEST...6.7.3-2
+ ORDER OF EVALUATION OF F(F(A,B),F(C,D)) IS DCBA
+ IMPLEMENTATION DEPENDENT...6.7.3-2
+======= p666
+### p666 -->  OUTPUT FROM TEST...6.8.2.2-1
+ TEST OF BINDING ORDER (A[I] := EXPRESSION)
+ EVALUATION THEN SELECTION
+ IMPLEMENTATION DEPENDENT...6.8.2.2-1
+======= p667
+### p667 -->  OUTPUT FROM TEST...6.8.2.2-2
+ TEST OF BINDING ORDER (P^ := EXPRESSION)
+ EVALUATION THEN SELECTION
+ IMPLEMENTATION DEPENDENT...6.8.2.2-2
+======= p668
+### p668 -->  OUTPUT FROM TEST...6.8.2.3-2
+ ACTUAL PARAMETERS EVALUATED IN REVERSE ORDER
+ IMPLEMENTATION DEPENDENT...6.8.2.3-2
+======= p669
+### p669 -->  OUTPUT FROM TEST...6.9.5-3
+ SEQUENCE CORRESPONDING TO PAGE
+ CHAR, ORD(C)=         12
+ IMPLEMENTATION DEPENDENT...6.9.5-3
+======= p727
+### p727 -->  OUTPUT FROM TEST...6.1.9-6
+ EQUIVALENT SYMBOL TO UP-ARROW IS IMPLEMENTED
+ IMPLEMENTATION DEFINED...6.1.9-6

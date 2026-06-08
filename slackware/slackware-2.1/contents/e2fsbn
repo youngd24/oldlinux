@@ -1,0 +1,36 @@
+PACKAGE NAME:     e2fsbn
+COMPRESSED PACKAGE SIZE:     53 K
+UNCOMPRESSED PACKAGE SIZE:     130 K
+PACKAGE LOCATION: diska3
+PACKAGE DESCRIPTION:
+e2fsbn:   Utilities for the second extended file system v. 0.5a
+e2fsbn:
+e2fsbn:   Utilities needed to create and maintain ext2 filesystems under Linux.
+e2fsbn:   Included in this package are: chattr, lsattr, mke2fs, mklost+found,
+e2fsbn:   tune2fs, e2fsck, and badblocks. 
+e2fsbn:
+e2fsbn:   These utilities were written by Remy Card (the developer and
+e2fsbn:   maintainer of the ext2 fs) and Theodore T'so.
+e2fsbn:
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/chattr.1.gz
+usr/man/preformat/cat1/lsattr.1.gz
+usr/man/preformat/cat8/
+usr/man/preformat/cat8/badblocks.8.gz
+usr/man/preformat/cat8/e2fsck.8.gz
+usr/man/preformat/cat8/mke2fs.8.gz
+usr/man/preformat/cat8/mklost+found.8.gz
+usr/man/preformat/cat8/tune2fs.8.gz
+sbin/
+sbin/chattr
+sbin/lsattr
+sbin/mke2fs
+sbin/mklost+found
+sbin/tune2fs
+sbin/e2fsck
+sbin/badblocks

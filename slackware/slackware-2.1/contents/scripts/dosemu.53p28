@@ -1,0 +1,4 @@
+( cd usr/bin ; rm -rf xdos )
+( cd usr/bin ; ln -sf dos xdos )
+( cd usr/lib ; rm -rf libdosemu )
+( cd usr/lib ; ln -sf libdosemu0.53pl28 libdosemu )

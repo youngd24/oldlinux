@@ -1,0 +1,22 @@
+--- Imakefile.orig	Sun Oct  9 20:47:41 1994
++++ Imakefile	Sun Oct  9 20:51:05 1994
+@@ -2,7 +2,7 @@
+ #define TARGET_IS_GDB 1
+ 
+ #if TARGET_IS_GDB
+-DEFGDB =  -DGDB -g
++DEFGDB =  -DGDB -DNEW_INTERFACE -DOPEN_ALL_WINDOWS
+ #else
+ DEFGDB = 
+ #endif
+@@ -32,6 +32,10 @@
+ #else
+         DEFINES = -DBSD $(DEFGDB)
+ #endif
++#endif
++
++#ifdef LinuxArchitecture
++	DEFINES = -DSYSV $(DEFGDB)
+ #endif
+ 
+ #ifdef PegasusArchitecture

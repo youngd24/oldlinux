@@ -1,0 +1,44 @@
+--- Makefile
++++ Makefile	1994/02/22 14:38:39
+@@ -0,0 +1,30 @@
++CFLAGS = -O2 -fomit-frame-pointer -m486 \
++		-include /usr/include/bsd/bsd.h -I/usr/include/bsd
++LDLIBS = -lbsd
++LDFLAGS = -s -v
++
++rusers: rusers.o rusers_xdr.o rnusers_xdr.o
++
++install: rusers
++	install rusers /usr/bin/
++	install -m644 rusers.1 /usr/man/man1
++
++clean:
++	rm -f *.o rusers
++
++rusers_xdr.o: rusers_xdr.c rusers.h
++
++rusers.h: /usr/include/rpcsvc/rusers.x
++	rpcgen -h -o rusers.h /usr/include/rpcsvc/rusers.x
++
++rusers_xdr.c: /usr/include/rpcsvc/rusers.x
++	rpcgen -c -C -o rusers_xdr.c /usr/include/rpcsvc/rusers.x
++
++rnusers_xdr.o: rnusers_xdr.c rnusers.h
++
++rnusers.h: /usr/include/rpcsvc/rnusers.x
++	rpcgen -h -o rnusers.h /usr/include/rpcsvc/rnusers.x
++
++rnusers_xdr.c: /usr/include/rpcsvc/rnusers.x
++	rpcgen -c -C -o rnusers_xdr.c /usr/include/rpcsvc/rnusers.x
++
+--- rusers.c
++++ rusers.c	1994/02/22 14:39:51
+@@ -98,7 +98,7 @@
+ 	char date[32], idle_time[64], remote[64], local[64];
+ 	struct hostent *hp;
+ 	struct utmpidlearr *up = (struct utmpidlearr *)replyp;
+-	char *host;
++	const char *host;
+ 	int days, hours, minutes, seconds;
+ 	
+ 	if (search_host(raddrp->sin_addr))

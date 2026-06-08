@@ -1,0 +1,18 @@
+if [ ! -r /tmp/SeTcolor -a ! "$COLOR" = "on" ]; then
+ echo "Running mkfontdir..."
+fi
+if [ -r /usr/X11R6/bin/mkfontdir ]; then
+  ( cd usr/X11R6/lib/fonts/75dpi ; /usr/X11/bin/mkfontdir )
+elif [ -r /cdrom/usr/X11R6/bin/mkfontdir ]; then
+  ( cd usr/X11R6/lib/fonts/75dpi ; /cdrom/usr/X11R6/bin/mkfontdir )
+elif [ -r /var/adm/mount/usr/X11R6/bin/mkfontdir ]; then
+  ( cd usr/X11R6/lib/fonts/75dpi ; /var/adm/mount/usr/X11R6/bin/mkfontdir )
+elif [ -r /mnt/linux/usr/X11R6/bin/mkfontdir ]; then
+  ( cd usr/X11R6/lib/fonts/75dpi ; /mnt/linux/usr/X11R6/bin/mkfontdir )
+elif [ -r /mnt/usr/X11R6/bin/mkfontdir ]; then
+  ( cd usr/X11R6/lib/fonts/75dpi ; /mnt/usr/X11R6/bin/mkfontdir )
+else
+  dialog --title "WARNING" --msgbox "mkfontdir could not be found at \
+this time. You'll have to run it yourself in /usr/X11R6/lib/fonts/75dpi \
+after you reboot." 8 63
+fi

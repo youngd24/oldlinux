@@ -1,0 +1,34 @@
+CONTENTS: cdu31ao sbpcdo sony535o   
+cdu31ao:  Linux kernel version 1.1.18, with SCSI+IDE+Sony CDU31A CD support.
+cdu31ao:
+cdu31ao:  This is a Linux kernel with support for the Sony CDU31A CD-ROM
+cdu31ao:  drives, as well as full support for SCSI devices such as hard drives,
+cdu31ao:  tape drives, and SCSI CD-ROM drives. See the file 'cdu31a.log' for
+cdu31ao:  an exact list of included drivers.
+cdu31ao:
+cdu31ao:  This kernel also has support for PPP, UMSDOS, CSLIP, ethernet,
+cdu31ao:  Ftape, and the PS/2 style mouse (but not other busmouse types).
+cdu31ao:
+cdu31ao:
+sbpcdo:   Linux kernel version 1.1.18, with SCSI+IDE+SoundBlaster Pro CD
+sbpcdo:   (also Panasonic/Lasermate).
+sbpcdo:
+sbpcdo:   This is a Linux kernel with support for the whole family of IDE-style
+sbpcdo:   Kotobuki/Matsushita/Panasonic CR-5xx drives for SoundBlaster ('Pro' or
+sbpcdo:   '16 ASP' or compatible) cards and for 'no-sound' interfaces like 
+sbpcdo:   Lasermate and the Panasonic CI-101P.
+sbpcdo:
+sbpcdo:   This kernel also has support for PPP, UMSDOS, CSLIP, ethernet,
+sbpcdo:   Ftape, and the PS/2 style mouse (but not other busmouse types).
+sbpcdo:
+sony535o: Linux kernel version 1.1.18, with SCSI+IDE+Sony 535/531 CD support.
+sony535o:
+sony535o: This is a Linux kernel with support for the Sony CDU 535/531 CD-ROM
+sony535o: drives, as well as full support for SCSI devices such as hard drives,
+sony535o: tape drives, and SCSI CD-ROM drives. See the file 'sony535.log' for
+sony535o: an exact list of included drivers.
+sony535o:
+sony535o: This kernel also has support for PPP, UMSDOS, CSLIP, ethernet,
+sony535o: Ftape, and the PS/2 style mouse (but not other busmouse types).
+sony535o:
+sony535o:

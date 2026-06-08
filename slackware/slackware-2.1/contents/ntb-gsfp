@@ -1,0 +1,25 @@
+PACKAGE NAME:     ntb-gsfp
+COMPRESSED PACKAGE SIZE:     36 K
+UNCOMPRESSED PACKAGE SIZE:     90 K
+PACKAGE LOCATION: diskt2
+PACKAGE DESCRIPTION:
+ntb-gsfp: ntb-gsfp 1.0
+ntb-gsfp:
+ntb-gsfp: The binaries for gsftopk. A program to convert ghostscript fonts (gsf)
+ntb-gsfp: to pk fonts. If you are producing documents with PS fonts and want to
+ntb-gsfp: display the fonts with xdvi, this program can do it for you. It is
+ntb-gsfp: called by MakeTeXPK.
+ntb-gsfp:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/gsftopk
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/dvips/
+usr/lib/texmf/dvips/render.ps
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/gsftopk.1.gz

@@ -1,0 +1,65 @@
+PACKAGE NAME:     ntb-kpat
+COMPRESSED PACKAGE SIZE:     98 K
+UNCOMPRESSED PACKAGE SIZE:     410 K
+PACKAGE LOCATION: diskt9
+PACKAGE DESCRIPTION:
+ntb-kpat: ntb-kpat 1.1
+ntb-kpat:
+ntb-kpat: This is the binary version of the kpathsea library which was used to
+ntb-kpat: compile web2c, dvips, xdvi and dvi2xx. You do not need this library 
+ntb-kpat: for any program included in NTeX. You should just install it if you
+ntb-kpat: want to use it in your own programs. In this case you should also
+ntb-kpat: install the sources for kpathsea. The current version is 2.1.
+ntb-kpat:
+FILE LIST:
+./
+usr/
+usr/include/
+usr/include/kpathsea/
+usr/include/kpathsea/absolute.h
+usr/include/kpathsea/c-ctype.h
+usr/include/kpathsea/c-errno.h
+usr/include/kpathsea/c-fopen.h
+usr/include/kpathsea/c-limits.h
+usr/include/kpathsea/c-memstr.h
+usr/include/kpathsea/c-minmax.h
+usr/include/kpathsea/c-namemx.h
+usr/include/kpathsea/c-pathch.h
+usr/include/kpathsea/c-pathmx.h
+usr/include/kpathsea/c-proto.h
+usr/include/kpathsea/c-stat.h
+usr/include/kpathsea/c-std.h
+usr/include/kpathsea/c-unistd.h
+usr/include/kpathsea/c-vararg.h
+usr/include/kpathsea/concatn.h
+usr/include/kpathsea/config.h
+usr/include/kpathsea/db.h
+usr/include/kpathsea/debug.h
+usr/include/kpathsea/default.h
+usr/include/kpathsea/expand.h
+usr/include/kpathsea/fn.h
+usr/include/kpathsea/fontmap.h
+usr/include/kpathsea/getpagesize.h
+usr/include/kpathsea/hash.h
+usr/include/kpathsea/lib.h
+usr/include/kpathsea/line.h
+usr/include/kpathsea/paths.h
+usr/include/kpathsea/pathsearch.h
+usr/include/kpathsea/readable.h
+usr/include/kpathsea/str-list.h
+usr/include/kpathsea/str-llist.h
+usr/include/kpathsea/systypes.h
+usr/include/kpathsea/tex-file.h
+usr/include/kpathsea/tex-glyph.h
+usr/include/kpathsea/tex-make.h
+usr/include/kpathsea/tilde.h
+usr/include/kpathsea/truncate.h
+usr/include/kpathsea/types.h
+usr/include/kpathsea/variable.h
+usr/include/kpathsea/xstat.h
+usr/info/
+usr/info/kpathsea.info-2.gz
+usr/info/kpathsea.info.gz
+usr/info/kpathsea.info-1.gz
+usr/lib/
+usr/lib/libkpathsea.a

@@ -1,0 +1,4 @@
+If you can't get something in one of the newer NetKits to compile right,
+try looking for the source in here. It's always good to have extra source
+to fall back on... :^)
+

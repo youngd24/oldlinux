@@ -1,0 +1,17 @@
+***************
+*** 63,69 ****
+  {
+  	register int i, nitems;
+  	int assasinated = 0;
+- 	struct dirent **files;
+  	char *cp;
+  
+  	if ((i = pgetent(line, printer)) < 0)
+--- 63,69 ----
+  {
+  	register int i, nitems;
+  	int assasinated = 0;
++ 	struct direct **files;
+  	char *cp;
+  
+  	if ((i = pgetent(line, printer)) < 0)

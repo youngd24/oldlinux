@@ -1,0 +1,15 @@
+The reset here adds:
+
+echo -e \\033c
+
+to the end of the script. This helps when your screen gets *really* scrambled.
+
+Also, the pathnames.h file was edited slightly to make login provide a more
+complete default path:
+
+For root: /usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/bin:/usr/bin
+For users: /usr/local/bin:/bin:/usr/bin
+
+Have fun!
+
+Pat

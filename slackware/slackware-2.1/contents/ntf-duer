@@ -1,0 +1,37 @@
+PACKAGE NAME:     ntf-duer
+COMPRESSED PACKAGE SIZE:     17 K
+UNCOMPRESSED PACKAGE SIZE:     110 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-duer: ntf-duer 1.1
+ntf-duer:
+ntf-duer: The Duerer font.
+ntf-duer:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/misc/
+usr/lib/texmf/fonts/misc/duerer/
+usr/lib/texmf/fonts/misc/duerer/create.sh
+usr/lib/texmf/fonts/misc/duerer/misc/
+usr/lib/texmf/fonts/misc/duerer/misc/duerer.readme
+usr/lib/texmf/fonts/misc/duerer/src/
+usr/lib/texmf/fonts/misc/duerer/src/cdb10.mf
+usr/lib/texmf/fonts/misc/duerer/src/cdi10.mf
+usr/lib/texmf/fonts/misc/duerer/src/cdr10.mf
+usr/lib/texmf/fonts/misc/duerer/src/cdsl10.mf
+usr/lib/texmf/fonts/misc/duerer/src/cdss10.mf
+usr/lib/texmf/fonts/misc/duerer/src/cdtt10.mf
+usr/lib/texmf/fonts/misc/duerer/src/dromani.mf
+usr/lib/texmf/fonts/misc/duerer/src/dromanu.mf
+usr/lib/texmf/fonts/misc/duerer/src/dtitle.mf
+usr/lib/texmf/fonts/misc/duerer/tfm/
+usr/lib/texmf/fonts/misc/duerer/tfm/cdb10.tfm
+usr/lib/texmf/fonts/misc/duerer/tfm/cdi10.tfm
+usr/lib/texmf/fonts/misc/duerer/tfm/cdr10.tfm
+usr/lib/texmf/fonts/misc/duerer/tfm/cdsl10.tfm
+usr/lib/texmf/fonts/misc/duerer/tfm/cdss10.tfm
+usr/lib/texmf/fonts/misc/duerer/tfm/cdtt10.tfm

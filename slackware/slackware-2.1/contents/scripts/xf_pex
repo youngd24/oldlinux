@@ -1,0 +1,17 @@
+crunch() {
+        LIBDIR=$1
+        LIBPREFIX=$2
+        for f in $LIBDIR/$LIBPREFIX*.so.6.0
+        do
+                bname=`basename $f`
+#               echo "   - compacting $bname."
+                cp $f $LIBDIR/t$bname || exit 1
+                rm -f $f
+                mv $LIBDIR/t$bname $f
+        done
+}
+#echo "Compacting shared libraries to decrease disk space utilization..."
+crunch usr/X11R6/lib libPEX5;
+#echo "Shared libraries compacted."
+( cd usr/X11R6/lib ; rm -rf libPEX5.so.6 )
+( cd usr/X11R6/lib ; ln -sf libPEX5.so.6.0 libPEX5.so.6 )

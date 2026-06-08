@@ -1,0 +1,100 @@
+Extra Slackware packages / user contributed package directory
+_____________________________________________________________
+
+These are some extra packages that might be handy. Use 'pkgtool' to install or
+remove these from your system. These can also be installed with 'installpkg'.
+
+Anyone who wants to contribute a package to this directory should send me mail 
+at: volkerdi@ftp.cdrom.com. The package must install cleanly, and must include a
+description to be added to this index (in which you can feel free to give 
+yourself some credit). As of version 2.0.0, Slackware contains an easy to use
+package creation tool called 'makepkg' that can be used to make the package. 
+
+I don't offer any support for these packages. :^)
+
+Some of these long package names may cause unsightly wrap-around in the color
+pkgtool's package removal menu, but it should still work ok.
+
+  -- Pat
+________________________
+
+ALSO SEE THE "package_descriptions" FILES FOR MORE INFORMATION!
+
+rescue.gz:  This is a bootable rootdisk based on the 1.1.21 Linux kernel
+            with all the standard drivers, and all the Linux filesystems
+            including umsdos. It's got all the debugging and repair utilities
+            for these filesystems, vim, and man pages for many of the included
+            utilities. This is a compressed 1.44 MB disk image -- uncompress
+            it and write it to a floppy. You'll need 8 MB minimum to use this;
+            the disk self boots and then uncompresses a 2560K ext2 root
+            filesystem into a ramdisk. It boots/loads much faster than the
+            bootdisks that use LILO, too. :^)
+
+seejpeg v1.4.3: seejpeg is Evan Harris's JPEG viewer which utilizes svgalib and
+            contains limited GIF, PPM and TARGA viewing support.  The most 
+            useful feature of seejpeg is that it automatically decides on the
+            "best" video mode to use based on the image being displayed and the
+            video card being used.  To aid it, various hints may be given as
+            program options.  In the worst case, it may be overridden.
+
+sample_users.tgz: If you install this package, 3 sample users will be created
+            (gonzo, snake, satan). This package was once part of the AP disk
+            series, but too many people installed it without noticing, and it 
+            was becoming the best known backdoor into Linux boxes all over the
+            Internet (!). This package stems from a time before the "adduser"
+            utility was put in Slackware, so it really isn't all that helpful
+            anymore. You could use "adduser" to create some sample accounts
+            nearly as easily.
+
+aps-23.tgz: Andreas Klemm's Apsfilter-2.3. aps-2 is an lineprinter input filter
+            for Unix Systems with Berkeley alike printing system (configuration
+            using /etc/printcap).  Main features are AUTOMATIC FILE TYPE 
+            RECOGNITION for the filetypes: * ASCII * DATA * POSTSCRIPT * DVI *
+
+samba-1.8.05.tgz: Samba is a Unix based SMB file server. This allows a Unix hosti
+            to act as a file and print server for SMB clients. This includes
+            Lan-Manager compatible clients such as LanManager for DOS, Windows
+            for Workgroups, Windows NT, OS/2, Pathworks and many more. If you
+            have any PCs running SMB clients, such as a PC running Windows for
+            Workgroups, then you can mount file space or printers from a Linux
+            host, so that directories, files and printers on the Linux host
+            are available on the PC.
+
+gcl.tgz: GNU Common Lisp 1.0.
+
+auis63L2-*.tgz: Packages from the Andrew User Interface System, put together
+                for Linux by Terry Gliedt.
+
+lemacs.tgz: This is Lucid Emacs version 19.10 (also known as xemacs)
+
+xgrabsc.tgz: A screen grabber for X.
+
+uucp-1.04.tgz: The Taylor UUCP 1.04 package that was included with Slackware
+       1.2.0. Some people might still want to use this. The UUCP package on
+       disk n1 was upgraded to version 1.05, but that hasn't been tested
+       (well, not by me) so this is included just-in-case[tm].
+
+nvi.tgz: Version 1.34 of nex/nvi, a freely redistributable replacement for the
+         Berkeley ex and vi text editors.
+
+ncurses-185.tgz: This is a "stock" version without any of the custom patches
+       that were added for Slackware. Some purists may prefer to use this, but
+       I think they'll be taking their chances... ;^)
+ 
+manpagesrc.tgz: This is groff source for all of the manpages in Slackware.
+
+smail.tgz: Ian Kluft's Linux port of Smail 3.1.28. Smail is a mail-handling
+       system. Some find it easier to maintain and configure than BSD sendmail,
+       especially for use with UUCP. It comes with many documentation and 
+       sample files. Look in /usr/lib/smail/tools.linux for the HOWTO file that
+       will help you get started.  
+
+pdksh.tgz: A Korn shell look-alike, version 5.0.6 alpha. 
+
+gpc-2.5.8.tgz: A beta version of gpc, the GNU Pascal compiler.
+
+perl-5.000.tgz: Perl version 5.000.
+
+gnat-1.82.tgz: The GNU Ada compiler, 1.82. Requires GCC 2.6.0.
+
+________________________

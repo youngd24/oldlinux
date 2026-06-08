@@ -1,0 +1,398 @@
+#!/bin/sh
+dialog --title "Install packages from series AP (Applications)" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disc must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+20 70 8 \
+"jove" "Jonathan's Own Version of Emacs" "off" \
+"man" "On-line manual pages" "off" \
+"termbin" "Term 2.2.4" "off" \
+"termnet" "Network utilities for term" "off" \
+"termsrc" "Term 2.2.4 source code" "off" \
+"diff" "GNU diffutils-2.7" "off" \
+"ghostscr" "GNU Ghostscript version 2.6.1" "off" \
+"gsfonts1" "Fonts for Ghostscript" "off" \
+"jed" "John E. Davis's JED 0.96 editor" "off" \
+"joe" "Joe text editor, 2.2" "off" \
+"sudo" "sudo 1.2" "off" \
+"gsfonts2" "More fonts for Ghostscript" "off" \
+"zsh" "zsh version 2.4" "off" \
+"ash" "Kenneth Almquist's ash shell" "off" \
+"bc" "GNU bc 1.02" "off" \
+"ftape" "ftape 1.13b" "off" \
+"gp9600" "Reset your modem speed" "off" \
+"groff" "GNU troff 1.09 formatting system" "off" \
+"manpgs" "Man-pages 1.4" "off" \
+"mt_st" "mt-st-0.1 - controls tape drives" "off" \
+"quota" "Disk quota utilities" "off" \
+"sc" "The 'sc' spreadsheet. (v. 6.21)" "off" \
+"texinfo" "GNU texinfo-3.1" "off" \
+"vim" "Version 3.0 of Vim: Vi IMproved" "off" \
+"workbone" "Workbone 0.1" "off" \
+"ispell" "ispell-3.1.08" "off" \
+"jpeg" "JPEG Group's 5beta2 JPEG utils" "off" \
+"mc" "MouseLess Commander version 0.14" "off" \
+"shlbsvga" "Shared library libsvga.so.1.1.8 (fr" "off" \
+2> /tmp/return
+if fgrep '"jove"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package jove to your hard drive" --infobox \
+"Jonathan's Own Version of Emacs (4.14.10) \n\
+\n\
+A mostly Emacs compatible text editor, with man pages and the \n\
+'teachjove' tutorial program. If you'd rather have the real thing, \n\
+the actual Emacs editor/environment is available as disk series 'E'.\n\
+\n\
+" 8 75
+ installpkg ap1/jove.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"man"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package man to your hard drive" --infobox \
+"On-line manual pages. \n\
+\n\
+These manual pages have been preprocessed with groff and then\n\
+compressed with gzip to save you time and disk space.\n\
+\n\
+" 7 75
+ installpkg ap1/man.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"termbin"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package termbin to your hard drive" --infobox \
+"Term 2.2.4\n\
+\n\
+The executable files and man pages for term, which allows\n\
+multiple shells and pseudo-TCP/IP over modem lines.\n\
+\n\
+" 7 75
+ installpkg ap1/termbin.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"termnet"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package termnet to your hard drive" --infobox \
+"Network utilities for term\n\
+\n\
+Includes these utilities, compiled to work through term 2.x.x:\n\
+\n\
+tncftp - version 1.8.3 of Mike Gleason's NcFTP for term.\n\
+ttelnet - telnet for term.\n\
+tfinger - finger users anywhere on the net.\n\
+twhois - gather information about Internet domains.\n\
+\n\
+" 11 75
+ installpkg ap1/termnet.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"termsrc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package termsrc to your hard drive" --infobox \
+"Term 2.2.4 source code\n\
+\n\
+SOURCE code for the TERM daemon which allows multiple sessions over a\n\
+modem line to another Unix machine also running term. This source code\n\
+is not needed to run term on your Linux machine, but you may have to\n\
+upload this to your intended term host machine to compile. TERM\n\
+has support for these operating systems:\n\
+\n\
+Linux, NetBSD, SunOS, ULTRIX, IRIX, NeXT, CX/UX, AIX, BSD386, sco386,\n\
+vistra800, ptx, iris3d, iris4d, OSF1, m68k, ConvexOS, and HP-UX.\n\
+\n\
+" 13 75
+ installpkg ap1/termsrc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"diff"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package diff to your hard drive" --infobox \
+"GNU diffutils-2.7\n\
+\n\
+The GNU diff utilities - finds differences between files. (to make\n\
+source code patches, for instance)\n\
+\n\
+" 7 75
+ installpkg ap2/diff.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ghostscr"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ghostscr to your hard drive" --infobox \
+"GNU Ghostscript version 2.6.1 - (with fixes 01-04 applied).\n\
+Preview, print and process PostScript documents on both PostScript and\n\
+non-PostScript devices. This version supports all SVGAlib video modes\n\
+for output directly to the screen. See the man page for 'gs' for more\n\
+information. [NOTE]: The /usr/bin/gs binary included with this package\n\
+does not support X11; support was left out so that Slackware users \n\
+without X could use SVGAlib output and not need to install the X \n\
+shared libraries. If you need X11 support, you should also install the\n\
+package 'gs_x11' found on the XAP series. It contains a /usr/bin/gs\n\
+with support for X11 (as well as full SVGAlib support).\n\
+\n\
+" 13 75
+ installpkg ap2/ghostscr.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gsfonts1"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gsfonts1 to your hard drive" --infobox \
+"Fonts for the Ghostscript interpreter/previewer.\n\
+\n\
+" 4 75
+ installpkg ap2/gsfonts1.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"jed"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package jed to your hard drive" --infobox \
+"John E. Davis's JED 0.96 editor.\n\
+\n\
+JED is an extremely powerful but small emacs programmer's editor that\n\
+is extensible in a C-like macro language and is able to perform color\n\
+syntax highlighting. Among the many features:\n\
+Emacs, wordstar, EDT emulation;\n\
+C, Fortran, TeX, text editing modes;  Full undo;\n\
+GNU Emacs compatible info reader, and lots more.\n\
+\n\
+8 bit clean, so you can even edit binary files!  \n\
+\n\
+" 13 75
+ installpkg ap2/jed.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"joe"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package joe to your hard drive" --infobox \
+"Joe text editor, 2.2.\n\
+\n\
+Joseph H. Allen's easy to use text editor, similar to WordStar[tm].\n\
+\n\
+" 6 75
+ installpkg ap2/joe.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"sudo"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package sudo to your hard drive" --infobox \
+"sudo 1.2\n\
+\n\
+'sudo' is a command that allows users to execute some commands as \n\
+root. The /etc/sudoers file (edited with 'visudo') specifies which\n\
+users have access to sudo and which commands they can run. 'sudo' logs\n\
+all its activities to /var/adm/sudo, so the system administrator can\n\
+can keep an eye on things.\n\
+\n\
+" 10 75
+ installpkg ap2/sudo.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gsfonts2"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gsfonts2 to your hard drive" --infobox \
+"More fonts for the Ghostscript interpreter/previewer.\n\
+\n\
+" 4 75
+ installpkg ap3/gsfonts2.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"zsh"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package zsh to your hard drive" --infobox \
+"zsh version 2.4\n\
+\n\
+Zsh is a UNIX command interpreter (shell) which of the standard shells\n\
+most resembles the Korn shell (ksh), although it is not completely\n\
+compatible.  It includes enhancements of many types, notably in the\n\
+command-line editor, options for customizing its behavior, filename\n\
+globbing, features to make C-shell (csh) users feel more at home and\n\
+extra features drawn from tcsh (another 'custom' shell).  Zsh was \n\
+written by Paul Falstad.\n\
+\n\
+" 12 75
+ installpkg ap3/zsh.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ash"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ash to your hard drive" --infobox \
+"Kenneth Almquist's ash shell.\n\
+\n\
+A lightweight (62K) Bourne compatible shell. Great for machines with\n\
+low memory, but does not provide all the extras of shells like bash,\n\
+tcsh, and zsh. Runs most shell scripts compatible with the Bourne\n\
+shell. Note that under Linux, most scripts seem to use at least some\n\
+bash-specific syntax. The Slackware setup scripts are a notable\n\
+exception, since ash is the shell used on the install disks. NetBSD\n\
+uses ash as its /bin/sh.\n\
+\n\
+" 12 75
+ installpkg ap4/ash.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"bc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package bc to your hard drive" --infobox \
+"GNU bc 1.02 - An arbitrary precision calculator language.\n\
+bc is a language that supports arbitrary precision numbers with \n\
+interactive execution of statements.  There are some similarities in\n\
+the syntax to the C programming language.\n\
+" 6 75
+ installpkg ap4/bc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ftape"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ftape to your hard drive" --infobox \
+"ftape 1.13b\n\
+\n\
+Bas Laarhoven's FTAPE module.\n\
+\n\
+The FTAPE driver allows you to use a QIC-40 or QIC-80 floppy tape\n\
+drive with Linux.\n\
+\n\
+This module will only work with Linux version: 1.1.59\n\
+\n\
+" 11 75
+ installpkg ap4/ftape.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gp9600"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gp9600 to your hard drive" --infobox \
+"This is a script that allows you to set your modem speed. If you do\n\
+not install this script, your baud rate will be set to 9600. If you\n\
+install it, a menu will be presented later on allowing you to select\n\
+any of the following baud rates:\n\
+\n\
+300, 1200, 2400, 4800, 9600, 19200, 38400.\n\
+\n\
+If you need something faster than this, you should set the baud to\n\
+38400, which can be changed to mean a faster rate with setserial.\n\
+\n\
+" 12 75
+ installpkg ap4/gp9600.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"groff"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package groff to your hard drive" --infobox \
+"GNU troff 1.09 document formatting system.\n\
+\n\
+The groff package provides versions of troff, nroff, eqn, tbl, and \n\
+other Unix text-formatting utilities. Groff is used to 'compile' man\n\
+pages stored in groff/nroff format into a form which can be printed or\n\
+displayed on the screen. These man pages would be in /usr/man/man?. \n\
+Most of the man pages in the Slackware Linux distribution (except in\n\
+the groff package) have been preformatted, GNU zipped, and placed in \n\
+the /usr/man/preformat/cat? directories. Groff is not needed to view\n\
+preformatted man pages.                                 \n\
+\n\
+" 13 75
+ installpkg ap4/groff.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"manpgs"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package manpgs to your hard drive" --infobox \
+"Man-pages 1.4\n\
+\n\
+Assorted man pages that go in sections 1, 4, 5, 6, 7, 8, and 9.\n\
+\n\
+Contributors to man-pages 1.4 include:  \n\
+Alan Cox, Dan Miner, Daniel Quinlan, Darren Senn, David Metcalfe,\n\
+Drew Eckhardt, Giorgio Ciucci, Graeme W. Wilford, Ian Jackson, \n\
+Jens Schweikhardt, Luigi P. Bai, Michael Edward Chastain, \n\
+Michael Haardt, Mitchum DSouza, Rik Faith, Steven Greenland, \n\
+and Thomas Koenig.\n\
+\n\
+" 13 75
+ installpkg ap4/manpgs.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"mt_st"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package mt_st to your hard drive" --infobox \
+"mt-st-0.1 - controls magnetic tape drive operation\n\
+\n\
+This mt originates from BSD NET-2. Some Linux SCSI tape-specific\n\
+ioctls have been added to the original source and the man page has\n\
+been updated. Although this mt program is tailored for SCSI tape, it\n\
+can also be used with the QIC-02 driver and hopefully with other Linux\n\
+tape drivers using the same ioctls (some of the commands may not work\n\
+with all drivers).\n\
+\n\
+" 11 75
+ installpkg ap4/mt_st.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"quota"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package quota to your hard drive" --infobox \
+"Disk quota utilities.\n\
+\n\
+Disk quota utilities, written by Marco van Wieringen, Edvard Tuinder,\n\
+and Linus Torvalds.  The required kernel patches are built into some\n\
+of the kernels and source provided with Slackware, and the patches can\n\
+be found in the ./kernel-source/v1.1 directory of the Slackware source\n\
+tree.\n\
+\n\
+" 10 75
+ installpkg ap4/quota.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"sc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package sc to your hard drive" --infobox \
+"The 'sc' spreadsheet. (v. 6.21)\n\
+" 3 75
+ installpkg ap4/sc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"texinfo"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package texinfo to your hard drive" --infobox \
+"GNU texinfo-3.1\n\
+\n\
+'Texinfo' is a documentation system that uses a single source file to\n\
+produce both on-line information and printed output.  Using Texinfo,\n\
+you can create a printed document with the normal features of a book,\n\
+including chapters, sections, cross references, and indices.  From the\n\
+same Texinfo source file, you can create a menu-driven, on-line Info\n\
+file with nodes, menus, cross references, and indices.\n\
+\n\
+This package is needed to read the documentation files in /usr/info.\n\
+\n\
+" 13 75
+ installpkg ap4/texinfo.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"vim"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package vim to your hard drive" --infobox \
+"Version 3.0 of Vim: Vi IMproved\n\
+\n\
+Vim is an almost compatible version of the UNIX editor vi. Only the\n\
+'Q' command is missing (you don't need it). Many new features have\n\
+been added: multi level undo, command line history, filename \n\
+completion, block operations, etc.\n\
+\n\
+" 9 75
+ installpkg ap4/vim.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"workbone"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package workbone to your hard drive" --infobox \
+"Workbone 0.1 \n\
+\n\
+Text-based audio CD player.\n\
+\n\
+" 6 75
+ installpkg ap4/workbone.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ispell"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ispell to your hard drive" --infobox \
+"ispell-3.1.08\n\
+\n\
+Ispell is a fast screen-oriented spelling checker that shows you your\n\
+errors in the context of the original file, and suggests possible \n\
+corrections when it can figure them out.  Compared to UNIX spell, it\n\
+is faster and much easier to use.  Ispell can also handle languages\n\
+other than English. Ispell has a long history, and many people have\n\
+contributed to the current version -- some of the major contributors\n\
+include R. E. Gorin, Pace Willisson, Walt Buehring, and Geoff \n\
+Kuenning. \n\
+\n\
+" 13 75
+ installpkg ap5/ispell.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"jpeg"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package jpeg to your hard drive" --infobox \
+"Independent JPEG Group's 5beta2 JPEG software\n\
+\n\
+Software to implement JPEG image compression and decompression. JPEG\n\
+(pronounced 'jay-peg') is a standardized compression method for \n\
+full-color and gray-scale images.  JPEG is intended for compressing\n\
+'real-world' scenes; cartoons and other non-realistic images are not\n\
+its strong suit.  JPEG is lossy, however, on typical images of \n\
+real-world scenes, very good compression levels can be obtained with\n\
+no visible change, and amazingly high compression levels are possible\n\
+if you can tolerate a low-quality image.\n\
+\n\
+" 13 75
+ installpkg ap5/jpeg.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"mc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package mc to your hard drive" --infobox \
+"MouseLess Commander version 0.14\n\
+The MouseLess Commander is a Norton Commander clone, a program that\n\
+manipulates and manages files and directories. Useful, fast, and has\n\
+color displays on the Linux console.  Contrary to its name, it also\n\
+has mouse support if you run the gpm mouse server.  This program\n\
+requires the terminal description files in /usr/lib/terminfo, which\n\
+can be found in ncurses.tgz or hdsetup.tgz (the Slackware setup script\n\
+package).  mc-0.14 was written by Miguel de Icaza and Mauricio Plaza.\n\
+" 10 75
+ installpkg ap5/mc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"shlbsvga"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package shlbsvga to your hard drive" --infobox \
+"Shared library libsvga.so.1.1.8 (from svgalib 1.12)\n\
+\n\
+Allows you to execute SVGAlib programs that use the shared library.\n\
+\n\
+" 6 75
+ installpkg ap5/shlbsvga.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

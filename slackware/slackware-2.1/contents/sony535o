@@ -1,0 +1,22 @@
+PACKAGE NAME:     sony535o
+COMPRESSED PACKAGE SIZE:     409 K
+UNCOMPRESSED PACKAGE SIZE:     480 K
+PACKAGE LOCATION: diskq2
+PACKAGE DESCRIPTION:
+sony535o: Linux kernel version 1.1.18, with SCSI+IDE+Sony 535/531 CD support.
+sony535o:
+sony535o: This is a Linux kernel with support for the Sony CDU 535/531 CD-ROM
+sony535o: drives, as well as full support for SCSI devices such as hard drives,
+sony535o: tape drives, and SCSI CD-ROM drives. See the file 'sony535.log' for
+sony535o: an exact list of included drivers.
+sony535o:
+sony535o: This kernel also has support for PPP, UMSDOS, CSLIP, ethernet,
+sony535o: Ftape, and the PS/2 style mouse (but not other busmouse types).
+sony535o:
+FILE LIST:
+./
+install/
+install/doinst.sh
+vmlinuz
+boot/
+boot/zSystem.map

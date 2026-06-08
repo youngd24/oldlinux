@@ -1,0 +1,44 @@
+PACKAGE NAME:     trn
+COMPRESSED PACKAGE SIZE:     150 K
+UNCOMPRESSED PACKAGE SIZE:     310 K
+PACKAGE LOCATION: diskn3
+PACKAGE DESCRIPTION:
+trn:      A threaded news reader for the local news spool. (v. 3.5)
+trn:
+trn:      This version of trn is compiled to read a local news spool in 
+trn:      /var/spool/news for use with INN or Cnews.
+trn:
+trn:      If you plan to read news from an NNTP server, don't install this
+trn:      package -- instead, wait for the trn-nntp package coming next.
+trn:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/trn
+usr/bin/newsetup
+usr/bin/newsgroups
+usr/bin/Pnews
+usr/bin/Rnmail
+usr/lib/
+usr/lib/trn/
+usr/lib/trn/INIT
+usr/lib/trn/Pnews.header
+usr/lib/trn/Speller
+usr/lib/trn/filexp
+usr/lib/trn/makedir
+usr/lib/trn/mbox.saver
+usr/lib/trn/newsnews
+usr/lib/trn/norm.saver
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/newsetup.1.gz
+usr/man/preformat/cat1/newsgroups.1.gz
+usr/man/preformat/cat1/trn.1.gz
+usr/man/preformat/cat1/Pnews.1.gz
+usr/man/preformat/cat1/Rnmail.1.gz
+install/
+install/doinst.sh
+etc/
+etc/organization

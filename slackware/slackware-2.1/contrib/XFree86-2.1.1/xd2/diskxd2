@@ -1,0 +1,23 @@
+CONTENTS: xf_pex xstatic 
+xstatic:  Static versions of the X libraries.
+xstatic:
+xstatic:
+xstatic:
+xstatic:
+xstatic:
+xstatic:
+xstatic:
+xstatic:
+xstatic:
+xstatic:
+xf_pex:   XFree86 2.1.1 PEX distribution
+xf_pex:
+xf_pex:   If you would like to use and build PEX programs you will need this
+xf_pex:   package in addition to a server that supports PEX.  The distributed
+xf_pex:   servers do *not* include PEX support by default - you will have to 
+xf_pex:   build one using the link kit.
+xf_pex:
+xf_pex:
+xf_pex:
+xf_pex:
+xf_pex:

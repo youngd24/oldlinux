@@ -1,0 +1,22 @@
+PACKAGE NAME:     idekerno
+COMPRESSED PACKAGE SIZE:     328 K
+UNCOMPRESSED PACKAGE SIZE:     390 K
+PACKAGE LOCATION: diskq1
+PACKAGE DESCRIPTION:
+idekerno: Linux kernel version 1.1.18, without SCSI support.
+idekerno: 
+idekerno: A Linux kernel for computers that do not need SCSI support. If you 
+idekerno: don't have SCSI, the advantage of using the idekern kernel is that 
+idekerno: your machine will boot faster with a leaner kernel. See the file
+idekerno: 'idekern.log' for an exact list of included drivers. A short list:
+idekerno:  
+idekerno: This kernel also has support for PPP, UMSDOS, CSLIP, ethernet,
+idekerno: Ftape, and the PS/2 style mouse (but not other busmouse types).
+idekerno:
+FILE LIST:
+./
+install/
+install/doinst.sh
+vmlinuz
+boot/
+boot/zSystem.map

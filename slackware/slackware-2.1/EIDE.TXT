@@ -1,0 +1,173 @@
+
+[NOTE: With the newer kernels now used by Slackware you shouldn't need to
+       worry about this, but I'm including it in case anyone needs to run an
+       earlier kernel (like 1.1.18) on an EIDE drive  - Pat ]
+
+
+                Everything I Know About Linux and EIDE
+                --------------------------------------
+
+
+Introduction
+------------
+
+It is possible to use Linux on a large EIDE drive with no restrictions
+on where anything resides.  I only deal with DOS and Linux here, but
+the approach I suggest should be compatible with other operating
+systems as well.
+
+I presently use version 1.0.9 of the kernel, but everything here
+applies to kernels at least through 1.1.34.  Sometime in the future,
+Linux will probably support EIDE gracefully and transparently, at
+which point all of this will be moot.  Everything I suggest, however,
+should continue to work with these future kernels, although most of it
+will become unnecessary.
+
+
+Background and Terminology
+--------------------------
+
+Sectors on an ATA (IDE) drive are 512 bytes long.  There are two ways
+to address sectors.  Logical Block Address (LBA) form, or logical
+form, numbers the sectors linearly starting with 0.
+Cylinder-Head-Sector (CHS) form, or physical form, addresses each
+sector with a (cylinder, head, sector) triplet.  To convert addresses
+from logical to physical form, it is necessary to know how many heads
+per cylinder and how many sectors per head the drive has.  If the
+total number of cylinders is known as well, the size of the drive can
+be determined.  The number of cylinders, heads per cylinder ("heads"),
+and sectors per head ("sectors") is called the "disk geometry".
+
+Old controllers and BIOSes require sectors to be addressed in physical
+form; all controllers and BIOSes allow sectors to be addressed in
+physical form.  Linux uses logical addresses everywhere except at the
+lowest possible level, when it translates to physical form to talk to
+the controller.  Linux does not use the BIOS for anything except to
+determine the disk geometry.
+
+The partition table records the start and end of each partition in
+*both* logical and physical form.  Both DOS fdisk and Linux fdisk
+expect these values to agree.  DOS fdisk obtains the disk geometry by
+querying the BIOS; Linux fdisk obtains the geometry by querying the
+kernel.
+
+Now for the fun part.  MS-DOS and the BIOS interface use a 10-bit
+field to hold the cylinder number, so they only allow cylinders 0-1023
+to be accessed.  This is not sufficient for modern drives, which tend
+to have 63 sectors/head, 16 heads/cylinder, and many cylinders.  The
+"solution" is a complete hack: An EIDE BIOS will *lie* when queried
+for the disk geometry by halving (or quartering) the number of
+cylinders and doubling (or quadrupling) the number of heads.  Then
+whenever a physically addressed I/O request arrives, the BIOS will
+assume the request is based on the bogus disk geometry, and will
+convert it appropriately to talk to the controller.  This process is
+called "address translation".
+
+
+The Problem
+-----------
+
+When the Linux kernel queries the BIOS (actually, it just reads the
+CMOS settings) to determine the disk geometry, it will get the bogus
+values which claim more than 16 heads.  Linux knows that this is
+impossible, so the code in hd.c gives up and skips the drive.  (Note
+that even though the BIOS is reporting a bogus geometry, requests to
+the controller still need to be based on the real geometry.  Thus
+merely eliminating the test in hd.c won't work.)
+
+
+The Wrong Solution
+------------------
+
+One fix is to use the BIOS "setup" program to turn off address
+translation completely.  You may have to manually set the
+cylinder/head/sector values to the real geometry, or it may be
+possible to simply turn off the translation, depending on how your
+setup works.
+
+Then you can repartition your drive with DOS and/or Linux fdisk,
+install both operating systems, and things will work, provided you
+observe certain restrictions.
+
+The problem is that the BIOS still can't be used to access cylinders
+above 1023.  So all of your DOS partitions will have to be below that
+limit, as will anything which needs to be accessed through the BIOS.
+For example, LILO uses the BIOS to do its dirty work; so if you want
+to use LILO to boot Linux, you will have to make sure the kernel
+(read: entire root partition) lies below the 1024 cylinder limit.
+Linux itself, however, will happily access the entire drive.
+
+
+The Right Solution
+------------------
+
+Restrictions are annoying, so we will avoid them.  This obviously
+requires leaving address translation on and dealing with the remaining
+problems in a different way.
+
+To fix the kernel's problem, simply feed the real geometry to the
+kernel with a boot-time option line.  You can do this from the LILO
+boot prompt by typing "<image name> hd=<cylinders>,<heads>,<sectors>".
+You can also have LILO feed the options automatically by using an
+"append=" directive in your lilo.conf file.
+
+Now the kernel will be able to recognize and access the drive, but
+when a user mode program (e.g., fdisk or the LILO installer) queries
+the kernel for the disk geometry, the kernel will return the real geometry,
+not the bogus one.  So Linux fdisk (which queries the kernel) and DOS
+fdisk (which queries the BIOS) will disagree about how the partition
+table should look.  Also, the LILO installer will be computing
+physical addresses which are incompatible with what the BIOS (and
+therefore the LILO runtime) requires.
+
+The fdisk problem is easy to fix:  Go to expert mode, and set the
+number of cylinders and number of heads to the bogus (BIOS-compliant)
+values.  Then edit the partition table and write it out, confident
+that Linux fdisk and DOS fdisk are seeing eye to eye.
+
+The LILO problem is just as easy to fix: Add the "linear" directive to
+your lilo.conf file.  This will cause LILO to use logical addresses
+instead of physical to store its data, forcing LILO to compute
+physical addresses at run time instead of at install time.  This will
+use the geometry supplied by the BIOS instead of that supplied by the
+kernel, and everything will "just work".
+
+
+Example / Summary
+-----------------
+
+I have a 1 Gig EIDE drive on which I recently installed Linux.  Here
+is the procedure I used.
+
+1) Ran setup and examined the (bogus) disk geometry.  It said 505
+cylinders, 64 heads, 63 sectors.  More than 16 heads is impossible, so
+the real values must be 2100 cylinders, 16 heads, 63 sectors.
+
+2) Booted DOS boot disk, ran fdisk, created a DOS partition.
+
+3) Booted Slackware boot disk.  Typed "ramdisk hd=2100,16,63" to boot
+the kernel.  Ran Linux fdisk, typed "p" to see lots of errors, typed
+"x" to access expert mode, set cylinders to 505, set heads to 64,
+returned to normal mode, typed "p" to see my DOS partition and no
+error messages.  Created partitions to heart's content.  Saved
+partition table and rebooted from Slackware disk (not sure why I had
+to do this).
+
+4) Installed Slackware normally, creating an ordinary lilo.conf file.
+
+5) Edited lilo.conf (in this case, /mnt/etc/lilo.conf) to add these
+lines to the top:
+
+append="hd=2100,16,63"
+linear
+
+6) Ran "lilo -r /mnt".  I expected to need the "-P ignore" option, but
+didn't.  Go figure.
+
+7) Installed DOS and Windows, much to my chagrin.
+
+
+Good luck to all.
+
+- Patrick LoPresti
+  patl@lcs.mit.edu

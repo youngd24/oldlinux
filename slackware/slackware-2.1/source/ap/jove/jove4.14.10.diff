@@ -1,0 +1,126 @@
+
+diff -u --recursive joveorg/Makefile jove4.14.10/Makefile
+--- joveorg/Makefile	Sat Jun 19 01:44:28 1993
++++ jove4.14.10/Makefile	Sun Oct  2 12:30:58 1994
+@@ -28,22 +28,22 @@
+ 
+ SHELL = /bin/sh
+ TMPDIR = /tmp
+-RECDIR = /usr/preserve
++RECDIR = $(TMPDIR)
+ 
+-JOVEHOME = /local
++JOVEHOME = /usr
+ SHAREDIR = $(JOVEHOME)/lib/jove
+ LIBDIR = $(JOVEHOME)/lib/jove
+ BINDIR = $(JOVEHOME)/bin
+ MANDIR = $(JOVEHOME)/man/man$(MANEXT)
+ MANEXT = 1
+-DFLTSHELL = /bin/csh
++DFLTSHELL = /bin/sh
+ 
+ # to install executable files
+-XINSTALL=cp
+-#XINSTALL=install -c -m 755 # -s
++#XINSTALL=cp
++XINSTALL=install -c -m 755 # -s
+ # to install text files
+-TINSTALL=cp
+-#TINSTALL=install -c -m 644
++#TINSTALL=cp
++TINSTALL=install -c -m 644
+ 
+ PROG = jove
+ VERSION = 4.14
+@@ -62,7 +62,7 @@
+ # Select optimization level (flags passed to compiling and linking steps).
+ # On most systems, -g for debugging, -O for optimization.
+ 
+-OPTFLAGS = -g
++OPTFLAGS = -O2 -fomit-frame-pointer
+ 
+ # Select the right libraries for your system.
+ #	2.10BSD:LIBS = -ltermcap
+@@ -92,7 +92,7 @@
+ #	PDP-11 without separate I&D: -n
+ 
+ 
+-LDFLAGS =
++LDFLAGS = -s
+ 
+ # define a symbol for your OS if it hasn't got one.  See sysdep.h.
+ # Jove has very few defaults, you will almost certainly need to define
+@@ -121,7 +121,7 @@
+ #
+ # You can just say 'make SYSDEFS=-Dwhatever' on these systems.
+ 
+-SYSDEFS = 
++SYSDEFS = -DBSDPOSIX
+ 
+ # for SCO Xenix, set
+ #	MEMFLAGS = -Mle
+@@ -131,6 +131,7 @@
+ 
+ # For SVR4 (/usr/ucb/cc will NOT work because of setjmp.h).
+ # CC = /usr/bin/cc
++CC = gcc
+ 
+ # Load invocation of cc.
+ # LDCC = purify $(CC)
+Only in jove4.14.10: Makefile.orig
+diff -u --recursive joveorg/io.c jove4.14.10/io.c
+--- joveorg/io.c	Thu Jun 17 15:03:12 1993
++++ jove4.14.10/io.c	Sun Oct  2 12:30:58 1994
+@@ -663,7 +663,13 @@
+ 
+ # ifdef	USE_GETPWNAM
+ 
++#define _POSIX_SOURCE 1
++#undef _FEATURES_H
++#undef _GNU_SOURCE
++#undef _SVID_SOURCE
++#include <features.h>
+ #include <pwd.h>
++#undef _POSIX_SOURCE
+ 
+ private void
+ get_hdir(user, buf)
+Only in jove4.14.10: io.c.orig
+diff -u --recursive joveorg/jove.c jove4.14.10/jove.c
+--- joveorg/jove.c	Sat Jun 19 01:44:50 1993
++++ jove4.14.10/jove.c	Sun Oct  2 12:31:17 1994
+@@ -1511,9 +1511,7 @@
+ 	UpdModLine = YES;
+ 	if (inIOread)
+ 		redisplay();
+-#ifndef	BSD_SIGS
+ 	(void) signal(SIGALRM, updmode);
+-#endif
+ 	if (UpdFreq != 0)
+ 		(void) alarm((unsigned) (UpdFreq - (time((time_t *)NULL) % UpdFreq)));
+ 	errno = save_errno;
+diff -u --recursive joveorg/select.h jove4.14.10/select.h
+--- joveorg/select.h	Wed May  5 22:13:56 1993
++++ jove4.14.10/select.h	Sun Oct  2 12:30:58 1994
+@@ -9,6 +9,12 @@
+ # include <sys/select.h>
+ #endif
+ 
++#ifdef linux
++#include <sys/time.h>
++#include <sys/types.h>
++#include <unistd.h>
++#else
++
+ #ifndef FD_SET		/* usually set in sys/types.h (AIX: sys/select.h) */
+ 
+   typedef long fd_set;
+@@ -21,5 +27,7 @@
+ # define FD_CLR(fd, fdset)	(*(fdset) &= ~(1L << (fd))
+ # define FD_ISSET(fd, fdset)	(*(fdset) & (1L << (fd)))
+ # define FD_ZERO(fdset)		(*(fdset) = 0)
++
++#endif /* linux */
+ 
+ #endif /* FD_SET */
+

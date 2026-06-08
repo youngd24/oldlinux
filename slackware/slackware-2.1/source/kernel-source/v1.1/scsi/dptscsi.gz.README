@@ -1,0 +1,60 @@
+SLACKWARE 2.0.0 1.44 Meg BOOT DISK FOR DPT CONTROLLERS (ALPHA!!!)
+
+(NOTE: There are two different drivers for DPT out there...one
+in the SCSI HOWTO has a file dpt.c, which is used here.  There is
+another one under development called eata.c, also available from
+the MIT site for which there is a different set of disks available
+at sunsite and funet I think.)
+
+The file 'dptscsi.gz' is a Slackware 2.0.0 boot disk, with a version
+1.1.53 of the kernel with DPT SCSI and limited NET installed.  It
+was used successfully with a DTP 2122 EISA controller on DEC 1.05
+and 2.10 Gig drives.  I personally did the install of the basic
+system and the network files, then FTP-ed the rest of Slackware
+to the box and continued the install.  I used the 3C509 (3C579
+actually) card, and NE2000 is in there too.  (SCSI CDROM too!)
+
+Make sure you get the latest patches from the source listed in the 
+SCSI HOWTO.  Don't forget the README for patching kernels...lots of
+people forget the -p0 parameter to patch!  If the DPT patches are
+against 1.1.45, then you will have to make changes to advance to the
+newer kernels.  After kernel 1.1.48 or .49 a change needs to be made
+to the dpt.c file under /usr/src/linux/drivers/scsi to give an
+additional parameter to the dma_request routine.  I kludged it myself
+by replacing the line
+
+	  if(request_dma(dma_trans[ccb_info.drqx])) {
+
+with
+
+	  if(request_dma(dma_trans[ccb_info.drqx],"dptEATA")) {
+
+and it worked fine (up to 1.1.53 at least).
+
+Remember, until you compile the new kernel you will have a little 
+problem booting your installed system, as DPT is still ALPHA and 
+not included with the system distribution.  To reboot your box after
+the initial installation, you can use the boot disk and at the LILO 
+prompt use the line 
+
+mount root=/dev/sda1
+                  /\ or whatever your partition is
+
+to get the machine going.  Also, the larger SCSI drives will exceed
+LILO's ability to boot directly.  Currently, I boot from floppy but
+shortly I plan to install a small, fast drive that I will boot from
+and that will also contain my SWAP partition to help balance the load. 
+
+If you need a kernel, you could mount the floppy '-t minix' and copy
+the kernel...it is set to boot the root partition as /dev/sda1.
+
+Good luck!
+
+Steve...
+----------------------------------------------------------------------------
+|    Steve Kneizys                            Stevo@acad.ursinus.edu       |
+|    Director                                 P.O. Box 1000                |
+|    Academic Computing                       Collegeville, PA 19426       |
+|                                             Phone (215) 489 4111 x 2244  |
+|    Ursinus College                          FAX   (215) 489 0634         |
+----------------------------------------------------------------------------

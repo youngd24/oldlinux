@@ -1,0 +1,166 @@
+CONTENTS: comms cpio e2fsbn find grep keytbls lpr gpm shellutl syslogd tar textutl zoneinfo bash less  
+less:     less-237
+less:
+less:     Less is a paginator similar to more (1), but which allows backward
+less:     movement in the file as well as forward movement. Also, less does not
+less:     have to read the entire input file before starting, so with large
+less:     input files it starts up faster than text editors like vi (1). 
+less:
+less:     Less was written by Mark Nudelman.
+less:
+less:
+less:
+bash:     GNU bash-1.14.2
+bash:
+bash:     The GNU Bourne-Again SHell.  Bash is a sh-compatible command language
+bash:     interpreter that executes commands read from the standard input or 
+bash:     from a file.  Bash also incorporates useful features from the Korn
+bash:     and C shells (ksh and csh).  Bash is ultimately intended to be a 
+bash:     conformant implementation of the IEEE Posix Shell and Tools
+bash:     specification (IEEE Working Group 1003.2).
+bash:
+bash:     Bash must be present for the system to boot properly.
+bash:
+comms:    Serial file-transfer and communication packages.
+comms:   
+comms:    Includes these programs:
+comms:    
+comms:    Minicom - a full featured menu-driven communications package similar
+comms:    to the DOS program 'Telix'.
+comms:
+comms:    sz/rz - utilities used to upload and download files using the Zmodem
+comms:    protocol.
+comms:
+comms:
+cpio:     The GNU cpio backup and archiving utility v. 2.3
+cpio:
+cpio:     This is GNU cpio, a program to manage archives of files. This package
+cpio:     also includes mt, a tape drive control program. cpio copies files into
+cpio:     or out of a cpio or tar archive, which is a file that contains other
+cpio:     files plus information about them, such as their pathname, owner,
+cpio:     timestamps, and access permissions. The archive can be another file on
+cpio:     the disk, a magnetic tape, or a pipe.
+cpio:
+cpio:
+cpio:
+e2fsbn:   Utilities for the second extended file system v. 0.5a
+e2fsbn:
+e2fsbn:   Utilities needed to create and maintain ext2 filesystems under Linux.
+e2fsbn:   Included in this package are: chattr, lsattr, mke2fs, mklost+found,
+e2fsbn:   tune2fs, e2fsck, and badblocks. 
+e2fsbn:
+e2fsbn:   These utilities were written by Remy Card (the developer and
+e2fsbn:   maintainer of the ext2 fs) and Theodore T'so.
+e2fsbn:
+e2fsbn:
+e2fsbn:
+find:     GNU find 3.8
+find:
+find:     This package contains the GNU find, xargs, and locate programs.
+find:     find and xargs comply with POSIX 1003.2, as far as I know.  They
+find:     also support some additional options, some borrowed from Unix and
+find:     some unique to GNU.
+find:
+find:
+find:
+find:
+find:
+grep:     GNU grep 2.0
+grep:
+grep:     Grep searches the named input files (or standard input if no files are
+grep:     named, or the file name - is given) for lines containing a match to
+grep:     the given pattern.  This is the 'fastest grep in the west' (we hope).
+grep:
+grep:
+grep:
+grep:
+grep:
+grep:
+keytbls:  kbd 0.88
+keytbls:
+keytbls:  Load and save keyboard mappings. Needed if you are not using the US
+keytbls:  keyboard map. This package also contains utilities to change your
+keytbls:  console fonts - if you install it you'll get a menu later on that lets
+keytbls:  you select from many different fonts. If you like one, you can make it
+keytbls:  your default font. A new default font can be chosen at any time by
+keytbls:  typing 'fontconfig'. This package includes fonts from the 
+keytbls:  kbd_fonts.tar.gz package uploaded to Sunsite.
+keytbls:
+keytbls:
+lpr:      BSD print spooling system.                           
+lpr:
+lpr:      NOTE: The lpd binary included in this package expects to find
+lpr:      TCP/IP running if TCP/IP support is found in the Linux kernel. If
+lpr:      you do not plan to install the TCP/IP package, then you will have 
+lpr:      to recompile your kernel removing TCP/IP support. If you do not, 
+lpr:      lpd will die immediately after it is started.
+lpr:
+lpr:
+lpr:
+lpr:
+gpm:      General purpose mouse support v0.9
+gpm:
+gpm:      This program is based on the 'selection' package, and allows you to
+gpm:      use the mouse to cut and paste text from the screen.  It also acts as
+gpm:      a mouse server for applications running on the Linux console, such as 
+gpm:      the (now inaccurately named) MouseLess Commander and dialog.  NOTE:
+gpm:      This program may cause problems when you start X on systems that do
+gpm:      not use a serial mouse.  If you get an 'unable to open mouse device'
+gpm:      error from X, remove gpm from /etc/rc.d/rc.local.
+gpm:
+gpm:
+shellutl: GNU shellutils 1.9.4
+shellutl:
+shellutl: This is a package of small shell programming utilities.  They are
+shellutl: mostly compliant with POSIX.2, where applicable.
+shellutl:
+shellutl: The programs in this package are:
+shellutl:   basename date dirname echo env expr false logname nice hohup
+shellutl:   pathchk printenv printf sleep stty tee test true tty uname
+shellutl:   who whoami yes
+shellutl:
+shellutl:
+syslogd:  Sysklogd 1.2
+syslogd:
+syslogd:  Dr. Greg Wettstein and Stephen Tweedie's syslogd/klogd.
+syslogd:
+syslogd:  This package contains a modified version of syslogd for the Linux
+syslogd:  environment.  An additional utility, klogd, is included which allows
+syslogd:  kernel logging to be directed through the syslogd facility.
+syslogd:  Syslogd and klogd are started when your system boots.
+syslogd:
+syslogd:
+syslogd:
+tar:      GNU tar 1.11.2
+tar:
+tar:      Tape ARchiver - adds and extracts files and directories to/from tape
+tar:      or archive files. This version of tar also supports archive 
+tar:      compression using GNU zip.
+tar:
+tar:
+tar:
+tar:
+tar:
+tar:
+textutl:  GNU textutil 1.9
+textutl:
+textutl:  These are the GNU text file (actually, file contents) processing
+textutl:  utilities.  Most of these programs have significant advantages over
+textutl:  their Unix counterparts, such as greater speed, additional options,
+textutl:  and fewer arbitrary limits.
+textutl:
+textutl:  The programs in this package are: cat, cksum, comm, csplit, cut, 
+textutl:  expand, fold, head, join, nl, od, paste, pr, sort, split,
+textutl:  sum, tac, tail, tr, unexpand, uniq, and wc.
+textutl:
+zoneinfo: Time zone utilities
+zoneinfo:
+zoneinfo: Allows you to configure your time zone. Look in /usr/lib/zoneinfo
+zoneinfo: for instructions on how to set this up manually, or select your
+zoneinfo: timezone from the menu during your system configuration.
+zoneinfo:
+zoneinfo:
+zoneinfo:
+zoneinfo:
+zoneinfo:
+zoneinfo:

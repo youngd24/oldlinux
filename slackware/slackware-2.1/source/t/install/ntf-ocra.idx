@@ -1,0 +1,13 @@
+./usr/lib/texmf/fonts/misc/ocr-a/create.sh
+./usr/lib/texmf/fonts/misc/ocr-a/src/ocr-a.mf
+./usr/lib/texmf/fonts/misc/ocr-a/src/ocr-ai.mf
+./usr/lib/texmf/fonts/misc/ocr-a/src/ocr-aii.mf
+./usr/lib/texmf/fonts/misc/ocr-a/src/ocr-aiii.mf
+./usr/lib/texmf/fonts/misc/ocr-a/src/ocr-aiv.mf
+./usr/lib/texmf/fonts/misc/ocr-a/src/ocr.mf
+./usr/lib/texmf/fonts/misc/ocr-a/src/ocr10.mf
+./usr/lib/texmf/fonts/misc/ocr-a/src/ocr12.mf
+./usr/lib/texmf/fonts/misc/ocr-a/src/ocr16.mf
+./usr/lib/texmf/fonts/misc/ocr-a/tfm/ocr10.tfm
+./usr/lib/texmf/fonts/misc/ocr-a/tfm/ocr12.tfm
+./usr/lib/texmf/fonts/misc/ocr-a/tfm/ocr16.tfm

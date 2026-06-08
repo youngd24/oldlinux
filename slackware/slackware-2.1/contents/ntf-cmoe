@@ -1,0 +1,41 @@
+PACKAGE NAME:     ntf-cmoe
+COMPRESSED PACKAGE SIZE:     9 K
+UNCOMPRESSED PACKAGE SIZE:     70 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-cmoe: ntf-cmoe 1.1
+ntf-cmoe:
+ntf-cmoe: A Computer Modern font for Old English letters.
+ntf-cmoe:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/cm/
+usr/lib/texmf/fonts/cm/cmoe/
+usr/lib/texmf/fonts/cm/cmoe/create.sh
+usr/lib/texmf/fonts/cm/cmoe/misc/
+usr/lib/texmf/fonts/cm/cmoe/misc/readme
+usr/lib/texmf/fonts/cm/cmoe/src/
+usr/lib/texmf/fonts/cm/cmoe/src/cmoebx10.mf
+usr/lib/texmf/fonts/cm/cmoe/src/cmoer10.mf
+usr/lib/texmf/fonts/cm/cmoe/src/cmoesc10.mf
+usr/lib/texmf/fonts/cm/cmoe/src/cmoesl10.mf
+usr/lib/texmf/fonts/cm/cmoe/src/cmoeti10.mf
+usr/lib/texmf/fonts/cm/cmoe/src/cmoett10.mf
+usr/lib/texmf/fonts/cm/cmoe/src/oeit.mf
+usr/lib/texmf/fonts/cm/cmoe/src/oeitl.mf
+usr/lib/texmf/fonts/cm/cmoe/src/oerm.mf
+usr/lib/texmf/fonts/cm/cmoe/src/oerml.mf
+usr/lib/texmf/fonts/cm/cmoe/src/oermu.mf
+usr/lib/texmf/fonts/cm/cmoe/src/oesc.mf
+usr/lib/texmf/fonts/cm/cmoe/src/ogonek.mf
+usr/lib/texmf/fonts/cm/cmoe/tfm/
+usr/lib/texmf/fonts/cm/cmoe/tfm/cmoebx10.tfm
+usr/lib/texmf/fonts/cm/cmoe/tfm/cmoer10.tfm
+usr/lib/texmf/fonts/cm/cmoe/tfm/cmoesc10.tfm
+usr/lib/texmf/fonts/cm/cmoe/tfm/cmoesl10.tfm
+usr/lib/texmf/fonts/cm/cmoe/tfm/cmoeti10.tfm
+usr/lib/texmf/fonts/cm/cmoe/tfm/cmoett10.tfm

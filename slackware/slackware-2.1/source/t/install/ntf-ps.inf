@@ -1,0 +1,7 @@
+
+NTeX Release 1.2 --- ntf-ps 1.2 --- status: optional
+
+Some lodable postscript type1 fonts: Charter, Courier, URWAntiquaT,
+URWGroteskT, Nimbus, Utopia, MSYM10 and the .afm, .tfm, .vf and .fd files 
+for the standard adobe postscript fonts.
+

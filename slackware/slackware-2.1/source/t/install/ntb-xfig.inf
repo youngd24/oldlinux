@@ -1,0 +1,9 @@
+
+NTeX Release 1.2 --- ntb-xfig 1.1 --- status: optional
+
+This package contains the binaries for xfig, an interactive drawing tool
+under X. xfig can create fig, epsf and LaTeX files with various options.
+You also have to install ntb-traf so that xfig can export fig files as
+epsf and LaTeX files. This package also contains a set of basic examples
+of fig files (see /usr/lib/texmf/xfig/examples).
+

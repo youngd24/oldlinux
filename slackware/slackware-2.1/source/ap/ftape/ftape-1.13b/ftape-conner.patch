@@ -1,0 +1,34 @@
+While wondering where Bas has disappeared to lately, I decided to upload
+two patches to ftape-1.13b which are needed.
+
+This patch fixes ftape-read.c so that tapes formatted by the new Conner
+Backup Basics DOS and Windows software will work for those of us who 
+have the Conner C250MQ floppy tape drive.  You don't need to apply this
+patch if you don't have a Conner.  Don't forget to add -DCONNER_BUG in
+your Makefile.
+
+--
+Dennis Flaherty           dennisf@denix.elk.miles.com
+    Oatmeal Stout: It's the Right Thing to Drink!
+
+
+--- ftape-read.c.orig	Thu Jun 30 13:32:16 1994
++++ ftape-read.c	Thu Sep  8 23:18:56 1994
+@@ -357,8 +357,17 @@
+   if (header_segment != header_segment_1 && /* first header */
+       header_segment != header_segment_2) { /* duplicate */
+     TRACE( 1, "wrong segment nr");
++#ifdef CONNER_BUG
++    if (header_segment != 0 || header_segment_1 != 1 || header_segment_2 != 2) {
++      TRACE ( 1, "CONNER_BUG:");
++      TRACEi( 1, "| header_segment:   ", header_segment);
++      TRACEi( 1, "| header_segment_1: ", header_segment_1);
++      TRACEi( 1,"\\_header_segment_2: ", header_segment_2);
++    }
++#else
+     TRACE_EXIT;
+     return -EIO;
++#endif /* CONNER_BUG */
+   }
+   /*    Verify tape parameters...
+    *    QIC-40/80 spec:                 tape_parameters:

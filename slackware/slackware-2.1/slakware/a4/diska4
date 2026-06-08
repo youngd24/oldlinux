@@ -1,0 +1,67 @@
+CONTENTS: etc hdsetup lilo tcsh umsprogs loadlin  
+etc:      System configuration files that go into the /etc directory.
+etc:
+etc:      The /etc directory is traditionally the location where configuration
+etc:      files and administration binaries are found. Under Linux, the binaries
+etc:      have been moved out of the /etc directory and into the /sbin 
+etc:      directory; the /etc directory is now reserved for configuration files
+etc:      only. 
+etc:
+etc:
+etc:
+etc:
+hdsetup:  The Slackware setup/package maintenance system v. 2.1.0
+hdsetup:
+hdsetup:  The full screen and tty versions of setup and pkgtool, two utilities
+hdsetup:  included with Slackware that allow you to easily install software 
+hdsetup:  packages, remove software packages, and review the installed software
+hdsetup:  packages.
+hdsetup:
+hdsetup:  Also contains the command line utilities 'installpkg', 'removepkg',
+hdsetup:  'makepkg', and 'explodepkg' that install, remove, build, and examine
+hdsetup:  software packages. Man pages are included for all of these utilities.
+hdsetup:
+lilo:     LILO 0.15
+lilo:
+lilo:     Generic Boot Loader for Linux ('LInux LOader') by Werner Almesberger.
+lilo:     LILO boots Linux from your hard drive. It can also boot other
+lilo:     operating systems such as MS-DOS and OS/2, and can even boot DOS from
+lilo:     the second hard drive. LILO comes with utilities and documentation
+lilo:     that make it easier to install, such as 'liloconfig' and 'QuickStart'.
+lilo:     NOTE: Installing boot loaders is inherently dangerous. Be sure to have
+lilo:     some means to boot your system from a different media if you install
+lilo:     LILO on your hard disk.
+lilo:
+tcsh:     tcsh 6.04
+tcsh:
+tcsh:     tcsh is an enhanced but completely compatible version of the Berkeley
+tcsh:     UNIX C shell, csh(1). It is a command language interpreter usable both
+tcsh:     as an interactive login shell and a shell script command processor. It
+tcsh:     includes a command-line editor, programmable word completion, spelling
+tcsh:     correction, a history mechanism, job control, and a C-like syntax.
+tcsh:
+tcsh:
+tcsh:
+tcsh:
+loadlin:  LOADLIN v1.5
+loadlin:
+loadlin:  LOADLIN.EXE, a loader (running under DOS) for LINUX kernel images
+loadlin:  fully supporting the kernel's command line feature.  LOADLIN or
+loadlin:  BOOTLIN is the safest way to boot Linux (>0.99.14) from your hard
+loadlin:  disk. LOADLIN is (C) 1994 Hans Lermen (lermen@elserv.ffm.fgan.de) 
+loadlin:
+loadlin:
+loadlin:
+loadlin:
+loadlin:
+umsprogs: umsdos_progs 0.3a
+umsprogs: 
+umsprogs: Various utilities needed by Jacques Gelinas' UMSDOS filesystem.
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 

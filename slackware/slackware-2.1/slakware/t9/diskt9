@@ -1,0 +1,100 @@
+CONTENTS: ntf-bbm ntf-cmca ntf-cmcy ntf-fc ntm-arab ntm-gree ntm-hebr ntm-pict ntb-kpat   
+ntf-bbm:  ntf-bbm 1.2
+ntf-bbm:
+ntf-bbm:  The Computer Modern Blackboard fonts.
+ntf-bbm:
+ntf-bbm:
+ntf-bbm:
+ntf-bbm:
+ntf-bbm:
+ntf-bbm:
+ntf-bbm:
+ntf-bbm:
+ntf-cmca: ntf-cmca 1.2
+ntf-cmca:
+ntf-cmca: This package contains the Computer Modern Cyrillic Alt fonts.
+ntf-cmca:
+ntf-cmca:
+ntf-cmca:
+ntf-cmca:
+ntf-cmca:
+ntf-cmca:
+ntf-cmca:
+ntf-cmca:
+ntf-cmcy: ntf-cmcy 1.2
+ntf-cmcy:
+ntf-cmcy: This package contains the Computer Modern Cyrillic fonts.
+ntf-cmcy:
+ntf-cmcy:
+ntf-cmcy:
+ntf-cmcy:
+ntf-cmcy:
+ntf-cmcy:
+ntf-cmcy:
+ntf-cmcy:
+ntf-fc:   ntf-fc 1.1
+ntf-fc:
+ntf-fc:   The FC fonts, scalable fonts for the African continent.
+ntf-fc:
+ntf-fc:
+ntf-fc:
+ntf-fc:
+ntf-fc:
+ntf-fc:
+ntf-fc:
+ntf-fc:
+ntm-arab: ntm-arab 1.2
+ntm-arab:
+ntm-arab: This package includes the ArabTeX macros and fonts to typeset Arabian
+ntm-arab: texts.
+ntm-arab:
+ntm-arab:
+ntm-arab:
+ntm-arab:
+ntm-arab:
+ntm-arab:
+ntm-arab:
+ntm-gree: ntm-gree 1.2
+ntm-gree:
+ntm-gree: This package contains macros and fonts to typeset Greek texts.
+ntm-gree:
+ntm-gree:
+ntm-gree:
+ntm-gree:
+ntm-gree:
+ntm-gree:
+ntm-gree:
+ntm-gree:
+ntm-hebr: ntm-hebr 1.2
+ntm-hebr:
+ntm-hebr: This package contains macros and fonts to typeset texts in Hebrew.
+ntm-hebr:
+ntm-hebr:
+ntm-hebr:
+ntm-hebr:
+ntm-hebr:
+ntm-hebr:
+ntm-hebr:
+ntm-hebr:
+ntm-pict: ntm-pict 1.0
+ntm-pict:
+ntm-pict: This package contains the PicTeX macros.
+ntm-pict:
+ntm-pict:
+ntm-pict:
+ntm-pict:
+ntm-pict:
+ntm-pict:
+ntm-pict:
+ntm-pict:
+ntb-kpat: ntb-kpat 1.1
+ntb-kpat:
+ntb-kpat: This is the binary version of the kpathsea library which was used to
+ntb-kpat: compile web2c, dvips, xdvi and dvi2xx. You do not need this library 
+ntb-kpat: for any program included in NTeX. You should just install it if you
+ntb-kpat: want to use it in your own programs. In this case you should also
+ntb-kpat: install the sources for kpathsea. The current version is 2.1.
+ntb-kpat:
+ntb-kpat:
+ntb-kpat:
+ntb-kpat:

@@ -1,0 +1,53 @@
+PACKAGE NAME:     config86
+COMPRESSED PACKAGE SIZE:     175 K
+UNCOMPRESSED PACKAGE SIZE:     870 K
+PACKAGE LOCATION: diskx8
+PACKAGE DESCRIPTION:
+config86: Steven T Zwaska's ConfigXF86 XFree86 Xconfig generation script.
+config86:
+config86: This handy script asks you questions about your video card and
+config86: monitor. It then generates a custom Xconfig file based on your 
+config86: answers.  This version has been modified to output the new XF86Config
+config86: file used in XFree86 3.1.
+config86:
+config86: To use it, run the ConfigXF86 script in /usr/lib/X11/ConfigXF86.
+config86:
+FILE LIST:
+./
+usr/
+usr/X11R6/
+usr/X11R6/lib/
+usr/X11R6/lib/ConfigXF86/
+usr/X11R6/lib/ConfigXF86/CARDS
+usr/X11R6/lib/ConfigXF86/ConfigXF86
+usr/X11R6/lib/ConfigXF86/ConfigXF86.PS
+usr/X11R6/lib/ConfigXF86/ConfigXF86.rtf
+usr/X11R6/lib/ConfigXF86/ConfigXF86.txt
+usr/X11R6/lib/ConfigXF86/DATAFILES/
+usr/X11R6/lib/ConfigXF86/DATAFILES/ReCompile
+usr/X11R6/lib/ConfigXF86/DATAFILES/help/
+usr/X11R6/lib/ConfigXF86/DATAFILES/help/mouse.hlp
+usr/X11R6/lib/ConfigXF86/DATAFILES/help/Fiddle1.hlp
+usr/X11R6/lib/ConfigXF86/DATAFILES/help/MonQry.hlp
+usr/X11R6/lib/ConfigXF86/DATAFILES/help/VidCrdQry.hlp
+usr/X11R6/lib/ConfigXF86/DATAFILES/help/mouse.hlp.orig
+usr/X11R6/lib/ConfigXF86/DATAFILES/Cards.dat
+usr/X11R6/lib/ConfigXF86/DATAFILES/mkdatafiles
+usr/X11R6/lib/ConfigXF86/DATAFILES/Template
+usr/X11R6/lib/ConfigXF86/DATAFILES/Raw-Data
+usr/X11R6/lib/ConfigXF86/DATAFILES/Monitors.dat
+usr/X11R6/lib/ConfigXF86/DATAFILES/AccelChips
+usr/X11R6/lib/ConfigXF86/DATAFILES/SvgaChips
+usr/X11R6/lib/ConfigXF86/DATAFILES/xinitrc.probe
+usr/X11R6/lib/ConfigXF86/DATAFILES/xinitrc.test
+usr/X11R6/lib/ConfigXF86/DATAFILES/Xconfig.probe
+usr/X11R6/lib/ConfigXF86/Data.Format
+usr/X11R6/lib/ConfigXF86/HOWTO.Config
+usr/X11R6/lib/ConfigXF86/MONITORS
+usr/X11R6/lib/ConfigXF86/MakeCard
+usr/X11R6/lib/ConfigXF86/README.Conf
+usr/X11R6/lib/ConfigXF86/configxf.doc
+usr/X11R6/lib/ConfigXF86/h.eps
+usr/X11R6/lib/ConfigXF86/reconfig
+usr/X11R6/lib/ConfigXF86/v.eps
+usr/X11R6/lib/ConfigXF86/xf86config-XFree86-3.1

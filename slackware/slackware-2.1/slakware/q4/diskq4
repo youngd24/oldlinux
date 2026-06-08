@@ -1,0 +1,23 @@
+CONTENTS: mitsumi nec260  
+mitsumi:  Linux kernel version 1.1.59, with SCSI+IDE+Mitsumi CD support.
+mitsumi:
+mitsumi:  This is a Linux kernel with support for Mitsumi CD-ROM drives, as 
+mitsumi:  well as full support for SCSI devices such as hard drives, tape
+mitsumi:  drives, and SCSI CD-ROM drives. See the file 'mitsumi.cfg' for an
+mitsumi:  exact list of included drivers.
+mitsumi:
+mitsumi:  This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,
+mitsumi:  Ftape, and the PS/2 style mouse (but not other busmouse types).
+mitsumi:
+mitsumi:
+nec260:   Linux kernel version 1.1.59, with SCSI+IDE+NEC260 IDE CD support.
+nec260:
+nec260:   This is a Linux kernel with support for the NEC 260 CD-ROM as the
+nec260:   second device on the IDE controller.  It also supports all the SCSI
+nec260:   devices supported by the standard kernel.
+nec260:
+nec260:
+nec260:
+nec260:
+nec260:
+nec260:

@@ -1,0 +1,39 @@
+There are some people experiencing problems with the scripts included
+in the SysVinit-2.50 package. This is coming from a certain problem
+with /bin/sh, that does not have the `kill' command as a builtin. It
+is rumoured that some versions of bash (1.13.5?) have this problem if
+invoked as `/bin/sh' rather than '/bin/bash'. To work around this, there
+are two solutions:
+
+1. Use the included `killall' command instead of `kill'. (See the file
+   "Readme" in SysVinit-2.50.tgz for hints!)
+2. OR apply the following patch in your /etc/rc.d directory, this fixes
+   the problem for bash:
+
+(As usual, cut this part and feed it to patch as "patch < cutted_part")
+========================================================================
+--- rc.halt.orig	Tue Feb 22 21:41:47 1994
++++ rc.halt	Tue Feb 22 21:43:13 1994
+@@ -6,3 +6,3 @@
+ #
+-# Version:	@(#)/etc/rc.d/rc.halt	1.50	1994-01-15
++# Version:	@(#)/etc/rc.d/rc.halt	1.51	1994-02-22
+ #
+@@ -31,2 +31,3 @@
+   # Kill all processes.
++  [ "${BASH+bash}" = bash ] && enable kill
+   echo "Sending all processes the TERM signal.."
+--- rc.single.orig	Tue Feb 22 21:41:56 1994
++++ rc.single	Tue Feb 22 21:42:52 1994
+@@ -7,3 +7,3 @@
+ #
+-# Version:	@(#)/etc/rc.d/rc.single	1.50	1994-01-18
++# Version:	@(#)/etc/rc.d/rc.single	1.51	1994-02-22
+ #
+@@ -16,2 +16,3 @@
+   # Kill all processes.
++  [ "${BASH+bash}" = bash ] && enable kill
+   echo "Sending all processes the TERM signal.."
+========================================================================
+
+Miquel van Smoorenburg, <miquels@drinkel.nl.mugnet.org>

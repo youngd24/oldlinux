@@ -1,0 +1,21 @@
+PACKAGE NAME:     x_agx
+COMPRESSED PACKAGE SIZE:     443 K
+UNCOMPRESSED PACKAGE SIZE:     990 K
+PACKAGE LOCATION: diskx1
+PACKAGE DESCRIPTION:
+x_agx:    An accelerated server for IIT AGX-016, AGX-015, and AGX-014 chipsets.
+x_agx:
+x_agx:    Installing this package will create a link in /usr/X11/bin from
+x_agx:    XF86_AGX to X, setting this server as the default.
+x_agx:
+FILE LIST:
+./
+install/
+install/doinst.sh
+usr/
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/XF86_AGX
+var/
+var/X11R6/
+var/X11R6/bin/

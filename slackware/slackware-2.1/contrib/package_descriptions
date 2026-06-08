@@ -1,0 +1,303 @@
+
+These are descriptions of the packages in the Slackware contrib directory:
+
+aps-23:   Apsfilter-2.3
+aps-23:
+aps-23:   Andreas Klemm's Apsfilter-2.3. aps-2 is an lineprinter input filter
+aps-23:   for Unix Systems with Berkeley alike printing system (configuration
+aps-23:   using /etc/printcap).  Main features are AUTOMATIC FILE TYPE
+aps-23:   RECOGNITION for the filetypes: * ASCII * DATA * POSTSCRIPT * DVI *
+aps-23:
+aps-23:
+aps-23:
+aps-23:
+aps-23:
+
+auis63L2-mail: Andrew User Interface System - Mail System
+auis63L2-mail:
+auis63L2-mail: This package is aimed at those needing A BETTER MAIL INTERFACE
+auis63L2-mail: and those interested in a MULTI-MEDIA (MIME) MAIL INTERFACE
+auis63L2-mail:
+auis63L2-mail: REQUIREMENTS:
+auis63L2-mail: YOU MUST HAVE INSTALLED AUIS63L2-WP.TGZ FIRST.
+auis63L2-mail: /bin/csh  (e.g. ln -sf /bin/tcsh /bin/csh)
+auis63L2-mail: X Window System
+auis63L2-mail: A WORKING MAIL SYSTEM (using mail/elm or whatever).
+auis63L2-mail:
+
+auis63L2-src: Andrew User Interface System - For the Programmer
+auis63L2-src:
+auis63L2-src: This package is aimed at the SOURCE CODE DEVELOPER.
+auis63L2-src:
+auis63L2-src: REQUIREMENTS:
+auis63L2-src: YOU MUST HAVE INSTALLED AUIS63L2-WP.TGZ FIRST.
+auis63L2-src: /bin/csh  (e.g. ln -sf /bin/tcsh /bin/csh)
+auis63L2-src: X Window System
+auis63L2-src:
+auis63L2-src:
+auis63L2-src:
+
+auis63L2-wp: Andrew User Interface System - Word Processing
+auis63L2-wp:
+auis63L2-wp: This package is aimed at the WORD PROCESSING audience.
+auis63L2-wp:
+auis63L2-wp: ALSO REQUIRES:
+auis63L2-wp: /bin/csh  (e.g. ln -sf /bin/tcsh /bin/csh)
+auis63L2-wp: X Window System
+auis63L2-wp:
+auis63L2-wp:
+auis63L2-wp:
+auis63L2-wp:
+
+seejpeg:  seejpeg v1.4.3
+seejpeg:
+seejpeg:  seejpeg is Evan Harris's JPEG viewer which utilizes svgalib and 
+seejpeg:  contains limited GIF, PPM and TARGA viewing support.  The most useful
+seejpeg:  feature of seejpeg is that it automatically decides on the 'best'
+seejpeg:  video mode to use based on the image being displayed and the video
+seejpeg:  card being used.  To aid it, various hints may be given as program
+seejpeg:  options.  In the worst case, it may be overridden.
+seejpeg:
+seejpeg:
+seejpeg:
+  
+dosemu.53p28: An MSDOS emulator.
+dosemu.53p28:
+dosemu.53p28: This package allows you to run MS-DOS under Linux by setting up
+dosemu.53p28: a virtual machine (DOS box) capable of servicing BIOS calls and
+dosemu.53p28: other requirements of DOS while Linux continues to run in 
+dosemu.53p28: protected mode.  It runs most MS-DOS software that doesn't require
+dosemu.53p28: DOS extenders, etc, including Windows 3.0 in real mode.
+dosemu.53p28:
+dosemu.53p28: Configuration instructions are placed in /usr/doc/dosemu.
+dosemu.53p28:
+dosemu.53p28:
+
+gcl:      GNU common lisp 1.0
+gcl:
+gcl:
+gcl:
+gcl:
+gcl:
+gcl:
+gcl:
+gcl:
+gcl:
+gcl:
+
+gpc-2.5.8: GNU Pascal compiler.
+gpc-2.5.8:
+gpc-2.5.8: Based on the GCC 2.5.8 compiler.
+gpc-2.5.8:
+gpc-2.5.8:
+gpc-2.5.8:
+gpc-2.5.8:
+gpc-2.5.8:
+gpc-2.5.8:
+gpc-2.5.8:
+gpc-2.5.8:
+
+httpd:    NCSA httpd Web server.
+httpd:
+httpd:    This is NCSA's public domain HTTP server.  It allows your machine to
+httpd:    act as a server for World Wide Web clients such as Mosaic, Lynx, and
+httpd:    Netscape.
+httpd:
+httpd:    This server was developed at the National Center for Supercomputing
+httpd:    Applications at the University of Illinois at Urbana-Champaign.
+httpd:
+httpd:
+httpd:
+
+ircII+term: ircII2.3.17+tv1.1 with term support
+ircII+term:
+ircII+term: This is a version of IRC (Internet Relay Chat) for the systems
+ircII+term: running TERM 2.x.x.  It also includes voice support and other
+ircII+term: extra features.
+ircII+term:
+ircII+term:
+ircII+term:
+ircII+term:
+ircII+term:
+ircII+term:
+
+ircII:    ircII2.3.17+tv1.1 for TCP/IP
+ircII:
+ircII:    This is a version of IRC (Internet Relay Chat) for the systems
+ircII:    with direct TCP/IP access (including SLIP/PPP).  It also includes
+ircII:    voice support and other extra features.
+ircII:
+ircII:
+ircII:
+ircII:
+ircII:
+ircII:
+
+lemacs-X11R5: Lucid Emacs version 19.10
+lemacs-X11R5:
+lemacs-X11R5: This is a version of Emacs enhanced to work under X.  This 
+lemacs-X11R5: version has been linked with the shared libraries from XFree86
+lemacs-X11R5: 2.1.1 (X11R5).
+lemacs-X11R5:
+lemacs-X11R5:
+lemacs-X11R5:
+lemacs-X11R5:
+lemacs-X11R5:
+lemacs-X11R5:
+
+lemacs-X11R6: Lucid Emacs version 19.10
+lemacs-X11R6:
+lemacs-X11R6: This is a version of Emacs enhanced to work under X.  This
+lemacs-X11R6: version has been linked with the shared libraries from XFree86
+lemacs-X11R6: 3.1 (X11R6).
+lemacs-X11R6:
+lemacs-X11R6:
+lemacs-X11R6:
+lemacs-X11R6:
+lemacs-X11R6:
+lemacs-X11R6:
+
+manpagesrc: groff source for manpages
+manpagesrc:
+manpagesrc: This package contains the groff source for the manpages used in 
+manpagesrc: Slackware, and is useful for creating hard copy of the manpages.
+manpagesrc: Why this is preferable to 'man', well.... I really don't know.
+manpagesrc:
+manpagesrc:
+manpagesrc:
+manpagesrc:
+manpagesrc:
+manpagesrc:
+
+ncurses-185: An unpatched version of ncurses 1.85
+ncurses-185:
+ncurses-185: The ncurses 1.85 in Slackware's D series has a few unofficial
+ncurses-185: patches added to it.  This version is included in case these
+ncurses-185: changes bug any of the purists, so they can't say I forced anything
+ncurses-185: on them. :^)
+ncurses-185:
+ncurses-185: I think most things work best with the version on the D series, and
+ncurses-185: I'm told some of the changes will show up in ncurses 1.86.
+ncurses-185:
+ncurses-185:
+
+nvi:      nvi - 'vi' clone.
+nvi:
+nvi:      Version 1.34 of nex/nvi, a freely redistributable replacement for the
+nvi:      Berkeley ex and vi text editors.
+nvi:
+nvi:
+nvi:
+nvi:
+nvi:
+nvi:
+nvi:
+
+pdksh:    pdksh 5.0.6
+pdksh:
+pdksh:    A freely distributable Korn shell clone.
+pdksh:
+pdksh:
+pdksh:
+pdksh:
+pdksh:
+pdksh:
+pdksh:
+pdksh:
+
+perl-5.000: Perl-5.000
+perl-5.000:
+perl-5.000: Version 5.000 of Perl -- Larry Wall's interpreted systems language.
+perl-5.000:
+perl-5.000:
+perl-5.000:
+perl-5.000:
+perl-5.000:
+perl-5.000:
+perl-5.000:
+perl-5.000:
+
+samba-1.8.05: Samba 1.8.05
+samba-1.8.05:
+samba-1.8.05: Samba is a Unix based SMB file server. This allows a Unix host to
+samba-1.8.05: act as a file and print server for SMB clients. This includes
+samba-1.8.05: Lan-Manager compatible clients such as LanManager for DOS, Windows
+samba-1.8.05: for Workgroups, Windows NT, OS/2, Pathworks and many more. If you
+samba-1.8.05: have any PCs running SMB clients, such as a PC running Windows for
+samba-1.8.05: Workgroups, then you can mount file space or printers from a Linux
+samba-1.8.05: host, so that directories, files and printers on the Linux host 
+samba-1.8.05: are available on the PC.
+samba-1.8.05:
+
+sample_users: sample users 'gonzo', 'snake', and 'satan'
+sample_users:
+sample_users: If you install this package, 3 sample users will be created 
+sample_users: (gonzo, snake, satan). This package was once part of the AP disk
+sample_users: series, but too many people installed it without noticing, and it
+sample_users: was becoming the best known backdoor into Linux boxes all over the
+sample_users: Internet (!). This package stems from a time before the "adduser"
+sample_users: utility was put in Slackware, so it really isn't all that helpful
+sample_users: anymore. You could use "adduser" to create some sample accounts
+sample_users: nearly as easily
+sample_users:
+
+smail:    Ian Kluft's Linux port of Smail 3.1.28. 
+smail:
+smail:    Smail is a mail-handling system. Some find it easier to maintain and
+smail:    configure than BSD sendmail, especially for use with UUCP. It comes
+smail:    with many documentation and sample files.  Look in
+smail:    /usr/lib/smail/tools.linux for the HOWTO file that will help you get
+smail:    started.
+smail:
+smail:
+smail:
+smail:
+
+termify:  termify-0.3
+termify:
+termify:  Termify converts dynamically linked binaries for term use by changing
+termify:  the name of the standard library from libc.so.4 to libt.so.4.  Both
+termify:  libraries should be installed in /lib.  Termify will take the
+termify:  specified command, and create a termified binary with the correct
+termify:  permissions in the current directory.  For example:
+termify:
+termify:  termify  /bar/foo
+termify:
+termify:  Will create ./termfoo in the current directory.
+
+uucp-1.04-info: Info files for UUCP 1.04
+uucp-1.04-info:
+uucp-1.04-info: This package installs info files for the Taylor UUCP 1.04
+uucp-1.04-info: package into /usr/info.
+uucp-1.04-info:
+uucp-1.04-info:
+uucp-1.04-info:
+uucp-1.04-info:
+uucp-1.04-info:
+uucp-1.04-info:
+uucp-1.04-info:
+
+uucp-1.04: Taylor UUCP 1.04
+uucp-1.04:
+uucp-1.04: This is a well tested version of UUCP that is included as an
+uucp-1.04: alternate version.  (The N series has Taylor UUCP 1.05)
+uucp-1.04:
+uucp-1.04:
+uucp-1.04:
+uucp-1.04:
+uucp-1.04:
+uucp-1.04:
+uucp-1.04:
+
+xgrabsc:  A screengrabber for X.
+xgrabsc:
+xgrabsc:  Xgrabsc and xgrab allow you do take PostScript shapshots of individual
+xgrabsc:  X clients, regions of the X screen, or the entire screen.
+xgrabsc:
+xgrabsc:
+xgrabsc:
+xgrabsc:
+xgrabsc:
+xgrabsc:
+xgrabsc:
+

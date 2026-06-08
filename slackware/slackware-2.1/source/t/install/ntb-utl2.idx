@@ -1,0 +1,12 @@
+./usr/bin/gftodvi
+./usr/bin/gftopk
+./usr/bin/gftype
+./usr/bin/mft
+./usr/bin/pktogf
+./usr/bin/pktype
+./usr/man/man1/gftodvi.1
+./usr/man/man1/gftopk.1
+./usr/man/man1/gftype.1
+./usr/man/man1/mft.1
+./usr/man/man1/pktogf.1
+./usr/man/man1/pktype.1

@@ -1,0 +1,175 @@
+
+This is a new version of my driver for the NEC CDR-260 cd-rom drive.
+Major changes since the last release are:
+
+  - The driver is now structured as a loadable kernel module.
+
+  - It now should work on a wider variety of hardware configurations,
+    including those where the drive is on the second IDE controller.
+
+  - The driver should now properly detect media changes.  The bug in
+    the previous version which caused the first operation after a
+    media change to fail should be fixed.
+
+  - The name has changed to something more descriptive, and the
+    default major device number has changed to avoid a conflict with
+    atdisk2.
+
+No audio functions are supported, and probably won't be for a while
+unless i can turn up some actual technical documentation on this
+device.
+
+Not all possible hardware configurations have been tested.
+So far, configurations which i've heard that work include:
+
+  - cdrom as slave device on first IDE bus with a hd as master.
+  - cdrom by itself as master on second IDE bus.
+
+Installation instructions:
+
+  - If you have anything on your hard drive which you'd mind losing,
+    it would be a good idea to make a backup before starting.  I have
+    never seen any instances in which this driver screws up a
+    filesystem; however, it has every opportunity to do so, and i'm
+    not making any promises...
+
+  - Since the driver is now a loadable module, you'll need to have the
+    module utilities before you can do anything with it.  A copy of
+    may be found in sunsite.unc.edu:/pub/Linux/kernel/modules.tar.gz.
+    If you don't already have this package, fetch it and install it on
+    your machine.
+
+  - There are a couple kernel patches which are required to add some
+    hooks needed by the driver.  These patches were made against
+    version 1.1.50.
+
+    If you have a kernel version of at least 1.1.49, then you should
+    apply the three patches in hd.c.diffs, ksyms.c.diffs, and
+    config.in.diffs.  You should be able to do this by setting your
+    default directory to the top of the kernel source tree and doing,
+    e.g., `patch -p0 <hd.c.diffs'.  If you have an older version, look
+    at the notes below (some of these files have been changed by
+    recent kernel patches in ways that makes it difficult to come up
+    with a single set of patches...).
+
+      arch/i386/config.in: In kernel versions 1.1.44 and earlier,
+                           this file was in the top directory of the source
+                           tree rather than in arch/i386.
+
+      drivers/block/blk.h: If you have 1.1.46 or earlier, apply the patch
+                           in the file blk.h.diffs-46.  For versions 1.1.47
+                           and later, no patches to this file are
+			   required.
+
+      drivers/block/hd.c:  Apply the patch in hd.c.diffs.
+
+      kernel/ksyms.c:      For kernel versions 1.1.48 and earlier, apply
+                           the patch in ksyms.c.diffs-48.  Otherwise,
+                           apply the patch in ksyms.c.diffs.
+
+    If your cdrom drive is on a second IDE bus along with a hard drive
+    and you are using the atdisk2 patches to get at the hard drive,
+    try applying the hd.c patch to hd1.c instead.  (Warning: as far as
+    i know, this configuration has not been tested.)
+
+  - Do a `make config' and answer yes to the question about
+    NEC CDR-260 support.
+
+  - Rebuild and install the kernel as usual.  Boot the system with the
+    new kernel.
+
+  - Go back to the directory containing this package.  Look at the
+    start of the Makefile, and check that the path to the kernel
+    source is correct for your system.  Then look at the hardware
+    configuration options near the start of nec260.c.  These are a
+    collection of integer variables which tell the driver what
+    hardware configuration to expect.  These values can be set
+    dynamically when you load the driver, but it may be safer to
+    change the compiled-in defaults.  The configuration variables
+    their and defaults are:
+
+      nec260_major = 26    Sets the major device number which the driver
+                           will attempt to use.
+
+      nec260_base = 0x1f0  The first I/O address for the IDE adapter.
+                           The second IDE adapter should be at 0x170.
+                           If you're not sure of the proper address, you
+                           can probably find it in your mess-dos config.sys
+                           (assuming the drive works under mess-dos).
+
+      nec260_irq  = 14     The IRQ level used by the adapter.
+
+      nec260_master = 0    Set this to 1 if the drive is the first device
+                           on the IDE bus.
+
+      nec260_no_hd = 0     Set this to 1 if the drive is on an IDE bus
+                           by itself.
+
+    The defaults are set appropriately for my configuration, where the
+    cdrom is the slave device on the first IDE bus, and the master
+    device is a hard drive.  For the case of a cdrom configured as the
+    first device on a second IDE controller with nothing else on that
+    IDE bus you would probably want to set
+
+      nec260_irq = 15
+      nec260_base = 0x170
+      nec260_master = 1
+       nec260_no_hd = 1
+
+    Note that since the last release, the default major device number
+    has changed from 22 to 26.  This is because 22 conflicted with the
+    atdisk2 patches.  You can change this back to 22 if you prefer.
+
+  - Run make to produce nec260.o.  The driver will be compiled to work
+    with the version of the kernel which you have in the source
+    directory.  If you change the kernel version, you will also have
+    to rebuild the driver.
+
+  - Load the driver into the system with insmod.  At this point, you
+    can override any of the configuration options by adding the
+    assignment to the insmod command, like
+
+      insmod nec260.o nec260_major=22
+
+  - Create a block device special file with the appropriate major
+    number.  I've been calling it `nec260'.  For example, if you are
+    using the default major number of 26, you should say something
+    like
+
+      mknod /dev/nec260 b 26 0
+
+  - If you have a disk in the drive, you should now be able to cat
+    from it, or mount a filesystem.  When mounting a cdrom volume, you
+    must specify read-only, or the system will complain:
+
+      mount -r -t iso9660 /dev/nec260 /mnt
+
+  - If the drive is dismounted, you can unload the driver with rmmod.
+
+If you get consistent I/O errors when you try to cat the drive and the
+drive activity light never comes on, double check that you have the
+configuration variables set correctly.  Otherwise, you should be able
+to find any error messages in the system log.
+
+I have had one person report that for his drive, which was alone on a
+second IDE controller, the device status register always returns 255
+after a cold boot until the drive is sent at least one command.  If
+you think you may have this problem, try defining the preprocessor
+symbol `SHY_DEVICE' when compiling.
+
+I much prefer to have the driver be a dynamically loadable module.
+However, in some cases, it may be more convenient to link the driver
+directly into the kernel.  To accomplish this:
+
+  - Apply the additional kernel patches contained in
+    linked-in-kernel.diffs.
+
+  - Copy nec260.c to drivers/block/nec260.c.
+
+  - Do a `make config', enabling the NEC260 support, followed by a
+    `make dep', and then whatever you usually do to recompile the
+    kernel.
+
+hope all this helps someone,
+sss
+snyder@fnald0.fnal.gov

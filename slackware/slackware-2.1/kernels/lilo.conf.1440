@@ -1,0 +1,18 @@
+boot = /dev/fd0
+message=/boot/message
+prompt
+image = /vmlinuz
+	label = ramdisk
+	ramdisk = 1440
+	root = /dev/fd0H1440
+	vga = normal
+image = /vmlinuz
+	label = drive2
+	ramdisk = 1200
+	root = /dev/fd1h1200
+	vga = normal
+image = /vmlinuz
+	label = mount
+	ramdisk = 0
+	root = /dev/fd0H1440
+	vga = normal

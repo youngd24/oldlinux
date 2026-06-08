@@ -1,0 +1,174 @@
+
+The Linux Documentation Project proudly announces. . .
+
+
+    man-pages-1.4.tar.gz - section 2, 3, 4, 5, 7, and 9 man pages for Linux
+
+
+Differences from version 1.3:
+    
+    I finally went through all my mail (since October 1993) and updated the
+    man pages with all the corrections and updates that folks sent to me.
+    If you think you sent me an update, and it didn't get into 1.4, please
+    send it again.  The following files, at least, have been updated:
+
+        access.2 adjtimex.2 bdflush.2 brk.2 chroot.2 clone.2 dup.2 execve.2
+        fchdir.2 fork.2 fsync.2 geteuid.2 gettimeofday.2 idle.2 intro.2
+        link.2 modify_ldt.2 mprotect.2 open.2 setegid.2 seteuid.2 setgid.2
+        setregid.2 setreuid.2 setsid.2 setuid.2 sigpause.2 undocumented.2
+        wait.2
+
+        catclose.3 catgets.3 catopen.3 closelog.3 intro.3 isalpha.3
+        openlog.3 strtod.3 syslog.3
+
+        passwd.5 proc.5 termcap.5
+
+        ascii.7 iso_8859_1.7
+
+
+    238 of the man pages now contain the following notice:
+
+        Permission is granted to make and distribute verbatim copies of this
+        manual provided the copyright notice and this permission notice are
+        preserved on all copies.
+    
+        Permission is granted to copy and distribute modified versions of this
+        manual under the conditions for verbatim copying, provided that the
+        entire resulting derived work is distributed under the terms of a
+        permission notice identical to this one.
+
+        Since the Linux kernel and libraries are constantly changing, this
+        manual page may be incorrect or out-of-date.  The author(s) assume no
+        responsibility for errors or omissions, or for damages resulting from
+        the use of the information contained herein.  The author(s) may not
+        have taken the same level of care in the production of this manual,
+        which is licensed free of charge, as they might when working
+        professionally.
+
+        Formatted or processed versions of this manual, if unaccompanied by
+        the source, must acknowledge the copyright and authors of this work.
+
+
+    The following 41 man pages now contain the following notice:
+
+        proc.5 iso_8859_1.7 intro.1 brk.2 intro.2 ioperm.2 termios.2 phys.2
+        ptrace.2 acct.2 setsid.2 intro.3 ftw.3 ftime.3 isatty.3 intro.4
+        tty.4 mem.4 ram.4 null.4 console.4 fd.4 hd.4 lp.4 ttys.4 passwd.5
+        utmp.5 ttytype.5 intro.5 group.5 nologin.5 securetty.5 environ.5
+        motd.5 issue.5 termcap.5 shells.5 intro.6 intro.7 ascii.7 intro.8
+
+        This is free documentation; you can redistribute it and/or
+        modify it under the terms of the GNU General Public License as
+        published by the Free Software Foundation; either version 2 of
+        the License, or (at your option) any later version.
+
+        The GNU General Public License's references to "object code"
+        and "executables" are to be interpreted as the output of any
+        document formatting or typesetting system, including
+        intermediate and printed output.
+
+        This manual is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+
+        You should have received a copy of the GNU General Public
+        License along with this manual; if not, write to the Free
+        Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139,
+        USA.
+
+
+    The notices on the following 56 man pages have not been changed:
+
+        sysinfo.2 adjust_clock.9 ctrl-alt-del.9 in_group_p.9
+        kernel_mktime.9 proc_sel.9 file_table.9 file_table_init.9
+        filesystems.9 get_empty_filp.9 grow_files.9 insert_file_free.9
+        put_file_last.9 remove_file_free.9 getitimer.2 accept.2 alloca.3
+        bind.2 connect.2 exec.3 fclose.3 ferror.3 fflush.3 fopen.3 fread.3
+        fseek.3 getpass.3 getpeername.2 getpriority.2 getsockname.2
+        getsockopt.2 ioctl.2 killpg.2 listen.2 lseek.2 mmap.2 popen.3
+        printf.3 readlink.2 recv.2 scanf.3 send.2 setbuf.3 setpgid.2
+        setregid.2 setreuid.2 shutdown.2 sigblock.2 sigpause.2 socket.2
+        socketpair.2 statfs.2 stdarg.3 stdio.3 strtod.3 truncate.2
+
+    214 of the 549 man pages are ".so" links
+
+
+
+Differences from version 1.2:
+    Lots of bugs fixed by Jens Schweikhardt (The Typo Terminator):
+        man3/fget3.c  renamed to man3/fgetc.3
+        Fixed some .so problems (getnetbyname and friends)
+        About a dozen cases of word doubling corrected
+        About half a dozen semantic typos corrected
+        Ran all files through ispell and corrected >200 spelling typos
+        (If you ever write a man page, use ispell, I mean it!)
+        Explicitly tested all files whether they run through groff
+        Hard linked identical files (the ones with just .so foo/bar.1) thus
+        saving 115 disk blocks and 115 inodes.
+
+Differences from version 1.0:
+    Thanks to Giorgio Ciucci for the following *NEW* man pages:
+        msgctl.2        msgrcv.2        semget.2        shmdt.2
+        msgget.2        msgsnd.2        semop.2         ipc.5
+        msgop.2         semctl.2        shmat.2         ftok.3
+    and for updates to shmctl.2, shmget.2, and shmop.2.
+
+    Michael Haardt pointed out that some general formatting problems needed
+    fixing:
+            Multi-word arguments to .SH are now in quotes
+            Many instances of - (hyphen) were changed to \- (minus)
+            Several instances of \- (minus) were changed to \(em (dash)
+
+    shells.5 updated (thanks to Michael Haardt)
+    gethostid.2 updated (thanks for Mitchum DSouza)
+    Minor updates to write.2, man.7, and a few other man pages.
+    Fully converted BSD man pages for:
+        all of the stdio functions (includes printf and scanf)
+        alloca, popen, stdarg, and exec
+
+
+Here is a breakdown of what this distribution contains:
+
+Section 1 = user commands (intro only)
+Section 2 = system calls
+Section 3 = libc calls
+Section 4 = devices (e.g., hd, sd)
+Section 5 = file formats (e.g., wtmp, /etc/passwd)
+Section 6 = games (intro only)
+Section 7 = macro packages, etc. (e.g., nroff, ascii)
+Section 8 = system administration (intro only)
+Section 9 = internal kernel routines (for kernel hackers)
+
+(There are no section 1, 6 and 8 man pages because these should be
+distributed with the binaries they are written for.)
+
+Note that only Section 2 is really complete, but Section 3 contains several
+hundred man pages.  I have included all completed man pages in this
+distribution to give people an idea of what is available.  If you want to
+write some man pages, please join the linux-activists DOC channel.
+
+To install this distribution, do something like:
+
+    cd /usr/man; zcat man-pages-1.4.tar.gz | tar xvpf -
+
+The following people (listed in alphabetical order by first name) who
+wrote, edited, or otherwise contributed to this project:
+
+    Alan Cox (iialan@iifeak.swan.ac.uk)
+    Dan Miner (dminer@nyx.cs.du.edu)
+    Daniel Quinlan (quinlan@yggdrasil.com)
+    Darren Senn (sinster@scintilla.santa-clara.ca.us)
+    David Metcalfe (david@prism.demon.co.uk)
+    Drew Eckhardt (drew@cs.colorado.edu)
+    Giorgio Ciucci (giorgio@crcc.it)
+    Graeme W. Wilford (G.Wilford@ee.surrey.ac.uk)
+    Ian Jackson (iwj10@cus.cam.ac.uk)
+    Jens Schweikhardt (Jens.Schweikhardt@rus.uni-stuttgart.de)
+    Luigi P. Bai (lpb@neosoft.com)
+    Michael Edward Chastain (mec@shell.portal.com)
+    Michael Haardt (u31b3hs@pool.informatik.rwth-aachen.de)
+    Mitchum DSouza (m.dsouza@mrc-apu.cam.ac.uk)
+    Rik Faith (faith@cs.unc.edu)
+    Steven Greenland (stevegr@sugar.neosoft.com)
+    Thomas Koenig (ig25@rz.uni-karlsruhe.de)

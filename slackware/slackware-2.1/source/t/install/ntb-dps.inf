@@ -1,0 +1,14 @@
+
+NTeX Release 1.2 --- ntb-dps 1.2 --- status: recommended
+
+This are the binaries for the dvips driver. A program that translates
+.dvi files into postscript files. The package also contains some metric
+files for postscript fonts. You can configure divps with the file
+/usr/lib/texmf/dvips/config.ps for your own printer. Dvips can also help
+you to print files on a printer for which no dvi driver is provided.
+Translate the dvi file to a postscript file and print it with ghostscript.
+(Ghostscript is not included in this distribution.) The current version
+of dvipsk (the 'k' idicates that the sources use the kpathsea library) 
+is 5.58a using the kpathsea library 2.1. This package also contains the 
+epsf and the psfig macros for including eps-format files in LaTeX documents.
+

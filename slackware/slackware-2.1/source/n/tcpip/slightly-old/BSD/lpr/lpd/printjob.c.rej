@@ -1,0 +1,140 @@
+***************
+*** 85,90 ****
+  char	indent[10] = "-i0";	/* indentation size in characters */
+  char	tempfile[] = "errsXXXXXX"; /* file name for filter output */
+  
+  printjob()
+  {
+  	struct stat stb;
+--- 85,92 ----
+  char	indent[10] = "-i0";	/* indentation size in characters */
+  char	tempfile[] = "errsXXXXXX"; /* file name for filter output */
+  
++ static short SF;		/* suppress FF on each print job */
++ 
+  printjob()
+  {
+  	struct stat stb;
+***************
+*** 266,272 ****
+  	 */
+  	for (i = 0; i < 4; i++)
+  		strcpy(fonts[i], ifonts[i]);
+- 	strcpy(width+2, "0");
+  	strcpy(indent+2, "0");
+  
+  	/*
+--- 268,274 ----
+  	 */
+  	for (i = 0; i < 4; i++)
+  		strcpy(fonts[i], ifonts[i]);
++ 	sprintf(&width[2], "%d", PW);
+  	strcpy(indent+2, "0");
+  
+  	/*
+***************
+*** 589,595 ****
+  		while ((pid =
+  		    wait3((int *)&status, WUNTRACED, 0)) > 0 && pid != ofilter)
+  			;
+- 		if (status.w_stopval != WSTOPPED) {
+  			(void) close(fi);
+  			syslog(LOG_WARNING, "%s: output filter died (%d)",
+  				printer, status.w_retcode);
+--- 591,597 ----
+  		while ((pid =
+  		    wait3((int *)&status, WUNTRACED, 0)) > 0 && pid != ofilter)
+  			;
++ 		if (!WIFSTOPPED(status)) {
+  			(void) close(fi);
+  			syslog(LOG_WARNING, "%s: output filter died (%d)",
+  				printer, status.w_retcode);
+***************
+*** 1114,1123 ****
+  		FC = 0;
+  	if ((FS = pgetnum("fs")) < 0)
+  		FS = 0;
+- 	if ((XC = pgetnum("xc")) < 0)
+- 		XC = 0;
+- 	if ((XS = pgetnum("xs")) < 0)
+- 		XS = 0;
+  	tof = !pgetflag("fo");
+  }
+  
+--- 1116,1121 ----
+  		FC = 0;
+  	if ((FS = pgetnum("fs")) < 0)
+  		FS = 0;
+  	tof = !pgetflag("fo");
+  }
+  
+***************
+*** 1230,1244 ****
+   */
+  setty()
+  {
+- 	struct sgttyb ttybuf;
+  	register struct bauds *bp;
+  
+- 	if (ioctl(pfd, TIOCEXCL, (char *)0) < 0) {
+- 		syslog(LOG_ERR, "%s: ioctl(TIOCEXCL): %m", printer);
+- 		exit(1);
+- 	}
+- 	if (ioctl(pfd, TIOCGETP, (char *)&ttybuf) < 0) {
+- 		syslog(LOG_ERR, "%s: ioctl(TIOCGETP): %m", printer);
+  		exit(1);
+  	}
+  	if (BR > 0) {
+--- 1228,1238 ----
+   */
+  setty()
+  {
++ 	struct termios ttybuf;
+  	register struct bauds *bp;
+  
++ 	if (ioctl(pfd, TCGETS, (char *)&ttybuf) < 0) {
++ 		syslog(LOG_ERR, "%s: ioctl(TCGETS): %m", printer);
+  		exit(1);
+  	}
+  	if (BR > 0) {
+***************
+*** 1249,1273 ****
+  			syslog(LOG_ERR, "%s: illegal baud rate %d", printer, BR);
+  			exit(1);
+  		}
+- 		ttybuf.sg_ispeed = ttybuf.sg_ospeed = bp->speed;
+  	}
+- 	ttybuf.sg_flags &= ~FC;
+- 	ttybuf.sg_flags |= FS;
+- 	if (ioctl(pfd, TIOCSETP, (char *)&ttybuf) < 0) {
+- 		syslog(LOG_ERR, "%s: ioctl(TIOCSETP): %m", printer);
+  		exit(1);
+- 	}
+- 	if (XC) {
+- 		if (ioctl(pfd, TIOCLBIC, &XC) < 0) {
+- 			syslog(LOG_ERR, "%s: ioctl(TIOCLBIC): %m", printer);
+- 			exit(1);
+- 		}
+- 	}
+- 	if (XS) {
+- 		if (ioctl(pfd, TIOCLBIS, &XS) < 0) {
+- 			syslog(LOG_ERR, "%s: ioctl(TIOCLBIS): %m", printer);
+- 			exit(1);
+- 		}
+  	}
+  }
+  
+--- 1243,1255 ----
+  			syslog(LOG_ERR, "%s: illegal baud rate %d", printer, BR);
+  			exit(1);
+  		}
++ 		ttybuf.c_cflag = (ttybuf.c_cflag &= ~CBAUD) | bp->speed;
+  	}
++ 	ttybuf.c_cflag &= ~FC;          /* not quite right! */
++ 	ttybuf.c_cflag |= FS;           /* not quite right! */
++ 	if (ioctl(pfd, TCSETS, (char *)&ttybuf) < 0) {
++ 		syslog(LOG_ERR, "%s: ioctl(TCSETS): %m", printer);
+  		exit(1);
+  	}
+  }
+  

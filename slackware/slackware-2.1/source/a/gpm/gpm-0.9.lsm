@@ -1,0 +1,19 @@
+Begin3
+Title:          Gpm (General Purpose Mouse)
+Version:        0.9
+Entered-date:   Oct 30 1994
+Description:    A mouse server for the console and xterm, plus sample
+		clients: an emacs package and a portable demo application.
+Keywords:       mouse, console, curses, xterm
+Author:         rubini@ipvvis.unipv.it (Alessandro Rubini)
+Maintained-by:  rubini@ipvvis.unipv.it (Alessandro Rubini)
+Primary-site:   sunsite.unc.edu /pub/linux/Incoming
+		178kB gpm-0.9.tar.gz
+		1kB   gpm-0.9.lsm
+Alternate-site: 
+Original-site:  iride.unipv.it /pub/gpm
+		178kB gpm-0.9.tar.gz
+		1kB   gpm-0.9.lsm 
+Platform:       
+Copying-policy: GPL
+End

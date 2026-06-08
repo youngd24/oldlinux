@@ -1,0 +1,22 @@
+PACKAGE NAME:     ntb-djc
+COMPRESSED PACKAGE SIZE:     13 K
+UNCOMPRESSED PACKAGE SIZE:     80 K
+PACKAGE LOCATION: diskt6
+PACKAGE DESCRIPTION:
+ntb-djc:  ntb-djc 0.1
+ntb-djc:
+ntb-djc:  These are the binaries for the dvi driver for the HP Deskjet 500, 
+ntb-djc:  500c and 550c. They do not use the kpathsea library, and expect the
+ntb-djc:  pk files for the Deskjet in the directory /usr/lib/texmf/fonts/pk and
+ntb-djc:  the tfm files in /usr/lib/texmf/fonts/tfm. Therefore, if you want to
+ntb-djc:  use these drivers you have to copy the pk and tfm files in these 
+ntb-djc:  directories or make symbolic links from these directories to the pk 
+ntb-djc:  and tfm files.
+ntb-djc:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/dvi500
+usr/bin/dvi500c
+usr/bin/dvi550c

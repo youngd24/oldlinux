@@ -1,0 +1,26 @@
+#!/bin/sh
+dialog --title "Install packages from series OOP (Smalltalk)" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  Press ENTER when you are done." \
+11 70 2 \
+"smaltalk" "GNU Smalltalk 1.1.1" "off" \
+"stix" "A Smalltalk interface to X11" "off" \
+2> /tmp/return
+if fgrep '"smaltalk"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package smaltalk to your hard drive" --infobox \
+"GNU Smalltalk 1.1.1\n\
+\n\
+Interpreter for the Smalltalk object-oriented language.\n\
+Also includes STIX, an interface to X11, a Smalltalk\n\
+tutorial, and many examples.\n\
+\n\
+" 8 75
+ installpkg oop1/smaltalk.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"stix"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package stix to your hard drive" --infobox \
+"A Smalltalk interface to X11.\n\
+\n\
+" 4 75
+ installpkg oop1/stix.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

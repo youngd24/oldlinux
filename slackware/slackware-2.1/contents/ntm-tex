@@ -1,0 +1,101 @@
+PACKAGE NAME:     ntm-tex
+COMPRESSED PACKAGE SIZE:     247 K
+UNCOMPRESSED PACKAGE SIZE:     890 K
+PACKAGE LOCATION: diskt2
+PACKAGE DESCRIPTION:
+ntm-tex:  ntm-tex 1.1
+ntm-tex:
+ntm-tex:  This package contains the plain TeX format and some additional macros
+ntm-tex:  for plain TeX.
+ntm-tex:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/ini/
+usr/lib/texmf/ini/tex.fmt
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/tex/
+usr/lib/texmf/tex/tex/calendar/
+usr/lib/texmf/tex/tex/calendar/a5.sty
+usr/lib/texmf/tex/tex/calendar/a6.sty
+usr/lib/texmf/tex/tex/calendar/block.sty
+usr/lib/texmf/tex/tex/calendar/calend0.tex
+usr/lib/texmf/tex/tex/calendar/calend1.tex
+usr/lib/texmf/tex/tex/calendar/feasts.tex
+usr/lib/texmf/tex/tex/calendar/moon.tex
+usr/lib/texmf/tex/tex/calendar/sun.tex
+usr/lib/texmf/tex/tex/calendar/wall.sty
+usr/lib/texmf/tex/tex/cascover/
+usr/lib/texmf/tex/tex/cascover/cascfont.tex
+usr/lib/texmf/tex/tex/cascover/cascover.tex
+usr/lib/texmf/tex/tex/cascover/ccmanmac.tex
+usr/lib/texmf/tex/tex/cascover/examples.tex
+usr/lib/texmf/tex/tex/cascover/manual.tex
+usr/lib/texmf/tex/tex/cascover/normal.cas
+usr/lib/texmf/tex/tex/cascover/small.cas
+usr/lib/texmf/tex/tex/crw/
+usr/lib/texmf/tex/tex/crw/README
+usr/lib/texmf/tex/tex/crw/crw.tex
+usr/lib/texmf/tex/tex/crw/crwdoc.tex
+usr/lib/texmf/tex/tex/macros/
+usr/lib/texmf/tex/tex/macros/hyphen.tex
+usr/lib/texmf/tex/tex/macros/manmac.tex
+usr/lib/texmf/tex/tex/macros/mftmac.tex
+usr/lib/texmf/tex/tex/macros/null.sty
+usr/lib/texmf/tex/tex/macros/null.tex
+usr/lib/texmf/tex/tex/macros/plain.tex
+usr/lib/texmf/tex/tex/macros/testfont.tex
+usr/lib/texmf/tex/tex/macros/webmac.tex
+usr/lib/texmf/tex/tex/macros/wlist.tex
+usr/lib/texmf/tex/tex/misc/
+usr/lib/texmf/tex/tex/misc/10point.tex
+usr/lib/texmf/tex/tex/misc/10pointss.tex
+usr/lib/texmf/tex/tex/misc/11point.tex
+usr/lib/texmf/tex/tex/misc/12point.tex
+usr/lib/texmf/tex/tex/misc/14point.tex
+usr/lib/texmf/tex/tex/misc/17point.tex
+usr/lib/texmf/tex/tex/misc/20point.tex
+usr/lib/texmf/tex/tex/misc/2columns.mac
+usr/lib/texmf/tex/tex/misc/2side.tex
+usr/lib/texmf/tex/tex/misc/7point.tex
+usr/lib/texmf/tex/tex/misc/8point.tex
+usr/lib/texmf/tex/tex/misc/9point.tex
+usr/lib/texmf/tex/tex/misc/aplstyle.tex
+usr/lib/texmf/tex/tex/misc/appelt-chess.tex
+usr/lib/texmf/tex/tex/misc/autotoc.tex
+usr/lib/texmf/tex/tex/misc/bnf.tex
+usr/lib/texmf/tex/tex/misc/bnfexample.tex
+usr/lib/texmf/tex/tex/misc/border.tex
+usr/lib/texmf/tex/tex/misc/borders.tex
+usr/lib/texmf/tex/tex/misc/boxit.tex
+usr/lib/texmf/tex/tex/misc/btxmac.tex
+usr/lib/texmf/tex/tex/misc/calendar.tex
+usr/lib/texmf/tex/tex/misc/capparmode.tex
+usr/lib/texmf/tex/tex/misc/doublecol.tex
+usr/lib/texmf/tex/tex/misc/fontbl.tex
+usr/lib/texmf/tex/tex/misc/frame.tex
+usr/lib/texmf/tex/tex/misc/label.tex
+usr/lib/texmf/tex/tex/misc/labeldefs.tex
+usr/lib/texmf/tex/tex/misc/labelmac3.tex
+usr/lib/texmf/tex/tex/misc/list.tex
+usr/lib/texmf/tex/tex/misc/memo.tex
+usr/lib/texmf/tex/tex/misc/mrecog.tex
+usr/lib/texmf/tex/tex/misc/wochtag.tex
+usr/lib/texmf/tex/tex/treetex/
+usr/lib/texmf/tex/tex/treetex/classes.tex
+usr/lib/texmf/tex/tex/treetex/epodd.bbl
+usr/lib/texmf/tex/tex/treetex/epodd.tex
+usr/lib/texmf/tex/tex/treetex/l_pic.tex
+usr/lib/texmf/tex/tex/treetex/readme
+usr/lib/texmf/tex/tex/treetex/tree_doc.bbl
+usr/lib/texmf/tex/tex/treetex/tree_doc.tex
+usr/lib/texmf/tex/tex/treetex/treetex.tex
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/tex.1.gz
+install/
+install/doinst.sh

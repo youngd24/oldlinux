@@ -1,0 +1,23 @@
+CONTENTS: sbpcd xt  
+sbpcd:    Linux kernel version 1.1.59, with SCSI+IDE+Soundblaster CD support.
+sbpcd:
+sbpcd:    This is a Linux kernel with support for the whole family of
+sbpcd:    Matsushita/Panasonic CD-ROM drives, as well as full support for SCSI
+sbpcd:    devices such as hard drives, tape drives, and SCSI CD-ROM drives. See
+sbpcd:    the file 'sbpcd.cfg' for an exact list of included drivers.
+sbpcd:
+sbpcd:    This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,
+sbpcd:    Ftape, and the PS/2 style mouse (but not other busmouse types).
+sbpcd:
+sbpcd:
+xt:       Linux kernel version 1.1.59, with IDE+XT (MFM/RLL) drive support.
+xt:
+xt:       This is a Linux kernel with support for XT style (MFM/RLL) hard 
+xt:       drives.  See 'xt.cfg' for an exact list of included drivers.
+xt:
+xt:       This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,
+xt:       Ftape, and the PS/2 style mouse (but not other busmouse types).
+xt:
+xt:
+xt:
+xt:

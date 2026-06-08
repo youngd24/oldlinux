@@ -1,0 +1,3202 @@
+diff -u --recursive --new-file linux-1.1.49/Makefile linux/Makefile
+--- linux-1.1.49/Makefile	Thu Sep  8 22:36:38 1994
++++ linux/Makefile	Thu Sep  8 23:33:06 1994
+@@ -181,6 +181,7 @@
+ 	rm -f Image System.map tools/build
+ 	rm -f zBoot/zSystem zBoot/xtract zBoot/piggyback
+ 	rm -f .tmp* drivers/sound/configure
++	rm -f drivers/scsi/aic7770
+ 
+ mrproper: clean
+ 	rm -f include/linux/autoconf.h tools/version.h
+@@ -188,6 +189,7 @@
+ 	rm -f .version .config* config.in config.old
+ 	rm -f boot include/asm kernel/entry.S
+ 	rm -f .depend `find . -name .depend -print`
++	rm -f drivers/scsi/aha274x_seq.h
+ 
+ distclean: mrproper
+ 
+diff -u --recursive --new-file linux-1.1.49/arch/i386/config.in linux/arch/i386/config.in
+--- linux-1.1.49/arch/i386/config.in	Thu Sep  8 22:34:56 1994
++++ linux/arch/i386/config.in	Thu Sep  8 23:20:58 1994
+@@ -51,6 +51,7 @@
+ bool 'Adaptec AHA152X support' CONFIG_SCSI_AHA152X n
+ bool 'Adaptec AHA1542 support' CONFIG_SCSI_AHA1542 y
+ bool 'Adaptec AHA1740 support' CONFIG_SCSI_AHA1740 n
++bool 'Adaptec AHA274X/284X support' CONFIG_SCSI_AHA274X y
+ bool 'BusLogic SCSI support' CONFIG_SCSI_BUSLOGIC n
+ bool 'Future Domain 16xx SCSI support' CONFIG_SCSI_FUTURE_DOMAIN n
+ bool 'Generic NCR5380 SCSI support' CONFIG_SCSI_GENERIC_NCR5380 n
+diff -u --recursive --new-file linux-1.1.49/drivers/scsi/Makefile linux/drivers/scsi/Makefile
+--- linux-1.1.49/drivers/scsi/Makefile	Tue Aug  2 08:02:16 1994
++++ linux/drivers/scsi/Makefile	Fri Sep  9 00:14:34 1994
+@@ -21,6 +21,7 @@
+ 
+ SCSI_OBJS =
+ SCSI_SRCS =
++SCSI_HDRS =
+ 
+ ifdef CONFIG_SCSI
+ 
+@@ -62,6 +63,12 @@
+ SCSI_SRCS := $(SCSI_SRCS) aha1740.c
+ endif
+ 
++ifdef CONFIG_SCSI_AHA274X
++SCSI_OBJS := $(SCSI_OBJS) aha274x.o
++SCSI_SRCS := $(SCSI_SRCS) aha274x.c
++SCSI_HDRS := $(SCSI_HDRS) aha274x_seq.h
++endif
++
+ ifdef CONFIG_SCSI_BUSLOGIC
+ SCSI_OBJS := $(SCSI_OBJS) buslogic.o
+ SCSI_SRCS := $(SCSI_SRCS) buslogic.c
+@@ -132,6 +139,11 @@
+ aha152x.o: aha152x.c
+ 	$(CC) $(CFLAGS) $(AHA152X) -c aha152x.c 
+ 
++aic7770: aic7770.c
++	$(CC) $(CFLAGS) -o $@ aic7770.c
++
++aha274x_seq.h: aic7770 aha274x.seq
++	aic7770 -o$@ aha274x.seq
+ 
+ seagate.o: seagate.c
+ 	$(CC) $(CFLAGS) -DARBITRATE -DSLOW_HANDSHAKE -DFAST32 -c seagate.c 
+@@ -147,7 +159,7 @@
+ 	mv scriptu.h 53c8xx_u.h
+ 	rm fake.c
+ 
+-dep:
++dep: $(SCSI_HDRS)
+ 	$(CPP) -M $(AHA152X) $(SCSI_SRCS) > .depend
+ 
+ else
+diff -u --recursive --new-file linux-1.1.49/drivers/scsi/aha274x.c linux/drivers/scsi/aha274x.c
+--- linux-1.1.49/drivers/scsi/aha274x.c	Wed Dec 31 16:00:00 1969
++++ linux/drivers/scsi/aha274x.c	Thu Sep  8 23:20:59 1994
+@@ -0,0 +1,1428 @@
++/*
++ *  @(#)aha274x.c 1.25 94/09/06 jda
++ *
++ *  Adaptec 274x device driver for Linux.
++ *  Copyright (c) 1994 The University of Calgary Department of Computer Science.
++ *  
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2 of the License, or
++ *  (at your option) any later version.
++ *  
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *  
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program; if not, write to the Free Software
++ *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++ *
++ *  Sources include the Adaptec 1740 driver (aha1740.c), the
++ *  Ultrastor 24F driver (ultrastor.c), various Linux kernel
++ *  source, the Adaptec EISA config file (!adp7771.cfg), the
++ *  Adaptec AHA-2740A Series User's Guide, the Linux Kernel
++ *  Hacker's Guide, Writing a SCSI Device Driver for Linux,
++ *  the Adaptec 1542 driver (aha1542.c), the Adaptec EISA
++ *  overlay file (adp7770.ovl), the Adaptec AHA-2740 Series
++ *  Technical Reference Manual, the Adaptec AIC-7770 Data
++ *  Book, the ANSI SCSI specification, the ANSI SCSI-2
++ *  specification (draft 10c), ...
++ *
++ *  On a twin-bus adapter card, channel B is ignored.  Rationale:
++ *  it would greatly complicate the sequencer and host driver code,
++ *  and both busses are multiplexed on to the EISA bus anyway.  So
++ *  I don't really see any technical advantage to supporting both.
++ *
++ *  As well, multiple adapter card using the same IRQ level are
++ *  not supported.  It doesn't make sense to configure the cards
++ *  this way from a performance standpoint.  Not to mention that
++ *  the kernel would have to support two devices per registered IRQ.
++ */
++
++#include <stdarg.h>
++#include <asm/io.h>
++#include <linux/string.h>
++#include <linux/kernel.h>
++#include <linux/ioport.h>
++#include <linux/delay.h>
++
++#include "../block/blk.h"
++#include "sd.h"
++#include "scsi.h"
++#include "hosts.h"
++#include "aha274x.h"
++
++/*
++ *  There should be a specific return value for this in scsi.h, but
++ *  it seems that most drivers ignore it.
++ */
++#define DID_UNDERFLOW	DID_ERROR
++
++/* EISA stuff */
++
++#define MINEISA		1
++#define MAXEISA		15
++#define SLOTBASE(x)	((x) << 12)
++
++#define MAXIRQ		15
++
++/* AIC-7770 offset definitions */
++
++#define O_MINREG(x)	((x) + 0xc00)		/* i/o range to reserve */
++#define O_MAXREG(x)	((x) + 0xcbf)
++
++#define O_SCSISEQ(x)	((x) + 0xc00)		/* scsi sequence control */
++#define O_SCSISIGI(x)	((x) + 0xc03)		/* scsi control signal read */
++#define O_SCSISIGO(x)	((x) + 0xc03)		/* scsi control signal write */
++#define O_SCSIID(x)	((x) + 0xc05)		/* scsi id */
++#define O_SSTAT0(x)	((x) + 0xc0b)		/* scsi status register 0 */
++#define O_CLRSINT1(x)	((x) + 0xc0c)		/* clear scsi interrupt 1 */
++#define O_SSTAT1(x)	((x) + 0xc0c)		/* scsi status register 1 */
++#define O_SELID(x)	((x) + 0xc19)		/* [re]selection id */
++#define O_SBLKCTL(x)	((x) + 0xc1f)		/* scsi block control */
++#define O_SEQCTL(x)	((x) + 0xc60)		/* sequencer control */
++#define O_SEQRAM(x)	((x) + 0xc61)		/* sequencer ram data */
++#define O_SEQADDR(x)	((x) + 0xc62)		/* sequencer address (W) */
++#define O_BIDx(x)	((x) + 0xc80)		/* board id */
++#define O_BCTL(x)	((x) + 0xc84)		/* board control */
++#define O_HCNTRL(x)	((x) + 0xc87)		/* host control */
++#define O_SCBPTR(x)	((x) + 0xc90)		/* scb pointer */
++#define O_INTSTAT(x)	((x) + 0xc91)		/* interrupt status */
++#define O_ERROR(x)	((x) + 0xc92)		/* hard error */
++#define O_CLRINT(x)	((x) + 0xc92)		/* clear interrupt status */
++#define O_SCBCNT(x)	((x) + 0xc9a)		/* scb auto increment */
++#define O_QINFIFO(x)	((x) + 0xc9b)		/* queue in fifo */
++#define O_QINCNT(x)	((x) + 0xc9c)		/* queue in count */
++#define O_QOUTFIFO(x)	((x) + 0xc9d)		/* queue out fifo */
++#define O_QOUTCNT(x)	((x) + 0xc9e)		/* queue out count */
++#define O_SCBARRAY(x)	((x) + 0xca0)		/* scb array start */
++
++/* host adapter offset definitions */
++
++#define HA_REJBYTE(x)	((x) + 0xc31)		/* 1st message in byte */
++#define HA_MSG_FLAGS(x)	((x) + 0xc35)		/* outgoing message flag */
++#define HA_MSG_LEN(x)	((x) + 0xc36)		/* outgoing message length */
++#define HA_MSG_START(x)	((x) + 0xc37)		/* outgoing message body */
++#define HA_ARG_1(x)	((x) + 0xc4c)		/* sdtr <-> rate parameters */
++#define HA_ARG_2(x)	((x) + 0xc4d)
++#define HA_RETURN_1(x)	((x) + 0xc4c)
++#define HA_RETURN_2(x)	((x) + 0xc4d)
++#define HA_SIGSTATE(x)	((x) + 0xc4e)		/* value in SCSISIGO */
++#define HA_NEEDSDTR(x)	((x) + 0xc4f)		/* synchronous negotiation? */
++
++#define HA_SCSICONF(x)	((x) + 0xc5a)		/* SCSI config register */
++#define HA_INTDEF(x)	((x) + 0xc5c)		/* interrupt def'n register */
++#define HA_HOSTCONF(x)	((x) + 0xc5d)		/* host config def'n register */
++
++/* debugging code */
++
++#define AHA274X_DEBUG
++
++/*
++ *  If a parity error occurs during a data transfer phase, run the
++ *  command to completion - it's easier that way - making a note
++ *  of the error condition in this location.  This then will modify
++ *  a DID_OK status into a DID_PARITY one for the higher-level SCSI
++ *  code.
++ */
++#define aha274x_parity(cmd)	((cmd)->SCp.Status)
++
++/*
++ *  Since the sequencer code DMAs the scatter-gather structures
++ *  directly from memory, we use this macro to assert that the
++ *  kernel structure hasn't changed.
++ */
++#define SG_STRUCT_CHECK(sg) \
++	((char *)&(sg).address - (char *)&(sg) != 0 ||	\
++	 (char *)&(sg).length  - (char *)&(sg) != 8 ||	\
++	 sizeof((sg).address) != 4 ||			\
++	 sizeof((sg).length)  != 4 ||			\
++	 sizeof(sg)	      != 12)
++
++/*
++ *  "Static" structures.  Note that these are NOT initialized
++ *  to zero inside the kernel - we have to initialize them all
++ *  explicitly.
++ *
++ *  We support a maximum of one adapter card per IRQ level (see the
++ *  rationale for this above).  On an interrupt, use the IRQ as an
++ *  index into aha274x_boards[] to locate the card information.
++ */
++static struct Scsi_Host *aha274x_boards[MAXIRQ + 1];
++
++struct aha274x_host {
++	int base;					/* card base address */
++	int unpause;					/* value for HCNTRL */
++	volatile Scsi_Cmnd *SCB_array[AHA274X_MAXSCB];	/* active commands */
++};
++
++struct aha274x_scb {
++	unsigned char control;
++	unsigned char target_channel_lun;		/* 4/1/3 bits */
++	unsigned char SG_segment_count;
++	unsigned char SG_list_pointer[4];
++	unsigned char SCSI_cmd_pointer[4];
++	unsigned char SCSI_cmd_length;
++	unsigned char RESERVED[2];			/* must be zero */
++	unsigned char target_status;
++	unsigned char residual_data_count[3];
++	unsigned char residual_SG_segment_count;
++	unsigned char data_pointer[4];
++	unsigned char data_count[3];
++#if 0
++	/*
++	 *  No real point in transferring this to the
++	 *  SCB registers.
++	 */
++	unsigned char RESERVED[6];
++#endif
++};
++
++/*
++ *  NB.  This table MUST be ordered shortest period first.
++ */
++static struct {
++	short period;
++	short rate;
++	char *english;
++} aha274x_synctab[] = {
++	100,	0,	"10.0",
++	125,	1,	"8.0",
++	150,	2,	"6.67",
++	175,	3,	"5.7",
++	200,	4,	"5.0",
++	225,	5,	"4.4",
++	250,	6,	"4.0",
++	275,	7,	"3.6"
++};
++
++static int aha274x_synctab_max =
++	sizeof(aha274x_synctab) / sizeof(aha274x_synctab[0]);
++
++enum aha_type {
++	T_NONE,
++	T_274X,
++	T_284X,
++	T_MAX
++};
++
++#ifdef AHA274X_DEBUG
++
++	extern int vsprintf(char *, const char *, va_list);
++
++	static
++	void debug(const char *fmt, ...)
++	{
++		va_list ap;
++		char buf[256];
++
++		va_start(ap, fmt);
++		  vsprintf(buf, fmt, ap);
++		  printk(buf);
++		va_end(ap);
++	}
++
++	static
++	void debug_config(enum aha_type type, int base)
++	{
++		int ioport2, ioport3, ioport4;
++
++		static char *BRT[T_MAX][16] = {
++			{ },					/* T_NONE */
++			{
++				"2",   "???", "???", "12",	/* T_274X */
++				"???", "???", "???", "28",
++				"???", "???", "???", "44",
++				"???", "???", "???", "60"
++			},
++			{
++				"2",  "4",  "8",  "12",		/* T_284X */
++				"16", "20", "24", "28",
++				"32", "36", "40", "44",
++				"48", "52", "56", "60"
++			}
++		};
++		static int DFT[4] = {
++			0, 50, 75, 100
++		};
++		static int SST[4] = {
++			256, 128, 64, 32
++		};
++
++		ioport2 = inb(HA_HOSTCONF(base));
++		ioport3 = inb(HA_SCSICONF(base));
++		ioport4 = inb(HA_INTDEF(base));
++
++		if (type == T_284X)
++			printk("AHA284X AT SLOT %d:\n", base >> 12);
++		else
++			printk("AHA274X AT EISA SLOT %d:\n", base >> 12);
++
++		printk("    irq %d\n"
++		       "    bus release time %s bclks\n"
++		       "    data fifo threshold %d%%\n",
++		       ioport4 & 0xf,
++		       BRT[type][(ioport2 >> 2) & 0xf],
++		       DFT[(ioport2 >> 6) & 0x3]);
++
++		printk("    SCSI CHANNEL A:\n"
++		       "        scsi id %d\n"
++		       "        scsi bus parity check %sabled\n"
++		       "        scsi selection timeout %d ms\n"
++		       "        scsi bus reset at power-on %sabled\n",
++		       ioport3 & 0x7,
++		       (ioport3 & 0x20) ? "en" : "dis",
++		       SST[(ioport3 >> 3) & 0x3],
++		       (ioport3 & 0x40) ? "en" : "dis");
++
++		if (type == T_274X) {
++			printk("        scsi bus termination %sabled\n",
++			       (ioport3 & 0x80) ? "en" : "dis");
++		}
++	}
++
++	static
++	void debug_rate(int base, int rate)
++	{
++		int target = inb(O_SCSIID(base)) >> 4;
++
++		if (rate) {
++			printk("aha274x: target %d now synchronous at %sMb/s\n",
++			       target,
++			       aha274x_synctab[(rate >> 4) & 0x7].english);
++		} else {
++			printk("aha274x: target %d using asynchronous mode\n",
++			       target);
++		}
++	}
++
++#else
++
++#	define debug(fmt, args...)
++#	define debug_config(x)
++#	define debug_rate(x,y)
++
++#endif AHA274X_DEBUG
++
++static
++void aha274x_getscb(int base, struct aha274x_scb *scb)
++{
++	/*
++	 *  This is almost identical to aha274x_putscb().
++	 */
++	outb(0x80, O_SCBCNT(base));	/* SCBAUTO */
++
++	asm volatile("cld\n\t"
++		     "rep\n\t"
++		     "insb"
++		     : /* no output */
++		     :"D" (scb), "c" (sizeof(*scb)), "d" (O_SCBARRAY(base))
++		     :"di", "cx", "dx");
++
++	outb(0, O_SCBCNT(base));
++}
++
++/*
++ *  How much data should be transferred for this SCSI command?  Stop
++ *  at segment sg_last if it's a scatter-gather command so we can
++ *  compute underflow easily.
++ */
++static
++unsigned aha274x_length(Scsi_Cmnd *cmd, int sg_last)
++{
++	int i, segments;
++	unsigned length;
++	struct scatterlist *sg;
++
++	segments = cmd->use_sg - sg_last;
++	sg = (struct scatterlist *)cmd->buffer;
++
++	if (cmd->use_sg) {
++		for (i = length = 0;
++		     i < cmd->use_sg && i < segments;
++		     i++)
++		{
++			length += sg[i].length;
++		}
++	} else
++		length = cmd->request_bufflen;
++
++	return(length);
++}
++
++static
++void aha274x_sg_check(Scsi_Cmnd *cmd)
++{
++	int i;
++	struct scatterlist *sg = (struct scatterlist *)cmd->buffer;
++
++	if (cmd->use_sg) {
++		for (i = 0; i < cmd->use_sg; i++)
++			if ((unsigned)sg[i].length > 0xffff)
++				panic("aha274x_sg_check: s/g segment > 64k\n");
++	}
++}
++
++static
++void aha274x_to_scsirate(unsigned char *rate,
++			 unsigned char transfer,
++			 unsigned char offset)
++{
++	int i;
++
++	transfer *= 4;
++
++	for (i = 0; i < aha274x_synctab_max-1; i++) {
++
++		if (transfer == aha274x_synctab[i].period) {
++			*rate = (aha274x_synctab[i].rate << 4) | (offset & 0xf);
++			return;
++		}
++
++		if (transfer > aha274x_synctab[i].period &&
++		    transfer < aha274x_synctab[i+1].period)
++		{
++			*rate = (aha274x_synctab[i+1].rate << 4) |
++				(offset & 0xf);
++			return;
++		}
++	}
++	*rate = 0;
++}
++
++/*
++ *  Pause the sequencer and wait for it to actually stop - this
++ *  is important since the sequencer can disable pausing for critical
++ *  sections.
++ */
++#define PAUSE_SEQUENCER(p)	\
++	do {								\
++		outb(0xe, O_HCNTRL(p->base));	/* IRQMS|PAUSE|INTEN */	\
++									\
++		while ((inb(O_HCNTRL(p->base)) & 0x4) == 0)		\
++			;						\
++	} while (0)
++
++/*
++ *  Unpause the sequencer.  Unremarkable, yet done often enough to
++ *  warrant an easy way to do it.
++ */
++#define UNPAUSE_SEQUENCER(p)	\
++	outb(p->unpause, O_HCNTRL(p->base))	/* IRQMS|INTEN */
++
++/*
++ *  See comments in aha274x_loadram() wrt this.
++ */
++#define RESTART_SEQUENCER(p)	\
++	do {						\
++		do {					\
++			outb(0x2, O_SEQCTL(p->base));	\
++		} while (inw(O_SEQADDR(p->base)) != 0);	\
++							\
++		UNPAUSE_SEQUENCER(p);			\
++	} while (0)
++
++/*
++ *  Since we declared this using SA_INTERRUPT, interrupts should
++ *  be disabled all through this function unless we say otherwise.
++ */
++static
++void aha274x_isr(int irq)
++{
++	int base, intstat;
++	struct aha274x_host *p;
++	
++	p = (struct aha274x_host *)aha274x_boards[irq]->hostdata;
++	base = p->base;
++
++	/*
++	 *  Handle all the interrupt sources - especially for SCSI
++	 *  interrupts, we won't get a second chance at them.
++	 */
++	intstat = inb(O_INTSTAT(base));
++
++	if (intstat & 0x8) {				/* BRKADRINT */
++
++		panic("aha274x_isr: brkadrint, error = 0x%x, seqaddr = 0x%x\n",
++		      inb(O_ERROR(base)), inw(O_SEQADDR(base)));
++	}
++
++	if (intstat & 0x4) {				/* SCSIINT */
++
++		int scbptr = inb(O_SCBPTR(base));
++		int status = inb(O_SSTAT1(base));
++		Scsi_Cmnd *cmd;
++
++		cmd = (Scsi_Cmnd *)p->SCB_array[scbptr];
++		if (!cmd) {
++			printk("aha274x_isr: no command for scb (scsiint)\n");
++			/*
++			 *  Turn off the interrupt and set status
++			 *  to zero, so that it falls through the
++			 *  reset of the SCSIINT code.
++			 */
++			outb(status, O_CLRSINT1(base));
++			UNPAUSE_SEQUENCER(p);
++			outb(0x4, O_CLRINT(base));	/* undocumented */
++			status = 0;
++		}
++		p->SCB_array[scbptr] = NULL;
++
++		/*
++		 *  Only the SCSI Status 1 register has information
++		 *  about exceptional conditions that we'd have a
++		 *  SCSIINT about; anything in SSTAT0 will be handled
++		 *  by the sequencer.  Note that there can be multiple
++		 *  bits set.
++		 */
++		if (status & 0x80) {			/* SELTO */
++			/*
++			 *  Hardware selection timer has expired.  Turn
++			 *  off SCSI selection sequence.
++			 */
++			outb(0, O_SCSISEQ(base));
++			cmd->result = DID_TIME_OUT << 16;
++
++			/*
++			 *  If there's an active message, it belongs to the
++			 *  command that is getting punted - remove it.
++			 */
++			outb(0, HA_MSG_FLAGS(base));
++
++			/*
++			 *  Shut off the offending interrupt sources, reset
++			 *  the sequencer address to zero and unpause it,
++			 *  then call the high-level SCSI completion routine.
++			 *
++			 *  WARNING!  This is a magic sequence!  After many
++			 *  hours of guesswork, turning off the SCSI interrupts
++			 *  in CLRSINT? does NOT clear the SCSIINT bit in
++			 *  INTSTAT.  By writing to the (undocumented, unused
++			 *  according to the AIC-7770 manual) third bit of
++			 *  CLRINT, you can clear INTSTAT.  But, if you do it
++			 *  while the sequencer is paused, you get a BRKADRINT
++			 *  with an Illegal Host Address status, so the
++			 *  sequencer has to be restarted first.
++			 */
++			outb(0x80, O_CLRSINT1(base));	/* CLRSELTIMO */
++			RESTART_SEQUENCER(p);
++
++			outb(0x4, O_CLRINT(base));	/* undocumented */
++			cmd->scsi_done(cmd);
++		}
++
++		if (status & 0x4) {			/* SCSIPERR */
++			/*
++			 *  A parity error has occurred during a data
++			 *  transfer phase.  Flag it and continue.
++			 */
++			printk("aha274x: parity error on target %d, lun %d\n",
++			       cmd->target,
++			       cmd->lun);
++			aha274x_parity(cmd) = DID_PARITY;
++
++			/*
++			 *  Clear interrupt and resume as above.
++			 */
++			outb(0x4, O_CLRSINT1(base));	/* CLRSCSIPERR */
++			UNPAUSE_SEQUENCER(p);
++
++			outb(0x4, O_CLRINT(base));	/* undocumented */
++		}
++
++		if ((status & (0x8|0x4)) == 0 && status) {
++			/*
++			 *  We don't know what's going on.  Turn off the
++			 *  interrupt source and try to continue.
++			 */
++			printk("aha274x_isr: sstat1 = 0x%x\n", status);
++			outb(status, O_CLRSINT1(base));
++			UNPAUSE_SEQUENCER(p);
++			outb(0x4, O_CLRINT(base));	/* undocumented */
++		}
++	}
++
++	if (intstat & 0x2) {				/* CMDCMPLT */
++
++		int complete, old_scbptr;
++		struct aha274x_scb scb;
++		unsigned actual;
++		Scsi_Cmnd *cmd;
++
++		/*
++		 *  The sequencer will continue running when it
++		 *  issues this interrupt.  There may be >1 commands
++		 *  finished, so loop until we've processed them all.
++		 */
++		do {
++			complete = inb(O_QOUTFIFO(base));
++
++			cmd = (Scsi_Cmnd *)p->SCB_array[complete];
++			if (!cmd) {
++				printk("aha274x warning: "
++				       "no command for scb (cmdcmplt)\n");
++				continue;
++			}
++			p->SCB_array[complete] = NULL;
++			
++			PAUSE_SEQUENCER(p);
++
++			/*
++			 *  After pausing the sequencer (and waiting
++			 *  for it to stop), save its SCB pointer, then
++			 *  write in our completed one and read the SCB
++			 *  registers.  Afterwards, restore the saved
++			 *  pointer, unpause the sequencer and call the
++			 *  higher-level completion function - unpause
++			 *  first since we have no idea how long done()
++			 *  will take.
++			 */
++			old_scbptr = inb(O_SCBPTR(base));
++			outb(complete, O_SCBPTR(base));
++
++			aha274x_getscb(base, &scb);
++			outb(old_scbptr, O_SCBPTR(base));
++
++			UNPAUSE_SEQUENCER(p);
++
++			cmd->result = scb.target_status |
++				     (aha274x_parity(cmd) << 16);
++
++			/*
++			 *  Did we underflow?  At this time, there's only
++			 *  one other driver that bothers to check for this,
++			 *  and cmd->underflow seems to be set rather half-
++			 *  heartedly in the higher-level SCSI code.
++			 */
++			actual = aha274x_length(cmd,
++						scb.residual_SG_segment_count);
++
++			actual -= ((scb.residual_data_count[2] << 16) |
++				   (scb.residual_data_count[1] <<  8) |
++				   (scb.residual_data_count[0]));
++
++			if (actual < cmd->underflow) {
++				printk("aha274x: target %d underflow - "
++				       "wanted (at least) %u, got %u\n",
++				       cmd->target, cmd->underflow, actual);
++
++				cmd->result = scb.target_status |
++					     (DID_UNDERFLOW << 16);
++			}
++
++			cmd->scsi_done(cmd);
++
++			/*
++			 *  Clear interrupt status before checking
++			 *  the output queue again.  This eliminates
++			 *  a race condition whereby a command could
++			 *  complete between the queue poll and the
++			 *  interrupt clearing, so notification of the
++			 *  command being complete never made it back
++			 *  up to the kernel.
++			 */
++			outb(0x2, O_CLRINT(base));	/* CLRCMDINT */
++
++		} while (inb(O_QOUTCNT(base)));
++	}
++
++	if (intstat & 0x1) {				/* SEQINT */
++
++		unsigned char transfer, offset, rate;
++
++		/*
++		 *  Although the sequencer is paused immediately on
++		 *  a SEQINT, an interrupt for a SCSIINT or a CMDCMPLT
++		 *  condition will have unpaused the sequencer before
++		 *  this point.
++		 */
++		PAUSE_SEQUENCER(p);
++
++		switch (intstat & 0xf0) {
++		    case 0x00:
++			panic("aha274x_isr: unknown scsi bus phase\n");
++		    case 0x10:
++			debug("aha274x_isr warning: "
++			      "issuing message reject, 1st byte 0x%x\n",
++			      inb(HA_REJBYTE(base)));
++			break;
++		    case 0x20:
++			panic("aha274x_isr: reconnecting target %d "
++			      "didn't issue IDENTIFY message\n",
++			      (inb(O_SELID(base)) >> 4) & 0xf);
++		    case 0x30:
++			debug("aha274x_isr: sequencer couldn't find match "
++			      "for reconnecting target %d - issuing ABORT\n",
++			      (inb(O_SELID(base)) >> 4) & 0xf);
++			break;
++		    case 0x40:
++			transfer = inb(HA_ARG_1(base));
++			offset = inb(HA_ARG_2(base));
++			aha274x_to_scsirate(&rate, transfer, offset);
++			outb(rate, HA_RETURN_1(base));
++			debug_rate(base, rate);
++			break;
++		    default:
++			debug("aha274x_isr: seqint, "
++			      "intstat = 0x%x, scsisigi = 0x%x\n",
++			      intstat, inb(O_SCSISIGI(base)));
++			break;
++		}
++
++		outb(0x1, O_CLRINT(base));		/* CLRSEQINT */
++		UNPAUSE_SEQUENCER(p);
++	}
++}
++
++/*
++ *  Probing for EISA boards: it looks like the first two bytes
++ *  are a manufacturer code - three characters, five bits each:
++ *
++ *		 BYTE 0   BYTE 1   BYTE 2   BYTE 3
++ *		?1111122 22233333 PPPPPPPP RRRRRRRR
++ *
++ *  The characters are baselined off ASCII '@', so add that value
++ *  to each to get the real ASCII code for it.  The next two bytes
++ *  appear to be a product and revision number, probably vendor-
++ *  specific.  This is what is being searched for at each port,
++ *  and what should probably correspond to the ID= field in the
++ *  ECU's .cfg file for the card - if your card is not detected,
++ *  make sure your signature is listed in the array.
++ *
++ *  The fourth byte's lowest bit seems to be an enabled/disabled
++ *  flag (rest of the bits are reserved?).
++ */
++
++static
++enum aha_type aha274x_probe(int slot, int s_base)
++{
++	int i;
++	unsigned char buf[4];
++
++	static struct {
++		int n;
++		unsigned char signature[sizeof(buf)];
++		enum aha_type type;
++	} S[] = {
++		4, { 0x04, 0x90, 0x77, 0x71 }, T_274X,	/* host adapter 274x */
++		4, { 0x04, 0x90, 0x77, 0x70 }, T_274X,	/* motherboard 274x  */
++		4, { 0x04, 0x90, 0x77, 0x56 }, T_284X,	/* 284x, BIOS enabled */
++	};
++
++	for (i = 0; i < sizeof(buf); i++) {
++		/*
++		 *  The VL-bus cards need to be primed by
++		 *  writing before a signature check.
++		 */
++		outb(0x80 + i, s_base);
++		buf[i] = inb(s_base + i);
++	}
++
++	for (i = 0; i < sizeof(S)/sizeof(S[0]); i++) {
++		if (!memcmp(buf, S[i].signature, S[i].n)) {
++			/*
++			 *  Signature match on enabled card?
++			 */
++			if (inb(s_base + 4) & 1)
++				return(S[i].type);
++			printk("aha274x disabled at slot %d, ignored\n", slot);
++		}
++	}
++	return(T_NONE);
++}
++
++/*
++ *  Return ' ' for plain 274x, 'T' for twin-channel, 'W' for
++ *  wide channel, '?' for anything else.
++ */
++
++static
++char aha274x_type(int base)
++{
++	/*
++	 *  The AIC-7770 can be wired so that, on chip reset,
++	 *  the SCSI Block Control register indicates how many
++	 *  busses the chip is configured for.
++	 */
++	switch (inb(O_SBLKCTL(base))) {
++	    case 0:
++		return(' ');
++	    case 2:
++		return('W');
++	    case 8:
++		return('T');
++	    default:
++		printk("aha274x has unknown bus configuration\n");
++		return('?');
++	}
++}
++
++static
++void aha274x_loadram(int base)
++{
++	static unsigned char seqprog[] = {
++		/*
++		 *  Each sequencer instruction is 29 bits
++		 *  long (fill in the excess with zeroes)
++		 *  and has to be loaded from least -> most
++		 *  significant byte, so this table has the
++		 *  byte ordering reversed.
++		 */
++#		include "aha274x_seq.h"
++	};
++
++	/*
++	 *  When the AIC-7770 is paused (as on chip reset), the
++	 *  sequencer address can be altered and a sequencer
++	 *  program can be loaded by writing it, byte by byte, to
++	 *  the sequencer RAM port - the Adaptec documentation
++	 *  recommends using REP OUTSB to do this, hence the inline
++	 *  assembly.  Since the address autoincrements as we load
++	 *  the program, reset it back to zero afterward.  Disable
++	 *  sequencer RAM parity error detection while loading, and
++	 *  make sure the LOADRAM bit is enabled for loading.
++	 */
++	outb(0x83, O_SEQCTL(base));	/* PERRORDIS|SEQRESET|LOADRAM */
++
++	asm volatile("cld\n\t"
++		     "rep\n\t"
++		     "outsb"
++		     : /* no output */
++		     :"S" (seqprog), "c" (sizeof(seqprog)), "d" (O_SEQRAM(base))
++		     :"si", "cx", "dx");
++
++	/*
++	 *  WARNING!  This is a magic sequence!  After extensive
++	 *  experimentation, it seems that you MUST turn off the
++	 *  LOADRAM bit before you play with SEQADDR again, else
++	 *  you will end up with parity errors being flagged on
++	 *  your sequencer program.  (You would also think that
++	 *  turning off LOADRAM and setting SEQRESET to reset the
++	 *  address to zero would work, but you need to do it twice
++	 *  for it to take effect on the address.  Timing problem?)
++	 */
++	outb(0, O_SEQCTL(base));
++	do {
++		/*
++		 *  Actually, reset it until
++		 *  the address shows up as
++		 *  zero just to be safe..
++		 */
++		outb(0x2, O_SEQCTL(base));	/* SEQRESET */
++
++	} while (inw(O_SEQADDR(base)) != 0);
++}
++
++static
++int aha274x_register(Scsi_Host_Template *template,
++		     enum aha_type type,
++		     int base)
++{
++	int i, irq, scsi_id;
++	struct Scsi_Host *host;
++	struct aha274x_host *p;
++
++	/*
++	 *  Give the AIC-7770 a reset - reading the 274x's registers
++	 *  returns zeroes unless you do.  This forces a pause of the
++	 *  Sequencer.
++	 */
++	outb(1, O_HCNTRL(base));	/* CHIPRST */
++
++	/*
++	 *  The IRQ level in i/o port 4 maps directly onto the real
++	 *  IRQ number.  If it's ok, register it with the kernel.
++	 *
++	 *  NB. the Adaptec documentation says the IRQ number is only
++	 *	in the lower four bits; the ECU information shows the
++	 *	high bit being used as well.  Which is correct?
++	 */
++	irq = inb(HA_INTDEF(base)) & 0xf;
++	if (irq < 9 || irq > 15) {
++		printk("aha274x uses unsupported IRQ level, ignoring\n");
++		return(0);
++	}
++	
++	/*
++	 *  Lock out other contenders for our i/o space.
++	 */
++	snarf_region(O_MINREG(base), O_MAXREG(base)-O_MINREG(base));
++
++	/*
++	 *  Any card-type-specific adjustments before we register
++	 *  the scsi host(s).
++	 */
++
++	scsi_id = inb(HA_SCSICONF(base)) & 0x7;
++
++	switch (aha274x_type(base)) {
++	    case 'T':
++		printk("aha274x warning: ignoring channel B of 274x-twin\n");
++		break;
++	    case ' ':
++		break;
++	    default:
++		printk("aha274x is an unsupported type, ignoring\n");
++		free_irq(irq);
++		return(0);
++	}
++
++	/*
++	 *  Before registry, make sure that the offsets of the
++	 *  struct scatterlist are what the sequencer will expect,
++	 *  otherwise disable scatter-gather altogether until someone
++	 *  can fix it.  This is important since the sequencer will
++	 *  DMA elements of the SG array in while executing commands.
++	 */
++	if (template->sg_tablesize != SG_NONE) {
++		struct scatterlist sg;
++
++		if (SG_STRUCT_CHECK(sg)) {
++			printk("aha274x warning: kernel scatter-gather "
++			       "structures changed, disabling it\n");
++			template->sg_tablesize = SG_NONE;
++		}
++	}
++	
++	/*
++	 *  Register each "host" and fill in the returned Scsi_Host
++	 *  structure as best we can.  Some of the parameters aren't
++	 *  really relevant for EISA, and none of the high-level SCSI
++	 *  code looks at it anyway.. why are the fields there?  Also
++	 *  save the pointer so that we can find the information when
++	 *  an IRQ is triggered.
++	 */
++	host = scsi_register(template, sizeof(struct aha274x_host));
++	host->this_id = scsi_id;
++	host->irq = irq;
++
++	aha274x_boards[irq] = host;
++	
++	p = (struct aha274x_host *)host->hostdata;
++	for (i = 0; i < AHA274X_MAXSCB; i++)
++		p->SCB_array[i] = NULL;
++	p->base = base;
++
++	/*
++	 *  The interrupt trigger is different depending
++	 *  on whether the card is EISA or VL-bus.
++	 */
++	p->unpause = (type != T_274X ? 0x2 : 0xa);
++
++	/*
++	 *  Register IRQ with the kernel _after_ the host information
++	 *  is set up, in case we take an interrupt right away.
++	 *
++	 *  XXX - the card is reset and disabled, so why would we be
++	 *	  getting an interrupt?
++	 */
++	if (request_irq(irq, aha274x_isr, SA_INTERRUPT, "AHA274x/284x")) {
++		printk("aha274x couldn't register irq %d, ignoring\n", irq);
++		return(0);
++	}
++
++	/*
++	 *  Print out debugging information before re-enabling
++	 *  the card - a lot of registers on it can't be read
++	 *  when the sequencer is active.
++	 */
++	debug_config(type, base);
++
++	/*
++	 *  Load the sequencer program, then re-enable the board -
++	 *  resetting the AIC-7770 disables it, leaving the lights
++	 *  on with nobody home.
++	 */
++	aha274x_loadram(base);
++	outb(1, O_BCTL(base));		/* ENABLE */
++
++	/*
++	 *  Set the host adapter registers to indicate that synchronous
++	 *  negotiation should be attempted the first time the targets
++	 *  are communicated with.  Also initialize the active message
++	 *  flag to indicate that there is no message.
++	 */
++	outb(0xff, HA_NEEDSDTR(base));
++	outb(0, HA_MSG_FLAGS(base));
++
++	/*
++	 *  Unpause the sequencer before returning and enable
++	 *  interrupts - we shouldn't get any until the first
++	 *  command is sent to us by the high-level SCSI code.
++	 */
++	UNPAUSE_SEQUENCER(p);
++	return(1);
++}
++
++int aha274x_detect(Scsi_Host_Template *template)
++{
++	enum aha_type type;
++	int found = 0, slot, base;
++
++	for (slot = MINEISA; slot <= MAXEISA; slot++) {
++
++		base = SLOTBASE(slot);
++		
++		if (check_region(O_MINREG(base),
++				 O_MAXREG(base)-O_MINREG(base)))
++		{
++			/*
++			 *  Some other driver has staked a
++			 *  claim to this i/o region already.
++			 */
++			continue;
++		}
++
++		type = aha274x_probe(slot, O_BIDx(base));
++
++		if (type != T_NONE) {
++			/*
++			 *  We "find" a 274x if we locate the card
++			 *  signature and we can set it up and register
++			 *  it with the kernel without incident.
++			 */
++			found += aha274x_register(template, type, base);
++		}
++	}
++	template->name = (char *)aha274x_info();
++	return(found);
++}
++
++const char *aha274x_info(void)
++{
++	return("Adaptec AHA274x/284x (EISA/VL-bus -> Fast SCSI) "
++	       AHA274X_SEQ_VERSION "/"
++	       AHA274X_H_VERSION "/"
++	       "1.25");
++}
++
++int aha274x_command(Scsi_Cmnd *cmd)
++{
++	/*
++	 *  This is a relic of non-interrupt-driven SCSI
++	 *  drivers.  With the can_queue variable set, this
++	 *  should never be called.
++	 */
++	panic("aha274x_command was called\n");
++}
++
++static
++void aha274x_buildscb(struct aha274x_host *p,
++		      Scsi_Cmnd *cmd,
++		      struct aha274x_scb *scb)
++{
++	void *addr;
++	unsigned length;
++
++	memset(scb, 0, sizeof(*scb));
++
++	/*
++	 *  NB. channel selection (bit 3) is always zero.
++	 */
++	scb->target_channel_lun = ((cmd->target << 4) & 0xf0) |
++				   (cmd->lun & 0x7);
++
++	/*
++	 *  The interpretation of request_buffer and request_bufflen
++	 *  changes depending on whether or not use_sg is zero; a
++	 *  non-zero use_sg indicates the number of elements in the
++	 *  scatter-gather array.
++	 *
++	 *  The AIC-7770 can't support transfers of any sort larger
++	 *  than 2^24 (three-byte count) without backflips.  For what
++	 *  the kernel is doing, this shouldn't occur.  I hope.
++	 */
++	length = aha274x_length(cmd, 0);
++
++	/*
++	 *  The sequencer code cannot yet handle scatter-gather segments
++	 *  larger than 64k (two-byte length).  The 1.1.x kernels, however,
++	 *  have a four-byte length field in the struct scatterlist, so
++	 *  make sure we don't exceed 64k on these kernels for now.
++	 */
++	aha274x_sg_check(cmd);
++
++	if (length > 0xffffff) {
++		panic("aha274x_buildscb: can't transfer > 2^24 - 1 bytes\n");
++	}
++
++	/*
++	 *  XXX - this relies on the host data being stored in a
++	 *	  little-endian format.
++	 */
++	addr = cmd->cmnd;
++	scb->SCSI_cmd_length = COMMAND_SIZE(cmd->cmnd[0]);
++	memcpy(scb->SCSI_cmd_pointer, &addr, sizeof(scb->SCSI_cmd_pointer));
++
++	if (cmd->use_sg) {
++#if 0
++		debug("aha274x_buildscb: SG used, %d segments, length %u\n",
++		      cmd->use_sg,
++		      length);
++#endif
++		scb->SG_segment_count = cmd->use_sg;
++		memcpy(scb->SG_list_pointer,
++		       &cmd->request_buffer,
++		       sizeof(scb->SG_list_pointer));
++	} else {
++		scb->SG_segment_count = 0;
++		memcpy(scb->data_pointer,
++		       &cmd->request_buffer,
++		       sizeof(scb->data_pointer));
++		memcpy(scb->data_count,
++		       &cmd->request_bufflen,
++		       sizeof(scb->data_count));
++	}
++}
++
++static
++void aha274x_putscb(int base, struct aha274x_scb *scb)
++{
++	/*
++	 *  By turning on the SCB auto increment, any reference
++	 *  to the SCB I/O space postincrements the SCB address
++	 *  we're looking at.  So turn this on and dump the relevant
++	 *  portion of the SCB to the card.
++	 */
++	outb(0x80, O_SCBCNT(base));	/* SCBAUTO */
++
++	asm volatile("cld\n\t"
++		     "rep\n\t"
++		     "outsb"
++		     : /* no output */
++		     :"S" (scb), "c" (sizeof(*scb)), "d" (O_SCBARRAY(base))
++		     :"si", "cx", "dx");
++
++	outb(0, O_SCBCNT(base));
++}
++
++int aha274x_queue(Scsi_Cmnd *cmd, void (*fn)(Scsi_Cmnd *))
++{
++	long flags;
++	int empty, old_scbptr;
++	struct aha274x_host *p;
++	struct aha274x_scb scb;
++
++#if 0
++	debug("aha274x_queue: cmd 0x%x (size %u), target %d, lun %d\n",
++	      cmd->cmnd[0],
++	      COMMAND_SIZE(cmd->cmnd[0]),
++	      cmd->target,
++	      cmd->lun);
++#endif
++
++	p = (struct aha274x_host *)cmd->host->hostdata;
++
++	/*
++	 *  Construct the SCB beforehand, so the sequencer is
++	 *  paused a minimal amount of time.
++	 */
++	aha274x_buildscb(p, cmd, &scb);
++
++	/*
++	 *  This is a critical section, since we don't want the
++	 *  interrupt routine mucking with the host data or the
++	 *  card.  Since the kernel documentation is vague on
++	 *  whether or not we are in a cli/sti pair already, save
++	 *  the flags to be on the safe side.
++	 */
++	save_flags(flags);
++	cli();
++
++	/*
++	 *  Find a free slot in the SCB array to load this command
++	 *  into.  Since can_queue is set to AHA274X_MAXSCB, we
++	 *  should always find one.
++	 */
++	for (empty = 0; empty < AHA274X_MAXSCB; empty++)
++		if (!p->SCB_array[empty])
++			break;
++	if (empty == AHA274X_MAXSCB)
++		panic("aha274x_queue: couldn't find a free scb\n");
++
++	/*
++	 *  Pause the sequencer so we can play with its registers -
++	 *  wait for it to acknowledge the pause.
++	 *
++	 *  XXX - should the interrupts be left on while doing this?
++	 */
++	PAUSE_SEQUENCER(p);
++
++	/*
++	 *  Save the SCB pointer and put our own pointer in - this
++	 *  selects one of the four banks of SCB registers.  Load
++	 *  the SCB, then write its pointer into the queue in FIFO
++	 *  and restore the saved SCB pointer.
++	 */
++	old_scbptr = inb(O_SCBPTR(p->base));
++	outb(empty, O_SCBPTR(p->base));
++	
++	aha274x_putscb(p->base, &scb);
++
++	outb(empty, O_QINFIFO(p->base));
++	outb(old_scbptr, O_SCBPTR(p->base));
++
++	/*
++	 *  Make sure the Scsi_Cmnd pointer is saved, the struct it
++	 *  points to is set up properly, and the parity error flag
++	 *  is reset, then unpause the sequencer and watch the fun
++	 *  begin.
++	 */
++	cmd->scsi_done = fn;
++	p->SCB_array[empty] = cmd;
++	aha274x_parity(cmd) = DID_OK;
++
++	UNPAUSE_SEQUENCER(p);
++
++	restore_flags(flags);
++	return(0);
++}
++
++/* return values from aha274x_kill */
++
++enum k_state {
++	k_ok,				/* scb found and message sent */
++	k_busy,				/* message already present */
++	k_absent,			/* couldn't locate scb */
++	k_disconnect,			/* scb found, but disconnected */
++};
++
++/*
++ *  This must be called with interrupts disabled - it's going to
++ *  be messing around with the host data, and an interrupt being
++ *  fielded in the middle could get ugly.
++ *
++ *  Since so much of the abort and reset code is shared, this
++ *  function performs more magic than it really should.  If the
++ *  command completes ok, then it will call scsi_done with the
++ *  result code passed in.  The unpause parameter controls whether
++ *  or not the sequencer gets unpaused - the reset function, for
++ *  instance, may want to do something more aggressive.
++ *
++ *  Note that the command is checked for in our SCB_array first
++ *  before the sequencer is paused, so if k_absent is returned,
++ *  then the sequencer is NOT paused.
++ */
++
++static
++enum k_state aha274x_kill(Scsi_Cmnd *cmd, unsigned char message,
++			  unsigned int result, int unpause)
++{
++	struct aha274x_host *p;
++	int i, scb, found, queued;
++	unsigned char scbsave[AHA274X_MAXSCB];
++
++	p = (struct aha274x_host *)cmd->host->hostdata;
++
++	/*
++	 *  If we can't find the command, assume it just completed
++	 *  and shrug it away.
++	 */
++	for (scb = 0; scb < AHA274X_MAXSCB; scb++)
++		if (p->SCB_array[scb] == cmd)
++			break;
++
++	if (scb == AHA274X_MAXSCB)
++		return(k_absent);
++
++	PAUSE_SEQUENCER(p);
++
++	/*
++	 *  This is the best case, really.  Check to see if the
++	 *  command is still in the sequencer's input queue.  If
++	 *  so, simply remove it.  Reload the queue afterward.
++	 */
++	queued = inb(O_QINCNT(p->base));
++	
++	for (i = found = 0; i < queued; i++) {
++		scbsave[i] = inb(O_QINFIFO(p->base));
++
++		if (scbsave[i] == scb) {
++			found = 1;
++			i -= 1;
++		}
++	}
++
++	queued -= found;
++	for (i = 0; i < queued; i++)
++		outb(scbsave[i], O_QINFIFO(p->base));
++
++	if (found)
++		goto complete;
++
++	/*
++	 *  Check the current SCB bank.  If it's not the one belonging
++	 *  to the command we want to kill, assume that the command
++	 *  is disconnected.  It's rather a pain to force a reconnect
++	 *  and send a message to the target, so we abdicate responsibility
++	 *  in this case.
++	 */
++	if (inb(O_SCBPTR(p->base)) != scb) {
++		if (unpause)
++			UNPAUSE_SEQUENCER(p);
++		return(k_disconnect);
++	}
++
++	/*
++	 *  Presumably at this point our target command is active.  Check
++	 *  to see if there's a message already in effect.  If not, place
++	 *  our message in and assert ATN so the target goes into MESSAGE
++	 *  OUT phase.
++	 */
++	if (inb(HA_MSG_FLAGS(p->base)) & 0x80) {
++		if (unpause)
++			UNPAUSE_SEQUENCER(p);
++		return(k_busy);
++	}
++
++	outb(0x80, HA_MSG_FLAGS(p->base));		/* active message */
++	outb(1, HA_MSG_LEN(p->base));			/* length = 1 */
++	outb(message, HA_MSG_START(p->base));		/* message body */
++
++	/*
++	 *  Assert ATN.  Use the value of SCSISIGO saved by the
++	 *  sequencer code so we don't alter its contents radically
++	 *  in the middle of something critical.
++	 */
++	outb(inb(HA_SIGSTATE(p->base)) | 0x10, O_SCSISIGO(p->base));
++
++	/*
++	 *  The command has been killed.  Do the bookkeeping, unpause
++	 *  the sequencer, and notify the higher-level SCSI code.
++	 */
++complete:
++	p->SCB_array[scb] = NULL;
++	if (unpause)
++		UNPAUSE_SEQUENCER(p);
++
++	cmd->result = result << 16;
++	cmd->scsi_done(cmd);
++	return(k_ok);
++}
++
++int aha274x_abort(Scsi_Cmnd *cmd)
++{
++	int rv;
++	long flags;
++
++	save_flags(flags);
++	cli();
++
++	switch (aha274x_kill(cmd, ABORT, DID_ABORT, !0)) {
++	    case k_ok:		rv = SCSI_ABORT_SUCCESS;	break;
++	    case k_busy:	rv = SCSI_ABORT_BUSY;		break;
++	    case k_absent:	rv = SCSI_ABORT_NOT_RUNNING;	break;
++	    case k_disconnect:	rv = SCSI_ABORT_SNOOZE;		break;
++	    default:
++		panic("aha274x_do_abort: internal error\n");
++	}
++
++	restore_flags(flags);
++	return(rv);
++}
++
++/*
++ *  Resetting the bus always succeeds - is has to, otherwise the
++ *  kernel will panic!  Try a surgical technique - sending a BUS
++ *  DEVICE RESET message - on the offending target before pulling
++ *  the SCSI bus reset line.
++ */
++
++int aha274x_reset(Scsi_Cmnd *cmd)
++{
++	int i;
++	long flags;
++	Scsi_Cmnd *reset;
++	struct aha274x_host *p;
++
++	p = (struct aha274x_host *)cmd->host->hostdata;
++	save_flags(flags);
++	cli();
++
++	switch (aha274x_kill(cmd, BUS_DEVICE_RESET, DID_RESET, 0)) {
++
++	    case k_ok:
++		/*
++		 *  The RESET message was sent to the target
++		 *  with no problems.  Flag that target as
++		 *  needing a SDTR negotiation on the next
++		 *  connection and restart the sequencer.
++		 */
++		outb((1 << cmd->target), HA_NEEDSDTR(p->base));
++		UNPAUSE_SEQUENCER(p);
++		break;
++
++	    case k_absent:
++		/*
++		 *  The sequencer will not be paused if aha274x_kill()
++		 *  couldn't find the command.
++		 */
++		PAUSE_SEQUENCER(p);
++		/* falls through */
++
++	    case k_busy:
++	    case k_disconnect:
++		/*
++		 *  Do a hard reset of the SCSI bus.  According to the
++		 *  SCSI-2 draft specification, reset has to be asserted
++		 *  for at least 25us.  I'm invoking the kernel delay
++		 *  function for 30us since I'm not totally trusting of
++		 *  the busy loop timing.
++		 *
++		 *  XXX - I'm not convinced this works.  I tried resetting
++		 *	  the bus before, trying to get the devices on the
++		 *	  bus to revert to asynchronous transfer, and it
++		 *	  never seemed to work.
++		 */
++		debug("aha274x: attempting to reset scsi bus and card\n");
++
++		outb(1, O_SCSISEQ(p->base));		/* SCSIRSTO */
++		udelay(30);
++		outb(0, O_SCSISEQ(p->base));		/* !SCSIRSTO */
++
++		outb(0xff, HA_NEEDSDTR(p->base));
++		UNPAUSE_SEQUENCER(p);
++
++		/*
++		 *  Locate the command and return a "reset" status
++		 *  for it.  This is not completely correct and will
++		 *  probably return to haunt me later.
++		 */
++		for (i = 0; i < AHA274X_MAXSCB; i++) {
++			if (cmd == p->SCB_array[i]) {
++				reset = (Scsi_Cmnd *)p->SCB_array[i];
++				p->SCB_array[i] = NULL;
++				reset->result = DID_RESET << 16;
++				reset->scsi_done(reset);
++				break;
++			}
++		}
++		break;
++
++	    default:
++		panic("aha274x_reset: internal error\n");
++	}
++
++	restore_flags(flags);
++	return(SCSI_RESET_SUCCESS);
++}
++
++int aha274x_biosparam(Disk *disk, int devno, int geom[])
++{
++	/*
++	 *  XXX - when I find the EISA configuration information,
++	 *	  this should change to handle the "extended translation
++	 *	  for drives >1G" option, which uses 255 heads and
++	 *	  63 sectors/track for drives >1G.  Right now, just
++	 *	  assume it's turned off.
++	 */
++	debug("aha274x_biosparam warning: don't know translation config\n");
++
++	geom[0] = 64;
++	geom[1] = 32;
++	geom[2] = disk->capacity / (64 * 32);
++
++	return(0);
++}
++
+diff -u --recursive --new-file linux-1.1.49/drivers/scsi/aha274x.h linux/drivers/scsi/aha274x.h
+--- linux-1.1.49/drivers/scsi/aha274x.h	Wed Dec 31 16:00:00 1969
++++ linux/drivers/scsi/aha274x.h	Thu Sep  8 23:20:59 1994
+@@ -0,0 +1,62 @@
++/* @(#)aha274x.h 1.11 94/09/06 jda */
++
++/*
++ * Adaptec 274x device driver for Linux.
++ * Copyright (c) 1994 The University of Calgary Department of Computer Science.
++ * 
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ * 
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ * 
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++ */
++
++#ifndef aha274x_h
++#define aha274x_h
++
++#define	AHA274X_MAXSCB		4
++#define AHA274X_H_VERSION	"1.11"
++
++/*
++ *  Scsi_Host_Template (see hosts.h) for 274x - some fields
++ *  to do with card config are filled in after the card is
++ *  detected.
++ */
++#define AHA274X	{						\
++	NULL,							\
++	"",							\
++	aha274x_detect,						\
++	NULL,							\
++	aha274x_info,						\
++	aha274x_command,					\
++	aha274x_queue,						\
++	aha274x_abort,						\
++	aha274x_reset,						\
++	NULL,							\
++	aha274x_biosparam,					\
++	AHA274X_MAXSCB,		/* max simultaneous cmds      */\
++	-1,			/* scsi id of host adapter    */\
++	SG_ALL,			/* max scatter-gather cmds    */\
++	1,			/* cmds per lun (linked cmds) */\
++	0,			/* number of 274x's present   */\
++	0,			/* no memory DMA restrictions */\
++	DISABLE_CLUSTERING					\
++}
++
++extern int aha274x_queue(Scsi_Cmnd *, void (*)(Scsi_Cmnd *));
++extern int aha274x_biosparam(Disk *, int, int[]);
++extern int aha274x_detect(Scsi_Host_Template *);
++extern int aha274x_command(Scsi_Cmnd *);
++extern int aha274x_abort(Scsi_Cmnd *);
++extern int aha274x_reset(Scsi_Cmnd *);
++extern const char *aha274x_info(void);
++
++#endif
+diff -u --recursive --new-file linux-1.1.49/drivers/scsi/aha274x.seq linux/drivers/scsi/aha274x.seq
+--- linux-1.1.49/drivers/scsi/aha274x.seq	Wed Dec 31 16:00:00 1969
++++ linux/drivers/scsi/aha274x.seq	Thu Sep  8 23:20:59 1994
+@@ -0,0 +1,1013 @@
++# @(#)aha274x.seq 1.26 94/09/06 jda
++#
++# Adaptec 274x device driver for Linux.
++# Copyright (c) 1994 The University of Calgary Department of Computer Science.
++# 
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 2 of the License, or
++# (at your option) any later version.
++# 
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++# 
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++
++VERSION AHA274X_SEQ_VERSION 1.26
++
++MAXSCB		= 4
++
++SCSISEQ		= 0x00
++SXFRCTL0	= 0x01
++SXFRCTL1	= 0x02
++SCSISIGI	= 0x03
++SCSISIGO	= 0x03
++SCSIRATE	= 0x04
++SCSIID		= 0x05
++SCSIDATL	= 0x06
++STCNT		= 0x08
++STCNT+0		= 0x08
++STCNT+1		= 0x09
++STCNT+2		= 0x0a
++SSTAT0		= 0x0b
++CLRSINT1	= 0x0c
++SSTAT1		= 0x0c
++SIMODE1		= 0x11
++SCSIBUSL	= 0x12
++SHADDR		= 0x14
++SELID		= 0x19
++SBLKCTL		= 0x1f
++SEQCTL		= 0x60
++A		= 0x64				# == ACCUM
++SINDEX		= 0x65
++DINDEX		= 0x66
++ALLZEROS	= 0x6a
++NONE		= 0x6a
++SINDIR		= 0x6c
++DINDIR		= 0x6d
++FUNCTION1	= 0x6e
++HADDR		= 0x88
++HCNT		= 0x8c
++HCNT+0		= 0x8c
++HCNT+1		= 0x8d
++HCNT+2		= 0x8e
++SCBPTR		= 0x90
++INTSTAT		= 0x91
++DFCNTRL		= 0x93
++DFSTATUS	= 0x94
++DFDAT		= 0x99
++QINFIFO		= 0x9b
++QINCNT		= 0x9c
++QOUTFIFO	= 0x9d
++
++SCSICONF	= 0x5a
++
++#  The two reserved bytes at SCBARRAY+1[23] are expected to be set to
++#  zero, and the reserved bit in SCBARRAY+0 is used as an internal flag
++#  to indicate whether or not to reload scatter-gather parameters after
++#  a disconnect.
++#
++SCBARRAY+0	= 0xa0
++SCBARRAY+1	= 0xa1
++SCBARRAY+2	= 0xa2
++SCBARRAY+3	= 0xa3
++SCBARRAY+7	= 0xa7
++SCBARRAY+11	= 0xab
++SCBARRAY+14	= 0xae
++SCBARRAY+15	= 0xaf
++SCBARRAY+16	= 0xb0
++SCBARRAY+17	= 0xb1
++SCBARRAY+18	= 0xb2
++SCBARRAY+19	= 0xb3
++SCBARRAY+20	= 0xb4
++SCBARRAY+21	= 0xb5
++SCBARRAY+22	= 0xb6
++SCBARRAY+23	= 0xb7
++SCBARRAY+24	= 0xb8
++SCBARRAY+25	= 0xb9
++
++SIGNAL_0	= 0x01				# unknown scsi bus phase
++SIGNAL_1	= 0x11				# message reject
++SIGNAL_2	= 0x21				# no IDENTIFY after reconnect
++SIGNAL_3	= 0x31				# no cmd match for reconnect
++SIGNAL_4	= 0x41				# SDTR -> SCSIRATE conversion
++
++#  The host adapter card (at least the BIOS) uses 20-2f for SCSI
++#  device information, 32-33 and 5a-5f as well.  Since we don't support
++#  wide or twin-bus SCSI, 28-2f can be reclaimed.  As it turns out, the
++#  BIOS trashes 20-27 anyway, writing the synchronous negotiation results
++#  on top of the BIOS values, so we re-use those for our per-target
++#  scratchspace (actually a value that can be copied directly into
++#  SCSIRATE).  This implies, since we can't get the BIOS config values,
++#  that all targets will be negotiated with for synchronous transfer.
++#  NEEDSDTR has one bit per target indicating if an SDTR message is
++#  needed for that device - this will be set initially, as well as
++#  after a bus reset condition.
++#
++#  The high bit of DROPATN is set if ATN should be dropped before the ACK
++#  when outb is called.  REJBYTE contains the first byte of a MESSAGE IN
++#  message, so the driver can report an intelligible error if a message is
++#  rejected.
++#
++#  RESELECT's high bit is true if we are currently handling a reselect;
++#  its next-highest bit is true ONLY IF we've seen an IDENTIFY message
++#  from the reselecting target.  If we haven't had IDENTIFY, then we have
++#  no idea what the lun is, and we can't select the right SCB register
++#  bank, so force a kernel panic if the target attempts a data in/out or
++#  command phase instead of corrupting something.
++#
++#  Note that LAST_SHADDR and SG_NEXT occupy four bytes each.
++#
++SYNCNEG		= 0x20
++DISC_DSB_A	= 0x32
++
++DROPATN		= 0x30
++REJBYTE		= 0x31
++RESELECT	= 0x34
++
++MSG_FLAGS	= 0x35
++MSG_LEN		= 0x36
++MSG_START+0	= 0x37
++MSG_START+1	= 0x38
++MSG_START+2	= 0x39
++MSG_START+3	= 0x3a
++MSG_START+4	= 0x3b
++MSG_START+5	= 0x3c
++-MSG_START+0	= 0xc9				# 2's complement of MSG_START+0
++
++ARG_1		= 0x4c				# sdtr conversion args & return
++ARG_2		= 0x4d
++RETURN_1	= 0x4c
++
++SIGSTATE	= 0x4e				# value written to SCSISIGO
++NEEDSDTR	= 0x4f				# send SDTR message, 1 bit/trgt
++LAST_SHADDR	= 0x50				# value after last dma transfer
++
++SG_SIZEOF	= 12				# sizeof(struct scatterlist)
++SG_NOLOAD	= 0x54				# load SG pointer/length?
++SG_COUNT	= 0x55				# working value of SG count
++SG_NEXT		= 0x56				# working value of SG pointer
++SG_NEXT+0	= 0x56
++SG_NEXT+1	= 0x57
++SG_NEXT+2	= 0x58
++SG_NEXT+3	= 0x59
++
++#  Poll QINCNT for work - the lower three bits contain
++#  the number of entries in the Queue In FIFO.
++#
++start:
++	test	SCSISIGI,0x4	jnz reselect	# BSYI
++	test	QINCNT,0x7	jz start
++
++#  We have at least one queued SCB now.  Set the SCB pointer
++#  from the FIFO so we see the right bank of SCB registers,
++#  then set SCSI options and set the initiator and target
++#  SCSI IDs.
++#
++	mov	SCBPTR,QINFIFO
++	mov	SCBARRAY+1	call initialize
++	clr	SG_NOLOAD
++	clr	RESELECT
++
++#  As soon as we get a successful selection, the target should go
++#  into the message out phase since we have ATN asserted.  Prepare
++#  the message to send, locking out the device driver.  If the device
++#  driver hasn't beaten us with an ABORT or RESET message, then tack
++#  on a SDTR negotation if required.
++#
++#  Messages are stored in scratch RAM starting with a flag byte (high bit
++#  set means active message), one length byte, and then the message itself.
++#
++	mov	SCBARRAY+1	call disconnect	# disconnect ok?
++
++	and	SINDEX,0x7,SCBARRAY+1		# lun
++	or	SINDEX,A			# return value from disconnect
++	or	SINDEX,0x80	call mk_mesg	# IDENTIFY message
++
++	mov	A,SINDEX
++	cmp	MSG_START+0,A	jne !message	# did driver beat us?
++	mvi	MSG_START+1	call mk_sdtr	# build SDTR message if needed
++
++!message:
++
++#  Enable selection phase as an initiator, and do automatic ATN
++#  after the selection.
++#
++	mvi	SCSISEQ,0x48			# ENSELO|ENAUTOATNO
++
++#  Wait for successful arbitration.  The AIC-7770 documentation says
++#  that SELINGO indicates successful arbitration, and that it should
++#  be used to look for SELDO.  However, if the sequencer is paused at
++#  just the right time - a parallel fsck(8) on two drives did it for
++#  me - then SELINGO can flip back to false before we've seen it.  This
++#  makes the sequencer sit in the arbitration loop forever.  This is
++#  Not Good.
++#
++#  Therefore, I've added a check in the arbitration loop for SELDO
++#  too.  This could arguably be made a critical section by disabling
++#  pauses, but I don't want to make a potentially infinite loop a CS.
++#  I suppose you could fold it into the select loop, too, but since
++#  I've been hunting this bug for four days it's kinda like a trophy.
++#
++arbitrate:
++	test	SSTAT0,0x40	jnz *select	# SELDO
++	test	SSTAT0,0x10	jz arbitrate	# SELINGO
++
++#  Wait for a successful selection.  If the hardware selection
++#  timer goes off, then the driver gets the interrupt, so we don't
++#  need to worry about it.
++#
++select:
++	test	SSTAT0,0x40	jz select	# SELDO
++	jmp	*select
++
++#  Reselection is being initiated by a target - we've seen the BSY
++#  line driven active, and we didn't do it!  Enable the reselection
++#  hardware, and wait for it to finish.  Make a note that we've been
++#  reselected, but haven't seen an IDENTIFY message from the target
++#  yet.
++#
++reselect:
++	mvi	SCSISEQ,0x10			# ENRSELI
++
++reselect1:
++	test	SSTAT0,0x20	jz reselect1	# SELDI
++	mov	SELID		call initialize
++
++	mvi	RESELECT,0x80			# reselected, no IDENTIFY
++
++#  After the [re]selection, make sure that the [re]selection enable
++#  bit is off.  This chip is flaky enough without extra things
++#  turned on.  Also clear the BUSFREE bit in SSTAT1 since we'll be
++#  using it shortly.
++#
++*select:
++	clr	SCSISEQ
++	mvi	CLRSINT1,0x8			# CLRBUSFREE
++
++#  Main loop for information transfer phases.  If BSY is false, then
++#  we have a bus free condition, expected or not.  Otherwise, wait
++#  for the target to assert REQ before checking MSG, C/D and I/O
++#  for the bus phase.
++#
++#  We can't simply look at the values of SCSISIGI here (if we want
++#  to do synchronous data transfer), because the target won't assert
++#  REQ if it's already sent us some data that we haven't acknowledged
++#  yet.
++#
++ITloop:
++	test	SSTAT1,0x8	jnz p_busfree	# BUSFREE
++	test	SSTAT1,0x1	jz ITloop	# REQINIT
++
++	and	A,0xe0,SCSISIGI			# CDI|IOI|MSGI
++
++	cmp	ALLZEROS,A	je p_dataout
++	cmp	A,0x40		je p_datain
++	cmp	A,0x80		je p_command
++	cmp	A,0xc0		je p_status
++	cmp	A,0xa0		je p_mesgout
++	cmp	A,0xe0		je p_mesgin
++
++	mvi	INTSTAT,SIGNAL_0		# unknown - signal driver
++
++p_dataout:
++	mvi	0		call scsisig	# !CDO|!IOO|!MSGO
++	call	assert
++	call	sg_load
++
++	mvi	A,3
++	mvi	DINDEX,HCNT
++	mvi	SCBARRAY+23	call bcopy
++
++	mvi	A,3
++	mvi	DINDEX,STCNT
++	mvi	SCBARRAY+23	call bcopy
++
++	mvi	A,4
++	mvi	DINDEX,HADDR
++	mvi	SCBARRAY+19	call bcopy
++
++	mvi	0x3d		call dma	# SCSIEN|SDMAEN|HDMAEN|
++						#   DIRECTION|FIFORESET
++
++	call	sg_advance
++	mov	SCBARRAY+18,SG_COUNT		# residual S/G count
++
++	jmp	ITloop
++
++p_datain:
++	mvi	0x40		call scsisig	# !CDO|IOO|!MSGO
++	call	assert
++	call	sg_load
++
++	mvi	A,3
++	mvi	DINDEX,HCNT
++	mvi	SCBARRAY+23	call bcopy
++
++	mvi	A,3
++	mvi	DINDEX,STCNT
++	mvi	SCBARRAY+23	call bcopy
++
++	mvi	A,4
++	mvi	DINDEX,HADDR
++	mvi	SCBARRAY+19	call bcopy
++
++	mvi	0x39		call dma	# SCSIEN|SDMAEN|HDMAEN|
++						#   !DIRECTION|FIFORESET
++	call	sg_advance
++	mov	SCBARRAY+18,SG_COUNT		# residual S/G count
++
++	jmp	ITloop
++
++#  Command phase.  Set up the DMA registers and let 'er rip - the
++#  two bytes after the SCB SCSI_cmd_length are zeroed by the driver,
++#  so we can copy those three bytes directly into HCNT.
++#
++p_command:
++	mvi	0x80		call scsisig	# CDO|!IOO|!MSGO
++	call	assert
++
++	mvi	A,3
++	mvi	DINDEX,HCNT
++	mvi	SCBARRAY+11	call bcopy
++
++	mvi	A,3
++	mvi	DINDEX,STCNT
++	mvi	SCBARRAY+11	call bcopy
++
++	mvi	A,4
++	mvi	DINDEX,HADDR
++	mvi	SCBARRAY+7	call bcopy
++
++	mvi	0x3d		call dma	# SCSIEN|SDMAEN|HDMAEN|
++						#   DIRECTION|FIFORESET
++	jmp	ITloop
++
++#  Status phase.  Wait for the data byte to appear, then read it
++#  and store it into the SCB.
++#
++p_status:
++	mvi	0xc0		call scsisig	# CDO|IOO|!MSGO
++
++	mvi	SCBARRAY+14	call inb
++	jmp	ITloop
++
++#  Message out phase.  If there is no active message, but the target
++#  took us into this phase anyway, build a no-op message and send it.
++#
++p_mesgout:
++	mvi	0xa0		call scsisig	# CDO|!IOO|MSGO
++	mvi	0x8		call mk_mesg	# build NOP message
++
++#  Set up automatic PIO transfer from MSG_START.  Bit 3 in
++#  SXFRCTL0 (SPIOEN) is already on.
++#
++	mvi	SINDEX,MSG_START+0
++	mov	DINDEX,MSG_LEN
++	clr	A
++
++#  When target asks for a byte, drop ATN if it's the last one in
++#  the message.  Otherwise, keep going until the message is exhausted.
++#  (We can't use outb for this since it wants the input in SINDEX.)
++#
++p_mesgout2:
++	test	SSTAT0,0x2	jz p_mesgout2	# SPIORDY
++
++	cmp	DINDEX,1	jne p_mesgout3	# last byte?
++	mvi	CLRSINT1,0x40			# CLRATNO - drop ATN
++
++#  Write a byte to the SCSI bus.  The AIC-7770 refuses to automatically
++#  send ACKs in automatic PIO or DMA mode unless you make sure that the
++#  "expected" bus phase in SCSISIGO matches the actual bus phase.  This
++#  behaviour is completely undocumented and caused me several days of
++#  grief.
++#
++#  After plugging in different drives to test with and using a longer
++#  SCSI cable, I found that I/O in Automatic PIO mode ceased to function,
++#  especially when transferring >1 byte.  It seems to be much more stable
++#  if STCNT is set to one before the transfer, and SDONE (in SSTAT0) is
++#  polled for transfer completion - for both output _and_ input.  The
++#  only theory I have is that SPIORDY doesn't drop right away when SCSIDATL
++#  is accessed (like the documentation says it does), and that on a longer
++#  cable run, the sequencer code was fast enough to loop back and see
++#  an SPIORDY that hadn't dropped yet.
++#
++p_mesgout3:
++	call	one_stcnt
++	mov	SCSIDATL,SINDIR
++
++p_mesgout4:
++	test	SSTAT0,0x4	jz p_mesgout4	# SDONE
++	dec	DINDEX
++	inc	A
++	cmp	MSG_LEN,A	jne p_mesgout2
++
++#  If the next bus phase after ATN drops is a message out, it means
++#  that the target is requesting that the last message(s) be resent.
++#
++p_mesgout5:
++	test	SSTAT1,0x8	jnz p_mesgout6	# BUSFREE
++	test	SSTAT1,0x1	jz p_mesgout5	# REQINIT
++
++	and	A,0xe0,SCSISIGI			# CDI|IOI|MSGI
++	cmp	A,0xa0		jne p_mesgout6
++	mvi	0x10		call scsisig	# ATNO - re-assert ATN
++
++	jmp	ITloop
++
++p_mesgout6:
++	clr	MSG_FLAGS			# no active msg
++	jmp	ITloop
++
++#  Message in phase.  Bytes are read using Automatic PIO mode, but not
++#  using inb.  This alleviates a race condition, namely that if ATN had
++#  to be asserted under Automatic PIO mode, it had to beat the SCSI
++#  circuitry sending an ACK to the target.  This showed up under heavy
++#  loads and really confused things, since ABORT commands wouldn't be
++#  seen by the drive after an IDENTIFY message in until it had changed
++#  to a data I/O phase.
++#
++p_mesgin:
++	mvi	0xe0		call scsisig	# CDO|IOO|MSGO
++	mvi	A		call inb_first	# read the 1st message byte
++	mvi	REJBYTE,A			# save it for the driver
++
++	cmp	ALLZEROS,A	jne p_mesgin1
++
++#  We got a "command complete" message, so put the SCB pointer
++#  into the Queue Out, and trigger a completion interrupt.
++#
++	mov	QOUTFIFO,SCBPTR
++	mvi	INTSTAT,0x2			# CMDCMPLT
++	jmp	p_mesgin_done
++
++#  Is it an extended message?  We only support the synchronous data
++#  transfer request message, which will probably be in response to
++#  an SDTR message out from us.  If it's not an SDTR, reject it -
++#  apparently this can be done after any message in byte, according
++#  to the SCSI-2 spec.
++#
++#  XXX - we should really reject this if we didn't initiate the SDTR
++#	 negotiation; this may cause problems with unusual devices.
++#
++p_mesgin1:
++	cmp	A,1		jne p_mesgin2	# extended message code?
++	
++	mvi	A		call inb_next
++	cmp	A,3		jne p_mesginN	# extended mesg length = 3
++	mvi	A		call inb_next
++	cmp	A,1		jne p_mesginN	# SDTR code
++
++	mvi	ARG_1		call inb_next	# xfer period
++	mvi	ARG_2		call inb_next	# REQ/ACK offset
++	mvi	INTSTAT,SIGNAL_4		# call driver to convert
++
++	call	ndx_sdtr			# index sync config for target
++	mov	DINDEX,SINDEX
++	mov	DINDIR,RETURN_1			# save returned value
++
++	not	A				# turn off "need sdtr" flag
++	and	NEEDSDTR,A
++
++#  Even though the SCSI-2 specification says that a device responding
++#  to our SDTR message should honor our parameters for transmitting
++#  to us, it doesn't seem to work too well in real life.  In particular,
++#  a lot of CD-ROM and tape units don't function: try using the SDTR
++#  parameters the device sent us for both transmitting and receiving.
++#
++	mov	SCSIRATE,RETURN_1
++	jmp	p_mesgin_done
++
++#  Is it a disconnect message?  Set a flag in the SCB to remind us
++#  and await the bus going free.
++#
++p_mesgin2:
++	cmp	A,4		jne p_mesgin3	# disconnect code?
++
++	or	SCBARRAY+0,0x4			# set "disconnected" bit
++	jmp	p_mesgin_done
++
++#  Save data pointers message?  Use SHADDR and STCNT instead of HADDR
++#  and HCNT, since it's a reflection of how many bytes were transferred
++#  on the SCSI (as opposed to the host) bus.  Make sure to use the values
++#  saved after the last DMA transfer - reading the message in byte changes
++#  the values in them.
++#
++p_mesgin3:
++	cmp	A,2		jne p_mesgin4	# save data pointers code?
++
++	mvi	A,4
++	mvi	DINDEX,SCBARRAY+19
++	mvi	LAST_SHADDR	call bcopy
++
++	mvi	A,3
++	mvi	DINDEX,SCBARRAY+23
++	mvi	SCBARRAY+15	call bcopy	# residual data count (stcnt)
++
++	call	sg_ram2scb
++
++	jmp	p_mesgin_done
++
++#  Restore pointers message?  Data pointers are recopied from the
++#  SCB anyway at the start of any DMA operation, so the only thing
++#  to copy is the scatter-gather values.
++#
++p_mesgin4:
++	cmp	A,3		jne p_mesgin5	# restore pointers code?
++
++	call	sg_scb2ram
++	jmp	p_mesgin_done
++
++#  Identify message?  For a reconnecting target, this tells us the lun
++#  that the reconnection is for - find the correct SCB and switch to it,
++#  clearing the "disconnected" bit so we don't "find" it by accident later.
++#
++p_mesgin5:
++	test	A,0x80		jz p_mesgin6	# identify message?
++
++	test	A,0x78		jnz p_mesginN	# !DiscPriv|!LUNTAR|!Reserved
++
++	mov	A		call findSCB	# switch to correct SCB
++
++#  If a active message is present after calling findSCB, then either it
++#  or the driver is trying to abort the command.  Either way, something
++#  untoward has happened and we should just leave it alone.
++#
++	test	MSG_FLAGS,0x80	jnz p_mesgin_done
++
++	xor	SCBARRAY+0,0x4			# clear disconnect bit in SCB
++	mvi	RESELECT,0xc0			# make note of IDENTIFY
++
++	call	sg_scb2ram			# implied restore pointers
++						#   required on reselect
++	jmp	p_mesgin_done
++
++#  Message reject?  If we have an outstanding SDTR negotiation, assume
++#  that it's a response from the target selecting asynchronous transfer,
++#  otherwise just ignore it since we have no clue what it pertains to.
++#
++#  XXX - I don't have a device that responds this way.  Does this code
++#	 actually work?
++#
++p_mesgin6:
++	cmp	A,7		jne p_mesgin7	# message reject code?
++
++	and	FUNCTION1,0x70,SCSIID		# outstanding SDTR message?
++	mov	A,FUNCTION1
++	test	NEEDSDTR,A	jz p_mesgin_done  # no - ignore rejection
++
++	call	ndx_sdtr			# note use of asynch xfer
++	mov	DINDEX,SINDEX
++	clr	DINDIR
++
++	not	A				# turn off "active sdtr" flag
++	and	NEEDSDTR,A
++
++	clr	SCSIRATE			# select asynch xfer
++	jmp	p_mesgin_done
++
++#  [ ADD MORE MESSAGE HANDLING HERE ]
++#
++p_mesgin7:
++
++#  We have no idea what this message in is, and there's no way
++#  to pass it up to the kernel, so we issue a message reject and
++#  hope for the best.  Since we're now using manual PIO mode to
++#  read in the message, there should no longer be a race condition
++#  present when we assert ATN.  In any case, rejection should be a
++#  rare occurrence - signal the driver when it happens.
++#
++p_mesginN:
++	or	SINDEX,0x10,SIGSTATE		# turn on ATNO
++	call	scsisig
++	mvi	INTSTAT,SIGNAL_1		# let driver know
++
++	mvi	0x7		call mk_mesg	# MESSAGE REJECT message
++
++p_mesgin_done:
++	call	inb_last			# ack & turn auto PIO back on
++	jmp	ITloop
++
++#  Bus free phase.  It might be useful to interrupt the device
++#  driver if we aren't expecting this.  For now, make sure that
++#  ATN isn't being asserted and look for a new command.
++#
++p_busfree:
++	mvi	CLRSINT1,0x40			# CLRATNO
++	clr	SIGSTATE
++	jmp	start
++
++#  Bcopy: number of bytes to transfer should be in A, DINDEX should
++#  contain the destination address, and SINDEX should contain the
++#  source address.  All input parameters are trashed on return.
++#
++bcopy:
++	mov	DINDIR,SINDIR
++	dec	A
++	cmp	ALLZEROS,A	jne bcopy
++	ret
++
++#  Locking the driver out, build a one-byte message passed in SINDEX
++#  if there is no active message already.  SINDEX is returned intact.
++#
++mk_mesg:
++	mvi	SEQCTL,0x40			# PAUSEDIS
++	test	MSG_FLAGS,0x80	jnz mk_mesg1	# active message?
++
++	mvi	MSG_FLAGS,0x80			# if not, there is now
++	mvi	MSG_LEN,1			# length = 1
++	mov	MSG_START+0,SINDEX		# 1-byte message
++
++mk_mesg1:
++	clr	SEQCTL				# !PAUSEDIS
++	ret
++
++#  Input byte in Automatic PIO mode.  The address to store the byte
++#  in should be in SINDEX.  DINDEX will be used by this routine.
++#
++inb:
++	test	SSTAT0,0x2	jz inb		# SPIORDY
++	mov	DINDEX,SINDEX
++	call	one_stcnt			# xfer one byte
++	mov	DINDIR,SCSIDATL
++inb1:
++	test	SSTAT0,0x4	jz inb1		# SDONE - wait to "finish"
++	ret
++
++#  Carefully read data in Automatic PIO mode.  I first tried this using
++#  Manual PIO mode, but it gave me continual underrun errors, probably
++#  indicating that I did something wrong, but I feel more secure leaving
++#  Automatic PIO on all the time.
++#
++#  According to Adaptec's documentation, an ACK is not sent on input from
++#  the target until SCSIDATL is read from.  So we wait until SCSIDATL is
++#  latched (the usual way), then read the data byte directly off the bus
++#  using SCSIBUSL.  When we have pulled the ATN line, or we just want to
++#  acknowledge the byte, then we do a dummy read from SCISDATL.  The SCSI
++#  spec guarantees that the target will hold the data byte on the bus until
++#  we send our ACK.
++#
++#  The assumption here is that these are called in a particular sequence,
++#  and that REQ is already set when inb_first is called.  inb_{first,next}
++#  use the same calling convention as inb.
++#
++inb_first:
++	mov	DINDEX,SINDEX
++	mov	DINDIR,SCSIBUSL	ret		# read byte directly from bus
++
++inb_next:
++	mov	DINDEX,SINDEX			# save SINDEX
++
++	call	one_stcnt			# xfer one byte
++	mov	NONE,SCSIDATL			# dummy read from latch to ACK
++inb_next1:
++	test	SSTAT0,0x4	jz inb_next1	# SDONE
++inb_next2:
++	test	SSTAT0,0x2	jz inb_next2	# SPIORDY - wait for next byte
++	mov	DINDIR,SCSIBUSL	ret		# read byte directly from bus
++
++inb_last:
++	call	one_stcnt			# ACK with dummy read
++	mov	NONE,SCSIDATL
++inb_last1:
++	test	SSTAT0,0x4	jz inb_last1	# wait for completion
++	ret
++
++#  Output byte in Automatic PIO mode.  The byte to output should be
++#  in SINDEX.  If DROPATN's high bit is set, then ATN will be dropped
++#  before the byte is output.
++#
++outb:
++	test	SSTAT0,0x2	jz outb		# SPIORDY
++	call	one_stcnt			# xfer one byte
++
++	test	DROPATN,0x80	jz outb1
++	mvi	CLRSINT1,0x40			# CLRATNO
++	clr	DROPATN
++outb1:
++	mov	SCSIDATL,SINDEX
++outb2:
++	test	SSTAT0,0x4	jz outb2	# SDONE
++	ret
++
++#  Write the value "1" into the STCNT registers, for Automatic PIO
++#  transfers.
++#
++one_stcnt:
++	clr	STCNT+2
++	clr	STCNT+1
++	mvi	STCNT+0,1	ret
++
++#  DMA data transfer.  HADDR and HCNT must be loaded first, and
++#  SINDEX should contain the value to load DFCNTRL with - 0x3d for
++#  host->scsi, or 0x39 for scsi->host.  The SCSI channel is cleared
++#  during initialization.
++#
++dma:
++	mov	DFCNTRL,SINDEX
++dma1:
++dma2:
++	test	SSTAT0,0x1	jnz dma3	# DMADONE
++	test	SSTAT1,0x10	jz dma1		# PHASEMIS, ie. underrun
++
++#  We will be "done" DMAing when the transfer count goes to zero, or
++#  the target changes the phase (in light of this, it makes sense that
++#  the DMA circuitry doesn't ACK when PHASEMIS is active).  If we are
++#  doing a SCSI->Host transfer, flush the data FIFO.
++#
++dma3:
++	test	SINDEX,0x4	jnz dma5	# DIRECTION
++	and	SINDEX,0xfe			# mask out FIFORESET
++	or	DFCNTRL,0x2,SINDEX		# FIFOFLUSH
++dma4:
++	test	DFCNTRL,0x2	jnz dma4	# FIFOFLUSHACK
++
++#  Now shut the DMA enables off, and copy STCNT (ie. the underrun
++#  amount, if any) to the SCB registers; SG_COUNT will get copied to
++#  the SCB's residual S/G count field after sg_advance is called.  Make
++#  sure that the DMA enables are actually off first lest we get an ILLSADDR.
++#  Save the value of SHADDR into scratch RAM in case we need to save data
++#  pointers.
++#
++dma5:
++	clr	DFCNTRL				# disable DMA
++dma6:
++	test	DFCNTRL,0x38	jnz dma6	# SCSIENACK|SDMAENACK|HDMAENACK
++
++	mvi	A,4
++	mvi	DINDEX,LAST_SHADDR
++	mvi	SHADDR		call bcopy
++
++	mvi	A,3
++	mvi	DINDEX,SCBARRAY+15
++	mvi	STCNT		call bcopy
++
++	ret
++
++#  Common SCSI initialization for selection and reselection.  Expects
++#  the target SCSI ID to be in the upper four bits of SINDEX, and A's
++#  contents are stomped on return.
++#
++initialize:
++	clr	SBLKCTL				# channel A, !wide
++	and	SCSIID,0xf0,SINDEX		# target ID
++	and	A,0x7,SCSICONF			# SCSI_ID_A[210]
++	or	SCSIID,A
++
++#  Esundry initialization.
++#
++	clr	DROPATN
++	clr	SIGSTATE
++
++#  Turn on Automatic PIO mode now, before we expect to see an REQ
++#  from the target.  It shouldn't hurt anything to leave it on.  Set
++#  CLRCHN here before the target has entered a data transfer mode -
++#  with synchronous SCSI, if you do it later, you blow away some
++#  data in the SCSI FIFO that the target has already sent to you.
++#
++	mvi	SXFRCTL0,0xa			# SPIOEN|CLRCHN
++
++#  Set SCSI bus parity checking and the selection timeout value,
++#  and enable the hardware selection timer.  Set the SELTO interrupt
++#  to signal the driver.
++#
++	and	A,0x38,SCSICONF			# PARITY_ENB_A|SEL_TIM_A[10]
++	or	SXFRCTL1,0x4,A			# ENSTIMER
++	mvi	SIMODE1,0x84			# ENSELTIMO|ENSCSIPERR
++	
++#  Initialize scatter-gather pointers by setting up the working copy
++#  in scratch RAM.
++#
++	call	sg_scb2ram
++
++#  Initialize SCSIRATE with the appropriate value for this target.
++#
++	call	ndx_sdtr
++	mov	SCSIRATE,SINDIR
++	ret
++
++#  Assert that if we've been reselected, then we've seen an IDENTIFY
++#  message.
++#
++assert:
++	test	RESELECT,0x80	jz assert1	# reselected?
++	test	RESELECT,0x40	jnz assert1	# seen IDENTIFY?
++
++	mvi	INTSTAT,SIGNAL_2		# no - cause a kernel panic
++
++assert1:
++	ret
++
++#  Find out if disconnection is ok from the information the BIOS has left
++#  us.  The target ID should be in the upper four bits of SINDEX; A will
++#  contain either 0x40 (disconnection ok) or 0x00 (diconnection not ok)
++#  on exit.
++#
++#  This is the only place the target ID is limited to three bits, so we
++#  can use the FUNCTION1 register.
++#
++disconnect:
++	and	FUNCTION1,0x70,SINDEX		# strip off extra just in case
++	mov	A,FUNCTION1
++	test	DISC_DSB_A,A	jz disconnect1	# bit nonzero if DISabled
++
++	clr	A		ret
++disconnect1:
++	mvi	A,0x40		ret
++
++#  Locate the SCB matching the target ID in SELID and the lun in the lower
++#  three bits of SINDEX, and switch the SCB to it.  Have the kernel print
++#  a warning message if it can't be found - this seems to happen occasionally
++#  under high loads.  Also, if not found, generate an ABORT message to the
++#  target.
++#
++findSCB:
++	and	A,0x7,SINDEX			# lun in lower three bits
++	or	A,A,SELID			# can I do this?
++	and	A,0xf7				# only channel A implemented
++
++	clr	SINDEX
++
++findSCB1:
++	mov	SCBPTR,SINDEX			# switch to new SCB
++	cmp	SCBARRAY+1,A	jne findSCB2	# target ID/channel/lun match?
++	test	SCBARRAY+0,0x4	jz findSCB2	# should be disconnected
++
++	ret
++
++findSCB2:
++	inc	SINDEX
++	cmp	SINDEX,MAXSCB	jne findSCB1
++
++	mvi	INTSTAT,SIGNAL_3		# not found - signal kernel
++	mvi	0x6		call mk_mesg	# ABORT message
++
++	or	SINDEX,0x10,SIGSTATE		# assert ATNO
++	call	scsisig
++	ret
++
++#  Make a working copy of the scatter-gather parameters in the SCB.
++#
++sg_scb2ram:
++	mov	SG_COUNT,SCBARRAY+2
++
++	mvi	A,4
++	mvi	DINDEX,SG_NEXT
++	mvi	SCBARRAY+3	call bcopy
++
++	mvi	SG_NOLOAD,0x80
++	test	SCBARRAY+0,0x10	jnz sg_scb2ram1	# don't reload s/g?
++	clr	SG_NOLOAD
++
++sg_scb2ram1:
++	ret
++
++#  Copying RAM values back to SCB, for Save Data Pointers message.
++#
++sg_ram2scb:
++	mov	SCBARRAY+2,SG_COUNT
++
++	mvi	A,4
++	mvi	DINDEX,SCBARRAY+3
++	mvi	SG_NEXT		call bcopy
++
++	and	SCBARRAY+0,0xef,SCBARRAY+0
++	test	SG_NOLOAD,0x80	jz sg_ram2scb1	# reload s/g?
++	or	SCBARRAY+0,0x10
++
++sg_ram2scb1:
++	ret
++
++#  Load a struct scatter if needed and set up the data address and
++#  length.  If the working value of the SG count is nonzero, then
++#  we need to load a new set of values.
++#
++#  This, like the above DMA, assumes a little-endian host data storage.
++#
++sg_load:
++	test	SG_COUNT,0xff	jz sg_load3	# SG being used?
++	test	SG_NOLOAD,0x80	jnz sg_load3	# don't reload s/g?
++
++	clr	HCNT+2
++	clr	HCNT+1
++	mvi	HCNT+0,SG_SIZEOF
++
++	mvi	A,4
++	mvi	DINDEX,HADDR
++	mvi	SG_NEXT		call bcopy
++
++	mvi	DFCNTRL,0xd			# HDMAEN|DIRECTION|FIFORESET
++
++#  Wait for DMA from host memory to data FIFO to complete, then disable
++#  DMA and wait for it to acknowledge that it's off.
++#
++sg_load1:
++	test	DFSTATUS,0x8	jz sg_load1	# HDONE
++
++	clr	DFCNTRL				# disable DMA
++sg_load2:
++	test	DFCNTRL,0x8	jnz sg_load2	# HDMAENACK
++
++#  Copy data from FIFO into SCB data pointer and data count.  This assumes
++#  that the struct scatterlist has this structure (this and sizeof(struct
++#  scatterlist) == 12 are asserted in aha274x.c):
++#
++#	struct scatterlist {
++#		char *address;		/* four bytes, little-endian order */
++#		...			/* four bytes, ignored */
++#		unsigned short length;	/* two bytes, little-endian order */
++#	}
++#
++	mov	SCBARRAY+19,DFDAT		# new data address
++	mov	SCBARRAY+20,DFDAT
++	mov	SCBARRAY+21,DFDAT
++	mov	SCBARRAY+22,DFDAT
++
++	mov	NONE,DFDAT			# throw away four bytes
++	mov	NONE,DFDAT
++	mov	NONE,DFDAT
++	mov	NONE,DFDAT
++
++	mov	SCBARRAY+23,DFDAT
++	mov	SCBARRAY+24,DFDAT
++	clr	SCBARRAY+25
++
++sg_load3:
++	ret
++
++#  Advance the scatter-gather pointers only IF NEEDED.  If SG is enabled,
++#  and the SCSI transfer count is zero (note that this should be called
++#  right after a DMA finishes), then move the working copies of the SG
++#  pointer/length along.  If the SCSI transfer count is not zero, then
++#  presumably the target is disconnecting - do not reload the SG values
++#  next time.
++#
++sg_advance:
++	test	SG_COUNT,0xff	jz sg_advance2	# s/g enabled?
++
++	test	STCNT+0,0xff	jnz sg_advance1	# SCSI transfer count nonzero?
++	test	STCNT+1,0xff	jnz sg_advance1
++	test	STCNT+2,0xff	jnz sg_advance1
++
++	clr	SG_NOLOAD			# reload s/g next time
++	dec	SG_COUNT			# one less segment to go
++
++	clr	A				# add sizeof(struct scatter)
++	add	SG_NEXT+0,SG_SIZEOF,SG_NEXT+0
++	adc	SG_NEXT+1,A,SG_NEXT+1
++	adc	SG_NEXT+2,A,SG_NEXT+2
++	adc	SG_NEXT+3,A,SG_NEXT+3
++
++	ret
++
++sg_advance1:
++	mvi	SG_NOLOAD,0x80			# don't reload s/g next time
++sg_advance2:
++	ret
++
++#  Add the array base SYNCNEG to the target offset (the target address
++#  is in SCSIID), and return the result in SINDEX.  The accumulator
++#  contains the 3->8 decoding of the target ID on return.
++#
++ndx_sdtr:
++	shr	A,SCSIID,4
++	and	A,0x7
++	add	SINDEX,SYNCNEG,A
++
++	and	FUNCTION1,0x70,SCSIID		# 3-bit target address decode
++	mov	A,FUNCTION1	ret
++
++#  If we need to negotiate transfer parameters, build the SDTR message
++#  starting at the address passed in SINDEX.  DINDEX is modified on return.
++#
++mk_sdtr:
++	mov	DINDEX,SINDEX			# save SINDEX
++
++	call	ndx_sdtr
++	test	NEEDSDTR,A	jnz mk_sdtr1	# do we need negotiation?
++	ret
++
++mk_sdtr1:
++	mvi	DINDIR,1			# extended message
++	mvi	DINDIR,3			# extended message length = 3
++	mvi	DINDIR,1			# SDTR code
++	mvi	DINDIR,25			# REQ/ACK transfer period
++	mvi	DINDIR,15			# REQ/ACK offset
++
++	add	MSG_LEN,-MSG_START+0,DINDEX	# update message length
++	ret
++
++#  Set SCSI bus control signal state.  This also saves the last-written
++#  value into a location where the higher-level driver can read it - if
++#  it has to send an ABORT or RESET message, then it needs to know this
++#  so it can assert ATN without upsetting SCSISIGO.  The new value is
++#  expected in SINDEX.  Change the actual state last to avoid contention
++#  from the driver.
++#
++scsisig:
++	mov	SIGSTATE,SINDEX
++	mov	SCSISIGO,SINDEX	ret
+diff -u --recursive --new-file linux-1.1.49/drivers/scsi/aic7770.c linux/drivers/scsi/aic7770.c
+--- linux-1.1.49/drivers/scsi/aic7770.c	Wed Dec 31 16:00:00 1969
++++ linux/drivers/scsi/aic7770.c	Thu Sep  8 23:18:26 1994
+@@ -0,0 +1,584 @@
++/*
++ * Adaptec 274x device driver for Linux.
++ * Copyright (c) 1994 The University of Calgary Department of Computer Science.
++ * 
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ * 
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ * 
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++ *
++ *  Comments are started by `#' and continue to the end of the line; lines
++ *  may be of the form:
++ *
++ *	<label>*
++ *	<label>*  <undef-sym> = <value>
++ *	<label>*  <opcode> <operand>*
++ *
++ *  A <label> is an <undef-sym> ending in a colon.  Spaces, tabs, and commas
++ *  are token separators.
++ */
++
++#define _POSIX_SOURCE	1
++#define _POSIX_C_SOURCE	2
++
++#include <ctype.h>
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++#include <unistd.h>
++
++#define MEMORY		512		/* 2^9 29-bit words */
++#define MAXLINE		1024
++#define MAXTOKEN	32
++#define ADOTOUT		"a.out"
++#define NOVALUE		-1
++
++/*
++ *  AIC-7770 register definitions
++ */
++#define R_SINDEX	0x65
++#define R_ALLONES	0x69
++#define R_ALLZEROS	0x6a
++#define R_NONE		0x6a
++
++static
++char sccsid[] =
++    "@(#)aic7770.c 1.10 94/07/22 jda";
++
++int debug;
++int lineno, LC;
++char *filename;
++FILE *ifp, *ofp;
++unsigned char M[MEMORY][4];
++
++void error(char *s)
++{
++	fprintf(stderr, "%s: %s at line %d\n", filename, s, lineno);
++	exit(EXIT_FAILURE);
++}
++
++void *Malloc(size_t size)
++{
++	void *p = malloc(size);
++	if (!p)
++		error("out of memory");
++	return(p);
++}
++
++void *Realloc(void *ptr, size_t size)
++{
++	void *p = realloc(ptr, size);
++	if (!p)
++		error("out of memory");
++	return(p);
++}
++
++char *Strdup(char *s)
++{
++	char *p = (char *)Malloc(strlen(s) + 1);
++	strcpy(p, s);
++	return(p);
++}
++
++typedef struct sym_t {
++	struct sym_t *next;		/* MUST BE FIRST */
++	char *name;
++	int value;
++	int npatch, *patch;
++} sym_t;
++
++sym_t *head;
++
++void define(char *name, int value)
++{
++	sym_t *p, *q;
++
++	for (p = head, q = (sym_t *)&head; p; p = p->next) {
++		if (!strcmp(p->name, name))
++			error("redefined symbol");
++		q = p;
++	}
++
++	p = q->next = (sym_t *)Malloc(sizeof(sym_t));
++	p->next = NULL;
++	p->name = Strdup(name);
++	p->value = value;
++	p->npatch = 0;
++	p->patch = NULL;
++
++	if (debug) {
++		fprintf(stderr, "\"%s\" ", p->name);
++		if (p->value != NOVALUE)
++			fprintf(stderr, "defined as 0x%x\n", p->value);
++		else
++			fprintf(stderr, "undefined\n");
++	}
++}
++
++sym_t *lookup(char *name)
++{
++	sym_t *p;
++
++	for (p = head; p; p = p->next)
++		if (!strcmp(p->name, name))
++			return(p);
++	return(NULL);
++}
++
++void patch(sym_t *p, int location)
++{
++	p->npatch += 1;
++	p->patch = (int *)Realloc(p->patch, p->npatch * sizeof(int *));
++
++	p->patch[p->npatch - 1] = location;
++}
++
++void backpatch(void)
++{
++	int i;
++	sym_t *p;
++
++	for (p = head; p; p = p->next) {
++
++		if (p->value == NOVALUE) {
++			fprintf(stderr,
++				"%s: undefined symbol \"%s\"\n",
++				filename, p->name);
++			exit(EXIT_FAILURE);
++		}
++
++		if (p->npatch) {
++			if (debug)
++				fprintf(stderr,
++					"\"%s\" (0x%x) patched at",
++					p->name, p->value);
++
++			for (i = 0; i < p->npatch; i++) {
++				M[p->patch[i]][0] &= ~1;
++				M[p->patch[i]][0] |= ((p->value >> 8) & 1);
++				M[p->patch[i]][1] = p->value & 0xff;
++
++				if (debug)
++					fprintf(stderr, " 0x%x", p->patch[i]);
++			}
++
++			if (debug)
++				fputc('\n', stderr);
++		}
++	}
++}
++
++/*
++ *  Output words in byte-reversed order (least significant first)
++ *  since the sequencer RAM is loaded that way.
++ */
++void output(FILE *fp)
++{
++	int i;
++
++	for (i = 0; i < LC; i++)
++		fprintf(fp, "\t0x%02x, 0x%02x, 0x%02x, 0x%02x,\n",
++			M[i][3],
++			M[i][2],
++			M[i][1],
++			M[i][0]);
++}
++
++char **getl(int *n)
++{
++	int i;
++	char *p;
++	static char buf[MAXLINE];
++	static char *a[MAXTOKEN];
++
++	i = 0;
++
++	while (fgets(buf, sizeof(buf), ifp)) {
++
++		lineno += 1;
++
++		if (buf[strlen(buf)-1] != '\n')
++			error("line too long");
++
++		p = strchr(buf, '#');
++		if (p)
++			*p = '\0';
++
++		for (p = strtok(buf, ", \t\n"); p; p = strtok(NULL, ", \t\n"))
++			if (i < MAXTOKEN-1)
++				a[i++] = p;
++			else
++				error("too many tokens");
++		if (i) {
++			*n = i;
++			return(a);
++		}
++	}
++	return(NULL);
++}
++
++#define A	0x8000		/* `A'ccumulator ok */
++#define I	0x4000		/* use as immediate value */
++#define SL	0x2000		/* shift left */
++#define SR	0x1000		/* shift right */
++#define RL	0x0800		/* rotate left */
++#define RR	0x0400		/* rotate right */
++#define LO	0x8000		/* lookup: ori-{jmp,jc,jnc,call} */
++#define LA	0x4000		/* lookup: and-{jz,jnz} */
++#define LX	0x2000		/* lookup: xor-{je,jne} */
++#define NA	-1		/* not applicable */
++
++struct {
++	char *name;
++	int n;			/* number of operands, including opcode */
++	unsigned int op;	/* immediate or L?|pos_from_0 */
++	unsigned int dest;	/* NA, pos_from_0, or I|immediate */
++	unsigned int src;	/* NA, pos_from_0, or I|immediate */
++	unsigned int imm;	/* pos_from_0, A|pos_from_0, or I|immediate */
++	unsigned int addr;	/* NA or pos_from_0 */
++	int fmt;		/* instruction format - 1, 2, or 3 */
++} instr[] = {
++/*
++ *		N  OP	 DEST		SRC		IMM	ADDR FMT
++ */
++	"mov",	3, 1,	 1,		2,		I|0xff,	NA,  1,
++	"mov",	4, LO|2, NA,		1,		I|0,	3,   3,
++	"mvi",	3, 0,	 1,		I|R_ALLZEROS,	A|2,	NA,  1,
++	"mvi",	4, LO|2, NA,		I|R_ALLZEROS,	1,	3,   3,
++	"not",	2, 2,	 1,		1,		I|0xff,	NA,  1,
++	"not",	3, 2,	 1,		2,		I|0xff,	NA,  1,
++	"and",	3, 1,	 1,		1,		A|2,	NA,  1,
++	"and",  4, 1,	 1,		3,		A|2,	NA,  1,
++	"or",	3, 0,	 1,		1,		A|2,	NA,  1,
++	"or",	4, 0,	 1,		3,		A|2,	NA,  1,
++	"or",	5, LO|3, NA,		1,		2,	4,   3,
++	"xor",	3, 2,	 1,		1,		A|2,	NA,  1,
++	"xor",	4, 2,	 1,		3,		A|2,	NA,  1,
++	"nop",	1, 1,	 I|R_NONE,	I|R_ALLZEROS,	I|0xff,	NA,  1,
++	"inc",	2, 3,	 1,		1,		I|1,	NA,  1,
++	"inc",	3, 3,	 1,		2,		I|1,	NA,  1,
++	"dec",	2, 3,	 1,		1,		I|0xff,	NA,  1,
++	"dec",	3, 3,	 1,		2,		I|0xff,	NA,  1,
++	"jmp",	2, LO|0, NA,		I|R_SINDEX,	I|0,	1,   3,
++	"jc",	2, LO|0, NA,		I|R_SINDEX,	I|0,	1,   3,
++	"jnc",	2, LO|0, NA,		I|R_SINDEX,	I|0,	1,   3,
++	"call",	2, LO|0, NA,		I|R_SINDEX,	I|0,	1,   3,
++	"test",	5, LA|3, NA,		1,		A|2,	4,   3,
++	"cmp",	5, LX|3, NA,		1,		A|2,	4,   3,
++	"ret",	1, 1,	 I|R_NONE,	I|R_ALLZEROS,	I|0xff,	NA,  1,
++	"clc",	1, 3,	 I|R_NONE,	I|R_ALLZEROS,	I|1,	NA,  1,
++	"clc",	4, 3,	 2,		I|R_ALLZEROS,	A|3,	NA,  1,
++	"stc",	1, 3,	 I|R_NONE,	I|R_ALLONES,	I|1,	NA,  1,
++	"stc",	2, 3,	 1,		I|R_ALLONES,	I|1,	NA,  1,
++	"add",	3, 3,	 1,		1,		A|2,	NA,  1,
++	"add",	4, 3,	 1,		3,		A|2,	NA,  1,
++	"adc",	3, 4,	 1,		1,		A|2,	NA,  1,
++	"adc",	4, 4,	 1,		3,		A|2,	NA,  1,
++	"shl",	3, 5,	 1,		1,		SL|2,	NA,  2,
++	"shl",	4, 5,	 1,		2,		SL|3,	NA,  2,
++	"shr",	3, 5,	 1,		1,		SR|2,	NA,  2,
++	"shr",	4, 5,	 1,		2,		SR|3,	NA,  2,
++	"rol",	3, 5,	 1,		1,		RL|2,	NA,  2,
++	"rol",	4, 5,	 1,		2,		RL|3,	NA,  2,
++	"ror",	3, 5,	 1,		1,		RR|2,	NA,  2,
++	"ror",	4, 5,	 1,		2,		RR|3,	NA,  2,
++	/*
++	 *  Extensions (note also that mvi allows A)
++	 */
++ 	"clr",	2, 1,	 1,		I|R_ALLZEROS,	I|0xff,	NA,  1,
++	0
++};
++
++int eval_operand(char **a, int spec)
++{
++	int i;
++	unsigned int want = spec & (LO|LA|LX);
++
++	static struct {
++		unsigned int what;
++		char *name;
++		int value;
++	} jmptab[] = {
++		LO,	"jmp",		8,
++		LO,	"jc",		9,
++		LO,	"jnc",		10,
++		LO,	"call",		11,
++		LA,	"jz",		15,
++		LA,	"jnz",		13,
++		LX,	"je",		14,
++		LX,	"jne",		12,
++	};
++
++	spec &= ~(LO|LA|LX);
++
++	for (i = 0; i < sizeof(jmptab)/sizeof(jmptab[0]); i++)
++		if (jmptab[i].what == want &&
++		    !strcmp(jmptab[i].name, a[spec]))
++		{
++			return(jmptab[i].value);
++		}
++
++	if (want)
++		error("invalid jump");
++
++	return(spec);		/* "case 0" - no flags set */
++}
++
++int eval_sdi(char **a, int spec)
++{
++	sym_t *p;
++	unsigned val;
++
++	if (spec == NA)
++		return(NA);
++
++	switch (spec & (A|I|SL|SR|RL|RR)) {
++	    case SL:
++	    case SR:
++	    case RL:
++	    case RR:
++		if (isdigit(*a[spec &~ (SL|SR|RL|RR)]))
++			val = strtol(a[spec &~ (SL|SR|RL|RR)], NULL, 0);
++		else {
++			p = lookup(a[spec &~ (SL|SR|RL|RR)]);
++			if (!p)
++				error("undefined symbol used");
++			val = p->value;
++		}
++
++		switch (spec & (SL|SR|RL|RR)) {		/* blech */
++		    case SL:
++			if (val > 7)
++				return(0xf0);
++			return(((val % 8) << 4) |
++			       (val % 8));
++		    case SR:
++			if (val > 7)
++				return(0xf0);
++			return(((val % 8) << 4) |
++			       (1 << 3) |
++			       ((8 - (val % 8)) % 8));
++		    case RL:
++			return(val % 8);
++		    case RR:
++			return((8 - (val % 8)) % 8);
++		}
++	    case I:
++		return(spec &~ I);
++	    case A:
++		/*
++		 *  An immediate field of zero selects
++		 *  the accumulator.  Vigorously object
++		 *  if zero is given otherwise - it's
++		 *  most likely an error.
++		 */
++		spec &= ~A;
++		if (!strcmp("A", a[spec]))
++			return(0);
++		if (isdigit(*a[spec]) &&
++		    strtol(a[spec], NULL, 0) == 0)
++		{
++			error("immediate value of zero selects accumulator");
++		}
++		/* falls through */
++	    case 0:
++		if (isdigit(*a[spec]))
++			return(strtol(a[spec], NULL, 0));
++		p = lookup(a[spec]);
++		if (p)
++			return(p->value);
++		error("undefined symbol used");
++	}
++
++	return(NA);		/* shut the compiler up */
++}
++
++int eval_addr(char **a, int spec)
++{
++	sym_t *p;
++
++	if (spec == NA)
++		return(NA);
++	if (isdigit(*a[spec]))
++		return(strtol(a[spec], NULL, 0));
++
++	p = lookup(a[spec]);
++
++	if (p) {
++		if (p->value != NOVALUE)
++			return(p->value);
++		patch(p, LC);
++	} else {
++		define(a[spec], NOVALUE);
++		p = lookup(a[spec]);
++		patch(p, LC);
++	}
++
++	return(NA);		/* will be patched in later */
++}
++
++int crack(char **a, int n)
++{
++	int i;
++	int I_imm, I_addr;
++	int I_op, I_dest, I_src, I_ret;
++
++	/*
++	 *  Check for "ret" at the end of the line; remove
++	 *  it unless it's "ret" alone - we still want to
++	 *  look it up in the table.
++	 */
++	I_ret = (strcmp(a[n-1], "ret") ? 0 : !0);
++	if (I_ret && n > 1)
++		n -= 1;
++
++	for (i = 0; instr[i].name; i++) {
++		/*
++		 *  Look for match in table given constraints,
++		 *  currently just the name and the number of
++		 *  operands.
++		 */
++		if (!strcmp(instr[i].name, *a) && instr[i].n == n)
++			break;
++	}
++	if (!instr[i].name)
++		error("unknown opcode or wrong number of operands");
++
++	I_op	= eval_operand(a, instr[i].op);
++	I_src	= eval_sdi(a, instr[i].src);
++	I_imm	= eval_sdi(a, instr[i].imm);
++	I_dest	= eval_sdi(a, instr[i].dest);
++	I_addr	= eval_addr(a, instr[i].addr);
++
++	switch (instr[i].fmt) {
++	    case 1:
++	    case 2:
++		M[LC][0] = (I_op << 1) | I_ret;
++		M[LC][1] = I_dest;
++		M[LC][2] = I_src;
++		M[LC][3] = I_imm;
++		break;
++	    case 3:
++		if (I_ret)
++			error("illegal use of \"ret\"");
++		M[LC][0] = (I_op << 1) | ((I_addr >> 8) & 1);
++		M[LC][1] = I_addr & 0xff;
++		M[LC][2] = I_src;
++		M[LC][3] = I_imm;
++		break;
++	}
++
++	return(1);		/* no two-byte instructions yet */
++}
++
++#undef SL
++#undef SR
++#undef RL
++#undef RR
++#undef LX
++#undef LA
++#undef LO
++#undef I
++#undef A
++
++void assemble(void)
++{
++	int n;
++	char **a;
++	sym_t *p;
++
++	while ((a = getl(&n))) {
++
++		while (a[0][strlen(*a)-1] == ':') {
++			a[0][strlen(*a)-1] = '\0';
++			p = lookup(*a);
++			if (p)
++				p->value = LC;
++			else
++				define(*a, LC);
++			a += 1;
++			n -= 1;
++		}
++
++		if (!n)			/* line was all labels */
++			continue;
++
++		if (n == 3 && !strcmp("VERSION", *a))
++			fprintf(ofp, "#define %s \"%s\"\n", a[1], a[2]);
++		else {
++			if (n == 3 && !strcmp("=", a[1]))
++				define(*a, strtol(a[2], NULL, 0));
++			else
++				LC += crack(a, n);
++		}
++	}
++
++	backpatch();
++	output(ofp);
++
++	if (debug)
++		output(stderr);
++}
++
++int main(int argc, char **argv)
++{
++	int c;
++
++	while ((c = getopt(argc, argv, "dho:")) != EOF) {
++		switch (c) {
++		    case 'd':
++			debug = !0;
++			break;
++		    case 'o':
++		        ofp = fopen(optarg, "w");
++			if (!ofp) {
++				perror(optarg);
++				exit(EXIT_FAILURE);
++			}
++			break;
++		    case 'h':
++			printf("usage: %s [-d] [-ooutput] input\n", *argv);
++			exit(EXIT_SUCCESS);
++		    case NULL:
++			/*
++			 *  An impossible option to shut the compiler
++			 *  up about sccsid[].
++			 */
++			exit((int)sccsid);
++		    default:
++			exit(EXIT_FAILURE);
++		}
++	}
++
++	if (argc - optind != 1) {
++		fprintf(stderr, "%s: must have one input file\n", *argv);
++		exit(EXIT_FAILURE);
++	}
++	filename = argv[optind];
++
++	ifp = fopen(filename, "r");
++	if (!ifp) {
++		perror(filename);
++		exit(EXIT_FAILURE);
++	}
++
++	if (!ofp) {
++		ofp = fopen(ADOTOUT, "w");
++		if (!ofp) {
++			perror(ADOTOUT);
++			exit(EXIT_FAILURE);
++		}
++	}
++
++	assemble();
++	exit(EXIT_SUCCESS);
++}
+diff -u --recursive --new-file linux-1.1.49/drivers/scsi/hosts.c linux/drivers/scsi/hosts.c
+--- linux-1.1.49/drivers/scsi/hosts.c	Thu Sep  8 22:33:33 1994
++++ linux/drivers/scsi/hosts.c	Thu Sep  8 23:20:59 1994
+@@ -39,6 +39,10 @@
+ #include "aha1740.h"
+ #endif
+ 
++#ifdef CONFIG_SCSI_AHA274X
++#include "aha274x.h"
++#endif
++
+ #ifdef CONFIG_SCSI_BUSLOGIC
+ #include "buslogic.h"
+ #endif
+@@ -131,6 +135,9 @@
+ #endif
+ #ifdef CONFIG_SCSI_AHA1740
+ 	AHA1740,
++#endif
++#ifdef CONFIG_SCSI_AHA274X
++	AHA274X,
+ #endif
+ #ifdef CONFIG_SCSI_FUTURE_DOMAIN
+ 	FDOMAIN_16X0,

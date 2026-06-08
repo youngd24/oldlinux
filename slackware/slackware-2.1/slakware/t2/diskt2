@@ -1,0 +1,56 @@
+CONTENTS: ntm-ltx1 ntm-tex gentle ntb-gsfp ntf-cml   
+ntb-gsfp: ntb-gsfp 1.0
+ntb-gsfp:
+ntb-gsfp: The binaries for gsftopk. A program to convert ghostscript fonts (gsf)
+ntb-gsfp: to pk fonts. If you are producing documents with PS fonts and want to
+ntb-gsfp: display the fonts with xdvi, this program can do it for you. It is
+ntb-gsfp: called by MakeTeXPK.
+ntb-gsfp:
+ntb-gsfp:
+ntb-gsfp:
+ntb-gsfp:
+ntb-gsfp:
+gentle:   A Gentle Introduction to TeX
+gentle:
+gentle:   This is a manual for TeX, written by Michael Doob.
+gentle:
+gentle:   Look for it in /usr/doc/TeX.
+gentle:
+gentle:
+gentle:
+gentle:
+gentle:
+gentle:
+ntm-ltx1: ntm-ltx1 1.2
+ntm-ltx1:
+ntm-ltx1: This package contains the basic LaTeX2e macros.
+ntm-ltx1:
+ntm-ltx1:
+ntm-ltx1:
+ntm-ltx1:
+ntm-ltx1:
+ntm-ltx1:
+ntm-ltx1:
+ntm-ltx1:
+ntm-tex:  ntm-tex 1.1
+ntm-tex:
+ntm-tex:  This package contains the plain TeX format and some additional macros
+ntm-tex:  for plain TeX.
+ntm-tex:
+ntm-tex:
+ntm-tex:
+ntm-tex:
+ntm-tex:
+ntm-tex:
+ntm-tex:
+ntf-cml:  ntf-cml 1.2
+ntf-cml:
+ntf-cml:  This package contains some Computer Modern fonts mainly used by LaTeX.
+ntf-cml:
+ntf-cml:
+ntf-cml:
+ntf-cml:
+ntf-cml:
+ntf-cml:
+ntf-cml:
+ntf-cml:

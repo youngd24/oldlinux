@@ -1,0 +1,302 @@
+#! /bin/sh
+# Installation script for NTeX (v 1.2)
+# Copyright 1994, Frank Langbein
+# All rights reserved.
+#
+# Redistributions of this script must retain the above copyright notice, 
+# this condition and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+cat << EOF
+
+
+NTeX Release 1.2
+A TeX distribution for Linux
+
+Welcome to the installation script.
+
+EOF
+
+curr_dir=$(pwd)
+TEMP="/tmp"
+root="/"
+editor="vi"
+
+echo -n "Do you want to install form [f]loppy or from [c]urrent dir? "
+read ANS;
+if test "$ANS" = "f" -o "$ANS" = "F"; then
+   SOURCE=floppy
+   SOURCEDIR=$TEMP"/ntex-fd."$$
+   echo "Installing from floppy (MS-DOS format)."
+   echo
+   echo -n "Is the soruce drive /dev/fd[0] or /dev/fd[1]? "
+   read ANS;
+   if test "$ANS" = "0"; then
+      DRIVE="/dev/fd0"
+   elif test "$ANS" = "1"; then
+      DRIVE="/dev/fd1"
+   else
+      echo "Not a proper choice. Bye!"
+      exit 1
+   fi
+   echo Using the drive $DRIVE.
+elif test "$ANS" = "c" -o "$ANS" = "C"; then
+   SOURCE=currentdir
+   SOURCEDIR=$curr_dir
+   echo "Installing from current directory [$curr_dir]."
+else
+   echo "Not a proper choice. Bye!"
+   exit 1
+fi
+echo
+echo -n "Do you want to use the slakware installation script [y/n]? "
+read ANS;
+if test "$ANS" = "Y" -o "$ANS" = "y"; then
+   INSTALL=$curr_dir"/installpkg"
+   cat << EOF
+
+Unsing slakware installation script.
+
+EOF
+elif test "$ANS" = "N" -o "$ANS" = "n"; then
+   INSTALL=simple_install
+   cat << EOF
+
+Using a simple installation script. The names of the installed files
+are written to [pkgname].files in the current directory.
+
+EOF
+else
+   echo "Not a proper choice. Bye!"
+   exit 1
+fi
+
+ask_install() {
+cat $curr_dir/$1.inf
+echo -n "Do you want to install $1 [y/n/q]? "
+read ANS;
+if test "$ANS" = "y" -o "$ANS" = "Y"; then
+   touch $curr_dir/$1.ins
+   echo $1 will be installed.
+elif test "$ANS" = "q" -o "$ANS" = "Q"; then
+   rm -f $curr_dir/*.ins
+   echo "Bye!"
+   exit 1
+else
+   echo $1 will not be installed.
+fi
+}
+
+cat << EOF
+
+Now choose the packages you want to install. Note that you can install
+more packages later either by running this script again, by calling
+installpkg [name].tgz if the package is in the current directory or 
+by calling "cd /; gzip -d [name].tgz; tar xf [name].tar".
+
+The header of the descriptions of the packages contains the version of
+the package and a status field. The status can be neccessary, recommended,
+optional. If the status of a package is necessary you need it to run TeX.
+If it is recommended you do not really need it, but you should install
+it. If it is optional, you should just install the package if you really
+want to use it.
+
+Press [Enter] to go through the package list.
+EOF
+read ANS;
+rm -f $curr_dir/*.ins >/dev/null
+for p in $(cat $curr_dir/pkgs)
+do
+ask_install $p
+done
+
+simple_install() {
+pkn=$(echo $1 | sed -e s/.tgz//)
+if test -r $2/$pkn".tgz"; then
+   echo Installing $pkn...
+   gzip -d - <$2"/"$pkn".tgz" >$3"/"$pkn".tar"
+   cd $root
+   tar xf $3"/"$pkn".tar"
+   tar tf $3"/"$pkn".tar" >$curr_dir"/"$pkn".files"
+   rm -f $3"/"$pkn".tar"
+else
+   echo Error: I cannot read $2/$pkn.tgz.
+fi
+}
+
+if test -z "$(ls $curr_dir/*.ins 2>/dev/null)"; then
+   cat << EOF
+
+You did not choose a package to install. Bye!
+
+EOF
+   exit 0
+fi
+
+if test "$SOURCE" = "floppy"; then
+   cat << EOF
+
+
+Installing the choosen packages from disk.
+
+EOF
+mkdir $SOURCEDIR
+for i in $(cat $curr_dir/disknam)
+do
+   echo -n "Insert disk $i and press [Enter]."
+   read X
+   WDANS=r
+   while test "$WDANS" = "r"
+   do
+   # the following mounting procedure is based on code from Andy Schwierskott
+      ANS=r
+      error=1
+      while test "$ANS" = "r" -a "$error" = 1
+      do
+         mount -r -t "$(cat $curr_dir/diskfs)" $DRIVE $SOURCEDIR
+         error=$?
+         if test "$error" = 1; then
+            ANS=x
+            while test "$ANS" != "r" -a "$ANS" != "q" ; do
+               echo -n "Disk $i could not be mounted - [r]etry or [q]uit? "
+               read ANS
+            done
+            if test "$ANS" = "q"; then
+               rm -fr $SOURCEDIR
+               rm -f $curr_dir/*.ins
+               echo "Bye!"
+	       exit 1
+            fi
+         fi
+      done
+      if test -e $SOURCEDIR/$i; then
+         WDANS=n
+         cd $SOURCEDIR
+         for f in $(ls *.tgz)
+         do
+            pkgnam=$(echo $f | sed -e s/.tgz//)
+            if test -e $curr_dir"/"$pkgnam".ins"; then
+               if test "$INSTALL" = "simple_install"; then      
+	          $INSTALL $pkgnam".tgz" $SOURCEDIR $TEMP
+               else
+		  $INSTALL $pkgnam".tgz"
+               fi
+            fi
+         done
+         cd $curr_dir
+         umount $SOURCEDIR
+      else
+         WDANS=x
+         while test "$WDANS" != "r" -a "$WDANS" != "q" ; do
+            echo -n "You did not insert the $i disk - [r]etry or [q]uit? "
+            read WDANS
+         done
+         umount $SOURCEDIR
+         if test "$WDANS" = "q"; then
+            rm -fr $SOURCEDIR  
+            rm -f $curr_dir/*.ins
+            echo "Bye!"
+            exit 1
+         fi
+      fi
+   done
+done
+rm -fr $SOURCEDIR
+else
+   cd $SOURCEDIR
+   for i in *.ins
+   do
+      p=$(echo $i | sed -e s/.ins//)
+      if test "$INSTALL" = "simple_install"; then      
+         $INSTALL $p".tgz" $SOURCEDIR $TEMP
+      else
+	$INSTALL $p".tgz"
+      fi
+   done
+fi
+
+cat << EOF
+
+Installation finished.
+
+Now you have the pssibility to configure the packages you have installed.
+Note that you can call the configuration scripts later from the directory
+/usr/lib/texmf/tools. They have the same name as the package with a .cfg 
+suffix.
+
+EOF
+
+if test -n "$(ls $curr_dir/ntm-ltx?.ins 2>/dev/null)"; then
+   if test -r /usr/lib/texmf/tools/ntm-ltx.cfg; then
+      /usr/lib/texmf/tools/ntm-ltx.cfg
+   else
+cat << EOF
+
+Warning: I cannot start the configuration file for ntm-ltx!
+
+EOF
+   fi
+fi
+
+if test -e $curr_dir"/ntb-mf.ins"; then
+   if test -r /usr/lib/texmf/tools/ntb-mf.cfg; then
+      /usr/lib/texmf/tools/ntb-mf.cfg
+   else
+cat << EOF
+
+Warning: I cannot start the configuration file for ntb-mf!
+
+EOF
+   fi
+fi
+
+if test -e $curr_dir"/ntb-dps.ins"; then
+   if test -r /usr/lib/texmf/tools/ntb-dps.cfg; then
+      /usr/lib/texmf/tools/ntb-dps.cfg
+   else
+cat << EOF
+
+Warning: I cannot start the configuration file for ntb-dps!
+
+EOF
+   fi
+fi
+
+if test -e $curr_dir"/ntb-xdvi.ins"; then
+   if test -r /usr/lib/texmf/tools/ntb-xdvi.cfg; then
+      /usr/lib/texmf/tools/ntb-xdvi.cfg
+   else
+cat << EOF
+
+Warning: I cannot start the configuration file for ntb-xdvi!
+
+EOF
+   fi
+fi
+
+echo -n Creating the ls-R database for kpathsea...
+(cd /usr/lib/texmf; ls -R $(pwd) >ls-R)
+
+rm -f $curr_dir/*.ins &>/dev/null
+cd $curr_dir
+
+cat << EOF 
+
+The NTeX installation is complete. 
+
+Comments, suggestions and bug reports to Frank Langbein - 
+e94fla@student.tdb.uu.se or langbein@fermat.mathematik.uni-stuttgart.de.
+
+EOF
+

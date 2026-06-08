@@ -1,0 +1,4 @@
+( cd usr/lib/texmf/fonts/cm/sauter/base/src ; rm -rf b-lcircle.mf )
+( cd usr/lib/texmf/fonts/cm/sauter/base/src ; ln -sf b-circle.mf b-lcircle.mf )
+( cd usr/lib/texmf/fonts/cm/sauter/base/src ; rm -rf b-lcirclew.mf )
+( cd usr/lib/texmf/fonts/cm/sauter/base/src ; ln -sf b-circlew.mf b-lcirclew.mf )

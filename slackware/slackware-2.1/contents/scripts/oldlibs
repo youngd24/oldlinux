@@ -1,0 +1,27 @@
+crunch() {
+        LIBDIR=$1
+        LIBPREFIX=$2
+        for f in $LIBDIR/$LIBPREFIX*.so.3.1.0
+        do
+                bname=`basename $f`
+#               echo "   - compacting $bname."
+                cp $f $LIBDIR/t$bname || exit 1
+                rm -f $f
+                mv $LIBDIR/t$bname $f
+        done
+}
+#echo "Compacting shared libraries to decrease disk space utilization..."
+crunch usr/X11/lib libX;
+#echo "Shared libraries compacted."
+( cd usr/X11R6/lib ; rm -rf libX11.so.3 )
+( cd usr/X11R6/lib ; ln -sf  libX11.so.3.1.0 libX11.so.3 )
+( cd usr/X11R6/lib ; rm -rf libXaw.so.3 )
+( cd usr/X11R6/lib ; ln -sf  libXaw.so.3.1.0 libXaw.so.3 )
+( cd usr/X11R6/lib ; rm -rf libXt.so.3 )
+( cd usr/X11R6/lib ; ln -sf  libXt.so.3.1.0 libXt.so.3 )
+( cd lib ; rm -rf libX11.so.3.1.0 )
+( cd lib ; ln -sf /usr/X11R6/lib/libX11.so.3.1.0 libX11.so.3.1.0 )
+( cd lib ; rm -rf libXaw.so.3.1.0 )
+( cd lib ; ln -sf /usr/X11R6/lib/libXaw.so.3.1.0 libXaw.so.3.1.0 )
+( cd lib ; rm -rf libXt.so.3.1.0 )
+( cd lib ; ln -sf /usr/X11R6/lib/libXt.so.3.1.0 libXt.so.3.1.0 )

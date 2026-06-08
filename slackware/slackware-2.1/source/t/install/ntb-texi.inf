@@ -1,0 +1,9 @@
+
+NTeX Release 1.2 --- ntb-texi 1.1 --- status: optional
+
+This package contains the binaries for the texinfo system and the .info
+files for texinfo. Texinfo is a system that allows you to create .info and
+.tex files from one .texi file. The info files are online documents that
+can be viewed with the command info. You can produce a printed version of
+the documentation form the TeX files.
+

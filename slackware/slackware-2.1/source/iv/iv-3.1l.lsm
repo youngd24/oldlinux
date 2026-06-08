@@ -1,0 +1,23 @@
+Begin2
+Title        = InterViews 3.1 for Linux
+Version      = 3.1l.2
+Desc1        = InterViews 3.1 adapted to gcc/Linux. Includes shared
+Desc2        = libraries. Includes all binaries from the distribution.
+Author       = Michael N. Lipp
+AuthorEmail  = mnl@dtro.e-technik.th-darmstadt.de
+Maintainer   = Michael N. Lipp
+MaintEmail   = mnl@dtro.e-technik.th-darmstadt.de
+Site1        = sunsite.unc.edu
+Path1        = pub/Linux/X11/devel/
+File1        = iv-3.1l.2.tar.gz
+FileSize1    = 1670K
+Required1    = libgr.so
+Keywords     = InterViews
+Comment1     = Authorship and maintenance apply to Linux adaption only.
+RelFiles1    = 3.1.tar.Z at interviews.stanford.edu
+RelFiles2    = iv-3.1l.2-diffs.gz, the source code patches.
+Entered      = 17APR94
+EnteredBy    = Michael N. Lipp
+CheckedEmail = mnl@dtro.e-technik.th-darmstadt.de
+End
+

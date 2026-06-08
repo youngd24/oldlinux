@@ -1,0 +1,166 @@
+UMSDOS is part of the kernel distribution (since 1.1.36). Many
+have complained that it was somewhat slow. Many more accepted that
+it had to be slow, but so useful: acceptable tradeoff.
+
+Good news! There was a very good reason why Umsdos (and msdos fs)
+was slow. This is history :-)
+
+I will explain why it was slow, how I solve it, give some benchmarks
+and tell you what you can do to help me test it.
+
+Please note that I am already running this on my production
+machine, so it surely works! It is fully compatible with the
+umsdos 0.3 file layout.
+
+History:
+========
+
+Umsdos run piggyback on the Msdos file system driver written
+a long long time ago by Werner Almesberger. It was rock
+solid when I started Umsdos back in november 1992. At that
+time the buffer cache of Linux was only manipulating 1k blocks.
+
+It simply splits a disk in 1k blocks and there were no mean for
+a file system driver to read or write anything else than full
+block. Since blocks are 1k large (2 512 bytes disk sector), each
+start on an even sector number.
+
+The FAT msdos file system organises files in clusters. Clusters
+are generally 2k, 4k or 8k on a hard drive. And here is the
+bad news. The first cluster on a hard drive start on an odd sector
+number. This produces this strange relation
+
+                |--- B1---|--- B2---|--- B3---|--- B4---|--- B5---|
+linux blocks    |-S1- -S2-|-S1- -S2-|-S1- -S2-|-S1- -S2-|-S1- -S2|
+DOS clusters     -S4-|-S1- -S2- -S3- -S4-|-S1- -S2- -S3- -S4-|
+                     |-------file1-------|-------file2-------|
+
+So one DOS cluster (2k) span 2 1k blocks ? Wrong! it spans 3. For
+example, one cluster of "file1" touch the half end of "B1"
+"B2" completly and the first half of block "B3".
+
+Given the fact that the msdos driver in linux can only read or write
+whole 1k block, we get the following problem. Here are the operations
+needed to write a full cluster of "file1".
+
+    read B1
+    fill the last half of B1 with the first sector of the cluster
+    write B1
+    write B2 with sector 2 and 3 of the clustor
+    read B3
+    fill the first half of B3 with sector 4 of the cluster
+    write B3
+
+It has to be like this because, for one, the first sector of block
+B1 may belong to another file. The current msdos file system driver
+do read every sector before writing it. This is what kills performance.
+
+The fix:
+--------
+
+At the time the msdos fs was done, linux was not flexible enough.
+Now it is possible to control at the file system level the size
+of the blocks in the buffer cache, and this for each file system.
+independantly.
+
+The trick was rather simple: Use a block size of 512. A 2k cluster
+will then span 4 full blocks. If we overwrite completly a cluster
+we have no need to read any block from the disk.
+
+This fix has numerous advantages beside speed.
+
+    It makes the msdos fs simpler.
+    It make "bmap" always available, so
+        No special mmap handling anymore.
+            Use less memory to run programs because
+            they run directly in the buffer cache.
+        No special trick for swap file.
+        LILO can be used in a msdos fs (I have not tried it though).
+            Very useful for those who use OS/2 and Linux in the same
+            partition.
+
+I have also introduced some support for read ahead. Most of the
+changes were done in linux/fs/msdos/*.c
+
+I have made the minimal changes requiered to make both umsdos and
+the msdos fs loadable modules. This is included in the patch.
+
+Some benchmarks:
+---------------
+
+I did not do very scientific benchmarks. I have made many tests
+and many measurements. I think that one test I have done reflects
+the real benefit of my work. I have simply done a recursive copy
+of the linux kernel (with object files) into another directory.
+This test excercise different things
+
+    Copy a large number of small file (958)
+        A lot of file creation, lot of access time
+        update.
+    Copy a large amount of data (10meg) so
+        So real disk activity has to occur (overrun the cache)
+
+To give an idea, I have also run the test on DOS and OS/2
+on exactly the same data (same partition, same everything,
+different utilities though).
+
+Here are the results. Test1 demontrates a copy to a target
+directory in the same partition. Test2 use a target directory
+in a different partition, forcing longer seek of the disk.
+The results are in seconds.
+
+                                    test1       test2
+
+DOS with BUFFER=50                  117         124
+Standard umsdos 0.4 in 1.1.57       99          136
+OS/2 with 1024k disk cache          70
+DOS with disk cache                 58          46
+    (hyperdisk with 1024k)
+New improve Umsdos 0.5              43          43
+New improve msdos                   32          32
+
+On DOS and OS/2 I have use xcopy. On linux, I have used
+"tar cf - linux | (cd dir; tar xvf -)". You will note that
+I have used the v option for the second tar to be fair, since
+xcopy has no silent mode. I did get the same result
+with a "cp -R ..." however.
+
+As you see, the performance improvement is drastic, especially
+for test2. I suspect this is the typical case, where you read
+something from one end of the disk and write something else
+away on the disk. Umsdos 0.4, by forcing a read before write
+was defeating the usefulness of the cache (delay write). As you
+see, test2 and test1 give the same result with umsdos 0.5.
+
+I did not include results from EXT2. I had little time to
+do a fair test. My little attempt to replicate the condition
+of the test in a EXT2 partition have shown that EXT2 was slower
+both for reading and writing. Much slower... I have no explanation
+for this.
+
+I would be nice to run a nice serious benchmark suite. From my
+benchmark we can only conclude that Umsdos is not slow anymore.
+
+How to test it ?
+---------------
+
+I have upload the following files to
+sunsite.unc.edu:/pub/Linux/ALPHA/umsdos
+
+    umsdos-0.5-diff
+    umsdos-0.5-diff.lsm
+    umsdos-0.5-diff.README (this text).
+
+The patch was made relative to 1.1.57 + small notify_change
+buglet fix. Get the latest kernel (1.1.59) kernel and apply
+the patch
+
+    cd /usr/src/linux
+    patch -p1 </usr/src/umsdos-0.5-diff
+
+run it, beat it, test it and please email me about anything
+even to say "hello, it works".
+
+Keep in mind that this is "file system stuff". A backup is always
+a good idea.
+

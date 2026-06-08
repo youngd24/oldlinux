@@ -1,0 +1,55 @@
+This is a low-level SCSI driver for cards based on the NCR53c406a chip.
+I have tested it only on Acculogic ISApport card but (in theory) it should
+work with all cards using the 53c406a.
+
+Release 0.9 of the driver now supports scatter-gather and PIO mode,
+resulting in big speed increase!  It is not quite optimized for the
+CPU usage, however.
+
+WARNING!!!
+This is an alpha release of the driver, so if you use it, make 
+sure you back up your files before compiling and using the driver.
+
+INSTALLATION
+These patches are for Linux 1.1.50, and may require some manual
+editing with other kernel versions.
+
+To install the driver, copy the patch to /usr/src (assuming the Linux kernel
+source is in /usr/src/linux), gunzip it, and then apply it with:
+	patch -p0 < ncr53c406-0.9.patch
+Edit linux/drivers/NCR53c406.c.  You have to set the IRQ level, and
+DMA channel (if DMA mode is enabled).  Hardware ports should be
+found automatically, but the autoprobe can be disabled by defining
+PORT_BASE.
+
+NOTE: Scatter-gather support is only implemented for PIO mode, so
+if you use DMA mode, you must change SG_ALL to SG_NONE in NCR53c406.h.
+
+Now reconfigure the kernel (remembering to answer yes to compiling the
+NCR53c406 SCSI driver) and then recompile and reinstall the kernel.
+You're all set.
+
+If you use the driver, please report your successes/failures/problems to
+the mailing list (ncr53c406@orac.iinet.com.au) or directly to me
+(saumanis@cps.msu.edu).  If my address is unreachable, and
+you can't get help from the mailing list, try contacting Patrick
+D'Cruze <pdcruze@orac.iinet.com.au>.
+
+The mailing list has been established to aid in reporting bugs and to
+announce bug fixes and new revisions of the driver.  To subscribe to the
+list, send email to:
+	majordomo@orac.iinet.com.au
+with the words:
+	subscribe ncr53c406
+in the body of the message.
+
+Note: you don't have to be subscribed to the list to send in bug reports.
+Just address your bug report to:
+	ncr53c406@orac.iinet.com.au
+
+This is driver is licensed under the terms and conditions of the Gnu Public
+License version 2.
+
+
+Normunds Saumanis
+saumanis@cps.msu.edu

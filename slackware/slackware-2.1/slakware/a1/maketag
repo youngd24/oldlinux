@@ -1,0 +1,63 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+rm -f /tmp/SeTnewtag # empty the return file
+dialog --title "SELECTING PACKAGES FOR SERIES A (BASE LINUX SYSTEM)" \
+       --checklist "Please select the packages you wish to install \
+from series A. Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the packages you wish to install. Certain important packages have \
+already been selected for you, and you are cautioned against unselecting \
+these packages. However, it's your system. :^)  IMPORTANT! If you require \
+drivers for your CD-ROM drive, be sure to install a kernel from the Q \
+series. Press ENTER when you are \
+done." 22 70 8 \
+"base" "Basic filesystem, shell, and utils - REQUIRED" "on" \
+"bash" "GNU bash-1.14.2 shell - REQUIRED" "on" \
+"devs" "Device files found in /dev - REQUIRED" "on" \
+"etc"  "System config files & utilities - REQUIRED" "on" \
+"idekern"  "Linux kernel 1.1.59 no SCSI (YOU NEED 1 KERNEL)" "on" \
+"scsikern" "Linux kernel 1.1.59 IDE+SCSI (YOU NEED 1 KERNEL)" "on" \
+"hdsetup" "Slackware setup scripts - REQUIRED" "on" \
+"lilo" "Boots Linux (not UMSDOS), DOS, OS/2, etc." "on" \
+"loadlin" "Boots Linux (UMSDOS too!) from MS-DOS" "on" \
+"umsprogs" "Utilities needed to use the UMSDOS filesystem" "on" \
+"sysvinit" "System V-like INIT programs - REQUIRED" "on" \
+"bin"      "GNU fileutils 3.9, elvis, etc. - REQUIRED" "on" \
+"ldso" "Dynamic linker/loader - REQUIRED" "on" \
+"less" "A text pager utility - REQUIRED" "on" \
+"getty" "Getty_ps 2.0.7e - OPTIONAL" "off" \
+"gzip"  "The GNU zip compression - REQUIRED" "on" \
+"ps" "Displays process info - REQUIRED" "on" \
+"shlibs" "The shared C libraries - REQUIRED" "on" \
+"util" "Util-linux utilities - REQUIRED" "on" \
+"comms" "Serial transfer and modem comm packages" "on" \
+"cpio" "The GNU cpio backup/archiving utility" "on" \
+"e2fsbn" "Utilities for the ext2 file system" "on" \
+"find" "GNU find 3.8" "on" \
+"grep" "GNU grep 2.0" "on" \
+"keytbls" "Change keyboard mappings" "on" \
+"lpr" "Print spooling system." "on" \
+"gpm" "Cut and paste text with your mouse" "on" \
+"shellutl" "GNU shellutils-1.9 - REQUIRED" "on" \
+"syslogd" "Logs system and kernel messages" "on" \
+"tar" "GNU tar 1.11.2 - REQUIRED" "on" \
+"tcsh" "Extended C shell version 6.04" "off" \
+"textutl" "GNU textutil-1.9 - REQUIRED" "on" \
+"zoneinfo" "Configures your time zone" "on" \
+2> /tmp/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f /tmp/SeTpkgs
+ exit
+fi
+cat /dev/null > /tmp/SeTnewtag
+for PACKAGE in base devs etc idekern scsikern lilo sysvinit bin ldso \
+bash getty gzip ps shlibs util comms cpio e2fsbn find grep keytbls \
+less lpr gpm shellutl hdsetup syslogd tar tcsh textutl zoneinfo \
+umsprogs loadlin ; do
+ if fgrep \"$PACKAGE\" /tmp/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> /tmp/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> /tmp/SeTnewtag
+ fi
+done
+rm -f /tmp/SeTpkgs

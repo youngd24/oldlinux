@@ -1,0 +1,26 @@
+if [ -r var/X11R6/lib/xinit/xinitrc -a \
+     ! -L var/X11R6/lib/xinit/xinitrc ]; then
+#	echo "Moving your old xinitrc to /var/X11R6/lib/xinit/xinitrc.backup..."
+	mv var/X11R6/lib/xinit/xinitrc var/X11R6/lib/xinit/xinitrc.backup
+fi
+if [ ! -r /tmp/SeTcolor -a ! "$COLOR" = "on" ]; then
+ echo "  Installing FVWM as your default window manager (start with 'startx')"
+ echo "  --> cd /var/X11R6/lib/xinit"
+ echo "  --> ln -sf xinitrc.fvwm xinitrc"
+fi
+( cd var/X11R6/lib/xinit ; rm -rf xinitrc )
+( cd var/X11R6/lib/xinit ; ln -sf  xinitrc.fvwm xinitrc )
+( cd usr/X11R6/lib ; rm -rf X11 )
+( cd usr/X11R6/lib ; ln -sf  /var/X11R6/lib X11 )
+( cd var/X11R6/lib ; rm -rf fonts )
+( cd var/X11R6/lib ; ln -sf  /usr/X11R6/lib/fonts fonts )
+( cd etc ; rm -rf X11 )
+( cd etc ; ln -sf  /var/X11R6/lib X11 )
+( cd var/X11R6/lib/rstart/commands ; rm -rf x11 )
+( cd var/X11R6/lib/rstart/commands ; ln -sf x11r6 x11 )
+( cd var/X11R6/lib/rstart/commands ; rm -rf x )
+( cd var/X11R6/lib/rstart/commands ; ln -sf x11r6 x )
+( cd var/X11R6/lib/rstart/contexts ; rm -rf x11 )
+( cd var/X11R6/lib/rstart/contexts ; ln -sf x11r6 x11 )
+( cd var/X11R6/lib/rstart/contexts ; rm -rf x )
+( cd var/X11R6/lib/rstart/contexts ; ln -sf x11r6 x )

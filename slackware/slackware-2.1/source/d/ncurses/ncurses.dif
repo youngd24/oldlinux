@@ -1,0 +1,76 @@
+This is a patch to setup ncurses-1.8.5 to compile like it exists in the
+Slackware distribution. The apply this patch, do the following:
+
+Untar the 1.8.5.tgz package. 
+cd into ./ncurses-1.8.5/src, and type 'Configure linux'.
+Then, cd into ./ncurses-1.8.5, and do this:
+
+patch -p1 < ncurses-1.8.5.slack.diff
+
+Then you should be ready to type 'make' in the src directory.
+
+
+diff -r -c ncurses-1.8.5-orig/src/Makefile ncurses-1.8.5/src/Makefile
+*** ncurses-1.8.5-orig/src/Makefile	Thu Apr 28 13:15:22 1994
+--- ncurses-1.8.5/src/Makefile	Thu Apr 28 12:25:42 1994
+***************
+*** 66,78 ****
+  PFLAGS= $(FLAGS) -g -p -DTRACE $(CONFIG)
+  
+  # Base directory; a separate entity to allow user installation
+! INSTALL_DIR = /usr/local
+  
+  # Where the header files will go 
+  # Don't use /usr/include as bsd curses could be living there
+  # You'll need -I/usr/local/include every time you compile
+  # with ncurses, otherwise you'll get the bsd curses
+! INCLUDE= $(INSTALL_DIR)/include
+  
+  # Where the libraries will go
+  # gcc knows to look in here, if you change it or you compiler doesn't
+--- 66,78 ----
+  PFLAGS= $(FLAGS) -g -p -DTRACE $(CONFIG)
+  
+  # Base directory; a separate entity to allow user installation
+! INSTALL_DIR = /usr
+  
+  # Where the header files will go 
+  # Don't use /usr/include as bsd curses could be living there
+  # You'll need -I/usr/local/include every time you compile
+  # with ncurses, otherwise you'll get the bsd curses
+! INCLUDE= $(INSTALL_DIR)/include/ncurses
+  
+  # Where the libraries will go
+  # gcc knows to look in here, if you change it or you compiler doesn't
+diff -r -c ncurses-1.8.5-orig/test/Makefile ncurses-1.8.5/test/Makefile
+*** ncurses-1.8.5-orig/test/Makefile	Thu Apr 28 13:15:23 1994
+--- ncurses-1.8.5/test/Makefile	Thu Apr 28 12:26:02 1994
+***************
+*** 17,29 ****
+  PFLAGS= $(FLAGS) -g -p -DTRACE $(CONFIG)
+  
+  # Base directory; a separate entity to allow user installation
+! INSTALL_DIR = /usr/local
+  
+  # Where the header files will go 
+  # Don't use /usr/include as bsd curses could be living there
+  # You'll need -I/usr/local/include every time you compile
+  # with ncurses, otherwise you'll get the bsd curses
+! INCLUDE= $(INSTALL_DIR)/include
+  
+  # Where the libraries will go
+  # gcc knows to look in here, if you change it or you compiler doesn't
+--- 17,29 ----
+  PFLAGS= $(FLAGS) -g -p -DTRACE $(CONFIG)
+  
+  # Base directory; a separate entity to allow user installation
+! INSTALL_DIR = /usr
+  
+  # Where the header files will go 
+  # Don't use /usr/include as bsd curses could be living there
+  # You'll need -I/usr/local/include every time you compile
+  # with ncurses, otherwise you'll get the bsd curses
+! INCLUDE= $(INSTALL_DIR)/include/ncurses
+  
+  # Where the libraries will go
+  # gcc knows to look in here, if you change it or you compiler doesn't

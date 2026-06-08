@@ -1,0 +1,56 @@
+PACKAGE NAME:     seyon
+COMPRESSED PACKAGE SIZE:     116 K
+UNCOMPRESSED PACKAGE SIZE:     360 K
+PACKAGE LOCATION: diskxap1
+PACKAGE DESCRIPTION:
+seyon:    Seyon 2.14c. 
+seyon:
+seyon:    A complete, full-featured telecommunications package for X.
+seyon:
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/man1/
+usr/man/man1/seyon.1
+usr/doc/
+usr/doc/seyon/
+usr/doc/seyon/1-BUGREPORT
+usr/doc/seyon/1-CHANGES
+usr/doc/seyon/1-COPYING
+usr/doc/seyon/1-FAQ
+usr/doc/seyon/1-HISTORY
+usr/doc/seyon/1-INSTALL
+usr/doc/seyon/1-PORTING
+usr/doc/seyon/1-README
+usr/doc/seyon/1-SURVEY
+usr/doc/seyon/1-TODO
+usr/doc/seyon/Seyon-co.ad
+usr/doc/seyon/Seyon.ad
+usr/doc/seyon/phonelist
+usr/doc/seyon/protocols
+usr/doc/seyon/script.CIS
+usr/doc/seyon/script.PCBoard
+usr/doc/seyon/script.QWK
+usr/doc/seyon/script.unix
+usr/doc/seyon/startup
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/seyon
+install/
+install/doinst.sh
+root/
+root/.seyon/
+root/.seyon/phonelist
+root/.seyon/protocols
+root/.seyon/script.CIS
+root/.seyon/script.PCBoard
+root/.seyon/script.QWK
+root/.seyon/script.unix
+root/.seyon/startup
+var/
+var/X11R6/
+var/X11R6/lib/
+var/X11R6/lib/app-defaults/
+var/X11R6/lib/app-defaults/Seyon
+var/X11R6/lib/seyon.help

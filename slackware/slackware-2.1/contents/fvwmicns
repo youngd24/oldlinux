@@ -1,0 +1,84 @@
+PACKAGE NAME:     fvwmicns
+COMPRESSED PACKAGE SIZE:     11 K
+UNCOMPRESSED PACKAGE SIZE:     210 K
+PACKAGE LOCATION: diskx4
+PACKAGE DESCRIPTION:
+fvwmicns: Color icons from xpm3icons.tar.Z, found in the /pub/X11/contrib
+fvwmicns: directory of sunsite.unc.edu. These icons work great with fvwm.
+fvwmicns:
+fvwmicns: They are placed in /usr/lib/xfilemanager/icons, since there are other
+fvwmicns: icons put in there for xfilemanager that also work with fvwm.
+fvwmicns:
+fvwmicns: See the man page for fvwm for more information on how to use these
+fvwmicns: icons.
+fvwmicns:
+FILE LIST:
+./
+usr/
+usr/X11R6/
+usr/X11R6/include/
+usr/X11R6/include/X11/
+usr/X11R6/include/X11/pixmaps/
+usr/X11R6/include/X11/pixmaps/NeXT.xpm
+usr/X11R6/include/X11/pixmaps/Plaid.xpm
+usr/X11R6/include/X11/pixmaps/arrdown.xpm
+usr/X11R6/include/X11/pixmaps/arrleft.xpm
+usr/X11R6/include/X11/pixmaps/arrne.xpm
+usr/X11R6/include/X11/pixmaps/arrright.xpm
+usr/X11R6/include/X11/pixmaps/arrup.xpm
+usr/X11R6/include/X11/pixmaps/bee.xpm
+usr/X11R6/include/X11/pixmaps/block.xpm
+usr/X11R6/include/X11/pixmaps/bomb.xpm
+usr/X11R6/include/X11/pixmaps/bull.xpm
+usr/X11R6/include/X11/pixmaps/circles.xpm
+usr/X11R6/include/X11/pixmaps/city.xpm
+usr/X11R6/include/X11/pixmaps/crab.xpm
+usr/X11R6/include/X11/pixmaps/crab45.xpm
+usr/X11R6/include/X11/pixmaps/dos.xpm
+usr/X11R6/include/X11/pixmaps/doso.xpm
+usr/X11R6/include/X11/pixmaps/doss.xpm
+usr/X11R6/include/X11/pixmaps/editor.xpm
+usr/X11R6/include/X11/pixmaps/escherknot.xpm
+usr/X11R6/include/X11/pixmaps/eye.xpm
+usr/X11R6/include/X11/pixmaps/eye1.xpm
+usr/X11R6/include/X11/pixmaps/eye10.xpm
+usr/X11R6/include/X11/pixmaps/eye11.xpm
+usr/X11R6/include/X11/pixmaps/eye12.xpm
+usr/X11R6/include/X11/pixmaps/eye13.xpm
+usr/X11R6/include/X11/pixmaps/eye14.xpm
+usr/X11R6/include/X11/pixmaps/eye15.xpm
+usr/X11R6/include/X11/pixmaps/eye16.xpm
+usr/X11R6/include/X11/pixmaps/eye17.xpm
+usr/X11R6/include/X11/pixmaps/eye18.xpm
+usr/X11R6/include/X11/pixmaps/eye19.xpm
+usr/X11R6/include/X11/pixmaps/eye2.xpm
+usr/X11R6/include/X11/pixmaps/eye20.xpm
+usr/X11R6/include/X11/pixmaps/eye21.xpm
+usr/X11R6/include/X11/pixmaps/eye22.xpm
+usr/X11R6/include/X11/pixmaps/eye23.xpm
+usr/X11R6/include/X11/pixmaps/eye24.xpm
+usr/X11R6/include/X11/pixmaps/eye3.xpm
+usr/X11R6/include/X11/pixmaps/eye4.xpm
+usr/X11R6/include/X11/pixmaps/eye5.xpm
+usr/X11R6/include/X11/pixmaps/eye6.xpm
+usr/X11R6/include/X11/pixmaps/eye7.xpm
+usr/X11R6/include/X11/pixmaps/eye8.xpm
+usr/X11R6/include/X11/pixmaps/eye9.xpm
+usr/X11R6/include/X11/pixmaps/fil.xpm
+usr/X11R6/include/X11/pixmaps/fils.xpm
+usr/X11R6/include/X11/pixmaps/floppy.xpm
+usr/X11R6/include/X11/pixmaps/jolifond.xpm
+usr/X11R6/include/X11/pixmaps/koala.xpm
+usr/X11R6/include/X11/pixmaps/lambda.xpm
+usr/X11R6/include/X11/pixmaps/martini.xpm
+usr/X11R6/include/X11/pixmaps/mickey.xpm
+usr/X11R6/include/X11/pixmaps/mouse.xpm
+usr/X11R6/include/X11/pixmaps/nobozos.xpm
+usr/X11R6/include/X11/pixmaps/nose.xpm
+usr/X11R6/include/X11/pixmaps/noseback.xpm
+usr/X11R6/include/X11/pixmaps/nosefront.xpm
+usr/X11R6/include/X11/pixmaps/nosmoking.xpm
+usr/X11R6/include/X11/pixmaps/porsche.xpm
+usr/X11R6/include/X11/pixmaps/stopsign.xpm
+usr/X11R6/include/X11/pixmaps/umbrella.xpm
+usr/X11R6/include/X11/pixmaps/wingdogs.xpm

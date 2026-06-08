@@ -1,0 +1,27 @@
+Begin2 
+Title        = popclient
+Version      = 2.21
+Desc1        = POP-2 or POP-3 client software which will retrieve mail from
+Desc2        = a POP mail box and either copy it to a local file or re-mail
+Desc3        = it to you using your local mailer. Has option to keep the
+Desc4        = mail at the mail box or remove it.
+Author       = Carl Harris
+AuthorEmail  = ceharris@vt.edu
+Maintainer   = Carl Harris
+MaintEmail   = ceharris@vt.edu
+Site1        = csugrad.cs.vt.edu
+Path1        = /pub/pop
+File1        = popclient-2.21.tar.gz
+FileSize1    = 18122
+Site2        = sunsite.unc.edu
+Path2        = /pub/Linux/system/Mail
+File2        = popclient-2.21.tar.gz
+FileSize2    = 18122
+CopyPolicy1  = Free distribution provided original copyright
+CopyPolicy2  = information is preserved.
+Keywords     = POP, POP-2, POP-3, POPCLIENT
+Entered      = 31JUL94
+EnteredBy    = Al Longyear
+CheckedEmail = longyear@netcom
+End 
+ 

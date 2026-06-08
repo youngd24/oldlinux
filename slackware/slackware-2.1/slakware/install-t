@@ -1,0 +1,1013 @@
+#!/bin/sh
+dialog --title "Install packages from the T series (TeX)" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  Press ENTER when you are done." \
+17 70 8 \
+"ntb-mf" "ntb-mf 1.2" "off" \
+"ntb-tex" "ntb-tex 1.2" "off" \
+"ntf-cms" "ntf-cms 1.2" "off" \
+"gentle" "A Gentle Introduction to TeX" "off" \
+"ntb-gsfp" "ntb-gsfp 1.0" "off" \
+"ntf-cml" "ntf-cml 1.2" "off" \
+"ntm-ltx1" "ntm-ltx1 1.2" "off" \
+"ntm-tex" "ntm-tex 1.1" "off" \
+"ntb-dps" "ntb-dps 1.2" "off" \
+"ntb-indx" "ntb-indx 1.1" "off" \
+"ntb-utl1" "ntb-utl1 1.1" "off" \
+"ntb-utl2" "ntb-utl2 1.1 " "off" \
+"ntb-xdvi" "ntb-xdvi 1.2" "off" \
+"ntb-bibt" "ntb-bibt 1.1" "off" \
+"ntb-dlj" "ntb-dlj 1.2" "off" \
+"ntb-utl3" "ntb-utl3 1.1" "off" \
+"ntf-cmu" "ntf-cmu 1.1" "off" \
+"ntf-pand" "ntf-pand 1.1" "off" \
+"ntm-amst" "ntm-amst 1.1" "off" \
+"ntm-etex" "ntm-etex 1.2" "off" \
+"ntm-ltx3" "ntm-ltx3 1.2" "off" \
+"ntm-ltx4" "ntm-ltx4 1.1" "off" \
+"ntb-djc" "ntb-djc 0.1" "off" \
+"ntb-traf" "ntb-traf 1.1" "off" \
+"ntb-xfig" "ntb-xfig 1.1" "off" \
+"ntf-ams" "ntf-ams 1.2" "off" \
+"ntf-bl" "ntf-bl 1.1" "off" \
+"ntf-dc" "ntf-dc 1.1" "off" \
+"ntf-phon" "ntf-phon 1.1" "off" \
+"ntf-xcmr" "ntf-xcmr 1.1" "off" \
+"ntb-html" "ntb-html 1.1" "off" \
+"ntf-ps" "ntf-ps 1.2" "off" \
+"ntm-hier" "ntm-hier 1.2" "off" \
+"ntm-ltx2" "ntm-ltx2 1.2" "off" \
+"ntm-turk" "ntm-turk 1.1" "off" \
+"ntb-kpat" "ntb-kpat 1.1" "off" \
+"ntf-bbm" "ntf-bbm 1.2" "off" \
+"ntf-cmca" "ntf-cmca 1.2" "off" \
+"ntf-cmcy" "ntf-cmcy 1.2" "off" \
+"ntf-fc" "ntf-fc 1.1" "off" \
+"ntm-arab" "ntm-arab 1.2" "off" \
+"ntm-gree" "ntm-gree 1.2" "off" \
+"ntm-hebr" "ntm-hebr 1.2" "off" \
+"ntm-pict" "ntm-pict 1.0" "off" \
+"ntb-b2d" "ntb-b2d 1.0" "off" \
+"ntf-astr" "ntf-astr 1.1" "off" \
+"ntf-bard" "ntf-bard 1.1" "off" \
+"ntf-call" "ntf-call 1.2" "off" \
+"ntf-cher" "ntf-cher 1.2" "off" \
+"ntf-cmas" "ntf-cmas 1.1" "off" \
+"ntf-cmb" "ntf-cmb 1.2" "off" \
+"ntf-cmoe" "ntf-cmoe 1.1" "off" \
+"ntf-cmpc" "ntf-cmpc 1.1" "off" \
+"ntf-cmts" "ntf-cmts 1.1" "off" \
+"ntf-conc" "ntf-conc 1.1" "off" \
+"ntf-cypr" "ntf-cypr 1.2" "off" \
+"ntf-ding" "ntf-ding 1.1" "off" \
+"ntf-duer" "ntf-duer 1.1" "off" \
+"ntf-elvi" "ntf-elvi 1.1" "off" \
+"ntf-engw" "ntf-engw 1.2" "off" \
+"ntf-futh" "ntf-futh 1.1" "off" \
+"ntf-geor" "ntf-geor 1.1" "off" \
+"ntf-go" "ntf-go 1.1" "off" \
+"ntf-goth" "ntf-goth 1.1" "off" \
+"ntf-hand" "ntf-hand 1.1" "off" \
+"ntf-hge" "ntf-hge 1.1" "off" \
+"ntf-kart" "ntf-kart 1.2" "off" \
+"ntf-klin" "ntf-klin 1.2" "off" \
+"ntf-la" "ntf-la 1.2" "off" \
+"ntf-logi" "ntf-logi 1.2" "off" \
+"ntf-logo" "ntf-logo 1.1" "off" \
+"ntf-ocm" "ntf-ocm 1.1" "off" \
+"ntf-ocra" "ntf-ocra 1.1" "off" \
+"ntf-ogha" "ntf-ogha 1.1" "off" \
+"ntf-okud" "ntf-okud 1.1" "off" \
+"ntf-osma" "ntf-osma 1.1" "off" \
+"ntf-punk" "ntf-punk 1.1" "off" \
+"ntf-recy" "ntf-recy 1.1" "off" \
+"ntf-rsfs" "ntf-rsfs 1.1" "off" \
+"ntf-rune" "ntf-rune 1.1" "off" \
+"ntf-stma" "ntf-stma 1.1" "off" \
+"ntf-teng" "ntf-teng 1.1" "off" \
+"ntf-thai" "ntf-thai 1.2" "off" \
+"ntf-twca" "ntf-twca 1.1" "off" \
+"ntf-ugar" "ntf-ugar 1.0" "off" \
+"ntf-wasy" "ntf-wasy 1.1" "off" \
+"ntf-wsui" "ntf-wsui 1.1" "off" \
+"ntm-deva" "ntm-deva 1.1" "off" \
+"ntm-germ" "ntm-germ 1.0" "off" \
+"ntm-plft" "ntm-plft 1.1" "off" \
+"ntm-tami" "ntm-tami 1.1" "off" \
+"ntm-viet" "ntm-viet 1.1" "off" \
+2> /tmp/return
+if fgrep '"ntb-mf"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-mf to your hard drive" --infobox \
+"ntb-mf 1.2\n\
+\n\
+This package contains the binaries for MetaFont, the bases mf.base\n\
+(plain.base) and cmmf.base (cmplain.base) and the basic setup for the\n\
+font directories. The current version of MetaFont is 2.71 (C version \n\
+6.1).\n\
+\n\
+" 9 75
+ installpkg t1/ntb-mf.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-tex"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-tex to your hard drive" --infobox \
+"ntb-tex 1.2\n\
+\n\
+This package contains the binaries for the TeX program and the \n\
+MakeTeX* scripts. MakeTeXTFM tries to create a tfm file, MakeTeXMF\n\
+tries to create a mf file and MakeTeXPK tries to create a pk file.\n\
+Note that the MakeTeXPK script can also uncompress pk fonts that are\n\
+compressed with gzip. However, the uncompressed fonts are not\n\
+compressed again, but it can help to save disk space, especially if\n\
+you have installed fonts that you do not need all the time. The \n\
+current version of TeX is 3.1415 (C version 6.1).\n\
+\n\
+" 13 75
+ installpkg t1/ntb-tex.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-cms"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-cms to your hard drive" --infobox \
+"ntf-cms 1.2\n\
+\n\
+The Sauter Computer Modern fonts. These are the basic fonts for TeX \n\
+in the NTeX distribution.\n\
+\n\
+" 7 75
+ installpkg t1/ntf-cms.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gentle"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gentle to your hard drive" --infobox \
+"A Gentle Introduction to TeX\n\
+\n\
+This is a manual for TeX, written by Michael Doob.\n\
+\n\
+Look for it in /usr/doc/TeX.\n\
+\n\
+" 8 75
+ installpkg t2/gentle.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-gsfp"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-gsfp to your hard drive" --infobox \
+"ntb-gsfp 1.0\n\
+\n\
+The binaries for gsftopk. A program to convert ghostscript fonts (gsf)\n\
+to pk fonts. If you are producing documents with PS fonts and want to\n\
+display the fonts with xdvi, this program can do it for you. It is\n\
+called by MakeTeXPK.\n\
+\n\
+" 9 75
+ installpkg t2/ntb-gsfp.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-cml"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-cml to your hard drive" --infobox \
+"ntf-cml 1.2\n\
+\n\
+This package contains some Computer Modern fonts mainly used by LaTeX.\n\
+\n\
+" 6 75
+ installpkg t2/ntf-cml.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-ltx1"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-ltx1 to your hard drive" --infobox \
+"ntm-ltx1 1.2\n\
+\n\
+This package contains the basic LaTeX2e macros.\n\
+\n\
+" 6 75
+ installpkg t2/ntm-ltx1.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-tex"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-tex to your hard drive" --infobox \
+"ntm-tex 1.1\n\
+\n\
+This package contains the plain TeX format and some additional macros\n\
+for plain TeX.\n\
+\n\
+" 7 75
+ installpkg t2/ntm-tex.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-dps"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-dps to your hard drive" --infobox \
+"ntb-dps 1.2\n\
+\n\
+These are the binaries for the dvips driver, a program that translates\n\
+.dvi files into postscript files. This package also contains some \n\
+metric files for postscript fonts. You can configure divps with the \n\
+file /usr/lib/texmf/dvips/config.ps for your own printer. Dvips can \n\
+also help you to print files on a printer for which no dvi driver is\n\
+provided. Translate the dvi file to a postscript file and print it\n\
+with ghostscript. (Ghostscript is not included in the T series.) The\n\
+current version of dvipsk (the 'k' indicates that the sources use the\n\
+kpathsea library) is 5.58a.\n\
+" 13 75
+ installpkg t3/ntb-dps.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-indx"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-indx to your hard drive" --infobox \
+"ntb-indx 1.1\n\
+\n\
+This package contains the binaries for the programs makeindex, glotex\n\
+and idxtex to create indexes in TeX/LaTeX files and some macros for\n\
+using these programs.\n\
+\n\
+" 8 75
+ installpkg t3/ntb-indx.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-utl1"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-utl1 to your hard drive" --infobox \
+"ntb-utl1 1.1\n\
+\n\
+This package contains the binaries for the TeX utilities dvicopy,\n\
+dvitype, pooltype, tangle, texi2dvi and weave.\n\
+\n\
+" 7 75
+ installpkg t3/ntb-utl1.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-utl2"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-utl2 to your hard drive" --infobox \
+"ntb-utl2 1.1 \n\
+\n\
+This package contains the binaries for the utilities gftodvi, gftopk,\n\
+gftype, mft, pktogf, and pktype.\n\
+\n\
+" 7 75
+ installpkg t3/ntb-utl2.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-xdvi"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-xdvi to your hard drive" --infobox \
+"ntb-xdvi 1.2\n\
+\n\
+These are the binaries for xdvi, a program to display dvi files under\n\
+X. It can also display epsf files which are included in dvi files. \n\
+(You'll need ghostscript for this) The current version of xdvik is \n\
+1.8b. The epsf file handling has been patched so that xdvi can also\n\
+display scaled epsf files without problems.  \n\
+\n\
+" 10 75
+ installpkg t3/ntb-xdvi.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-bibt"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-bibt to your hard drive" --infobox \
+"ntb-bibt 1.1\n\
+\n\
+This package contains the binaries for BiBTeX, a program to maintain\n\
+bibliographies under tex and use them in your TeX and LaTeX documents.\n\
+It also contains some example databases for bibtex.\n\
+\n\
+" 8 75
+ installpkg t4/ntb-bibt.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-dlj"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-dlj to your hard drive" --infobox \
+"ntb-dlj 1.2\n\
+\n\
+This are the binaries for the dvi2xx drivers based on the kpathsea\n\
+library. It contains the drivers dvi2lj, dvi2lj2, dvi2lj2p, dvi2lj4\n\
+and dviibm3812 for the HP Laserjet series and compatible laser \n\
+printers. The current version is 2.1.\n\
+\n\
+" 9 75
+ installpkg t4/ntb-dlj.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-utl3"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-utl3 to your hard drive" --infobox \
+"ntb-utl3 1.1\n\
+\n\
+This package contains the binaries for the utilities pltotf, tftopl,\n\
+vftovp and vptovf.\n\
+\n\
+" 7 75
+ installpkg t4/ntb-utl3.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-cmu"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-cmu to your hard drive" --infobox \
+"ntf-cmu 1.1\n\
+\n\
+Some additional Computer Modern fonts. Some were used in the MetaFont\n\
+Book and the TeX Book.\n\
+\n\
+" 7 75
+ installpkg t4/ntf-cmu.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-pand"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-pand to your hard drive" --infobox \
+"ntf-pand 1.1\n\
+\n\
+The Pandora fonts.\n\
+\n\
+" 6 75
+ installpkg t5/ntf-pand.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-amst"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-amst to your hard drive" --infobox \
+"ntm-amst 1.1\n\
+\n\
+This package contains the macros for AMSTeX. AMSTeX is used to typeset\n\
+mathematical articles and books and developed by the American\n\
+Mathematical Society.\n\
+\n\
+" 8 75
+ installpkg t5/ntm-amst.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-etex"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-etex to your hard drive" --infobox \
+"ntm-etex 1.2\n\
+\n\
+This package contains an extended version of the standard plain TeX\n\
+format called ETeX.\n\
+\n\
+" 7 75
+ installpkg t5/ntm-etex.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-ltx3"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-ltx3 to your hard drive" --infobox \
+"ntm-ltx3 1.2\n\
+\n\
+This package contains some style and LaTeX2e document class files.\n\
+\n\
+" 6 75
+ installpkg t5/ntm-ltx3.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-ltx4"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-ltx4 to your hard drive" --infobox \
+"ntm-ltx4 1.1\n\
+\n\
+This package contains some hyphenation tables used with LaTeX2e and\n\
+babel.  Currently tables for UK English, USA English, German, Swedish,\n\
+Dutch, Finnish, Czech, French, Polish, Portuguese, Spanish and Turkish\n\
+are included.\n\
+\n\
+" 9 75
+ installpkg t5/ntm-ltx4.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-djc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-djc to your hard drive" --infobox \
+"ntb-djc 0.1\n\
+\n\
+These are the binaries for the dvi driver for the HP Deskjet 500, \n\
+500c and 550c. They do not use the kpathsea library, and expect the\n\
+pk files for the Deskjet in the directory /usr/lib/texmf/fonts/pk and\n\
+the tfm files in /usr/lib/texmf/fonts/tfm. Therefore, if you want to\n\
+use these drivers you have to copy the pk and tfm files in these \n\
+directories or make symbolic links from these directories to the pk \n\
+and tfm files.\n\
+\n\
+" 12 75
+ installpkg t6/ntb-djc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-traf"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-traf to your hard drive" --infobox \
+"ntb-traf 1.1\n\
+\n\
+This package contains the binaries to transform .fig files (created by\n\
+xfig) to some other formats like epsf and LaTeX. If you have installed\n\
+xfig you should also install this package if you want to use xfig to\n\
+create other files than .fig files, which can then be included in your\n\
+LaTeX documents.\n\
+\n\
+" 10 75
+ installpkg t6/ntb-traf.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-xfig"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-xfig to your hard drive" --infobox \
+"ntb-xfig 1.1\n\
+\n\
+This package contains the binaries for xfig, an interactive drawing\n\
+tool under X. xfig can create fig, epsf and LaTeX files with various\n\
+options.  You also have to install ntb-traf so that xfig can export\n\
+fig files as epsf and LaTeX files. This package also contains a set\n\
+of basic examples of fig files (see /usr/lib/texmf/xfig/examples).\n\
+\n\
+" 10 75
+ installpkg t6/ntb-xfig.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-ams"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-ams to your hard drive" --infobox \
+"ntf-ams 1.2\n\
+\n\
+This package contains the ams fonts. If you are using amstex or \n\
+amslatex you should install them. The fonts could also be used without\n\
+amstex.\n\
+\n\
+" 8 75
+ installpkg t6/ntf-ams.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-bl"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-bl to your hard drive" --infobox \
+"ntf-bl 1.1\n\
+\n\
+The Blackletter font.\n\
+\n\
+" 6 75
+ installpkg t6/ntf-bl.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-dc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-dc to your hard drive" --infobox \
+"ntf-dc 1.1\n\
+\n\
+The DC fonts, a package of European scalable fonts.\n\
+\n\
+" 6 75
+ installpkg t6/ntf-dc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-phon"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-phon to your hard drive" --infobox \
+"ntf-phon 1.1\n\
+\n\
+A font containing a set of phonetic symbols.\n\
+\n\
+" 6 75
+ installpkg t6/ntf-phon.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-xcmr"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-xcmr to your hard drive" --infobox \
+"ntf-xcmr 1.1\n\
+\n\
+A Computer Modern Roman Crossedout font.\n\
+\n\
+" 6 75
+ installpkg t6/ntf-xcmr.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-html"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-html to your hard drive" --infobox \
+"ntb-html 1.1\n\
+\n\
+This package contains html2latex, a program which can translate HTML\n\
+files (mainly used in the WorldWideWeb) to LaTeX files. Some\n\
+documentation files for HTML are also included in this package (see\n\
+/usr/lib/texmf/html).\n\
+\n\
+" 9 75
+ installpkg t7/ntb-html.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-ps"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-ps to your hard drive" --infobox \
+"ntf-ps 1.2\n\
+\n\
+Some loadable Postscript Type1 fonts: Charter, Courier, URWAntiquaT,\n\
+URWGroteskT, Nimbus, Utopia, MSYM10 and the .afm, .tfm, .vf and .fd\n\
+files for the standard adobe postscript fonts.\n\
+\n\
+" 8 75
+ installpkg t7/ntf-ps.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-hier"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-hier to your hard drive" --infobox \
+"ntm-hier 1.2\n\
+\n\
+This package contains the fonts and macros for HieroTeX. HieroTeX\n\
+is used to typeset hieroglyphs with TeX.\n\
+\n\
+" 7 75
+ installpkg t8/ntm-hier.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-ltx2"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-ltx2 to your hard drive" --infobox \
+"ntm-ltx2 1.2\n\
+\n\
+This package contains additional macros for LaTeX2e: AMSLaTeX, babel,\n\
+graphics, ipa, tools, mnnfss, psnfss.\n\
+\n\
+" 7 75
+ installpkg t8/ntm-ltx2.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-turk"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-turk to your hard drive" --infobox \
+"ntm-turk 1.1\n\
+\n\
+This is a format file based on the plain format to typeset Turkish\n\
+texts.\n\
+\n\
+" 7 75
+ installpkg t8/ntm-turk.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-kpat"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-kpat to your hard drive" --infobox \
+"ntb-kpat 1.1\n\
+\n\
+This is the binary version of the kpathsea library which was used to\n\
+compile web2c, dvips, xdvi and dvi2xx. You do not need this library \n\
+for any program included in NTeX. You should just install it if you\n\
+want to use it in your own programs. In this case you should also\n\
+install the sources for kpathsea. The current version is 2.1.\n\
+\n\
+" 10 75
+ installpkg t9/ntb-kpat.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-bbm"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-bbm to your hard drive" --infobox \
+"ntf-bbm 1.2\n\
+\n\
+The Computer Modern Blackboard fonts.\n\
+\n\
+" 6 75
+ installpkg t9/ntf-bbm.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-cmca"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-cmca to your hard drive" --infobox \
+"ntf-cmca 1.2\n\
+\n\
+This package contains the Computer Modern Cyrillic Alt fonts.\n\
+\n\
+" 6 75
+ installpkg t9/ntf-cmca.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-cmcy"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-cmcy to your hard drive" --infobox \
+"ntf-cmcy 1.2\n\
+\n\
+This package contains the Computer Modern Cyrillic fonts.\n\
+\n\
+" 6 75
+ installpkg t9/ntf-cmcy.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-fc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-fc to your hard drive" --infobox \
+"ntf-fc 1.1\n\
+\n\
+The FC fonts, scalable fonts for the African continent.\n\
+\n\
+" 6 75
+ installpkg t9/ntf-fc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-arab"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-arab to your hard drive" --infobox \
+"ntm-arab 1.2\n\
+\n\
+This package includes the ArabTeX macros and fonts to typeset Arabian\n\
+texts.\n\
+\n\
+" 7 75
+ installpkg t9/ntm-arab.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-gree"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-gree to your hard drive" --infobox \
+"ntm-gree 1.2\n\
+\n\
+This package contains macros and fonts to typeset Greek texts.\n\
+\n\
+" 6 75
+ installpkg t9/ntm-gree.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-hebr"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-hebr to your hard drive" --infobox \
+"ntm-hebr 1.2\n\
+\n\
+This package contains macros and fonts to typeset texts in Hebrew.\n\
+\n\
+" 6 75
+ installpkg t9/ntm-hebr.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-pict"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-pict to your hard drive" --infobox \
+"ntm-pict 1.0\n\
+\n\
+This package contains the PicTeX macros.\n\
+\n\
+" 6 75
+ installpkg t9/ntm-pict.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntb-b2d"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntb-b2d to your hard drive" --infobox \
+"ntb-b2d 1.0\n\
+\n\
+Bib2dvi converts a BibTeX .bib file into a LaTeX formatted .dvi file.\n\
+You'll find the files for bib2dvi in /usr/lib/texmf/tools/bib2dvi.\n\
+\n\
+" 7 75
+ installpkg t10/ntb-b2d.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-astr"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-astr to your hard drive" --infobox \
+"ntf-astr 1.1\n\
+\n\
+This package contains fonts for astronomical and astrological symbols.\n\
+It also provides a style file to use the fonts.\n\
+\n\
+" 7 75
+ installpkg t10/ntf-astr.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-bard"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-bard to your hard drive" --infobox \
+"ntf-bard 1.1\n\
+\n\
+This package contains the bard font. It is based on the Celtic Bard\n\
+Runes and is nice to produce scrolls for role playing games.\n\
+\n\
+" 7 75
+ installpkg t10/ntf-bard.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-call"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-call to your hard drive" --infobox \
+"ntf-call 1.2\n\
+\n\
+The Calligra font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-call.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-cher"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-cher to your hard drive" --infobox \
+"ntf-cher 1.2\n\
+\n\
+The Cherokee font. It comes along with a style file for latex.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-cher.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-cmas"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-cmas to your hard drive" --infobox \
+"ntf-cmas 1.1\n\
+\n\
+This package contains the Computer Modern Astronomical fonts. It \n\
+comes along with a macro package for TeX.\n\
+\n\
+" 7 75
+ installpkg t10/ntf-cmas.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-cmb"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-cmb to your hard drive" --infobox \
+"ntf-cmb 1.2\n\
+\n\
+This package contains some additional Computer Modern fonts.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-cmb.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-cmoe"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-cmoe to your hard drive" --infobox \
+"ntf-cmoe 1.1\n\
+\n\
+A Computer Modern font for Old English letters.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-cmoe.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-cmpc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-cmpc to your hard drive" --infobox \
+"ntf-cmpc 1.1\n\
+\n\
+A Computer Modern Pica font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-cmpc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-cmts"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-cmts to your hard drive" --infobox \
+"ntf-cmts 1.1\n\
+\n\
+Some cmttss fonts.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-cmts.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-conc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-conc to your hard drive" --infobox \
+"ntf-conc 1.1\n\
+\n\
+The Concrete Mathematics fonts and a TeX macro package to use them.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-conc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-cypr"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-cypr to your hard drive" --infobox \
+"ntf-cypr 1.2\n\
+\n\
+The Cypriote fonts with a LaTeX style file to use them.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-cypr.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-ding"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-ding to your hard drive" --infobox \
+"ntf-ding 1.1\n\
+\n\
+The Dingbat font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-ding.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-duer"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-duer to your hard drive" --infobox \
+"ntf-duer 1.1\n\
+\n\
+The Duerer font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-duer.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-elvi"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-elvi to your hard drive" --infobox \
+"ntf-elvi 1.1\n\
+\n\
+The Elvish font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-elvi.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-engw"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-engw to your hard drive" --infobox \
+"ntf-engw 1.2\n\
+\n\
+The Engwar font, a font based on Tolkien's Tengwar.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-engw.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-futh"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-futh to your hard drive" --infobox \
+"ntf-futh 1.1\n\
+\n\
+The Futhark font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-futh.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-geor"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-geor to your hard drive" --infobox \
+"ntf-geor 1.1\n\
+\n\
+A Georgian font with TeX macros.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-geor.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-go"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-go to your hard drive" --infobox \
+"ntf-go 1.1\n\
+\n\
+A font and macros for typesetting boards of the Go game.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-go.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-goth"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-goth to your hard drive" --infobox \
+"ntf-goth 1.1\n\
+\n\
+A package of Gothic fonts.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-goth.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-hand"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-hand to your hard drive" --infobox \
+"ntf-hand 1.1\n\
+\n\
+The hands font, a set of hand symbols.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-hand.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-hge"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-hge to your hard drive" --infobox \
+"ntf-hge 1.1\n\
+\n\
+An Old English font derived from the Hershey font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-hge.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-kart"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-kart to your hard drive" --infobox \
+"ntf-kart 1.2\n\
+\n\
+The Karta font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-kart.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-klin"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-klin to your hard drive" --infobox \
+"ntf-klin 1.2\n\
+\n\
+The Klinz font, a font containing upper and lower Klingon symbols.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-klin.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-la"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-la to your hard drive" --infobox \
+"ntf-la 1.2\n\
+\n\
+The LA font, a script font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-la.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-logi"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-logi to your hard drive" --infobox \
+"ntf-logi 1.2\n\
+\n\
+The Logic font, a font for logical symbols.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-logi.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-logo"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-logo to your hard drive" --infobox \
+"ntf-logo 1.1\n\
+\n\
+A font containing the logos for TeX, Metafont, etc.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-logo.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-ocm"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-ocm to your hard drive" --infobox \
+"ntf-ocm 1.1\n\
+\n\
+The Computer Modern Outlined fonts.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-ocm.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-ocra"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-ocra to your hard drive" --infobox \
+"ntf-ocra 1.1\n\
+\n\
+The OCR-A font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-ocra.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-ogha"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-ogha to your hard drive" --infobox \
+"ntf-ogha 1.1\n\
+\n\
+The Ogham font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-ogha.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-okud"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-okud to your hard drive" --infobox \
+"ntf-okud 1.1\n\
+\n\
+The Okuda font, a font for the Klingon language.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-okud.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-osma"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-osma to your hard drive" --infobox \
+"ntf-osma 1.1\n\
+\n\
+An Osmanian font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-osma.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-punk"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-punk to your hard drive" --infobox \
+"ntf-punk 1.1\n\
+\n\
+The Punk font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-punk.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-recy"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-recy to your hard drive" --infobox \
+"ntf-recy 1.1\n\
+\n\
+A font containing a recycle symbol.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-recy.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-rsfs"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-rsfs to your hard drive" --infobox \
+"ntf-rsfs 1.1\n\
+\n\
+The RSFS fonts - Formal Symbol Math fonts.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-rsfs.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-rune"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-rune to your hard drive" --infobox \
+"ntf-rune 1.1\n\
+\n\
+A Rune font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-rune.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-stma"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-stma to your hard drive" --infobox \
+"ntf-stma 1.1\n\
+\n\
+St. Mary's Road Symbol font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-stma.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-teng"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-teng to your hard drive" --infobox \
+"ntf-teng 1.1\n\
+\n\
+A Tengwar font based on Tolkien's Tengwar.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-teng.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-thai"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-thai to your hard drive" --infobox \
+"ntf-thai 1.2\n\
+\n\
+A Thai font and some macros for it.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-thai.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-twca"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-twca to your hard drive" --infobox \
+"ntf-twca 1.1\n\
+\n\
+The twcal font, a calligraphic script font.\n\
+\n\
+" 6 75
+ installpkg t10/ntf-twca.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-ugar"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-ugar to your hard drive" --infobox \
+"ntf-ugar 1.0\n\
+\n\
+The Ugaritic script is a cuneiform alphabet (as opposed to the\n\
+syllabic cuneiform of Akkadian or Hittite), as found on tablets\n\
+dated from the Late Bronze Age (c 1400 - 1200 BC) in Northern Syria\n\
+and Palestine, notably in the archives at Ugarit.\n\
+\n\
+" 9 75
+ installpkg t10/ntf-ugar.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-wasy"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-wasy to your hard drive" --infobox \
+"ntf-wasy 1.1\n\
+\n\
+The WASY font containing additional symbols for math, physics and\n\
+other fields.\n\
+\n\
+" 7 75
+ installpkg t10/ntf-wasy.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntf-wsui"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntf-wsui to your hard drive" --infobox \
+"ntf-wsui 1.1\n\
+\n\
+The WSU IPA fonts providing a set of symbols for the International\n\
+Phonetic Alphabet.\n\
+\n\
+" 7 75
+ installpkg t10/ntf-wsui.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-deva"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-deva to your hard drive" --infobox \
+"ntm-deva 1.1\n\
+\n\
+This package contains software for the printing of the devanagari\n\
+script with TeX. The devanagari script is used for a number of\n\
+languages from Northern and Central India, such as Hindi and Marathi.\n\
+It is also the script used for writing and printing Sanskrit.\n\
+\n\
+" 9 75
+ installpkg t10/ntm-deva.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-germ"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-germ to your hard drive" --infobox \
+"ntm-germ 1.0\n\
+\n\
+This package contains some stylefiles for German typesetting.\n\
+\n\
+" 6 75
+ installpkg t10/ntm-germ.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-plft"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-plft to your hard drive" --infobox \
+"ntm-plft 1.1\n\
+\n\
+This package contains plftex, a TeX format based on the plain TeX\n\
+format using the NFSS font scheme.\n\
+\n\
+" 7 75
+ installpkg t10/ntm-plft.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-tami"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-tami to your hard drive" --infobox \
+"ntm-tami 1.1\n\
+\n\
+Some fonts and macros for typesetting texts in Tmail.\n\
+\n\
+" 6 75
+ installpkg t10/ntm-tami.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ntm-viet"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ntm-viet to your hard drive" --infobox \
+"ntm-viet 1.1\n\
+\n\
+Some Vietnamese TeX files.\n\
+\n\
+" 6 75
+ installpkg t10/ntm-viet.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

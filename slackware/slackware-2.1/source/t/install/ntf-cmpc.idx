@@ -1,0 +1,9 @@
+./usr/lib/texmf/fonts/cm/cmpica/create.sh
+./usr/lib/texmf/fonts/cm/cmpica/src/cmpica.mf
+./usr/lib/texmf/fonts/cm/cmpica/src/cmpicab.mf
+./usr/lib/texmf/fonts/cm/cmpica/src/cmpicati.mf
+./usr/lib/texmf/fonts/cm/cmpica/src/pcpunct.mf
+./usr/lib/texmf/fonts/cm/cmpica/src/pica.mf
+./usr/lib/texmf/fonts/cm/cmpica/tfm/cmpica.tfm
+./usr/lib/texmf/fonts/cm/cmpica/tfm/cmpicab.tfm
+./usr/lib/texmf/fonts/cm/cmpica/tfm/cmpicati.tfm

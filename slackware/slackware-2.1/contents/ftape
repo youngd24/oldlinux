@@ -1,0 +1,29 @@
+PACKAGE NAME:     ftape
+COMPRESSED PACKAGE SIZE:     57 K
+UNCOMPRESSED PACKAGE SIZE:     160 K
+PACKAGE LOCATION: diskap4
+PACKAGE DESCRIPTION:
+ftape:    ftape 1.13b
+ftape:
+ftape:    Bas Laarhoven's FTAPE module.
+ftape:
+ftape:    The FTAPE driver allows you to use a QIC-40 or QIC-80 floppy tape
+ftape:    drive with Linux.
+ftape:
+ftape:    This module will only work with Linux version: 1.1.59
+ftape:
+FILE LIST:
+./
+boot/
+boot/ftape.o-1.13b-patched
+var/
+var/adm/
+var/adm/setup/
+var/adm/setup/setup.ftape
+usr/
+usr/doc/
+usr/doc/ftape/
+usr/doc/ftape/RELEASE-NOTES
+usr/doc/ftape/Install-guide
+install/
+install/doinst.sh

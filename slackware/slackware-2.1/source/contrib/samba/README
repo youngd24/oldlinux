@@ -1,0 +1,126 @@
+This is version 1.8 of Samba, the free SMB client and server for unix.
+
+>>>> Please read THE WHOLE of this file as it gives important information
+>>>> about the configuration and use of Samba.
+
+There is a mailing list for discussion of Samba. To subscribe send
+mail to listproc@listproc.anu.edu.au with a body of "subscribe samba
+Your Name"
+
+To send mail to everyone on the list mail to samba@listproc.anu.edu.au
+
+There is also an announcement mailing list where I announce new
+versions.  To subscribe send mail to listproc@listproc.anu.edu.au with
+a body of "subscribe samba-announce Your Name". All announcements also
+go to the samba list.
+
+You might also like to look at the usenet news group
+comp.protocols.smb as it often contains lots of useful info.
+
+The main anonymous ftp distribution site for this software is
+nimbus.anu.edu.au in the directory pub/tridge/samba/.
+
+This software is freely distributable under the GNU public license, a
+copy of which you should have received with this software (in a file
+called COPYING). 
+
+If you want to contribute to the development of the software then
+please join the mailing list. I'm always looking for people to
+help with the development.
+
+You could also send hardware/software/money/jewelry or pizza vouchers
+directly to me. The pizza vouchers would be especially welcome.
+
+If you like the documentation or the smb.conf configuration file
+format then you should mail Karl.Auer@anu.edu.au to say thanks. I'm
+sure he also wouldn't be adverse to a few pizza vouchers or freebies
+as well.
+
+Remember that free software of this kind lives or dies by the response
+we get. If noone tells us they like it then we'll probably move onto
+something else.
+
+Andrew Tridgell
+Andrew.Tridgell@anu.edu.au
+
+September 1994
+
+
+LIMITATIONS
+===========
+
+1) There is one report that Chicago (Windows95?) does not work
+correctly with Samba. I need more info on this to try and solve the
+problem.
+
+2) Browsing only works with WfWg although it may now work with NT.
+
+3) The "magic scripts" are fairly primitive, and may not be adaquate for
+many purposes.
+
+4) Many remote API commands are not yet supported, such as setting
+your password across the net. Support will be added in due course as
+it is not hard to do.
+
+NOTE ABOUT PASSWORDS
+====================
+
+Unix systems use a wide variety of methods for checking the validity
+of a password. This is primarily controlled with the Makefile defines
+mentioned in the Makefile.
+
+Also note that some dos clients uppercase the password before sending
+it. The server tries the password as it receives it and also after
+lowercasing it. 
+
+The Samba server can also be configured to try different
+upper/lowercase combinations. This is controlled by the [globals]
+parameter "password level". A level of N means to try all combinations
+up to N uppercase characters in the password. A high value can chew a
+fair bit of CPU time and can lower the security of your system. Do not
+use this options unless you really need it - the time taken for
+password checking can become so high that clients time out. 
+
+If you do use the "password level" option then you might like to use
+-DUFC_CRYPT in your Makefile. On some machine this makes password
+checking _much_ faster. This is also useful if you use the @group
+syntax in the user= option.
+
+NOTE ABOUT THE USER= OPTION
+===========================
+
+Many people have been confused by the user= option in smb.conf. It is
+there to overcome client limitations in that some clients may not
+correctly supply a username for various reasons. This was mostly the
+case when people used the COREPLUS protocol, which is now unlikely.
+
+In most cases I expect people not to use a user= line at all. In fact,
+using a user= line can actually lower the security of your system as
+it means people trying to break in can try lots of accounts
+simultaneously.
+
+Note that a user= line does not specify what users may connect - it
+merely adds to the list of usernames that the Samba server checks
+against the incoming password to try and find a match, in addition to
+any usernames that may have been passed by the client. Only when used
+with the "only user=yes" option does it actually restrict who can
+connect.
+
+A much better way of restricting what users can connect is to use the
+"valid users=" and "invalid users=" lines to exactly specify what
+users (and groups of users) are allowed to connect.
+
+
+NOTE ABOUT DEBUGLEVEL
+=====================
+
+WARNING: A high debug level can severely damage your performance and
+can produce enourmous log files.
+
+In particular on AIX using a debuglevel above 1 produces a VERY slow
+server. I think this is because fflush() is very slow on AIX.
+
+In most cases a level of 1 or 2 is appropriate.
+
+
+

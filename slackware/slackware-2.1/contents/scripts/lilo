@@ -1,0 +1,4 @@
+( cd sbin ; rm -rf liloconfig-color )
+( cd sbin ; ln -sf  liloconfig liloconfig-color )
+( cd usr/doc ; rm -rf lilo )
+( cd usr/doc ; ln -sf ../lib/lilo lilo )

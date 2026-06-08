@@ -1,0 +1,4 @@
+./usr/lib/texmf/fonts/misc/cypriote/create.sh
+./usr/lib/texmf/fonts/misc/cypriote/src/cypriote.mf
+./usr/lib/texmf/fonts/misc/cypriote/tfm/cypriote.tfm
+./usr/lib/texmf/tex/misc/cypriote.sty

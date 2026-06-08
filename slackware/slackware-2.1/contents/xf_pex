@@ -1,0 +1,33 @@
+PACKAGE NAME:     xf_pex
+COMPRESSED PACKAGE SIZE:     133 K
+UNCOMPRESSED PACKAGE SIZE:     590 K
+PACKAGE LOCATION: diskxd2
+PACKAGE DESCRIPTION:
+xf_pex:   XFree86 3.1 PEX distribution
+xf_pex:
+xf_pex:   If you would like to use and build PEX programs you will need this
+xf_pex:   package in addition to a server that supports PEX.  The distributed
+xf_pex:   servers do *not* include PEX support by default - you will have to
+xf_pex:   build one using the link kit.
+xf_pex:
+FILE LIST:
+./
+usr/
+usr/X11R6/
+usr/X11R6/include/
+usr/X11R6/include/X11/
+usr/X11R6/include/X11/PEX5/
+usr/X11R6/include/X11/PEX5/PEXlib.h
+usr/X11R6/include/X11/PEX5/PEXlibint.h
+usr/X11R6/include/X11/PEX5/PEX.h
+usr/X11R6/include/X11/PEX5/PEXproto.h
+usr/X11R6/include/X11/PEX5/PEXprotost.h
+usr/X11R6/lib/
+usr/X11R6/lib/libPEX5.sa
+usr/X11R6/lib/fonts/
+usr/X11R6/lib/fonts/PEX/
+usr/X11R6/lib/fonts/PEX/Roman.phont
+usr/X11R6/lib/fonts/PEX/Roman_M.phont
+usr/X11R6/lib/libPEX5.so.6.0
+install/
+install/doinst.sh

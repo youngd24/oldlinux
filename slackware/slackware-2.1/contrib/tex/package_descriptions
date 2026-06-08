@@ -1,0 +1,17 @@
+
+A package to remove X support from TeX so that you don't need the X
+shared libraries.  Obviously, you don't want to install this if you _do_
+use X. :^)
+
+mf-nox11: mf-nox11 
+mf-nox11:
+mf-nox11: This package contains the binaries for MetaFont, the bases mf.base
+mf-nox11: (plain.base) and cmmf.base (cmplain.base) and the basic setup for the
+mf-nox11: font directories. The current version of MetaFont is 2.71 (C version
+mf-nox11: 6.1).
+mf-nox11:
+mf-nox11: This is a special version of the MetaFont package that was compiled
+mf-nox11: to _not_ use any X shared libraries.  Obviously, you won't want to
+mf-nox11: install this on machines that do run X.
+mf-nox11:
+

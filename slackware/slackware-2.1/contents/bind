@@ -1,0 +1,81 @@
+PACKAGE NAME:     bind
+COMPRESSED PACKAGE SIZE:     291 K
+UNCOMPRESSED PACKAGE SIZE:     800 K
+PACKAGE LOCATION: diskn4
+PACKAGE DESCRIPTION:
+bind:     BIND-4.9.3-beta9
+bind:
+bind:     The named daemon and support utilities such as dig, dnsquery, host,
+bind:     nslookup, nsquery, and nstest.  Documentation on setting up a name
+bind:     server can be found in /usr/doc/bind-4.9.3-BETA9.
+bind:
+FILE LIST:
+./
+usr/
+usr/sbin/
+usr/sbin/named
+usr/sbin/named-xfer
+usr/sbin/named.restart
+usr/sbin/named.reload
+usr/bin/
+usr/bin/nslookup
+usr/bin/nsquery
+usr/bin/nstest
+usr/bin/host
+usr/bin/dig
+usr/bin/dnsquery
+usr/lib/
+usr/lib/nslookup.help
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat3/
+usr/man/preformat/cat3/gethostbyname.3.gz
+usr/man/preformat/cat3/getnetent.3.gz
+usr/man/preformat/cat3/resolver.3.gz
+usr/man/preformat/cat7/
+usr/man/preformat/cat7/hostname.7.gz
+usr/man/preformat/cat7/mailaddr.7.gz
+usr/man/preformat/cat5/
+usr/man/preformat/cat5/resolver.5.gz
+usr/man/preformat/cat8/
+usr/man/preformat/cat8/named-xfer.8.gz
+usr/man/preformat/cat8/named.8.gz
+usr/man/preformat/cat8/named.reload.8.gz
+usr/man/preformat/cat8/named.restart.8.gz
+usr/man/preformat/cat8/nslookup.8.gz
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/dig.1.gz
+usr/man/preformat/cat1/dnsquery.1.gz
+usr/man/preformat/cat1/host.1.gz
+usr/doc/
+usr/doc/bind-4.9.3-BETA9/
+usr/doc/bind-4.9.3-BETA9/README
+usr/doc/bind-4.9.3-BETA9/INSTALL
+usr/doc/bind-4.9.3-BETA9/TODO
+usr/doc/bind-4.9.3-BETA9/doc/
+usr/doc/bind-4.9.3-BETA9/doc/00macs.me
+usr/doc/bind-4.9.3-BETA9/doc/00title.me
+usr/doc/bind-4.9.3-BETA9/doc/Makefile
+usr/doc/bind-4.9.3-BETA9/doc/build.me
+usr/doc/bind-4.9.3-BETA9/doc/file.lst
+usr/doc/bind-4.9.3-BETA9/doc/files.me
+usr/doc/bind-4.9.3-BETA9/doc/intro.me
+usr/doc/bind-4.9.3-BETA9/doc/manage.me
+usr/doc/bind-4.9.3-BETA9/doc/named.boot.cache
+usr/doc/bind-4.9.3-BETA9/doc/named.boot.primary
+usr/doc/bind-4.9.3-BETA9/doc/named.boot.secondary
+usr/doc/bind-4.9.3-BETA9/doc/named.local
+usr/doc/bind-4.9.3-BETA9/doc/resolv.conf
+usr/doc/bind-4.9.3-BETA9/doc/root.cache
+usr/doc/bind-4.9.3-BETA9/doc/setup.me
+usr/doc/bind-4.9.3-BETA9/doc/types.me
+usr/doc/bind-4.9.3-BETA9/doc/ucbhosts
+usr/doc/bind-4.9.3-BETA9/doc/ucbhosts.rev
+usr/doc/bind-4.9.3-BETA9/master/
+usr/doc/bind-4.9.3-BETA9/master/README
+usr/doc/bind-4.9.3-BETA9/master/named.hosts
+usr/doc/bind-4.9.3-BETA9/master/root.cache
+usr/doc/bind-4.9.3-BETA9/master/named.rev
+usr/doc/bind-4.9.3-BETA9/master/named.boot
+usr/doc/bind-4.9.3-BETA9/master/named.boot.master
+usr/doc/bind-4.9.3-BETA9/master/named.local

@@ -1,0 +1,28 @@
+PACKAGE NAME:     libc
+COMPRESSED PACKAGE SIZE:     258 K
+UNCOMPRESSED PACKAGE SIZE:     870 K
+PACKAGE LOCATION: diskd5
+PACKAGE DESCRIPTION:
+libc:     Development libraries for the C compiler. (v. 4.5.26)
+libc:
+libc:     These libraries are needed to compile C code.    
+libc:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/libc.sa
+usr/lib/libcurses.sa
+usr/lib/libtermcap.sa
+usr/lib/libdbm.sa
+usr/lib/crt0.o
+usr/lib/libc.a
+usr/lib/libm.sa
+usr/lib/libm.a
+usr/lib/libtermcap.a
+usr/lib/libcurses.a
+usr/lib/libdbm.a
+usr/lib/libbsd.a
+usr/lib/libieee.a
+install/
+install/doinst.sh

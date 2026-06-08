@@ -1,0 +1,38 @@
+
+Slackware-1.1.55.diff1 will do this for a standard 1.1.55 kernel:
+
+  Add nec260-0_3 patches (NEC CD-ROM on the IDE interface)
+  Add sony535-0.6 patches (Sony 531/535 CD-ROM drives)
+  Add dpt_EATA_0.3a patches (EATA compliant ISA and EISA SCSI)
+  Add Adaptec 274x SCSI patches.
+  Add Always in2000 patches.
+  Fix a couple floppy driver bugs.
+
+  NOTE: IN2000 and Adaptec 1742 drivers should not be compiled into the same
+  kernel.  Do not compile the NEC CD-ROM driver into your kernel unless you
+  have an NEC CD-ROM driver attached as the slave device on your IDE controller.
+  I have no idea what it does if it finds a hard drive there...
+
+Slackware-1.1.55.diff2.quota should be applied after Slackware-1.1.55.diff1.
+It adds user/group quota support.
+
+Slackware-1.1.55.diff3.ramdisk adds this text before a ramdisk is loaded
+from floppy:
+
+  Please remove the boot kernel disk from your floppy drive, insert a
+  root/install disk (such as one of the Slackware color144, colrlite,
+  tty144, or tty12 disks) or some other disk you wish to load into a
+  ramdisk and boot, and then press ENTER to continue.
+
+Using these patches may prevent new kernel patches > 1.1.55 from patching in
+cleanly, so be aware.
+
+NOTE: I've made new patches for 1.1.58 except for quota -- they don't patch in
+cleanly anymore.  Hopefully these will be upgraded soon.  In the meantime, use
+the 1.1.54 kernels with quota support if you need it.
+
+Good luck -
+
+Patrick Volkerding
+volkerdi@mhd1.moorhead.msus.edu
+

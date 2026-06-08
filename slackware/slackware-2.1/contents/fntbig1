@@ -1,0 +1,24 @@
+PACKAGE NAME:     fntbig1
+COMPRESSED PACKAGE SIZE:     1049 K
+UNCOMPRESSED PACKAGE SIZE:     1150 K
+PACKAGE LOCATION: diskx10
+PACKAGE DESCRIPTION:
+fntbig1:  Large fonts (part one)
+fntbig1:
+fntbig1:  These fonts are compressed to reduce disk usage.
+fntbig1:
+fntbig1:  Fonts included: gb16fs.pcf.Z gb16st.pcf.Z gb24st.pcf.Z
+fntbig1:
+FILE LIST:
+./
+usr/
+usr/X11R6/
+usr/X11R6/lib/
+usr/X11R6/lib/fonts/
+usr/X11R6/lib/fonts/misc/
+usr/X11R6/lib/fonts/misc/fonts.dir.big
+usr/X11R6/lib/fonts/misc/gb16fs.pcf.Z
+usr/X11R6/lib/fonts/misc/gb16st.pcf.Z
+usr/X11R6/lib/fonts/misc/gb24st.pcf.Z
+install/
+install/doinst.sh

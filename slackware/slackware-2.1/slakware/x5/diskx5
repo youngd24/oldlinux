@@ -1,0 +1,56 @@
+CONTENTS: xf_bin xinclude xlock xpm xusrbin  
+xf_bin:   Basic client binaries required for XFree86 3.1.
+xf_bin:
+xf_bin:   Installs these programs in /usr/X11R6/bin: SuperProbe Xmark appres
+xf_bin:   atobm bdftopcf beforelight bitmap bmtoa color_xterm editres fsinfo
+xf_bin:   fslsfonts fstobdf iceauth imake lbxproxy lndir makedepend mergelib
+xf_bin:   mkdirhier mkfontdir oclock reconfig resize rstart rxvt sessreg showrgb
+xf_bin:   startx twm x11perf x11perfcomp xauth xclipboard xclock xcmsdb xconsole
+xf_bin:   xcutsel xdm xdpyinfo xfd xfs xhost xieperf xinit xkill xlogo xlsatoms
+xf_bin:   xlsclients xlsfonts xmag xmh xmkmf xmodmap xon xprop xrdb xrefresh
+xf_bin:   xset xsetroot xsm xsmclient xstdcmap xterm xwd xwininfo xwud
+xf_bin:
+xinclude: Header files for X11 programming.
+xinclude:
+xinclude:
+xinclude:
+xinclude:
+xinclude:
+xinclude:
+xinclude:
+xinclude:
+xinclude:
+xinclude:
+xlock:    xlockmore-1.14
+xlock:
+xlock:    Patrick J. Naughton's _xlock_ screensaver/locker for X, with many
+xlock:    more modes added by David A. Bagley. The 'Bob' mode (previously
+xlock:    'image') has also been included especially for Slackware.
+xlock:
+xlock:
+xlock:
+xlock:
+xlock:
+xlock:
+xpm:      The Xpm shared and static libraries, v. 3.4c (with libXpm.so.4.3)
+xpm:
+xpm:      These libraries provide a means for X programs to store and retrieve
+xpm:      bitmaps.  The shared libraries are needed to run programs compiled
+xpm:      with Xpm, such as xfilemanager and fvwm.
+xpm:
+xpm:
+xpm:
+xpm:
+xpm:
+xpm:
+xusrbin:  Rstartd daemon.
+xusrbin:
+xusrbin:  This package includes rstartd, which you'll need to run if you plan
+xusrbin:  to use the rstart client.
+xusrbin:
+xusrbin:
+xusrbin:
+xusrbin:
+xusrbin:
+xusrbin:
+xusrbin:

@@ -1,0 +1,50 @@
+
+This is the latest xpm (version 3.4c) DLL image/source release for linux.
+The DLL version numbering is libXpm.so.4.3
+
+WARNING * WARNING * WARNING * WARNING * WARNING * WARNING * WARNING
+
+ This library is NOT backward compatable with version libXpm.so.3.x.
+ Therefore you should NOT delete the previous version until you are
+ 100% sure none of your binaries it.
+
+WARNING * WARNING * WARNING * WARNING * WARNING * WARNING * WARNING
+
+It may be found at
+	Site:	sunsite.unc.edu
+	Dir:	/pub/Linux/libs (or /pub/Linux/Incoming temporarily)
+	File:	libXpm-3.4c.tar.gz
+
+The changes from xpm-3.4b -> xpm-3.4c are noted below.
+
+Mitch
+m.dsouza@mrc-apu.cam.ac.uk
+
+-------------------------------------------------------------------------
+/**************************************************************************\
+* 									   *
+*  			HISTORY of user-visible changes			   *
+* 									   *
+\**************************************************************************/
+
+3.4c	(94/06/06)
+
+    Yes, this is kind of quick. But this is because no code has been modified,
+    this is just a new packaging to make the whole stuff more suitable to the
+    MIT's requests for inclusion in the R6 contrib.
+
+    ENHANCEMENTS:
+	- Several filenames were too long to fit without any conflict on DOS
+	  and CD-ROM filesystems. They have been renamed.
+	- Imakefiles use XCOMM for comments instead of the # character.
+	- the Postcript documentation file doc/xpm.ps is now distributed as
+	  doc/xpm.PS.gz and allows browsing with tools such as ghostview.
+	- Besides, parts of lib/misc.c have been moved to several new files,
+	  and some functions of data.c have been moved to other files in
+	  order to get a better link profile.
+	- I've also added a FAQ hoping this will prevent people from
+	  continuously filling my mailbox with the same questions.
+	- sxpm.c includes <X11/xpm.h> instead of "xpm.h" and BUILDINCTOP is
+	  used in Makefiles as expected.
+	- Everything can be done simply using "xmkmf -a" and "make".
+

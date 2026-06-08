@@ -1,0 +1,1 @@
+awk '/UTS_RELEASE/{print substr($3,2,length($3)-2)}' $1

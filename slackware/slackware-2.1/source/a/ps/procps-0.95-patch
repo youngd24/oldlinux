@@ -1,0 +1,328 @@
+From bjdouma@xs4all.hacktic.nl Sat Jul  2 13:29:25 PDT 1994
+Article: 10549 of comp.os.linux.admin
+Path: well!nigel.msen.com!spool.mu.edu!howland.reston.ans.net!EU.net!sun4nl!hacktic!not-for-mail
+From: bjdouma@xs4all.hacktic.nl (bjdouma)
+Newsgroups: comp.os.linux.admin
+Subject: Re: NFS mountD & RPC bugs?
+Date: 2 Jul 1994 15:11:28 +0200
+Organization: Hack-Tic, Networking for the masses
+Lines: 312
+Message-ID: <2v3p20INNfv2@xs4all.hacktic.nl>
+References: <2uk8t8$csh@news.u.washington.edu> <2umu86$ond@pdq.coe.montana.edu> <1994Jun30.035906.18338@ras.tafar.saar.de> <1994Jul1.093706.8415@muffin.apana.org.au>
+NNTP-Posting-Host: xs4all.hacktic.nl
+Keywords: logging, nfs, mount, rpc
+
+In article <1994Jul1.093706.8415@muffin.apana.org.au>,
+Craig Sanders <cas@muffin.apana.org.au> wrote:
+>
+>Speaking of procps, is there a later version than 0.95?  /usr/bin/w no
+>longer reports anything in the 'what' field...hasn't done so since
+>approximately version 1.1.14 of the kernel.
+>
+>-- 
+>cas@muffin.apana.org.au
+
+
+[Here's a repost of my procps-0.95 patch. I submitted it to Michael
+Johnson, but he must still be very busy, so no need to bother him. 
+We'll see what he does with this, in the meantime, it works for me].
+
+
+Here's a quick and unofficial patch against the procps-0.95 package
+(which as far as I know is still the latest version; I believe
+Michael Johnson has been pretty much tied up recently) to correctly
+show the TTY field for ps and the WHAT field for w.  This is for
+kernels with the new TTY drivers, if memory serves starting with
+1.1.17.
+
+I also changed ps to show "?" where there is no controlling terminal
+-instead of "con"-, like kmem.ps does, and modified its behaviour
+when invoked as root to show only root's processes (you'll have to
+specify the -a flag if you want 'em all), also like kmem ps does.
+
+Finally, there's a slight speedup in the reading of the process
+table (in snap.c).
+
+----8<----------------------------------------------------
+*** devname.c.orig	Sat Jan 29 18:54:22 1994
+--- devname.c	Sun Jun 12 13:34:42 1994
+***************
+*** 36,59 ****
+  static char *ttsub = "0123456789abcdef";
+  
+! void dev_to_tty(char *tty, int dev)
+! {
+! 
+!   if (dev == -1)
+!     strcpy(tty," ? ");
+!   else if (dev == 0)
+!     strcpy(tty,"con");
+!   else if (dev < 64) {
+!     sprintf(tty, "v%02d", dev);
+!   } else {
+!     if (dev < 128) {
+!       sprintf(tty, "s%02d", (dev - 64));
+!     } else {
+!       tty[0] = 'p';
+!       tty[1] = ttgrp[(dev >> 4) & 017];
+!       tty[2] = ttsub[dev & 017];
+!     }
+!   }
+!   tty[3] = 0;
+! }
+  
+  int tty_to_dev(char *tty)
+--- 36,62 ----
+  static char *ttsub = "0123456789abcdef";
+  
+!  void dev_to_tty(char *tty, int dev)
+!  {
+! 	if (dev == 0)
+! 		strcpy(tty," ? ");
+! 	else 
+! 	if (dev == 1024)
+! 		strcpy(tty,"con");
+! 	else 
+! 	if (dev < 1024+64) 
+! 		sprintf(tty, "v%02d", dev-1024);
+! 	else 
+! 	{
+! 		if (dev < 1024+128) 
+! 			sprintf(tty, "s%02d", (dev-64-1024));
+! 		else 
+! 		{
+! 			tty[0] = 'p';
+! 			tty[1] = ttgrp[((dev-1024) >> 4) & 017];
+! 			tty[2] = ttsub[(dev-1024) & 017];
+! 		}
+! 	}
+! 	tty[3] = 0;
+!  }
+  
+  int tty_to_dev(char *tty)
+***************
+*** 69,97 ****
+  	struct stat buf;
+  	if (fstat(0, &buf) != -1)
+! 	    return(buf.st_rdev & 0xff);
+  	else
+  	    return -1;
+      }
+      if (tty[0] == 'v') {
+          sscanf(&tty[1], "%d", &i);
+! 	return(i);
+      }
+      if (tty[0] == 's') {
+          sscanf(&tty[1], "%d", &i);
+! 	return(i+64);
+      }
+      if (tty[0] == 'p') {
+          p = strchr(ttgrp, tty[1]);
+  	q = strchr(ttsub, tty[2]);
+! 	return(((p - ttgrp) << 4) | (q - ttsub));
+      }
+      if ((strcmp(tty, "con") == 0) || (strcmp(tty, "co") == 0))
+! 	return(0);
+      /* The rest are for compatibility with old releases */
+      if (tty[1] == '\0' && *tty >= '0' && *tty <= '9')
+! 	return(*tty - '0');
+      if ((p = strchr(ttgrp, *tty)) != NULL &&
+  	(q = strchr(ttsub, tty[1])) != NULL)
+! 	return(((p - ttgrp) << 4) | (q - ttsub));
+      else
+  	return -1;
+--- 72,102 ----
+  	struct stat buf;
+  	if (fstat(0, &buf) != -1)
+! 	    return(buf.st_rdev);
+  	else
+  	    return -1;
+      }
++     if (strcmp( tty, "?" )==0)
++ 	return( 0 );
+      if (tty[0] == 'v') {
+          sscanf(&tty[1], "%d", &i);
+! 	return(1024+i);
+      }
+      if (tty[0] == 's') {
+          sscanf(&tty[1], "%d", &i);
+! 	return(1024+i+64);
+      }
+      if (tty[0] == 'p') {
+          p = strchr(ttgrp, tty[1]);
+  	q = strchr(ttsub, tty[2]);
+! 	return(1024+((p - ttgrp) << 4) | (q - ttsub));
+      }
+      if ((strcmp(tty, "con") == 0) || (strcmp(tty, "co") == 0))
+! 	return(1024);
+      /* The rest are for compatibility with old releases */
+      if (tty[1] == '\0' && *tty >= '0' && *tty <= '9')
+! 	return(1024+*tty - '0');
+      if ((p = strchr(ttgrp, *tty)) != NULL &&
+  	(q = strchr(ttsub, tty[1])) != NULL)
+! 	return(1024+((p - ttgrp) << 4) | (q - ttsub));
+      else
+  	return -1;
+***************
+*** 109,113 ****
+      if (S_ISCHR(sb.st_mode))
+      {
+!         dev_to_tty(ftname, MINOR(sb.st_rdev));
+      }
+      else
+--- 114,118 ----
+      if (S_ISCHR(sb.st_mode))
+      {
+!         dev_to_tty(ftname, sb.st_rdev);
+      }
+      else
+*** ps.c.orig	Sun Apr 10 12:46:12 1994
+--- ps.c	Mon Jun 13 22:08:19 1994
+***************
+*** 271,283 ****
+      struct ps_proc_head *ph;
+      struct ps_proc *this, **arr_ver;
+!     int tty = 0, uid, i;
+  
+      uid = getuid();
+  
+      if (CL_ctty)
+!       tty = tty_to_dev(CL_ctty);
+  
+      if (CL_pid == -1)
+!       ph = take_snapshot((CL_all | (uid==0)), CL_fmt==PS_U, CL_no_ctty,
+  			   CL_fmt==PS_M, CL_run_only, uid, tty);
+      else
+--- 271,286 ----
+      struct ps_proc_head *ph;
+      struct ps_proc *this, **arr_ver;
+!     int tty = -1, uid, i;
+  
+      uid = getuid();
+  
+      if (CL_ctty)
+!       if ((tty = tty_to_dev(CL_ctty))==-1) {
+!           fprintf(stderr, "the name `%s' is not a tty\n", CL_ctty);
+!           exit(1);
+!       }
+  
+      if (CL_pid == -1)
+!       ph = take_snapshot(CL_all, CL_fmt==PS_U, CL_no_ctty,
+  			   CL_fmt==PS_M, CL_run_only, uid, tty);
+      else
+*** snap.c.orig	Sat Jan 29 18:54:24 1994
+--- snap.c	Tue Jun 14 15:54:31 1994
+***************
+*** 8,12 ****
+  #include <stdlib.h>
+  #include <sys/dir.h>
+- #include <regex.h>
+  #include <sys/stat.h>
+  #include <sys/types.h>
+--- 8,11 ----
+***************
+*** 52,56 ****
+  
+    proc = opendir("/proc");
+-   re_comp("^[0-9]*$");
+  
+    ph = (struct ps_proc_head *) xcalloc(ph, sizeof(struct ps_proc_head));
+--- 51,54 ----
+***************
+*** 60,67 ****
+  
+    while(ent = readdir(proc)) {
+!     if(!re_exec(ent->d_name)) continue;
+      sprintf(filename, "/proc/%s", ent->d_name);
+      stat(filename, &sb);
+!     if(!a && (sb.st_uid != uid)) continue;
+      this->uid = sb.st_uid;
+      mycpy(ent->d_name, this->cmdline, "cmdline", sizeof(this->cmdline), 1);
+--- 58,73 ----
+  
+    while(ent = readdir(proc)) {
+!     /*
+!     * I'm assuming anything that starts with a digit is a
+!     * valid process directory.  Since the kernel has absolute
+!     * control over the /proc directory, this is a valid 
+!     * assumption, I think.			- bjd
+!     */
+!     if (!(*ent->d_name>='0' && *ent->d_name<='9'))
+!     	continue;
+!     	
+      sprintf(filename, "/proc/%s", ent->d_name);
+      stat(filename, &sb);
+!     if(!a && (sb.st_uid != uid) && ctty==-1) continue;
+      this->uid = sb.st_uid;
+      mycpy(ent->d_name, this->cmdline, "cmdline", sizeof(this->cmdline), 1);
+***************
+*** 83,89 ****
+  	   &this->signal, &this->blocked, &this->sigignore, &this->sigcatch,
+  	   &this->wchan);
+!     if ((ctty && (ctty != this->tty))
+  	|| (r && this->state != 'R' && this->state != 'D')
+! 	|| (!x && (this->tty == -1))) {
+        this->pid = 0;
+        continue;
+--- 89,95 ----
+  	   &this->signal, &this->blocked, &this->sigignore, &this->sigcatch,
+  	   &this->wchan);
+!     if ((ctty!=-1 && (ctty != this->tty))
+  	|| (r && this->state != 'R' && this->state != 'D')
+! 	|| (!x && (this->tty == 0) && ctty < 0)) {
+        this->pid = 0;
+        continue;
+***************
+*** 116,120 ****
+  		      one more readdir, and there will be a hanging entry... 
+  		      But I make it conditional to be safe */
+!     that->next = (struct ps_proc *) NULL;
+      free (this);
+    } else this->next = (struct ps_proc *) NULL;
+--- 122,127 ----
+  		      one more readdir, and there will be a hanging entry... 
+  		      But I make it conditional to be safe */
+!     if (that)
+!        that->next = (struct ps_proc *) NULL;
+      free (this);
+    } else this->next = (struct ps_proc *) NULL;
+*** top.c.orig	Sun Apr 10 13:10:13 1994
+--- top.c	Sun Jun 12 13:34:35 1994
+***************
+*** 153,157 ****
+  
+    /* first time through, just collect process stats */
+!   ph = take_snapshot(1, 1, 1, 1, 0, 0, 0);
+    elapsed_time = get_elapsed_time();
+    do_stats(ph,elapsed_time,0);
+--- 153,157 ----
+  
+    /* first time through, just collect process stats */
+!   ph = take_snapshot(1, 1, 1, 1, 0, 0, -1);
+    elapsed_time = get_elapsed_time();
+    do_stats(ph,elapsed_time,0);
+*** w.c.orig	Sat Jan 29 18:54:25 1994
+--- w.c	Sun Jun 12 13:34:26 1994
+***************
+*** 125,131 ****
+  /* get running processes -- want all processes, we want the username as well
+     as id, don't need processes without controlling
+!    terminals, don't need memory stats, uid doesn't matter, and ctty is NULL
+     so that it doesn't get considered. */
+!   ph = take_snapshot(1, 1, 0, 0, 0, 0, 0);
+  
+  /* print uptime */
+--- 125,131 ----
+  /* get running processes -- want all processes, we want the username as well
+     as id, don't need processes without controlling
+!    terminals, don't need memory stats, uid doesn't matter, and ctty is -1
+     so that it doesn't get considered. */
+!   ph = take_snapshot(1, 1, 0, 0, 0, 0, -1);
+  
+  /* print uptime */
+----8<----------------------------------------------------
+
+
+bjdouma@xs4all.hacktic.nl
+
+

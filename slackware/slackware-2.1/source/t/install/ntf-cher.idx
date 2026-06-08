@@ -1,0 +1,4 @@
+./usr/lib/texmf/fonts/misc/cherokee/create.sh
+./usr/lib/texmf/fonts/misc/cherokee/src/cherokee.mf
+./usr/lib/texmf/fonts/misc/cherokee/tfm/cherokee.tfm
+./usr/lib/texmf/tex/misc/cherokee.sty

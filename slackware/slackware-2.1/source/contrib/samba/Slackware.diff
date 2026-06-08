@@ -1,0 +1,44 @@
+--- Makefile.orig	Sat Oct 29 04:22:56 1994
++++ Makefile	Sat Oct 29 04:24:39 1994
+@@ -8,13 +8,13 @@
+ MANDIR = /usr/local/man
+ 
+ # The directory to put the executables in
+-INSTALLDIR = /usr/local/samba
++INSTALLDIR = /usr/lib/samba
+ 
+ # The permissions to give the executables
+ INSTALLPERMS = 0755
+ 
+ # Add any optimisation or debugging flags here
+-FLAGS1 = -O
++FLAGS1 = -O2
+ LIBS1 = 
+ 
+ # If you have the gcc compiler then use it, otherwise any ansi-C compiler
+@@ -24,10 +24,10 @@
+ # set these to where to find various files
+ # These can be overridden by command line switches (see smbd(8))
+ # or in smb.conf (see smb.conf(5))
+-FLAGS2 = -DDEBUGFILE=\"/usr/local/samba/log\"
+-FLAGS3 = -DSERVICES=\"/usr/local/samba/smb.conf\"
+-FLAGS4 = -DLMHOSTS=\"/usr/local/samba/lmhosts\"
+-FLAGS5 = -DLOCKDIR=\"/usr/local/samba/locks\"
++FLAGS2 = -DDEBUGFILE=\"/var/lib/samba/log\"
++FLAGS3 = -DSERVICES=\"/var/lib/samba/smb.conf\"
++FLAGS4 = -DLMHOSTS=\"/var/lib/samba/lmhosts\"
++FLAGS5 = -DLOCKDIR=\"/var/lib/samba/locks\"
+ 
+ # set this to the name of the default account, which is the one
+ # to use when no username or password is specified.  This can be overridden
+@@ -76,8 +76,8 @@
+ # LIBSM = -lshadow
+ 
+ # Use this for Linux without shadow passwords
+-# FLAGSM = -DLINUX
+-# LIBSM = 
++FLAGSM = -DLINUX
++LIBSM = 
+ 
+ # This is for SOLARIS (add -DSOLARIS2_2 if using 2.2)
+ # FLAGSM = -DSOLARIS -DSHADOW_PWD -DNETGROUP -DBSD_COMP

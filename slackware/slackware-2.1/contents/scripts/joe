@@ -1,0 +1,4 @@
+( cd usr/bin ; rm -rf jstar )
+( cd usr/bin ; ln -sf joe jstar )
+( cd usr/bin ; rm -rf jmacs )
+( cd usr/bin ; ln -sf joe jmacs )

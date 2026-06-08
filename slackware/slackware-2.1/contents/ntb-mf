@@ -1,0 +1,82 @@
+PACKAGE NAME:     ntb-mf
+COMPRESSED PACKAGE SIZE:     449 K
+UNCOMPRESSED PACKAGE SIZE:     1160 K
+PACKAGE LOCATION: diskt1
+PACKAGE DESCRIPTION:
+ntb-mf:   ntb-mf 1.2
+ntb-mf:
+ntb-mf:   This package contains the binaries for MetaFont, the bases mf.base
+ntb-mf:   (plain.base) and cmmf.base (cmplain.base) and the basic setup for the
+ntb-mf:   font directories. The current version of MetaFont is 2.71 (C version 
+ntb-mf:   6.1).
+ntb-mf:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/inimf
+usr/bin/virmf
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/ancient/
+usr/lib/texmf/fonts/ancient/create.sh
+usr/lib/texmf/fonts/cm/
+usr/lib/texmf/fonts/cm/create.sh
+usr/lib/texmf/fonts/create.sh
+usr/lib/texmf/fonts/create/
+usr/lib/texmf/fonts/create/allfonts.lst
+usr/lib/texmf/fonts/create/create_pk_tfm
+usr/lib/texmf/fonts/create/createallfonts
+usr/lib/texmf/fonts/create/createfonts
+usr/lib/texmf/fonts/create/genscript
+usr/lib/texmf/fonts/create/genscript.c
+usr/lib/texmf/fonts/language/
+usr/lib/texmf/fonts/language/create.sh
+usr/lib/texmf/fonts/misc/
+usr/lib/texmf/fonts/misc/create.sh
+usr/lib/texmf/fonts/phantasy/
+usr/lib/texmf/fonts/phantasy/create.sh
+usr/lib/texmf/fonts/symbol/
+usr/lib/texmf/fonts/symbol/create.sh
+usr/lib/texmf/ini/
+usr/lib/texmf/ini/cmmf.base
+usr/lib/texmf/ini/mf.base
+usr/lib/texmf/ini/mf.pool
+usr/lib/texmf/ini/plain.base
+usr/lib/texmf/mf/
+usr/lib/texmf/mf/3test.mf
+usr/lib/texmf/mf/6test.mf
+usr/lib/texmf/mf/base/
+usr/lib/texmf/mf/base/modes.mf
+usr/lib/texmf/mf/base/plain.mf
+usr/lib/texmf/mf/expr.mf
+usr/lib/texmf/mf/io.mf
+usr/lib/texmf/mf/mfman.mf
+usr/lib/texmf/mf/null.mf
+usr/lib/texmf/mf/oneone.mf
+usr/lib/texmf/mf/rtest.mf
+usr/lib/texmf/mf/test.mf
+usr/lib/texmf/mf/waits.mf
+usr/lib/texmf/mf/ztest.mf
+usr/lib/texmf/tools/
+usr/lib/texmf/tools/create_ls-R
+usr/lib/texmf/tools/createfontdirs
+usr/lib/texmf/tools/make1cmfont
+usr/lib/texmf/tools/make1mffont
+usr/lib/texmf/tools/makecmfont
+usr/lib/texmf/tools/makemffont
+usr/lib/texmf/tools/ntb-mf.cfg
+usr/lib/texmf/tools/patch1_2_1
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/mf.1.gz
+install/
+install/doinst.sh
+var/
+var/texfonts/
+var/texfonts/pk/
+var/texfonts/pk/localfont/
+var/texfonts/src/
+var/texfonts/tfm/

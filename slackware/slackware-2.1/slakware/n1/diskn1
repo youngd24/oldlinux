@@ -1,0 +1,34 @@
+CONTENTS: tcpip netcfg elm 
+netcfg:   'netconfig' is a script to help configure TCP/IP and mail on your 
+netcfg:   machine. It will ask you a series of questions about your network and
+netcfg:   use your answers to automatically configure rc.M, rc.inet1, networks,
+netcfg:   resolv, hosts, smail, and elm.rc. You may run the script again at any
+netcfg:   time to reconfigure your machine. If you install the 'netconfig'
+netcfg:   script, it will be executed for you before you leave 'setup'.
+netcfg:
+netcfg:
+netcfg:
+netcfg:
+netcfg:
+tcpip:    TCP/IP networking programs and support files.
+tcpip:
+tcpip:    This is an updated set of utilities for NET3. Some of these were
+tcpip:    written from scratch and some were ported from various sources
+tcpip:    including NetBSD. The code was written and ported by Florian  
+tcpip:    La Roche, Alan Cox, Fred N. van Kempen, Donald J. Becker, Rick 
+tcpip:    Sladkey, Mark Shand, Orest Zborowski, Johannes Stille, Linus Torvalds,
+tcpip:    and others.
+tcpip:
+tcpip:
+tcpip:
+elm:      Menu-driven user mail program. (v. 2.4pl23)
+elm:
+elm:      Elm is an interactive screen-oriented mailer program originally
+elm:      written by Dave Taylor, and continued by the Elm Development Group. 
+elm:
+elm:
+elm:
+elm:
+elm:
+elm:
+elm:

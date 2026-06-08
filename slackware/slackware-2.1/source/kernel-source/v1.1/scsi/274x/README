@@ -1,0 +1,159 @@
+@(#)README 1.11 94/09/06 jda
+
+AHA274x/284x INTERIM DRIVER
+
+***  THIS SHOULD BE CONSIDERED PRE-ALPHA SOFTWARE.  USE AT YOUR OWN RISK  ***
+
+BACKGROUND & LIMITATIONS
+
+For various reasons, we ended up with one of these cards under the
+impression that support was soon forthcoming.  In mid-May, I asked
+Scott Ferris (the official person who's supposed to be writing this
+driver) what documentation he used, _finally_ got it from Adaptec,
+and started writing this driver.  It is now at what I would consider
+a usable state.  I've already started running our news server using
+this driver - if it is stable (and it appears to be so far), then my
+development platform is going into service, meaning I will unfortunately
+be able to provide only minimal support.
+
+Note that Scott is still developing his driver, and when his is stable
+it will supercede this one (hence the name "interim").  To help eliminate
+confusion, this driver will officially remain at a "pre-alpha" level.  The
+latest version can be obtained by anonymous ftp from ftp.cpsc.ucalgary.ca
+in /pub/systems/linux/aha274x.
+
+It supports both EISA 274x and VL-bus 284x, either single or twin-bus cards
+(but not the second SCSI bus of twin cards - see aha274x.c), and supports
+disconnection, synchronous SCSI, and scatter-gather.  Unlike previous
+versions, abort() and reset() are now implemented, and both hosts.c and
+aha274x.c should give a clean compile.  Code is now present to detect parity
+errors, but has not been tested.
+
+I wrote this using a 1.0.9 kernel.  Unfortunately, I'm getting tired of
+#ifdef'ing everything to handle two or three different evolutionary steps
+in the SCSI kernel code, so I've upgraded my system to 1.1.49, and will
+only leave in code to support versions from about 1.1.45 onward.  Sorry
+if that means kernel upgrades for a lot of you.  If someone wants to work
+out an "old kernel" patch based on stuff I've done in the previous drivers,
+I'd be happy to include the patchfile in the distribution.
+
+Thanks to patches supplied by Mark Olson <molson@tricord.com>, this driver
+will now work with the 284x series (the VL-bus version of this card).  The
+294x (PCI-bus) is still unsupported, but I'm willing to incorporate patches
+if anyone can supply them.
+
+Under protest, this driver is subject to the GPL - see the file
+COPYING for details.
+
+Thanks to the following people for bug fixes/code improvements (also
+thanks to the people who have sent me feedback):
+
+	"David F. Carlson" <dave@ee.rochester.edu>
+	Jimen Ching <jiching@wiliki.eng.hawaii.edu>
+	Darcy Grant <darcy@cpsc.ucalgary.ca>
+	Mark Olson <molson@tricord.com>
+	map@europa.ecn.uoknor.edu (Michael A. Parker)
+	Thomas Scheunemann <thomas@dagobert.uni-duisburg.de>
+
+Special thanks to Drew Eckhardt <drew@kinglear.cs.Colorado.EDU> for
+fielding my questions about synchronous negotiation.  The new improved
+installation instructions are based on some sent to me by
+smoe0024@rz.uni-hildesheim.de (Steffen Moeller).
+
+INSTALLATION
+
+0.  Make sure that the card's BIOS is enabled or this WILL NOT WORK.
+	This is because the EISA configuration information appears to be
+	only accessible through a BIOS call - I've located the information
+	on my machine via a hack, but I don't think it's portable.  I've
+	made several requests for EISA technical information on the net
+	without success.. so for the time being it's safer to have the
+	aha274x's BIOS load all the information for me.  Also, it performs
+	a lot of self tests of the card which I'm not keen on duplicating.
+	If you're using a 284x, enable the BIOS or the card won't be detected.
+
+1.  Unpack the files.  If you got this from ftp.cpsc.ucalgary.ca, this
+	will look like:
+
+		# cd /tmp
+		# tar xzvf aha274x-pre-alpha.tar.gz
+
+2.  Move required files to their destination in the kernel source:
+
+		# mv aha274x* /usr/src/linux/drivers/scsi
+
+3.  cd to kernel sources:
+
+		# cd /usr/src/linux
+
+4.  Edit config.in.  This will be either be simply config.in, or
+	arch/i386/config.in - if you aren't prompted for 274x/284x
+	support when you "make config" below, you edited the wrong
+	one :-)  Find the line with AHA1740 and add below:
+
+		bool 'Adaptec AHA274X/284X support' CONFIG_SCSI_AHA274X y
+
+5.  cd to driver sources:
+
+		# cd drivers/scsi
+
+6.  Find the paragraph dealing with AHA1740 in Makefile and add these
+	lines below:
+
+		ifdef CONFIG_SCSI_AHA274X
+		SCSI_OBJS := $(SCSI_OBJS) aha274x.o
+		SCSI_SRCS := $(SCSI_SRCS) aha274x.c
+		endif
+
+7.  Edit hosts.c and find the first occurance of AHA1740, and add these
+	lines below:
+
+		#ifdef CONFIG_SCSI_AHA274X
+		#include "aha274x.h"
+		#endif
+
+8.  Find AHA1740 in hosts.c again and put the following lines below:
+
+		#ifdef CONFIG_SCSI_AHA274X
+			AHA274X,
+		#endif
+
+9.  cd back to /usr/src/linux
+
+		# cd ../..
+
+10. Configure the kernel - choose the options which reflect your hardware,
+	plus the 274x/284x support:
+
+		# make config
+
+11. Build new dependencies for building the kernel:
+
+		# make depend ; make clean
+
+12. Compile the kernel.  You should not get *any* warnings when compiling
+	any of the driver code - if you do, that may indicate something
+	untoward happening.
+
+		# make
+
+	[ The author of these instructions suggested using `make zDisk'
+	  instead to make a bootdisk - I think you have to leave a blank
+	  formatted disk in the floppy drive if you're going to do this.
+	  I can't even find it in the Makefile for 1.1.49.  In any case,
+	  you'll need to get the kernel so that it boots somehow. ]
+
+13. BACK UP YOUR KERNEL AND DATA.  I'm not kidding.
+
+14. Reboot using the new kernel.
+
+15. Test it and send your comments/patches/&c to "aycock@cpsc.ucalgary.ca";
+	please consider sending me mail even if you have no problems, so
+	I know if someone else is using this successfully.  Please send a
+	copy of 284x-related mail to "molson@tricord.com" too.  When sending
+	bug reports, please include a description of your hardware, the
+	release number of the driver you're running (if known), and as
+	accurate a facsimilie of any error message you're mailing about.
+
+The SCSI-HOWTO also has instructions on how to install device drivers.
+:ja

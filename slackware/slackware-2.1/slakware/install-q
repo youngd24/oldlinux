@@ -1,0 +1,189 @@
+#!/bin/sh
+dialog --title "Install a Linux kernel to your hard drive" \
+       --checklist "Please select a kernel you would like to install to your \
+hard drive from the Slackware Professional CD-ROM.  If you use LILO, be sure \
+to run it again after installing a new kernel. Press ENTER \
+when you are done." \
+18 70 8 \
+"idekerno" "Linux kernel 1.1.18 for IDE" "off" \
+"scsikrno" "Linux kernel 1.1.18 for IDE/SCSI" "off" \
+"cdu31ao" "Linux kernel 1.1.18 for IDE/SCSI/cdu31a" "off" \
+"sbpcdo" "Linux kernel 1.1.18 for IDE/SCSI/SBProCD" "off" \
+"sony535o" "Linux kernel 1.1.18 for IDE/SCSI/Sony535" "off" \
+"alpha" "Linux kernel 1.1.59 with alpha SCSI" "off" \
+"cdu31a" "Linux kernel 1.1.59 for IDE/SCSI/cdu31a" "off" \
+"cdu535" "Linux kernel 1.1.59 IDE/SCSI/Sony535" "off" \
+"mitsumi" "Linux kernel 1.1.59 for IDE/SCSI/MitsumiCD" "off" \
+"nec260" "Linux kernel 1.1.59 for IDE/SCSI/NEC260CD" "off" \
+"sbpcd" "Linux kernel 1.1.59 IDE/SCSI/SBProCD" "off" \
+"xt" "Linux kernel 1.1.59 for MFM/RLL drives" "off" \
+2> /tmp/return
+if fgrep '"alpha"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package alpha to your hard drive" --infobox \
+"Linux kernel 1.1.59 with some alpha SCSI drivers.\n\
+\n\
+This is a Linux kernel with support for Adaptec AHA274X/284X SCSI,\n\
+Always IN2000 SCSI, and EATA-DMA (rev. 2.0b) (DPT,NEC,AT&T) SCSI.\n\
+(Adaptec AHA274X/284X SCSI is also included in other kernels with\n\
+SCSI support)\n\
+\n\
+" 9 75
+ installpkg q1/alpha.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"idekerno"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package idekerno to your hard drive" --infobox \
+"Linux kernel version 1.1.18, without SCSI support.\n\
+\n\
+A Linux kernel for computers that do not need SCSI support. If you \n\
+don't have SCSI, the advantage of using the idekern kernel is that \n\
+your machine will boot faster with a leaner kernel. See the file\n\
+'idekern.log' for an exact list of included drivers. A short list:\n\
+\n\
+This kernel also has support for PPP, UMSDOS, CSLIP, ethernet,\n\
+Ftape, and the PS/2 style mouse (but not other busmouse types).\n\
+\n\
+" 12 75
+ installpkg q1/idekerno.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"scsikrno"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package scsikrno to your hard drive" --infobox \
+"Linux kernel version 1.1.18, with SCSI + IDE support. \n\
+\n\
+This is a Linux kernel with full support for SCSI devices such as hard\n\
+drives, tape drives, and CD-ROM drives. See the file 'scsikern.log' \n\
+for an exact list of included drivers.\n\
+\n\
+This kernel also has support for PPP, UMSDOS, CSLIP, ethernet,\n\
+Ftape, and the PS/2 style mouse (but not other busmouse types).\n\
+\n\
+" 11 75
+ installpkg q1/scsikrno.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"cdu31ao"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package cdu31ao to your hard drive" --infobox \
+"Linux kernel version 1.1.18, with SCSI+IDE+Sony CDU31A CD support.\n\
+\n\
+This is a Linux kernel with support for the Sony CDU31A CD-ROM\n\
+drives, as well as full support for SCSI devices such as hard drives,\n\
+tape drives, and SCSI CD-ROM drives. See the file 'cdu31a.log' for\n\
+an exact list of included drivers.\n\
+\n\
+This kernel also has support for PPP, UMSDOS, CSLIP, ethernet,\n\
+Ftape, and the PS/2 style mouse (but not other busmouse types).\n\
+\n\
+" 12 75
+ installpkg q2/cdu31ao.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"sbpcdo"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package sbpcdo to your hard drive" --infobox \
+"Linux kernel version 1.1.18, with SCSI+IDE+SoundBlaster Pro CD\n\
+(also Panasonic/Lasermate).\n\
+\n\
+This is a Linux kernel with support for the whole family of IDE-style\n\
+Kotobuki/Matsushita/Panasonic CR-5xx drives for SoundBlaster ('Pro' or\n\
+'16 ASP' or compatible) cards and for 'no-sound' interfaces like \n\
+Lasermate and the Panasonic CI-101P.\n\
+\n\
+This kernel also has support for PPP, UMSDOS, CSLIP, ethernet,\n\
+Ftape, and the PS/2 style mouse (but not other busmouse types).\n\
+\n\
+" 13 75
+ installpkg q2/sbpcdo.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"sony535o"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package sony535o to your hard drive" --infobox \
+"Linux kernel version 1.1.18, with SCSI+IDE+Sony 535/531 CD support.\n\
+\n\
+This is a Linux kernel with support for the Sony CDU 535/531 CD-ROM\n\
+drives, as well as full support for SCSI devices such as hard drives,\n\
+tape drives, and SCSI CD-ROM drives. See the file 'sony535.log' for\n\
+an exact list of included drivers.\n\
+\n\
+This kernel also has support for PPP, UMSDOS, CSLIP, ethernet,\n\
+Ftape, and the PS/2 style mouse (but not other busmouse types).\n\
+\n\
+" 12 75
+ installpkg q2/sony535o.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"cdu31a"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package cdu31a to your hard drive" --infobox \
+"Linux kernel version 1.1.59, with SCSI+IDE+Sony CDU31/33A CD support.\n\
+\n\
+This is a Linux kernel with support for the Sony CDU31/33A CD-ROM\n\
+drives, as well as full support for SCSI devices such as hard drives,\n\
+tape drives, and SCSI CD-ROM drives. See the file 'cdu31a.cfg' for\n\
+an exact list of included drivers.\n\
+\n\
+This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,\n\
+Ftape, and the PS/2 style mouse (but not other busmouse types).\n\
+\n\
+" 12 75
+ installpkg q3/cdu31a.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"cdu535"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package cdu535 to your hard drive" --infobox \
+"Linux kernel version 1.1.59, with SCSI+IDE+Sony CDU531/535 CD support.\n\
+\n\
+This is a Linux kernel with support for the Sony CDU531/535 CD-ROM\n\
+drives, as well as full support for SCSI devices such as hard drives,\n\
+tape drives, and SCSI CD-ROM drives. See the file 'cdu535.cfg' for\n\
+an exact list of included drivers.\n\
+\n\
+This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,\n\
+Ftape, and the PS/2 style mouse (but not other busmouse types).\n\
+\n\
+" 12 75
+ installpkg q3/cdu535.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"mitsumi"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package mitsumi to your hard drive" --infobox \
+"Linux kernel version 1.1.59, with SCSI+IDE+Mitsumi CD support.\n\
+\n\
+This is a Linux kernel with support for Mitsumi CD-ROM drives, as \n\
+well as full support for SCSI devices such as hard drives, tape\n\
+drives, and SCSI CD-ROM drives. See the file 'mitsumi.cfg' for an\n\
+exact list of included drivers.\n\
+\n\
+This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,\n\
+Ftape, and the PS/2 style mouse (but not other busmouse types).\n\
+\n\
+" 12 75
+ installpkg q4/mitsumi.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"nec260"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package nec260 to your hard drive" --infobox \
+"Linux kernel version 1.1.59, with SCSI+IDE+NEC260 IDE CD support.\n\
+\n\
+This is a Linux kernel with support for the NEC 260 CD-ROM as the\n\
+second device on the IDE controller.  It also supports all the SCSI\n\
+devices supported by the standard kernel.\n\
+\n\
+" 8 75
+ installpkg q4/nec260.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"sbpcd"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package sbpcd to your hard drive" --infobox \
+"Linux kernel version 1.1.59, with SCSI+IDE+Soundblaster CD support.\n\
+\n\
+This is a Linux kernel with support for the whole family of\n\
+Matsushita/Panasonic CD-ROM drives, as well as full support for SCSI\n\
+devices such as hard drives, tape drives, and SCSI CD-ROM drives. See\n\
+the file 'sbpcd.cfg' for an exact list of included drivers.\n\
+\n\
+This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,\n\
+Ftape, and the PS/2 style mouse (but not other busmouse types).\n\
+\n\
+" 12 75
+ installpkg q5/sbpcd.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xt"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xt to your hard drive" --infobox \
+"Linux kernel version 1.1.59, with IDE+XT (MFM/RLL) drive support.\n\
+This is a Linux kernel with support for XT style (MFM/RLL) hard \n\
+drives.  See 'xt.cfg' for an exact list of included drivers.\n\
+This kernel also has support for PPP, UMSDOS, CSLIP, Ethernet,\n\
+Ftape, and the PS/2 style mouse (but not other busmouse types).\n\
+" 7 75
+ installpkg q5/xt.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

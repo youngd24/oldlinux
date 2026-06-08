@@ -1,0 +1,15 @@
+PACKAGE NAME:     xusrbin
+COMPRESSED PACKAGE SIZE:     0 K
+UNCOMPRESSED PACKAGE SIZE:     10 K
+PACKAGE LOCATION: diskx5
+PACKAGE DESCRIPTION:
+xusrbin:  Rstartd daemon.
+xusrbin:
+xusrbin:  This package includes rstartd, which you'll need to run if you plan
+xusrbin:  to use the rstart client.
+xusrbin:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/rstartd

@@ -1,0 +1,8 @@
+
+NTeX Release 1.2 --- nts-kpat 1.1 --- status: optional
+
+The sources for the kpathsea library. You need this package to compile
+web2c, dvi2ljk, dvipsk and xdvik. This package contains the sources for
+version 2.1 which is needed for dvi2ljk, dvipsk and xdvik and the version
+1.7 which is used for web2c.
+

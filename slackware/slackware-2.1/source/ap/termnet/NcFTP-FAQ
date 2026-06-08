@@ -1,0 +1,273 @@
+Here are some answers to frequently asked questions about NcFTP.  I get
+a lot of mail about the program, and since I don't have time to answer
+personally to most mail, you might get this file in return.  (But don't
+be fooled;  I love getting mail!  I just don't like replying to all of it...)
+
+Here are the questions.  Changes since the original have the date after
+the question.  Grep ahead to get to the one you want:
+
+01.  I've heard about your ncftp program.  Where can I get it?
+02.  Is NcFTP free?
+03.  What are .gz and .tgz files?  'compress' barfs when I try it on these.
+04.  I can't download from your FTP directory, permissions are -rw-------..
+05.  I don't have gzip installed on my system.  Will you mail it to me?
+06.  I only have FTP access during business hrs. Will you mail it to me?
+07.  I don't have an FTP program, will you mail ncftp to me?
+08.  I have the source code, but how do I compile it?
+09.  I have ncftp, but I can't get it to compile.
+10.  I've hacked ncftp a bit.  Do you want me to mail you a patch file?
+11.  When can I expect the new version you keep mentioning?
+12.  How about adding remote filename completion?
+13.  How about adding reget?
+14.  How can I get more sites in my .ncrecent file?  (July 3)
+15.  NcFTP is so good I feel I have to give you something.  Where do I send?
+16.  What can I do to help you out with NcFTP?
+17.  I'm having problems with ncftp for Linux when using term.
+18.  Do you mind if I put up ncftp for anonymous FTP?
+19.  Can I sell the source code or executables of NcFTP for profit?  (Aug 6)
+20.  What does NCEMRSoft stand for?
+21.  Do you mind if I write an article about ncftp?
+22.  Does ncftp have a command-line editor and history facility?
+23.  Can I use colon-mode with put?  (July 3)
+24.  When I try to compile with GNU readline I get link errors.  (July 3)
+25.  I don't want progress reports when ncftp's in the background.  (July 3)
+26.  Does NcFTP have any security holes? (July 17)
+27.  Has NcFTP been ported to VMS/Windows/OS2/Mac/Amiga? (July 22)
+28.  How come aborting doesn't work consistently? (August 6)
+
+01.  I've heard about your ncftp program.  Where can I get it?
+
+     Come on over to cse.unl.edu, and look in the /pub/mgleason/ncftp
+     directory.  You can FTP the latest distribution from there.
+
+02.  Is NcFTP free?
+
+     Yes!  Feel free to use the program at school, work, whatever.  My
+     goal is to have ncftp come standard with OS releases.  All you need
+     to do is install it or bug your sysadmin to install it for you.
+
+03.  What are .gz and .tgz files?  'compress' barfs when I try it on these.
+
+     Most stuff in my FTP area are compressed using the gzip program from
+     GNU. Because we are low on disk space on this machine, I feel I
+     should make every effort to use as little as possible.  So you
+     need the gunzip program compiled to unmangle stuff in my FTP area.
+
+     The most current version will be at the GNU archives at
+     prep.ai.mit.edu:/pub/gnu, but I keep a copy of it in /pub/mgleason.
+
+     Once you have gunzip installed on your system, you can use it along
+     with tar to get the ncftp sources in C-compiler readable form.
+     I like to do .tgz's and .tar.gz's (which are the same) in one line:
+
+         gunzip -c ncftp.tgz | tar xvof -
+         (You may have to omit the 'o' from 'xvof')
+
+     For plain .gz files, all you need to do is:
+
+         gunzip the.gz
+
+04.  I can't download from your FTP directory, permissions are -rw-------..
+
+     A lot of people use this machine for work, so I want to discourage
+     FTP connections during the work day.  I have a cron task turn
+     permissions off at 9 AM and on again at 5 PM.  Sometimes cron
+     doesn't do it's job, so permissions stay turned off.  If this
+     happens send me mail (to mgleason@cse.unl.edu).  Usually when this
+     happens my mailbox is flooded with these types of messages, but
+     that's fine.  I will turn on the permissions manually as soon as
+     I find out.  You won't get a reply, so just try back later.
+
+05.  I don't have gzip installed on my system.  Will you mail it to me?
+06.  I only have FTP access during business hrs. Will you mail it to me?
+07.  I don't have an FTP program, will you mail ncftp to me?
+
+     I don't really like to mail out the program, but I will do it on a
+     limited basis.  For (05) I will mail you a copy, but you have to
+     promise you'll make every effort to get gzip installed on your
+     system (it IS worth it!).   For (06) I will do it once, but next time
+     you have to setup an 'at' job.  Here's a cool Korn shell script
+     that will get the latest version:
+
+#!/bin/ksh
+# getncftp -- Korn shell script to fetch the latest version of ncftp
+# at a random time between 1 and 5 am.  Doesn't take into account
+# your timezone, so if 1 to 5 am isn't within 9am-5pm USA Central time...
+
+(( hr = ($RANDOM % 4) + 1 ))
+(( min = $RANDOM % 60 ))
+
+echo "Fetching at: $hr:$min..."
+
+at $hr:$min am <<!
+cd $PWD
+ncftp -V -1 cse.unl.edu:/pub/mgleason/ncftp/ncftp.tgz
+!
+
+     For (07) I will mail you a copy, but I haven't heard of any
+     OS's that don't have 'ftp' at least.
+
+08.  I have the source code, but how do I compile it?
+
+     Just type 'make'.  That program reads the Makefile, and tries to
+     compile it.
+
+09.  I have ncftp, but I can't get it to compile.
+
+     Please re-read the README for special instructions on what to do
+     with what systems.  If you're a novice and don't know how to fix
+     things still, consult a local guru or demand that your sysadmin
+     install it for you.  I don't have time to show you how to work
+     with Makefiles and C compilers.  But if you do know what you're
+     doing, and it won't compile, let me know.
+
+10.  I've hacked ncftp a bit.  Do you want me to mail you a patch file?
+
+     Sure.  I can't guarantee that I'll apply it right away or at all,
+     but it can't hurt.  Patches that improve portability or fix bugs
+     will most likely be applied right away.  Feature enhancements
+     may not, because I'm working on a new version.
+
+11.  When can I expect the new version you keep mentioning?
+12.  How about adding remote filename completion?
+13.  How about adding reget?
+
+     Please see the NcFTP-News file(s), in the FTP area.  They detail
+     my plans for the next version, 2.0.
+
+14.  How can I get more sites in my .ncrecent file?
+
+     There is no program variable for this, so you have to recompile
+     version 1.7.x and below with -DdMAXRECENTS=37, if you wanted the
+     limit to be 37.
+
+	 However, as of 1.8.0, I added a quick hack that makes the limit 50
+	 instead of 16.  The original reasoning for 16 was that if you had
+	 sites in your .ncftprc, the open menu would scroll off screen.  To
+	 get around that problem, the open menu is now fed to your pager.
+
+15.  NcFTP is so good I feel I have to give you something.  Where do I send?
+
+     The program's free, but if you insist, you can send something to me
+     at 5705 North 117th Plaza, Omaha, NE  68164-1432.
+
+16.  What can I do to help you out with NcFTP?
+
+     I don't really need any help coding the program. But one thing I could
+     use is access to different types of hardware. At the moment, I only
+     have internet access to an IRIX machine (cse) and a Solaris box. If
+     you have a machine not doing much and it has a decent C compiler and
+     debugger (i.e. dbx) I would be grateful for an account an few megs of
+     diskspace. Sometime down the line, I would like to run the new version
+     through Purify too. I would also like an account to be my permanent
+     home, for maintaining the program, reading/sending mail and USENET news,
+     and offering ncftp for anonymous FTP. That is, unless, the university
+     will let me have a permanent account here.
+
+17.  I'm having problems with ncftp for Linux when using term.
+
+     Unfortunately, I can't be of much help.  I just incorporate the
+     term code Linux users send me, and I trust they did it correctly.
+     I would like to get a Linux box of my own sometime.
+
+18.  Do you mind if I put up ncftp for anonymous FTP?
+
+     Since cse.unl.edu is the official site, we get plenty of FTP connections.
+     If you want to shadow my FTP area, that'd be great.
+
+19.  Can I sell the source code or executables of NcFTP for profit?  (Aug 6)
+
+     In general, no.  Please contact me if you would like to do this,
+	 and maybe something can be worked out.
+
+20.  What does NCEMRSoft stand for?
+
+     I won't say what NCEMRS stands for ;-) Sorry!  Let's just say the
+     founding members of NCEMRSoft were disappointed in being rejected
+     for the National Honor Society when they were juniors in high school.
+
+21.  Do you mind if I write an article about ncftp?
+
+     I love to see my name in print. It was nice to be able to bring a book
+     with a whole section on ncftp to a job interview. It's also fun seeing
+     your name in "E-Mail Addresses of the Rich & Famous." So if you want to
+     write about ncftp in your book or magazine, feel free! Let me know so
+     I can go have a look at it.
+
+22.  Does ncftp have a command-line editor and history facility?
+
+     You can compile the program along with Chris Thewalt's "Getline"
+     library, available at the FTP area, or with GNU's Readline library.
+
+23.  Can I use colon-mode with put?
+
+	 No, and to be honest, it's not a high priority item on the To-Do list.
+	 I will do it someday, but not in the immediate future.
+
+24.  When I try to compile with GNU readline I get link errors.  (July 3)
+
+	 Some systems don't have the 'xmalloc' function in the standard
+	 library, and GNU readline apparently uses it.  If you get complaints
+	 about xmalloc not found, you need to link the library it is in.
+	 For my system, I could just add -lxmalloc.  If you can't find it:
+	   (1) Complain to GNU, that's their problem ;-)
+	   (2) Try the Getline library instead.
+	   (3) Don't use Getline or Readline at all.
+
+25.  I don't want progress reports when ncftp's in the background.  (July 3)
+
+	 If you want to do a transfer in the background, you need to tell
+	 the program to not use progress meters.  You can do that by setting
+	 progress-meter to 0, setting verbose to quiet, or from the command
+	 line, use -V -1.
+
+26.  Does NcFTP have any security holes? (July 17)
+
+     To the best of my knowledge, there are no security holes.  There are a
+     couple things to be aware of though.
+
+     A user can elect to put passwords in the .ncftprc (.netrc) file. The
+     program changes the mode of the rc to -rw-------, but that's a minor
+     problem that has existed with the regular ftp for years.
+
+     Some sites don't like to have any information about their internal
+     network known to the outside. Such sites often run a "firewall" that
+     restrict network activity. Often such a setup requires the use of
+     "Passive FTP" mode. The default method of FTP is what I call "Sendport
+     FTP." This method tells the remote server which port on the local host
+     to send data to. Passive FTP gets around this by having the server
+     initiate the data connection. Again, Sendport FTP has been the way the
+     regular 'ftp' has been doing it for a long time, partly because the FTP
+     protocol's minimum implementation specifies Sendport as a requirement,
+     and not Passive FTP. Older versions of ncftp did not support Passive
+     FTP, but it has recently been added.
+
+     On the other hand, ncftp provides built-in support for system logging,
+     for the paranoid sysadmin that has to know everything a user does with
+     ncftp.
+
+27.  Has NcFTP been ported to VMS/Windows/OS2/Mac/Amiga? (July 22)
+
+     It has not been ported to VAX/VMS, or MS Windoze, and I have no
+     immediate plans to do it myself.  There is a program called MaxiFTP
+     for OS/2 whose feature set (and documentation) is based on NcFTP.
+
+     An earlier version of NcFTP was ported to AmigaDOS awhile back, but
+     I think they had some problems with later versions.
+
+     For Macintosh, I happily recommend "Fetch."  
+
+28.  How come aborting doesn't work consistently? (August 6)
+
+	 In the past there have been problems with aborting file transfers
+	 (which includes quitting while paging a remote file).  Interrupting
+	 sometimes caused the program to hang, act weird, or not work at all.
+	 A work-around was introduced, so that when you hit ^C the program
+	 doesn't abort the transfer, but it does supress further output to the
+	 screen.  This hack was put into place a long time ago, but I haven't
+	 attempted to squash it because it's low on my priority list.
+
+     I'm not satisfied with that behavior, but it will have to do until I get
+     the new version out the door. If you like, you can use the buggy interrupt
+     code anyway if you compile with TRY_ABOR.
+

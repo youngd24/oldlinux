@@ -1,0 +1,11 @@
+./usr/lib/texmf/fonts/misc/la/create.sh
+./usr/lib/texmf/fonts/misc/la/src/la-in.mf
+./usr/lib/texmf/fonts/misc/la/src/la-spec.mf
+./usr/lib/texmf/fonts/misc/la/src/la14.mf
+./usr/lib/texmf/fonts/misc/la/src/lla-in.mf
+./usr/lib/texmf/fonts/misc/la/src/lla-spec.mf
+./usr/lib/texmf/fonts/misc/la/src/lla14.mf
+./usr/lib/texmf/fonts/misc/la/tfm/la14.tfm
+./usr/lib/texmf/fonts/misc/la/tfm/lla14.tfm
+./usr/lib/texmf/tex/misc/la.sty
+./usr/lib/texmf/tex/misc/la14_txt.tex

@@ -1,0 +1,23 @@
+PACKAGE NAME:     netcfg
+COMPRESSED PACKAGE SIZE:     5 K
+UNCOMPRESSED PACKAGE SIZE:     40 K
+PACKAGE LOCATION: diskn1
+PACKAGE DESCRIPTION:
+netcfg:   "netconfig" is a script to help configure TCP/IP and mail on your 
+netcfg:   machine. It will ask you a series of questions about your network and
+netcfg:   use your answers to automatically configure rc.M, rc.inet1, networks,
+netcfg:   resolv, hosts, smail, and elm.rc. You may run the script again at any
+netcfg:   time to reconfigure your machine. If you install the "netconfig"
+netcfg:   script, it will be executed for you before you leave "setup".
+netcfg:
+FILE LIST:
+./
+sbin/
+sbin/netconfig.color
+sbin/netconfig.tty
+install/
+install/doinst.sh
+var/
+var/adm/
+var/adm/setup/
+var/adm/setup/setup.netconfig

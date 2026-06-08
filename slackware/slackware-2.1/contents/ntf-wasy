@@ -1,0 +1,43 @@
+PACKAGE NAME:     ntf-wasy
+COMPRESSED PACKAGE SIZE:     31 K
+UNCOMPRESSED PACKAGE SIZE:     170 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-wasy: ntf-wasy 1.1
+ntf-wasy:
+ntf-wasy: The WASY font containing additional symbols for math, physics and
+ntf-wasy: other fields.
+ntf-wasy:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/cm/
+usr/lib/texmf/fonts/cm/wasy2/
+usr/lib/texmf/fonts/cm/wasy2/create.sh
+usr/lib/texmf/fonts/cm/wasy2/src/
+usr/lib/texmf/fonts/cm/wasy2/src/lasychr.mf
+usr/lib/texmf/fonts/cm/wasy2/src/rsym.mf
+usr/lib/texmf/fonts/cm/wasy2/src/wasy10.mf
+usr/lib/texmf/fonts/cm/wasy2/src/wasy5.mf
+usr/lib/texmf/fonts/cm/wasy2/src/wasy6.mf
+usr/lib/texmf/fonts/cm/wasy2/src/wasy7.mf
+usr/lib/texmf/fonts/cm/wasy2/src/wasy8.mf
+usr/lib/texmf/fonts/cm/wasy2/src/wasy9.mf
+usr/lib/texmf/fonts/cm/wasy2/src/wasyb10.mf
+usr/lib/texmf/fonts/cm/wasy2/src/wasychr.mf
+usr/lib/texmf/fonts/cm/wasy2/tfm/
+usr/lib/texmf/fonts/cm/wasy2/tfm/wasy10.tfm
+usr/lib/texmf/fonts/cm/wasy2/tfm/wasy5.tfm
+usr/lib/texmf/fonts/cm/wasy2/tfm/wasy6.tfm
+usr/lib/texmf/fonts/cm/wasy2/tfm/wasy7.tfm
+usr/lib/texmf/fonts/cm/wasy2/tfm/wasy8.tfm
+usr/lib/texmf/fonts/cm/wasy2/tfm/wasy9.tfm
+usr/lib/texmf/fonts/cm/wasy2/tfm/wasyb10.tfm
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/symbol/
+usr/lib/texmf/tex/symbol/wasydoc.tex
+usr/lib/texmf/tex/symbol/wasyfont.2
+usr/lib/texmf/tex/symbol/wasyfont.tex

@@ -1,0 +1,2 @@
+( cd usr ; rm -rf g++-include )
+( cd usr ; ln -sf lib/g++-include g++-include )

@@ -1,0 +1,11 @@
+./usr/bin/tamilize
+./usr/lib/texmf/fonts/language/tamil/create.sh
+./usr/lib/texmf/fonts/language/tamil/src/tamil.mf
+./usr/lib/texmf/fonts/language/tamil/src/tamilmax.mf
+./usr/lib/texmf/fonts/language/tamil/src/wntamil.mf
+./usr/lib/texmf/fonts/language/tamil/src/wntml10.mf
+./usr/lib/texmf/fonts/language/tamil/tfm/wntml10.tfm
+./usr/lib/texmf/tex/language/tamil/readme.doc
+./usr/lib/texmf/tex/language/tamil/tamdict.txt
+./usr/lib/texmf/tex/language/tamil/tamilize.c
+./usr/lib/texmf/tex/language/tamil/tamilmax.tex

@@ -1,0 +1,8 @@
+
+NTeX Release 1.2 --- ntm-deva 1.1 --- status: optional
+
+This package contains software for the printing of the devanagari script
+with TeX. The devanagari script is used for a number of languages from 
+Northern and Central India, such as Hindi and Marathi. It is also the script
+used for writing and printing Sanskrit.
+

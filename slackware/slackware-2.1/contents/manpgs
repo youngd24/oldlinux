@@ -1,0 +1,83 @@
+PACKAGE NAME:     manpgs
+COMPRESSED PACKAGE SIZE:     58 K
+UNCOMPRESSED PACKAGE SIZE:     110 K
+PACKAGE LOCATION: diskap4
+PACKAGE DESCRIPTION:
+manpgs:   Man-pages 1.4
+manpgs:
+manpgs:   Assorted man pages that go in sections 1, 4, 5, 6, 7, 8, and 9.
+manpgs:
+manpgs:   Contributors to man-pages 1.4 include:  
+manpgs:   Alan Cox, Dan Miner, Daniel Quinlan, Darren Senn, David Metcalfe,
+manpgs:   Drew Eckhardt, Giorgio Ciucci, Graeme W. Wilford, Ian Jackson, 
+manpgs:   Jens Schweikhardt, Luigi P. Bai, Michael Edward Chastain, 
+manpgs:   Michael Haardt, Mitchum DSouza, Rik Faith, Steven Greenland, 
+manpgs:   and Thomas Koenig.
+manpgs:
+FILE LIST:
+./
+install/
+install/doinst.sh
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/intro.1.gz
+usr/man/preformat/cat2/
+usr/man/preformat/cat3/
+usr/man/preformat/cat4/
+usr/man/preformat/cat4/lp.4.gz
+usr/man/preformat/cat4/ram.4.gz
+usr/man/preformat/cat4/mem.4.gz
+usr/man/preformat/cat4/sd.4.gz
+usr/man/preformat/cat4/tty.4.gz
+usr/man/preformat/cat4/fd.4.gz
+usr/man/preformat/cat4/hd.4.gz
+usr/man/preformat/cat4/null.4.gz
+usr/man/preformat/cat4/console.4.gz
+usr/man/preformat/cat4/intro.4.gz
+usr/man/preformat/cat4/ttys.4.gz
+usr/man/preformat/cat5/
+usr/man/preformat/cat5/utmp.5.gz
+usr/man/preformat/cat5/ipc.5.gz
+usr/man/preformat/cat5/passwd.5.gz
+usr/man/preformat/cat5/shells.5.gz
+usr/man/preformat/cat5/group.5.gz
+usr/man/preformat/cat5/nologin.5.gz
+usr/man/preformat/cat5/ttytype.5.gz
+usr/man/preformat/cat5/termcap.5.gz
+usr/man/preformat/cat5/environ.5.gz
+usr/man/preformat/cat5/intro.5.gz
+usr/man/preformat/cat5/issue.5.gz
+usr/man/preformat/cat5/motd.5.gz
+usr/man/preformat/cat5/securetty.5.gz
+usr/man/preformat/cat5/proc.5.gz
+usr/man/preformat/cat6/
+usr/man/preformat/cat6/intro.6.gz
+usr/man/preformat/cat7/
+usr/man/preformat/cat7/locale.7.gz
+usr/man/preformat/cat7/signal.7.gz
+usr/man/preformat/cat7/man.7.gz
+usr/man/preformat/cat7/suffixes.7.gz
+usr/man/preformat/cat7/ascii.7.gz
+usr/man/preformat/cat7/hier.7.gz
+usr/man/preformat/cat7/intro.7.gz
+usr/man/preformat/cat7/iso_8859_1.7.gz
+usr/man/preformat/cat8/
+usr/man/preformat/cat8/intro.8.gz
+usr/man/preformat/cat9/
+usr/man/preformat/cat9/file_table.9.gz
+usr/man/preformat/cat9/filesystems.9.gz
+usr/man/preformat/cat9/proc_sel.9.gz
+usr/man/preformat/cat9/put_file_last.9.gz
+usr/man/preformat/cat9/get_empty_filp.9.gz
+usr/man/preformat/cat9/grow_files.9.gz
+usr/man/preformat/cat9/in_group_p.9.gz
+usr/man/preformat/cat9/insert_file_free.9.gz
+usr/man/preformat/cat9/kernel_mktime.9.gz
+usr/man/preformat/cat9/remove_file_free.9.gz
+usr/man/preformat/cat9/adjust_clock.9.gz
+usr/man/preformat/cat9/ctrl-alt-del.9.gz
+usr/man/preformat/cat9/file_table_init.9.gz
+usr/man/man-pages-1.4.Announce
+usr/man/man-pages-1.4.lsm

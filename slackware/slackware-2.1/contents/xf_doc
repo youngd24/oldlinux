@@ -1,0 +1,57 @@
+PACKAGE NAME:     xf_doc
+COMPRESSED PACKAGE SIZE:     180 K
+UNCOMPRESSED PACKAGE SIZE:     560 K
+PACKAGE LOCATION: diskx13
+PACKAGE DESCRIPTION:
+xf_doc:   Documentation and release notes for XFree86 3.1.
+xf_doc:
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat5/
+usr/man/preformat/cat5/XF86Config.5x.gz
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/XF86_Accel.1x.gz
+usr/man/preformat/cat1/XF86_Mono.1x.gz
+usr/man/preformat/cat1/XF86_SVGA.1x.gz
+usr/man/preformat/cat1/XF86_VGA16.1x.gz
+usr/man/preformat/cat1/Xserver.1x.gz
+usr/man/preformat/cat1/reconfig.1x.gz
+usr/man/preformat/cat1/startx.1x.gz
+usr/man/preformat/cat1/xinit.1x.gz
+usr/man/preformat/cat1/SuperProbe.1x.gz
+usr/man/preformat/cat1/XFree86.1x.gz
+var/
+var/X11R6/
+var/X11R6/lib/
+var/X11R6/lib/doc/
+var/X11R6/lib/doc/README.ati
+var/X11R6/lib/doc/README.trident
+var/X11R6/lib/doc/README.tseng
+var/X11R6/lib/doc/README.WstDig
+var/X11R6/lib/doc/README.cirrus
+var/X11R6/lib/doc/README.Video7
+var/X11R6/lib/doc/README.P9000
+var/X11R6/lib/doc/VideoModes.doc
+var/X11R6/lib/doc/modeDB.txt
+var/X11R6/lib/doc/AccelCards
+var/X11R6/lib/doc/README.clkprog
+var/X11R6/lib/doc/README.agx
+var/X11R6/lib/doc/README.Config
+var/X11R6/lib/doc/ServersOnly
+var/X11R6/lib/doc/README.Linux
+var/X11R6/lib/doc/COPYRIGHT
+var/X11R6/lib/doc/README
+var/X11R6/lib/doc/INSTALL
+var/X11R6/lib/doc/README.S3
+var/X11R6/lib/doc/Monitors
+var/X11R6/lib/doc/Devices
+var/X11R6/lib/doc/README.W32
+var/X11R6/lib/etc/
+var/X11R6/lib/etc/ati.test.c
+var/X11R6/lib/etc/et4000clock.c
+var/X11R6/lib/etc/xmodmap.std
+install/
+install/doinst.sh

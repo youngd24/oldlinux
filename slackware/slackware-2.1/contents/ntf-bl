@@ -1,0 +1,22 @@
+PACKAGE NAME:     ntf-bl
+COMPRESSED PACKAGE SIZE:     23 K
+UNCOMPRESSED PACKAGE SIZE:     150 K
+PACKAGE LOCATION: diskt6
+PACKAGE DESCRIPTION:
+ntf-bl:   ntf-bl 1.1
+ntf-bl:
+ntf-bl:   The Blackletter font.
+ntf-bl:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/misc/
+usr/lib/texmf/fonts/misc/blackletter/
+usr/lib/texmf/fonts/misc/blackletter/create.sh
+usr/lib/texmf/fonts/misc/blackletter/src/
+usr/lib/texmf/fonts/misc/blackletter/src/blackletter.mf
+usr/lib/texmf/fonts/misc/blackletter/tfm/
+usr/lib/texmf/fonts/misc/blackletter/tfm/blackletter.tfm

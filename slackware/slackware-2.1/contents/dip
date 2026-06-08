@@ -1,0 +1,31 @@
+PACKAGE NAME:     dip
+COMPRESSED PACKAGE SIZE:     29 K
+UNCOMPRESSED PACKAGE SIZE:     70 K
+PACKAGE LOCATION: diskn2
+PACKAGE DESCRIPTION:
+dip:      DIP - dialup IP connection handler 3.3.7i
+dip:
+dip:      Uri Blumenthal's version of Fred N. van Kempen's DIP utility. DIP 
+dip:      handles the connections needed for dialup IP links, like SLIP or
+dip:      CSLIP. It can handle both incoming and outgoing connections, using
+dip:      password security for incoming connections.  
+dip:
+FILE LIST:
+./
+etc/
+etc/diphosts
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat8/
+usr/man/preformat/cat8/dip.8.gz
+usr/doc/
+usr/doc/dip/
+usr/doc/dip/README
+usr/doc/dip/README.NEWBIES
+usr/doc/dip/README.SKEY
+usr/doc/dip/sample.dip
+sbin/
+sbin/dip-3.3.7i
+install/
+install/doinst.sh

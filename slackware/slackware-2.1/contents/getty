@@ -1,0 +1,49 @@
+PACKAGE NAME:     getty
+COMPRESSED PACKAGE SIZE:     50 K
+UNCOMPRESSED PACKAGE SIZE:     140 K
+PACKAGE LOCATION: diska2
+PACKAGE DESCRIPTION:
+getty:    getty_ps 2.0.7e
+getty:
+getty:    /sbin/getty and /sbin/uugetty. 
+getty:    These control the process of logging into your system, and may be used
+getty:    instead of 'agetty', which is the default getty included with
+getty:    util-linux-1.6. getty_ps supports a number of enhancements such as
+getty:    ringback support.
+getty:
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/getty.1.gz
+usr/man/preformat/cat5/
+usr/man/preformat/cat5/gettydefs.5.gz
+usr/doc/
+usr/doc/getty_ps/
+usr/doc/getty_ps/Examples/
+usr/doc/getty_ps/Examples/gettydefs
+usr/doc/getty_ps/Examples/getty.dumb_terminal
+usr/doc/getty_ps/Examples/uugetty.autoanswer
+usr/doc/getty_ps/Examples/uugetty.sched
+usr/doc/getty_ps/Examples/uugetty.waitfor
+usr/doc/getty_ps/Examples/uugetty.ringback
+usr/doc/getty_ps/ANNOUNCE
+usr/doc/getty_ps/ChangeLog
+usr/doc/getty_ps/LSM
+usr/doc/getty_ps/README.linux
+sbin/
+sbin/getty
+sbin/uugetty
+etc/
+etc/gettydefs
+etc/default/
+etc/default/getty.ttyS1
+etc/default/uugetty.ttyS1
+etc/default/uugetty.ttyS1.1
+etc/default/uugetty.ttyS1.works
+etc/default/uugetty.ttyS1~
+etc/default/uugetty.ttyS3.unused
+etc/default/uugetty.ttyS0-sample
+etc/inittab

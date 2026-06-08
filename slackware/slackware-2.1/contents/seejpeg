@@ -1,0 +1,23 @@
+PACKAGE NAME:     seejpeg
+COMPRESSED PACKAGE SIZE:     31 K
+UNCOMPRESSED PACKAGE SIZE:     80 K
+PACKAGE LOCATION: seejpeg.tgz
+PACKAGE DESCRIPTION:
+seejpeg:  seejpeg v1.4.3
+seejpeg:
+seejpeg:  seejpeg is Evan Harris's JPEG viewer which utilizes svgalib and 
+seejpeg:  contains limited GIF, PPM and TARGA viewing support.  The most useful
+seejpeg:  feature of seejpeg is that it automatically decides on the "best"
+seejpeg:  video mode to use based on the image being displayed and the video
+seejpeg:  card being used.  To aid it, various hints may be given as program
+seejpeg:  options.  In the worst case, it may be overridden.
+seejpeg:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/seejpeg
+usr/doc/
+usr/doc/seejpeg/
+usr/doc/seejpeg/CHANGELOG
+usr/doc/seejpeg/README

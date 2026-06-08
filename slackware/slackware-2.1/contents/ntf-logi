@@ -1,0 +1,25 @@
+PACKAGE NAME:     ntf-logi
+COMPRESSED PACKAGE SIZE:     2 K
+UNCOMPRESSED PACKAGE SIZE:     20 K
+PACKAGE LOCATION: diskt10
+PACKAGE DESCRIPTION:
+ntf-logi: ntf-logi 1.2
+ntf-logi:
+ntf-logi: The Logic font, a font for logical symbols.
+ntf-logi:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/texmf/
+usr/lib/texmf/fonts/
+usr/lib/texmf/fonts/symbol/
+usr/lib/texmf/fonts/symbol/logic/
+usr/lib/texmf/fonts/symbol/logic/create.sh
+usr/lib/texmf/fonts/symbol/logic/src/
+usr/lib/texmf/fonts/symbol/logic/src/milstd.mf
+usr/lib/texmf/fonts/symbol/logic/tfm/
+usr/lib/texmf/fonts/symbol/logic/tfm/milstd.tfm
+usr/lib/texmf/tex/
+usr/lib/texmf/tex/symbol/
+usr/lib/texmf/tex/symbol/milstd.tex

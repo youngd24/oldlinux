@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Build with X support:
+#./configure i486-slackware-linux --prefix=/usr --with-x11 --with-x-toolkit
+
+# Build without X support:
+./configure i486-slackware-linux --prefix=/usr --with-x=no
+

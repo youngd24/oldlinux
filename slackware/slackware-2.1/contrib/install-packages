@@ -1,0 +1,334 @@
+#!/bin/sh
+dialog --title "Install packages to your hard drive" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disk must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) Press ENTER when you are done." \
+20 70 8 \
+"aps-23" "Apsfilter printer filter" "off" \
+"auis63L2-mail" "Andrew Mail System" "off" \
+"auis63L2-src" "Andrew Source Editing System" "off" \
+"auis63L2-wp" "Andrew Word Processing System" "off" \
+"dosemu.53p28" "An MSDOS emulator" "off" \
+"gcl" "GNU common lisp 1.0" "off" \
+"gpc-2.5.8" "GNU Pascal compiler" "off" \
+"httpd" "NCSA httpd Web server" "off" \
+"ircII+term" "ircII2.3.17+tv1.1 for TERM" "off" \
+"ircII" "ircII2.3.17+tv1.1 for TCP/IP" "off" \
+"lemacs-X11R5" "Lucid Emacs 19.10 for XFree86 2.1.1" "off" \
+"lemacs-X11R6" "Lucid Emacs 19.10 for XFree86 3.1" "off" \
+"manpagesrc" "groff source for manpages" "off" \
+"ncurses-185" "An unpatched version of ncurses" "off" \
+"nvi" "nvi - 'vi' clone." "off" \
+"pdksh" "Korn shell clone v5.0.6" "off" \
+"perl-5.000" "Perl-5.000" "off" \
+"samba-1.8.05" "print/file server for WfW,OS/2,NT" "off" \
+"sample_users" "sample users 'gonzo', 'snake', 'satan'" "off" \
+"seejpeg" "Linux console GIF/JPEG viewer" "off" \
+"smail" "Smail 3.1.28 mail transport system" "off" \
+"termify" "make TCP/IP programs work with TERM" "off" \
+"uucp-1.04-info" "Info files for UUCP 1.04" "off" \
+"uucp-1.04" "Taylor UUCP 1.04" "off" \
+"xgrabsc" "A screengrabber for X" "off" \
+2> /tmp/return
+if fgrep '"aps-23"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package aps-23 to your hard drive" --infobox \
+"Apsfilter-2.3\n\
+\n\
+Andreas Klemm's Apsfilter-2.3. aps-2 is an lineprinter input filter\n\
+for Unix Systems with Berkeley alike printing system (configuration\n\
+using /etc/printcap).  Main features are AUTOMATIC FILE TYPE\n\
+RECOGNITION for the filetypes: * ASCII * DATA * POSTSCRIPT * DVI *\n\
+\n\
+" 9 75
+ installpkg aps-23.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"auis63L2-mail"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package auis63L2-mail to your hard drive" --infobox \
+"Andrew User Interface System - Mail System\n\
+\n\
+This package is aimed at those needing A BETTER MAIL INTERFACE\n\
+and those interested in a MULTI-MEDIA (MIME) MAIL INTERFACE\n\
+\n\
+REQUIREMENTS:\n\
+YOU MUST HAVE INSTALLED AUIS63L2-WP.TGZ FIRST.\n\
+/bin/csh  (e.g. ln -sf /bin/tcsh /bin/csh)\n\
+X Window System\n\
+A WORKING MAIL SYSTEM (using mail/elm or whatever).\n\
+\n\
+" 13 75
+ installpkg auis63L2-mail.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"auis63L2-src"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package auis63L2-src to your hard drive" --infobox \
+"Andrew User Interface System - For the Programmer\n\
+\n\
+This package is aimed at the SOURCE CODE DEVELOPER.\n\
+\n\
+REQUIREMENTS:\n\
+YOU MUST HAVE INSTALLED AUIS63L2-WP.TGZ FIRST.\n\
+/bin/csh  (e.g. ln -sf /bin/tcsh /bin/csh)\n\
+X Window System\n\
+\n\
+" 11 75
+ installpkg auis63L2-src.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"auis63L2-wp"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package auis63L2-wp to your hard drive" --infobox \
+"Andrew User Interface System - Word Processing\n\
+\n\
+This package is aimed at the WORD PROCESSING audience.\n\
+\n\
+ALSO REQUIRES:\n\
+/bin/csh  (e.g. ln -sf /bin/tcsh /bin/csh)\n\
+X Window System\n\
+\n\
+" 10 75
+ installpkg auis63L2-wp.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"dosemu.53p28"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package dosemu.53p28 to your hard drive" --infobox \
+"An MSDOS emulator.\n\
+\n\
+This package allows you to run MS-DOS under Linux by setting up\n\
+a virtual machine (DOS box) capable of servicing BIOS calls and\n\
+other requirements of DOS while Linux continues to run in \n\
+protected mode.  It runs most MS-DOS software that doesn't require\n\
+DOS extenders, etc, including Windows 3.0 in real mode.\n\
+\n\
+Configuration instructions are placed in /usr/doc/dosemu.\n\
+\n\
+" 12 75
+ installpkg dosemu.53p28.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gcl"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gcl to your hard drive" --infobox \
+"GNU common lisp 1.0\n\
+\n\
+" 4 75
+ installpkg gcl.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gpc-2.5.8"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gpc-2.5.8 to your hard drive" --infobox \
+"GNU Pascal compiler.\n\
+\n\
+Based on the GCC 2.5.8 compiler.\n\
+\n\
+" 6 75
+ installpkg gpc-2.5.8.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"httpd"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package httpd to your hard drive" --infobox \
+"NCSA httpd Web server.\n\
+\n\
+This is NCSA's public domain HTTP server.  It allows your machine to\n\
+act as a server for World Wide Web clients such as Mosaic, Lynx, and\n\
+Netscape.\n\
+\n\
+This server was developed at the National Center for Supercomputing\n\
+Applications at the University of Illinois at Urbana-Champaign.\n\
+\n\
+" 11 75
+ installpkg httpd.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ircII+term"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ircII+term to your hard drive" --infobox \
+"ircII2.3.17+tv1.1 with term support\n\
+\n\
+This is a version of IRC (Internet Relay Chat) for the systems\n\
+running TERM 2.x.x.  It also includes voice support and other\n\
+extra features.\n\
+\n\
+" 8 75
+ installpkg ircII+term.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ircII"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ircII to your hard drive" --infobox \
+"ircII2.3.17+tv1.1 for TCP/IP\n\
+\n\
+This is a version of IRC (Internet Relay Chat) for the systems\n\
+with direct TCP/IP access (including SLIP/PPP).  It also includes\n\
+voice support and other extra features.\n\
+\n\
+" 8 75
+ installpkg ircII.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"lemacs-X11R5"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package lemacs-X11R5 to your hard drive" --infobox \
+"Lucid Emacs version 19.10\n\
+\n\
+This is a version of Emacs enhanced to work under X.  This \n\
+version has been linked with the shared libraries from XFree86\n\
+2.1.1 (X11R5).\n\
+\n\
+" 8 75
+ installpkg lemacs-X11R5.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"lemacs-X11R6"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package lemacs-X11R6 to your hard drive" --infobox \
+"Lucid Emacs version 19.10\n\
+\n\
+This is a version of Emacs enhanced to work under X.  This\n\
+version has been linked with the shared libraries from XFree86\n\
+3.1 (X11R6).\n\
+\n\
+" 8 75
+ installpkg lemacs-X11R6.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"manpagesrc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package manpagesrc to your hard drive" --infobox \
+"groff source for manpages\n\
+\n\
+This package contains the groff source for the manpages used in \n\
+Slackware, and is useful for creating hard copy of the manpages.\n\
+Why this is preferable to 'man', well.... I really don't know.\n\
+\n\
+" 8 75
+ installpkg manpagesrc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ncurses-185"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ncurses-185 to your hard drive" --infobox \
+"An unpatched version of ncurses 1.85\n\
+\n\
+The ncurses 1.85 in Slackware's D series has a few unofficial\n\
+patches added to it.  This version is included in case these\n\
+changes bug any of the purists, so they can't say I forced anything\n\
+on them. :^)\n\
+\n\
+I think most things work best with the version on the D series, and\n\
+I'm told some of the changes will show up in ncurses 1.86.\n\
+\n\
+" 12 75
+ installpkg ncurses-185.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"nvi"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package nvi to your hard drive" --infobox \
+"nvi - 'vi' clone.\n\
+\n\
+Version 1.34 of nex/nvi, a freely redistributable replacement for the\n\
+Berkeley ex and vi text editors.\n\
+\n\
+" 7 75
+ installpkg nvi.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"pdksh"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package pdksh to your hard drive" --infobox \
+"pdksh 5.0.6\n\
+\n\
+A freely distributable Korn shell clone.\n\
+\n\
+" 6 75
+ installpkg pdksh.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"perl-5.000"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package perl-5.000 to your hard drive" --infobox \
+"Perl-5.000\n\
+\n\
+Version 5.000 of Perl -- Larry Wall's interpreted systems language.\n\
+\n\
+" 6 75
+ installpkg perl-5.000.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"samba-1.8.05"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package samba-1.8.05 to your hard drive" --infobox \
+"Samba 1.8.05\n\
+\n\
+Samba is a Unix based SMB file server. This allows a Unix host to\n\
+act as a file and print server for SMB clients. This includes\n\
+Lan-Manager compatible clients such as LanManager for DOS, Windows\n\
+for Workgroups, Windows NT, OS/2, Pathworks and many more. If you\n\
+have any PCs running SMB clients, such as a PC running Windows for\n\
+Workgroups, then you can mount file space or printers from a Linux\n\
+host, so that directories, files and printers on the Linux host \n\
+are available on the PC.\n\
+\n\
+" 13 75
+ installpkg samba-1.8.05.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"sample_users"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package sample_users to your hard drive" --infobox \
+"sample users 'gonzo', 'snake', and 'satan'\n\
+\n\
+If you install this package, 3 sample users will be created \n\
+(gonzo, snake, satan). This package was once part of the AP disk\n\
+series, but too many people installed it without noticing, and it\n\
+was becoming the best known backdoor into Linux boxes all over the\n\
+Internet (!). This package stems from a time before the "adduser"\n\
+utility was put in Slackware, so it really isn't all that helpful\n\
+anymore. You could use "adduser" to create some sample accounts\n\
+nearly as easily\n\
+\n\
+" 13 75
+ installpkg sample_users.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"seejpeg"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package seejpeg to your hard drive" --infobox \
+"seejpeg v1.4.3\n\
+\n\
+seejpeg is Evan Harris's JPEG viewer which utilizes svgalib and \n\
+contains limited GIF, PPM and TARGA viewing support.  The most useful\n\
+feature of seejpeg is that it automatically decides on the 'best'\n\
+video mode to use based on the image being displayed and the video\n\
+card being used.  To aid it, various hints may be given as program\n\
+options.  In the worst case, it may be overridden.\n\
+\n\
+" 11 75
+ installpkg seejpeg.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"smail"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package smail to your hard drive" --infobox \
+"Ian Kluft's Linux port of Smail 3.1.28. \n\
+\n\
+Smail is a mail-handling system. Some find it easier to maintain and\n\
+configure than BSD sendmail, especially for use with UUCP. It comes\n\
+with many documentation and sample files.  Look in\n\
+/usr/lib/smail/tools.linux for the HOWTO file that will help you get\n\
+started.\n\
+\n\
+" 10 75
+ installpkg smail.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"termify"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package termify to your hard drive" --infobox \
+"termify-0.3\n\
+\n\
+Termify converts dynamically linked binaries for term use by changing\n\
+the name of the standard library from libc.so.4 to libt.so.4.  Both\n\
+libraries should be installed in /lib.  Termify will take the\n\
+specified command, and create a termified binary with the correct\n\
+permissions in the current directory.  For example:\n\
+\n\
+termify  /bar/foo\n\
+\n\
+Will create ./termfoo in the current directory.\n\
+" 13 75
+ installpkg termify.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"uucp-1.04-info"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package uucp-1.04-info to your hard drive" --infobox \
+"Info files for UUCP 1.04\n\
+\n\
+This package installs info files for the Taylor UUCP 1.04\n\
+package into /usr/info.\n\
+\n\
+" 7 75
+ installpkg uucp-1.04-info.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"uucp-1.04"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package uucp-1.04 to your hard drive" --infobox \
+"Taylor UUCP 1.04\n\
+\n\
+This is a well tested version of UUCP that is included as an\n\
+alternate version.  (The N series has Taylor UUCP 1.05)\n\
+\n\
+" 7 75
+ installpkg uucp-1.04.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"xgrabsc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package xgrabsc to your hard drive" --infobox \
+"A screengrabber for X.\n\
+\n\
+Xgrabsc and xgrab allow you do take PostScript shapshots of individual\n\
+X clients, regions of the X screen, or the entire screen.\n\
+\n\
+" 7 75
+ installpkg xgrabsc.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return

@@ -1,0 +1,33 @@
+***************
+*** 134,140 ****
+  		syslog(LOG_ERR, "%s: %m", _PATH_MASTERLOCK);
+  		exit(1);
+  	}
+- 	signal(SIGCHLD, reapchild);
+  	/*
+  	 * Restart all the printers.
+  	 */
+--- 134,140 ----
+  		syslog(LOG_ERR, "%s: %m", _PATH_MASTERLOCK);
+  		exit(1);
+  	}
++ 	signal(SIGCHLD, SIG_IGN);
+  	/*
+  	 * Restart all the printers.
+  	 */
+***************
+*** 178,183 ****
+  		}
+  		bzero(&sin, sizeof(sin));
+  		sin.sin_family = AF_INET;
+  		sin.sin_port = sp->s_port;
+  		if (bind(finet, (struct sockaddr *)&sin, sizeof(sin)) < 0) {
+  			syslog(LOG_ERR, "bind: %m");
+--- 178,184 ----
+  		}
+  		bzero(&sin, sizeof(sin));
+  		sin.sin_family = AF_INET;
++ 		sin.sin_addr.s_addr = INADDR_ANY;
+  		sin.sin_port = sp->s_port;
+  		if (bind(finet, (struct sockaddr *)&sin, sizeof(sin)) < 0) {
+  			syslog(LOG_ERR, "bind: %m");

@@ -1,0 +1,17 @@
+--- Imakefile.orig	Sun Oct  9 16:23:27 1994
++++ Imakefile	Sun Oct  9 16:23:40 1994
+@@ -31,12 +31,12 @@
+ 
+ SRCS = cmds.c crypt.c format.c gram.c graphic_main.c help.c interp.c lex.c \
+        matrix.c plot_XY.c plot_bar.c plot_line.c plot_pie.c plot_stk_bar.c \
+-       pow10.c sc.c range.c screen.c scXstuff.c vi.c vmtbl.c xmalloc.c \
++       sc.c range.c screen.c scXstuff.c vi.c vmtbl.c xmalloc.c \
+        version.c
+ 
+ OBJS = cmds.o crypt.o format.o gram.o graphic_main.o help.o interp.o lex.o \
+        matrix.o plot_XY.o plot_bar.o plot_line.o plot_pie.o plot_stk_bar.o \
+-       pow10.o sc.o range.o screen.o scXstuff.o vi.o vmtbl.o xmalloc.o \
++       sc.o range.o screen.o scXstuff.o vi.o vmtbl.o xmalloc.o \
+        version.o
+ 
+ HDRS = experres.h file.h graphic_gvar.h pattern.h plot.h sc.h \

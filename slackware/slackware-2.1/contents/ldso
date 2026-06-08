@@ -1,0 +1,38 @@
+PACKAGE NAME:     ldso
+COMPRESSED PACKAGE SIZE:     50 K
+UNCOMPRESSED PACKAGE SIZE:     140 K
+PACKAGE LOCATION: diska2
+PACKAGE DESCRIPTION:
+ldso:     ld.so 1.4.4, the dynamic linker/loader.
+ldso:
+ldso:     ld.so completes the final process of linking all necessary references
+ldso:     to sharable objects and unreferenced symbols in an impure executable,
+ldso:     (usually a dynamically linked executable), to produce a runnable file.
+ldso:     Nearly all Linux binaries in a.out format will be "incomplete" and
+ldso:     require further linking at run time. ld.so's job is thus to complete
+ldso:     the linking process started at compilation. ld.so was written by David
+ldso:     Engel, Eric Youngdale, Peter MacDonald, Hongjiu Lu, Linus Torvalds,
+ldso:     Lars Wirzenius and Mitch D'Souza.
+ldso:
+FILE LIST:
+./
+usr/
+usr/bin/
+usr/bin/ldd
+usr/lib/
+usr/lib/libldso.a
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/ldd.1.gz
+usr/man/preformat/cat8/
+usr/man/preformat/cat8/ld.so.8.gz
+usr/man/preformat/cat8/ldconfig.8.gz
+usr/openwin/
+usr/openwin/lib/
+lib/
+lib/ld.so
+sbin/
+sbin/ldconfig
+etc/
+etc/ld.so.conf

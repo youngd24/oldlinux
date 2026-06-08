@@ -1,0 +1,46 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+rm -f /tmp/SeTnewtag # empty the return file
+dialog --title "SELECTING PACKAGES FOR SERIES N (NETWORK/NEWS/MAIL/UUCP)" \
+       --checklist "Please select the packages you wish to install \
+from series N. Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the packages you wish to install. Recommended packages have \
+already been selected for you, but you may unselect them if you wish. \
+Press ENTER when you are \
+done." 22 70 11 \
+"netcfg" "A script to help configure TCP/IP" "on" \
+"deliver" "Local mail delivery utility" "off" \
+"dip" "Handles SLIP/CSLIP connections" "off" \
+"ppp" "Point-to-point protocol" "off" \
+"mailx" "The mailx mailer" "on" \
+"tcpip" "TCP/IP networking programs" "on" \
+"bind" "Berkeley Internet Name Domain server" "on" \
+"uucp" "Taylor UUCP 1.05 with HDB && Taylor configs" "off" \
+"elm" "Menu-driven user mail program" "off" \
+"pine" "Pine menu-driven mail program" "off" \
+"sendmail" "The sendmail mail transport agent" "on" \
+"smailcfg" "Extra configuration files for sendmail" "off" \
+"cnews" "Spools and transmits Usenet news" "off" \
+"inn" "InterNetNews news transport system" "off" \
+"tin" "The 'tin' news reader (local or NNTP)" "off" \
+"trn" "'trn' for /var/spool/news" "off" \
+"trn-nntp" "'trn' for NNTP (install 1 'trn' maximum)" "off" \
+"nn-spool" "'nn' for /var/spool/news" "off" \
+"nn-nntp" "'nn' for NNTP (install 1 'nn' maximum)" "off" \
+2> /tmp/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f /tmp/SeTpkgs
+ exit
+fi
+cat /dev/null > /tmp/SeTnewtag
+for PACKAGE in deliver ppp mailx tcpip uucp netcfg \
+dip inn elm pine sendmail smailcfg cnews tin \
+bind trn trn-nntp nn-nntp nn-spool ; do
+ if fgrep \"$PACKAGE\" /tmp/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> /tmp/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> /tmp/SeTnewtag
+ fi
+done
+rm -f /tmp/SeTpkgs

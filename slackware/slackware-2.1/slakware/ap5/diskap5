@@ -1,0 +1,45 @@
+CONTENTS: shlbsvga ispell jpeg mc  
+mc:       Midnight Commander version 1.1
+mc:
+mc:       The Midnight Commander is a Norton Commander clone, a program that
+mc:       manipulates and manages files and directories. Useful, fast, and has
+mc:       color displays on the Linux console.  Mouse support is provided if
+mc:       you run the gpm mouse server.  This program requires the terminal
+mc:       description files in /usr/lib/terminfo, which can be found in
+mc:       ncurses.tgz or hdsetup.tgz (the Slackware setup script package).
+mc:       mc was written by Miguel de Icaza and Mauricio Plaza.
+mc:
+mc:
+jpeg:     Independent JPEG Group's 5beta2 JPEG software
+jpeg:
+jpeg:     Software to implement JPEG image compression and decompression. JPEG
+jpeg:     (pronounced 'jay-peg') is a standardized compression method for 
+jpeg:     full-color and gray-scale images.  JPEG is intended for compressing
+jpeg:     'real-world' scenes; cartoons and other non-realistic images are not
+jpeg:     its strong suit.  JPEG is lossy, however, on typical images of 
+jpeg:     real-world scenes, very good compression levels can be obtained with
+jpeg:     no visible change, and amazingly high compression levels are possible
+jpeg:     if you can tolerate a low-quality image.
+jpeg:
+shlbsvga: Shared library libsvga.so.1.1.8 (from svgalib 1.12)
+shlbsvga:
+shlbsvga: Allows you to execute SVGAlib programs that use the shared library.
+shlbsvga:
+shlbsvga:
+shlbsvga:
+shlbsvga:
+shlbsvga:
+shlbsvga:
+shlbsvga:
+shlbsvga:
+ispell:   ispell-3.1.08
+ispell:
+ispell:   Ispell is a fast screen-oriented spelling checker that shows you your
+ispell:   errors in the context of the original file, and suggests possible 
+ispell:   corrections when it can figure them out.  Compared to UNIX spell, it
+ispell:   is faster and much easier to use.  Ispell can also handle languages
+ispell:   other than English. Ispell has a long history, and many people have
+ispell:   contributed to the current version -- some of the major contributors
+ispell:   include R. E. Gorin, Pace Willisson, Walt Buehring, and Geoff 
+ispell:   Kuenning. 
+ispell:

@@ -1,0 +1,31 @@
+PACKAGE NAME:     xlock
+COMPRESSED PACKAGE SIZE:     59 K
+UNCOMPRESSED PACKAGE SIZE:     170 K
+PACKAGE LOCATION: diskx5
+PACKAGE DESCRIPTION:
+xlock:    xlockmore-1.14
+xlock:
+xlock:    Patrick J. Naughton's _xlock_ screensaver/locker for X, with many
+xlock:    more modes added by David A. Bagley. The "Bob" mode (previously
+xlock:    "image") has also been included especially for Slackware.
+xlock:
+FILE LIST:
+./
+usr/
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat1/
+usr/man/preformat/cat1/xlock.1.gz
+usr/doc/
+usr/doc/xlock/
+usr/doc/xlock/README
+usr/doc/xlock/README.VMS
+usr/doc/xlock/README2
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/xlock
+var/
+var/X11R6/
+var/X11R6/lib/
+var/X11R6/lib/app-defaults/
+var/X11R6/lib/app-defaults/XLock

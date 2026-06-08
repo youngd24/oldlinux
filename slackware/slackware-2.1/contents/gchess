@@ -1,0 +1,68 @@
+PACKAGE NAME:     gchess
+COMPRESSED PACKAGE SIZE:     523 K
+UNCOMPRESSED PACKAGE SIZE:     1360 K
+PACKAGE LOCATION: diskxap2
+PACKAGE DESCRIPTION:
+gchess:   GNU chess (v. 4.00 patch level 69)  
+gchess:   and xboard (v. 3.0 patch level 9)
+gchess:
+gchess:   A worthy chess opponent.  Adds 'gnuchess', an ASCII based chess 
+gchess:   engine, and 'xboard', an X based interface to 'gnuchessx'.
+gchess:
+FILE LIST:
+./
+usr/
+usr/lib/
+usr/lib/gnuchess/
+usr/lib/gnuchess/gnuchess.data
+usr/lib/gnuchess/gnuchess.lang
+usr/man/
+usr/man/preformat/
+usr/man/preformat/cat6/
+usr/man/preformat/cat6/gnuchess.6.gz
+usr/man/preformat/cat6/xboard.6.gz
+usr/man/preformat/cat6/game.6.gz
+usr/man/preformat/cat6/cmail.6.gz
+usr/man/preformat/cat6/postprint.6.gz
+usr/man/preformat/cat6/gnuan.6.gz
+usr/man/preformat/cat6/checkgame.6.gz
+usr/bin/
+usr/bin/gnuchess
+usr/bin/postprint
+usr/bin/gnuchessn
+usr/bin/gnuchessr
+usr/bin/gnuchessx
+usr/bin/gnuan
+usr/bin/game
+usr/bin/cmail
+usr/doc/
+usr/doc/xboard-3.0.pl9/
+usr/doc/xboard-3.0.pl9/COPYING
+usr/doc/xboard-3.0.pl9/COPYRIGHT
+usr/doc/xboard-3.0.pl9/ChangeLog
+usr/doc/xboard-3.0.pl9/ChangeLogOld
+usr/doc/xboard-3.0.pl9/ToDo
+usr/doc/xboard-3.0.pl9/ics.info
+usr/doc/xboard-3.0.pl9/kk13.game
+usr/doc/xboard-3.0.pl9/ics.addresses
+usr/doc/gnuchess-4.0/
+usr/doc/gnuchess-4.0/ARTICLE
+usr/doc/gnuchess-4.0/ARTICLE.2
+usr/doc/gnuchess-4.0/BOOKFILES
+usr/doc/gnuchess-4.0/CHANGES
+usr/doc/gnuchess-4.0/CHESSTOOL
+usr/doc/gnuchess-4.0/COPYING
+usr/doc/gnuchess-4.0/ChangeLog
+usr/doc/gnuchess-4.0/GENERAL
+usr/doc/gnuchess-4.0/HEURISTICS
+usr/doc/gnuchess-4.0/INSTALL
+usr/doc/gnuchess-4.0/MOVE-GEN
+usr/doc/gnuchess-4.0/PORTING
+usr/doc/gnuchess-4.0/README.font
+usr/doc/gnuchess-4.0/README.output
+usr/doc/gnuchess-4.0/TODO
+usr/doc/gnuchess-4.0/gnuan.hlp
+usr/doc/gnuchess-4.0/gnuchess.txt
+usr/X11R6/
+usr/X11R6/bin/
+usr/X11R6/bin/xboard

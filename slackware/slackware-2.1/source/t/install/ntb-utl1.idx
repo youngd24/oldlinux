@@ -1,0 +1,10 @@
+./usr/bin/dvicopy
+./usr/bin/dvitype
+./usr/bin/pooltype
+./usr/bin/tangle
+./usr/bin/texi2dvi
+./usr/bin/weave
+./usr/man/man1/dvitype.1
+./usr/man/man1/pooltype.1
+./usr/man/man1/tangle.1
+./usr/man/man1/weave.1

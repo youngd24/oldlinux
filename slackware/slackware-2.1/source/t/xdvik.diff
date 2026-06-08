@@ -1,0 +1,123 @@
+From <@cinderella.physik.uni-kl.de:gmayer@physik.uni-kl.de> Wed Oct  5 04:38:16 1994
+Received: from stepsun.uni-kl.de by mhd1.moorhead.msus.edu; (5.65/1.1.8.2/02Aug94-8.2MPM)
+	id AA27999; Wed, 5 Oct 1994 04:38:11 -0500
+Received: from cinderella.physik.uni-kl.de by stepsun.uni-kl.de id ab14143;
+          5 Oct 94 10:38 MET
+Received: from gypsy.physik.uni-kl.de by cinderella.physik.uni-kl.de id aa05045;
+          5 Oct 94 10:38 MET
+Received: by gypsy.physik.uni-kl.de (5.57/BelWue-1.0(subsidiary))
+	id AA10356; Wed, 5 Oct 94 10:38:22 +0100
+From: Gunther Mayer <gmayer@physik.uni-kl.de>
+Message-Id: <9410050938.AA10356@gypsy.physik.uni-kl.de>
+Subject: again xdvi
+To: volkerdi@mhd1.moorhead.msus.edu
+Date: Wed, 5 Oct 94 10:38:21 MET
+X-Mailer: ELM [version 2.3 PL10]
+X-Status: 
+Status: RO
+
+Hi Pat,
+
+here is a patch for the latest and greatest xdvi(k). Features are:
+* still reads /usr/lib/texmf/texmf.cnf
+* creates again the fonts on the fly (I don't know if/why this worked 
+  with your old binary before 1 Oct)
+* debugging for kpathsea enabled (try xdvi -d 4095 some_dvi_file)
+* certainly another new bug that will show up in some days :->
+
+You need nts-kpat and nts-xdvi, then just patch it and
+cd /usr/src/tex/tex2; configure -prefix=/usr; make; strip xdvik/xdvi
+xdvi has then 87044 bytes. I don't know if distributing /usr/lib/libkpathsea.a
+makes sense, as the source code contains kpathsea.
+I will send this patch too to Frank Langbein; 
+I would say that he compiled xdvik-1.8.tar.gz but his source code is
+xdvik-18b.tar.gz.
+
+Greetings,	Gunther
+
+-------------------------------CUT HERE-------------------------------------
+diff -u -N --recursive usr.old/src/tex/tex2/kpathsea/Makefile.in usr/src/tex/tex2/kpathsea/Makefile.in
+--- usr.old/src/tex/tex2/kpathsea/Makefile.in	Thu Sep 15 14:58:20 1994
++++ usr/src/tex/tex2/kpathsea/Makefile.in	Wed Oct  5 11:00:02 1994
+@@ -5,7 +5,7 @@
+ ac_include ../make/makevars.make
+ 
+ # Add -DNO_DEBUG to squeeze out the last bit of performance. Not recommended.
+-DEFS = -DNO_DEBUG -DLINUX $(XDEFS)
++DEFS = -DLINUX $(XDEFS)
+ 
+ ac_include ../make/common.make
+ ac_include ../make/texi.make
+diff -u -N --recursive usr.old/src/tex/tex2/kpathsea/install.texi usr/src/tex/tex2/kpathsea/install.texi
+--- usr.old/src/tex/tex2/kpathsea/install.texi	Thu Jan  1 01:00:00 1970
++++ usr/src/tex/tex2/kpathsea/install.texi	Wed Oct  5 10:59:32 1994
+@@ -0,0 +1,39 @@
++@c install.texi -- this file is the installation items common to
++@c kpathsea-using programs.  It's included by kpathsea.texi and dvips.texi.
++@c (I inadvertently left this file out of the 2.1 release.)
++
++@item
++@vindex CFLAGS
++Edit the top-level @file{Makefile.in} if you want to make changes (e.g.,
++to @samp{CFLAGS} or the installation directories) that will have effect
++across different runs of @code{configure}.  (Alternatively, override the
++Make variables on the command line when you run Make.)
++
++@cindex installation directories, changing
++Exception: to reliably change the top-level @samp{prefix}, you must give
++@samp{configure} the option @samp{-prefix=@var{prefix}}, instead of
++changing the value in @file{Makefile.in}.
++
++@item
++@cindex paths, changing default
++Edit @file{kpathsea/texmf.cnf.in} to change the local paths to match your
++local setup.  @xref{Default paths, , , kpathsea, Kpathsea}, for more
++details on changing the paths. A copy is in @file{kpathsea/INSTALL}.
++
++If you do not change these paths, the programs will probably start up
++Very, Very, Slowly, and/or not be able to find the fonts or other input files.
++
++@item
++@flindex configure@r{, running}
++@flindex CONFIG
++@flindex kpathsea/CONFIG
++@code{sh configure}.  This guesses system dependencies.  @xref{Invoking
++configure, , Running @code{configure} scripts, autoconf, Autoconf}, for
++@code{configure} options.  (A copy is in @file{kpathsea/CONFIG}.)
++
++@item
++@code{make}. Barring configuration and compiler bugs, this will compile
++all the programs.  @xref{Common problems, , Common problems,
++kpathsea, Kpathsea}, for system-dependent problems (this section is also
++in @file{kpathsea/INSTALL}).
++
+diff -u -N --recursive usr.old/src/tex/tex2/kpathsea/tex-file.c usr/src/tex/tex2/kpathsea/tex-file.c
+--- usr.old/src/tex/tex2/kpathsea/tex-file.c	Fri Aug 26 15:07:20 1994
++++ usr/src/tex/tex2/kpathsea/tex-file.c	Wed Oct  5 10:59:53 1994
+@@ -174,6 +174,7 @@
+       FMT_INFO.suffix_search_only = true;
+       break;
+     case kpse_any_glyph_format:
++      INIT_MT ("MakeTeXPK", MAKETEXPK_SPEC);
+       INIT_FORMAT ("bitmap", true, DEFAULT_GLYPHFONTS, KPSE_GLYPH_ENVS);
+       FMT_INFO.suffix_search_only = true;
+       break;
+diff -u -N --recursive usr.old/src/tex/tex2/xdvik/Makefile.in usr/src/tex/tex2/xdvik/Makefile.in
+--- usr.old/src/tex/tex2/xdvik/Makefile.in	Thu Sep 15 15:58:30 1994
++++ usr/src/tex/tex2/xdvik/Makefile.in	Wed Oct  5 11:00:16 1994
+@@ -4,7 +4,7 @@
+ ac_include ../make/paths.make
+ 
+ # See INSTALL for compilation options.
+-DEFS = -DBUTTONS -DA4 -DMFMODE=\"localfont\" -DPS_GS -DNO_DEBUG \
++DEFS = -DBUTTONS -DA4 -DMFMODE=\"localfont\" -DPS_GS  \
+        -DLINUX $(XDEFS)
+ 
+ ac_include ../make/common.make
+-- 
+=====================================================================
+at home: Gunther Mayer, Burgalberstr.8, 66989 Hoeheinoed, Germany
+at work: Gunther Mayer, Fachbereich Physik, Uni Kaiserslautern, 
+         Erwin-Schroedinger-Str., 67663 Kaiserslautern, Tel ++49(0)631/205-4286
+email:   gmayer@physik.uni-kl.de
+

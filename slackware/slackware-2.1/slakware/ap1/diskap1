@@ -1,0 +1,56 @@
+CONTENTS: jove man termbin termsrc termnet 
+termnet:  Network utilities for term
+termnet:
+termnet:  Includes these utilities, compiled to work through term 2.x.x:
+termnet:
+termnet:  tncftp - version 1.8.3 of Mike Gleason's NcFTP for term.
+termnet:  ttelnet - telnet for term.
+termnet:  tfinger - finger users anywhere on the net.
+termnet:  twhois - gather information about Internet domains.
+termnet:
+termnet:
+termnet:
+jove:     Jonathan's Own Version of Emacs (4.14.10) 
+jove:
+jove:     A mostly Emacs compatible text editor, with man pages and the 
+jove:     'teachjove' tutorial program. If you'd rather have the real thing, 
+jove:     the actual Emacs editor/environment is available as disk series 'E'.
+jove:
+jove:
+jove:
+jove:
+jove:
+jove:
+man:      On-line manual pages. 
+man:
+man:      These manual pages have been preprocessed with groff and then
+man:      compressed with gzip to save you time and disk space.
+man:
+man:
+man:
+man:
+man:
+man:
+man:
+termbin:  Term 2.2.4
+termbin:
+termbin:  The executable files and man pages for term, which allows
+termbin:  multiple shells and pseudo-TCP/IP over modem lines.
+termbin:
+termbin:
+termbin:
+termbin:
+termbin:
+termbin:
+termbin:
+termsrc:  Term 2.2.4 source code
+termsrc:  
+termsrc:  SOURCE code for the TERM daemon which allows multiple sessions over a
+termsrc:  modem line to another Unix machine also running term. This source code
+termsrc:  is not needed to run term on your Linux machine, but you may have to
+termsrc:  upload this to your intended term host machine to compile. TERM
+termsrc:  has support for these operating systems:
+termsrc:  
+termsrc:  Linux, NetBSD, SunOS, ULTRIX, IRIX, NeXT, CX/UX, AIX, BSD386, sco386,
+termsrc:  vistra800, ptx, iris3d, iris4d, OSF1, m68k, ConvexOS, and HP-UX.
+termsrc:  

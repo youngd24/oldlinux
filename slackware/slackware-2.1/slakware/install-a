@@ -1,0 +1,533 @@
+#!/bin/sh
+dialog --title "Install packages from series A (base system)" \
+       --checklist "Please select the packages you would like to install to your hard drive from the Slackware Professional CD-ROM.  The disc must be mounted under /cdrom for this to work. If you are upgrading a package that currently runs from your CD-ROM, you may wish to save any configuration files first. (they will be reset) NOTE: Many of the packages from the A series cannot be safely installed except from a bootdisk, so make sure you know what you're doing. Press ENTER when you are done." \
+20 70 6 \
+"base" "Basic Linux filesystem package" "off" \
+"devs" "Device files" "off" \
+"idekern" "Linux kernel 1.1.59 for IDE" "off" \
+"scsikern" "Linux kernel 1.1.59 for IDE/SCSI" "off" \
+"sysvinit" "SysV style init v. 2.4" "off" \
+"bin" "Binaries that go in /bin and /usr/bin" "off" \
+"getty" "getty_ps 2.0.7e" "off" \
+"gzip" "GNU zip compression utilities" "off" \
+"ldso" "ld.so 1.4.4, the dynamic linker/loader" "off" \
+"ps" "procps 0.97" "off" \
+"shlibs" "The shared C libraries libc.so.4.5.26" "off" \
+"util" "util-linux 1.10" "off" \
+"bash" "GNU bash-1.14.2" "off" \
+"comms" "Serial file-transfer and comm programs" "off" \
+"cpio" "The GNU cpio backup and archiving util" "off" \
+"e2fsbn" "Utilities for the second extended fs" "off" \
+"find" "GNU find 3.8" "off" \
+"gpm" "General purpose mouse support v0.17" "off" \
+"grep" "GNU grep 2.0" "off" \
+"keytbls" "kbd 0.88" "off" \
+"less" "less-237" "off" \
+"lpr" "BSD print spooling system" "off" \
+"shellutl" "GNU shellutils 1.9.4" "off" \
+"syslogd" "Sysklogd 1.2" "off" \
+"tar" "GNU tar 1.11.2" "off" \
+"textutl" "GNU textutil 1.9" "off" \
+"zoneinfo" "Time zone utilities" "off" \
+"etc" "System configuration files that go in /etc" "off" \
+"hdsetup" "The Slackware setup system" "off" \
+"lilo" "LILO 0.15" "off" \
+"loadlin" "LOADLIN v1.5" "off" \
+"tcsh" "tcsh 6.04" "off" \
+"umsprogs" "umsdos_progs 0.3a" "off" \
+2> /tmp/return
+if fgrep '"elm"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package elm to your hard drive" --infobox \
+"Menu-driven user mail program. (v. 2.4pl23)\n\
+\n\
+Elm is an interactive screen-oriented mailer program originally\n\
+written by Dave Taylor, and continued by the Elm Development Group. \n\
+\n\
+" 7 75
+ installpkg n1/elm.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"netcfg"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package netcfg to your hard drive" --infobox \
+"'netconfig' is a script to help configure TCP/IP and mail on your \n\
+machine. It will ask you a series of questions about your network and\n\
+use your answers to automatically configure rc.M, rc.inet1, networks,\n\
+resolv, hosts, smail, and elm.rc. You may run the script again at any\n\
+time to reconfigure your machine. If you install the 'netconfig'\n\
+script, it will be executed for you before you leave 'setup'.\n\
+\n\
+" 9 75
+ installpkg n1/netcfg.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"tcpip"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package tcpip to your hard drive" --infobox \
+"TCP/IP networking programs and support files.\n\
+\n\
+This is an updated set of utilities for NET3. Some of these were\n\
+written from scratch and some were ported from various sources\n\
+including NetBSD. The code was written and ported by Florian  \n\
+La Roche, Alan Cox, Fred N. van Kempen, Donald J. Becker, Rick \n\
+Sladkey, Mark Shand, Orest Zborowski, Johannes Stille, Linus Torvalds,\n\
+and others.\n\
+\n\
+" 11 75
+ installpkg n1/tcpip.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"deliver"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package deliver to your hard drive" --infobox \
+"A small and simple program that delivers electronic mail once it\n\
+has arrived at a given machine. Although designed for Xenix, it\n\
+works well on many platforms, including (of course) Linux. Deliver\n\
+allows great flexibility in the handling of local mail delivery.\n\
+All files used to control deliver are shell scripts. Thus, anything\n\
+that can be called by a shell script can be used to control mail\n\
+delivery. Deliver can also be used in conjunction with Smail. It\n\
+is included by default with Slackware's sendmail package, too.\n\
+\n\
+" 11 75
+ installpkg n2/deliver.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"base"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package base to your hard drive" --infobox \
+"Basic Linux filesystem package.\n\
+\n\
+Sets up the basic directory structure and adds a few important\n\
+binaries such as GNU mtools 2.0.7 and fdisk.\n\
+\n\
+" 7 75
+ installpkg a1/base.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"devs"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package devs to your hard drive" --infobox \
+"Device files.\n\
+\n\
+This package creates special files in the /dev directory that \n\
+represent your system's hardware.\n\
+\n\
+" 7 75
+ installpkg a1/devs.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"idekern"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package idekern to your hard drive" --infobox \
+"Linux kernel version 1.1.59, without SCSI support.\n\
+\n\
+A Linux kernel for computers that do not need SCSI support. You MUST\n\
+install a kernel image in order for your system to boot. This kernel\n\
+also contains UMSDOS and PPP.  See the file 'config.in' for an exact\n\
+list of included drivers.\n\
+\n\
+***IMPORTANT***!  If you have special hardware, such as a non-SCSI\n\
+CD-ROM drive, you'll need to install a kernel from the Q series that\n\
+supports it, or compile the support into your own custom kernel.\n\
+\n\
+" 13 75
+ installpkg a1/idekern.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"scsikern"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package scsikern to your hard drive" --infobox \
+"Linux kernel version 1.1.59, with SCSI + IDE support. \n\
+\n\
+This is a Linux kernel with full support for SCSI devices such as hard\n\
+drives, tape drives, and CD-ROM drives. This kernel also contains\n\
+UMSDOS and PPP.  See the file 'config.in' for an exact list of \n\
+included drivers.\n\
+\n\
+***IMPORTANT***!  If you have special hardware, such as a non-SCSI\n\
+CD-ROM drive, you'll need to install a kernel from the Q series that\n\
+supports it, or compile the support into your own custom kernel.\n\
+\n\
+" 13 75
+ installpkg a1/scsikern.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"sysvinit"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package sysvinit to your hard drive" --infobox \
+"SysV style init v. 2.4\n\
+\n\
+System V style init programs by Miquel van Smoorenburg that control\n\
+the booting and shutdown of your system. These support a number of\n\
+system runlevels, each with a specific set of utilities spawned. For\n\
+example, the normal system runlevel is 5, which starts getty on \n\
+virtual consoles tty1 - tty6. Runlevel 6 starts xdm. Runlevel 0 shuts\n\
+the system down. See the documentation in /usr/doc/SysVinit-2.4 and\n\
+the scripts in /etc/rc.d for more information.\n\
+\n\
+" 12 75
+ installpkg a1/sysvinit.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"bin"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package bin to your hard drive" --infobox \
+"Binaries that go in /bin and /usr/bin.\n\
+\n\
+System utilities and programs, such as GNU fileutils 3.9,\n\
+elvis 1.8pl3, at-2.7, Dillon's crond 3.0p1, file-3.9, GNU gawk 2.15.5,\n\
+man-1.3, modules.tar.gz, GNU patch 2.1, GNU sed 2.05, shar, time-1.6,\n\
+splitvt-1.5.2, tput-1.0, unarj-230, Slackware's color-enabled ls (uses\n\
+/etc/DIR_COLORS for configuration), and zoo-2.10.\n\
+\n\
+" 10 75
+ installpkg a2/bin.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"getty"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package getty to your hard drive" --infobox \
+"getty_ps 2.0.7e\n\
+\n\
+/sbin/getty and /sbin/uugetty. \n\
+These control the process of logging into your system, and may be used\n\
+instead of 'agetty', which is the default getty included with\n\
+util-linux-1.6. getty_ps supports a number of enhancements such as\n\
+ringback support.\n\
+\n\
+" 10 75
+ installpkg a2/getty.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gzip"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gzip to your hard drive" --infobox \
+"GNU zip compression utilities. (v. 1.2.4)\n\
+\n\
+Gzip reduces the size of the named files using Lempel-Ziv coding\n\
+(LZ77).  Whenever possible, each file is replaced by one with the\n\
+extension .gz, while keeping the same ownership modes, access and\n\
+modification times.\n\
+\n\
+" 9 75
+ installpkg a2/gzip.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ldso"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ldso to your hard drive" --infobox \
+"ld.so 1.4.4, the dynamic linker/loader.\n\
+\n\
+ld.so completes the final process of linking all necessary references\n\
+to sharable objects and unreferenced symbols in an impure executable,\n\
+(usually a dynamically linked executable), to produce a runnable file.\n\
+Nearly all Linux binaries in a.out format will be 'incomplete' and\n\
+require further linking at run time. ld.so's job is thus to complete\n\
+the linking process started at compilation. ld.so was written by David\n\
+Engel, Eric Youngdale, Peter MacDonald, Hongjiu Lu, Linus Torvalds,\n\
+Lars Wirzenius and Mitch D'Souza.\n\
+\n\
+" 13 75
+ installpkg a2/ldso.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"ps"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package ps to your hard drive" --infobox \
+"procps 0.97 \n\
+Utilities for displaying process and memory information written by\n\
+Michael K. Johnson, Werner Almesberger, Branko Lankester, Robert \n\
+Nation, David Engel, Larry Greenfield, Roger Binns, and Brian Edmonds.\n\
+Also includes Steve 'Mr. Bassman' Bryant's enhanced 'w', which does \n\
+the CPU accounting a little differently, keeping a running total for \n\
+all processes even after the processes have completed.\n\
+" 9 75
+ installpkg a2/ps.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"shlibs"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package shlibs to your hard drive" --infobox \
+"The shared C libraries libc.so.4.5.26 and libm.so.4.5.26. \n\
+\n\
+H.J. Lu's port of the GNU shared C libraries - needed to run programs\n\
+linked with the /lib/libc.so.4.*.*  and /lib/libm.so.4.*.* libraries.\n\
+\n\
+" 7 75
+ installpkg a2/shlibs.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"util"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package util to your hard drive" --infobox \
+"util-linux 1.10\n\
+\n\
+Selected utilities compiled from Rik Faith's huge utility collection:\n\
+agetty arch banner cal chroot chsh clear clock col colcrt colrm \n\
+column ctrlaltdel dmesg domainname fdformat fdisk frag fsck hexdump\n\
+ipcrm ipcs kbdrate kill last logger login look mesg mkfs.minix mkswap\n\
+more mount newgrp passwd pwd rdev renice reset rev script setfdprm\n\
+setserial setsid setterm simpleinit sln strings swapoff swapon sync\n\
+syslogd tsort tunelp ul umount update wall whereis write zdump zic \n\
+zones\n\
+\n\
+" 13 75
+ installpkg a2/util.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"bash"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package bash to your hard drive" --infobox \
+"GNU bash-1.14.2\n\
+\n\
+The GNU Bourne-Again SHell.  Bash is a sh-compatible command language\n\
+interpreter that executes commands read from the standard input or \n\
+from a file.  Bash also incorporates useful features from the Korn\n\
+and C shells (ksh and csh).  Bash is ultimately intended to be a \n\
+conformant implementation of the IEEE Posix Shell and Tools\n\
+specification (IEEE Working Group 1003.2).\n\
+\n\
+Bash must be present for the system to boot properly.\n\
+\n\
+" 13 75
+ installpkg a3/bash.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"comms"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package comms to your hard drive" --infobox \
+"Serial file-transfer and communication packages.\n\
+\n\
+Includes these programs:\n\
+\n\
+Minicom - a full featured menu-driven communications package similar\n\
+to the DOS program 'Telix'.\n\
+\n\
+sz/rz - utilities used to upload and download files using the Zmodem\n\
+protocol.\n\
+\n\
+" 12 75
+ installpkg a3/comms.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"cpio"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package cpio to your hard drive" --infobox \
+"The GNU cpio backup and archiving utility v. 2.3\n\
+\n\
+This is GNU cpio, a program to manage archives of files. This package\n\
+also includes mt, a tape drive control program. cpio copies files into\n\
+or out of a cpio or tar archive, which is a file that contains other\n\
+files plus information about them, such as their pathname, owner,\n\
+timestamps, and access permissions. The archive can be another file on\n\
+the disk, a magnetic tape, or a pipe.\n\
+\n\
+" 11 75
+ installpkg a3/cpio.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"e2fsbn"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package e2fsbn to your hard drive" --infobox \
+"Utilities for the second extended file system v. 0.5a\n\
+\n\
+Utilities needed to create and maintain ext2 filesystems under Linux.\n\
+Included in this package are: chattr, lsattr, mke2fs, mklost+found,\n\
+tune2fs, e2fsck, and badblocks. \n\
+\n\
+These utilities were written by Remy Card (the developer and\n\
+maintainer of the ext2 fs) and Theodore T'so.\n\
+\n\
+" 11 75
+ installpkg a3/e2fsbn.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"find"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package find to your hard drive" --infobox \
+"GNU find 3.8\n\
+\n\
+This package contains the GNU find, xargs, and locate programs.\n\
+find and xargs comply with POSIX 1003.2, as far as I know.  They\n\
+also support some additional options, some borrowed from Unix and\n\
+some unique to GNU.\n\
+\n\
+" 9 75
+ installpkg a3/find.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"gpm"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package gpm to your hard drive" --infobox \
+"General purpose mouse support v0.17\n\
+\n\
+This program is based on the 'selection' package, and allows you to\n\
+use the mouse to cut and paste text from the screen.  It also acts as\n\
+a mouse server for applications running on the Linux console, such as \n\
+the (now inaccurately named) MouseLess Commander and dialog.  NOTE:\n\
+This program may cause problems when you start X on systems that do\n\
+not use a serial mouse.  If you get an 'unable to open mouse device'\n\
+error from X, remove gpm from /etc/rc.d/rc.local.\n\
+\n\
+" 12 75
+ installpkg a3/gpm.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"grep"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package grep to your hard drive" --infobox \
+"GNU grep 2.0\n\
+\n\
+Grep searches the named input files (or standard input if no files are\n\
+named, or the file name - is given) for lines containing a match to\n\
+the given pattern.  This is the 'fastest grep in the west' (we hope).\n\
+\n\
+" 8 75
+ installpkg a3/grep.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"keytbls"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package keytbls to your hard drive" --infobox \
+"kbd 0.88\n\
+\n\
+Load and save keyboard mappings. Needed if you are not using the US\n\
+keyboard map. This package also contains utilities to change your\n\
+console fonts - if you install it you'll get a menu later on that lets\n\
+you select from many different fonts. If you like one, you can make it\n\
+your default font. A new default font can be chosen at any time by\n\
+typing 'fontconfig'. This package includes fonts from the \n\
+kbd_fonts.tar.gz package uploaded to Sunsite.\n\
+\n\
+" 12 75
+ installpkg a3/keytbls.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"less"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package less to your hard drive" --infobox \
+"less-237\n\
+\n\
+Less is a paginator similar to more (1), but which allows backward\n\
+movement in the file as well as forward movement. Also, less does not\n\
+have to read the entire input file before starting, so with large\n\
+input files it starts up faster than text editors like vi (1). \n\
+\n\
+Less was written by Mark Nudelman.\n\
+\n\
+" 11 75
+ installpkg a3/less.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"lpr"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package lpr to your hard drive" --infobox \
+"BSD print spooling system.                           \n\
+\n\
+NOTE: The lpd binary included in this package expects to find\n\
+TCP/IP running if TCP/IP support is found in the Linux kernel. If\n\
+you do not plan to install the TCP/IP package, then you will have \n\
+to recompile your kernel removing TCP/IP support. If you do not, \n\
+lpd will die immediately after it is started.\n\
+\n\
+" 10 75
+ installpkg a3/lpr.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"shellutl"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package shellutl to your hard drive" --infobox \
+"GNU shellutils 1.9.4\n\
+\n\
+This is a package of small shell programming utilities.  They are\n\
+mostly compliant with POSIX.2, where applicable.\n\
+\n\
+The programs in this package are:\n\
+basename date dirname echo env expr false logname nice hohup\n\
+pathchk printenv printf sleep stty tee test true tty uname\n\
+who whoami yes\n\
+\n\
+" 12 75
+ installpkg a3/shellutl.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"syslogd"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package syslogd to your hard drive" --infobox \
+"Sysklogd 1.2\n\
+\n\
+Dr. Greg Wettstein and Stephen Tweedie's syslogd/klogd.\n\
+\n\
+This package contains a modified version of syslogd for the Linux\n\
+environment.  An additional utility, klogd, is included which allows\n\
+kernel logging to be directed through the syslogd facility.\n\
+Syslogd and klogd are started when your system boots.\n\
+\n\
+" 11 75
+ installpkg a3/syslogd.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"tar"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package tar to your hard drive" --infobox \
+"GNU tar 1.11.2\n\
+\n\
+Tape ARchiver - adds and extracts files and directories to/from tape\n\
+or archive files. This version of tar also supports archive \n\
+compression using GNU zip.\n\
+\n\
+" 8 75
+ installpkg a3/tar.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"textutl"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package textutl to your hard drive" --infobox \
+"GNU textutil 1.9\n\
+\n\
+These are the GNU text file (actually, file contents) processing\n\
+utilities.  Most of these programs have significant advantages over\n\
+their Unix counterparts, such as greater speed, additional options,\n\
+and fewer arbitrary limits.\n\
+\n\
+The programs in this package are: cat, cksum, comm, csplit, cut, \n\
+expand, fold, head, join, nl, od, paste, pr, sort, split,\n\
+sum, tac, tail, tr, unexpand, uniq, and wc.\n\
+\n\
+" 13 75
+ installpkg a3/textutl.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"zoneinfo"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package zoneinfo to your hard drive" --infobox \
+"Time zone utilities\n\
+\n\
+Allows you to configure your time zone. Look in /usr/lib/zoneinfo\n\
+for instructions on how to set this up manually, or select your\n\
+timezone from the menu during your system configuration.\n\
+\n\
+" 8 75
+ installpkg a3/zoneinfo.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"etc"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package etc to your hard drive" --infobox \
+"System configuration files that go into the /etc directory.\n\
+\n\
+The /etc directory is traditionally the location where configuration\n\
+files and administration binaries are found. Under Linux, the binaries\n\
+have been moved out of the /etc directory and into the /sbin \n\
+directory; the /etc directory is now reserved for configuration files\n\
+only. \n\
+\n\
+" 10 75
+ installpkg a4/etc.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"hdsetup"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package hdsetup to your hard drive" --infobox \
+"The Slackware setup/package maintenance system v. 2.1.0\n\
+\n\
+The full screen and tty versions of setup and pkgtool, two utilities\n\
+included with Slackware that allow you to easily install software \n\
+packages, remove software packages, and review the installed software\n\
+packages.\n\
+\n\
+Also contains the command line utilities 'installpkg', 'removepkg',\n\
+'makepkg', and 'explodepkg' that install, remove, build, and examine\n\
+software packages. Man pages are included for all of these utilities.\n\
+\n\
+" 13 75
+ installpkg a4/hdsetup.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"lilo"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package lilo to your hard drive" --infobox \
+"LILO 0.15\n\
+\n\
+Generic Boot Loader for Linux ('LInux LOader') by Werner Almesberger.\n\
+LILO boots Linux from your hard drive. It can also boot other\n\
+operating systems such as MS-DOS and OS/2, and can even boot DOS from\n\
+the second hard drive. LILO comes with utilities and documentation\n\
+that make it easier to install, such as 'liloconfig' and 'QuickStart'.\n\
+NOTE: Installing boot loaders is inherently dangerous. Be sure to have\n\
+some means to boot your system from a different media if you install\n\
+LILO on your hard disk.\n\
+\n\
+" 13 75
+ installpkg a4/lilo.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"loadlin"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package loadlin to your hard drive" --infobox \
+"LOADLIN v1.5\n\
+\n\
+LOADLIN.EXE, a loader (running under DOS) for LINUX kernel images\n\
+fully supporting the kernel's command line feature.  LOADLIN or\n\
+BOOTLIN is the safest way to boot Linux (>0.99.14) from your hard\n\
+disk. LOADLIN is (C) 1994 Hans Lermen (lermen@elserv.ffm.fgan.de) \n\
+\n\
+" 9 75
+ installpkg a4/loadlin.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"tcsh"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package tcsh to your hard drive" --infobox \
+"tcsh 6.04\n\
+\n\
+tcsh is an enhanced but completely compatible version of the Berkeley\n\
+UNIX C shell, csh(1). It is a command language interpreter usable both\n\
+as an interactive login shell and a shell script command processor. It\n\
+includes a command-line editor, programmable word completion, spelling\n\
+correction, a history mechanism, job control, and a C-like syntax.\n\
+\n\
+" 10 75
+ installpkg a4/tcsh.tgz 1> /dev/null 2> /dev/null
+fi
+if fgrep '"umsprogs"' /tmp/return 1> /dev/null 2> /dev/null ; then
+ dialog --title "Installing package umsprogs to your hard drive" --infobox \
+"umsdos_progs 0.3a\n\
+\n\
+Various utilities needed by Jacques Gelinas' UMSDOS filesystem.\n\
+\n\
+" 6 75
+ installpkg a4/umsprogs.tgz 1> /dev/null 2> /dev/null
+fi
+rm -f /tmp/return
