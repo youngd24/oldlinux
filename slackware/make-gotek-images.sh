@@ -29,17 +29,27 @@
 # -----------------------------------------------------------------------------
 # The script inspects the target directory to decide which version style it is:
 #
-#   2.x layout (e.g. slackware-2.0.0):
+#   2.0.x layout (e.g. slackware-2.0.0):
 #     <target>/bootdsks.144/    — gzipped raw kernel images
-#     <target>/rootdsks.144/    — gzipped raw ramdisk images
-#     <target>/slakware/<disk>/ — package series disk directories
+#     <target>/rootdsks.144/    — gzipped raw ramdisk images (.gz)
+#     <target>/slakware/<disk>/ — package series disk directories, each with
+#                                 00index.txt listing the files to copy
+#
+#   2.1.x layout (e.g. slackware-2.1):
+#     <target>/bootdsks.144/    — gzipped raw kernel images (same as 2.0.x)
+#     <target>/rootdsks.144/    — raw uncompressed images, already exactly
+#                                 1,474,560 bytes — no gunzip or padding needed
+#     <target>/slakware/<disk>/ — package series disk directories with no
+#                                 00index.txt — all regular files are copied
 #
 #   1.x layout (e.g. slackware-1.1.2):
 #     <target>/bootdisk/1_44meg/ — gzipped raw kernel images
 #     <target>/<disk>/           — package series disk directories in tree root
 #     (no separate rootdisk directory)
 #
-# Detection key: presence of bootdsks.144/ (2.x) vs bootdisk/1_44meg/ (1.x).
+# Primary detection key: bootdsks.144/ (2.x) vs bootdisk/1_44meg/ (1.x).
+# Sub-detection for 2.x: whether rootdsks.144/ holds .gz files (2.0.x) or
+# raw uncompressed images (2.1.x).
 #
 # Disk counts per series are discovered automatically by walking the tree, so
 # no hardcoded counts are needed and future versions are handled without edits.
@@ -107,20 +117,27 @@ VERSION="$(basename "$TARGET_DIR")"
 # script. They are NOT set at the top of the file because their values depend
 # on which layout is detected.
 #
-#   LAYOUT       — human-readable label printed in the banner ("1.x" or "2.x")
+#   LAYOUT       — human-readable label printed in the banner
+#                  ("1.x", "2.0.x", or "2.1.x")
 #   BOOT_DIR     — directory containing gzipped raw kernel (.gz) images
-#   ROOT_DIR     — directory containing gzipped raw ramdisk (.gz) images;
-#                  empty string on 1.x where no separate rootdisk exists
+#   ROOT_DIR     — directory containing root disk images (gzipped on 2.0.x,
+#                  raw on 2.1.x); empty string on 1.x where none exists
 #   SLAKWARE_DIR — parent directory of the per-disk package series dirs
 #                  (e.g. a1/, ap2/); equals TARGET_DIR on 1.x since the series
 #                  dirs live directly in the tree root
 ##############################################################################
 
 if [ -d "$TARGET_DIR/bootdsks.144" ]; then
-    LAYOUT="2.x"
     BOOT_DIR="$TARGET_DIR/bootdsks.144"
     ROOT_DIR="$TARGET_DIR/rootdsks.144"
     SLAKWARE_DIR="$TARGET_DIR/slakware"
+    # Sub-detect 2.0.x vs 2.1.x by checking whether rootdsks.144/ holds
+    # gzipped images (.gz) or raw uncompressed images (no extension).
+    if ls "$ROOT_DIR"/*.gz &>/dev/null 2>&1; then
+        LAYOUT="2.0.x"
+    else
+        LAYOUT="2.1.x"
+    fi
 elif [ -d "$TARGET_DIR/bootdisk/1_44meg" ]; then
     LAYOUT="1.x"
     BOOT_DIR="$TARGET_DIR/bootdisk/1_44meg"
@@ -230,12 +247,14 @@ check_dirs() {
 #   expects DOS-formatted data disks and will refuse to read them otherwise.
 #   mkfs.fat automatically chooses FAT12 for this geometry.
 #
-# Why 00index.txt:
-#   The mirror contains sidecar files (.md5, .sha256, .metalink, YMTRANS.TBL,
-#   etc.) that are not part of the original disk set and would waste space on
-#   a 1.44MB image. 00index.txt lists only the files that belong on the disk,
-#   one per line with the format: <filename>  <size-in-bytes>
-#   The awk extracts just the filename (field 1) and we copy only those files.
+# File selection:
+#   If srcdir/00index.txt exists (1.x and 2.0.x), only the files it lists are
+#   copied. The mirror contains sidecar files (.md5, .sha256, YMTRANS.TBL,
+#   etc.) that don't belong on the install disk; 00index.txt acts as the
+#   authoritative manifest. Format: <filename>  <size-in-bytes> per line.
+#   If 00index.txt is absent (2.1.x), all regular files in srcdir are copied.
+#   The 2.1 mirror was already stripped of sidecars by mirror.sh's --reject
+#   list, so copying everything is safe.
 #
 # Why sudo mount:
 #   Writing files into a FAT image requires mounting it via loopback. Loop
@@ -263,13 +282,23 @@ make_fat_image() {
     mnt=$(mktemp -d)
     sudo mount -o loop "$imgfile" "$mnt"
 
-    # Copy only the files named in 00index.txt. awk prints field 1 (filename),
-    # read -r passes each name to cp. Directories or subdirectory entries in
-    # 00index.txt (marked with trailing /) are silently skipped by cp -f since
-    # they would fail; the index on these disks only lists regular files.
-    awk '{print $1}' "$srcdir/00index.txt" | while read -r f; do
-        sudo cp "$srcdir/$f" "$mnt/"
-    done
+    # Copy payload files into the mounted image. Strategy depends on whether
+    # a 00index.txt manifest exists in the source directory.
+    if [ -f "$srcdir/00index.txt" ]; then
+        # 1.x and 2.0.x: copy only files listed in 00index.txt to avoid
+        # including mirror sidecar files (.md5, .sha256, YMTRANS.TBL, etc.)
+        awk '{print $1}' "$srcdir/00index.txt" | while read -r f; do
+            sudo cp "$srcdir/$f" "$mnt/"
+        done
+    else
+        # 2.1.x: no 00index.txt — copy every regular file in the directory.
+        # Sidecar files were already excluded by mirror.sh so everything
+        # present belongs on the disk.
+        for f in "$srcdir"/*; do
+            [ -f "$f" ] || continue
+            sudo cp "$f" "$mnt/"
+        done
+    fi
 
     sudo umount "$mnt"
     rmdir "$mnt"
@@ -345,35 +374,53 @@ for f in "$BOOT_DIR"/*.gz; do
 done
 
 ##############################################################################
-# Root disk images — 2.x only, raw dd, no filesystem
+# Root disk images — 2.x only, raw image, no filesystem
 #
 # After the kernel boots from the boot disk, the installer prompts for the
-# root disk. It contains a compressed ramdisk image with the installer
-# environment (shell, setup scripts, fdisk, etc.). Like the boot disk it is
-# a raw image with no filesystem wrapper — dd reads it sector by sector.
+# root disk. It contains a ramdisk image with the installer environment
+# (shell, setup scripts, fdisk, etc.).
 #
 # This section is skipped entirely on 1.x layouts where ROOT_DIR is empty,
 # because 1.x shipped with a combined boot+root arrangement.
 #
-# Variables: same pattern as the boot disk section above; imgfile lands in
-# OUT_DIR/rootdisks/ with a root_ prefix to distinguish from boot images.
+# 2.0.x: root images are gzipped. Each is gunzip'd, written with dd, and
+#         zero-padded to exactly FLOPPY_BYTES if the decompressed image is
+#         smaller than a full floppy.
+#
+# 2.1.x: root images are raw uncompressed and already exactly FLOPPY_BYTES.
+#         No gunzip, no dd, no padding — a direct cp is all that's needed.
+#
+# Variables: imgfile lands in OUT_DIR/rootdisks/ with a root_ prefix to
+# distinguish from boot images.
 ##############################################################################
 
 if [ -n "$ROOT_DIR" ]; then
     echo
     echo "--- Root disk images ---"
-    for f in "$ROOT_DIR"/*.gz; do
-        [ -f "$f" ] || continue
-        base=$(basename "$f" .gz)
-        imgfile="$OUT_DIR/rootdisks/root_${base}.img"
-        echo "  $f -> $imgfile"
-        gunzip -c "$f" | dd of="$imgfile" bs=512 conv=sync status=none
-        # Pad to full 1.44MB if the ramdisk image is smaller than a full floppy
-        size=$(stat -c%s "$imgfile")
-        if [ "$size" -lt "$FLOPPY_BYTES" ]; then
-            dd if=/dev/zero bs=1 count=$((FLOPPY_BYTES - size)) >> "$imgfile" status=none
-        fi
-    done
+    if [ "$LAYOUT" = "2.0.x" ]; then
+        # Gzipped images — decompress, write sector-by-sector, pad if needed
+        for f in "$ROOT_DIR"/*.gz; do
+            [ -f "$f" ] || continue
+            base=$(basename "$f" .gz)
+            imgfile="$OUT_DIR/rootdisks/root_${base}.img"
+            echo "  $f -> $imgfile"
+            gunzip -c "$f" | dd of="$imgfile" bs=512 conv=sync status=none
+            # Pad to full 1.44MB if the ramdisk image is smaller than a full floppy
+            size=$(stat -c%s "$imgfile")
+            if [ "$size" -lt "$FLOPPY_BYTES" ]; then
+                dd if=/dev/zero bs=1 count=$((FLOPPY_BYTES - size)) >> "$imgfile" status=none
+            fi
+        done
+    else
+        # 2.1.x raw images — already the correct size, copy directly
+        for f in "$ROOT_DIR"/*; do
+            [ -f "$f" ] || continue
+            base=$(basename "$f")
+            imgfile="$OUT_DIR/rootdisks/root_${base}.img"
+            echo "  $f -> $imgfile"
+            cp "$f" "$imgfile"
+        done
+    fi
 fi
 
 ##############################################################################
@@ -389,10 +436,11 @@ fi
 # at the first gap, which is fine for complete mirrors. Any series from
 # SERIES_ORDER that has no disk 1 in SLAKWARE_DIR is skipped silently.
 #
-# Size check: before building the image, we sum the byte sizes of the files
-# that will actually be copied (those listed in 00index.txt) and compare
-# against the usable FAT12 space. FAT12 on 1.44MB reserves ~8KB for its own
-# tables and root directory, leaving avail = FLOPPY_BYTES - 8192 for data.
+# Size check: before building the image, we sum the bytes of the files that
+# will be copied and compare against usable FAT12 space. FAT12 on 1.44MB
+# reserves ~8KB for its own tables and root directory, leaving
+# avail = FLOPPY_BYTES - 8192 for data. Source of the file list depends on
+# whether 00index.txt exists (1.x, 2.0.x) or not (2.1.x).
 #
 # Variables:
 #   series    — current series name from SERIES_ORDER (e.g. "ap")
@@ -400,7 +448,7 @@ fi
 #   disk      — series + diskno concatenated (e.g. "ap2")
 #   srcdir    — full path to the source disk directory in SLAKWARE_DIR
 #   imgfile   — destination .img path under OUT_DIR/slakware/
-#   used      — total bytes of files listed in 00index.txt for this disk
+#   used      — total bytes of files to be copied for this disk
 #   avail     — usable capacity of a FAT12 1.44MB image in bytes
 ##############################################################################
 
@@ -416,9 +464,13 @@ for series in $SERIES_ORDER; do
 
         echo "  $srcdir -> $imgfile"
 
-        # Sum bytes of only the files that will be copied, then warn if they
-        # exceed the usable FAT12 capacity of a 1.44MB image
-        used=$(awk '{print $1}' "$srcdir/00index.txt" | xargs -I{} du -sb "$srcdir/{}" 2>/dev/null | awk '{sum+=$1} END{print sum+0}')
+        # Sum bytes of the files that will be copied, then warn if they exceed
+        # the usable FAT12 capacity. Source depends on whether 00index.txt exists.
+        if [ -f "$srcdir/00index.txt" ]; then
+            used=$(awk '{print $1}' "$srcdir/00index.txt" | xargs -I{} du -sb "$srcdir/{}" 2>/dev/null | awk '{sum+=$1} END{print sum+0}')
+        else
+            used=$(find "$srcdir" -maxdepth 1 -type f | xargs du -sb 2>/dev/null | awk '{sum+=$1} END{print sum+0}')
+        fi
         avail=$((FLOPPY_BYTES - 8192))
         if [ "$used" -gt "$avail" ]; then
             echo "  WARNING: $srcdir is ${used} bytes, may not fit on 1.44MB image!"
