@@ -1,0 +1,6 @@
+
+file=$1
+img=$2
+
+(tar -cvf - $file && dd if=/dev/zero bs=512) | dd of=../$img bs=512 count=2880
+echo "$file -> $img"
