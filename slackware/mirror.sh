@@ -175,23 +175,11 @@ wget \
     --cut-dirs=2 \
     --no-parent \
     --reject "index.html*,*.mirrorlist,*.meta4,*.md5,*.sha1,*.sha256" \
-    --reject-regex "/(usr|slackpro|slakpro2|slakpro3)(/|$)" \
+    --reject-regex "/(usr|slackpro|slakpro2|slakpro3|link2cd|slaktest)(/|$)" \
     --directory-prefix="$DEST_DIR" \
     --progress=bar \
     --show-progress \
     "$BASE_URL/"
-
-# Remove any excluded directories that wget created as empty stubs. wget
-# allocates the local directory entry as soon as it sees the link in the
-# parent index page, before the exclusion check prevents recursion into it.
-# This cleans up those stubs so the local tree is completely free of them.
-EXCLUDE_DIRS=(usr slackpro slakpro2 slakpro3)
-for d in "${EXCLUDE_DIRS[@]}"; do
-    if [ -d "$DEST_DIR/$d" ]; then
-        echo "Removing excluded directory: $DEST_DIR/$d"
-        rm -rf "$DEST_DIR/$d"
-    fi
-done
 
 echo
 echo "Done. Files in: $DEST_DIR"
