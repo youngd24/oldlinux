@@ -1,0 +1,15 @@
+This directory tree contains the MCC Interim distribution of Linux,
+release 1.0+.  The following is a summary of the contents of this
+directory:
+
+     README          This file.
+     Bugs+Warnings   Warnings, bug reports, and log of changes.
+     images          Gzipped boot and root disks.
+     packages        Recommended packages to be installed as
+                     part of this distribution.
+     extra_packages  Optional packages for this distribution.
+     extra_kernels   Compiled kernels with more limited configurations.
+     sources         Source files for all binaries in all packages.
+     documentation   Complete documentation in tex, dvi, ps, and ASCII.
+     contributions   Sources and packages accompanying this distribution
+                     but not part of it.

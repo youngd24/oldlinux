@@ -1,0 +1,16 @@
+This directory was created to clean up the appearance of the distribution
+directory.  It contains:
+
+00-contents        This file.
+README             General information about this distribution.
+README.linux       Linux-specific information.
+README.ftp         Getting files by ftp, NFS, or from the MCC shop.
+README.prepare     Preparing to install Linux.  Package sizes.
+README.install     Installing MCC interim Linux.
+README.adapt       Tailoring MCC interim Linux to suit your taste.
+README.fdisk       fdisk: the Linux partition table editor.
+README.docs        Available documentation for Linux.
+interim.dvi.gz     Complete documentation, DVI format, gzipped.
+interim.ps.gz      Complete documentation, PostScript format, gzipped.
+interim.tex.gz     Complete documentation, TeXinfo format, gzipped.
+mccinfo.tex.gz     Texinfo.tex for A4 paper with local style changes.

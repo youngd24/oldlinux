@@ -1,0 +1,112 @@
+Bugs and warnings
+=================
+
+The MCC Interim release of Linux assembles code from many sources.
+Even after the release and the documentation have been frozen, the file
+`Bugs+Warnings' is updated.  Please read it carefully.
+
+I have fixed many bugs, but I am certain I have created others.  I
+would appreciate any bug reports or fixes.  Please send them by E-mail
+to me at `LeBlanc@mcc.ac.uk'.
+
+  1. This distribution, even when it is used to upgrade an existing
+     system, *must* be installed from the boot and root disks.  If you
+     try to install MCC packages without using the boot and root disks,
+     they will probably not work properly.
+
+  2. As of release 1.0+, MCC Interim Linux does not install correctly on
+     a minix file system unless it accepts filenames of up to 30
+     characters in length.  The `mkfs' command on the root disk does
+     not allow you to create a minix file system with the 14-character
+     limit on file name length.
+
+  3. The Linux NFS implementation is limited by the size of the memory
+     which the kernel can allocate for buffers.  Heavy reading or
+     writing of files in an NFS-mounted file system may cause the
+     kernel to hang unless you specify the options
+     `rsize=1024,wsize=1024' either on the `mount' command or in the
+     entry in `/etc/fstab'.
+
+  4. Older versions of the SysVinit package allowed root to enter
+     single user mode without a password, but required the root password
+     when the system was booted in single user mode.  In attempting to
+     restore this behaviour, I have introduced a new bug.  After you
+     boot the system in single user mode, you can change to another run
+     level, but if you as root change back to single user mode without
+     rebooting, you must type in the root password again.
+
+  5. The `more' command does not work properly under X.
+
+  6. The root and boot disks, as well as the installed system, contain
+     device files for eight partitions on each disk.  If you need more
+     partitions, you must use `MAKEDEV' or `mknod' to create additional
+     device files in the installed `/dev' directory.
+
+  7. It is not our policy to make extensive modifications to the Linux
+     kernel.  Bugs in the current kernel may be fixed in later versions
+     of the kernel.
+
+  8. After the package is released, small bugs are often discovered.
+     The Bugs+Warnings file may be consulted for further information.
+
+Log of changes and reported bugs:
+
+1.  28 March 12:00 (BST)  Revised the boot and root disks slightly to
+    merge /tmp/install into /tmp/bootinstall and clean up messages.
+    'df' doesn't work properly during ramdisk installation.  See 2.
+
+2.  29 March 12:00 (BST)  Revised the boot and root disks to fix
+    /tmp/bootinstall so that 'df' works during ramdisk installation.
+    Added 'vlock' to the distribution.
+
+3.  29 March 12:00 (BST)  Changed 'install.mail' so that it puts
+    '-smtp_debug' into /etc/smail.conf, fixing a security hole.
+
+4.  29 March 12:00 (BST)  Released new versions of ipide and wd
+    packages to include kernels compiled from the new kernel source.
+
+5.  31 March 11:30 (BST)  Recompiled all four kernels (cdrmboot,
+    nocdboot, ipide, wd) without tape support.  Too many problems
+    were reported with Ethernet cards with IRQ 5.
+
+6.  31 March 11:30 (BST)  Replaced root/base disk with one which
+    creates /dev/tty0.  If your installation is missing /dev/tty0,
+    do this:
+
+        cd /dev
+        ./MAKEDEV tty0
+
+7.  9 April 9:15 (BST)  Changed the timezone package to make GMT0BST
+    work properly.  If you have an older version, do this:
+
+        ln -s GB-Eire /usr/lib/zoneinfo/GMT0BST
+
+8.  9 April 9:15 (BST)  Created the contributions directory.  See the
+    00-contents file there for more information.  Moved documents to
+    the documentation directory.
+
+9.  22 April 14:15 (BST)  New releases of emacs and info to cooperate
+    properly with the dvips package.  If you have older versions, just
+    be sure to install dvips last.
+
+10.  10 May 10:00 (BST)  Several reports reached me in a short time of
+    problems caused by the ext2 file system programs included with the
+    1.0+ MCC distribution.  To alleviate this, I have (1) included a
+    later version of mkfs.ext2 on the root disk, (2) added a new
+    e2fsp05a package, and (3) modified the baseman and manpages packages
+    so that they do not overwrite the new man pages.  This introduces a
+    new bug, in that mkfs of an ext2 file system from the root disk
+    does not actually run badblocks (though it appears to do so).
+
+    (A)  If you already have MCC interim 1.0+, just get the new e2fsp05a.tgz
+        file, and give the command 'mccinstall e2fsp05a.tgz'.
+
+    (B)  If you are getting a new copy of the distribution, note that the
+        new package should be installed, though it is not mentioned in the
+        documentation.  If you have 5.25 inch floppies, it fits on disk 2,
+        along with gcca and mail.  If you have 3.5 inch floppies, you must
+        shift files about a bit:
+
+        Disk 4: info, lp, manpages
+        Disk 5: gpp, mail, patches, timezone
+        Disk 8: e2fsp05a, gprof, linux

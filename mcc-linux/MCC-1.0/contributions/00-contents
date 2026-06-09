@@ -1,0 +1,47 @@
+This directory was created for MCC-Interim-style packages which are
+contributed by various people, and which I have decided to put here
+rather than in the /pub/linux/misc directory at ftp.mcc.ac.uk.
+It contains:
+
+   (dvips          Converts DVI files to PostScript.)
+
+dvips.tgz          Package containing dvips and adobe fonts.  Requires
+                   the tex package to work.
+dvipsk555a.src.tgz Source for dvips package.
+
+   (nfsserv        Allows Linux systems to export file systems to be
+                   mounted by other machines using NFS.)
+
+nfsserv.tgz        Package containing rpcgen, mountd, nfsd, portmap.
+nfsserv.src.tgz    Source for the nfsserv package.
+
+   (tex            Don Knuth's TeX, Metafont, etc.  Digital typesetting.)
+
+bibtex.tgz         Package containing bibtex.  Requires tex.
+tex.tgz            Package containing TeX, mf, etc.  Some programs in this
+                   package require XFree86 shared libraries.
+texextra.tgz       Ams, euler, pandora, mft, tugboat, and other bits not
+                   included in the tex package.
+tex.src.tgz        Source for the binaries in the tex and bibtex packages.
+
+   (vcron          Cron daemon and crontab command by Paul Vixie.)
+
+vcron.tgz          Package containing crond, crontab, man pages.
+vcron301.src.tgz   Source for vcron programs.
+
+   (xdvi           View DVI files under X.)
+
+xdvi.tgz           Package containing xdvi.  Requires tex package and
+                   XFree86-2.1 or later.
+xdvik18.src.tgz    Source for the xdvi package.
+
+   (xemacs         Version of emacs 19.22 with X11 support.)
+
+xemacs.tgz         Package containing xemacs, emacs-19.22.X, DOC file.
+                   Requires emacs and elisp packages, XFree86 shared libraries.
+
+   (xntp           Allows the Linux software clock to be set using the
+                   extended network time protocol.)
+
+xntp.tgz           Package containing xntpd, xntpdc, ntpdate, etc.
+xntp3p3.src.tgz    Source for the xntp package.
