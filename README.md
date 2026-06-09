@@ -14,6 +14,38 @@ I'm currently working on this on a Windows 11 machine under WSL2, everything I'v
 
 Yea, Windows 11, I know, it came on this NUC and what can I say, I hate reloading OS's.
 
+## MCC Interim Linux
+
+See `mcc-linux/README.md` for the full details. Short version here.
+
+MCC Interim Linux was put together by Owen LeBlanc at Manchester Computing
+Centre around 1993. It's one of the early distributions — same era as SLS,
+before Slackware had really taken over. I used it briefly before landing on
+Slackware and mostly forgot it existed until I started digging around for what
+was actually out there in that window.
+
+It's version 1.0+, which is an odd way to version a release but that's what it
+says. Uses a boot disk / root disk approach like later Slackware, two kernel
+options depending on whether you have a CD-ROM drive, and packages are installed
+by swapping floppies and running tar off the device directly. No package manager,
+no installer magic — just tar.
+
+Boot disk options:
+
+- **cdrmboot** — kernel with CD-ROM driver support compiled in
+- **nocdboot** — standard kernel without CD-ROM, works on most hardware
+
+After the base install there are two sets of packages:
+
+- **packages/** — the recommended set: GCC, GDB, groff, info pages, man pages,
+  gawk, flex, bison, and the Linux kernel source
+- **extra_packages/** — optional add-ons: Emacs, elisp, mail utilities, gprof,
+  extra libraries, man pages, patches, timezone data
+
+One thing worth knowing: `emacsxtr.tgz` in extra_packages is 2.3MB and won't
+fit on a single 1.44MB floppy. It's in the source tree but gets skipped by the
+image builder. Everything else fits fine.
+
 ## Slackware
 
 See `slackware/README.md` for the full details on the scripts and how everything works. What follows is a summary of each version and where things stand.
