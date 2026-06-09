@@ -52,11 +52,17 @@ IMAGES_DIR="$SCRIPT_DIR/MCC-1.0/images"
 # PKG_DIR — directory containing the package .tgz / .tar.gz archives.
 PKG_DIR="$SCRIPT_DIR/MCC-1.0/packages"
 
+# EXTRA_PKG_DIR — directory containing extra package archives.
+EXTRA_PKG_DIR="$SCRIPT_DIR/MCC-1.0/extra_packages"
+
 # BOOTROOT_OUT — output directory for boot and root disk images.
 BOOTROOT_OUT="$SCRIPT_DIR/images/bootroot"
 
 # PKG_OUT — output directory for package floppy images (raw tar streams).
 PKG_OUT="$SCRIPT_DIR/images/packages"
+
+# EXTRA_PKG_OUT — output directory for extra package floppy images.
+EXTRA_PKG_OUT="$SCRIPT_DIR/images/extra_packages"
 
 # Floppy geometry constants — these never change for a 1.44MB DD floppy.
 # FLOPPY_SECTORS — total 512-byte sectors on a 1.44MB floppy (80 tracks *
@@ -125,7 +131,7 @@ echo
 check_deps
 
 # Create output directories if they don't exist
-mkdir -p "$BOOTROOT_OUT" "$PKG_OUT"
+mkdir -p "$BOOTROOT_OUT" "$PKG_OUT" "$EXTRA_PKG_OUT"
 
 ##############################################################################
 # Boot and root disk images
@@ -263,6 +269,71 @@ done
 
 if [ "$found" -eq 0 ]; then
     echo "  no package files found in $PKG_DIR"
+fi
+
+##############################################################################
+# Extra package floppy images — raw tar stream, no filesystem
+#
+# Same approach as the packages section above. Each .tgz in extra_packages/
+# gets its own floppy image written as a raw tar stream for use with:
+#
+#   tar xvf /dev/fd0
+#
+# Files larger than FLOPPY_BYTES cannot fit on a single floppy and are
+# skipped with a warning. emacsxtr.tgz (2.3MB) is the known case here.
+##############################################################################
+
+echo
+echo "--- Extra package floppy images ---"
+echo " Source: $EXTRA_PKG_DIR"
+echo " Output: $EXTRA_PKG_OUT"
+echo
+
+if [ ! -d "$EXTRA_PKG_DIR" ]; then
+    echo "ERROR: extra_packages directory not found: $EXTRA_PKG_DIR"
+    exit 1
+fi
+
+found=0
+for f in "$EXTRA_PKG_DIR"/*.tgz "$EXTRA_PKG_DIR"/*.tar.gz; do
+    [ -f "$f" ] || continue
+    found=1
+
+    pkgname=$(basename "$f")
+    pkgname="${pkgname%.tgz}"
+    pkgname="${pkgname%.tar.gz}"
+
+    imgfile="$EXTRA_PKG_OUT/${pkgname}.img"
+
+    # Skip files that are too large to fit on a single floppy. tar overhead
+    # adds 512 bytes of header plus 1024 bytes of end-of-archive blocks; if
+    # the file itself already exceeds FLOPPY_BYTES there is no chance it fits.
+    filesize=$(stat -c%s "$f")
+    if [ "$filesize" -ge "$FLOPPY_BYTES" ]; then
+        echo "  SKIP: $(basename "$f") ($filesize bytes) exceeds floppy capacity ($FLOPPY_BYTES bytes)"
+        continue
+    fi
+
+    if [ -f "$imgfile" ] && [ "$FORCE" -eq 0 ]; then
+        echo "  SKIP: $imgfile already exists (use --force to overwrite)"
+        continue
+    fi
+
+    echo "  $f -> $imgfile"
+
+    tar cf - -C "$EXTRA_PKG_DIR" "$(basename "$f")" | dd of="$imgfile" bs=512 conv=sync status=none
+
+    size=$(stat -c%s "$imgfile")
+    if [ "$size" -lt "$FLOPPY_BYTES" ]; then
+        dd if=/dev/zero bs=1 count=$((FLOPPY_BYTES - size)) >> "$imgfile" status=none
+        echo "    padded from $size to $FLOPPY_BYTES bytes"
+    fi
+
+    echo "    done ($(stat -c%s "$imgfile") bytes)"
+done
+
+if [ "$found" -eq 0 ]; then
+    echo "  no package files found in $EXTRA_PKG_DIR"
 fi
 
 echo
