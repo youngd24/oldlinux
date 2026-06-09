@@ -1,7 +1,7 @@
 #!/bin/bash
 # build-images.sh
 #
-# Creates GoTek-compatible .img files from the MCC-1.0 boot and root disk images.
+# Creates GoTek-compatible .img files from the MCC-1.0 boot, root, and package files.
 #
 # -----------------------------------------------------------------------------
 # Background
@@ -17,16 +17,23 @@
 # 2880 sectors), so each image is padded with zeros to the correct size after
 # decompression.
 #
-# Output: images/bootroot/<basename>.img, e.g.
-#   images/bootroot/cdrmboot.img
-#   images/bootroot/nocdboot.img
-#   images/bootroot/root.img
+# MCC-1.0/packages/ contains .tgz and .tar.gz package archives. Each package
+# is written as a raw tar stream directly to its own floppy image — no
+# filesystem, no extraction. On the target machine:
+#   tar xvf /dev/fd0    (or wherever the GoTek presents the floppy)
+# reads the tar stream off the device and extracts the package archive into
+# the current directory.
+#
+# Output:
+#   images/bootroot/<basename>.img   — boot and root disk images
+#   images/packages/<basename>.img   — one floppy per package, raw tar stream
 #
 # -----------------------------------------------------------------------------
 # Requirements
 # -----------------------------------------------------------------------------
 #   dd        — writes raw images and creates zero fills (coreutils, always present)
 #   gunzip    — decompresses .gz files (gzip package, almost always present)
+#   tar       — creates raw tar streams for package floppies
 #
 # Usage: bash build-images.sh [--force]
 #   --force   overwrite existing .img files; without this flag existing images
@@ -39,11 +46,17 @@ set -e
 # Used to locate the images/ directory regardless of where the script is called from.
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# IMAGES_DIR — directory containing the source .gz files.
+# IMAGES_DIR — directory containing the source boot/root .gz files.
 IMAGES_DIR="$SCRIPT_DIR/MCC-1.0/images"
 
-# OUT_DIR — directory where built .img files are written.
-OUT_DIR="$SCRIPT_DIR/images/bootroot"
+# PKG_DIR — directory containing the package .tgz / .tar.gz archives.
+PKG_DIR="$SCRIPT_DIR/MCC-1.0/packages"
+
+# BOOTROOT_OUT — output directory for boot and root disk images.
+BOOTROOT_OUT="$SCRIPT_DIR/images/bootroot"
+
+# PKG_OUT — output directory for package floppy images (raw tar streams).
+PKG_OUT="$SCRIPT_DIR/images/packages"
 
 # Floppy geometry constants — these never change for a 1.44MB DD floppy.
 # FLOPPY_SECTORS — total 512-byte sectors on a 1.44MB floppy (80 tracks *
@@ -81,12 +94,13 @@ done
 #
 # Tools checked:
 #   dd      — writes raw images and appends zero padding
-#   gunzip  — decompresses the source .gz files
+#   gunzip  — decompresses the boot/root source .gz files
+#   tar     — creates raw tar streams for package floppy images
 ##############################################################################
 check_deps() {
     local missing=0
     echo "checking for dependencies"
-    for cmd in dd gunzip; do
+    for cmd in dd gunzip tar; do
         if ! command -v "$cmd" &>/dev/null; then
             echo "ERROR: '$cmd' not found"
             missing=1
@@ -105,23 +119,32 @@ check_deps() {
 
 echo "=========================================="
 echo " MCC Interim Linux GoTek image builder"
-echo " Source: $IMAGES_DIR"
-echo " Output: $OUT_DIR"
 echo "=========================================="
 echo
 
 check_deps
+
+# Create output directories if they don't exist
+mkdir -p "$BOOTROOT_OUT" "$PKG_OUT"
+
+##############################################################################
+# Boot and root disk images
+#
+# Decompress each .gz in MCC-1.0/images/ and write it as a raw sector image.
+# The source images are 1.2MB floppy geometry (1,228,800 bytes); they are
+# padded with zeros to reach the full 1.44MB GoTek size (1,474,560 bytes).
+##############################################################################
+
+echo "--- Boot and root disk images ---"
+echo " Source: $IMAGES_DIR"
+echo " Output: $BOOTROOT_OUT"
+echo
 
 # Verify source images directory exists before iterating
 if [ ! -d "$IMAGES_DIR" ]; then
     echo "ERROR: images directory not found: $IMAGES_DIR"
     exit 1
 fi
-
-# Create output directory if it doesn't exist
-mkdir -p "$OUT_DIR"
-
-echo "--- Boot and root disk images ---"
 
 found=0
 for f in "$IMAGES_DIR"/*.gz; do
@@ -131,8 +154,8 @@ for f in "$IMAGES_DIR"/*.gz; do
     # base — filename without the .gz extension, used to name the output
     base=$(basename "$f" .gz)
 
-    # imgfile — destination .img path in the output directory
-    imgfile="$OUT_DIR/${base}.img"
+    # imgfile — destination .img path in the bootroot output directory
+    imgfile="$BOOTROOT_OUT/${base}.img"
 
     if [ -f "$imgfile" ] && [ "$FORCE" -eq 0 ]; then
         echo "  SKIP: $imgfile already exists (use --force to overwrite)"
@@ -160,7 +183,86 @@ done
 
 if [ "$found" -eq 0 ]; then
     echo "  no .gz files found in $IMAGES_DIR"
+fi
+
+##############################################################################
+# Package floppy images — raw tar stream, no filesystem
+#
+# Each .tgz / .tar.gz in MCC-1.0/packages/ gets its own floppy image. The
+# package file is written into the image as a raw tar archive — no FAT12
+# filesystem, just tar blocks starting at sector 0. On the target machine:
+#
+#   tar xvf /dev/fd0
+#
+# reads the tar stream directly off the GoTek floppy and extracts the package
+# archive (.tgz file) into the current directory. The package can then be
+# installed with a second tar xvzf pass.
+#
+# Each image is padded with zeros to the full 1.44MB GoTek size after the tar
+# stream ends. The tar end-of-archive blocks (two 512-byte zero blocks) are
+# written by tar itself; the remaining floppy space is zeros from padding.
+#
+# Variables:
+#   f        — full path to each source package file
+#   pkgname  — package name with all extensions stripped (bison, gcca, etc.)
+#   imgfile  — destination .img path under PKG_OUT
+#   size     — byte count of image after tar write, checked against FLOPPY_BYTES
+##############################################################################
+
+echo
+echo "--- Package floppy images ---"
+echo " Source: $PKG_DIR"
+echo " Output: $PKG_OUT"
+echo
+
+if [ ! -d "$PKG_DIR" ]; then
+    echo "ERROR: packages directory not found: $PKG_DIR"
     exit 1
+fi
+
+found=0
+for f in "$PKG_DIR"/*.tgz "$PKG_DIR"/*.tar.gz; do
+    [ -f "$f" ] || continue
+    found=1
+
+    # pkgname — strip all extensions (.tgz or .tar.gz) to get a clean name.
+    pkgname=$(basename "$f")
+    pkgname="${pkgname%.tgz}"
+    pkgname="${pkgname%.tar.gz}"
+
+    # imgfile — one .img per package in the packages output directory
+    imgfile="$PKG_OUT/${pkgname}.img"
+
+    if [ -f "$imgfile" ] && [ "$FORCE" -eq 0 ]; then
+        echo "  SKIP: $imgfile already exists (use --force to overwrite)"
+        continue
+    fi
+
+    echo "  $f -> $imgfile"
+
+    # Write the package as a raw tar stream starting at sector 0 of the image.
+    # tar cf - writes to stdout; dd writes that stream into the image file with
+    # 512-byte blocks matching floppy sector size. conv=sync zero-pads the
+    # final block so the image ends on a sector boundary.
+    # -C changes to the package directory so the archive member is just the
+    # filename with no leading path components — on extraction the .tgz lands
+    # in whatever directory the user runs tar from.
+    tar cf - -C "$PKG_DIR" "$(basename "$f")" | dd of="$imgfile" bs=512 conv=sync status=none
+
+    # Pad to the full 1.44MB GoTek size. The tar stream is much smaller than
+    # a floppy; the remaining space is filled with zeros so the GoTek sees a
+    # complete 1.44MB image and doesn't reject it.
+    size=$(stat -c%s "$imgfile")
+    if [ "$size" -lt "$FLOPPY_BYTES" ]; then
+        dd if=/dev/zero bs=1 count=$((FLOPPY_BYTES - size)) >> "$imgfile" status=none
+        echo "    padded from $size to $FLOPPY_BYTES bytes"
+    fi
+
+    echo "    done ($(stat -c%s "$imgfile") bytes)"
+done
+
+if [ "$found" -eq 0 ]; then
+    echo "  no package files found in $PKG_DIR"
 fi
 
 echo
